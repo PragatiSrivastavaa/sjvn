@@ -1,0 +1,50 @@
+<h2 class="gallery-section-heading">Video Gallery</h2>
+<div class="container">
+  <div class="row">
+    {% for row in rows %}
+      {% set video_html = row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_upload_video }}'] ?? '' %}
+      {% set thumbnail_html = row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_thumbnail_image }}'] ?? '' %}
+      {% set title_html = row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] ?? '' %}
+
+      {# Extract video source from <source src="..."> #}
+      {% set video_src = '' %}
+      {% if video_html %}
+        {% set parts = video_html|split('src="') %}
+        {% if parts|length > 1 %}
+          {% set after = parts[1] %}
+          {% set video_src = (after|split('"'))[0] %}
+        {% endif %}
+      {% endif %}
+
+      <div class="col-sm-4">
+        <div class="gallery-item">
+          {# Thumbnail opens video in Colorbox #}
+          <a href="{{ video_src }}" class="colorbox-video" width="320" height="240" data-colorbox-gallery="video-gallery">
+            {{ thumbnail_html|raw }}
+          </a>
+
+          <div class="video-title">
+            {{ title_html|raw }}
+          </div>
+        </div>
+      </div>
+      
+    {% endfor %}
+  </div>
+</div>
+
+
+<script>
+jQuery(document).ready(function($) {
+  $(".colorbox-video").colorbox({
+    iframe: true,
+    innerWidth: 640,
+    innerHeight: 360,
+    maxWidth: "90%",
+    maxHeight: "90%",
+    close: "Close"
+  });
+});
+</script>
+
+
