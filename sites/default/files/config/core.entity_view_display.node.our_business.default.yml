@@ -6,7 +6,14 @@ dependencies:
     - field.field.node.our_business.body
     - field.field.node.our_business.field_business_cat
     - field.field.node.our_business.field_business_image
+    - field.field.node.our_business.field_financing_details
+    - field.field.node.our_business.field_important_events
+    - field.field.node.our_business.field_introduction
+    - field.field.node.our_business.field_location
     - field.field.node.our_business.field_portfolio_cat
+    - field.field.node.our_business.field_project_benefits
+    - field.field.node.our_business.field_salient_features
+    - field.field.node.our_business.field_tariff_petition
     - node.type.our_business
   module:
     - image
@@ -22,7 +29,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 1
     region: content
   field_business_cat:
     type: entity_reference_label
@@ -30,7 +37,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 102
+    weight: 2
     region: content
   field_business_image:
     type: image
@@ -41,7 +48,35 @@ content:
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 104
+    weight: 4
+    region: content
+  field_financing_details:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_important_events:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_introduction:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_location:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_portfolio_cat:
     type: entity_reference_label
@@ -49,12 +84,33 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 103
+    weight: 3
+    region: content
+  field_project_benefits:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_salient_features:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_tariff_petition:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
   langcode: true

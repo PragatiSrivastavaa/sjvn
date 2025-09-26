@@ -1,0 +1,84 @@
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<div class="container">
+  <ul class="nav nav-tabs">
+    {% if node.field_introduction.value %}
+      <li class="active"><a href="#group1">{{ node.field_introduction.fieldDefinition.label }}</a></li>
+    {% endif %}
+
+    {% if node.field_location.value %}
+      <li><a href="#group2">{{ node.field_location.fieldDefinition.label }}</a></li>
+    {% endif %}
+    {% if node.field_project_benefits.value %}
+      <li><a href="#group3">{{ node.field_project_benefits.fieldDefinition.label }}</a></li>
+    {% endif %}
+    {% if node.field_salient_features.value %}
+      <li><a href="#group4">{{ node.field_salient_features.fieldDefinition.label }}</a></li>
+    {% endif %}
+
+     {% if node.field_financing_details.value %}
+      <li><a href="#group5">{{ node.field_financing_details.fieldDefinition.label }}</a></li>
+    {% endif %}
+    {% if node.field_important_events.value %}
+      <li><a href="#group6">{{ node.field_important_events.fieldDefinition.label }}</a></li>
+    {% endif %}
+
+    {% if node.field_tariff_petition.value %}
+      <li><a href="#group7">{{ node.field_tariff_petition.fieldDefinition.label }}</a></li>
+    {% endif %}
+  </ul>
+
+  <div class="tab-content">
+    {% if content.field_introduction %}
+      <div id="group1" class="tab-pane fade in active">
+        {{ content.field_introduction }}
+      </div>
+    {% endif %}
+
+    {% if content.field_location %}
+      <div id="group2" class="tab-pane fade">
+        {{ content.field_location }}
+      </div>
+    {% endif %}
+
+    {% if content.field_project_benefits %}
+      <div id="group3" class="tab-pane fade">
+        {{ content.field_project_benefits }}
+      </div>
+    {% endif %}
+    {% if content.field_salient_features %}
+      <div id="group4" class="tab-pane fade">
+        {{ content.field_salient_features }}
+      </div>
+    {% endif %}
+   
+    {% if content.field_financing_details %}
+      <div id="group5" class="tab-pane fade">
+        {{ content.field_financing_details }}
+      </div>
+    {% endif %}
+    {% if content.field_important_events %}
+      <div id="group6" class="tab-pane fade">
+        {{ content.field_important_events }}
+      </div>
+    {% endif %}
+    {% if content.field_tariff_petition %}
+      <div id="group7" class="tab-pane fade">
+        {{ content.field_tariff_petition }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+  $(".nav-tabs a").click(function(){
+    $(this).tab('show');
+  });
+ 
+});
+</script>

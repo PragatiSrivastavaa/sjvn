@@ -7,7 +7,14 @@ dependencies:
     - field.field.node.our_business.body
     - field.field.node.our_business.field_business_cat
     - field.field.node.our_business.field_business_image
+    - field.field.node.our_business.field_financing_details
+    - field.field.node.our_business.field_important_events
+    - field.field.node.our_business.field_introduction
+    - field.field.node.our_business.field_location
     - field.field.node.our_business.field_portfolio_cat
+    - field.field.node.our_business.field_project_benefits
+    - field.field.node.our_business.field_salient_features
+    - field.field.node.our_business.field_tariff_petition
     - node.type.our_business
   module:
     - text
@@ -33,5 +40,12 @@ content:
 hidden:
   field_business_cat: true
   field_business_image: true
+  field_financing_details: true
+  field_important_events: true
+  field_introduction: true
+  field_location: true
   field_portfolio_cat: true
+  field_project_benefits: true
+  field_salient_features: true
+  field_tariff_petition: true
   langcode: true

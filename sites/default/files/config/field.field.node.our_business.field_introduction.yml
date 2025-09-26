@@ -1,0 +1,26 @@
+uuid: ed987f2e-df25-492e-980f-b107802dcdc7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_introduction
+    - filter.format.full_html
+    - node.type.our_business
+  module:
+    - text
+id: node.our_business.field_introduction
+field_name: field_introduction
+entity_type: node
+bundle: our_business
+label: Introduction
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats:
+    - full_html
+field_type: text_with_summary

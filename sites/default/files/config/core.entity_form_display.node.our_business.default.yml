@@ -6,7 +6,14 @@ dependencies:
     - field.field.node.our_business.body
     - field.field.node.our_business.field_business_cat
     - field.field.node.our_business.field_business_image
+    - field.field.node.our_business.field_financing_details
+    - field.field.node.our_business.field_important_events
+    - field.field.node.our_business.field_introduction
+    - field.field.node.our_business.field_location
     - field.field.node.our_business.field_portfolio_cat
+    - field.field.node.our_business.field_project_benefits
+    - field.field.node.our_business.field_salient_features
+    - field.field.node.our_business.field_tariff_petition
     - image.style.thumbnail
     - node.type.our_business
   module:
@@ -48,11 +55,81 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
+  field_financing_details:
+    type: text_textarea_with_summary
+    weight: 130
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_important_events:
+    type: text_textarea_with_summary
+    weight: 131
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_introduction:
+    type: text_textarea_with_summary
+    weight: 126
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_location:
+    type: text_textarea_with_summary
+    weight: 128
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
   field_portfolio_cat:
     type: options_select
     weight: 123
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_project_benefits:
+    type: text_textarea_with_summary
+    weight: 127
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_salient_features:
+    type: text_textarea_with_summary
+    weight: 129
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_tariff_petition:
+    type: text_textarea_with_summary
+    weight: 132
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
     third_party_settings: {  }
   langcode:
     type: language_select
