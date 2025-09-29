@@ -14,3 +14,15 @@ function decreaseFont() {
 function toggleContrast() {
   document.body.classList.toggle("high-contrast");
 }
+
+
+// tabs
+$(document).ready(function(){
+  $(".nav-tabs a").click(function(){
+    $(this).tab('show');
+  });
+ 
+});
+
+
+//video popup
