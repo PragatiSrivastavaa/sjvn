@@ -1,11 +1,4 @@
 console.log("✅ script.js is loading");
-// tabs
-$(document).ready(function(){
-  $(".nav-tabs a").click(function(){
-    $(this).tab('show');
-  });
- 
-});
 
 
 // Function to load includes with callback
