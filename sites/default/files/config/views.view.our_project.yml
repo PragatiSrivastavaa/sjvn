@@ -9,8 +9,11 @@ dependencies:
     - taxonomy.vocabulary.business_cat
     - taxonomy.vocabulary.portfolio_cat
   content:
+    - 'taxonomy_term:business_cat:1239a0f4-018f-408f-967b-50375b7ed862'
+    - 'taxonomy_term:business_cat:90b4db7a-c133-4508-b0c4-d0372bcc6064'
     - 'taxonomy_term:business_cat:a8957c63-8486-4b39-8864-9776c8800313'
     - 'taxonomy_term:business_cat:ab3142be-10c6-45ce-b909-95f464c60306'
+    - 'taxonomy_term:business_cat:c0d654a7-3133-47ac-99d7-131bb31aba77'
     - 'taxonomy_term:portfolio_cat:4a759c84-feeb-486a-81fe-cec0fdba5a16'
     - 'taxonomy_term:portfolio_cat:5ca0d3f2-8b9a-4ee1-8d01-1771ffd34f7e'
     - 'taxonomy_term:portfolio_cat:76744826-b1c0-4c22-872e-9119d1e1b5be'
@@ -688,7 +691,7 @@ display:
             format: full_html
           tokenize: false
       display_extenders: {  }
-      path: hydro-power
+      path: hydropower
     cache_metadata:
       max-age: -1
       contexts:
@@ -849,6 +852,612 @@ display:
           tokenize: false
       display_extenders: {  }
       path: thermalpower
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_business_image'
+        - 'config:field.storage.node.field_portfolio_cat'
+  page_3:
+    id: page_3
+    display_title: 'Page 3'
+    display_plugin: page
+    position: 3
+    display_options:
+      title: 'Wind Power'
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: true
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_hide: true
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              field_portfolio_cat_target_id:
+                plugin_id: bef
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: "- Any - |\r\nUnder Construction |\r\nPre-Construction |\r\nSurvey & Investigation |"
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+                select_all_none: false
+                select_all_none_nested: false
+                display_inline: true
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            our_business: our_business
+        field_portfolio_cat_target_id:
+          id: field_portfolio_cat_target_id
+          table: node__field_portfolio_cat
+          field: field_portfolio_cat_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            6: 6
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_portfolio_cat_target_id_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: field_portfolio_cat_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_portfolio_cat_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: portfolio_cat
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_business_cat_target_id:
+          id: field_business_cat_target_id
+          table: node__field_business_cat
+          field: field_business_cat_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            12: 12
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_business_cat_target_id_op
+            label: 'Business Cat (field_business_cat)'
+            description: null
+            use_operator: false
+            operator: field_business_cat_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_business_cat_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: business_cat
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        exposed_form: false
+        filters: false
+        filter_groups: false
+        header: false
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: 'SJVN has diversified into Wind Power generation with commissioning of its first project i.e. 47.6 MW Khirvire Wind Power Project at Khirvire and Kombhalne villages in Ahmednagar district of Maharashtra. Second wind project i.e. Sadla Wind Power Project of 50 MW Capacity situated in village Sadla, District Surendranagar in the state of Gujarat has also been commissioned.'
+            format: full_html
+          tokenize: false
+      display_extenders: {  }
+      path: windpower
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_business_image'
+        - 'config:field.storage.node.field_portfolio_cat'
+  page_4:
+    id: page_4
+    display_title: 'Page 4'
+    display_plugin: page
+    position: 4
+    display_options:
+      title: 'Solar Power'
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: true
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_hide: true
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              field_portfolio_cat_target_id:
+                plugin_id: bef
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: "- Any - |\r\nPre-Construction |\r\nSurvey & Investigation |"
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+                select_all_none: false
+                select_all_none_nested: false
+                display_inline: true
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            our_business: our_business
+        field_portfolio_cat_target_id:
+          id: field_portfolio_cat_target_id
+          table: node__field_portfolio_cat
+          field: field_portfolio_cat_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            6: 6
+            9: 9
+            8: 8
+            7: 7
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_portfolio_cat_target_id_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: field_portfolio_cat_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_portfolio_cat_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: portfolio_cat
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_business_cat_target_id:
+          id: field_business_cat_target_id
+          table: node__field_business_cat
+          field: field_business_cat_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            13: 13
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_business_cat_target_id_op
+            label: 'Business Cat (field_business_cat)'
+            description: null
+            use_operator: false
+            operator: field_business_cat_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_business_cat_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: business_cat
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        exposed_form: false
+        filters: false
+        filter_groups: false
+        header: false
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: "SJVN has diversified into Solar Power generation with commissioning of its first project in Charanka Solar Park, Gujarat on 31.03.2017. As on date, 8 Solar projects with total installed capacity of 396.91 MW are under operation. \r\n"
+            format: full_html
+          tokenize: false
+      display_extenders: {  }
+      path: solarpower
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_business_image'
+        - 'config:field.storage.node.field_portfolio_cat'
+  page_5:
+    id: page_5
+    display_title: 'Page 5'
+    display_plugin: page
+    position: 5
+    display_options:
+      title: 'Power Transmission'
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: true
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_hide: true
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              field_portfolio_cat_target_id:
+                plugin_id: bef
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: "- Any - |\r\nPre-Construction |\r\nSurvey & Investigation |"
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+                select_all_none: false
+                select_all_none_nested: false
+                display_inline: true
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            our_business: our_business
+        field_portfolio_cat_target_id:
+          id: field_portfolio_cat_target_id
+          table: node__field_portfolio_cat
+          field: field_portfolio_cat_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            6: 6
+            9: 9
+            8: 8
+            7: 7
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_portfolio_cat_target_id_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: field_portfolio_cat_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_portfolio_cat_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: portfolio_cat
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_business_cat_target_id:
+          id: field_business_cat_target_id
+          table: node__field_business_cat
+          field: field_business_cat_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            14: 14
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_business_cat_target_id_op
+            label: 'Business Cat (field_business_cat)'
+            description: null
+            use_operator: false
+            operator: field_business_cat_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_business_cat_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: business_cat
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        exposed_form: false
+        filters: false
+        filter_groups: false
+        header: false
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: "From a power generation company, SJVN has also entered into Power Transmission Sector by partnering with others companies to lay out the Cross Border Indo-Nepal Power Transmission Line. The above mentioned Power Transmission Line has been declared commercial on 19th February, 2016 and dedicated to the nations jointly by Hon'ble Prime Minister of India & Nepal on 20th Feb, 2016."
+            format: full_html
+          tokenize: false
+      display_extenders: {  }
+      path: powertransmission
     cache_metadata:
       max-age: -1
       contexts:

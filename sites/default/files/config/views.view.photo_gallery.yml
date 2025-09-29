@@ -361,7 +361,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: " <div class=\"see-more-wrapper\">\r\n        <a href=\"gallery.html\" class=\"see-more-btn\">See More</a>\r\n      </div>"
+            value: " <div class=\"see-more-wrapper\">\r\n        <a href=\"/photo_gallery\" class=\"see-more-btn\">See More</a>\r\n      </div>"
             format: full_html
           tokenize: false
       display_extenders: {  }
@@ -381,6 +381,22 @@ display:
     display_plugin: block
     position: 1
     display_options:
+      defaults:
+        footer: false
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: " <div class=\"see-more-wrapper\">\r\n        <a href=\"/sjvn/photo_gallery\" class=\"see-more-btn\">See More</a>\r\n      </div>"
+            format: full_html
+          tokenize: false
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -424,6 +440,8 @@ display:
       defaults:
         title: false
         pager: false
+        footer: false
+      footer: {  }
       display_extenders: {  }
       path: photo_gallery
     cache_metadata:
