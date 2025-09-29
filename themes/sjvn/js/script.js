@@ -1,4 +1,12 @@
 console.log("✅ script.js is loading");
+// tabs
+$(document).ready(function(){
+  $(".nav-tabs a").click(function(){
+    $(this).tab('show');
+  });
+ 
+});
+
 
 // Function to load includes with callback
 function includeHTML(id, file, callback) {
@@ -289,10 +297,11 @@ document.querySelectorAll('.quick-arrow').forEach(button => {
   });
 });
 
-
+// search box toggle
 jQuery(document).ready(function($){
   $(".search-btn a").click(function(e){
     e.preventDefault();
     $("#search-block-form").toggleClass("search-block-form-ShowBox");
   });
 });
+

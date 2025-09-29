@@ -4,7 +4,15 @@ status: true
 dependencies:
   config:
     - node.type.article
+    - node.type.career
+    - node.type.home_banner
+    - node.type.news_announcement
+    - node.type.our_business
+    - node.type.our_power_stations
     - node.type.page
+    - node.type.photo_gallery
+    - node.type.quick_access_link
+    - node.type.video_gallery
   module:
     - comment
     - contextual
@@ -27,17 +35,59 @@ permissions:
   - 'access toolbar'
   - 'administer url aliases'
   - 'create article content'
+  - 'create career content'
+  - 'create home_banner content'
+  - 'create news_announcement content'
+  - 'create our_business content'
+  - 'create our_power_stations content'
   - 'create page content'
+  - 'create photo_gallery content'
+  - 'create quick_access_link content'
   - 'create url aliases'
   - 'delete article revisions'
   - 'delete own article content'
   - 'delete own files'
   - 'delete own page content'
   - 'delete page revisions'
+  - 'edit any article content'
+  - 'edit any career content'
+  - 'edit any home_banner content'
+  - 'edit any news_announcement content'
+  - 'edit any our_business content'
+  - 'edit any our_power_stations content'
+  - 'edit any page content'
+  - 'edit any photo_gallery content'
+  - 'edit any quick_access_link content'
+  - 'edit any video_gallery content'
   - 'edit own article content'
+  - 'edit own career content'
   - 'edit own comments'
+  - 'edit own home_banner content'
+  - 'edit own news_announcement content'
+  - 'edit own our_business content'
+  - 'edit own our_power_stations content'
   - 'edit own page content'
+  - 'edit own photo_gallery content'
+  - 'edit own quick_access_link content'
+  - 'edit own video_gallery content'
   - 'revert all revisions'
+  - 'revert article revisions'
+  - 'revert career revisions'
+  - 'revert home_banner revisions'
+  - 'revert news_announcement revisions'
+  - 'revert our_business revisions'
+  - 'revert our_power_stations revisions'
+  - 'revert page revisions'
+  - 'revert photo_gallery revisions'
+  - 'revert quick_access_link revisions'
+  - 'revert video_gallery revisions'
   - 'view all revisions'
+  - 'view article revisions'
+  - 'view career revisions'
+  - 'view home_banner revisions'
+  - 'view news_announcement revisions'
+  - 'view our_business revisions'
+  - 'view our_power_stations revisions'
   - 'view own unpublished content'
+  - 'view page revisions'
   - 'view the administration theme'

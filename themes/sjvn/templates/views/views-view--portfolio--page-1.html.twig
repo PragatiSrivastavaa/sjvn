@@ -1,0 +1,77 @@
+{#
+/**
+ * @file
+ * Custom layout: Exposed form left, content right using Bootstrap 5.
+ */
+#}
+
+{%
+  set classes = [
+    'view',
+    'view-' ~ id|clean_class,
+    'view-id-' ~ id,
+    'view-display-id-' ~ display_id,
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if title %}
+    {{ title }}
+  {% endif %}
+  {{ title_suffix }}
+
+  {% if header %}
+    <div class="view-header mb-3">
+      {{ header }}
+    </div>
+  {% endif %}
+
+  {# Bootstrap row for two-column layout #}
+  <div class="row">
+    
+    {# Left column: exposed filters (width 3 of 12) #}
+    {% if exposed %}
+      <div class="col-md-3 mb-3">
+        {{ exposed }}
+      </div>
+    {% endif %}
+    
+    {# Right column: content rows (width 9 of 12) #}
+    <div class="col-md-9">
+      {% if rows %}
+        {{ rows }}
+      {% elseif empty %}
+        <div class="view-empty">{{ empty }}</div>
+      {% endif %}
+    </div>
+
+  </div> {# end row #}
+
+  {% if pager %}
+    <div class="mt-3">
+      {{ pager }}
+    </div>
+  {% endif %}
+  {% if attachment_after %}
+    <div class="attachment attachment-after mt-3">
+      {{ attachment_after }}
+    </div>
+  {% endif %}
+  {% if more %}
+    <div class="mt-3">
+      {{ more }}
+    </div>
+  {% endif %}
+  {% if footer %}
+    <div class="view-footer mt-3">
+      {{ footer }}
+    </div>
+  {% endif %}
+  {% if feed_icons %}
+    <div class="feed-icons mt-3">
+      {{ feed_icons }}
+    </div>
+  {% endif %}
+</div>
