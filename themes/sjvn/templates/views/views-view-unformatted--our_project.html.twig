@@ -21,21 +21,16 @@
         {% set node = row.content['#row']._entity %}
         <div class="col-sm-3">
         <div class="gallery-item">
-
-  <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
-  {% if row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_business_image }}'] %}
-    {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_business_image }}'] }}
-    <div class="gallery-overlay">
-      <span>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</span>
-    </div>
-  {% else %}
-    <div class="gallery-overlay">
-      <span>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</span>
-    </div>
-  {% endif %}
-</a>
-
-
+           <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
+            {% if row.content['#row']._entity.field_business_image is not empty %}
+          {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_business_image }}'] }}
+          {% else %}
+          <img src="./themes/sjvn/images/gallery/no-image.png" alt="No Image Available">
+          {% endif %}
+          <div class="gallery-overlay">
+            <span>{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}</span>
+          </div>
+          </a>
         </div>
         </div>
         {% endfor %}
