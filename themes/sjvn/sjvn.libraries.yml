@@ -8,7 +8,7 @@ global-styling:
       css/responsive.css: {}
       css/style.css: {}
       css/theme.css: {}
-
+      css/inner-page.css: {}
 global-scripts:
   version: 1.x
   js:

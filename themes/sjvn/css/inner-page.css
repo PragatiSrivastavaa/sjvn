@@ -1,0 +1,161 @@
+/* enner body css sidebar */
+    .sidebar {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .sidebar .list-group-item {
+      border: none;
+      border-bottom: 1px solid #eee;
+      text-align: center;
+      font-weight: 500;
+      color: #2a6ca8;
+    }
+    .sidebar .list-group-item.active {
+      background-color: var(--primary-color); 
+      color: #fff;
+      font-weight: 600;
+    }
+section.aboutscreen {
+    padding: 35px 33px;
+}
+@media (max-width: 776px) {
+
+    section.aboutscreen {
+    padding: 35px 0px;
+}
+}
+/* end enner body css sidebar */
+
+@media (max-width: 768px) {
+  .footer-links {
+    justify-content: center;
+    text-align: center;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* header-two */
+.top-bar-inner {
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+}
+.top-bar-inner .right-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.top-bar-inner a {
+    color: #fff;
+    text-decoration: none;
+}
+.main-nav-inner {
+    background: var(--primary-light2);
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+.main-nav-inner ul {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.main-nav-inner li {
+    display: flex;
+    align-items: center;
+}
+.main-nav-inner a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+.main-nav-inner a img {
+    height: 26px;
+    display: block;
+}
+.main-nav-inner a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+.middle-logs-inner img {
+    height: 35px;
+    margin: 0 5px;
+    object-fit: contain;
+}
+.top-bar-inner .right-links-inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.right-links-inner a, .right-links-inner button {
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 6px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+}
+.main-nav-inner a:hover {
+    background: var(--primary-color);
+    color: var(--bg-light);
+}
+.logo-bar-inner {
+  background-image: url("images/banner/Hydro-power-banner\ 1.png"); 
+  background-size: cover;  
+  background-position: center; 
+  background-repeat: no-repeat; 
+  padding: 50px 40px;
+  color: var( --bg-light);  
+      display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo-left-inner {
+      display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 4px;
+    background: #ffffff36;
+}
+.main-logo-inner {
+    height: 112px;
+    margin-right: 10px;
+}
+.org-text-inner h1 {
+    margin: 0;
+    font-size: 1.3rem;
+    line-height: 26px;
+}
+.org-text-inner span {
+    font-size: 1rem;
+}
+.org-text-inner p {
+    margin: 0.7px 0;
+    font-size: 0.85rem;
+}
+.text-right-inner h1 {
+    margin: 0px;
+}
+.text-right-inner p {
+    margin: 0px;
+}

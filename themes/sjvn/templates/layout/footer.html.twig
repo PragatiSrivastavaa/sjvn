@@ -12,20 +12,36 @@
  * @see template_preprocess_region()
  */
 #}
-<footer class="site-footer">
+<footer class="">
+ 
+<div class="row site-footer">
+  <div class="col-9">
+ <div class="footer-links">
+  {{ page.footer_top }}
+  </div>
+  </div>
+  <div class="col-3">
   <div class="footer-top">
-    <div class="validation-icons">
-      <img src="{{ base_path}}themes/sjvn/images/stock-market.png" alt="stock-market">
+    <div class="validation-icons dropdown">
+      <div class="text-show">Stock Market</div>
+      
+      <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+        <img src="{{ base_path}}themes/sjvn/images/stock-market.png" alt="stock-market">
+      </a>
+      
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Live Updates</a></li>
+        <li><a class="dropdown-item" href="#">Market Reports</a></li>
+        <li><a class="dropdown-item" href="#">Analysis</a></li>
+      </ul>
     </div>
   </div>
-
-  <div class="footer-links">
-    {{ page.footer_top }}
   </div>
-
-  <div class="footer-bottom">
+ 
+</div>
+<div class="footer-bottom">
     <div class="copyright">
-      © 2025 SJVN Ltd. | Website Last Updated: {{ node.field_publication_date | date('d/m/Y') }}
+      © 2020 SJVN Ltd. | Website Last Updated: 08/21/2025 05:12:10
     </div>
     <div class="visitor-count">
       Total Visitors: 23,378,286
