@@ -3,7 +3,7 @@ langcode: hi
 status: true
 dependencies: {  }
 id: hi
-label: Hindi
+label: हिंदी
 direction: ltr
 weight: 1
 locked: false
