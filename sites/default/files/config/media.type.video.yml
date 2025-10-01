@@ -5,8 +5,8 @@ dependencies: {  }
 _core:
   default_config_hash: hzgvcRgZHltqWf8hBmttoWh95tCJoPL25lPq9YSIRsY
 id: video
-label: Video
-description: 'A locally hosted video file.'
+label: वीडियो
+description: 'एक स्थानीय रूप से होस्ट की गई वीडियो फ़ाइल।'
 source: video_file
 queue_thumbnail_downloads: false
 new_revision: true

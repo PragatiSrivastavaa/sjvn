@@ -1,0 +1,20 @@
+uuid: e3ee98e3-71e7-4069-9076-d0f75ebd19ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.portfolio_cat
+  module:
+    - path
+id: taxonomy_term.portfolio_cat.path
+field_name: path
+entity_type: taxonomy_term
+bundle: portfolio_cat
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -5,6 +5,6 @@ dependencies: {  }
 _core:
   default_config_hash: og8sWXhBuHbLMw3CoiBEZjgqSyhFBFmcbUW_wLcfNbo
 id: long
-label: 'Default long date'
+label: 'डिफ़ॉल्ट लंबे तारीख'
 locked: false
-pattern: 'l, F j, Y - H:i'
+pattern: 'एल, एफ जे, वाई - एच :i'

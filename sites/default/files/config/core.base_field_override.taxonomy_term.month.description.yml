@@ -1,0 +1,21 @@
+uuid: 61a79143-5408-402d-aa08-21a209a56f8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.month
+  module:
+    - text
+id: taxonomy_term.month.description
+field_name: description
+entity_type: taxonomy_term
+bundle: month
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

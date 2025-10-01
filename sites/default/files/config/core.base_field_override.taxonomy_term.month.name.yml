@@ -1,0 +1,18 @@
+uuid: 02698ad0-7fdd-4bb3-bee0-62199d96cbf3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.month
+id: taxonomy_term.month.name
+field_name: name
+entity_type: taxonomy_term
+bundle: month
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

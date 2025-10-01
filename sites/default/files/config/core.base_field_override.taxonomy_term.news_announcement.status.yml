@@ -1,0 +1,22 @@
+uuid: 20e8e495-235e-4042-944e-03408b805c93
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.news_announcement
+id: taxonomy_term.news_announcement.status
+field_name: status
+entity_type: taxonomy_term
+bundle: news_announcement
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

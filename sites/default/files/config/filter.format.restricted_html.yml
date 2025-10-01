@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 _core:
   default_config_hash: QiKqQS_YGAT3Qr4vaAgZICJknm-MGCzt_xBAMqg-tRM
-name: 'Restricted HTML'
+name: 'प्रतिबंधित एचटीएमएल'
 format: restricted_html
 weight: -8
 filters:

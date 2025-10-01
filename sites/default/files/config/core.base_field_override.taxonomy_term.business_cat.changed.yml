@@ -1,0 +1,18 @@
+uuid: 726b4e3f-be01-47a6-bb8c-11ab4302a0a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.business_cat
+id: taxonomy_term.business_cat.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: business_cat
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

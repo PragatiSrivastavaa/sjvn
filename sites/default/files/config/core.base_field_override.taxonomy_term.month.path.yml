@@ -1,0 +1,20 @@
+uuid: ecf70f77-76eb-44a3-b3a0-6d66800607ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.month
+  module:
+    - path
+id: taxonomy_term.month.path
+field_name: path
+entity_type: taxonomy_term
+bundle: month
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

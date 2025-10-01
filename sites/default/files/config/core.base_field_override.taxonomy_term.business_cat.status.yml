@@ -1,0 +1,22 @@
+uuid: e2b8f44f-4f9f-44fc-882c-8a3c9c74f2b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.business_cat
+id: taxonomy_term.business_cat.status
+field_name: status
+entity_type: taxonomy_term
+bundle: business_cat
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

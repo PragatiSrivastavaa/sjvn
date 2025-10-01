@@ -25,6 +25,7 @@ regions:
   header: Header
   logo: Logo
   center_logos: Center Logos
+  language: Language
   search_section: Search
   primary_menu: Primary menu
   secondary_menu: Secondary menu

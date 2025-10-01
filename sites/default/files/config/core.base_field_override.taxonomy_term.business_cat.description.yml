@@ -1,0 +1,21 @@
+uuid: 3b703763-481e-443c-ac0a-fa0f7a2c02f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.business_cat
+  module:
+    - text
+id: taxonomy_term.business_cat.description
+field_name: description
+entity_type: taxonomy_term
+bundle: business_cat
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

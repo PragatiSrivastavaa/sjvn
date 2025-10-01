@@ -5,6 +5,6 @@ dependencies: {  }
 _core:
   default_config_hash: bqZsN31T2n0UjcbyCpOPi9D2iO0sAOHR7FnEs9qMvaA
 id: comment
-label: 'Default comments'
+label: 'डिफ़ॉल्ट टिप्पणियां'
 target_entity_type_id: node
-description: 'Allows commenting on content'
+description: 'सामग्री पर टिप्पणी करने की अनुमति देता है'

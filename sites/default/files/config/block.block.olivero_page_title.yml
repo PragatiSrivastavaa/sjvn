@@ -14,7 +14,7 @@ provider: null
 plugin: page_title_block
 settings:
   id: page_title_block
-  label: 'Page title'
+  label: 'पृष्ठ का शीर्षक'
   label_display: '0'
   provider: core
 visibility: {  }

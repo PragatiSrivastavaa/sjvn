@@ -8,13 +8,26 @@
     </section>
 
     <!-- Announcements Bar -->
+    <div class="announcement-bar">
+      <!-- Left Section -->
+      <div class="announcement-left">
+        <span class="announcement-title">{% if language.getId() == 'hi' %} घोषणाएं 📢{% else %} ANNOUNCEMENTS 📢 {% endif %}</span>
+      </div>
    {{ page.announcements }}
+         <!-- Right Controls -->
+      <div class="announcement-controls">
+        <span class="ann-prev">⟨</span>
+        <span class="ann-pause">⏸</span>
+        <span class="ann-next">⟩</span>
+      </div>
+    </div>
     <!-- About Us Section -->
     <section class="about-section">
       {{ page.about_us }}
     </section>
 
     <section class="power-station-section">
+      <h3>{% if language.getId() == 'hi' %} हमारे पावर स्टेशन{% else %} Our Power Stations {% endif %}</h3>
       {{ page.our_power_stations }}
     </section>
     <section class="chairman-section">
@@ -24,22 +37,27 @@
     <section class="news-alert-section">
       <div class="news-alert-container">
         <div class="news-column">
-          <h3 class="section-heading">News & Highlights</h3>
+          <h3 class="section-heading">{% if language.getId() == 'hi' %} समाचार और मुख्य अंश{% else %} News & Highlights {% endif %}</h3>
           {{ page.news_highlights }}  
           </div>
         <div class="alert-column">
-          <h3 class="section-heading">Alert</h3>   
+          <h3 class="section-heading">{% if language.getId() == 'hi' %} चेतावनी{% else %} Alert {% endif %}</h3>   
         {{ page.alerts }}
         </div>
       </div>
     </section>
     <!--news-alert-section-end-->
+  <section class="our-business-section">
+  <h2 class="section-title">{% if language.getId() == 'hi' %} हमारा व्यापार{% else %} Our Business {% endif %}</h2>
     {{ page.our_business }}
-
+  </section>
     <section class="quick-links-section">
+<h2 class="quick-action-section-heading">{% if language.getId() == 'hi' %} त्वरित पहुँच लिंक{% else %} Quick Access Link {% endif %}</h2>
+
       {{ page.quick_access_links }}
     </section>
    <section class="photo-gallery-section">  
+    <h2 class="gallery-section-heading">{% if language.getId() == 'hi' %} फोटो गैलरी {% else %} Photo Gallery {% endif %}</h2>
     {{ page.photo_gallery }}
   </section>
     <section class="logo-carousel">

@@ -1,0 +1,20 @@
+uuid: 16156426-4493-4a16-9bfb-ac23aed2ade9
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - sjvn
+id: sjvn_languageswitcher
+theme: sjvn
+region: language
+weight: 0
+provider: null
+plugin: 'language_block:language_interface'
+settings:
+  id: 'language_block:language_interface'
+  label: 'Language switcher'
+  label_display: '0'
+  provider: language
+visibility: {  }

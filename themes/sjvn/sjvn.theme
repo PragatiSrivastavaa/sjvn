@@ -10,6 +10,7 @@ use Drupal\Core\Template\Attribute;
 use Drupal\views\Form\ViewsForm;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Url;
+use Drupal\Core\Database\Database;
 
 /**
  * Implements hook_preprocess_image_widget().
@@ -26,9 +27,10 @@ function sjvn_preprocess_image_widget(array &$variables) {
   }
 }
 
+
 function sjvn_preprocess_page(&$variables) {
   $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-  $variables['language'] = $language;
+  $vars['language'] = $language;
 
   if (!empty($_SESSION['saltval']) && !empty($_SESSION['matchval']) && ($_SESSION['saltval'] == $_SESSION['matchval'])) {
     $variables['randval'] = $_SESSION['saltval'];
@@ -38,29 +40,11 @@ function sjvn_preprocess_page(&$variables) {
     $_SESSION['matchval'] = $_SESSION['saltval'];
     $variables['randval'] = $_SESSION['saltval'];
   }
-
   $variables['#cache']['max-age'] = 0;
   global $base_url;
   $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-  $variables['language'] = $language;
+  $vars['language'] = $language;
 
-  if (isset($_GET['themecolor'])) {
-    $variables['get']['themecolor'] = $_GET['themecolor'];
-    $_SESSION['themecolor'] = $variables['get']['themecolor'];
-  } else {
-    $variables['get']['themecolor'] = NULL;
-  }
-
-  if (isset($_SESSION['themecolor'])) {
-    $themecolor = $_SESSION['themecolor'];
-    if ($themecolor == 'blue') {
-      echo '<link rel="stylesheet" href="' . $base_url . '/themes/sjvn/css/style.css" />';
-    } elseif ($themecolor == 'black') {
-      echo '<link rel="stylesheet" href="' . $base_url . '/themes/sjvn/css/black.css" />';
-    } else {
-      echo '<link rel="stylesheet" href="' . $base_url . '/themes/sjvn/css/style.css" />';
-    }
-  }
 }
 	function random_string()
 	{
@@ -76,3 +60,47 @@ function sjvn_preprocess_page(&$variables) {
 		shuffle($temp_array);
 		return implode('', $temp_array);
 	}
+	
+function sjvn_preprocess_html(array &$variables) {
+  $account = \Drupal::currentUser();
+  foreach ($account->getRoles() as $role) {
+    $variables['attributes']['class'][] = 'role-' . $role;
+  }
+
+  if ($node = \Drupal::request()->attributes->get('node')) {
+    $variables['attributes']['class'][] = 'page-node-' . $node->id();
+    // If you meant to use alias, implement it meaningfully or remove the line.
+  }
+
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['attributes']['class'][] = 'lang-' . $langcode;
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function sjvn_preprocess_views_view(&$variables) {
+  if ($variables['view']->id() === 'visitors' && $variables['view']->current_display === 'block_1') {
+    $connection = Database::getConnection();
+
+    // Count distinct visitor_id + page path (so refresh doesn't count, but new page does).
+    $query = $connection->select('visitors', 'v');
+    $query->addExpression("COUNT(DISTINCT CONCAT_WS('-', v.visitor_id, v.visitors_path))", 'page_hits');
+    $total = $query->execute()->fetchField();
+
+    // Add language-based offset.
+    $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $final_total = ($langcode === 'hi') ? (100 + $total) : (500 + $total);
+
+    $variables['header'] = [
+      '#markup' => t('Total visitor: @count', ['@count' => $final_total]),
+    ];
+  }
+  
+}
+
+
+function sjvn_preprocess_views_view_unformatted(&$variables) {
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $vars['language'] = $language;
+}

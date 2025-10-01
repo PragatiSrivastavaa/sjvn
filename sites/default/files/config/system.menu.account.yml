@@ -5,6 +5,6 @@ dependencies: {  }
 _core:
   default_config_hash: M_Bh81osDyUQ4wV0GgU_NdBNqkzM87sLxjaCdFj9mnw
 id: account
-label: 'User account menu'
-description: 'Links related to the active user account'
+label: 'उपयोगकर्ता खाता मेनू'
+description: 'सक्रिय उपयोगकर्ता खाते से संबंधित लिंक'
 locked: true

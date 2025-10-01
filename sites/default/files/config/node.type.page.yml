@@ -11,7 +11,7 @@ third_party_settings:
     parent: 'main:'
 _core:
   default_config_hash: i0snV8Wj--OkRW12UdachUiYiz3FbeMwHu_pZYfzKLc
-name: 'Basic page'
+name: 'मूल पृष्ठ'
 type: page
 description: "Use <em>basic pages</em> for your static content, such as an 'About us' page."
 help: null

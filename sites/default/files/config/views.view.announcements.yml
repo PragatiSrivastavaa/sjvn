@@ -579,7 +579,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: '<a href="news.html" class="see-more-btn">See More</a>'
+            value: "<a href=\"news.html\" class=\"see-more-btn\">See More\r\n</a>"
             format: full_html
           tokenize: false
       display_extenders: {  }

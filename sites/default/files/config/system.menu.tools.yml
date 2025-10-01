@@ -5,6 +5,6 @@ dependencies: {  }
 _core:
   default_config_hash: BCM-vV1zzRaLHN18dqAR_CuGOj8AFJvTx7BKl_8Gcxc
 id: tools
-label: Tools
-description: 'User tool links, often added by modules'
+label: उपकरण
+description: 'उपयोगकर्ता टूल लिंक, अक्सर मॉड्यूल द्वारा जोड़े जाते हैं'
 locked: true

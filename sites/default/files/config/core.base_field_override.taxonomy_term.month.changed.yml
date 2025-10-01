@@ -1,0 +1,18 @@
+uuid: 1d5e4491-3868-40dd-b9da-fb689fd7b0fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.month
+id: taxonomy_term.month.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: month
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

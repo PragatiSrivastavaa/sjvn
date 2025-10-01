@@ -5,6 +5,6 @@ dependencies: {  }
 _core:
   default_config_hash: nzL5d024NjXIX_8TlT6uFAu973lmfkmHklJC-2i9rAE
 id: medium
-label: 'Default medium date'
+label: 'डिफ़ॉल्ट मध्यम तारीख'
 locked: false
-pattern: 'D, m/d/Y - H:i'
+pattern: 'डी, एम / डी / वाई - एच :i'

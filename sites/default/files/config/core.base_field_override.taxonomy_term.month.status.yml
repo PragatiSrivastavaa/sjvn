@@ -1,0 +1,22 @@
+uuid: 4ad55a6d-0514-4e7d-87d9-43df0429ee76
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.month
+id: taxonomy_term.month.status
+field_name: status
+entity_type: taxonomy_term
+bundle: month
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -75,12 +75,9 @@ register_pending_approval:
     --  [site:name] team
 register_pending_approval_admin:
   subject: 'Account details for [user:display-name] at [site:name] (pending admin approval)'
-  body: |-
-    [user:display-name] has applied for an account.
-
-    [user:edit-url]
+  body: "[उपयोगकर्ता:display-name] ने एक खाते के लिए आवेदन किया है।\r\n\r\n[उपयोगकर्ता:edit-url]"
 status_activated:
-  subject: 'Account details for [user:display-name] at [site:name] (approved)'
+  subject: '[साइट:name] (स्वीकृत) पर [उपयोगकर्ता:display-name] के लिए खाता विवरण'
   body: |-
     [user:display-name],
 
@@ -99,18 +96,8 @@ status_activated:
 
     --  [site:name] team
 status_blocked:
-  subject: 'Account details for [user:display-name] at [site:name] (blocked)'
-  body: |-
-    [user:display-name],
-
-    Your account on [site:name] has been blocked.
-
-    --  [site:name] team
+  subject: '[साइट:name] (ब्लॉक) पर [उपयोगकर्ता:display-name] के लिए खाता विवरण'
+  body: "[उपयोगकर्ता:display-name],\r\n\r\n[साइट:name] पर आपका खाता ब्लॉक कर दिया गया है।\r\n\r\n- [साइट:name] टीम"
 status_canceled:
-  subject: 'Account details for [user:display-name] at [site:name] (canceled)'
-  body: |-
-    [user:display-name],
-
-    Your account on [site:name] has been canceled.
-
-    --  [site:name] team
+  subject: '[साइट:name] (रद्द) पर [उपयोगकर्ता:display-name] के लिए खाता विवरण'
+  body: "[user:display-name],\r\n\r\nआपका लेखा  [site:name]  से रद्द कर दिया गया है\r\n--  [site:name] गुट"
