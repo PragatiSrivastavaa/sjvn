@@ -1,0 +1,29 @@
+uuid: ff82a40b-b3ca-45be-9e72-ed392b365003
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_directors_category
+    - node.type.board_of_directors
+    - taxonomy.vocabulary.directors_category
+id: node.board_of_directors.field_directors_category
+field_name: field_directors_category
+entity_type: node
+bundle: board_of_directors
+label: 'Directors Category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      directors_category: directors_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,59 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+<section class="inner-sec board_of_directors">
+  <div class="container">
+    {% set current_category = '' %}
+
+    {% for row in rows %}
+      {% set category = row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_directors_category }}'] %}
+
+      {# Print heading and start a new row when category changes #}
+      {% if category != current_category %}
+        {% if current_category != '' %}
+          </div> {# Close previous row #}
+        {% endif %}
+        <h2 class="subtitle mt-5">{{ category }}</h2>
+        <div class="row">
+        {% set current_category = category %}
+      {% endif %}
+
+      <div class="col-sm-3 col-lg-3">
+        <div class="profile">
+          <div class="profile-img">
+            {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] }}
+          </div>
+          <div class="profile-text">
+            <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h5>
+            <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_degination }}'] }}</p>
+            {% set node = row.content['#row']._entity %}
+            <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">View profile</a>
+          </div>
+        </div>
+      </div>
+      
+{% if row.content['#row']._entity.field_directors_category is empty %} 
+<div class="col-sm-9 col-lg-9">
+<p class="directors-message">The business of the Company is managed by a Board of Directors consisting of Whole Time Directors and Part-Time Directors. SJVN is currently headed by a Chairman and Managing Director (CMD) and Three (3) Functional Directors viz. Director (Personnel), Director (Finance) and Director (Projects). In addition, there are Two (2) Part-Time Directors representing the Government of India and Government of Himachal Pradesh. There are also Two Non-Official Part-Time Independent Directors on the Board of the Company.</p> 
+</div>
+{% endif %} 
+{% endfor %}
+
+    </div>
+  </div>
+</section>
+

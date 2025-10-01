@@ -1,0 +1,28 @@
+uuid: 5adaa0b6-2d47-4edd-8dc9-68b4a8a517ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.board_of_directors.body
+    - field.field.node.board_of_directors.field_degination
+    - field.field.node.board_of_directors.field_directors_category
+    - field.field.node.board_of_directors.field_image_of_directors
+    - node.type.board_of_directors
+  module:
+    - user
+id: node.board_of_directors.default
+targetEntityType: node
+bundle: board_of_directors
+mode: default
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_degination: true
+  field_directors_category: true
+  field_image_of_directors: true
+  langcode: true

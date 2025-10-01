@@ -1,0 +1,19 @@
+uuid: e358fd2d-ea44-4d48-9099-ddee568270e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degination
+    - node.type.board_of_directors
+id: node.board_of_directors.field_degination
+field_name: field_degination
+entity_type: node
+bundle: board_of_directors
+label: Degination
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

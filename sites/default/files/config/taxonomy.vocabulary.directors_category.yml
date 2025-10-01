@@ -1,0 +1,9 @@
+uuid: b12c73e0-9c29-49fd-bc11-927f8cfed3ee
+langcode: en
+status: true
+dependencies: {  }
+name: 'Directors Category'
+vid: directors_category
+description: null
+weight: 0
+new_revision: false

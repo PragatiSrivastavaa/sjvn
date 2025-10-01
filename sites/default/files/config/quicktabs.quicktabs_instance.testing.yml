@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: testing
 label: testing
-renderer: quick_tabs
+renderer: ui_tabs
 hide_empty_tabs: false
 default_tab: 9999
 options:
@@ -34,8 +34,8 @@ configuration_data:
           hide_title: true
       view_content:
         options:
-          vid: announcements
-          display: block_2
+          vid: board_of_directors
+          display: default
           args: ''
       qtabs_content:
         options:
@@ -43,11 +43,11 @@ configuration_data:
   -
     title: test2
     weight: 0
-    type: view_content
+    type: block_content
     content:
       block_content:
         options:
-          bid: announce_block
+          bid: page_title_block
           block_title: ''
           display_title: false
       node_content:
