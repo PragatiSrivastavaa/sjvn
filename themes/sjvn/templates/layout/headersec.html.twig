@@ -12,33 +12,32 @@
  * @see template_preprocess_region()
  */
 #}
+<header class="header">
+    <!-- Top Utility Bar -->
+    <div class="top-bar-inner">
+      <!-- Left Section -->
+      <div class="left-links">
+        {{ page.header }}
+      </div>
 
-	<!-- Top Utility Bar -->
-<div class="top-bar">
-  <!-- Left Section -->
-  <div class="left-links">
-  {{ page.header }}
-  </div>
-  <!-- Center Logos -->
-  <div class="middle-logs">
-  {{ page.center_logos}}
-  </div>
+      <!-- Center Logos -->
+      <div class="middle-logs">
+        {{ page.center_logos}}
+      </div>
 
-  <!-- Right Section -->
-  <div class="right-links">
-  <a href="{{ base_path }}sitemap">{% if language.getId() == 'hi' %}साइट मैप{% else %}Sitemap{% endif %}</a> |
-  <a href="#mainSec" class="hide skiptomain">{% if language.getId() == 'hi' %}मुख्य सामग्री पर जाएं{% else %}Skip to Main Content{% endif %}</a>
-	<!--<a class="hide" href="{{ base_path }}screen-reader-access">{% if language.getId() == 'hi' %}स्क्रीन रीडर पहुँच{% else %}Screen Reader Access{% endif %}</a> |
-  <a href="hindi/index.html">हिंदी</a> |-->
-  {{ page.language }} |
+      <!-- Right Section -->
+      <div class="right-links-inner">
+        <a href="{{ base_path }}sitemap">{% if language.getId() == 'hi' %}साइट मैप{% else %}Sitemap{% endif %}</a> |
+        <a href="#mainSec" class="hide skiptomain">{% if language.getId() == 'hi' %}मुख्य सामग्री पर जाएं{% else %}Skip to Main Content{% endif %}</a>
+          {{ page.language }} |
 
-  <!-- Theme Selectors (Inline) -->
-  <div class="theme-inline">
-    <div class="theme-color blue" data-theme="blue" title="Default Theme"></div>
-    <div class="theme-color green" data-theme="green" title="Green Theme"></div>
-    <div class="theme-color dark" data-theme="dark" title="Dark Theme"></div>
-  </div>
-  <div>
+        <!-- Theme Selectors (Inline) -->
+        <div class="theme-inline">
+          <div class="theme-color blue" data-theme="blue" title="Default Theme"></div>
+          <div class="theme-color green" data-theme="green" title="Green Theme"></div>
+          <div class="theme-color dark" data-theme="dark" title="Dark Theme"></div>
+        </div>
+         <div>
     <div class="search_icons_mobile">							
 			<div class="nav-item search-btn">
 			<a href="javascript:void(0)"><i class="bi bi-search" aria-hidden="true"></i></a>
@@ -46,23 +45,17 @@
 			<div class="searchSection">{{ page.search_section }}</div>
     </div>
   </div>
-</div>
+      </div>
 
-</div>
+    </div>
 
 
-
-<!-- Logo & Banner Section -->
-<div class="logo-bar">
-  {{ page.logo }}
- 
-</div>
-
-<!-- Main Navigation -->
-<nav class="main-nav">
-  <ul id="nav-list">
-    <li><a href="./"><img src="{{ base_path}}themes/sjvn/images/icons/home.svg"> </a></li>
-    <li>{{ page.primary_menu }}</li>
-  </ul>
-</nav>
-
+    <!-- Main Navigation -->
+    <nav class="main-nav-inner">
+      <ul id="nav-list">
+        <li><a href="./"><img src="{{ base_path}}themes/sjvn/images/icons/home.svg"> </a></li>
+        <li>{{ page.primary_menu }}</li>
+      </ul>
+    </nav>
+    
+</header>

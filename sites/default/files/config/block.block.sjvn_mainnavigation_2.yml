@@ -1,0 +1,39 @@
+uuid: d1d8dc51-0565-4741-a3cc-550c76fcb086
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - menu_block
+    - system
+  theme:
+    - sjvn
+id: sjvn_mainnavigation_2
+theme: sjvn
+region: right_menu
+weight: 0
+provider: null
+plugin: 'menu_block:main'
+settings:
+  id: 'menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  display_empty: false
+  label_link: false
+  label_type: visibility_level_parent
+  level: 2
+  depth: 0
+  expand_all_items: false
+  parent: 'main:'
+  render_parent: false
+  suggestion: main
+  hide_on_nonactive: true
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: /portfolio

@@ -9,14 +9,15 @@ label: Common
 type: 'canonical_entities:node'
 pattern: '/[node:title]'
 selection_criteria:
-  fcbb4f37-a135-4644-b62c-52be2f123763:
+  27cff086-0001-41e4-a962-327ee090456c:
     id: 'entity_bundle:node'
     negate: false
-    uuid: fcbb4f37-a135-4644-b62c-52be2f123763
+    uuid: 27cff086-0001-41e4-a962-327ee090456c
     context_mapping:
       node: node
     bundles:
-      article: article
+      board_of_directors: board_of_directors
+      career: career
       home_banner: home_banner
       news_announcement: news_announcement
       our_business: our_business
@@ -24,6 +25,7 @@ selection_criteria:
       page: page
       photo_gallery: photo_gallery
       quick_access_link: quick_access_link
+      video_gallery: video_gallery
 selection_logic: and
 weight: -5
 relationships: {  }

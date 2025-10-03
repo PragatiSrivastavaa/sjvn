@@ -39,7 +39,9 @@ regions:
   chairmans_corner: Chairman’s Corner
   hero: Hero (full width)
   highlighted: Highlighted
+  page_title: Page Title
   breadcrumb: Breadcrumb
+  right_menu: Right Menu
   social: Social Bar
   content_above: Content Above
   content: Content

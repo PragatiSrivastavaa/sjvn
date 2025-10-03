@@ -43,140 +43,46 @@
  */
 #}
 
- <header class="header">
-    <!-- Top Utility Bar -->
-    <div class="top-bar-inner">
-      <!-- Left Section -->
-      <div class="left-links">
-        <img src="images/icons/account_circle.svg" alt="User Icon"> |
-        <a href="#">Employer login</a>
-      </div>
+{% include 'themes/sjvn/templates/layout/headersec.html.twig' %}
 
-      <!-- Center Logos -->
-      <div class="middle-logs">
-        <img src="images/digital_india.png" alt="Digital India Logo" class="gov-logo">
-        <img src="images/emblumb.png" alt="Emblem of India" class="award-logo">
-        <img src="images/great_place_to_work.png" alt="Great Place to Work Logo" class="award-logo">
-        <img src="images/pcmm.png" alt="PCMM Logo" class="award-logo">
-      </div>
-
-      <!-- Right Section -->
-      <div class="right-links-inner">
-        <a href="#">Sitemap</a> |
-        <a href="#main-content">Skip To Main Content</a> |
-        <a href="hindi/index.html">हिंदी</a> |
-
-        <!-- Theme Selectors (Inline) -->
-        <div class="theme-inline">
-          <div class="theme-color blue" data-theme="blue" title="Default Theme"></div>
-          <div class="theme-color green" data-theme="green" title="Green Theme"></div>
-          <div class="theme-color dark" data-theme="dark" title="Dark Theme"></div>
-        </div>
-      </div>
-
-    </div>
-
-
-    <!-- Main Navigation -->
-    <nav class="main-nav-inner">
-      <ul id="nav-list">
-        <li><a href="index.html"><img src="images/icons/home.svg" class="header-icon"> </a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="#">Vigilance</a></li>
-        <li><a href="business.html">Our Business</a></li>
-        <li><a href="#">Commercial</a></li>
-        <li><a href="media.html">Media</a></li>
-        <li><a href="investors.html">Investor Relations</a></li>
-        <li><a href="#">Environment</a></li>
-        <li><a href="career.html">Career</a></li>
-      </ul>
-    </nav>
-    <!-- Logo & Banner Section -->
+<!-- Logo & Banner Section -->
     <div class="logo-bar-inner position-relative">
         <img src="{{ base_path}}themes/sjvn/images/banner/Hydro-power-banner 1.png" alt="Banner" class="w-100 position-absolute top-0 start-0" style="z-index:-1; height:100%; object-fit:cover;">
       <div class="logo-left-inner">
-        <img src="images/sjvn-logo.svg" alt="SJVN Logo" class="main-logo-inner">
-        <div class="org-text-inner">
-          <h1>SJVN Limited <br><span>एसजेवीएन लिमिटेड</span></h1>
-          <p>(A Joint Venture of Govt. of India & Govt. of Himachal Pradesh)</p>
-          <p>A Navratna PSU | ISO 9001:2015 Certified Company</p>
-          <p>CIN: L40101HP1988GOI008409</p>
-        </div>
+        {{ page.logo }}
       </div>
       <div class="log-right-inner">
         <div class="text-right-inner">
-          <h1>Thermal Power</h1>
-          <p>Home > Our Business > Thermal Power</p>
+          <h1>{{ page.page_title }}</h1>
+          {{ page.breadcrumb }}
         </div>
       </div>
 
     </div>
-
-
-  </header>
 
 <section class="aboutscreen">
    <div class="container-fluid">
     <div class="row">
+      {% if page.right_menu %}
       <div class="col-md-8 col-lg-9">
-       <p>After experience gained in harnessing the country’s hydropower potential, 
-        SJVN forayed into generation of thermal power. The first project taken up for 
-        execution is the 1320 MW capacity Buxar Thermal Power Plant in Distt. Buxar, Bihar.
-         SJVN took over Buxar Bijlee Company Pvt. Ltd. on 04.07.2013 and name was changed to SJVN 
-         Thermal Pvt. Ltd. (wholly owned subsidiary of SJVN Ltd.) on 17.10.2013.</p>
-
-           <!-- Nav Tabs -->
-<ul class="nav nav-tabs flex-nowrap overflow-auto" role="tablist" style="white-space: nowrap;">
-  <li class="nav-item" role="presentation">
-    <a class="nav-link active" data-bs-toggle="tab" href="#operation" role="tab">Operation</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" data-bs-toggle="tab" href="#under" role="tab">Under Construction</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" data-bs-toggle="tab" href="#survey" role="tab">Survey & Investigation</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" data-bs-toggle="tab" href="#pre" role="tab">Pre- Construction</a>
-  </li>
-</ul>
-
-  <!-- Tab Content -->
-  <div class="tab-content">
-    <div class="tab-pane fade show active" id="operation">
-      <img src="images/banner/258_Chimney_775496819 1.png"  alt="Operation" class="img-fluid mt-3">
-    </div>
-    <div class="tab-pane fade" id="under">
-      <p class="mt-3">Under Construction Projects content here...</p>
-    </div>
-    <div class="tab-pane fade" id="survey">
-      <p class="mt-3">Survey & Investigation Projects content here...</p>
-    </div>
-    <div class="tab-pane fade" id="pre">
-      <p class="mt-3">Pre-Construction Projects content here...</p>
-    </div>
-  </div>
+        <div class="content-area">
+          {{ page.content }}
+        </div>
       </div>
       <div class="col-md-4 col-lg-3">
         <div class="sidebar">
-  <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action active">Hydro Power</a>
-    <a href="#" class="list-group-item list-group-item-action">Thermal Power</a>
-    <a href="#" class="list-group-item list-group-item-action">Solar Power</a>
-    <a href="#" class="list-group-item list-group-item-action">Wind Power</a>
-    <a href="#" class="list-group-item list-group-item-action">Power Transmission</a>
-    <a href="#" class="list-group-item list-group-item-action">Consultancy</a>
-    <a href="#" class="list-group-item list-group-item-action">Power Trading</a>
-  </div>
+     <div class="list-group">
+      {{ page.right_menu }}
+     </div>
+     </div>
+    </div>
+      {% else %}
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+			 {{ page.content }}
+			</div>
+			</div>
+			{% endif %}
 </div>
-      </div>
-    </div>
-    </div>
-  </section>
-
-
-
-</body>
-
-</html>
+</div>
+</section>
 {% include 'themes/sjvn/templates/layout/footer.html.twig' %}

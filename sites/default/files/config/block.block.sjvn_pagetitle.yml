@@ -1,0 +1,18 @@
+uuid: 45e79a39-d14f-4915-9860-bb8653478b43
+langcode: en
+status: true
+dependencies:
+  theme:
+    - sjvn
+id: sjvn_pagetitle
+theme: sjvn
+region: page_title
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

@@ -1,0 +1,25 @@
+uuid: 90e80d18-577a-40fb-883d-755d928d2779
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:bae0ceed-d67a-4df5-a71f-0653e4b9e6b6'
+  module:
+    - block_content
+  theme:
+    - sjvn
+id: sjvn_footerlogo
+theme: sjvn
+region: footer_bottom
+weight: -18
+provider: null
+plugin: 'block_content:bae0ceed-d67a-4df5-a71f-0653e4b9e6b6'
+settings:
+  id: 'block_content:bae0ceed-d67a-4df5-a71f-0653e4b9e6b6'
+  label: 'footer logo'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

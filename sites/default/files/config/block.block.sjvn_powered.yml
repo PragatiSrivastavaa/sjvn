@@ -1,6 +1,6 @@
 uuid: ad3e323c-6e5b-4755-9fc0-6939c4612e01
 langcode: hi
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -11,7 +11,7 @@ _core:
 id: sjvn_powered
 theme: sjvn
 region: footer_bottom
-weight: 0
+weight: -17
 provider: null
 plugin: system_powered_by_block
 settings:
