@@ -13,5 +13,5 @@ global-scripts:
   version: 1.x
   js:
     js/bootstrap.bundle.min.js: {}
-    js/accessibility.js: {}
     js/script.js: {}
+    js/accessibility.js: {}
