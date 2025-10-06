@@ -18,26 +18,34 @@
 
 
   <div class="business-container">
-    <div class="business-grid">
-      {% for row in rows %}
-        {% set term = row.content['#row']._entity %}
-        <div class="business-item" 
-             data-image="{{ file_url(term.field_image.entity.fileuri) }}" 
-             data-link="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': term.id()}) }}">
-          
-          <i class="bi {{ term.field_icon.value }} business-icon"></i>
-          <span>{{ term.name.value }}</span>
-        </div>
-      {% endfor %}
-    </div>
+  <div class="business-grid">
+    {% for row in rows %}
+      {% set term = row.content['#row']._entity %}
 
-    <div class="business-image">
-      {# Default first image shown #}
-      {% if rows|length > 0 %}
-        {% set first_term = rows|first.content['#row']._entity %}
-        <img id="business-display" src="{{ file_url(first_term.field_image.entity.fileuri) }}" alt="{{ first_term.name.value }}">
-      {% endif %}
-    </div>
+      {# Get term translation for current language #}
+      {% set lang = app.request.getLocale() %}
+      {% set term_translated = term.hasTranslation(lang) ? term.getTranslation(lang) : term %}
+
+      <div class="business-item" 
+           data-image="{{ file_url(term_translated.field_image.entity.fileuri) }}" 
+           data-link="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': term_translated.id()}) }}">
+
+        <i class="bi {{ term_translated.field_icon.value }} business-icon"></i>
+        <span>{{ term_translated.name.value }}</span>
+      </div>
+    {% endfor %}
   </div>
+
+  <div class="business-image">
+    {% if rows|length > 0 %}
+      {% set first_term = rows|first.content['#row']._entity %}
+      {% set first_translated = first_term.hasTranslation(lang) ? first_term.getTranslation(lang) : first_term %}
+      <img id="business-display" 
+           src="{{ file_url(first_translated.field_image.entity.fileuri) }}" 
+           alt="{{ first_translated.name.value }}">
+    {% endif %}
+  </div>
+</div>
+
 
 
