@@ -48,7 +48,7 @@ function sjvn_preprocess_page(&$variables) {
   $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
   $vars['language'] = $language;
 
-
+// for custom banner image per section
 // Define mapping between content type/view IDs and block titles.
   $banner_map = [
     // Content types
@@ -105,6 +105,16 @@ function sjvn_preprocess_page(&$variables) {
       }
     }
   }
+
+// for total visit count
+ $counter_file = 'public://visitor_count.txt';
+  if (!file_exists($counter_file)) {
+    file_put_contents($counter_file, 0);
+  }
+  $count = (int) file_get_contents($counter_file);
+  $count++;
+  file_put_contents($counter_file, $count);
+  $variables['total_visits'] = $count;
 
 }
 	function random_string()

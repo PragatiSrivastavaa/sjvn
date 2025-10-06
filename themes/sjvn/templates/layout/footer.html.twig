@@ -31,10 +31,10 @@
 </div>
 <div class="footer-bottom">
     <div class="copyright">
-      © 2020 SJVN Ltd. | Website Last Updated: 08/21/2025 05:12:10
+						{% if language.getId() == 'hi' %}© 2020 एसजेवीएन लिमिटेड | वेबसाइट अंतिम बार अपडेट की गई:  {% else %} © 2020 SJVN Ltd. | Website Last Updated: {% endif %} {{ node.field_publication_date | date('d/m/Y') }}
     </div>
     <div class="visitor-count">
-      Total Visitors: 23,378,286
+      <p>{% if language.getId() == 'hi' %}कुल आगंतुक: {% else %}Total Visitors:{% endif %} {{ total_visits }}</p>
     </div>
   </div>
 </footer>

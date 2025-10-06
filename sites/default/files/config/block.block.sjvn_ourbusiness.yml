@@ -1,0 +1,25 @@
+uuid: 1051dee4-2f2e-46c7-800c-e896c99bcd4f
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:0970b69b-1a37-4dfd-809a-b50f402d4baf'
+  module:
+    - block_content
+  theme:
+    - sjvn
+id: sjvn_ourbusiness
+theme: sjvn
+region: our_business
+weight: 0
+provider: null
+plugin: 'block_content:0970b69b-1a37-4dfd-809a-b50f402d4baf'
+settings:
+  id: 'block_content:0970b69b-1a37-4dfd-809a-b50f402d4baf'
+  label: 'Our Business'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

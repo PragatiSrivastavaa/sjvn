@@ -9,10 +9,10 @@ label: Common
 type: 'canonical_entities:node'
 pattern: '/[node:title]'
 selection_criteria:
-  27cff086-0001-41e4-a962-327ee090456c:
+  4f70c835-945b-4dab-92aa-fa5dfd5d2768:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 27cff086-0001-41e4-a962-327ee090456c
+    uuid: 4f70c835-945b-4dab-92aa-fa5dfd5d2768
     context_mapping:
       node: node
     bundles:
