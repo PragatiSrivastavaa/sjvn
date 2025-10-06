@@ -15,3 +15,4 @@ global-scripts:
     js/bootstrap.bundle.min.js: {}
     js/script.js: {}
     js/accessibility.js: {}
+    js/navigation.js: {}

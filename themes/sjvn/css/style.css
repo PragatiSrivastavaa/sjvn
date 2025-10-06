@@ -561,57 +561,376 @@
 /* Main Navigation */
 .main-nav {
   background: var(--primary-color);
+  padding: 4px;
+  height: 50px;
   display: flex;
-  justify-content: start;
-  align-items: start;
+  align-items: center;
+  position: relative;
+  overflow: visible; /* Allow submenus to escape */
+  z-index: 100;
+  /* Prevent vertical scrolling */
+  overflow-y: hidden;
 }
 
-#nav-list {
+#nav-list{
   display: flex !important;
-  align-items: center;
   margin: 0;
-  padding: 0;
-  list-style: none;
-  height: 50px; /* Match parent height */
+  gap: 10px;
   flex-wrap: nowrap;
+  color: #f8fcff;
+  align-items: center;
   overflow-x: auto;
-  overflow-y: visible; /* Allow vertical submenu to show */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  overflow-y: hidden; /* Prevent vertical scrolling */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   scroll-behavior: smooth;
+  position: relative;
+  height: 42px; /* Fixed height */
 }
 
 #nav-list::-webkit-scrollbar { 
-  display: none; /* Chrome/Safari */
+  display: none; 
 }
 
-.main-nav li, .main-nav-inner li {
+#nav-list li{
+  list-style: none;
   display: flex;
+  flex-shrink: 0;
+  position: relative;
+  height: 42px; /* Match container height */
+  max-height: 42px; /* Prevent vertical expansion */
   align-items: center;
-  flex-shrink: 0; /* Prevent items from shrinking */
-  position: relative; /* For submenu positioning */
 }
 
-.main-nav a, .main-nav-inner a {
+#superfish-main{
+  display: flex !important;
+  flex-wrap: nowrap;
+  gap: 10px;
+  width: 100%;
+  height: 42px; /* Fixed height to prevent vertical scrolling */
+  overflow-x: auto;
+  overflow-y: hidden; /* Prevent vertical scrolling */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  position: relative;
+  padding-right: 60px; /* Space for scroll arrows */
+  align-items: center; /* Center items vertically */
+}
+
+#superfish-main::-webkit-scrollbar { 
+  display: none; 
+}
+
+/* Custom scrollbar for submenus */
+#superfish-main ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+#superfish-main ul::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#superfish-main ul::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 3px;
+}
+
+#superfish-main ul::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.5);
+}
+
+#superfish-main li{
+  list-style: none;
   display: flex;
   align-items: center;
-  padding: 12px 16px;
-  color: #fff;
-  font-weight: bold;
+  color: white;
+  justify-content: space-between;
+  position: relative;
+  flex-shrink: 0;
+  height: 42px; /* Match container height */
+  max-height: 42px; /* Prevent vertical expansion */
+}
+
+#superfish-main a{
+  color: white;
   text-decoration: none;
-  white-space: nowrap; /* Prevent text wrapping */
-  height: 50px; /* Match nav height */
+  text-wrap: nowrap;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  height: 42px;
   box-sizing: border-box;
 }
 
-.main-nav a img, .main-nav-inner a img {
-  height: 24px;
-  display: block;
-}
-
-.main-nav a:hover, .main-nav-inner a:hover {
+#superfish-main a:hover{
   background: rgba(255,255,255,0.1);
 }
+
+#superfish-main a >span{
+  margin-right: 6px;
+  display: none;
+}
+
+/* Superfish Submenu Styles */
+#superfish-main ul {
+  position: fixed;
+  top: auto;
+  left: auto;
+  background: var(--primary-color);
+  min-width: 200px;
+  max-height: 400px; /* Increased height for better visibility */
+  overflow-y: auto; /* Vertical scrolling for submenus */
+  overflow-x: hidden; /* No horizontal scroll */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 0 0 8px 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  z-index: 10000;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* Add a small delay before hiding */
+  transition-delay: 0s;
+  /* Ensure submenu is interactive */
+  pointer-events: auto;
+  /* Custom scrollbar styling - only show when needed */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+#superfish-main li:hover > ul,
+#superfish-main ul:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#superfish-main ul li {
+  display: block;
+  position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+#superfish-main ul li:last-child {
+  border-bottom: none;
+}
+
+#superfish-main ul a {
+  display: block;
+  padding: 12px 16px;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+  height: auto;
+  min-height: 44px;
+  line-height: 1.2;
+  justify-content: flex-start;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+#superfish-main ul a:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+/* Multi-level submenu positioning */
+#superfish-main ul ul {
+  position: fixed;
+  top: auto;
+  left: auto;
+  background: var(--primary-color);
+  min-width: 200px;
+  max-height: 300px; /* Reduced height for better UX */
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  z-index: 10001; /* Higher z-index than regular submenus */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  pointer-events: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+#superfish-main ul ul:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid var(--primary-color);
+}
+
+/* Improve sub-submenu hover behavior - more specific selectors */
+#superfish-main ul li:hover > ul,
+#superfish-main ul ul:hover,
+#superfish-main ul li.menuparent:hover > ul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  /* Add slight delay for better UX */
+  transition-delay: 0.1s;
+}
+
+/* Ensure sub-submenus are visible when parent submenu is hovered */
+#superfish-main ul:hover ul {
+  opacity: 0; /* Hide by default */
+  visibility: hidden;
+}
+
+#superfish-main ul li:hover > ul {
+  opacity: 1; /* Show when parent li is hovered */
+  visibility: visible;
+}
+
+/* Ensure sub-submenu items are properly styled */
+#superfish-main ul ul li {
+  display: block;
+  position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+#superfish-main ul ul li:last-child {
+  border-bottom: none;
+}
+
+#superfish-main ul ul a {
+  display: block;
+  padding: 12px 16px;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+  height: auto;
+  min-height: 44px;
+  line-height: 1.2;
+  justify-content: flex-start;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+#superfish-main ul ul a:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+/* Scroll indicators for submenus */
+#superfish-main ul::before,
+#superfish-main ul::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 20px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#superfish-main ul::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--primary-color) 0%, transparent 100%);
+}
+
+#superfish-main ul::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--primary-color) 0%, transparent 100%);
+}
+
+/* Hide scroll indicators when not needed */
+#superfish-main ul:not(.scrollable-top)::before {
+  display: none;
+}
+
+#superfish-main ul:not(.scrollable-bottom)::after {
+  display: none;
+}
+
+/* Add arrow indicator for items with submenus */
+#superfish-main .menuparent > a:after {
+  content: '▼';
+  font-size: 0.7em;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+#superfish-main .menuparent:hover > a:after {
+  transform: rotate(180deg);
+}
+
+/* Add arrow indicator for sub-submenu items */
+#superfish-main ul li.menuparent > a:after {
+  content: '▶';
+  font-size: 0.7em;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+#superfish-main ul li.menuparent:hover > a:after {
+  transform: translateX(2px);
+}
+
+/* Navigation Scroll Arrows */
+.nav-scroll-arrows {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to left, var(--primary-color) 0%, var(--primary-color) 70%, transparent 100%);
+  padding-right: 10px;
+  z-index: 100;
+}
+
+.nav-scroll-arrow {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 5px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.nav-scroll-arrow:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.1);
+}
+
+.nav-scroll-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-scroll-arrow:disabled:hover {
+  background: rgba(255,255,255,0.2);
+  transform: none;
+}
+
+
+
 
 
 /* chairman section */

@@ -17,4 +17,64 @@
     width: 90%;
     font-size: 0.9rem;
   }
+
+  /* Mobile submenu adjustments */
+  .menu ul {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    background: rgba(0,0,0,0.1);
+    margin-left: 20px;
+    border-radius: 0;
+  }
+
+  .menu ul ul {
+    position: static;
+    margin-left: 20px;
+  }
+
+  .menu ul ul:before {
+    display: none;
+  }
+
+  .menu li:hover > ul {
+    transform: none;
+  }
+
+  /* Superfish mobile adjustments */
+  #superfish-main {
+    max-width: 100vw;
+    overflow-x: auto;
+    padding-right: 0; /* Remove padding on mobile */
+  }
+
+  .nav-scroll-arrows {
+    display: none; /* Hide arrows on mobile */
+  }
+
+  #superfish-main ul {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    background: rgba(0,0,0,0.1);
+    margin-left: 20px;
+    border-radius: 0;
+  }
+
+  #superfish-main ul ul {
+    position: static;
+    margin-left: 20px;
+  }
+
+  #superfish-main ul ul:before {
+    display: none;
+  }
+
+  #superfish-main li:hover > ul {
+    transform: none;
+  }
 }

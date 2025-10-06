@@ -50,19 +50,19 @@
 
 </div>
 
-
-
 <!-- Logo & Banner Section -->
 <div class="logo-bar">
   {{ page.logo }}
- 
 </div>
 
 <!-- Main Navigation -->
 <nav class="main-nav">
-  <ul id="nav-list">
-    <li><a href="./"><img src="{{ base_path}}themes/sjvn/images/icons/home.svg"> </a></li>
-    <li>{{ page.primary_menu }}</li>
+  <ul id="nav-list" class="menu">
+    <li class="home-link">
+      <a href="{{ base_path }}"><img src="{{ base_path }}themes/sjvn/images/icons/home.svg" alt="Home"></a>
+    </li>
+    {{ page.primary_menu }}
   </ul>
 </nav>
+
 
