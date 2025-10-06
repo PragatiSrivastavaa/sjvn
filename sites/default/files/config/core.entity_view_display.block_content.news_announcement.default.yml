@@ -1,0 +1,36 @@
+uuid: 78f972b2-6a93-4b22-aea0-9bb5b0be663e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.news_announcement
+    - field.field.block_content.news_announcement.body
+    - field.field.block_content.news_announcement.field_banner_image
+  module:
+    - image
+    - text
+id: block_content.news_announcement.default
+targetEntityType: block_content
+bundle: news_announcement
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_banner_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true

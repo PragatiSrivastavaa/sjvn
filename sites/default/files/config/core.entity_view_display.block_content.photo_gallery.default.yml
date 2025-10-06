@@ -1,0 +1,36 @@
+uuid: d0e19da0-64c8-4929-a23b-67b50fb2eb38
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.photo_gallery
+    - field.field.block_content.photo_gallery.body
+    - field.field.block_content.photo_gallery.field_banner_image
+  module:
+    - image
+    - text
+id: block_content.photo_gallery.default
+targetEntityType: block_content
+bundle: photo_gallery
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_banner_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true

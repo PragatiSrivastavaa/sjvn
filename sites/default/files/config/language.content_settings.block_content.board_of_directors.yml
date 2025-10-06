@@ -1,0 +1,11 @@
+uuid: 96491bc4-18b7-474d-a946-78124848603c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.board_of_directors
+id: block_content.board_of_directors
+target_entity_type_id: block_content
+target_bundle: board_of_directors
+default_langcode: site_default
+language_alterable: false

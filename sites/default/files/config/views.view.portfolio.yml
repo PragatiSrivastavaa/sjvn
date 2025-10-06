@@ -448,6 +448,41 @@ display:
       tags:
         - 'config:field.storage.node.field_business_image'
         - 'config:field.storage.node.field_portfolio_cat'
+  block_1:
+    id: block_1
+    display_title: Block
+    display_plugin: block
+    position: 2
+    display_options:
+      defaults:
+        header: false
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-6\">\r\n    <img src=\"/sjvn/themes/sjvn/images/about_img.jpg\" alt=\"Banner\" width=\"525\" height=\"456\" >\r\n    </div>\r\n    <div class=\"col-sm-6\" >\r\n      \r\n<p>SJVN Limited, a Navratna CPSE under administrative control of Ministry of Power, Govt. of India, was incorporated on May 24, 1988, as a joint venture of the Government of India (GOI) and the Government of Himachal Pradesh (GOHP). SJVN is now a listed Company having shareholders pattern of 55.00% with Govt. of India, 26.85% with Govt. of Himachal Pradesh and rest of 18.15% with Public. The present paid up capital and authorized capital of SJVN is Rs. 3,929.80 Crore and Rs. 7,000 Crore respectively. The Net Worth as on 31.03.2025 is Rs.14189.26 Crore.</p>\r\n<p>Beginning with a single project and single State operation (i.e. India’s largest 1500 MW Nathpa Jhakri Hydro Power Station in Himachal Pradesh), the Company has commissioned fourteen projects totaling 2968 MW of installed capacity and 123 km Transmission Line. SJVN is presently implementing or operating power projects in Himachal Pradesh, Uttarakhand, Bihar, Maharashtra, Uttar Pradesh, Punjab, Gujarat, Arunachal Pradesh, Rajasthan, Assam, Mizoram, Madhya Pradesh Karnataka and Chhattisgarh in India besides neighboring country of Nepal.</p>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+            format: full_html
+          tokenize: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_business_image'
+        - 'config:field.storage.node.field_portfolio_cat'
   page_1:
     id: page_1
     display_title: Page

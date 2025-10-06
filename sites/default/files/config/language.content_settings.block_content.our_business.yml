@@ -1,0 +1,11 @@
+uuid: aeb88796-d98d-4e30-bdac-bcdab3d162e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.our_business
+id: block_content.our_business
+target_entity_type_id: block_content
+target_bundle: our_business
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,29 @@
+uuid: bebf0923-45b2-4f9f-9191-615ca643803a
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.portfolio
+  module:
+    - system
+    - views
+  theme:
+    - sjvn
+id: sjvn_views_block__portfolio_block_1
+theme: sjvn
+region: content
+weight: -18
+provider: null
+plugin: 'views_block:portfolio-block_1'
+settings:
+  id: 'views_block:portfolio-block_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /company-profile

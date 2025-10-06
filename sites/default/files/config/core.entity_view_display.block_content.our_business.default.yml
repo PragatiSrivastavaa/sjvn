@@ -1,0 +1,36 @@
+uuid: f6f56a8d-240e-436a-96bb-b5dd0e4ece06
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.our_business
+    - field.field.block_content.our_business.body
+    - field.field.block_content.our_business.field_banner_image
+  module:
+    - image
+    - text
+id: block_content.our_business.default
+targetEntityType: block_content
+bundle: our_business
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_banner_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true

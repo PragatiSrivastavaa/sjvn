@@ -9,10 +9,10 @@ third_party_settings:
     available_menus:
       - main
     parent: 'main:'
-name: News/Announcement
+name: 'News Announcement'
 type: news_announcement
 description: null
 help: null
 new_revision: true
 preview_mode: 1
-display_submitted: true
+display_submitted: false

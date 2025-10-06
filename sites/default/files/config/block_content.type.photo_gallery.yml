@@ -1,0 +1,8 @@
+uuid: 25a17fb8-ff98-4c17-b5ff-678d2656cf32
+langcode: en
+status: true
+dependencies: {  }
+id: photo_gallery
+label: 'Photo Gallery'
+revision: false
+description: null

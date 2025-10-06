@@ -1,0 +1,51 @@
+uuid: 9cd8cada-2ebe-4b9b-82e2-8ec57e348359
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.photo_gallery
+    - field.field.block_content.photo_gallery.body
+    - field.field.block_content.photo_gallery.field_banner_image
+    - image.style.thumbnail
+  module:
+    - image
+    - text
+id: block_content.photo_gallery.default
+targetEntityType: block_content
+bundle: photo_gallery
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 26
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_banner_image:
+    type: image_image
+    weight: 27
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

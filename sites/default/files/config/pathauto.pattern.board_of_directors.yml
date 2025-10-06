@@ -1,0 +1,22 @@
+uuid: bd14bd3f-a2fb-439c-9091-7de2da372404
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: board_of_directors
+label: board-of-directors
+type: 'canonical_entities:node'
+pattern: '/board-of-directors/[node:title]'
+selection_criteria:
+  e2717155-e09b-41c9-b113-12daa2dcb8f5:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: e2717155-e09b-41c9-b113-12daa2dcb8f5
+    context_mapping:
+      node: node
+    bundles:
+      board_of_directors: board_of_directors
+selection_logic: and
+weight: -5
+relationships: {  }

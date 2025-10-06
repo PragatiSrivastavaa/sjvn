@@ -1,0 +1,8 @@
+uuid: 26661934-d7a7-459e-b7ce-5e3c09c053f6
+langcode: en
+status: true
+dependencies: {  }
+id: news_announcement
+label: 'News Announcement'
+revision: false
+description: null

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
+    - field.field.node.page.field_banner_image
     - node.type.page
   module:
     - text
@@ -28,4 +29,5 @@ content:
     weight: 1
     region: content
 hidden:
+  field_banner_image: true
   langcode: true

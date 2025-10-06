@@ -1,0 +1,36 @@
+uuid: 5acdf5d2-2e42-44f8-b800-a418f910122a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.board_of_directors
+    - field.field.block_content.board_of_directors.body
+    - field.field.block_content.board_of_directors.field_banner_image
+  module:
+    - image
+    - text
+id: block_content.board_of_directors.default
+targetEntityType: block_content
+bundle: board_of_directors
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_banner_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true

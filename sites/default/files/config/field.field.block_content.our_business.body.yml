@@ -1,0 +1,24 @@
+uuid: 85326512-7574-47db-a514-9197a0caa085
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.our_business
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.our_business.body
+field_name: body
+entity_type: block_content
+bundle: our_business
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary
