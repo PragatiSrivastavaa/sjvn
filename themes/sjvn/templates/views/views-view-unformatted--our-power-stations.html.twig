@@ -17,8 +17,10 @@
 #}
 
 
+ <button class="power-station-carousel-button  carousel-button left">&#10094;</button>
+
 <div class="carousel-wrapper">
-        <button class="power-station-carousel-button  carousel-button left">&#10094;</button>
+       
         <div class="carousel" id="carousel">
          {% for row in rows %}
           <div class="power-item"><span class="count">
@@ -26,5 +28,6 @@
           </span><span class="label">{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</span></div>
           {% endfor %}
         </div>
-  <button class="power-station-carousel-button carousel-button right">&#10095;</button>
+ 
 </div>
+ <button class="power-station-carousel-button carousel-button right">&#10095;</button>

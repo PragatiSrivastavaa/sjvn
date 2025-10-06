@@ -5,10 +5,10 @@ global-styling:
       css/bootstrap.min.css: {}
       css/gov-theme.css: {}
       css/layout.css: {}
-      css/responsive.css: {}
       css/style.css: {}
       css/theme.css: {}
       css/inner-page.css: {}
+      css/responsive.css: {}
 global-scripts:
   version: 1.x
   js:

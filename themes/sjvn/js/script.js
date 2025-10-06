@@ -184,19 +184,45 @@ let activeIndex = 2; // start from center item
 function updateCarousel() {
   items.forEach((item, index) => {
     item.className = 'power-item'; // reset classes
-    if (index === activeIndex) {
+    
+    // Calculate relative position to active item
+    const relativePosition = index - activeIndex;
+    
+    if (relativePosition === 0) {
+      // Active item
       item.classList.add('active');
-    } else if (index === activeIndex - 1) {
+    } else if (relativePosition === -1) {
+      // Left adjacent
       item.classList.add('left1');
-    } else if (index === activeIndex - 2) {
+    } else if (relativePosition === -2) {
+      // Left second
       item.classList.add('left2');
-    } else if (index === activeIndex + 1) {
+    } else if (relativePosition === 1) {
+      // Right adjacent
       item.classList.add('right1');
-    } else if (index === activeIndex + 2) {
+    } else if (relativePosition === 2) {
+      // Right second
       item.classList.add('right2');
+    } else if (relativePosition === -3) {
+      // Left third - show as hidden but visible
+      item.classList.add('hidden');
+    } else if (relativePosition === 3) {
+      // Right third - show as hidden but visible
+      item.classList.add('hidden');
+    } else {
+      // Completely hidden items (more than 3 positions away)
+      item.style.display = 'none';
     }
   });
 }
+
+// Add click functionality to carousel items
+items.forEach((item, index) => {
+  item.addEventListener('click', () => {
+    activeIndex = index;
+    updateCarousel();
+  });
+});
 
 leftButton.addEventListener('click', () => {
   activeIndex = (activeIndex - 1 + items.length) % items.length;

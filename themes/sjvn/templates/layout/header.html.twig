@@ -28,9 +28,16 @@
   <div class="right-links">
   <a href="{{ base_path }}sitemap">{% if language.getId() == 'hi' %}साइट मैप{% else %}Sitemap{% endif %}</a> |
   <a href="#mainSec" class="hide skiptomain">{% if language.getId() == 'hi' %}मुख्य सामग्री पर जाएं{% else %}Skip to Main Content{% endif %}</a>
-	<!--<a class="hide" href="{{ base_path }}screen-reader-access">{% if language.getId() == 'hi' %}स्क्रीन रीडर पहुँच{% else %}Screen Reader Access{% endif %}</a> |
-  <a href="hindi/index.html">हिंदी</a> |-->
-  {{ page.language }} |
+	<!--<a class="hide" href="{{ base_path }}screen-reader-access">{% if language.getId() == 'hi' %}स्क्रीन रीडर पहुँच{% else %}Screen Reader Access{% endif %}</a> |-->
+  
+  <!-- Language Toggle -->
+  <div class="language-toggle">
+    {% if language.getId() == 'hi' %}
+      <a href="{{ base_path }}" class="language-switch">English</a>
+    {% else %}
+      <a href="{{ base_path }}hi" class="language-switch">हिंदी</a>
+    {% endif %}
+  </div> |
 
   <!-- Theme Selectors (Inline) -->
   <div class="theme-inline">
