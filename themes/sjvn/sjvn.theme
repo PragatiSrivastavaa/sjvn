@@ -13,6 +13,8 @@ use Drupal\Core\Url;
 use Drupal\Core\Database\Database;
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\file\Entity\File;
+use Drupal\counter\CounterUtility;
+
 
 
 /**
@@ -105,17 +107,20 @@ function sjvn_preprocess_page(&$variables) {
       }
     }
   }
+   if (\Drupal::moduleHandler()->moduleExists('counter')) {
+    /** @var \Drupal\counter\CounterUtility $counter_utility */
+    $counter_utility = \Drupal::service('counter.counter_utility');
 
-// for total visit count
- $counter_file = 'public://visitor_count.txt';
-  if (!file_exists($counter_file)) {
-    file_put_contents($counter_file, 0);
+    // Total visitors.
+    $total_visitors = $counter_utility->getVisitorData();
+
+    // Unique visitors.
+    $unique_visitors = $counter_utility->getUniqueVisitorData();
+
+    // Pass variables to Twig.
+    $variables['total_visitors'] = $total_visitors;
+    $variables['unique_visitors'] = $unique_visitors;
   }
-  $count = (int) file_get_contents($counter_file);
-  $count++;
-  file_put_contents($counter_file, $count);
-  $variables['total_visits'] = $count;
-
 }
 	function random_string()
 	{
@@ -176,3 +181,17 @@ function sjvn_preprocess_views_view_unformatted(&$variables) {
   $vars['language'] = $language;
 }
 
+
+function sjvn_theme_suggestions_page(array $variables) {
+  // Get the CounterManager service.
+  $counter_manager = \Drupal::service('counter.manager');
+  
+  // Retrieve the total count.
+  $total_count = $counter_manager->getTotalCount();
+
+  // Add the total count to the page variables.
+  $variables['total_count'] = $total_count;
+
+  // Return the theme suggestions.
+  return array();
+}

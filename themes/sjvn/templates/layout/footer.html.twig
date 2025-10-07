@@ -34,7 +34,8 @@
 						{% if language.getId() == 'hi' %}© 2020 एसजेवीएन लिमिटेड | वेबसाइट अंतिम बार अपडेट की गई:  {% else %} © 2020 SJVN Ltd. | Website Last Updated: {% endif %} {{ node.field_publication_date | date('d/m/Y') }}
     </div>
     <div class="visitor-count">
-      <p>{% if language.getId() == 'hi' %}कुल आगंतुक: {% else %}Total Visitors:{% endif %} {{ total_visits }}</p>
+      <p>{% if language.getId() == 'hi' %}कुल आगंतुक: {% else %}Total Visitors:{% endif %} {{ total_visitors }}</p>
+      <p>{% if language.getId() == 'hi' %}अद्वितीय आगंतुक: {% else %}Unique Visitors:{% endif %} {{ unique_visitors }}</p>     
     </div>
   </div>
 </footer>
