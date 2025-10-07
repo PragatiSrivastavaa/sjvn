@@ -18,12 +18,12 @@
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if title %}
-    {{ title }}
+    <h2 class="portfolio-view-title">{{ title }}</h2>
   {% endif %}
   {{ title_suffix }}
 
   {% if header %}
-    <div class="view-header mb-3">
+    <div class="about-intro-section">
       {{ header }}
     </div>
   {% endif %}
@@ -32,17 +32,17 @@
   <div class="row">
     
     {# Left column: exposed filters (width 3 of 12) #}
-    {% if exposed %}
+  {% if exposed %}
       <div class="col-md-3 mb-3">
         {{ exposed }}
-      </div>
-    {% endif %}
-    
+    </div>
+  {% endif %}
+
     {# Right column: content rows (width 9 of 12) #}
     <div class="col-md-9">
-      {% if rows %}
-        {{ rows }}
-      {% elseif empty %}
+  {% if rows %}
+      {{ rows }}
+  {% elseif empty %}
         <div class="view-empty">{{ empty }}</div>
       {% endif %}
     </div>

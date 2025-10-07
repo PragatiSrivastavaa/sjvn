@@ -18,22 +18,22 @@
 <h2 class="gallery-section-heading">Portfolio</h2>
 <div class="container">
   <div class="row">
-        {% for row in rows %}
-        {% set node = row.content['#row']._entity %}
+    {% for row in rows %}
+      {% set node = row.content['#row']._entity %}
         <div class="col-sm-3">
         <div class="gallery-item">
            <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
-            {% if row.content['#row']._entity.field_business_image is not empty %}
+              {% if row.content['#row']._entity.field_business_image is not empty %}
           {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_business_image }}'] }}
-          {% else %}
+              {% else %}
           <img src="./themes/sjvn/images/gallery/no-image.png" alt="No Image Available">
-          {% endif %}
+              {% endif %}
           <div class="gallery-overlay">
             <span>{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}</span>
-          </div>
+            </div>
           </a>
         </div>
-        </div>
-        {% endfor %}
-</div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
