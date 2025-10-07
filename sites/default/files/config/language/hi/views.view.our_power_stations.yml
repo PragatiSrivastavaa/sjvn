@@ -1,0 +1,8 @@
+display:
+  default:
+    display_options:
+      footer:
+        area:
+          content:
+            value: '<div class="about-see-more"><a class="see-more-btn" href="/about">और देखें</a></div>'
+            format: full_html
