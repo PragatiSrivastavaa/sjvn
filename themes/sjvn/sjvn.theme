@@ -13,6 +13,8 @@ use Drupal\Core\Url;
 use Drupal\Core\Database\Database;
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\file\Entity\File;
+use Drupal\counter\CounterUtility;
+
 
 
 /**
@@ -107,14 +109,20 @@ function sjvn_preprocess_page(&$variables) {
   }
 
 // for total visit count
- $counter_file = 'public://visitor_count.txt';
-  if (!file_exists($counter_file)) {
-    file_put_contents($counter_file, 0);
+  if (\Drupal::moduleHandler()->moduleExists('counter')) {
+    /** @var \Drupal\counter\CounterUtility $counter_utility */
+    $counter_utility = \Drupal::service('counter.counter_utility');
+
+    // Total visitors.
+    $total_visitors = $counter_utility->getVisitorData();
+
+    // Unique visitors.
+    $unique_visitors = $counter_utility->getUniqueVisitorData();
+
+    // Pass variables to Twig.
+    $variables['total_visitors'] = $total_visitors;
+    $variables['unique_visitors'] = $unique_visitors;
   }
-  $count = (int) file_get_contents($counter_file);
-  $count++;
-  file_put_contents($counter_file, $count);
-  $variables['total_visits'] = $count;
 
 }
 	function random_string()
