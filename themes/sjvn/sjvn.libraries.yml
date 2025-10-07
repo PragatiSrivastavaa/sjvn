@@ -8,7 +8,6 @@ global-styling:
       css/style.css: {}
       css/theme.css: {}
       css/inner-page.css: {}
-      css/tabs.css: {}
       css/responsive.css: {}
 global-scripts:
   version: 1.x
@@ -17,7 +16,6 @@ global-scripts:
     js/script.js: {}
     js/accessibility.js: {}
     js/navigation.js: {}
-    js/tabs.js: {}
   dependencies:
     - core/jquery
     - core/drupal

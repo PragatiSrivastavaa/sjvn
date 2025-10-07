@@ -373,7 +373,8 @@
 }
 
 .portfolio-view-title {
-  display: none; /* Hide duplicate title */
+  display: none;
+  /* Hide duplicate title */
 }
 
 /* About Intro Section - Compact Layout */
@@ -496,7 +497,7 @@
   transform: scale(1.05);
 }
 
-.about-see-more{
+.about-see-more {
   display: flex;
   align-items: end;
   justify-content: end;
@@ -517,7 +518,7 @@
   .about-section-main p {
     flex: 1 1 100%;
   }
-  
+
   .about-intro-section img {
     min-width: 100%;
   }
@@ -543,7 +544,8 @@
   max-width: 800px !important;
   height: 200px !important;
   margin: 0 auto !important;
-  overflow: visible !important; /* Allow overlapping items to be visible */
+  overflow: visible !important;
+  /* Allow overlapping items to be visible */
 }
 
 .power-station-section .carousel {
@@ -748,13 +750,14 @@
   display: flex;
   align-items: center;
   position: relative;
-  overflow: visible; /* Allow submenus to escape */
+  overflow: visible;
+  /* Allow submenus to escape */
   z-index: 100;
   /* Prevent vertical scrolling */
   overflow-y: hidden;
 }
 
-#nav-list{
+#nav-list {
   display: flex !important;
   margin: 0;
   gap: 10px;
@@ -762,46 +765,54 @@
   color: #f8fcff;
   align-items: center;
   overflow-x: auto;
-  overflow-y: hidden; /* Prevent vertical scrolling */
+  overflow-y: hidden;
+  /* Prevent vertical scrolling */
   scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-behavior: smooth;
   position: relative;
-  height: 42px; /* Fixed height */
+  height: 42px;
+  /* Fixed height */
 }
 
-#nav-list::-webkit-scrollbar { 
-  display: none; 
+#nav-list::-webkit-scrollbar {
+  display: none;
 }
 
-#nav-list li{
+#nav-list li {
   list-style: none;
   display: flex;
   flex-shrink: 0;
   position: relative;
-  height: 42px; /* Match container height */
-  max-height: 42px; /* Prevent vertical expansion */
+  height: 42px;
+  /* Match container height */
+  max-height: 42px;
+  /* Prevent vertical expansion */
   align-items: center;
 }
 
-#superfish-main{
+#superfish-main {
   display: flex !important;
   flex-wrap: nowrap;
   gap: 10px;
   width: 100%;
-  height: 42px; /* Fixed height to prevent vertical scrolling */
+  height: 42px;
+  /* Fixed height to prevent vertical scrolling */
   overflow-x: auto;
-  overflow-y: hidden; /* Prevent vertical scrolling */
+  overflow-y: hidden;
+  /* Prevent vertical scrolling */
   scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-behavior: smooth;
   position: relative;
-  padding-right: 60px; /* Space for scroll arrows */
-  align-items: center; /* Center items vertically */
+  padding-right: 60px;
+  /* Space for scroll arrows */
+  align-items: center;
+  /* Center items vertically */
 }
 
-#superfish-main::-webkit-scrollbar { 
-  display: none; 
+#superfish-main::-webkit-scrollbar {
+  display: none;
 }
 
 /* Custom scrollbar for submenus */
@@ -814,15 +825,15 @@
 }
 
 #superfish-main ul::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 3px;
 }
 
 #superfish-main ul::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,0.5);
+  background: rgba(255, 255, 255, 0.5);
 }
 
-#superfish-main li{
+#superfish-main li {
   list-style: none;
   display: flex;
   align-items: center;
@@ -830,11 +841,13 @@
   justify-content: space-between;
   position: relative;
   flex-shrink: 0;
-  height: 42px; /* Match container height */
-  max-height: 42px; /* Prevent vertical expansion */
+  height: 42px;
+  /* Match container height */
+  max-height: 42px;
+  /* Prevent vertical expansion */
 }
 
-#superfish-main a{
+#superfish-main a {
   color: white;
   text-decoration: none;
   text-wrap: nowrap;
@@ -845,11 +858,11 @@
   box-sizing: border-box;
 }
 
-#superfish-main a:hover{
-  background: rgba(255,255,255,0.1);
+#superfish-main a:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
-#superfish-main a >span{
+#superfish-main a>span {
   margin-right: 6px;
   display: none;
 }
@@ -861,10 +874,13 @@
   left: auto;
   background: var(--primary-color);
   min-width: 200px;
-  max-height: 400px; /* Increased height for better visibility */
-  overflow-y: auto; /* Vertical scrolling for submenus */
-  overflow-x: hidden; /* No horizontal scroll */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  max-height: 400px;
+  /* Increased height for better visibility */
+  overflow-y: auto;
+  /* Vertical scrolling for submenus */
+  overflow-x: hidden;
+  /* No horizontal scroll */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 0 0 8px 8px;
   opacity: 0;
   visibility: hidden;
@@ -880,10 +896,10 @@
   pointer-events: auto;
   /* Custom scrollbar styling - only show when needed */
   scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.3) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
 
-#superfish-main li:hover > ul,
+#superfish-main li:hover>ul,
 #superfish-main ul:hover {
   opacity: 1;
   visibility: visible;
@@ -893,7 +909,7 @@
 #superfish-main ul li {
   display: block;
   position: relative;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
@@ -918,7 +934,7 @@
 }
 
 #superfish-main ul a:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
 
@@ -929,22 +945,24 @@
   left: auto;
   background: var(--primary-color);
   min-width: 200px;
-  max-height: 300px; /* Reduced height for better UX */
+  max-height: 300px;
+  /* Reduced height for better UX */
   overflow-y: auto;
   overflow-x: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-  z-index: 10001; /* Higher z-index than regular submenus */
+  z-index: 10001;
+  /* Higher z-index than regular submenus */
   list-style: none;
   margin: 0;
   padding: 0;
   pointer-events: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.3) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
 
 #superfish-main ul ul:before {
@@ -960,9 +978,9 @@
 }
 
 /* Improve sub-submenu hover behavior - more specific selectors */
-#superfish-main ul li:hover > ul,
+#superfish-main ul li:hover>ul,
 #superfish-main ul ul:hover,
-#superfish-main ul li.menuparent:hover > ul {
+#superfish-main ul li.menuparent:hover>ul {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -972,12 +990,14 @@
 
 /* Ensure sub-submenus are visible when parent submenu is hovered */
 #superfish-main ul:hover ul {
-  opacity: 0; /* Hide by default */
+  opacity: 0;
+  /* Hide by default */
   visibility: hidden;
 }
 
-#superfish-main ul li:hover > ul {
-  opacity: 1; /* Show when parent li is hovered */
+#superfish-main ul li:hover>ul {
+  opacity: 1;
+  /* Show when parent li is hovered */
   visibility: visible;
 }
 
@@ -985,7 +1005,7 @@
 #superfish-main ul ul li {
   display: block;
   position: relative;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 #superfish-main ul ul li:last-child {
@@ -1007,7 +1027,7 @@
 }
 
 #superfish-main ul ul a:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
 
@@ -1043,26 +1063,26 @@
 }
 
 /* Add arrow indicator for items with submenus */
-#superfish-main .menuparent > a:after {
+#superfish-main .menuparent>a:after {
   content: '▼';
   font-size: 0.7em;
   margin-left: 8px;
   transition: transform 0.3s ease;
 }
 
-#superfish-main .menuparent:hover > a:after {
+#superfish-main .menuparent:hover>a:after {
   transform: rotate(180deg);
 }
 
 /* Add arrow indicator for sub-submenu items */
-#superfish-main ul li.menuparent > a:after {
+#superfish-main ul li.menuparent>a:after {
   content: '▶';
   font-size: 0.7em;
   margin-left: 8px;
   transition: transform 0.3s ease;
 }
 
-#superfish-main ul li.menuparent:hover > a:after {
+#superfish-main ul li.menuparent:hover>a:after {
   transform: translateX(2px);
 }
 
@@ -1080,7 +1100,7 @@
 }
 
 .nav-scroll-arrow {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   border: none;
   color: white;
   width: 30px;
@@ -1096,7 +1116,7 @@
 }
 
 .nav-scroll-arrow:hover {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
   transform: scale(1.1);
 }
 
@@ -1107,7 +1127,7 @@
 }
 
 .nav-scroll-arrow:disabled:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   transform: none;
 }
 
@@ -1181,7 +1201,7 @@
   font-weight: 600;
 }
 
-.chairman-button{
+.chairman-button {
   display: flex;
   justify-content: end;
   margin-top: 10px;
@@ -1275,7 +1295,7 @@
   font-size: 1.2rem;
 }
 
-.region-news-highlights .view-content{
+.region-news-highlights .view-content {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -1371,7 +1391,7 @@
 
 .section-title {
   text-align: center;
-  color:var(--primary-color);
+  color: var(--primary-color);
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 15px;
@@ -1405,6 +1425,14 @@
   justify-content: center;
 }
 
+.business-item em {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: column;
+}
+
 
 .business-icon {
   font-size: 2.5rem;
@@ -1412,12 +1440,23 @@
   display: block;
   /* margin-bottom: 10px; */
   transition: color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .business-item:hover {
   background: var(--primary-light2);
   transform: scale(1.01);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.business-item span {
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  font-weight: 600;
 }
 
 /* Right Image Area */
@@ -1441,12 +1480,12 @@
   .business-container {
     flex-direction: column;
   }
-  
+
   .business-grid {
     grid-template-columns: repeat(2, 1fr);
     order: 2;
   }
-  
+
   .business-image {
     order: 1;
   }
@@ -1481,14 +1520,16 @@
   gap: 15px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  scrollbar-width: none; 
+  scrollbar-width: none;
   margin: 0px 10px;
-  padding-top:70px;
+  padding-top: 70px;
 }
 
 .quick-links-container::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in Chrome/Safari */
+  display: none;
+  /* Hide scrollbar in Chrome/Safari */
 }
+
 .quick-card {
   min-width: 200px;
   max-width: 220px;
@@ -1498,7 +1539,7 @@
   border-radius: 10px;
   padding: 15px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -1511,7 +1552,7 @@
 .quick-card img {
   height: 80px;
   width: 80px;
-  position:absolute;
+  position: absolute;
   object-fit: cover;
   margin-bottom: 10px;
   top: -50px;
@@ -1541,7 +1582,7 @@
 
 .quick-card:hover img {
   transform: scale(1.2);
-   border: 2px solid var(--secondary-color);
+  border: 2px solid var(--secondary-color);
 }
 
 
@@ -1575,7 +1616,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
 
@@ -1589,7 +1630,8 @@
 /* Overlay Sheet Animation */
 .gallery-overlay {
   position: absolute;
-  bottom: -110%; /* Start hidden */
+  bottom: -110%;
+  /* Start hidden */
   left: 0;
   width: 100%;
   height: 100%;
@@ -1608,7 +1650,8 @@
 
 
 .gallery-item:hover .gallery-overlay {
-  bottom: 0; /* Slides up to cover image */
+  bottom: 0;
+  /* Slides up to cover image */
 }
 
 .see-more-wrapper {
@@ -1642,6 +1685,7 @@
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
@@ -1666,26 +1710,63 @@
 .footer-top {
   display: flex;
   justify-content: flex-end;
+  align-items: flex-start;
   margin-bottom: 15px;
+}
+
+.validation-icons {
+  display: flex;
+  align-items: flex-start;
 }
 
 .validation-icons img {
   height: 40px;
   margin-right: 10px;
   cursor: pointer;
+  vertical-align: top;
 }
 
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
+  /* justify-content: center; */
+  gap: 0;
   font-size: 0.9rem;
+}
+
+/* Superfish menu items in footer with pipe separators */
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  gap: 0;
+}
+
+.footer-links ul li {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li::after {
+  content: "|";
+  color: #fff;
+  padding: 0 5px;
+  font-weight: normal;
+}
+
+.footer-links ul li:last-child::after {
+  content: "";
+  padding: 0;
 }
 
 .footer-links a {
   color: #fff;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .footer-links a:hover {
@@ -1700,22 +1781,45 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   font-size: 0.8rem;
-  padding: 9px 15px;
+  padding: 0px 10px;
   color: var(--primary-color);
   background: var(--primary-light);
 }
 
+.footer-bottom p{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 
 @media (max-width: 768px) {
   .footer-links {
     justify-content: center;
     text-align: center;
   }
+
+  .footer-links ul {
+    font-size: 0.85rem;
+  }
+
+  .footer-links ul li::after {
+    padding: 0 8px;
+  }
+
   .footer-bottom {
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+
+  .validation-icons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .validation-icons img {
+    margin: 5px;
   }
 }
 
@@ -1729,7 +1833,7 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1000;
   min-width: 300px;
   transition: all 0.3s ease;
@@ -1745,17 +1849,18 @@
 }
 
 .tab-pane {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-  .tab-pane.active {
-    display: block;
-    opacity: 1;
-  }
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
 
-  .view-footer{
-    display: flex;
-    justify-content: end;
-    margin-top: 20px;
-  }
+.tab-pane.active {
+  display: block;
+  opacity: 1;
+}
+
+.view-footer {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
