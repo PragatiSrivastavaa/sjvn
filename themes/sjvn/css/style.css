@@ -463,197 +463,221 @@
   }
 }
 
-/* Carousel Styles */
+/* Carousel Styles - Override Bootstrap conflicts */
 .power-station-section {
-  text-align: center;
-  background-color: var(--primary-light);
-  padding: 30px 0;
+  text-align: center !important;
+  background-color: var(--primary-light) !important;
+  padding: 30px 0 !important;
 }
 
 .power-station-section h3 {
-  color: var(--primary-color);
-  line-height: 30px;
+  color: var(--primary-color) !important;
+  line-height: 30px !important;
+  margin-bottom: 0 !important;
 }
 
-.carousel-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  height: 200px;
-  margin: 0 auto;
-  overflow: visible; /* Allow overlapping items to be visible */
+/* Custom carousel wrapper - prevent Bootstrap interference */
+.power-station-section .carousel-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 800px !important;
+  height: 200px !important;
+  margin: 0 auto !important;
+  overflow: visible !important; /* Allow overlapping items to be visible */
 }
 
-.carousel {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding-top: 40px;
+.power-station-section .carousel {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding-top: 40px !important;
+  margin: 0 !important;
+  border: none !important;
 }
 
-.power-item {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  border-radius: 50%;
-  text-align: center;
-  padding: 20px;
-  transform: translate(-50%, -50%);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+/* Custom power items - override Bootstrap carousel item styles */
+.power-station-section .power-item {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 100px !important;
+  height: 100px !important;
+  background-color: white !important;
+  border-radius: 50% !important;
+  text-align: center !important;
+  padding: 20px !important;
+  transform: translate(-50%, -50%) !important;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  cursor: pointer !important;
+  border: none !important;
+  margin: 0 !important;
 }
 
-.power-item:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+.power-station-section .power-item:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
 }
 
-.power-item .count {
-  display: block;
-  font-size: 24px;
-  font-weight: bold;
-  transition: all 0.6s ease;
+.power-station-section .power-item .count {
+  display: block !important;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  transition: all 0.6s ease !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-.power-item .label {
-  display: block;
-  font-size: 14px;
-  transition: all 0.6s ease;
-  line-height: 1.2;
+.power-station-section .power-item .label {
+  display: block !important;
+  font-size: 14px !important;
+  transition: all 0.6s ease !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* Buttons */
-.carousel-button {
-  background-color: var(--primary-color);
-  border: none;
-  color: white;
-  font-size: 24px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  position: absolute;
-   top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  z-index: 10;
+/* Custom carousel buttons - override Bootstrap button styles */
+.power-station-section .carousel-button {
+  background-color: var(--primary-color) !important;
+  border: none !important;
+  color: white !important;
+  font-size: 24px !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  cursor: pointer !important;
+  z-index: 10 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-.carousel-button.left {
-  left: 10px;
+.power-station-section .carousel-button.left {
+  left: 10px !important;
+  right: auto !important;
 }
 
-.carousel-button.right {
-  right: 10px;
+.power-station-section .carousel-button.right {
+  right: 10px !important;
+  left: auto !important;
 }
 
-/* States */
-.power-item.active {
-  transform: translate(-50%, -50%) scale(1.2);
-  opacity: 1;
-  border: 3px solid var(--primary-color);
-  z-index: 5;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+.power-station-section .carousel-button:hover {
+  background-color: var(--primary-color) !important;
+  opacity: 0.8 !important;
 }
 
-
-.power-item.active .count {
-  font-size: 32px;
-  color: var(--primary-color);
-  font-weight: 900;
+.power-station-section .carousel-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-.power-item.active .label {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--primary-color);
+/* States - Override Bootstrap conflicts */
+.power-station-section .power-item.active {
+  transform: translate(-50%, -50%) scale(1.2) !important;
+  opacity: 1 !important;
+  border: 3px solid var(--primary-color) !important;
+  z-index: 5 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
 }
 
-/* Left side items with overlapping effect */
-.power-item.left1 {
-  transform: translate(-120%, -50%) scale(1.05);
-  opacity: 0.8;
-  z-index: 4;
-  border: 2px solid rgba(var(--primary-color-rgb, 26, 95, 138), 0.6);
+.power-station-section .power-item.active .count {
+  font-size: 32px !important;
+  color: var(--primary-color) !important;
+  font-weight: 900 !important;
 }
 
-.power-item.left1 .count {
-  font-size: 22px;
-  color: var(--primary-color);
+.power-station-section .power-item.active .label {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: var(--primary-color) !important;
 }
 
-.power-item.left1 .label {
-  font-size: 12px;
+/* Left side items with overlapping effect - Override Bootstrap */
+.power-station-section .power-item.left1 {
+  transform: translate(-120%, -50%) scale(1.05) !important;
+  opacity: 0.8 !important;
+  z-index: 4 !important;
+  border: 2px solid rgba(var(--primary-color-rgb, 26, 95, 138), 0.6) !important;
 }
 
-.power-item.left2 {
-  transform: translate(-200%, -50%) scale(0.85);
-  opacity: 0.5;
-  z-index: 3;
-  border: 1px solid rgba(var(--primary-color-rgb, 26, 95, 138), 0.4);
+.power-station-section .power-item.left1 .count {
+  font-size: 22px !important;
+  color: var(--primary-color) !important;
 }
 
-.power-item.left2 .count {
-  font-size: 18px;
-  color: var(--primary-color);
+.power-station-section .power-item.left1 .label {
+  font-size: 12px !important;
 }
 
-.power-item.left2 .label {
-  font-size: 11px;
+.power-station-section .power-item.left2 {
+  transform: translate(-200%, -50%) scale(0.85) !important;
+  opacity: 0.5 !important;
+  z-index: 3 !important;
+  border: 1px solid rgba(var(--primary-color-rgb, 26, 95, 138), 0.4) !important;
+}
+
+.power-station-section .power-item.left2 .count {
+  font-size: 18px !important;
+  color: var(--primary-color) !important;
+}
+
+.power-station-section .power-item.left2 .label {
+  font-size: 11px !important;
 }
 
 /* Right side items with overlapping effect */
-.power-item.right1 {
-  transform: translate(20%, -50%) scale(1.05);
-  opacity: 0.8;
-  z-index: 4;
-  border: 2px solid rgba(var(--primary-color-rgb, 26, 95, 138), 0.6);
+.power-station-section .power-item.right1 {
+  transform: translate(20%, -50%) scale(1.05) !important;
+  opacity: 0.8 !important;
+  z-index: 4 !important;
+  border: 2px solid rgba(var(--primary-color-rgb, 26, 95, 138), 0.6) !important;
 }
 
-.power-item.right1 .count {
-  font-size: 22px;
-  color: var(--primary-color);
+.power-station-section .power-item.right1 .count {
+  font-size: 22px !important;
+  color: var(--primary-color) !important;
 }
 
-.power-item.right1 .label {
-  font-size: 12px;
+.power-station-section .power-item.right1 .label {
+  font-size: 12px !important;
 }
 
-.power-item.right2 {
-  transform: translate(100%, -50%) scale(0.85);
-  opacity: 0.5;
-  z-index: 3;
-  border: 1px solid rgba(var(--primary-color-rgb, 26, 95, 138), 0.4);
+.power-station-section .power-item.right2 {
+  transform: translate(100%, -50%) scale(0.85) !important;
+  opacity: 0.5 !important;
+  z-index: 3 !important;
+  border: 1px solid rgba(var(--primary-color-rgb, 26, 95, 138), 0.4) !important;
 }
 
-.power-item.right2 .count {
-  font-size: 18px;
-  color: var(--primary-color);
+.power-station-section .power-item.right2 .count {
+  font-size: 18px !important;
+  color: var(--primary-color) !important;
 }
 
-.power-item.right2 .label {
-  font-size: 11px;
+.power-station-section .power-item.right2 .label {
+  font-size: 11px !important;
 }
 
-/* Hidden items - completely faded and scaled down */
-.power-item.hidden {
-  transform: translate(-50%, -50%) scale(0.6);
-  opacity: 0.2;
-  z-index: 1;
+/* Hidden items - completely faded and scaled down - Override Bootstrap */
+.power-station-section .power-item.hidden {
+  transform: translate(-50%, -50%) scale(0.6) !important;
+  opacity: 0.2 !important;
+  z-index: 1 !important;
 }
 
-.power-item.hidden .count {
-  font-size: 16px;
+.power-station-section .power-item.hidden .count {
+  font-size: 16px !important;
 }
 
-.power-item.hidden .label {
-  font-size: 10px;
+.power-station-section .power-item.hidden .label {
+  font-size: 10px !important;
 }
 
 /* Main Navigation */
@@ -1397,9 +1421,9 @@
   gap: 15px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  scrollbar-width: none; /* Hide scrollbar in Firefox */
-  margin: 0px 60px;
-  padding-top:70px ;
+  scrollbar-width: none; 
+  margin: 0px 10px;
+  padding-top:70px;
 }
 
 .quick-links-container::-webkit-scrollbar {

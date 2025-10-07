@@ -1,4 +1,561 @@
-/* Inner page CSS - Restored */
+.main-nav-inner {
+  background: var(--primary-light);
+  padding: 4px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+  z-index: 100;
+  overflow-y: hidden;
+}
+
+.main-nav-inner #nav-list {
+  display: flex !important;
+  margin: 0;
+  gap: 10px;
+  flex-wrap: nowrap;
+  color: var(--primary-color);
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  position: relative;
+  height: 42px;
+}
+
+.main-nav-inner #nav-list::-webkit-scrollbar {
+  display: none;
+}
+
+.main-nav-inner #nav-list li {
+  list-style: none;
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+  height: 42px;
+  max-height: 42px;
+  align-items: center;
+}
+
+.main-nav-inner #superfish-main {
+  display: flex !important;
+  flex-wrap: nowrap;
+  gap: 10px;
+  width: 100%;
+  height: 42px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  position: relative;
+  padding-right: 60px;
+  align-items: center;
+}
+
+.main-nav-inner #superfish-main::-webkit-scrollbar {
+  display: none;
+}
+
+.main-nav-inner #superfish-main li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  color:var(--primary-color);
+  justify-content: space-between;
+  position: relative;
+  flex-shrink: 0;
+  height: 42px;
+  max-height: 42px;
+}
+
+.main-nav-inner #superfish-main a,
+.main-nav-inner #nav-list > li > a {
+  color: var(--primary-color);
+  text-decoration: none;
+  text-wrap: nowrap;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  height: 42px;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+.main-nav-inner #superfish-main a:hover,
+.main-nav-inner #nav-list > li > a:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.main-nav-inner #superfish-main a img,
+.main-nav-inner #nav-list > li > a img {
+  height: 26px;
+  display: block;
+}
+
+.main-nav-inner #superfish-main a > span {
+  margin-right: 6px;
+  display: none;
+}
+
+/* Superfish Submenu Styles for Inner Pages */
+.main-nav-inner #superfish-main ul {
+  position: fixed;
+  top: auto;
+  left: auto;
+  background: var(--primary-light);
+  min-width: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
+  border-radius: 0 0 8px 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  z-index: 10000;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition-delay: 0s;
+  pointer-events: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+.main-nav-inner #superfish-main li:hover > ul,
+.main-nav-inner #superfish-main ul:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.main-nav-inner #superfish-main ul li {
+  display: block;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.main-nav-inner #superfish-main ul li:last-child {
+  border-bottom: none;
+}
+
+.main-nav-inner #superfish-main ul a {
+  display: block;
+  padding: 12px 16px;
+  color: var(--primary-color);
+  text-decoration: none;
+  white-space: nowrap;
+  height: auto;
+  min-height: 44px;
+  line-height: 1.2;
+  justify-content: flex-start;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.main-nav-inner #superfish-main ul a:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--primary-color);
+}
+
+/* Multi-level submenu positioning */
+.main-nav-inner #superfish-main ul ul {
+  position: fixed;
+  top: auto;
+  left: auto;
+  background: var(--secondary-color);
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  z-index: 10001;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  pointer-events: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+.main-nav-inner #superfish-main ul ul:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid var(--secondary-color);
+}
+
+.main-nav-inner #superfish-main ul li:hover > ul,
+.main-nav-inner #superfish-main ul ul:hover,
+.main-nav-inner #superfish-main ul li.menuparent:hover > ul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.main-nav-inner #superfish-main ul:hover ul {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.main-nav-inner #superfish-main ul li:hover > ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Add arrow indicator for items with submenus */
+.main-nav-inner #superfish-main .menuparent > a:after {
+  content: '▼';
+  font-size: 0.7em;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.main-nav-inner #superfish-main .menuparent:hover > a:after {
+  transform: rotate(180deg);
+}
+
+/* Add arrow indicator for sub-submenu items */
+.main-nav-inner #superfish-main ul li.menuparent > a:after {
+  content: '▶';
+  font-size: 0.7em;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.main-nav-inner #superfish-main ul li.menuparent:hover > a:after {
+  transform: translateX(2px);
+}
+
+/* Navigation Scroll Arrows for Inner Pages */
+.main-nav-inner .nav-scroll-arrows {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+  z-index: 100;
+}
+
+.main-nav-inner .nav-scroll-arrow {
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  color: var(--primary-color);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 5px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.main-nav-inner .nav-scroll-arrow:hover {
+  background: rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
+}
+
+.main-nav-inner .nav-scroll-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.main-nav-inner .nav-scroll-arrow:disabled:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: none;
+}
+
+/* ========================================
+   INNER PAGE BANNER/LOGO BAR SECTION
+   ======================================== */
+
+.logo-bar-inner {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 25px;
+  min-height: 200px;
+  color: var(--text-color);
+  overflow: hidden;
+}
+
+.logo-left-inner {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  z-index: 2;
+  background: rgb(255 255 255 / 57%);
+  border-radius: 4px;
+}
+
+.main-logo-inner {
+  height: 112px;
+  margin-right: 10px;
+}
+
+.org-text-inner h1 {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 26px;
+  color: var(--text-color);
+}
+
+.org-text-inner span {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.org-text-inner p {
+  margin: 0.7px 0;
+  font-size: 0.85rem;
+  color: var(--text-color);
+}
+
+.log-right-inner {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 2;
+}
+
+.text-right-inner {
+  text-align: right;
+  padding-right: 20px;
+}
+
+.text-right-inner h1 {
+  margin: 0 0 10px 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.text-right-inner p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.text-right-inner .breadcrumb {
+  margin: 0;
+  background: transparent;
+  padding: 0;
+  justify-content: flex-end;
+}
+
+.text-right-inner .breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.text-right-inner .breadcrumb li{
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.text-right-inner .breadcrumb li a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.text-right-inner .breadcrumb li a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+.text-right-inner .breadcrumb li.active {
+  color: #fff;
+  font-weight: 700;
+}
+
+.text-right-inner .breadcrumb li.active a {
+  color: #fff;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.text-right-inner .breadcrumb .breadcrumb-separator {
+  margin: 0 8px;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+/* Responsive adjustments for inner page header */
+@media (max-width: 768px) {
+  /* Logo bar responsive */
+  .logo-bar-inner {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 15px;
+    min-height: 150px;
+  }
+
+  .logo-left-inner {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .main-logo-inner {
+    height: 80px;
+  }
+
+  .org-text-inner h1 {
+    font-size: 1.1rem;
+    line-height: 22px;
+  }
+
+  .org-text-inner span {
+    font-size: 0.9rem;
+  }
+
+  .org-text-inner p {
+    font-size: 0.8rem;
+  }
+
+  .log-right-inner {
+    justify-content: center;
+  }
+
+  .text-right-inner {
+    text-align: center;
+    padding-right: 0;
+  }
+
+  .text-right-inner h1 {
+    font-size: 1.5rem;
+  }
+
+  /* Mobile submenu adjustments for inner nav */
+  .main-nav-inner #superfish-main {
+    max-width: 100vw;
+    overflow-x: auto;
+    padding-right: 0;
+  }
+
+  .main-nav-inner .nav-scroll-arrows {
+    display: none;
+  }
+
+  .main-nav-inner #superfish-main ul {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.1);
+    margin-left: 20px;
+    border-radius: 0;
+  }
+
+  .main-nav-inner #superfish-main ul ul {
+    position: static;
+    margin-left: 20px;
+  }
+
+  .main-nav-inner #superfish-main ul ul:before {
+    display: none;
+  }
+
+  .main-nav-inner #superfish-main li:hover > ul {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Logo bar responsive */
+  .logo-bar-inner {
+    padding: 20px 10px;
+    min-height: 120px;
+  }
+
+  .logo-left-inner {
+    padding: 10px;
+  }
+
+  .main-logo-inner {
+    height: 60px;
+    margin-right: 8px;
+  }
+
+  .org-text-inner h1 {
+    font-size: 1rem;
+    line-height: 20px;
+  }
+
+  .org-text-inner span {
+    font-size: 0.85rem;
+  }
+
+  .org-text-inner p {
+    font-size: 0.75rem;
+  }
+
+  .text-right-inner h1 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Logo bar very small screens */
+  .logo-left-inner {
+    padding: 8px;
+  }
+
+  .main-logo-inner {
+    height: 50px;
+    margin-right: 6px;
+  }
+
+  .org-text-inner h1 {
+    font-size: 0.9rem;
+    line-height: 18px;
+  }
+
+  .org-text-inner span {
+    font-size: 0.8rem;
+  }
+
+  .org-text-inner p {
+    font-size: 0.7rem;
+  }
+
+  .text-right-inner h1 {
+    font-size: 1.1rem;
+  }
+}
+
 /* enner body css sidebar */
 .sidebar {
   border: 1px solid #ddd;

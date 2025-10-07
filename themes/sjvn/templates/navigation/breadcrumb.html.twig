@@ -12,11 +12,14 @@
     <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
     <ol>
     {% for item in breadcrumb %}
-      <li>
+      <li{% if loop.last %} class="active"{% endif %}>
         {% if item.url %}
           <a href="{{ item.url }}">{{ item.text }}</a>
         {% else %}
           {{ item.text }}
+        {% endif %}
+        {% if not loop.last %}
+          <span class="breadcrumb-separator"> &gt; </span>
         {% endif %}
       </li>
     {% endfor %}
