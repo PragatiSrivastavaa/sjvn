@@ -1,1 +1,0 @@
-window.drupalTranslations = {"strings":{"":{"Enabled":"\u0938\u0915\u094d\u0930\u093f\u092f \u0915\u0930\u0947\u0902"}},"pluralFormula":{"1":0,"default":1}};

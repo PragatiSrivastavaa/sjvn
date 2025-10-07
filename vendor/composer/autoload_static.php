@@ -25,7 +25,6 @@ class ComposerStaticInit20af88fb6f7961cfdbd4c04ac8b4a365
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '2f69d3914119f042cca9e44442d5ce95' => __DIR__ . '/../..' . '/core/includes/bootstrap.inc',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
-        '04c6c5c2f7095ccf6c481d3e53e1776f' => __DIR__ . '/..' . '/mustangostang/spyc/Spyc.php',
         '47e1160838b5e5a10346ac4084b58c23' => __DIR__ . '/..' . '/laravel/prompts/src/helpers.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
     );
@@ -124,7 +123,6 @@ class ComposerStaticInit20af88fb6f7961cfdbd4c04ac8b4a365
             'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Annotations\\' => 28,
             'Dflydev\\DotAccessData\\' => 22,
-            'DeviceDetector\\' => 15,
         ),
         'C' => 
         array (
@@ -401,10 +399,6 @@ class ComposerStaticInit20af88fb6f7961cfdbd4c04ac8b4a365
         'Dflydev\\DotAccessData\\' => 
         array (
             0 => __DIR__ . '/..' . '/dflydev/dot-access-data/src',
-        ),
-        'DeviceDetector\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/matomo/device-detector',
         ),
         'Consolidation\\SiteProcess\\' => 
         array (
