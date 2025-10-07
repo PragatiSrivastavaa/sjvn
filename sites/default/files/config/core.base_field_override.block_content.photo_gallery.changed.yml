@@ -1,0 +1,18 @@
+uuid: 531664aa-c8a7-4c3c-9e5f-3e6e3f45c5d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.photo_gallery
+id: block_content.photo_gallery.changed
+field_name: changed
+entity_type: block_content
+bundle: photo_gallery
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

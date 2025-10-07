@@ -1,0 +1,15 @@
+display:
+  default:
+    display_options:
+      footer:
+        area:
+          content:
+            value: '<div class="see-more-wrapper"><a class="see-more-btn" href="/photo_gallery">और देखें</a></div>'
+            format: full_html
+  block_1:
+    display_options:
+      footer:
+        area:
+          content:
+            value: '<div class="see-more-wrapper"><a class="see-more-btn" href="/sjvn/photo_gallery">और देखें</a></div>'
+            format: full_html

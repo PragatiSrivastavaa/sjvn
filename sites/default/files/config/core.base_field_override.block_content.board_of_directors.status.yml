@@ -1,0 +1,22 @@
+uuid: fe7fadfe-7299-4496-b7d9-b35e49d6fe53
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.board_of_directors
+id: block_content.board_of_directors.status
+field_name: status
+entity_type: block_content
+bundle: board_of_directors
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

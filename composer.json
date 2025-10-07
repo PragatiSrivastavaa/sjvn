@@ -27,6 +27,7 @@
         "drupal/file_encrypt": "^1.0@alpha",
         "drupal/jquery_ui_datepicker": "^2.1",
         "drupal/menu_block": "^1.14",
+        "drupal/menu_breadcrumb": "^2.0",
         "drupal/pathauto": "^1.13",
         "drupal/quicktabs": "^4.0",
         "drupal/sitemap": "^2.3",

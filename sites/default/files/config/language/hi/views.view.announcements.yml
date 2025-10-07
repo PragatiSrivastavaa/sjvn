@@ -1,0 +1,15 @@
+display:
+  block_2:
+    display_options:
+      footer:
+        area:
+          content:
+            value: '<p><a class="see-more-btn" href="/news">और देखें</a></p>'
+            format: full_html
+  block_3:
+    display_options:
+      footer:
+        area:
+          content:
+            value: '<p><a class="see-more-btn" href="/alerts">और देखें</a></p>'
+            format: full_html
