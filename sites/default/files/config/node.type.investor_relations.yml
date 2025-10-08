@@ -1,0 +1,18 @@
+uuid: 6988ace4-4626-4762-bdc8-2780ae00ff5e
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Investor Relations'
+type: investor_relations
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

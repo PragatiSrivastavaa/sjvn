@@ -1,0 +1,24 @@
+uuid: 69d29ab7-bbbe-407c-a1c6-1ba1653585bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.investor_relations
+  module:
+    - text
+id: node.investor_relations.body
+field_name: body
+entity_type: node
+bundle: investor_relations
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

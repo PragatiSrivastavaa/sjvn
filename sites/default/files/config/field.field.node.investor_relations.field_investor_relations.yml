@@ -1,0 +1,29 @@
+uuid: 9a417b26-ca8c-46d0-ba4b-3afef5b2b998
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_investor_relations
+    - node.type.investor_relations
+    - taxonomy.vocabulary.investor_relations
+id: node.investor_relations.field_investor_relations
+field_name: field_investor_relations
+entity_type: node
+bundle: investor_relations
+label: 'Investor Relations Cat'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      investor_relations: investor_relations
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

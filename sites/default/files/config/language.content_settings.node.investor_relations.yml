@@ -1,0 +1,11 @@
+uuid: 5131f589-5e82-4a58-8433-d11c82e7566e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.investor_relations
+id: node.investor_relations
+target_entity_type_id: node
+target_bundle: investor_relations
+default_langcode: site_default
+language_alterable: false

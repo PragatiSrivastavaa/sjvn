@@ -1,0 +1,27 @@
+uuid: d7b087df-8913-4c8d-8003-ae7ea16249fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_upload_file
+    - node.type.investor_relations
+  module:
+    - file
+id: node.investor_relations.field_upload_file
+field_name: field_upload_file
+entity_type: node
+bundle: investor_relations
+label: 'Upload File'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt pdf mp3'
+  max_filesize: ''
+  description_field: false
+field_type: file

@@ -33,6 +33,7 @@
         "drupal/quicktabs": "^4.0",
         "drupal/sitemap": "^2.3",
         "drupal/superfish": "^1.13",
+        "drupal/views_selective_filters": "^2.0@alpha",
         "drupal/views_slideshow": "^5.0",
         "drupal/webform": "^6.3@beta",
         "drush/drush": "^13.6"

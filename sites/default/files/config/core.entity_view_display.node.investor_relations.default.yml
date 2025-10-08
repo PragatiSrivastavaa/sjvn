@@ -1,0 +1,48 @@
+uuid: 0c0ed26b-d3f9-48a1-890f-c7450e2dbe8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.investor_relations.body
+    - field.field.node.investor_relations.field_investor_relations
+    - field.field.node.investor_relations.field_upload_file
+    - node.type.investor_relations
+  module:
+    - file
+    - text
+    - user
+id: node.investor_relations.default
+targetEntityType: node
+bundle: investor_relations
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_investor_relations:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_upload_file:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
