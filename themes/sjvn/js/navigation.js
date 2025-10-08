@@ -76,16 +76,9 @@
       
       // CRITICAL: Use static positioning for natural document flow
       submenu.style.setProperty('position', 'static', 'important');
-      submenu.style.setProperty('display', 'block', 'important');
       
-      // Visibility
-      submenu.style.setProperty('opacity', '1', 'important');
-      submenu.style.setProperty('visibility', 'visible', 'important');
-      submenu.style.setProperty('max-height', 'none', 'important');
-      submenu.style.setProperty('height', 'auto', 'important');
-      submenu.style.setProperty('overflow', 'visible', 'important');
-      
-      // Remove ALL positioning constraints
+      // Don't force display/opacity/visibility - let CSS handle collapse/expand
+      // Just prevent absolute positioning
       submenu.style.setProperty('left', 'auto', 'important');
       submenu.style.setProperty('top', 'auto', 'important');
       submenu.style.setProperty('right', 'auto', 'important');
@@ -99,27 +92,28 @@
       // NO floating
       submenu.style.setProperty('float', 'none', 'important');
       submenu.style.setProperty('clear', 'both', 'important');
-      
-      console.log('Forced vertical flow for submenu');
     }
     
-    // Function to setup nested submenu - make them always visible and inline
+    // Function to setup nested submenu - ALL levels collapsible on hover
     function setupNestedMenuBehavior() {
-      // Target all nested submenus and ensure they're always visible
+      // Target ALL nested submenus (ul ul and deeper)
       const nestedSubmenus = superfishMain.querySelectorAll('ul ul');
       
-      console.log('Found nested submenus to make always visible:', nestedSubmenus.length);
+      console.log('Found nested submenus (all levels):', nestedSubmenus.length);
       
       nestedSubmenus.forEach(function(submenu) {
-        // Force inline positioning
+        // Force vertical flow positioning (no fixed/absolute)
         forceInlinePositioning(submenu);
         
-        // Use MutationObserver to watch for Superfish trying to change styles
+        // Use MutationObserver to prevent Superfish from breaking vertical flow
         const observer = new MutationObserver(function(mutations) {
           mutations.forEach(function(mutation) {
             if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-              // Superfish changed the styles, revert it!
-              forceInlinePositioning(submenu);
+              // Only revert if Superfish tries to use fixed/absolute positioning
+              const currentPosition = submenu.style.position;
+              if (currentPosition === 'fixed' || currentPosition === 'absolute') {
+                forceInlinePositioning(submenu);
+              }
             }
           });
         });
@@ -127,7 +121,7 @@
         // Observe style changes
         observer.observe(submenu, {
           attributes: true,
-          attributeFilter: ['style', 'class']
+          attributeFilter: ['style']
         });
       });
       
@@ -137,7 +131,7 @@
         menuItem.classList.add('has-submenu');
       });
       
-      console.log('Nested submenus are now inline and always visible with MutationObserver protection');
+      console.log('All submenus are collapsible on hover with vertical flow');
     }
     
     // Helper function to determine nesting level

@@ -1445,24 +1445,23 @@
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Sub-submenus - VERTICAL FLOW, nested as children, NO OVERLAP - NUCLEAR OVERRIDE */
+/* Sub-submenus (Level 2) - COLLAPSIBLE on hover, vertical flow */
 #superfish-main ul ul,
 #superfish-main ul ul[style],
 #superfish-main.sf-menu ul ul,
 #superfish-main > li > ul ul {
   /* Force vertical document flow */
   position: static !important;
-  display: block !important;
   background: rgba(0, 0, 0, 0.15) !important;
   
-  /* Visibility - always visible */
-  opacity: 1 !important;
-  visibility: visible !important;
-  max-height: none !important;
-  height: auto !important;
-  overflow: visible !important;
+  /* Hidden by default - collapsible */
+  display: block !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
   
-  /* NO positioning - let it flow naturally */
+  /* NO absolute positioning - let it flow naturally */
   left: auto !important;
   top: auto !important;
   right: auto !important;
@@ -1472,12 +1471,10 @@
   /* Spacing and borders */
   margin: 0 !important;
   margin-left: 15px !important;
-  margin-top: 2px !important;
-  margin-bottom: 2px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
   padding: 0 !important;
   padding-left: 10px !important;
-  padding-top: 2px !important;
-  padding-bottom: 2px !important;
   border-left: 3px solid rgba(255, 255, 255, 0.4) !important;
   
   /* Full width within parent */
@@ -1495,16 +1492,31 @@
   z-index: auto !important;
   list-style: none !important;
   pointer-events: auto !important;
-  transition: none !important;
+  
+  /* Smooth transition */
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease !important;
 }
 
-/* Remove hover-based expansion - sub-submenus are always visible */
-/* Visual feedback for hovered menu items */
-#superfish-main ul li.menuparent > a:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
+/* Show Level 2 submenus on hover - expand smoothly */
+#superfish-main ul li.menuparent:hover > ul,
+#superfish-main ul li:has(> ul):hover > ul {
+  max-height: 2000px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  overflow: visible !important;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
 }
 
-/* Items with submenus can still be clickable if they have links */
+/* Visual feedback for hovered menu items with children */
+#superfish-main ul li.menuparent > a:hover,
+#superfish-main ul li:has(> ul) > a:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Items with submenus are clickable (all items are clickable now) */
 #superfish-main ul li.menuparent > a {
   cursor: pointer !important;
 }
@@ -1518,7 +1530,7 @@
   background: rgba(255, 255, 255, 0.12) !important;
 }
 
-/* Sub-sub-submenus and deeper levels - VERTICAL FLOW, NO OVERLAP - NUCLEAR OVERRIDE */
+/* Sub-sub-submenus and deeper levels (Level 3+) - COLLAPSIBLE on hover */
 #superfish-main ul ul ul,
 #superfish-main ul ul ul ul,
 #superfish-main ul ul ul ul ul,
@@ -1526,17 +1538,16 @@
 #superfish-main.sf-menu ul ul ul {
   /* Force vertical document flow */
   position: static !important;
-  display: block !important;
   background: rgba(0, 0, 0, 0.25) !important;
   
-  /* Visibility - always visible */
-  opacity: 1 !important;
-  visibility: visible !important;
-  max-height: none !important;
-  height: auto !important;
-  overflow: visible !important;
+  /* Hidden by default - use max-height for smooth collapse */
+  display: block !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
   
-  /* NO positioning - let it flow naturally */
+  /* NO absolute positioning - let it flow naturally */
   left: auto !important;
   top: auto !important;
   right: auto !important;
@@ -1546,12 +1557,10 @@
   /* Spacing and borders - deeper indentation */
   margin: 0 !important;
   margin-left: 15px !important;
-  margin-top: 2px !important;
-  margin-bottom: 2px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
   padding: 0 !important;
   padding-left: 10px !important;
-  padding-top: 2px !important;
-  padding-bottom: 2px !important;
   border-left: 3px solid rgba(255, 255, 255, 0.5) !important;
   
   /* Full width within parent */
@@ -1569,10 +1578,31 @@
   z-index: auto !important;
   list-style: none !important;
   pointer-events: auto !important;
-  transition: none !important;
+  
+  /* Smooth transition for expand/collapse */
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease !important;
 }
 
-/* All submenus at all levels are always visible - no hover needed */
+/* Show Level 3+ submenus on hover - expand smoothly */
+#superfish-main ul ul li.menuparent:hover > ul,
+#superfish-main ul ul ul li.menuparent:hover > ul,
+#superfish-main ul ul ul ul li.menuparent:hover > ul {
+  max-height: 1000px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  overflow: visible !important;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
+
+/* Summary of submenu behavior:
+ * - Main menu (Level 1): Hover to show dropdown
+ * - Level 2+ (ALL nested submenus): Hidden by default, expand on hover
+ * - All use vertical flow (position: static) - NO overlapping
+ * - Content pushes down when expanding (smooth animation)
+ */
 
 /* Ensure main submenu containers expand to fit sub-submenus */
 #superfish-main > li > ul {
@@ -1786,8 +1816,9 @@
   display: none;
 }
 
-/* Arrow is always rotated down since submenus are always visible */
-#superfish-main ul li.menuparent > a:after {
+/* Rotate arrow when hovering over items with children (showing submenu) */
+#superfish-main ul li.menuparent:hover > a:after,
+#superfish-main ul li:has(> ul):hover > a:after {
   transform: rotate(90deg);
 }
 
