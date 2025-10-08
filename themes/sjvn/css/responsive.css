@@ -395,6 +395,39 @@
   .nav-scroll-arrows {
     display: none; /* Hide arrows on mobile */
   }
+  
+  /* Mobile navigation adjustments */
+  .main-nav {
+    height: auto;
+    min-height: 50px;
+  }
+  
+  .main-nav .home-link {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 101;
+  }
+  
+  .main-nav .home-link a {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .main-nav .home-link img {
+    width: 18px;
+    height: 18px;
+  }
+  
+  #nav-list {
+    margin-left: 50px; /* Reduced space for home icon on mobile */
+    padding-right: 0; /* Remove padding on mobile */
+  }
+  
+  #superfish-main {
+    padding-right: 0; /* Remove padding on mobile */
+  }
 
   #superfish-main ul {
     position: static;

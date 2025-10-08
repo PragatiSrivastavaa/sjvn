@@ -1,6 +1,14 @@
 /**
  * Navigation submenu positioning handler for Superfish menu
- * Ensures submenus appear correctly outside the navigation container
+ * 
+ * Menu Behavior:
+ * - Main menu items (Level 1): Show submenus on HOVER
+ * - Nested submenu items (Level 2+): Expand on CLICK (toggle with arrow)
+ * 
+ * This ensures:
+ * 1. Quick access to primary navigation via hover
+ * 2. Controlled expansion of nested submenus via click
+ * 3. All levels of nested menus are accessible
  */
 (function() {
   'use strict';
@@ -62,47 +70,81 @@
       updateArrowStates(); // Initial state
     }
 
-    // Function to position submenus correctly using fixed positioning
-    function positionSubmenus() {
-      // Get all menu items including those in submenus
-      const allMenuItems = superfishMain.querySelectorAll('li');
+    // Helper function to force vertical flow positioning - NO OVERLAP
+    function forceInlinePositioning(submenu) {
+      submenu.classList.remove('sf-hidden');
       
-      allMenuItems.forEach(function(menuItem) {
-        const submenu = menuItem.querySelector('ul');
-        if (!submenu) return;
-
-        // Get the menu item's position relative to the viewport
-        const menuItemRect = menuItem.getBoundingClientRect();
-        const submenuWidth = 200; // min-width from CSS
-        const viewportWidth = window.innerWidth;
-        const rightEdge = menuItemRect.right + submenuWidth;
+      // CRITICAL: Use static positioning for natural document flow
+      submenu.style.setProperty('position', 'static', 'important');
+      
+      // Don't force display/opacity/visibility - let CSS handle collapse/expand
+      // Just prevent absolute positioning
+      submenu.style.setProperty('left', 'auto', 'important');
+      submenu.style.setProperty('top', 'auto', 'important');
+      submenu.style.setProperty('right', 'auto', 'important');
+      submenu.style.setProperty('bottom', 'auto', 'important');
+      submenu.style.setProperty('transform', 'none', 'important');
+      
+      // NO width constraints - let it flow naturally
+      submenu.style.setProperty('width', 'auto', 'important');
+      submenu.style.setProperty('min-width', '0', 'important');
+      
+      // NO floating
+      submenu.style.setProperty('float', 'none', 'important');
+      submenu.style.setProperty('clear', 'both', 'important');
+    }
+    
+    // Function to setup nested submenu - ALL levels collapsible on hover
+    function setupNestedMenuBehavior() {
+      // Target ALL nested submenus (ul ul and deeper)
+      const nestedSubmenus = superfishMain.querySelectorAll('ul ul');
+      
+      console.log('Found nested submenus (all levels):', nestedSubmenus.length);
+      
+      nestedSubmenus.forEach(function(submenu) {
+        // Force vertical flow positioning (no fixed/absolute)
+        forceInlinePositioning(submenu);
         
-        // Calculate position for fixed submenu
-        let leftPosition = menuItemRect.left;
-        let topPosition = menuItemRect.bottom + 2; // Small gap for easier navigation
+        // Use MutationObserver to prevent Superfish from breaking vertical flow
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+              // Only revert if Superfish tries to use fixed/absolute positioning
+              const currentPosition = submenu.style.position;
+              if (currentPosition === 'fixed' || currentPosition === 'absolute') {
+                forceInlinePositioning(submenu);
+              }
+            }
+          });
+        });
         
-        // If submenu would go off-screen, position it to the left
-        if (rightEdge > viewportWidth) {
-          leftPosition = menuItemRect.right - submenuWidth;
-        }
-        
-        // For multi-level submenus (sub-submenus), position them to the right
-        const parentSubmenu = menuItem.closest('ul');
-        if (parentSubmenu && parentSubmenu !== superfishMain) {
-          leftPosition = menuItemRect.right + 5; // Small gap for easier access
-          topPosition = menuItemRect.top;
-        }
-        
-        // Apply fixed positioning
-        submenu.style.position = 'fixed';
-        submenu.style.left = leftPosition + 'px';
-        submenu.style.top = topPosition + 'px';
-        submenu.style.right = 'auto';
-        submenu.style.transform = '';
-        
-        // Update scroll indicators
-        updateScrollIndicators(submenu);
+        // Observe style changes
+        observer.observe(submenu, {
+          attributes: true,
+          attributeFilter: ['style']
+        });
       });
+      
+      // Mark items with children
+      const nestedMenuItems = superfishMain.querySelectorAll('li.menuparent:not(.sf-depth-1)');
+      nestedMenuItems.forEach(function(menuItem) {
+        menuItem.classList.add('has-submenu');
+      });
+      
+      console.log('All submenus are collapsible on hover with vertical flow');
+    }
+    
+    // Helper function to determine nesting level
+    function getNestingLevel(element) {
+      let level = 0;
+      let parent = element.parentElement;
+      while (parent && parent !== superfishMain) {
+        if (parent.tagName === 'UL') {
+          level++;
+        }
+        parent = parent.parentElement;
+      }
+      return level;
     }
 
     // Function to update scroll indicators with height threshold
@@ -138,69 +180,57 @@
       }
     }
 
-    // Function to handle scroll positioning
-    function handleScrollPositioning() {
-      positionSubmenus();
+    // Function to handle submenu initialization
+    function handleSubmenuInitialization() {
+      setupNestedMenuBehavior();
     }
 
-    // Position submenus on page load
-    positionSubmenus();
+    // Initialize nested menu behavior immediately
+    setupNestedMenuBehavior();
+    
+    // Run again after a short delay to catch Superfish initialization
+    setTimeout(setupNestedMenuBehavior, 100);
+    setTimeout(setupNestedMenuBehavior, 500);
 
-    // Reposition on window resize
-    window.addEventListener('resize', positionSubmenus);
+    // Re-initialize on window resize
+    window.addEventListener('resize', setupNestedMenuBehavior);
 
     // Handle scroll events
     if (superfishMain) {
-      superfishMain.addEventListener('scroll', handleScrollPositioning);
+      superfishMain.addEventListener('scroll', handleSubmenuInitialization);
     }
 
-    // Handle hover events for all menu levels (including sub-submenus)
+    // Handle hover events for main navigation submenus
     function setupMenuHoverEvents() {
       const allMenuItems = superfishMain.querySelectorAll('li');
-      let hoverTimeout;
       
       allMenuItems.forEach(function(menuItem) {
         const submenu = menuItem.querySelector('ul');
         
         if (submenu) {
-          // Mouse enter - show submenu immediately
-          menuItem.addEventListener('mouseenter', function() {
-            clearTimeout(hoverTimeout);
-            positionSubmenus();
-            submenu.style.transitionDelay = '0s';
-            submenu.style.opacity = '1';
-            submenu.style.visibility = 'visible';
-            submenu.style.transform = 'translateY(0)';
-          });
+          // Check if this is a main navigation submenu (level 1)
+          const parentSubmenu = menuItem.closest('ul');
+          const isMainSubmenu = !parentSubmenu || parentSubmenu === superfishMain;
           
-          // Mouse leave - hide submenu with delay
-          menuItem.addEventListener('mouseleave', function() {
-            hoverTimeout = setTimeout(function() {
+          if (isMainSubmenu) {
+            // Mouse enter - show main submenu
+            menuItem.addEventListener('mouseenter', function() {
+              submenu.style.transitionDelay = '0s';
+              submenu.style.opacity = '1';
+              submenu.style.visibility = 'visible';
+              submenu.style.transform = 'translateY(0)';
+              
+              console.log('Showing main submenu:', submenu);
+            });
+            
+            // Mouse leave - hide main submenu
+            menuItem.addEventListener('mouseleave', function() {
               submenu.style.transitionDelay = '0.1s';
               submenu.style.opacity = '0';
               submenu.style.visibility = 'hidden';
               submenu.style.transform = 'translateY(-10px)';
-            }, 150); // 150ms delay before hiding
-          });
-          
-          // Keep submenu visible when hovering over it
-          submenu.addEventListener('mouseenter', function() {
-            clearTimeout(hoverTimeout);
-            submenu.style.transitionDelay = '0s';
-            submenu.style.opacity = '1';
-            submenu.style.visibility = 'visible';
-            submenu.style.transform = 'translateY(0)';
-          });
-          
-          // Hide submenu when leaving it
-          submenu.addEventListener('mouseleave', function() {
-            hoverTimeout = setTimeout(function() {
-              submenu.style.transitionDelay = '0.1s';
-              submenu.style.opacity = '0';
-              submenu.style.visibility = 'hidden';
-              submenu.style.transform = 'translateY(-10px)';
-            }, 150);
-          });
+            });
+          }
           
           // Add scroll event listener for scroll indicators
           submenu.addEventListener('scroll', function() {
@@ -213,59 +243,59 @@
     // Initialize hover events
     setupMenuHoverEvents();
 
-    // Debug function to check sub-submenus
-    function debugSubSubmenus() {
-      const allSubmenus = superfishMain.querySelectorAll('ul ul');
-      console.log('Found sub-submenus:', allSubmenus.length);
-      allSubmenus.forEach(function(submenu, index) {
-        console.log(`Sub-submenu ${index + 1}:`, submenu);
-        console.log('Parent:', submenu.parentElement);
-        console.log('Menu items in sub-submenu:', submenu.querySelectorAll('li').length);
-      });
-      
-      // Also check for menu items with submenus
-      const menuItemsWithSubmenus = superfishMain.querySelectorAll('li:has(ul)');
-      console.log('Menu items with submenus:', menuItemsWithSubmenus.length);
-      
-      // Check all menu levels
+    // Debug function to check all menu levels
+    function debugAllMenuLevels() {
       const level1Menus = superfishMain.querySelectorAll('> li');
       const level2Menus = superfishMain.querySelectorAll('ul > li');
       const level3Menus = superfishMain.querySelectorAll('ul ul > li');
+      const level4Menus = superfishMain.querySelectorAll('ul ul ul > li');
       
+      console.log('=== Menu Level Debug ===');
       console.log('Level 1 menu items:', level1Menus.length);
       console.log('Level 2 menu items:', level2Menus.length);
       console.log('Level 3 menu items:', level3Menus.length);
-    }
-    
-    // Run debug function
-    debugSubSubmenus();
-
-    // Force sub-submenus to be visible for testing
-    function forceSubSubmenuVisibility() {
-      const allSubSubmenus = superfishMain.querySelectorAll('ul ul');
-      allSubSubmenus.forEach(function(submenu) {
-        submenu.style.opacity = '1';
-        submenu.style.visibility = 'visible';
-        submenu.style.transform = 'translateY(0)';
-        submenu.style.position = 'fixed';
-        submenu.style.left = '50%';
-        submenu.style.top = '50%';
-        submenu.style.zIndex = '99999';
-        submenu.style.background = 'red'; // Make them visible for testing
+      console.log('Level 4 menu items:', level4Menus.length);
+      
+      // Check which items have submenus
+      level2Menus.forEach(function(item, index) {
+        const submenu = item.querySelector('ul');
+        if (submenu) {
+          console.log(`Level 2 item ${index + 1} has submenu:`, item.textContent.trim());
+        }
+      });
+      
+      level3Menus.forEach(function(item, index) {
+        const submenu = item.querySelector('ul');
+        if (submenu) {
+          console.log(`Level 3 item ${index + 1} has submenu:`, item.textContent.trim());
+        }
+      });
+      
+      level4Menus.forEach(function(item, index) {
+        const submenu = item.querySelector('ul');
+        if (submenu) {
+          console.log(`Level 4 item ${index + 1} has submenu:`, item.textContent.trim());
+        }
       });
     }
     
-    // Uncomment the line below to force sub-submenus to be visible for testing
-    // forceSubSubmenuVisibility();
+    // Run debug function
+    debugAllMenuLevels();
+
+    // Initialize nested menu behavior
+    setTimeout(function() {
+      setupNestedMenuBehavior();
+      console.log('Nested submenu hover behavior initialized');
+    }, 1000);
 
     // Handle Superfish initialization if it exists
     if (typeof Drupal !== 'undefined' && Drupal.behaviors.superfish) {
       // Wait for Superfish to initialize
       setTimeout(function() {
-        positionSubmenus();
+        setupNestedMenuBehavior();
         createScrollArrows();
         setupMenuHoverEvents(); // Re-setup events after Superfish loads
-        debugSubSubmenus(); // Debug again after Superfish loads
+        debugAllMenuLevels(); // Debug again after Superfish loads
       }, 500);
     }
   });
