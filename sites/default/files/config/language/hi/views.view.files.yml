@@ -4,3 +4,8 @@ display:
       fields:
         filename:
           label: नाम
+  page_2:
+    display_options:
+      fields:
+        type:
+          label: 'इकाई का प्रकार'

@@ -1,0 +1,20 @@
+uuid: 1dca04eb-d023-4f04-8b48-d377c04a2350
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_investor_relations
+field_name: field_investor_relations
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
