@@ -1305,31 +1305,30 @@
 }
 
 /* Superfish Submenu Styles */
-/* Superfish Submenu Styles */
 #superfish-main ul {
   position: fixed !important;
   top: auto;
   left: auto;
   background: var(--primary-color);
   min-width: 200px;
-  /* Remove height limits and scrolling */
-  max-height: none;
+  width: auto !important;
+  min-width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
   overflow: visible !important;
-
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 0 0 8px 8px;
   opacity: 0;
+  visibility: hidden;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
   z-index: 99999 !important;
   list-style: none;
   margin: 0;
   padding: 0;
-
-  /* Ensure submenu is fully visible and clickable */
   pointer-events: auto;
-  scrollbar-width: none;
-  overflow: visible;
 }
 
 
@@ -1339,9 +1338,12 @@
   top: auto;
   left: auto;
   background: var(--primary-color);
-  /* min-width: 200px; */
-  height: auto;
-  overflow: visible;
+  max-width: none !important;
+  min-width: 200px;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   opacity: 0;
@@ -1458,9 +1460,13 @@
   top: auto;
   left: auto;
   
-  /* Styling */
-  /* min-width: 200px !important; */
+  /* Styling - NO size restrictions, everything visible */
+  width: auto !important;
+  min-width: auto !important;
+  max-width: none !important;
   height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
   overflow: visible !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   border-radius: 8px !important;
@@ -1521,9 +1527,13 @@
   top: auto;
   left: auto;
   
-  /* Styling */
-  /* min-width: 200px !important; */
+  /* Styling - NO size restrictions, everything visible */
+  width: auto !important;
+  min-width: auto !important;
+  max-width: none !important;
   height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
   overflow: visible !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   border-radius: 8px !important;
@@ -1561,11 +1571,13 @@
   transform: translateY(-10px) !important;
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease !important;
   z-index: 10000 !important;
-  min-height: auto !important;
+  width: auto !important;
+  min-width: auto !important;
+  max-width: none !important;
   height: auto !important;
-  max-height: 80vh !important;
-  overflow-y: auto !important;
-  overflow-x: visible !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
 }
 
 /* Show main navigation submenus on hover */
@@ -1577,8 +1589,12 @@
 
 /* Ensure submenu containers have proper height to prevent overlap */
 #superfish-main ul {
-  min-height: auto !important;
+  width: auto !important;
+  min-width: auto !important;
+  max-width: none !important;
   height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
   overflow: visible !important;
 }
 
