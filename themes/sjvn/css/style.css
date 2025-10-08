@@ -1179,7 +1179,7 @@
   transition: all 0.3s ease;
 }
 
-.main-nav .home-link a:hover {
+.main-nav .home-link a:hovscrollbar-widther {
   background: rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
 }
@@ -1247,6 +1247,7 @@
   margin-left: 0; /* Remove left margin since home icon is now absolute */
 }
 
+
 #superfish-main::-webkit-scrollbar {
   display: none;
 }
@@ -1304,36 +1305,33 @@
 }
 
 /* Superfish Submenu Styles */
+/* Superfish Submenu Styles */
 #superfish-main ul {
-  position: fixed;
+  position: fixed !important;
   top: auto;
   left: auto;
   background: var(--primary-color);
   min-width: 200px;
-  max-height: 400px;
-  /* Increased height for better visibility */
-  overflow-y: auto;
-  /* Vertical scrolling for submenus */
-  overflow-x: hidden;
-  /* No horizontal scroll */
+  /* Remove height limits and scrolling */
+  max-height: none;
+  overflow: visible !important;
+
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 0 0 8px 8px;
   opacity: 0;
-  visibility: hidden;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-  z-index: 10000;
+  z-index: 99999 !important;
   list-style: none;
   margin: 0;
   padding: 0;
-  /* Add a small delay before hiding */
-  transition-delay: 0s;
-  /* Ensure submenu is interactive */
+
+  /* Ensure submenu is fully visible and clickable */
   pointer-events: auto;
-  /* Custom scrollbar styling - only show when needed */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  scrollbar-width: none;
+  overflow: visible;
 }
+
 
 /* Sub-submenu positioning - consolidated rules */
 #superfish-main ul ul {
@@ -1341,10 +1339,9 @@
   top: auto;
   left: auto;
   background: var(--primary-color);
-  min-width: 200px;
-  max-height: 300px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  /* min-width: 200px; */
+  height: auto;
+  overflow: visible;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   opacity: 0;
@@ -1356,8 +1353,6 @@
   margin: 0;
   padding: 0;
   pointer-events: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
   border-left: 2px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -1395,7 +1390,7 @@
   text-decoration: none;
   white-space: nowrap;
   height: auto;
-  min-height: 44px;
+  /* min-height: 44px; */
   line-height: 1.2;
   justify-content: flex-start;
   cursor: pointer;
@@ -1445,69 +1440,46 @@
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Sub-submenus (Level 2) - COLLAPSIBLE on hover, vertical flow */
+/* Sub-submenus (Level 2) - Overlay dropdowns to the right */
 #superfish-main ul ul,
 #superfish-main ul ul[style],
 #superfish-main.sf-menu ul ul,
 #superfish-main > li > ul ul {
-  /* Force vertical document flow */
-  position: static !important;
-  background: rgba(0, 0, 0, 0.15) !important;
+  /* Position as overlay */
+  position: fixed !important;
+  background: var(--primary-color) !important;
   
-  /* Hidden by default - collapsible */
-  display: block !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
+  /* Hidden by default */
   opacity: 0 !important;
   visibility: hidden !important;
+  transform: translateX(-10px) !important;
   
-  /* NO absolute positioning - let it flow naturally */
-  left: auto !important;
-  top: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-  transform: none !important;
+  /* Positioning - will be set by JavaScript */
+  top: auto;
+  left: auto;
   
-  /* Spacing and borders */
-  margin: 0 !important;
-  margin-left: 15px !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding: 0 !important;
-  padding-left: 10px !important;
-  border-left: 3px solid rgba(255, 255, 255, 0.4) !important;
-  
-  /* Full width within parent */
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: 100% !important;
-  
-  /* NO floating or absolute positioning */
-  float: none !important;
-  clear: both !important;
-  
-  /* Reset Superfish stuff */
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  z-index: auto !important;
+  /* Styling */
+  /* min-width: 200px !important; */
+  height: auto !important;
+  overflow: visible !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px !important;
+  z-index: 99999 !important;
   list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
   pointer-events: auto !important;
   
   /* Smooth transition */
-  transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease !important;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease !important;
 }
 
-/* Show Level 2 submenus on hover - expand smoothly */
+/* Show Level 2 submenus on hover - as overlay */
 #superfish-main ul li.menuparent:hover > ul,
 #superfish-main ul li:has(> ul):hover > ul {
-  max-height: 2000px !important;
   opacity: 1 !important;
   visibility: visible !important;
-  overflow: visible !important;
-  margin-top: 2px !important;
-  margin-bottom: 2px !important;
-  padding-top: 2px !important;
-  padding-bottom: 2px !important;
+  transform: translateX(0) !important;
 }
 
 /* Visual feedback for hovered menu items with children */
@@ -1530,78 +1502,55 @@
   background: rgba(255, 255, 255, 0.12) !important;
 }
 
-/* Sub-sub-submenus and deeper levels (Level 3+) - COLLAPSIBLE on hover */
+/* Sub-sub-submenus and deeper levels (Level 3+) - Overlay dropdowns to the right */
 #superfish-main ul ul ul,
 #superfish-main ul ul ul ul,
 #superfish-main ul ul ul ul ul,
 #superfish-main ul ul ul[style],
 #superfish-main.sf-menu ul ul ul {
-  /* Force vertical document flow */
-  position: static !important;
-  background: rgba(0, 0, 0, 0.25) !important;
+  /* Position as overlay */
+  position: fixed !important;
+  background: var(--primary-color) !important;
   
-  /* Hidden by default - use max-height for smooth collapse */
-  display: block !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
+  /* Hidden by default */
   opacity: 0 !important;
   visibility: hidden !important;
+  transform: translateX(-10px) !important;
   
-  /* NO absolute positioning - let it flow naturally */
-  left: auto !important;
-  top: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-  transform: none !important;
+  /* Positioning - will be set by JavaScript */
+  top: auto;
+  left: auto;
   
-  /* Spacing and borders - deeper indentation */
-  margin: 0 !important;
-  margin-left: 15px !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding: 0 !important;
-  padding-left: 10px !important;
-  border-left: 3px solid rgba(255, 255, 255, 0.5) !important;
-  
-  /* Full width within parent */
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: 100% !important;
-  
-  /* NO floating or absolute positioning */
-  float: none !important;
-  clear: both !important;
-  
-  /* Reset Superfish stuff */
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  z-index: auto !important;
+  /* Styling */
+  /* min-width: 200px !important; */
+  height: auto !important;
+  overflow: visible !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px !important;
+  z-index: 99999 !important;
   list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
   pointer-events: auto !important;
   
-  /* Smooth transition for expand/collapse */
-  transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease !important;
+  /* Smooth transition */
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease !important;
 }
 
-/* Show Level 3+ submenus on hover - expand smoothly */
+/* Show Level 3+ submenus on hover - as overlay */
 #superfish-main ul ul li.menuparent:hover > ul,
 #superfish-main ul ul ul li.menuparent:hover > ul,
 #superfish-main ul ul ul ul li.menuparent:hover > ul {
-  max-height: 1000px !important;
   opacity: 1 !important;
   visibility: visible !important;
-  overflow: visible !important;
-  margin-top: 2px !important;
-  margin-bottom: 2px !important;
-  padding-top: 2px !important;
-  padding-bottom: 2px !important;
+  transform: translateX(0) !important;
 }
 
 /* Summary of submenu behavior:
- * - Main menu (Level 1): Hover to show dropdown
- * - Level 2+ (ALL nested submenus): Hidden by default, expand on hover
- * - All use vertical flow (position: static) - NO overlapping
- * - Content pushes down when expanding (smooth animation)
+ * - Main menu (Level 1): Hover to show dropdown below
+ * - Level 2+ (ALL nested submenus): Hover to show dropdown to the right
+ * - All use fixed positioning as overlays - appear above everything
+ * - Submenus don't affect layout - pure overlays
  */
 
 /* Ensure main submenu containers expand to fit sub-submenus */
@@ -1741,36 +1690,7 @@
 }
 
 
-/* Scroll indicators for submenus */
-#superfish-main ul::before,
-#superfish-main ul::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 20px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-#superfish-main ul::before {
-  top: 0;
-  background: linear-gradient(to bottom, var(--primary-color) 0%, transparent 100%);
-}
-
-#superfish-main ul::after {
-  bottom: 0;
-  background: linear-gradient(to top, var(--primary-color) 0%, transparent 100%);
-}
-
-/* Hide scroll indicators when not needed */
-#superfish-main ul:not(.scrollable-top)::before {
-  display: none;
-}
-
-#superfish-main ul:not(.scrollable-bottom)::after {
-  display: none;
-}
+/* Scroll indicators removed - submenus show full content */
 
 /* Add arrow indicator for main menu items with submenus */
 #superfish-main > li.menuparent > a:after,
@@ -1816,10 +1736,11 @@
   display: none;
 }
 
-/* Rotate arrow when hovering over items with children (showing submenu) */
+/* Highlight arrow when hovering over items with children (showing submenu) */
 #superfish-main ul li.menuparent:hover > a:after,
 #superfish-main ul li:has(> ul):hover > a:after {
-  transform: rotate(90deg);
+  color: #fff;
+  transform: translateX(3px);
 }
 
 /* Hover effect for nested menu items with submenus */
