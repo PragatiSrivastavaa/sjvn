@@ -557,21 +557,83 @@
 }
 
 /* enner body css sidebar */
-.sidebar {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-.sidebar .list-group-item {
+.sidebar .menu {
   border: none;
-  border-bottom: 1px solid #eee;
+  border-radius: 0;
+  background: transparent;
+  min-width: 200px;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .menu li {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: none;
+  border: 1px solid #D0D0D0;
   text-align: center;
   font-weight: 500;
-  color: #2a6ca8;
+  background-color: #ffffff;
+  padding: 5px 16px;
+  margin: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  list-style: none;
 }
-.sidebar .list-group-item.active {
-  background-color: var(--primary-color); 
-  color: #fff;
+
+.sidebar .menu li:hover {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+.sidebar .menu-item--active-trail {
+  background-color: var(--primary-color) !important; 
+  color: #fff !important;
   font-weight: 600;
+}
+
+.sidebar .menu li a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sidebar .menu li:hover a {
+  color: var(--primary-color);
+}
+
+.sidebar .menu-item--active-trail a {
+  color: #fff !important;
+}
+
+.sidebar .menu .menu-item--active-trail:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+/* .sidebar .menu li:nth-child(odd) {
+  background-color: #ffffff;
+} */
+
+.sidebar .menu li:nth-child(even) {
+  background-color: #f2f2f2; 
+}
+
+/* Hide sidebar on mobile screens */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  
+  /* Adjust content area to full width on mobile */
+  .col-md-8.col-lg-9 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }
 section.aboutscreen {
   padding: 35px 33px;
@@ -582,6 +644,152 @@ section.aboutscreen {
   }
 }
 /* end enner body css sidebar */
+
+/* ========================================
+   HORIZONTAL TAB MENU FOR BUSINESS PAGES
+   ======================================== */
+
+/* Tab menu wrapper for exposed filters */
+.tab-menu-item {
+  margin-top: 20px;
+}
+
+/* Hide fieldset border and legend */
+.tab-menu-item fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.tab-menu-item legend {
+  display: none;
+}
+
+.tab-menu-item .fieldset-wrapper {
+  padding: 0;
+  margin: 0;
+}
+
+/* Horizontal tabs container */
+.tab-menu-item .form-radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  border-bottom: 2px solid #e0e0e0;
+  background: transparent;
+}
+
+/* Individual tab item */
+.tab-menu-item .form-radios .form-item {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  position: relative;
+}
+
+/* Hide the radio input visually but keep it accessible */
+.tab-menu-item .form-radios input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+/* Tab label styling */
+.tab-menu-item .form-radios label {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  margin: 0;
+  background: #f8f9fa;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  position: relative;
+  bottom: -2px;
+}
+
+/* Tab hover state */
+.tab-menu-item .form-radios label:hover {
+  background: var(--primary-light);
+  color: var(--primary-color);
+}
+
+/* Active/checked tab styling */
+.tab-menu-item .form-radios input[type="radio"]:checked + label {
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  border-color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  z-index: 1;
+}
+
+/* Alternative selector for checked state */
+.tab-menu-item .form-radios .form-item:has(input:checked) label {
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  border-color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  z-index: 1;
+}
+
+/* Hide submit button (auto-submit is enabled) */
+.tab-menu-item .form-actions {
+  display: none;
+}
+
+/* Responsive - Tablets */
+@media (max-width: 992px) {
+  .tab-menu-item .form-radios label {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .tab-menu-item .form-radios {
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    padding-bottom: 5px;
+  }
+
+  .tab-menu-item .form-radios label {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Responsive - Small Mobile */
+@media (max-width: 480px) {
+  .tab-menu-item .form-radios {
+    gap: 6px;
+  }
+
+  .tab-menu-item .form-radios label {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+}
 
 @media (max-width: 768px) {
   .footer-links {

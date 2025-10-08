@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Custom layout: Exposed form left, content right using Bootstrap 5.
+ * Custom layout: Horizontal tabs above content.
  */
 #}
 
@@ -28,26 +28,21 @@
     </div>
   {% endif %}
 
-  {# Bootstrap row for two-column layout #}
-  <div class="row">
-    
-    {# Left column: exposed filters (width 3 of 12) #}
+  {# Horizontal tabs at full width #}
   {% if exposed %}
-      <div class="col-md-3 mb-3">
-        {{ exposed }}
+    <div class="mb-4">
+      {{ exposed }}
     </div>
   {% endif %}
 
-    {# Right column: content rows (width 9 of 12) #}
-    <div class="col-md-9">
-  {% if rows %}
+  {# Content rows at full width #}
+  <div class="portfolio-content">
+    {% if rows %}
       {{ rows }}
-  {% elseif empty %}
-        <div class="view-empty">{{ empty }}</div>
-      {% endif %}
-    </div>
-
-  </div> {# end row #}
+    {% elseif empty %}
+      <div class="view-empty">{{ empty }}</div>
+    {% endif %}
+  </div>
 
   {% if pager %}
     <div class="mt-3">

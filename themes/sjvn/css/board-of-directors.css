@@ -1,0 +1,368 @@
+/* ========================================
+   BOARD OF DIRECTORS PAGE STYLES
+   ======================================== */
+
+/* Page Introduction Text */
+.directors-message {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+  padding: 18px 20px;
+  background: #ebebeb;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+  text-align: justify;
+  margin-bottom: 15px;
+}
+
+/* Category Subtitle */
+.board_of_directors .subtitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-top: 20px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--primary-color);
+  position: relative;
+}
+
+.board_of_directors .subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: var(--secondary-color);
+}
+
+/* Profile Card - Compact Version */
+.board_of_directors .profile {
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  margin-bottom: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.board_of_directors .profile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Profile Image Container - Reduced Height */
+.board_of_directors .profile-img {
+  position: relative;
+  overflow: hidden;
+  background: #f0f0f0;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board_of_directors .profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.board_of_directors .profile:hover .profile-img img {
+  transform: scale(1.05);
+}
+
+/* Profile Text Content - Compact */
+.board_of_directors .profile-text {
+  padding: 15px 12px;
+  text-align: center;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.board_of_directors .profile-text h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #222;
+  margin: 0;
+  line-height: 1.3;
+  min-height: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board_of_directors .profile-text p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+  min-height: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board_of_directors .profile-text a {
+  display: inline-block;
+  padding: 8px 20px;
+  background: var(--primary-color);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  margin-top: 0;
+}
+
+.board_of_directors .profile-text a:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Director with Full Content Layout - Side by Side */
+.board_of_directors .director {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  border-radius: 10px;
+}
+
+.board_of_directors .director .profile-img {
+  width: 200px;
+  flex-shrink: 0;
+  height: auto;
+  min-height: 250px;
+}
+
+.board_of_directors .director .profile-text {
+  text-align: left;
+  padding: 25px;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.board_of_directors .director .profile-text h5 {
+  text-align: left;
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+}
+
+.board_of_directors .director .profile-text p {
+  text-align: left;
+  font-size: 1rem;
+  color: #888;
+}
+
+/* Common Text Content - Side by Side Layout */
+.board_of_directors .common-text {
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.board_of_directors .common-text:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.board_of_directors .common-text p {
+  margin-bottom: 12px;
+}
+
+.board_of_directors .common-text h3,
+.board_of_directors .common-text h4 {
+  color: var(--primary-color);
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+
+/* Director Separator */
+.board_of_directors .director-separator {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ddd, transparent);
+  margin: 10px 0;
+}
+
+/* Block View Specific Styles */
+.board-block-view .row {
+  position: relative;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.board-block-view .row:hover {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+/* Grid Layout for Cards */
+.board_of_directors .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.board_of_directors .row > [class*="col-"] {
+  flex: 0 0 auto;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* Empty State */
+.board_of_directors .view-empty {
+  text-align: center;
+  padding: 50px 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .board_of_directors .container {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .board_of_directors .subtitle {
+    font-size: 1.6rem;
+  }
+
+  .board_of_directors .profile-img {
+    height: 200px;
+  }
+
+  .board_of_directors .director {
+    flex-direction: column;
+  }
+
+  .board_of_directors .director .profile-img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .board_of_directors .director .profile-text {
+    text-align: center;
+  }
+
+  .board_of_directors .director .profile-text h5,
+  .board_of_directors .director .profile-text p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .board_of_directors {
+    padding: 30px 0;
+  }
+
+  .board_of_directors .subtitle {
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+
+  .directors-message {
+    padding: 15px 20px;
+    font-size: 0.95rem;
+  }
+
+  .board_of_directors .profile-img {
+    height: 180px;
+  }
+
+  .board_of_directors .profile-text {
+    padding: 15px 12px;
+  }
+
+  .board_of_directors .profile-text h5 {
+    font-size: 1rem;
+  }
+
+  .board_of_directors .profile-text p {
+    font-size: 0.85rem;
+  }
+
+  .board_of_directors .common-text {
+    padding: 20px;
+    font-size: 0.95rem;
+  }
+
+  .board_of_directors .row {
+    gap: 8px;
+  }
+  
+  .board_of_directors .row > [class*="col-"] {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
+
+@media (max-width: 576px) {
+  .board_of_directors .profile-img {
+    height: 200px;
+  }
+
+  .board_of_directors .profile-text {
+    padding: 15px;
+  }
+
+  .board_of_directors .profile-text a {
+    padding: 7px 18px;
+    font-size: 0.8rem;
+  }
+
+  .board_of_directors .subtitle {
+    font-size: 1.3rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .board_of_directors {
+    background: #ffffff;
+  }
+
+  .board_of_directors .profile {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .board_of_directors .profile-text a {
+    display: none;
+  }
+}
+
+/* Accessibility Enhancements */
+.board_of_directors .profile:focus-within {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.board_of_directors .profile-text a:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}

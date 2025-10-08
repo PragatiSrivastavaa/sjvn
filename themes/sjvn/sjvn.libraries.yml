@@ -20,3 +20,44 @@ global-scripts:
     - core/jquery
     - core/drupal
     - core/drupalSettings
+
+# Page-specific libraries
+home-page:
+  version: 1.x
+  css:
+    theme:
+      css/home.css: {}
+  dependencies:
+    - sjvn/global-styling
+
+about-us:
+  version: 1.x
+  css:
+    theme:
+      css/about-us.css: {}
+  dependencies:
+    - sjvn/global-styling
+
+portfolio:
+  version: 1.x
+  css:
+    theme:
+      css/portfolio.css: {}
+  dependencies:
+    - sjvn/global-styling
+
+board-of-directors:
+  version: 1.x
+  css:
+    theme:
+      css/board-of-directors.css: {}
+  dependencies:
+    - sjvn/global-styling
+
+consultancy:
+  version: 1.x
+  css:
+    theme:
+      css/consultancy.css: {}
+  dependencies:
+    - sjvn/global-styling

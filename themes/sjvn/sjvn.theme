@@ -176,6 +176,16 @@ function sjvn_preprocess_views_view(&$variables) {
     ];
   }
   
+  // Attach board of directors library
+  if ($variables['view']->id() === 'board_of_directors') {
+    $variables['#attached']['library'][] = 'sjvn/board-of-directors';
+  }
+  
+  // Attach portfolio library
+  if ($variables['view']->id() === 'portfolio') {
+    $variables['#attached']['library'][] = 'sjvn/portfolio';
+  }
+  
 }
 
 

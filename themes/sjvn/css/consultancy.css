@@ -1,0 +1,321 @@
+/* ========================================
+   CONSULTANCY PAGE STYLES
+   ======================================== */
+
+/* Main Section */
+.overview-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.overview-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Section Title/Subtitle */
+.overview-section .subtitle {
+  color: var(--primary-color);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.overview-section .subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--secondary-color);
+  border-radius: 2px;
+}
+
+/* Content Block */
+.overview-section .content-block {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+  border-left: 4px solid var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.overview-section .content-block:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Paragraphs */
+.overview-section .content-block p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.overview-section .content-block p:last-child {
+  margin-bottom: 0;
+}
+
+.overview-section .content-block p strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Section Subtitle (h3) */
+.overview-section .section-subtitle {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--primary-light);
+}
+
+/* List Styling */
+.overview-section .list-style {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.overview-section .list-style li {
+  position: relative;
+  padding: 12px 0 12px 35px;
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #444;
+  transition: all 0.2s ease;
+}
+
+.overview-section .list-style li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 24px;
+  height: 24px;
+  background: var(--primary-color);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.overview-section .list-style li:hover {
+  padding-left: 40px;
+  color: var(--primary-color);
+}
+
+.overview-section .list-style li strong {
+  color: var(--primary-color);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 3px;
+}
+
+/* Specialty Sections */
+.overview-section .content-block:nth-of-type(1) {
+  border-left-color: var(--primary-color);
+}
+
+.overview-section .content-block:nth-of-type(2) {
+  border-left-color: var(--secondary-color);
+  background: linear-gradient(to right, rgba(253, 185, 19, 0.03), #ffffff);
+}
+
+.overview-section .content-block:nth-of-type(3) {
+  border-left-color: var(--primary-color);
+}
+
+/* Business & Financial Growth Section */
+.overview-section .content-block p:only-child {
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .overview-section {
+    padding: 50px 0;
+  }
+
+  .overview-section .subtitle {
+    font-size: 1.75rem;
+  }
+
+  .overview-section .content-block {
+    padding: 25px;
+  }
+
+  .overview-section .section-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .overview-section {
+    padding: 40px 0;
+  }
+
+  .overview-section .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+
+  .overview-section .subtitle::after {
+    width: 60px;
+    height: 3px;
+  }
+
+  .overview-section .content-block {
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+
+  .overview-section .content-block p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .overview-section .section-subtitle {
+    font-size: 1.15rem;
+  }
+
+  .overview-section .list-style li {
+    font-size: 0.95rem;
+    padding-left: 30px;
+  }
+
+  .overview-section .list-style li::before {
+    width: 20px;
+    height: 20px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .overview-section {
+    padding: 30px 0;
+  }
+
+  .overview-section .subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .overview-section .content-block {
+    padding: 15px;
+    margin-bottom: 25px;
+  }
+
+  .overview-section .content-block p {
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  .overview-section .section-subtitle {
+    font-size: 1.05rem;
+    margin-top: 20px;
+  }
+
+  .overview-section .list-style li {
+    font-size: 0.9rem;
+    padding-left: 28px;
+    margin-bottom: 10px;
+  }
+}
+
+/* ========================================
+   CONSULTANCY PAGE GALLERY ITEMS (if applicable)
+   Completely separate from about page
+   ======================================== */
+
+/* Consultancy Gallery Items */
+.view-consultancy .consultancy-item,
+.view-consultancy .gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: #ffffff;
+  height: 100%;
+}
+
+.view-consultancy .consultancy-item:hover,
+.view-consultancy .gallery-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Consistent image heights */
+.view-consultancy .consultancy-item img,
+.view-consultancy .gallery-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.view-consultancy .consultancy-item:hover img,
+.view-consultancy .gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Overlay styling */
+.view-consultancy .consultancy-overlay,
+.view-consultancy .gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, var(--primary-color), transparent);
+  padding: 20px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.view-consultancy .consultancy-item:hover .consultancy-overlay,
+.view-consultancy .gallery-item:hover .gallery-overlay {
+  transform: translateY(0);
+}
+
+.view-consultancy .consultancy-overlay span,
+.view-consultancy .gallery-overlay span {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: block;
+}
+
+/* Print Styles */
+@media print {
+  .overview-section {
+    padding: 20px 0;
+  }
+
+  .overview-section .content-block {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+
+  .overview-section .subtitle::after {
+    display: none;
+  }
+}
+

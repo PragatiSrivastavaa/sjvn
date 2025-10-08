@@ -1,0 +1,467 @@
+/* ========================================
+   HOME PAGE SPECIFIC STYLES
+   ======================================== */
+
+/* Banner Section */
+.banner-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner-section img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Announcement Bar */
+.announcement-bar {
+  display: flex;
+  align-items: center;
+  background: #fdb913;
+  color: #000;
+  font-weight: bold;
+  padding: 0px 10px;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.announcement-left {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.announcement-title {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.announcement-track-wrapper {
+  flex: 1;
+  background: var(--primary-color);
+  border-radius: 0px;
+  padding: 6px 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.announcement-track {
+  display: inline-flex;
+  gap: 12px;
+  animation: scrollAnnouncements 18s linear infinite;
+}
+
+.announcement-item {
+  background: transparent;
+  border: 1px solid var(--secondary-color);
+  border-radius: 20px;
+  padding: 2px 20px 2px 20px;
+  color: #3E3E3E;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  white-space: nowrap;
+}
+
+.announcement-item::before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+}
+
+.announcement-controls {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.announcement-controls span {
+  background: var(--secondary-color);
+  color: #000;
+  border: 1px solid #00000033;
+  padding: 2px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.3s;
+}
+
+.announcement-controls span:hover {
+  background: var(--secondary-color);
+}
+
+@keyframes scrollAnnouncements {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* About Section */
+.about-section {
+  padding: 30px 20px;
+  margin: 20px auto;
+  max-width: 100%;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.about-section h3 {
+  color: var(--primary-color);
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.about-section-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.about-section-main p {
+  flex: 1 1 48%;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: justify;
+  color: #333;
+}
+
+/* Power Station Section */
+.power-station-section {
+  text-align: center !important;
+  background-color: var(--primary-light) !important;
+  padding: 30px 0 !important;
+}
+
+.power-station-section h3 {
+  color: var(--primary-color) !important;
+  line-height: 30px !important;
+  margin-bottom: 0 !important;
+}
+
+.power-station-section .carousel-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 800px !important;
+  margin: 20px auto !important;
+  height: 300px !important;
+  overflow: visible !important;
+}
+
+.power-station-section .carousel {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.power-station-section .power-item {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background: #fff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+  padding: 30px 20px !important;
+  min-width: 180px !important;
+  max-width: 200px !important;
+  transition: all 0.6s ease !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  opacity: 0.3 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  border: 2px solid #ddd !important;
+  margin: 0 !important;
+}
+
+.power-station-section .power-item:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+}
+
+.power-station-section .power-item .count {
+  display: block !important;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  color: var(--primary-color) !important;
+  margin-bottom: 8px !important;
+  padding: 0 !important;
+}
+
+.power-station-section .power-item .label {
+  display: block !important;
+  font-size: 14px !important;
+  transition: all 0.6s ease !important;
+  color: #555 !important;
+  font-weight: 500 !important;
+  padding: 0 !important;
+}
+
+.power-station-section .carousel-button {
+  background-color: var(--primary-color) !important;
+  border: none !important;
+  color: white !important;
+  font-size: 18px !important;
+  cursor: pointer !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+  z-index: 20 !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin: 0 !important;
+}
+
+.power-station-section .carousel-button.left {
+  left: 10px !important;
+  right: auto !important;
+}
+
+.power-station-section .carousel-button.right {
+  right: 10px !important;
+  left: auto !important;
+}
+
+.power-station-section .carousel-button:hover {
+  background-color: var(--primary-color) !important;
+  opacity: 0.8 !important;
+}
+
+.power-station-section .power-item.active {
+  transform: translate(-50%, -50%) scale(1.2) !important;
+  opacity: 1 !important;
+  border: 3px solid var(--primary-color) !important;
+  z-index: 10 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+.power-station-section .power-item.active .count {
+  font-size: 32px !important;
+  color: var(--primary-color) !important;
+  font-weight: 900 !important;
+}
+
+.power-station-section .power-item.active .label {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: var(--primary-color) !important;
+}
+
+/* Chairman Section */
+.chairman-section {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+/* News Alert Section */
+.news-alert-section {
+  background: var(--primary-color);
+  padding: 50px 0;
+}
+
+.news-alert-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  gap: 25px;
+  padding: 0 20px;
+}
+
+.news-column,
+.alert-column {
+  flex: 1;
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.section-heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid var(--primary-color);
+}
+
+/* Our Business Section */
+.our-business-section {
+  width: 100%;
+  background: #f8fcff;
+  padding: 60px 0;
+}
+
+/* Quick Links Section */
+.quick-links-section {
+  background: linear-gradient(to bottom, white, var(--secondary-color));
+  padding: 20px 0px 30px 0px;
+}
+
+.quick-action-section-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.quick-links-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.quick-links-container {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+}
+
+.quick-links-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Photo Gallery Section */
+.photo-gallery-section {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+.gallery-section-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Logo Carousel */
+.logo-carousel {
+  padding: 40px 0;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .news-alert-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .about-section-main {
+    flex-direction: column;
+  }
+
+  .about-section-main p {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section,
+  .power-station-section,
+  .chairman-section,
+  .news-alert-section,
+  .our-business-section,
+  .quick-links-section,
+  .photo-gallery-section {
+    padding: 40px 0;
+  }
+
+  .power-station-section h3,
+  .quick-action-section-heading,
+  .gallery-section-heading {
+    font-size: 1.6rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+  }
+
+  .announcement-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .news-alert-container {
+    padding: 0 15px;
+  }
+
+  .power-station-section .carousel-wrapper {
+    max-width: 600px !important;
+    height: 250px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .announcement-left {
+    font-size: 1rem;
+  }
+
+  .news-column,
+  .alert-column {
+    padding: 20px 15px;
+  }
+
+  .about-section {
+    padding: 20px 10px;
+  }
+
+  .power-station-section .power-item {
+    min-width: 140px !important;
+    max-width: 160px !important;
+    padding: 20px 15px !important;
+  }
+
+  .power-station-section .carousel-wrapper {
+    max-width: 400px !important;
+    height: 200px !important;
+  }
+}
+

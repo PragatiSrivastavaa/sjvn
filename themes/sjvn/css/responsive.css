@@ -631,12 +631,12 @@
 
   .gallery-item {
     border-radius: 4px;
-    min-height: 120px;
+    height: 180px;
   }
 
   .gallery-overlay {
-    font-size: 14px;
-    padding: 8px;
+    font-size: 0.85rem;
+    padding: 12px 8px;
   }
 
   /* Logo Carousel Optimization */
@@ -779,8 +779,14 @@
   }
 
   .gallery-item {
-    min-height: 100px;
+    height: 160px;
   }
+  
+  .gallery-overlay {
+    font-size: 0.8rem;
+    padding: 10px 6px;
+  }
+
 
   .carousel-track img {
     height: 30px;
@@ -964,7 +970,12 @@
   }
 
   .gallery-item {
-    min-height: 80px;
+    height: 100px;
+  }
+  
+  .gallery-overlay {
+    font-size: 0.75rem;
+    padding: 8px 6px;
   }
 
   .logo-carousel {

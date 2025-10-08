@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Theme override to display a view of unformatted rows.
+ * Theme override to display a view of unformatted rows - Board of Directors Block.
  *
  * Available variables:
  * - title: The title of this group of rows. May be empty.
@@ -15,27 +15,39 @@
  * @see template_preprocess_views_view_unformatted()
  */
 #}
-<section class="inner-sec board_of_directors">
-    <div class="container">
-        <div class="row">
-{% for row in rows %}
-                    <div class="col-sm-4 col-lg-3">
-                        <div class="profile director">
-                            <div class="profile-img">
-                                    {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_image_of_directors }}'] }}
-                            </div>
-                            <div class="profile-text">
-                                <h5>{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}</h5>
-                                <p>{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_degination }}'] }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-8 col-lg-9">
-                        <div class="common-text">
-                           {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ body }}'] }} 
-                        </div>
-                    </div>
-					{% endfor %}
+
+<section class="inner-sec board_of_directors board-block-view">
+  <div class="container">
+    {% for row in rows %}
+      <div class="row align-items-center mb-5">
+        
+        {# Director Profile Card #}
+        <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
+          <div class="profile director" role="article" aria-label="Director profile">
+            <div class="profile-img">
+              {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] }}
+            </div>
+            <div class="profile-text">
+              <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h5>
+              <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_degination }}'] }}</p>
+            </div>
+          </div>
         </div>
-    </div>
+        
+        {# Director Bio/Content #}
+        <div class="col-md-8 col-lg-9">
+          <div class="common-text">
+            {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ body }}'] }}
+          </div>
+        </div>
+        
+      </div>
+      
+      {# Add separator between directors except for last one #}
+      {% if not loop.last %}
+        <hr class="director-separator">
+      {% endif %}
+      
+    {% endfor %}
+  </div>
 </section>
