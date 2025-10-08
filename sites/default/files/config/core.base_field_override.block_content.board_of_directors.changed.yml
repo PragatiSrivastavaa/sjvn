@@ -1,0 +1,18 @@
+uuid: 5b085981-def3-4a8d-a36e-2a8ce7558ee8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.board_of_directors
+id: block_content.board_of_directors.changed
+field_name: changed
+entity_type: block_content
+bundle: board_of_directors
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

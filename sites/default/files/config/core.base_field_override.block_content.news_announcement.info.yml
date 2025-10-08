@@ -1,0 +1,18 @@
+uuid: e45bf076-c4f8-4cd2-865f-575dae4c7de8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.news_announcement
+id: block_content.news_announcement.info
+field_name: info
+entity_type: block_content
+bundle: news_announcement
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

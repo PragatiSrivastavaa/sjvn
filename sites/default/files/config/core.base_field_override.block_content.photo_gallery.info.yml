@@ -1,0 +1,18 @@
+uuid: 54fd8788-2ccd-4b12-ba50-db3bfb020b62
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.photo_gallery
+id: block_content.photo_gallery.info
+field_name: info
+entity_type: block_content
+bundle: photo_gallery
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

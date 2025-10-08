@@ -1,0 +1,18 @@
+uuid: d433dfb0-1392-42e6-a106-a1c4017bf835
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.board_of_directors
+id: block_content.board_of_directors.info
+field_name: info
+entity_type: block_content
+bundle: board_of_directors
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

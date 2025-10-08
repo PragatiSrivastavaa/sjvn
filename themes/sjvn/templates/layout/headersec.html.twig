@@ -32,11 +32,10 @@
 
         <!-- Language Toggle -->
         <div class="language-toggle">
-          {% if language.getId() == 'hi' %}
-            <a href="{{ base_path }}" class="language-switch">English</a>
-          {% else %}
-            <a href="{{ base_path }}hi" class="language-switch">हिंदी</a>
-          {% endif %}
+          <ul>
+          <li class="lang-select">
+								{{ page.language }}
+					</li></ul>
         </div> |
 
         <!-- Theme Selectors (Inline) -->

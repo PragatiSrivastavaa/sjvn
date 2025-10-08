@@ -1,17 +1,17 @@
-uuid: fe34c272-f270-4b33-b912-d2b1c6839473
+uuid: 8bf378b9-40e2-4f30-a8c4-4ef26aa03865
 langcode: en
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.portfolio_cat
-id: taxonomy_term.portfolio_cat.status
+    - block_content.type.news_announcement
+id: block_content.news_announcement.status
 field_name: status
-entity_type: taxonomy_term
-bundle: portfolio_cat
+entity_type: block_content
+bundle: news_announcement
 label: Published
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: 1

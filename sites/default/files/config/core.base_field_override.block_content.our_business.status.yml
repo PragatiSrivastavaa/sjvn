@@ -1,17 +1,17 @@
-uuid: fe34c272-f270-4b33-b912-d2b1c6839473
+uuid: 8b9ed875-21f6-4da9-be43-99f97a744735
 langcode: en
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.portfolio_cat
-id: taxonomy_term.portfolio_cat.status
+    - block_content.type.our_business
+id: block_content.our_business.status
 field_name: status
-entity_type: taxonomy_term
-bundle: portfolio_cat
+entity_type: block_content
+bundle: our_business
 label: Published
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: 1
