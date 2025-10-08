@@ -105,30 +105,48 @@
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
       
-      // Position submenu to the right of the menu item
-      submenu.style.top = rect.top + 'px';
-      submenu.style.left = (rect.right) + 'px';
+      // Get the parent submenu container
+      const parentSubmenu = menuItem.closest('ul');
+      const parentRect = parentSubmenu ? parentSubmenu.getBoundingClientRect() : null;
+      
+      // Position submenu to the right of the parent submenu container
+      // Use 2-5px overlap to create a seamless connection and easier mouse access
+      if (parentRect) {
+        submenu.style.top = rect.top + 'px'; // Align with menu item vertically
+        submenu.style.left = (parentRect.right - 5) + 'px'; // Right edge of parent container with 5px overlap for easier access
+      } else {
+        // Fallback if no parent submenu found
+        submenu.style.top = rect.top + 'px';
+        submenu.style.left = (rect.right - 5) + 'px'; // 5px overlap
+      }
       
       // Check if submenu goes off-screen to the right
-      if (rect.right + submenuRect.width > viewportWidth) {
-        // Show to the left of parent if it overflows right
-        submenu.style.left = (rect.left - submenuRect.width) + 'px';
+      const estimatedRight = parentRect ? parentRect.right + submenuRect.width : rect.right + submenuRect.width;
+      if (estimatedRight > viewportWidth - 10) {
+        // Show to the left of parent submenu if it overflows right
+        if (parentRect) {
+          submenu.style.left = (parentRect.left - submenuRect.width + 5) + 'px'; // Left side with 5px overlap
+        } else {
+          submenu.style.left = (rect.left - submenuRect.width + 5) + 'px';
+        }
       }
       
       // Check if submenu goes off-screen to the bottom
-      if (rect.top + submenuRect.height > viewportHeight) {
-        submenu.style.top = (viewportHeight - submenuRect.height - 10) + 'px';
+      if (rect.top + submenuRect.height > viewportHeight - 10) {
+        // Align to bottom of viewport
+        submenu.style.top = Math.max(10, viewportHeight - submenuRect.height - 10) + 'px';
       }
       
-      // Ensure submenu stays within viewport bounds
-      const finalLeft = parseFloat(submenu.style.left);
-      if (finalLeft < 0) {
-        submenu.style.left = '10px';
-      }
-      
+      // Check if submenu goes off-screen to the top
       const finalTop = parseFloat(submenu.style.top);
-      if (finalTop < 0) {
+      if (finalTop < 10) {
         submenu.style.top = '10px';
+      }
+      
+      // Ensure submenu stays within viewport bounds horizontally
+      const finalLeft = parseFloat(submenu.style.left);
+      if (finalLeft < 10) {
+        submenu.style.left = '10px';
       }
     }
     
@@ -209,7 +227,12 @@
             });
           } else {
             // Level 2+: Show submenu to the right
+            let hideTimeout;
+            
             menuItem.addEventListener('mouseenter', function() {
+              // Clear any pending hide timeout
+              clearTimeout(hideTimeout);
+              
               positionNestedSubmenu(menuItem, submenu);
               
               submenu.style.transitionDelay = '0s';
@@ -219,10 +242,32 @@
             });
             
             menuItem.addEventListener('mouseleave', function() {
-              submenu.style.transitionDelay = '0.1s';
-              submenu.style.opacity = '0';
-              submenu.style.visibility = 'hidden';
-              submenu.style.transform = 'translateX(-10px)';
+              // Delay hiding to allow mouse movement to submenu - increased to 300ms for easier access
+              hideTimeout = setTimeout(function() {
+                submenu.style.transitionDelay = '0s';
+                submenu.style.opacity = '0';
+                submenu.style.visibility = 'hidden';
+                submenu.style.transform = 'translateX(-10px)';
+              }, 300); // 300ms delay for easier navigation
+            });
+            
+            // Keep submenu visible when mouse enters it
+            submenu.addEventListener('mouseenter', function() {
+              clearTimeout(hideTimeout);
+              submenu.style.transitionDelay = '0s';
+              submenu.style.opacity = '1';
+              submenu.style.visibility = 'visible';
+              submenu.style.transform = 'translateX(0)';
+            });
+            
+            submenu.addEventListener('mouseleave', function() {
+              // Delay hiding when leaving submenu as well
+              hideTimeout = setTimeout(function() {
+                submenu.style.transitionDelay = '0s';
+                submenu.style.opacity = '0';
+                submenu.style.visibility = 'hidden';
+                submenu.style.transform = 'translateX(-10px)';
+              }, 200); // 200ms delay when leaving submenu
             });
           }
         }

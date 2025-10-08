@@ -1348,14 +1348,29 @@
   border-radius: 8px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
+  transform: translateX(-10px);
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
   z-index: 10001;
   list-style: none;
   margin: 0;
   padding: 0;
   pointer-events: auto;
-  border-left: 2px solid rgba(255, 255, 255, 0.2);
+  /* Create visual overlap with parent menu for easier mouse access */
+  border-left: 3px solid var(--primary-color);
+  margin-left: -3px;
+}
+
+/* Create an invisible bridge/hover zone between parent and nested submenu */
+#superfish-main ul li.menuparent::before,
+#superfish-main ul li:has(> ul)::before {
+  content: '';
+  position: fixed;
+  width: 10px;
+  height: 100%;
+  right: -10px;
+  top: 0;
+  pointer-events: auto;
+  z-index: 10000;
 }
 
 /* Remove conflicting positioning rules - handled by our custom code */
@@ -1539,9 +1554,15 @@
   border-radius: 8px !important;
   z-index: 99999 !important;
   list-style: none !important;
-  margin: 0 !important;
   padding: 0 !important;
   pointer-events: auto !important;
+  
+  /* Create visual overlap with parent menu for easier mouse access */
+  border-left: 3px solid var(--primary-color) !important;
+  margin-left: -3px !important;
+  margin-top: 0 !important;
+  margin-right: 0 !important;
+  margin-bottom: 0 !important;
   
   /* Smooth transition */
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease !important;
@@ -1731,6 +1752,7 @@
   font-size: 0.8em;
   margin-left: auto;
   padding-left: 10px;
+  padding-right: 5px;
   transition: transform 0.3s ease;
   float: right;
   color: rgba(255, 255, 255, 0.8);
@@ -1742,7 +1764,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 35px;
+  padding-right: 15px;
   position: relative;
   user-select: none;
 }
