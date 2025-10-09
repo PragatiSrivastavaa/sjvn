@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'ec4b7260788f0e40fe1a430f6fda200b5507f644',
+        'reference' => 'd95aaa2a70da8d2c810a2bbe9d11a6cfc4d87370',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -321,7 +321,7 @@
             'version' => '10.5.3.0',
             'reference' => 'f0463740dbeaaa3b6bb44064055ad5deef004048',
             'type' => 'metapackage',
-            'install_path' => null,
+            'install_path' => NULL,
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -472,7 +472,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'ec4b7260788f0e40fe1a430f6fda200b5507f644',
+            'reference' => 'd95aaa2a70da8d2c810a2bbe9d11a6cfc4d87370',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -808,8 +808,8 @@
         'psr/container-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.1|2.0',
-                1 => '^1.0',
+                0 => '^1.0',
+                1 => '1.1|2.0',
             ),
         ),
         'psr/event-dispatcher' => array(
