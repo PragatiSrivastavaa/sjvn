@@ -959,7 +959,7 @@
   position: relative !important;
   width: 100% !important;
   height: 100% !important;
-  padding-top: 40px !important;
+  padding-top: 270px !important;
   margin: 0 !important;
   border: none !important;
 }
@@ -969,12 +969,12 @@
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
-  width: 100px !important;
-  height: 100px !important;
+  width: 120px !important;
+  height: 120px !important;
   background-color: white !important;
   border-radius: 50% !important;
   text-align: center !important;
-  padding: 20px !important;
+  padding: 15px !important;
   transform: translate(-50%, -50%) !important;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
@@ -985,6 +985,8 @@
   cursor: pointer !important;
   border: none !important;
   margin: 0 !important;
+  overflow: hidden !important;
+  word-wrap: break-word !important;
 }
 
 .power-station-section .power-item:hover {
@@ -1002,11 +1004,15 @@
 
 .power-station-section .power-item .label {
   display: block !important;
-  font-size: 14px !important;
+  font-size: 12px !important;
   transition: all 0.6s ease !important;
-  line-height: 1.2 !important;
+  line-height: 1.1 !important;
   margin: 0 !important;
   padding: 0 !important;
+  text-align: center !important;
+  word-wrap: break-word !important;
+  hyphens: auto !important;
+  max-width: 100% !important;
 }
 
 /* Custom carousel buttons - override Bootstrap button styles */
@@ -1063,7 +1069,7 @@
 }
 
 .power-station-section .power-item.active .label {
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 600 !important;
   color: var(--primary-color) !important;
 }
@@ -1146,7 +1152,226 @@
 }
 
 .power-station-section .power-item.hidden .label {
-  font-size: 10px !important;
+  font-size: 9px !important;
+}
+
+/* Mobile Responsive Styles for Power Station Section */
+@media (max-width: 768px) {
+  .power-station-section .carousel-wrapper {
+    max-width: 100% !important;
+    height: 180px !important;
+    padding: 0 20px !important;
+  }
+  
+  .power-station-section .power-item {
+    width: 100px !important;
+    height: 100px !important;
+    padding: 12px !important;
+  }
+  
+  .power-station-section .power-item .count {
+    font-size: 20px !important;
+  }
+  
+  .power-station-section .power-item .label {
+    font-size: 10px !important;
+    line-height: 1.0 !important;
+  }
+  
+  .power-station-section .power-item.active {
+    transform: translate(-50%, -50%) scale(1.15) !important;
+  }
+  
+  .power-station-section .power-item.active .count {
+    font-size: 28px !important;
+  }
+  
+  .power-station-section .power-item.active .label {
+    font-size: 12px !important;
+  }
+  
+  .power-station-section .power-item.left1 {
+    transform: translate(-110%, -50%) scale(1.0) !important;
+  }
+  
+  .power-station-section .power-item.left1 .count {
+    font-size: 18px !important;
+  }
+  
+  .power-station-section .power-item.left1 .label {
+    font-size: 9px !important;
+  }
+  
+  .power-station-section .power-item.left2 {
+    transform: translate(-180%, -50%) scale(0.8) !important;
+  }
+  
+  .power-station-section .power-item.left2 .count {
+    font-size: 16px !important;
+  }
+  
+  .power-station-section .power-item.left2 .label {
+    font-size: 8px !important;
+  }
+  
+  .power-station-section .power-item.right1 {
+    transform: translate(10%, -50%) scale(1.0) !important;
+  }
+  
+  .power-station-section .power-item.right1 .count {
+    font-size: 18px !important;
+  }
+  
+  .power-station-section .power-item.right1 .label {
+    font-size: 9px !important;
+  }
+  
+  .power-station-section .power-item.right2 {
+    transform: translate(80%, -50%) scale(0.8) !important;
+  }
+  
+  .power-station-section .power-item.right2 .count {
+    font-size: 16px !important;
+  }
+  
+  .power-station-section .power-item.right2 .label {
+    font-size: 8px !important;
+  }
+  
+  .power-station-section .power-item.hidden {
+    transform: translate(-50%, -50%) scale(0.5) !important;
+  }
+  
+  .power-station-section .power-item.hidden .count {
+    font-size: 14px !important;
+  }
+  
+  .power-station-section .power-item.hidden .label {
+    font-size: 7px !important;
+  }
+  
+  .power-station-section .carousel-button {
+    width: 35px !important;
+    height: 35px !important;
+    font-size: 20px !important;
+  }
+  
+  .power-station-section .carousel-button.left {
+    left: 5px !important;
+  }
+  
+  .power-station-section .carousel-button.right {
+    right: 5px !important;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .power-station-section .carousel-wrapper {
+    height: 160px !important;
+    padding: 0 15px !important;
+  }
+  
+  .power-station-section .power-item {
+    width: 90px !important;
+    height: 90px !important;
+    padding: 10px !important;
+  }
+  
+  .power-station-section .power-item .count {
+    font-size: 18px !important;
+  }
+  
+  .power-station-section .power-item .label {
+    font-size: 9px !important;
+    line-height: 0.9 !important;
+  }
+  
+  .power-station-section .power-item.active {
+    transform: translate(-50%, -50%) scale(1.1) !important;
+  }
+  
+  .power-station-section .power-item.active .count {
+    font-size: 24px !important;
+  }
+  
+  .power-station-section .power-item.active .label {
+    font-size: 11px !important;
+  }
+  
+  .power-station-section .power-item.left1 {
+    transform: translate(-100%, -50%) scale(0.95) !important;
+  }
+  
+  .power-station-section .power-item.left1 .count {
+    font-size: 16px !important;
+  }
+  
+  .power-station-section .power-item.left1 .label {
+    font-size: 8px !important;
+  }
+  
+  .power-station-section .power-item.left2 {
+    transform: translate(-160%, -50%) scale(0.75) !important;
+  }
+  
+  .power-station-section .power-item.left2 .count {
+    font-size: 14px !important;
+  }
+  
+  .power-station-section .power-item.left2 .label {
+    font-size: 7px !important;
+  }
+  
+  .power-station-section .power-item.right1 {
+    transform: translate(5%, -50%) scale(0.95) !important;
+  }
+  
+  .power-station-section .power-item.right1 .count {
+    font-size: 16px !important;
+  }
+  
+  .power-station-section .power-item.right1 .label {
+    font-size: 8px !important;
+  }
+  
+  .power-station-section .power-item.right2 {
+    transform: translate(70%, -50%) scale(0.75) !important;
+  }
+  
+  .power-station-section .power-item.right2 .count {
+    font-size: 14px !important;
+  }
+  
+  .power-station-section .power-item.right2 .label {
+    font-size: 7px !important;
+  }
+  
+  .power-station-section .power-item.hidden {
+    transform: translate(-50%, -50%) scale(0.4) !important;
+  }
+  
+  .power-station-section .power-item.hidden .count {
+    font-size: 12px !important;
+  }
+  
+  .power-station-section .power-item.hidden .label {
+    font-size: 6px !important;
+  }
+  
+  .power-station-section .carousel-button {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 18px !important;
+  }
+  
+  .power-station-section .carousel-button.left {
+    left: 2px !important;
+  }
+  
+  .power-station-section .carousel-button.right {
+    right: 2px !important;
+  }
 }
 
 /* Main Navigation */
@@ -2117,6 +2342,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 /* business */
