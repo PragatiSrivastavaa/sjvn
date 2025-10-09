@@ -7,10 +7,15 @@ dependencies:
     - node.type.investor_relations
     - taxonomy.vocabulary.investor_relations
   content:
+    - 'taxonomy_term:investor_relations:36b56860-dc28-4548-b5ef-0c29e42ac67b'
     - 'taxonomy_term:investor_relations:52f635aa-324d-46ca-b498-353d51c97187'
+    - 'taxonomy_term:investor_relations:54251976-40e8-4463-a2b8-5950f90d1f12'
     - 'taxonomy_term:investor_relations:6d186c01-1d3e-4807-a51d-c494a05984ce'
+    - 'taxonomy_term:investor_relations:9ccfd784-702d-47a6-a3ff-167ee2d7087b'
     - 'taxonomy_term:investor_relations:a1110259-c8e0-4000-9d2c-31aead60fdbf'
     - 'taxonomy_term:investor_relations:b3905475-bcf1-4633-a5fa-f434ee59c932'
+    - 'taxonomy_term:investor_relations:d40f134c-ae95-4214-9a53-526a720b59a1'
+    - 'taxonomy_term:investor_relations:e253c4fd-f48b-469b-8426-9b31f3735bcb'
     - 'taxonomy_term:investor_relations:e257dffa-718d-4b21-9347-f83b406b53d6'
   module:
     - file
@@ -172,7 +177,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div id=\"target-load\" class=\"tab-content target-load hide-x\">\r\n    <ul class=\"result-list\">\r\n                <li>\r\n                    <a target=\"_blank\" href=\"{{ field_upload_file }} \">\r\n                        {{ title }}  <img src=\" /sjvn/sites/default/files/2025-10/pdffileicon.png\">\r\n                    </a>\r\n                </li>\r\n</ul>\r\n</div>"
+            text: "<div class=\"report-div report-3\">\r\n    <ul class=\"result-list\">\r\n                <li>\r\n                    <a target=\"_blank\" href=\"{{ field_upload_file }} \">\r\n                        {{ title }}  <img src=\" /sjvn/sites/default/files/2025-10/pdffileicon.png\">\r\n                    </a>\r\n                </li>\r\n</ul>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -446,6 +451,100 @@ display:
         filter_groups: false
       display_extenders: {  }
       path: Corporate-Governance
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_upload_file'
+  page_10:
+    id: page_10
+    display_title: 'Page 10'
+    display_plugin: page
+    position: 10
+    display_options:
+      title: 'Financial Statements of Subsidiary Companies of SJVN Limited'
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            investor_relations: investor_relations
+        field_investor_relations_target_id:
+          id: field_investor_relations_target_id
+          table: node__field_investor_relations
+          field: field_investor_relations_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            39: 39
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: investor_relations
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        filters: false
+        filter_groups: false
+      display_extenders: {  }
+      path: Financial-Statements-of-Subsidiary-Companies-of-SJVN-Limited
     cache_metadata:
       max-age: -1
       contexts:
@@ -822,6 +921,397 @@ display:
         filter_groups: false
       display_extenders: {  }
       path: quarterly-result
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_upload_file'
+  page_6:
+    id: page_6
+    display_title: 'Page 6'
+    display_plugin: page
+    position: 6
+    display_options:
+      title: 'IEPF Details'
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            investor_relations: investor_relations
+        field_investor_relations_target_id:
+          id: field_investor_relations_target_id
+          table: node__field_investor_relations
+          field: field_investor_relations_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            41: 41
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: investor_relations
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        filters: false
+        filter_groups: false
+        footer: false
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: "<p>\r\n                        Procedure for claiming dividend/ shares from IEPF Authority\r\n                    </p>\r\n                    <p>\r\n                        Application to the Authority for claiming unpaid amounts/ shares out of Investor Education and Protection Fund (IEPF) shall be filed in Form IEPF - 5 is available on the following link:\r\n                    </p>\r\n                    <p>\r\n                        <a href=\"http://www.iepf.gov.in/IEPF/corporates.html\">http://www.iepf.gov.in/IEPF/corporates.html</a>\r\n                    </p>\r\n                    <p>\r\n                        Nodal Officer for IEPF Authority\r\n                    </p>\r\n                    <p>\r\n                        Mr Soumendra Das,\r\n                    </p>\r\n                    <p>\r\n                        Company Secretary, SJVN Limited\r\n                    </p>\r\n                    <p>\r\n                        Shakti Sadan, SJVN Corporate Office Complex,\r\n                    </p>\r\n                    <p>\r\n                        Shanan, Shimla - 171006, Himachal Pradesh\r\n                    </p>\r\n                    <p>\r\n                        Tel.No. +91 177 2660075\r\n                    </p>\r\n                    <p>\r\n                        Fax No. +91 177 2660071\r\n                    </p>\r\n                    <p>\r\n                        email: investor.relations@sjvn.nic.in\r\n                    </p>\r\n                    <p>\r\n                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; And\r\n                    </p>\r\n                    <p>\r\n                        Deputy Nodal Officer for IEPF Authority\r\n                    </p>\r\n                    <p>\r\n                        Mr Arun Kumar Sharma,\r\n                    </p>\r\n                    <p>\r\n                        Manager (CS), SJVN Limited\r\n                    </p>\r\n                    <p>\r\n                        Shakti Sadan, SJVN Corporate Office Complex,\r\n                    </p>\r\n                    <p>\r\n                        Shanan, Shimla - 171006, Himachal Pradesh\r\n                    </p>\r\n                    <p>\r\n                        Tel.No. +91 177 2660075\r\n                    </p>\r\n                    <p>\r\n                        Fax No. +91 177 2660071\r\n                    </p>\r\n                    <p>\r\n                        email: investor.relations@sjvn.nic.in\r\n                    </p>"
+            format: full_html
+          tokenize: false
+      display_extenders: {  }
+      path: iepf-details
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_upload_file'
+  page_7:
+    id: page_7
+    display_title: 'Page 7'
+    display_plugin: page
+    position: 7
+    display_options:
+      title: ' CMD Speech During AGM'
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            investor_relations: investor_relations
+        field_investor_relations_target_id:
+          id: field_investor_relations_target_id
+          table: node__field_investor_relations
+          field: field_investor_relations_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            42: 42
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: investor_relations
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        filters: false
+        filter_groups: false
+      display_extenders: {  }
+      path: CMD-Speech-During-AGM
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_upload_file'
+  page_8:
+    id: page_8
+    display_title: 'Page 8'
+    display_plugin: page
+    position: 8
+    display_options:
+      title: 'Annual Reports'
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            investor_relations: investor_relations
+        field_investor_relations_target_id:
+          id: field_investor_relations_target_id
+          table: node__field_investor_relations
+          field: field_investor_relations_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            40: 40
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: investor_relations
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        filters: false
+        filter_groups: false
+      display_extenders: {  }
+      path: Annual-Reports
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_upload_file'
+  page_9:
+    id: page_9
+    display_title: 'Page 9'
+    display_plugin: page
+    position: 9
+    display_options:
+      title: 'Annual Return'
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            investor_relations: investor_relations
+        field_investor_relations_target_id:
+          id: field_investor_relations_target_id
+          table: node__field_investor_relations
+          field: field_investor_relations_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            38: 38
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: investor_relations
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        filters: false
+        filter_groups: false
+      display_extenders: {  }
+      path: Annual-Return
     cache_metadata:
       max-age: -1
       contexts:
