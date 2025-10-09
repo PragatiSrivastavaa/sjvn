@@ -10,6 +10,7 @@ global-styling:
       css/inner-page.css: {}
       css/responsive.css: {}
       css/policies-and-schema.css: {}
+      css/table-design.css: {}
       css/gallery.css: {}
 global-scripts:
   version: 1.x
