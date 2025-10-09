@@ -10,6 +10,7 @@ global-styling:
       css/inner-page.css: {}
       css/responsive.css: {}
       css/policies-and-schema.css: {}
+      css/gallery.css: {}
 global-scripts:
   version: 1.x
   js:
@@ -60,5 +61,13 @@ consultancy:
   css:
     theme:
       css/consultancy.css: {}
+  dependencies:
+    - sjvn/global-styling
+
+faq:
+  version: 1.x
+  css:
+    theme:
+      css/faq.css: {}
   dependencies:
     - sjvn/global-styling

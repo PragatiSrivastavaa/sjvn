@@ -126,7 +126,7 @@
 .logo-left {
   display: flex;
   align-items: center;
-  padding-left: 20px;
+  gap: 10px;
   color: var(--text-color);
 }
 
@@ -1286,9 +1286,9 @@
   left: auto;
   background: var(--primary-color);
   min-width: 200px;
+  max-width: 400px;
   width: auto !important;
   min-width: auto !important;
-  max-width: none !important;
   height: auto !important;
   min-height: auto !important;
   max-height: none !important;
@@ -1313,8 +1313,8 @@
   top: auto;
   left: auto;
   background: var(--primary-color);
-  max-width: none !important;
   min-width: 200px;
+  max-width: 350px;
   height: auto !important;
   min-height: auto !important;
   max-height: none !important;
@@ -1380,10 +1380,12 @@
   padding: 12px 16px;
   color: #fff;
   text-decoration: none;
-  white-space: nowrap;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   height: auto;
-  /* min-height: 44px; */
-  line-height: 1.2;
+  min-height: 44px;
+  line-height: 1.4;
   justify-content: flex-start;
   cursor: pointer;
   pointer-events: auto;
@@ -1407,6 +1409,11 @@
   padding: 10px 20px;
   font-size: 0.9em;
   background: rgba(0, 0, 0, 0.1);
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-height: 40px;
+  line-height: 1.3;
 }
 
 #superfish-main ul ul a:hover {
@@ -1426,6 +1433,11 @@
   padding: 8px 25px;
   font-size: 0.85em;
   background: rgba(0, 0, 0, 0.2);
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-height: 36px;
+  line-height: 1.3;
 }
 
 #superfish-main ul ul ul a:hover {
@@ -2297,7 +2309,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   margin: 10px 0px;
-  height: 110px;
+  height: 180px;
   /* Fixed height for consistent grid */
 }
 
@@ -2577,4 +2589,214 @@
   display: flex;
   justify-content: end;
   margin-top: 20px;
+}
+
+
+/*------------------------ Job Info Table Styling -------------------------------------*/
+
+/* Job Info Table Styling */
+.table.job-info {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border: 1px solid var(--primary-light2, #e0e0e0);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+/* Table Cells */
+.table.job-info td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+  color: #333;
+  font-size: 15px;
+}
+
+/* Header / Title Row */
+.table.job-info tr:first-child td {
+  background: var(--primary-light2, #f3f6ff);
+  color: var(--primary-color, #004aad);
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  border-bottom: 2px solid var(--primary-color, #004aad);
+}
+
+/* Bold Labels */
+.table.job-info td strong {
+  color: var(--primary-color, #004aad);
+  font-weight: 600;
+}
+
+/* Links */
+.table.job-info a {
+  color: var(--primary-color, #004aad);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.table.job-info a:hover {
+  color: var(--primary-dark, #002f6c);
+  text-decoration: underline;
+}
+
+/* Date styling */
+.table.job-info time.datetime {
+  color: #555;
+  font-style: italic;
+  font-size: 14px;
+}
+
+/* Remove last border */
+.table.job-info tr:last-child td {
+  border-bottom: none;
+  text-align: center;
+  padding: 14px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .table.job-info td {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+  }
+
+  .table.job-info tr:first-child td {
+    font-size: 15px;
+  }
+}
+
+.view-id-current_job.view-filters{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.view-id-current_job select.form-select,
+.view-id-current_job input.form-date {
+  padding: 8px 12px;
+  border: 1px solid var(--primary-light);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--text-color);
+  background-color: #fff;
+}
+
+.view-id-current_job select.form-select:focus,
+.view-id-current_job input.form-date:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 3px var(--primary-light);
+}
+
+.view-id-current_job .form-actions .form-submit {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.view-id-current_job .form-actions .form-submit:hover {
+  background-color: var(--primary-dark);
+}
+
+.view-id-current_job .form--inline .form-item {
+  margin-right: 1rem;
+  flex: 1 1 auto;
+}
+
+.view-id-current_job .form-item select,
+.view-id-current_job .form-item input {
+  width: 100%;
+}
+
+.view-id-current_job .form-item-title-selective select { width: 250px; }
+.view-id-current_job .form-item-field-month-target-id select { width: 150px; }
+.view-id-current_job .form-item-field-publish-date-value input,
+.view-id-current_job .form-item-field-last-date-of-submission-value input { width: 160px; }
+
+/* Current Job View Table Visibility */
+.view-id-current_job table {
+  display: table !important;
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin-top: 20px !important;
+  background-color: #fff !important;
+  border: 1px solid #ddd !important;
+}
+
+.view-id-current_job table thead {
+  display: table-header-group !important;
+  background-color: var(--primary-color) !important;
+  color: #fff !important;
+}
+
+.view-id-current_job table tbody {
+  display: table-row-group !important;
+}
+
+.view-id-current_job table tr {
+  display: table-row !important;
+  border-bottom: 1px solid #ddd !important;
+}
+
+.view-id-current_job table tr:nth-child(even) {
+  background-color: #f9f9f9 !important;
+}
+
+.view-id-current_job table tr:hover {
+  background-color: #f5f5f5 !important;
+}
+
+.view-id-current_job table th,
+.view-id-current_job table td {
+  display: table-cell !important;
+  padding: 12px 15px !important;
+  text-align: left !important;
+  border: 1px solid #ddd !important;
+  vertical-align: top !important;
+}
+
+.view-id-current_job table th {
+  font-weight: 600 !important;
+  background-color: var(--primary-color) !important;
+  color: #fff !important;
+  border-color: var(--primary-color) !important;
+}
+
+.view-id-current_job table td {
+  background-color: #fff !important;
+  color: #333 !important;
+}
+
+.view-id-current_job table td a {
+  color: var(--primary-color) !important;
+  text-decoration: none !important;
+}
+
+.view-id-current_job table td a:hover {
+  text-decoration: underline !important;
+}
+
+/* Responsive table for mobile */
+@media (max-width: 768px) {
+  .view-id-current_job table {
+    font-size: 14px !important;
+  }
+  
+  .view-id-current_job table th,
+  .view-id-current_job table td {
+    padding: 8px 10px !important;
+  }
 }

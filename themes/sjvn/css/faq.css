@@ -1,0 +1,500 @@
+/* ===================================
+   FAQ Page Styles - Page ID: page-67
+   =================================== */
+
+#page-67 {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+  padding: 3rem 0;
+  min-height: 100vh;
+}
+
+/* Page Container */
+#page-67 .region-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Block Container */
+#page-67 .block-system-main-block {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Article/Node Container */
+#page-67 article.node {
+  background: transparent;
+  padding: 0;
+}
+
+#page-67 .node__content {
+  background: transparent;
+}
+
+/* ===================================
+   FAQ Header/Title Section
+   =================================== */
+
+#page-67 .subtitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a2942;
+  text-align: center;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+#page-67 .subtitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #0056b3, #007bff);
+  border-radius: 2px;
+}
+
+/* Optional: Add intro text styling if needed */
+#page-67 .field--name-body > p:first-of-type {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #5a6c7d;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===================================
+   Accordion Container
+   =================================== */
+
+#page-67 .accordion {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* ===================================
+   Accordion Items
+   =================================== */
+
+#page-67 .accordion-item {
+  background: #ffffff;
+  border: none;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+#page-67 .accordion-item:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+#page-67 .accordion-item:last-child {
+  margin-bottom: 0;
+}
+
+/* ===================================
+   Accordion Header
+   =================================== */
+
+#page-67 .accordion-header {
+  margin: 0;
+  border: none;
+}
+
+/* ===================================
+   Accordion Button (Question)
+   =================================== */
+
+#page-67 .accordion-button {
+  background: #ffffff;
+  color: #2c3e50;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 1.25rem 3.5rem 1.25rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  text-align: left;
+  transition: all 0.3s ease;
+  position: relative;
+  line-height: 1.6;
+  box-shadow: none;
+}
+
+#page-67 .accordion-button:hover {
+  background: #f8f9fa;
+  color: #0056b3;
+}
+
+#page-67 .accordion-button:not(.collapsed) {
+  background: linear-gradient(135deg, #0056b3 0%, #007bff 100%);
+  color: #ffffff;
+  box-shadow: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#page-67 .accordion-button:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+  outline: none;
+}
+
+/* Remove default Bootstrap focus ring */
+#page-67 .accordion-button:not(.collapsed)::after {
+  background-image: none;
+}
+
+/* ===================================
+   Accordion Button Icon (Plus/Minus)
+   =================================== */
+
+#page-67 .accordion-button::after {
+  content: '+';
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8ecf1;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0056b3;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  background-image: none;
+}
+
+#page-67 .accordion-button:hover::after {
+  background: #0056b3;
+  color: #ffffff;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+#page-67 .accordion-button:not(.collapsed)::after {
+  content: '−';
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: translateY(-50%) rotate(0deg);
+}
+
+/* ===================================
+   Accordion Body (Answer)
+   =================================== */
+
+#page-67 .accordion-collapse {
+  border: none;
+  transition: all 0.3s ease;
+}
+
+#page-67 .accordion-body {
+  padding: 1.5rem 1.5rem 1.75rem 1.5rem;
+  background: #ffffff;
+  color: #495057;
+  font-size: 1rem;
+  line-height: 1.8;
+  border-top: 1px solid rgba(0, 86, 179, 0.1);
+}
+
+#page-67 .accordion-item:has(.accordion-button:not(.collapsed)) {
+  box-shadow: 0 6px 20px rgba(0, 86, 179, 0.15);
+}
+
+/* ===================================
+   Number Badge (Optional Enhancement)
+   =================================== */
+
+/* Add counter for FAQ numbers */
+#page-67 .accordion {
+  counter-reset: faq-counter;
+}
+
+#page-67 .accordion-item {
+  counter-increment: faq-counter;
+}
+
+#page-67 .accordion-button::before {
+  content: counter(faq-counter, decimal-leading-zero);
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-right: 1rem;
+  flex-shrink: 0;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+#page-67 .accordion-button {
+  padding-left: 4.5rem;
+}
+
+#page-67 .accordion-button:hover::before {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+#page-67 .accordion-button:not(.collapsed)::before {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+}
+
+/* ===================================
+   Contextual Links (Admin Tools)
+   =================================== */
+
+#page-67 .contextual {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+/* ===================================
+   Loading/Animation States
+   =================================== */
+
+#page-67 .accordion-item {
+  animation: fadeInUp 0.5s ease backwards;
+}
+
+#page-67 .accordion-item:nth-child(1) { animation-delay: 0.05s; }
+#page-67 .accordion-item:nth-child(2) { animation-delay: 0.1s; }
+#page-67 .accordion-item:nth-child(3) { animation-delay: 0.15s; }
+#page-67 .accordion-item:nth-child(4) { animation-delay: 0.2s; }
+#page-67 .accordion-item:nth-child(5) { animation-delay: 0.25s; }
+#page-67 .accordion-item:nth-child(6) { animation-delay: 0.3s; }
+#page-67 .accordion-item:nth-child(7) { animation-delay: 0.35s; }
+#page-67 .accordion-item:nth-child(8) { animation-delay: 0.4s; }
+#page-67 .accordion-item:nth-child(9) { animation-delay: 0.45s; }
+#page-67 .accordion-item:nth-child(10) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+   Scrollbar Styling (Optional)
+   =================================== */
+
+#page-67 ::-webkit-scrollbar {
+  width: 8px;
+}
+
+#page-67 ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+#page-67 ::-webkit-scrollbar-thumb {
+  background: #0056b3;
+  border-radius: 4px;
+}
+
+#page-67 ::-webkit-scrollbar-thumb:hover {
+  background: #003d82;
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+
+@media (max-width: 768px) {
+  #page-67 {
+    padding: 2rem 0;
+  }
+
+  #page-67 .subtitle {
+    font-size: 1.85rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  #page-67 .accordion {
+    padding: 1rem 0;
+  }
+
+  #page-67 .accordion-item {
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+  }
+
+  #page-67 .accordion-button {
+    font-size: 0.95rem;
+    padding: 1rem 3rem 1rem 3.5rem;
+  }
+
+  #page-67 .accordion-button::before {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+    left: 1rem;
+  }
+
+  #page-67 .accordion-button {
+    padding-left: 3.5rem;
+  }
+
+  #page-67 .accordion-button::after {
+    width: 28px;
+    height: 28px;
+    font-size: 1.25rem;
+    right: 1rem;
+  }
+
+  #page-67 .accordion-body {
+    padding: 1.25rem 1rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #page-67 {
+    padding: 1.5rem 0;
+  }
+
+  #page-67 .region-content {
+    padding: 0 15px;
+  }
+
+  #page-67 .subtitle {
+    font-size: 1.5rem;
+  }
+
+  #page-67 .subtitle::after {
+    width: 60px;
+    height: 3px;
+  }
+
+  #page-67 .accordion-button {
+    font-size: 0.9rem;
+    padding: 0.9rem 2.5rem 0.9rem 1rem;
+    line-height: 1.5;
+  }
+
+  /* Remove number badges on very small screens for better readability */
+  #page-67 .accordion-button::before {
+    display: none;
+  }
+
+  #page-67 .accordion-button {
+    padding-left: 1rem;
+  }
+
+  #page-67 .accordion-button::after {
+    width: 24px;
+    height: 24px;
+    font-size: 1.1rem;
+    right: 0.75rem;
+  }
+
+  #page-67 .accordion-body {
+    padding: 1rem 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ===================================
+   Print Styles
+   =================================== */
+
+@media print {
+  #page-67 {
+    background: white;
+  }
+
+  #page-67 .accordion-item {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+    margin-bottom: 0.5rem;
+  }
+
+  #page-67 .accordion-button {
+    background: white !important;
+    color: black !important;
+  }
+
+  #page-67 .accordion-body {
+    display: block !important;
+    height: auto !important;
+  }
+
+  #page-67 .accordion-button::after {
+    display: none;
+  }
+
+  #page-67 .contextual {
+    display: none;
+  }
+}
+
+/* ===================================
+   Accessibility Improvements
+   =================================== */
+
+#page-67 .accordion-button:focus-visible {
+  outline: 3px solid #0056b3;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  #page-67 .accordion-item {
+    border: 2px solid #000;
+  }
+
+  #page-67 .accordion-button {
+    border: 1px solid #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  #page-67 .accordion-item {
+    animation: none;
+  }
+
+  #page-67 .accordion-button,
+  #page-67 .accordion-button::after,
+  #page-67 .accordion-button::before,
+  #page-67 .accordion-collapse {
+    transition: none;
+  }
+
+  #page-67 .accordion-item:hover {
+    transform: none;
+  }
+}
+

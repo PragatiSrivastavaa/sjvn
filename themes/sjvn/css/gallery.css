@@ -1,0 +1,209 @@
+.pressreless-box{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    border: 1px solid var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.pressreless-box div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: #fff;
+    min-width: 120px;
+    height: 100%;
+}
+
+/* Enhanced Pagination Styles */
+#pagination-heading + ul.pager__items {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    list-style: none;
+    margin: 10px auto;
+    padding: 0;
+    flex-wrap: wrap;
+    max-width: 600px;
+}
+
+#pagination-heading ~ ul.pager__items li {
+    margin: 0;
+    padding: 0;
+}
+
+#pagination-heading ~ ul.pager__items li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #d1d5db;
+    background-color: #ffffff;
+    color:var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+#pagination-heading ~ ul.pager__items li a:hover {
+    background-color: #f9fafb;
+    color: #111827;
+    border-color: #9ca3af;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#pagination-heading ~ ul.pager__items li a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 1px;
+}
+
+#pagination-heading ~ ul.pager__items li.is-active a {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-weight: 600;
+    border-color: var(--primary-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* Previous/Next button styling */
+#pagination-heading ~ ul.pager__items li.pager__item--previous a,
+#pagination-heading ~ ul.pager__items li.pager__item--next a {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+    color: #374151;
+    font-weight: 500;
+    min-width: auto;
+    padding: 6px 14px;
+}
+
+#pagination-heading ~ ul.pager__items li.pager__item--previous a:hover,
+#pagination-heading ~ ul.pager__items li.pager__item--next a:hover {
+    background-color: #f3f4f6;
+    color: #111827;
+    border-color: #9ca3af;
+}
+
+#pagination-heading ~ ul.pager__items li.pager__item--previous a:disabled,
+#pagination-heading ~ ul.pager__items li.pager__item--next a:disabled {
+    background-color: #f9fafb;
+    color: #9ca3af;
+    border-color: #e5e7eb;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Ellipsis styling */
+#pagination-heading ~ ul.pager__items li.pager__item--ellipsis a {
+    background-color: transparent;
+    border: none;
+    color: #6b7280;
+    cursor: default;
+    box-shadow: none;
+    min-width: 40px;
+}
+
+#pagination-heading ~ ul.pager__items li.pager__item--ellipsis a:hover {
+    background-color: transparent;
+    color: #6b7280;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #pagination-heading + ul.pager__items {
+        gap: 2px;
+        margin: 15px auto;
+        padding: 0 10px;
+    }
+    
+    #pagination-heading ~ ul.pager__items li a {
+        min-width: 36px;
+        height: 36px;
+        padding: 4px 8px;
+        font-size: 13px;
+    }
+    
+    #pagination-heading ~ ul.pager__items li.pager__item--previous a,
+    #pagination-heading ~ ul.pager__items li.pager__item--next a {
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    #pagination-heading ~ ul.pager__items li a {
+        min-width: 32px;
+        height: 32px;
+        padding: 3px 6px;
+        font-size: 12px;
+    }
+    
+    #pagination-heading ~ ul.pager__items li.pager__item--previous a,
+    #pagination-heading ~ ul.pager__items li.pager__item--next a {
+        padding: 3px 8px;
+        font-size: 11px;
+    }
+}
+
+/* Inner gallery page styles */
+
+.page-node-type-photo-gallery .field--name-field-gallery-image img {
+     width: 32%; 
+     height: 230px; 
+     border: ridge var(--primary-color) 4px; padding: 2px; margin: 4px;
+    }
+.page-node-type-photo-gallery .field__item {
+    display: inline;
+}
+#photo_gallery_slider img {
+    border: ridge var(--primary-color) 4px;
+}
+
+.view-id-e_seva_kendra.view-display-id-page_2 caption {
+    caption-side: top;
+    font-weight: 700;
+    font-size: 16px;
+    color: #464646;
+    text-align: center;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99999;
+    display: none;
+    overflow: hidden;
+    outline: 0;
+    background: #3d3d3ddb !important;
+    color: #000;
+}
+.modal-header .btn-close{
+    position: absolute; 
+    right: 20px;
+}
+.modal-title{
+    width: 100%; 
+    text-align: center; 
+    font-weight: 800;
+}
+.modal-body p{
+    font-size: 16px; 
+    line-height: 24px; 
+    text-align: center;
+}
+p.subheadd {
+    font-weight: 800;
+}
