@@ -62,22 +62,53 @@
   align-items: center;
 }
 
-.language-switch {
-  color: #fff !important;
-  /* background: rgba(255, 255, 255, 0.1); */
-  padding: 2px 8px;
-  border-radius: 3px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  /* border: 1px solid rgba(255, 255, 255, 0.2); */
+.language-toggle .region-language {
+  display: contents;
 }
 
-.language-switch:hover {
-  /* background: rgba(255, 255, 255, 0.2); */
+.language-toggle .block-language {
+  display: contents;
+}
+
+/* Hide contextual links in language switcher */
+.language-toggle .contextual {
+  display: none !important;
+}
+
+/* Language links container */
+.language-toggle .links {
+  display: contents;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* Show all languages but hide active one */
+.language-toggle .links li {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* HIDE the active/current language - show only the OTHER language */
+.language-toggle .links li.is-active {
+  display: none !important;
+}
+
+/* Simple text link - no button styling */
+.language-toggle .links li a {
+  color: #fff !important;
   text-decoration: none;
-  transform: translateY(-1px);
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+  font-weight: 500;
+  font-size: inherit;
+  transition: opacity 0.2s ease;
+}
+
+/* Simple hover effect */
+.language-toggle .links li a:hover {
+  text-decoration: underline;
+  opacity: 0.9;
 }
 
 /* Theme switcher */
