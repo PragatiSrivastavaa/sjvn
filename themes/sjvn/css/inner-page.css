@@ -300,7 +300,7 @@
   align-items: center;
   padding: 40px 25px;
   min-height: 200px;
-  color: var(--text-color);
+  color: var(--primary-color);
   overflow: hidden;
 }
 
