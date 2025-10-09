@@ -124,6 +124,11 @@ function sjvn_preprocess_page(&$variables) {
     $variables['unique_visitors'] = $unique_visitors;
   }
 
+
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    // Generate a unique ID based on node ID.
+    $variables['unique_page_id'] = 'page-' . $node->id();
+  }
 }
 	function random_string()
 	{
