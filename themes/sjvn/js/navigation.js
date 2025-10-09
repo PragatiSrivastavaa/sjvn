@@ -23,9 +23,6 @@
     
     if (!superfishMain) return;
 
-    // Create scroll arrows
-    createScrollArrows();
-
     // Function to setup nav-list scroll controls
     function setupNavListScrollControls() {
       const navList = document.getElementById('nav-list');
@@ -84,50 +81,6 @@
       setTimeout(updateButtonStates, 500);
     }
 
-    // Function to create scroll arrows
-    function createScrollArrows() {
-
-      const leftArrow = document.createElement('button');
-      leftArrow.className = 'nav-scroll-arrow';
-      leftArrow.innerHTML = '‹';
-      leftArrow.setAttribute('aria-label', 'Scroll left');
-      
-      const rightArrow = document.createElement('button');
-      rightArrow.className = 'nav-scroll-arrow';
-      rightArrow.innerHTML = '›';
-      rightArrow.setAttribute('aria-label', 'Scroll right');
-      
-      arrowsContainer.appendChild(leftArrow);
-      arrowsContainer.appendChild(rightArrow);
-      
-      // Insert arrows into the navigation container
-      const navContainer = superfishMain.parentElement;
-      if (navContainer) {
-        navContainer.style.position = 'relative';
-        navContainer.appendChild(arrowsContainer);
-      }
-      
-      // Add scroll functionality
-      leftArrow.addEventListener('click', function() {
-        superfishMain.scrollBy({ left: -200, behavior: 'smooth' });
-      });
-      
-      rightArrow.addEventListener('click', function() {
-        superfishMain.scrollBy({ left: 200, behavior: 'smooth' });
-      });
-      
-      // Update arrow states based on scroll position
-      function updateArrowStates() {
-        const scrollLeft = superfishMain.scrollLeft;
-        const maxScroll = superfishMain.scrollWidth - superfishMain.clientWidth;
-        
-        leftArrow.disabled = scrollLeft <= 0;
-        rightArrow.disabled = scrollLeft >= maxScroll - 1;
-      }
-      
-      superfishMain.addEventListener('scroll', updateArrowStates);
-      updateArrowStates(); // Initial state
-    }
 
     // Function to position submenu below its parent (Level 1)
     function positionSubmenu(menuItem, submenu) {
@@ -427,7 +380,6 @@
       // Wait for Superfish to initialize
       setTimeout(function() {
         setupNestedMenuBehavior();
-        createScrollArrows();
         setupMenuHoverEvents(); // Re-setup events after Superfish loads
         debugAllMenuLevels(); // Debug again after Superfish loads
       }, 500);
