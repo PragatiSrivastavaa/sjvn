@@ -8,9 +8,8 @@ display:
             format: full_html
       filters:
         field_portfolio_cat_target_id:
-          expose:
-            label: पोर्टफोलियो
+          expose: {  }
   default:
     display_options:
-      title: पोर्टफोलियो
-label: पोर्टफोलियो
+      title: ''
+label: ''
