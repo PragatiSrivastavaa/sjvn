@@ -1375,7 +1375,8 @@
 }
 
 /* Main Navigation */
-.main-nav {
+.main-nav,
+.main-nav-inner {
   background: var(--primary-color);
   padding: 4px;
   height: 50px;
@@ -1390,7 +1391,8 @@
 }
 
 /* Home icon fixed to left */
-.main-nav .home-link {
+.main-nav .home-link,
+.main-nav-inner .home-link {
   position: absolute;
   left: 10px;
   top: 50%;
@@ -1399,7 +1401,8 @@
   flex-shrink: 0;
 }
 
-.main-nav .home-link a {
+.main-nav .home-link a,
+.main-nav-inner .home-link a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1410,12 +1413,14 @@
   transition: all 0.3s ease;
 }
 
-.main-nav .home-link a:hovscrollbar-widther {
+.main-nav .home-link a:hover,
+.main-nav-inner .home-link a:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
 }
 
-.main-nav .home-link img {
+.main-nav .home-link img,
+.main-nav-inner .home-link img {
   width: 20px;
   height: 20px;
   filter: brightness(0) invert(1);
@@ -1425,6 +1430,7 @@
   display: flex !important;
   margin: 0;
   margin-left: 60px; /* Space for home icon */
+  margin-right: 100px; /* Space for scroll arrows */
   gap: 10px;
   flex-wrap: nowrap;
   color: #f8fcff;
@@ -1438,11 +1444,56 @@
   position: relative;
   height: 42px;
   /* Fixed height */
-  padding-right: 80px; /* Space for scroll arrows */
+  flex: 1;
 }
 
 #nav-list::-webkit-scrollbar {
   display: none;
+}
+
+/* Navigation Scroll Controls */
+.nav-scroll-controls {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 5px;
+  z-index: 101;
+}
+
+.nav-scroll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.nav-scroll-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.nav-scroll-btn:active {
+  transform: scale(0.95);
+}
+
+.nav-scroll-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.nav-scroll-btn svg {
+  width: 20px;
+  height: 20px;
 }
 
 #nav-list li {

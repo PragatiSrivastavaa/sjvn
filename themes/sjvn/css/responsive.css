@@ -396,6 +396,10 @@
     display: none; /* Hide arrows on mobile */
   }
   
+  .nav-scroll-controls {
+    display: none !important; /* Hide scroll controls on mobile */
+  }
+  
   /* Mobile navigation adjustments */
   .main-nav {
     height: auto;

@@ -7,7 +7,15 @@
 .page-node-173, 
 .page-node-168, 
 .page-node-169,
-.page-node-159{
+.page-node-159,
+.page-node-65,
+.page-node-247,
+.page-node-77,
+.page-node-78,
+.page-node-61,
+.page-node-62,
+.page-node-63,
+.page-node-64{
     .report-div ul {
         list-style: none;
         padding: 0;
@@ -140,6 +148,59 @@
         .report-div ul li a::before {
             font-size: 36px;
             margin-bottom: 10px;
+        }
+    }
+}
+
+/* Specific compact styles for page-node-77 only */
+.page-node-77 {
+    .report-div ul {
+        gap: 15px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .report-div ul li a {
+        padding: 12px 15px;
+        min-height: auto;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .report-div ul li a img {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 8px;
+    }
+
+    .report-div ul li a::before {
+        font-size: 32px;
+        margin-bottom: 8px;
+    }
+
+    /* Responsive overrides for page-node-77 */
+    @media (max-width: 768px) {
+        .report-div ul li a {
+            padding: 10px 12px;
+            min-height: auto;
+        }
+        
+        .report-div ul li a::before {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .report-div ul li a {
+            padding: 8px 10px;
+            min-height: auto;
+            font-size: 13px;
+        }
+        
+        .report-div ul li a::before {
+            font-size: 24px;
+            margin-bottom: 6px;
         }
     }
 }

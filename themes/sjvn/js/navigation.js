@@ -18,16 +18,75 @@
     const superfishMain = document.getElementById('superfish-main');
     const navList = document.getElementById('nav-list');
     
+    // Setup nav-list scroll controls (new template-based arrows)
+    setupNavListScrollControls();
+    
     if (!superfishMain) return;
 
     // Create scroll arrows
     createScrollArrows();
 
+    // Function to setup nav-list scroll controls
+    function setupNavListScrollControls() {
+      const navList = document.getElementById('nav-list');
+      const leftBtn = document.querySelector('.nav-scroll-left');
+      const rightBtn = document.querySelector('.nav-scroll-right');
+      
+      if (!navList || !leftBtn || !rightBtn) return;
+      
+      // Scroll amount in pixels
+      const scrollAmount = 200;
+      
+      // Handle left arrow click
+      leftBtn.addEventListener('click', function() {
+        navList.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+      
+      // Handle right arrow click
+      rightBtn.addEventListener('click', function() {
+        navList.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+      
+      // Update button states based on scroll position
+      function updateButtonStates() {
+        const scrollLeft = navList.scrollLeft;
+        const maxScroll = navList.scrollWidth - navList.clientWidth;
+        
+        // Disable left button if at start
+        if (scrollLeft <= 0) {
+          leftBtn.disabled = true;
+          leftBtn.style.opacity = '0.3';
+        } else {
+          leftBtn.disabled = false;
+          leftBtn.style.opacity = '1';
+        }
+        
+        // Disable right button if at end
+        if (scrollLeft >= maxScroll - 1) {
+          rightBtn.disabled = true;
+          rightBtn.style.opacity = '0.3';
+        } else {
+          rightBtn.disabled = false;
+          rightBtn.style.opacity = '1';
+        }
+      }
+      
+      // Update button states on scroll
+      navList.addEventListener('scroll', updateButtonStates);
+      
+      // Update button states on window resize
+      window.addEventListener('resize', updateButtonStates);
+      
+      // Initial button state update
+      updateButtonStates();
+      
+      // Update after a short delay to account for menu rendering
+      setTimeout(updateButtonStates, 500);
+    }
+
     // Function to create scroll arrows
     function createScrollArrows() {
-      const arrowsContainer = document.createElement('div');
-      arrowsContainer.className = 'nav-scroll-arrows';
-      
+
       const leftArrow = document.createElement('button');
       leftArrow.className = 'nav-scroll-arrow';
       leftArrow.innerHTML = '‹';

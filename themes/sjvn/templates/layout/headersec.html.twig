@@ -42,7 +42,6 @@
         <div class="theme-inline">
           <div class="theme-color blue" data-theme="blue" title="Default Theme"></div>
           <div class="theme-color green" data-theme="green" title="Green Theme"></div>
-          <div class="theme-color dark" data-theme="dark" title="Dark Theme"></div>
         </div>
         <div>
           <div class="search_icons_mobile">							
@@ -59,10 +58,24 @@
 
     <!-- Main Navigation -->
     <nav class="main-nav-inner">
+      <div class="home-link">
+        <a href="{{ base_path }}"><img src="{{ base_path }}themes/sjvn/images/icons/home.svg" alt="Home"></a>
+      </div>
       <ul id="nav-list">
-        <li><a href="./"><img src="{{ base_path}}themes/sjvn/images/icons/home.svg"> </a></li>
-        <li>{{ page.primary_menu }}</li>
+        {{ page.primary_menu }}
       </ul>
+      <div class="nav-scroll-controls">
+        <button class="nav-scroll-btn nav-scroll-left" aria-label="Scroll Left">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M12 16L6 10L12 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="nav-scroll-btn nav-scroll-right" aria-label="Scroll Right">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M8 4L14 10L8 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
     </nav>
     
 </header>
