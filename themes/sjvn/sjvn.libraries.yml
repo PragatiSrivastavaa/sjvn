@@ -9,6 +9,7 @@ global-styling:
       css/theme.css: {}
       css/inner-page.css: {}
       css/responsive.css: {}
+      css/policies-and-schema.css: {}
 global-scripts:
   version: 1.x
   js:
