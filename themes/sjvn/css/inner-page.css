@@ -64,7 +64,7 @@
   list-style: none;
   display: flex;
   align-items: center;
-  color:var(--primary-color);
+  color: var(--primary-color);
   justify-content: space-between;
   position: relative;
   flex-shrink: 0;
@@ -73,7 +73,7 @@
 }
 
 .main-nav-inner #superfish-main a,
-.main-nav-inner #nav-list > li > a {
+.main-nav-inner #nav-list>li>a {
   color: var(--primary-color);
   text-decoration: none;
   text-wrap: nowrap;
@@ -86,17 +86,17 @@
 }
 
 .main-nav-inner #superfish-main a:hover,
-.main-nav-inner #nav-list > li > a:hover {
+.main-nav-inner #nav-list>li>a:hover {
   background: rgba(0, 0, 0, 0.1);
 }
 
 .main-nav-inner #superfish-main a img,
-.main-nav-inner #nav-list > li > a img {
+.main-nav-inner #nav-list>li>a img {
   height: 26px;
   display: block;
 }
 
-.main-nav-inner #superfish-main a > span {
+.main-nav-inner #superfish-main a>span {
   margin-right: 6px;
   display: none;
 }
@@ -127,7 +127,7 @@
   scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
 }
 
-.main-nav-inner #superfish-main li:hover > ul,
+.main-nav-inner #superfish-main li:hover>ul,
 .main-nav-inner #superfish-main ul:hover {
   opacity: 1;
   visibility: visible;
@@ -202,9 +202,9 @@
   border-right: 8px solid var(--secondary-color);
 }
 
-.main-nav-inner #superfish-main ul li:hover > ul,
+.main-nav-inner #superfish-main ul li:hover>ul,
 .main-nav-inner #superfish-main ul ul:hover,
-.main-nav-inner #superfish-main ul li.menuparent:hover > ul {
+.main-nav-inner #superfish-main ul li.menuparent:hover>ul {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -216,32 +216,32 @@
   visibility: hidden;
 }
 
-.main-nav-inner #superfish-main ul li:hover > ul {
+.main-nav-inner #superfish-main ul li:hover>ul {
   opacity: 1;
   visibility: visible;
 }
 
 /* Add arrow indicator for items with submenus */
-.main-nav-inner #superfish-main .menuparent > a:after {
+.main-nav-inner #superfish-main .menuparent>a:after {
   content: '▼';
   font-size: 0.7em;
   margin-left: 8px;
   transition: transform 0.3s ease;
 }
 
-.main-nav-inner #superfish-main .menuparent:hover > a:after {
+.main-nav-inner #superfish-main .menuparent:hover>a:after {
   transform: rotate(180deg);
 }
 
 /* Add arrow indicator for sub-submenu items */
-.main-nav-inner #superfish-main ul li.menuparent > a:after {
+.main-nav-inner #superfish-main ul li.menuparent>a:after {
   content: '▶';
   font-size: 0.7em;
   margin-left: 8px;
   transition: transform 0.3s ease;
 }
 
-.main-nav-inner #superfish-main ul li.menuparent:hover > a:after {
+.main-nav-inner #superfish-main ul li.menuparent:hover>a:after {
   transform: translateX(2px);
 }
 
@@ -378,7 +378,7 @@
   margin: 0;
 }
 
-.text-right-inner .breadcrumb li{
+.text-right-inner .breadcrumb li {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -414,6 +414,7 @@
 
 /* Responsive adjustments for inner page header */
 @media (max-width: 768px) {
+
   /* Logo bar responsive */
   .logo-bar-inner {
     flex-direction: column;
@@ -488,12 +489,13 @@
     display: none;
   }
 
-  .main-nav-inner #superfish-main li:hover > ul {
+  .main-nav-inner #superfish-main li:hover>ul {
     transform: none;
   }
 }
 
 @media (max-width: 480px) {
+
   /* Logo bar responsive */
   .logo-bar-inner {
     padding: 20px 10px;
@@ -528,6 +530,7 @@
 }
 
 @media (max-width: 360px) {
+
   /* Logo bar very small screens */
   .logo-left-inner {
     padding: 8px;
@@ -591,7 +594,7 @@
 }
 
 .sidebar .menu-item--active-trail {
-  background-color: var(--primary-color) !important; 
+  background-color: var(--primary-color) !important;
   color: #fff !important;
   font-weight: 600;
 }
@@ -620,7 +623,7 @@
 } */
 
 .sidebar .menu li:nth-child(even) {
-  background-color: #f2f2f2; 
+  background-color: #f2f2f2;
 }
 
 /* Hide sidebar on mobile screens */
@@ -628,21 +631,24 @@
   .sidebar {
     display: none;
   }
-  
+
   /* Adjust content area to full width on mobile */
   .col-md-8.col-lg-9 {
     flex: 0 0 100%;
     max-width: 100%;
   }
 }
+
 section.aboutscreen {
   padding: 35px 33px;
 }
+
 @media (max-width: 776px) {
   section.aboutscreen {
     padding: 35px 0px;
   }
 }
+
 /* end enner body css sidebar */
 
 /* ========================================
@@ -730,7 +736,7 @@ section.aboutscreen {
 }
 
 /* Active/checked tab styling */
-.tab-menu-item .form-radios input[type="radio"]:checked + label {
+.tab-menu-item .form-radios input[type="radio"]:checked+label {
   background: var(--primary-color);
   color: #fff;
   font-weight: 600;
@@ -791,11 +797,82 @@ section.aboutscreen {
   }
 }
 
+/* ========================================
+   LANGUAGE TOGGLE FOR INNER PAGES
+   ======================================== */
+
+/* Language Toggle */
+.language-toggle {
+  display: inline-flex;
+  align-items: center;
+}
+
+.language-toggle .region-language {
+  display: contents;
+  list-style: none;
+}
+
+.language-toggle ul {
+  padding-top: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 10px;
+}
+
+.language-toggle .block-language {
+  display: contents;
+}
+
+/* Hide contextual links in language switcher */
+.language-toggle .contextual {
+  display: none !important;
+}
+
+/* Language links container */
+.language-toggle .links {
+  display: contents;
+  padding: 0;
+  margin-top: 10px;
+  list-style: none;
+}
+
+/* Show all languages but hide active one */
+.language-toggle .links li {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.language-toggle .lang-select {
+  list-style: none;
+}
+
+/* HIDE the active/current language - show only the OTHER language */
+.language-toggle .links li.is-active {
+  display: none !important;
+}
+
+/* Simple text link - no button styling */
+.language-toggle .links li a {
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: inherit;
+  transition: opacity 0.2s ease;
+}
+
+/* Simple hover effect */
+.language-toggle .links li a:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
 @media (max-width: 768px) {
   .footer-links {
     justify-content: center;
     text-align: center;
   }
+
   .footer-bottom {
     flex-direction: column;
     align-items: center;
