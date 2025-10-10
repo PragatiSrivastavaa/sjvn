@@ -23,19 +23,11 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
-  field_inner_banner_image:
-    type: entity_reference_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 2
-    region: content
   links:
     settings: {  }
     third_party_settings: {  }
     weight: 1
     region: content
 hidden:
+  field_inner_banner_image: true
   langcode: true
