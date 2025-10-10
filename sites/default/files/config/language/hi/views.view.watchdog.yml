@@ -1,3 +1,9 @@
 display:
+  default:
+    display_title: डीफॉल्ट
+    display_options:
+      fields:
+        link:
+          label: कार्यवाही
   page:
     display_title: पृष्ठ

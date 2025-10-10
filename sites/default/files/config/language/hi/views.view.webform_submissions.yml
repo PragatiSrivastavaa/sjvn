@@ -1,0 +1,23 @@
+display:
+  default:
+    display_options:
+      fields:
+        view_webform_submission:
+          label: कार्यवाही
+  embed_administer:
+    display_options:
+      fields:
+        operations:
+          label: कार्यवाही
+  embed_manage:
+    display_options:
+      fields:
+        view_webform_submission:
+          label: कार्यवाही
+        edit_webform_submission:
+          label: कार्यवाही
+  embed_review:
+    display_options:
+      fields:
+        view_webform_submission:
+          label: कार्यवाही

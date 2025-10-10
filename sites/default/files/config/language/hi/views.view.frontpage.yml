@@ -1,3 +1,11 @@
 display:
+  default:
+    display_title: डीफॉल्ट
+    display_options:
+      pager:
+        options:
+          tags:
+            next: 'अगला ›'
+            previous: '‹ पिछला'
   page_1:
     display_title: पृष्ठ

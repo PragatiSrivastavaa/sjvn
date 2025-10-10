@@ -4,11 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
-    - field.field.node.page.field_banner_image
-    - image.style.thumbnail
+    - field.field.node.page.field_inner_banner_image
     - node.type.page
   module:
-    - image
+    - media_library
     - path
     - text
 _core:
@@ -34,13 +33,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_banner_image:
-    type: image_image
-    weight: 122
+  field_inner_banner_image:
+    type: media_library_widget
+    weight: 123
     region: content
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      media_types: {  }
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -83,6 +81,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
