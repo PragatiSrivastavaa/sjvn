@@ -43,17 +43,11 @@
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
   margin-bottom: 0;
   position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
-}
-
-.board_of_directors .profile:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 /* Profile Image Container - Reduced Height */
@@ -71,11 +65,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.board_of_directors .profile:hover .profile-img img {
-  transform: scale(1.05);
 }
 
 /* Profile Text Content - Compact */
@@ -90,6 +79,7 @@
   justify-content: space-between;
 }
 
+/* Generic profile text styles (for grid/card views) */
 .board_of_directors .profile-text h5 {
   font-size: 1.1rem;
   font-weight: 700;
@@ -113,6 +103,17 @@
   justify-content: center;
 }
 
+/* Override for director profile in block view */
+.board_of_directors .director .profile-text h5 {
+  min-height: unset;
+  display: block;
+}
+
+.board_of_directors .director .profile-text p {
+  min-height: unset;
+  display: block;
+}
+
 .board_of_directors .profile-text a {
   display: inline-block;
   padding: 8px 20px;
@@ -122,48 +123,59 @@
   border-radius: 20px;
   font-weight: 600;
   font-size: 0.85rem;
-  transition: all 0.3s ease;
   margin-top: 0;
 }
 
 .board_of_directors .profile-text a:hover {
   background: var(--secondary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Director with Full Content Layout - Side by Side */
 .board_of_directors .director {
   display: flex;
-  flex-direction: row;
-  height: auto;
+  flex-direction: column;
+  height: 100%;
   border-radius: 10px;
+  max-width: 100%;
 }
 
 .board_of_directors .director .profile-img {
-  width: 200px;
+  width: 100%;
   flex-shrink: 0;
-  height: auto;
-  min-height: 250px;
+  height: 320px;
+  border-radius: 10px 10px 0 0;
 }
 
 .board_of_directors .director .profile-text {
-  text-align: left;
-  padding: 25px;
+  text-align: center;
+  padding: 20px 15px;
   flex-grow: 1;
-  justify-content: center;
+  justify-content: flex-start;
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .board_of_directors .director .profile-text h5 {
-  text-align: left;
-  font-size: 1.4rem;
-  margin-bottom: 5px;
+  text-align: center;
+  font-size: 1.15rem;
+  margin: 0;
+  color: var(--primary-color);
+  font-weight: 700;
+  line-height: 1.4;
+  word-wrap: break-word;
 }
 
 .board_of_directors .director .profile-text p {
-  text-align: left;
-  font-size: 1rem;
-  color: #888;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+  word-wrap: break-word;
 }
 
 /* Common Text Content - Side by Side Layout */
@@ -173,17 +185,26 @@
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   line-height: 1.7;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #555;
-  transition: all 0.3s ease;
-}
-
-.board_of_directors .common-text:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  text-align: justify;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .board_of_directors .common-text p {
   margin-bottom: 12px;
+  text-indent: 0;
+}
+
+.board_of_directors .common-text p:first-child {
+  margin-top: 0;
+}
+
+.board_of_directors .common-text p:last-child {
+  margin-bottom: 0;
 }
 
 .board_of_directors .common-text h3,
@@ -191,58 +212,89 @@
   color: var(--primary-color);
   margin-top: 20px;
   margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.board_of_directors .common-text ul,
+.board_of_directors .common-text ol {
+  margin: 15px 0;
+  padding-left: 25px;
+}
+
+.board_of_directors .common-text li {
+  margin-bottom: 8px;
 }
 
 /* Director Separator */
 .board_of_directors .director-separator {
   border: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #ddd, transparent);
-  margin: 10px 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ddd 20%, #ddd 80%, transparent);
+  margin: 30px 0;
+  opacity: 0.7;
 }
 
 /* Block View Specific Styles */
-.board-block-view .row {
-  position: relative;
-  transition: all 0.3s ease;
-  margin-bottom: 10px;
+.board-block-view {
+  padding: 40px 0;
 }
 
-.board-block-view .row:hover {
-  background: #f9f9f9;
-  border-radius: 10px;
-  padding: 15px;
-  margin-left: -15px;
-  margin-right: -15px;
+.board-block-view .container {
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
-/* Grid Layout for Cards */
-.board_of_directors .row {
+/* Ensure content alignment */
+.board-block-view .align-items-stretch {
+  align-items: stretch !important;
+}
+
+.board-block-view .row > [class*="col-"] > * {
+  height: 100%;
+}
+
+/* Grid Layout for Cards - Only for non-block views */
+.board_of_directors:not(.board-block-view) .row {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 10px;
 }
 
-.board_of_directors .row > [class*="col-"] {
+.board_of_directors:not(.board-block-view) .row > [class*="col-"] {
   flex: 0 0 auto;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-/* Empty State */
-.board_of_directors .view-empty {
-  text-align: center;
-  padding: 50px 20px;
-  background: #f8f9fa;
-  border-radius: 10px;
+/* Ensure Bootstrap grid works properly in block view */
+.board-block-view .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.board-block-view .row > [class*="col-"] {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 /* Responsive Design */
+@media (min-width: 1200px) {
+  .board-block-view .container {
+    padding: 0 30px;
+  }
+}
+
 @media (max-width: 1200px) {
   .board_of_directors .container {
     max-width: 100%;
     padding: 0 20px;
+  }
+  
+  .board-block-view .container {
+    max-width: 100%;
   }
 }
 
@@ -255,28 +307,37 @@
     height: 200px;
   }
 
-  .board_of_directors .director {
-    flex-direction: column;
-  }
-
   .board_of_directors .director .profile-img {
-    width: 100%;
-    height: 250px;
+    height: 280px;
   }
 
-  .board_of_directors .director .profile-text {
-    text-align: center;
-  }
-
-  .board_of_directors .director .profile-text h5,
-  .board_of_directors .director .profile-text p {
-    text-align: center;
+  .board_of_directors .common-text {
+    padding: 25px;
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 768px) {
   .board_of_directors {
     padding: 30px 0;
+  }
+
+  .board-block-view {
+    padding: 20px 0;
+  }
+  
+  .board-block-view .container {
+    padding: 0 15px;
+  }
+  
+  .board-block-view .row {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  
+  .board-block-view .row > [class*="col-"] {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .board_of_directors .subtitle {
@@ -293,28 +354,49 @@
     height: 180px;
   }
 
+  .board_of_directors .director .profile-img {
+    height: 240px;
+  }
+
   .board_of_directors .profile-text {
-    padding: 15px 12px;
+    padding: 18px 15px;
+  }
+
+  .board_of_directors .director .profile-text {
+    padding: 18px 15px;
   }
 
   .board_of_directors .profile-text h5 {
-    font-size: 1rem;
+    font-size: 1.05rem;
+  }
+
+  .board_of_directors .director .profile-text h5 {
+    font-size: 1.1rem;
   }
 
   .board_of_directors .profile-text p {
     font-size: 0.85rem;
   }
 
-  .board_of_directors .common-text {
-    padding: 20px;
-    font-size: 0.95rem;
+  .board_of_directors .director .profile-text p {
+    font-size: 0.88rem;
   }
 
-  .board_of_directors .row {
+  .board_of_directors .common-text {
+    padding: 18px;
+    font-size: 0.9rem;
+    margin-top: 0;
+  }
+
+  .board_of_directors .director-separator {
+    margin: 25px 0;
+  }
+
+  .board_of_directors:not(.board-block-view) .row {
     gap: 8px;
   }
   
-  .board_of_directors .row > [class*="col-"] {
+  .board_of_directors:not(.board-block-view) .row > [class*="col-"] {
     padding-left: 4px;
     padding-right: 4px;
   }
@@ -366,3 +448,87 @@
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
+
+/* Typography Enhancements for Content */
+.board_of_directors .common-text strong,
+.board_of_directors .common-text b {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.board_of_directors .common-text em,
+.board_of_directors .common-text i {
+  font-style: italic;
+  color: #444;
+}
+
+.board_of_directors .common-text a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.board_of_directors .common-text a:hover {
+  color: var(--secondary-color);
+}
+
+/* View Empty State Styling */
+.board_of_directors .view-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  border: 2px dashed #ddd;
+}
+
+.board_of_directors .view-empty p {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Content Image Handling */
+.board_of_directors .common-text img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Blockquote Styling */
+.board_of_directors .common-text blockquote {
+  border-left: 4px solid var(--primary-color);
+  padding: 15px 20px;
+  margin: 20px 0;
+  background: #f8f9fa;
+  font-style: italic;
+  color: #555;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Table Styling in Content */
+.board_of_directors .common-text table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.95rem;
+}
+
+.board_of_directors .common-text table th,
+.board_of_directors .common-text table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.board_of_directors .common-text table th {
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+}
+
+.board_of_directors .common-text table tbody tr:nth-child(even) {
+  background: #f8f9fa;
+}
+

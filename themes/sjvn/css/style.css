@@ -656,9 +656,7 @@
 .view-portfolio .views-row img,
 .view-portfolio .views-field-field-image img,
 .view-portfolio .field--type-image img {
-  height: 120px !important;
   min-height: 120px !important;
-  max-height: 120px !important;
   width: 100% !important;
   object-fit: cover !important;
   object-position: center !important;
@@ -3110,4 +3108,8 @@
   .view-id-current_job table td {
     padding: 8px 10px !important;
   }
+}
+
+.view-id-investor_relations .view-footer {
+  display: block;
 }

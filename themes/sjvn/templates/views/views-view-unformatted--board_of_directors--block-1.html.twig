@@ -18,36 +18,58 @@
 
 <section class="inner-sec board_of_directors board-block-view">
   <div class="container">
-    {% for row in rows %}
-      <div class="row align-items-center mb-5">
-        
-        {# Director Profile Card #}
-        <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
-          <div class="profile director" role="article" aria-label="Director profile">
-            <div class="profile-img">
-              {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] }}
-            </div>
-            <div class="profile-text">
-              <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h5>
-              <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_degination }}'] }}</p>
+    {% if rows %}
+      {% for row in rows %}
+        <div class="row align-items-stretch mb-3">
+          
+          {# Director Profile Card #}
+          <div class="col-sm-12 col-md-4 mb-3 mb-md-0">
+            <div class="profile director" role="article" aria-label="Director profile">
+              
+              {# Director Photo #}
+              <div class="profile-img">
+                {% set director_image = row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] %}
+                {% if director_image %}
+                  {{ director_image }}
+                {% else %}
+                  <img src="{{ base_path ~ directory }}/images/gallery/no-image.png" alt="No image available" />
+                {% endif %}
+              </div>
+              
+              {# Director Name and Designation #}
+              <div class="profile-text">
+                <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}']|striptags|trim }}</h5>
+                <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_degination }}']|striptags|trim }}</p>
+              </div>
+              
             </div>
           </div>
-        </div>
-        
-        {# Director Bio/Content #}
-        <div class="col-md-8 col-lg-9">
-          <div class="common-text">
-            {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ body }}'] }}
+          
+          {# Director Bio/Content #}
+          <div class="col-sm-12 col-md-8">
+            <div class="common-text">
+              {% set director_bio = row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ body }}'] %}
+              {% if director_bio %}
+                {{ director_bio|raw }}
+              {% else %}
+                <p>Profile information coming soon.</p>
+              {% endif %}
+            </div>
           </div>
+          
         </div>
         
+        {# Add separator between directors except for last one #}
+        {% if not loop.last %}
+          <hr class="director-separator" aria-hidden="true">
+        {% endif %}
+        
+      {% endfor %}
+    {% else %}
+      {# Empty state #}
+      <div class="view-empty">
+        <p>No board members available at this time.</p>
       </div>
-      
-      {# Add separator between directors except for last one #}
-      {% if not loop.last %}
-        <hr class="director-separator">
-      {% endif %}
-      
-    {% endfor %}
+    {% endif %}
   </div>
 </section>
