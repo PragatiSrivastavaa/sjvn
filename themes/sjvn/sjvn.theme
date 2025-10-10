@@ -59,6 +59,7 @@ function sjvn_preprocess_page(&$variables) {
   'photo_gallery' => 'Photo Gallery',
   'video_gallery' => 'Photo Gallery', 
   'news_announcement' => 'News Announcement',
+  'investor_relations' => 'Investor Relations',
 
   // Views (their machine names)
   'board_of_directors' => 'Board of Directors',
@@ -66,6 +67,7 @@ function sjvn_preprocess_page(&$variables) {
   'photo_gallery' => 'Photo Gallery',            // ✅ if your photo gallery view ID is "gallery"
   'video_gallery' => 'Photo Gallery', 
   'announcements' => 'News Announcement',   // ✅ view ID for News
+  'investor_relations' => 'Investor Relations',
 ];
   
 

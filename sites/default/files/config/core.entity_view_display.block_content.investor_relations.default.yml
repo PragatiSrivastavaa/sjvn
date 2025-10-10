@@ -1,0 +1,36 @@
+uuid: d86b9dbe-dbd4-4be1-a197-564aa12b9891
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.investor_relations
+    - field.field.block_content.investor_relations.body
+    - field.field.block_content.investor_relations.field_banner_image
+  module:
+    - image
+    - text
+id: block_content.investor_relations.default
+targetEntityType: block_content
+bundle: investor_relations
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_banner_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true

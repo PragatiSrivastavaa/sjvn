@@ -1,0 +1,11 @@
+uuid: 934014fb-00a0-466a-b016-d23b846630cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.investor_relations
+id: block_content.investor_relations
+target_entity_type_id: block_content
+target_bundle: investor_relations
+default_langcode: site_default
+language_alterable: false
