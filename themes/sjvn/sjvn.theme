@@ -60,6 +60,7 @@ function sjvn_preprocess_page(&$variables) {
   'video_gallery' => 'Photo Gallery', 
   'news_announcement' => 'News Announcement',
   'investor_relations' => 'Investor Relations',
+  'career' => 'Career',
 
   // Views (their machine names)
   'board_of_directors' => 'Board of Directors',
@@ -68,6 +69,8 @@ function sjvn_preprocess_page(&$variables) {
   'video_gallery' => 'Photo Gallery', 
   'announcements' => 'News Announcement',   // ✅ view ID for News
   'investor_relations' => 'Investor Relations',
+  'current_job' => 'Current Job',
+
 ];
   
 

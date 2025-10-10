@@ -1,0 +1,36 @@
+uuid: 9a8da509-402f-41c5-adb4-23c9c33d7d39
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.career
+    - field.field.block_content.career.body
+    - field.field.block_content.career.field_banner_image
+  module:
+    - image
+    - text
+id: block_content.career.default
+targetEntityType: block_content
+bundle: career
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_banner_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true
