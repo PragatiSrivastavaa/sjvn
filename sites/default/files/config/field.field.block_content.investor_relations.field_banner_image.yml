@@ -1,17 +1,17 @@
-uuid: 8c4dace8-862b-4295-a293-2c443868fc07
+uuid: d2438d0f-4560-402f-8122-d12db0d78c03
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_banner_image
-    - node.type.page
+    - block_content.type.investor_relations
+    - field.storage.block_content.field_banner_image
   module:
     - image
-id: node.page.field_banner_image
+id: block_content.investor_relations.field_banner_image
 field_name: field_banner_image
-entity_type: node
-bundle: page
-label: "Banner image\t"
+entity_type: block_content
+bundle: investor_relations
+label: 'Banner image'
 description: ''
 required: false
 translatable: false

@@ -1,0 +1,19 @@
+label: मीडिया
+display:
+  default:
+    display_title: डीफॉल्ट
+    display_options:
+      title: मीडिया
+      fields:
+        operations:
+          label: कार्यवाही
+      pager:
+        options:
+          tags:
+            next: 'अगला ›'
+            previous: '‹ पिछला'
+  media_page_list:
+    display_title: मीडिया
+    display_options:
+      menu:
+        title: मीडिया

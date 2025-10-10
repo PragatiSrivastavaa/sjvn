@@ -1,11 +1,34 @@
+label: दस्तावेज
 display:
   default:
+    display_title: डीफॉल्ट
     display_options:
+      title: दस्तावेज
       fields:
         filename:
           label: नाम
+        operations:
+          label: कार्यवाही
+      pager:
+        options:
+          tags:
+            next: 'अगला ›'
+            previous: '‹ पिछला'
+      filters:
+        filename:
+          expose:
+            label: 'फ़ाइल का नाम'
+  page_1:
+    display_options:
+      menu:
+        title: दस्तावेज
   page_2:
     display_options:
       fields:
         type:
           label: 'इकाई का प्रकार'
+      pager:
+        options:
+          tags:
+            next: 'अगला ›'
+            previous: '‹ पिछला'

@@ -1,0 +1,11 @@
+uuid: 2b0ac9b7-d0b8-4069-b500-11a20eb26314
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.career
+id: block_content.career
+target_entity_type_id: block_content
+target_bundle: career
+default_langcode: site_default
+language_alterable: false

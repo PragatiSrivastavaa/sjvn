@@ -59,6 +59,8 @@ function sjvn_preprocess_page(&$variables) {
   'photo_gallery' => 'Photo Gallery',
   'video_gallery' => 'Photo Gallery', 
   'news_announcement' => 'News Announcement',
+  'investor_relations' => 'Investor Relations',
+  'career' => 'career',
 
   // Views (their machine names)
   'board_of_directors' => 'Board of Directors',
@@ -66,6 +68,8 @@ function sjvn_preprocess_page(&$variables) {
   'photo_gallery' => 'Photo Gallery',            // ✅ if your photo gallery view ID is "gallery"
   'video_gallery' => 'Photo Gallery', 
   'announcements' => 'News Announcement',   // ✅ view ID for News
+  'investor_relations' => 'Investor Relations',
+  'current_job' => 'career',
 ];
   
 
@@ -164,22 +168,6 @@ function sjvn_preprocess_html(array &$variables) {
  * Implements hook_preprocess_views_view().
  */
 function sjvn_preprocess_views_view(&$variables) {
-  if ($variables['view']->id() === 'visitors' && $variables['view']->current_display === 'block_1') {
-    $connection = Database::getConnection();
-
-    // Count distinct visitor_id + page path (so refresh doesn't count, but new page does).
-    $query = $connection->select('visitors', 'v');
-    $query->addExpression("COUNT(DISTINCT CONCAT_WS('-', v.visitor_id, v.visitors_path))", 'page_hits');
-    $total = $query->execute()->fetchField();
-
-    // Add language-based offset.
-    $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
-    $final_total = ($langcode === 'hi') ? (100 + $total) : (500 + $total);
-
-    $variables['header'] = [
-      '#markup' => t('Total visitor: @count', ['@count' => $final_total]),
-    ];
-  }
   
   // Attach board of directors library
   if ($variables['view']->id() === 'board_of_directors') {
@@ -191,11 +179,8 @@ function sjvn_preprocess_views_view(&$variables) {
     $variables['#attached']['library'][] = 'sjvn/portfolio';
   }
   
+  $variables['current_language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
 }
 
-
-function sjvn_preprocess_views_view_unformatted(&$variables) {
-  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-  $vars['language'] = $language;
-}
 

@@ -1,12 +1,20 @@
 display:
   default:
+    display_title: डीफॉल्ट
     display_options:
+      title: मीडिया
       filters:
         name:
           expose:
             label: नाम
   page:
     display_title: पृष्ठ
+    display_options:
+      fields:
+        edit_media:
+          text: 'संपादित करें'
+        delete_media:
+          text: मिटायें
   widget:
     display_options:
       filters:

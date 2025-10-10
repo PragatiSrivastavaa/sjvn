@@ -1,0 +1,12 @@
+display:
+  default:
+    display_title: डीफॉल्ट
+    display_options:
+      fields:
+        operations:
+          label: कार्यवाही
+  page_unapproved:
+    display_options:
+      fields:
+        operations:
+          label: कार्यवाही

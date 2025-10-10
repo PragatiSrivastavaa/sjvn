@@ -29,7 +29,14 @@
   {% endif %}
 
   {# Bootstrap row for two-column layout #}
-  <h3 class="portfolio-header">Portfolio</h3>
+  <h3 class="portfolio-header">
+  {% if current_language == 'hi' %}
+    पोर्टफोलियो
+  {% else %}
+    Portfolio
+  {% endif %}
+</h3>
+
   <div class="row">
     
     {# Left column: exposed filters (width 3 of 12) #}

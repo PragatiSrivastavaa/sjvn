@@ -1,3 +1,5 @@
 display:
+  default:
+    display_title: डीफॉल्ट
   page_1:
     display_title: पृष्ठ

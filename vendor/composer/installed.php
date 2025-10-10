@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'd95aaa2a70da8d2c810a2bbe9d11a6cfc4d87370',
+        'reference' => '19c0a7cb31c2f096a040b8a31bc45e0c6bb4a167',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -406,6 +406,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/entity_browser' => array(
+            'pretty_version' => '2.15.0',
+            'version' => '2.15.0.0',
+            'reference' => '8.x-2.15',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/entity_browser',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/file_encrypt' => array(
             'pretty_version' => '1.0.0-alpha3',
             'version' => '1.0.0.0-alpha3',
@@ -472,7 +481,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'd95aaa2a70da8d2c810a2bbe9d11a6cfc4d87370',
+            'reference' => '19c0a7cb31c2f096a040b8a31bc45e0c6bb4a167',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

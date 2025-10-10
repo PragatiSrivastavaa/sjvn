@@ -38,3 +38,17 @@
 #10 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/DrupalKernel.php(739): Drupal\Core\DrupalKernel->boot()
 #11 /home/u4vhfz3nt3v5/public_html/sjvn/index.php(19): Drupal\Core\DrupalKernel->handle()
 #12 {main}
+[09-Oct-2025 11:58:31 UTC] ParseError: syntax error, unexpected identifier "database", expecting "]" in /home/u4vhfz3nt3v5/public_html/sjvn/sites/default/settings.php on line 901 #0 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/DrupalKernel.php(1131): Drupal\Core\Site\Settings::initialize()
+#1 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/DrupalKernel.php(301): Drupal\Core\DrupalKernel->initializeSettings()
+#2 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/drush/drush/src/Boot/DrupalBoot8.php(197): Drupal\Core\DrupalKernel::createFromRequest()
+#3 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/drush/drush/src/Boot/BootstrapManager.php(211): Drush\Boot\DrupalBoot8->bootstrapDrupalConfiguration()
+#4 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/drush/drush/src/Boot/BootstrapManager.php(397): Drush\Boot\BootstrapManager->doBootstrap()
+#5 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/drush/drush/src/Application.php(219): Drush\Boot\BootstrapManager->bootstrapMax()
+#6 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/drush/drush/src/Application.php(185): Drush\Application->bootstrapAndFind()
+#7 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/symfony/console/Application.php(266): Drush\Application->find()
+#8 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/symfony/console/Application.php(175): Symfony\Component\Console\Application->doRun()
+#9 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/drush/drush/src/Runtime/Runtime.php(110): Symfony\Component\Console\Application->run()
+#10 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/drush/drush/src/Runtime/Runtime.php(40): Drush\Runtime\Runtime->doRun()
+#11 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/drush/drush/drush.php(140): Drush\Runtime\Runtime->run()
+#12 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/bin/drush.php(119): include('/home/u4vhfz3nt...')
+#13 {main}

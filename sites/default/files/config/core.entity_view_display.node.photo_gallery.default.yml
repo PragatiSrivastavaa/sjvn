@@ -25,7 +25,7 @@ content:
     region: content
   field_gallery_image:
     type: colorbox
-    label: above
+    label: hidden
     settings:
       colorbox_image_style: ''
       colorbox_gallery: post

@@ -25,6 +25,7 @@
         "drupal/core-vendor-hardening": "^10.5",
         "drupal/counter": "^1.3@RC",
         "drupal/easy_breadcrumb": "^2.0",
+        "drupal/entity_browser": "^2.15",
         "drupal/file_encrypt": "^1.0@alpha",
         "drupal/jquery_ui_datepicker": "^2.1",
         "drupal/menu_block": "^1.14",

@@ -1,2 +1,5 @@
 settings:
+  default_delete_button_label: मिटायें
   default_wizard_start_label: शुरू
+  default_preview_next_button_label: पूर्वावलोकन
+  default_preview_label: पूर्वावलोकन
