@@ -69,7 +69,7 @@ function sjvn_preprocess_page(&$variables) {
   'video_gallery' => 'Photo Gallery', 
   'announcements' => 'News Announcement',   // ✅ view ID for News
   'investor_relations' => 'Investor Relations',
-  'current_job' => 'Current Job',
+  'current-job' => 'Current Job',
 
 ];
   
