@@ -1640,6 +1640,9 @@
   /* Create visual overlap with parent menu for easier mouse access */
   border-left: 3px solid var(--primary-color);
   margin-left: -3px;
+  /* Ensure seamless connection */
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 /* Create an invisible bridge/hover zone between parent and nested submenu */

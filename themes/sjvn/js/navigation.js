@@ -121,26 +121,18 @@
       const parentSubmenu = menuItem.closest('ul');
       const parentRect = parentSubmenu ? parentSubmenu.getBoundingClientRect() : null;
       
-      // Position submenu to the right of the parent submenu container
-      // Use 2-5px overlap to create a seamless connection and easier mouse access
-      if (parentRect) {
-        submenu.style.top = rect.top + 'px'; // Align with menu item vertically
-        submenu.style.left = (parentRect.right - 5) + 'px'; // Right edge of parent container with 5px overlap for easier access
-      } else {
-        // Fallback if no parent submenu found
-        submenu.style.top = rect.top + 'px';
-        submenu.style.left = (rect.right - 5) + 'px'; // 5px overlap
-      }
+      // Position submenu directly adjacent to the menu item (no gap)
+      // Align vertically with the menu item, horizontally at the menu item's right edge
+      submenu.style.top = rect.top + 'px'; // Align with menu item vertically
+      
+      // Always position at the right edge of the current menu item with small overlap for seamless connection
+      submenu.style.left = (rect.right - 3) + 'px'; // 3px overlap for seamless attachment
       
       // Check if submenu goes off-screen to the right
-      const estimatedRight = parentRect ? parentRect.right + submenuRect.width : rect.right + submenuRect.width;
+      const estimatedRight = (rect.right - 3) + submenuRect.width;
       if (estimatedRight > viewportWidth - 10) {
-        // Show to the left of parent submenu if it overflows right
-        if (parentRect) {
-          submenu.style.left = (parentRect.left - submenuRect.width + 5) + 'px'; // Left side with 5px overlap
-        } else {
-          submenu.style.left = (rect.left - submenuRect.width + 5) + 'px';
-        }
+        // Show to the left of the menu item if it overflows right
+        submenu.style.left = (rect.left - submenuRect.width + 3) + 'px';
       }
       
       // Check if submenu goes off-screen to the bottom
