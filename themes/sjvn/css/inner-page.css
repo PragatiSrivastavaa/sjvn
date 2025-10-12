@@ -184,45 +184,53 @@
 
 /* Superfish Submenu Styles for Inner Pages */
 .main-nav-inner #superfish-main ul {
-  position: fixed;
+  position: fixed !important;
   top: auto;
   left: auto;
-  background: var(--primary-light);
+  background: var(--primary-light) !important;
+  background-color: var(--primary-light) !important;
   min-width: 200px;
-  max-height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  max-width: 400px;
+  width: auto !important;
+  min-width: auto !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 0 0 8px 8px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-  z-index: 10000;
+  z-index: 99999 !important;
   list-style: none;
   margin: 0;
   padding: 0;
-  transition-delay: 0s;
   pointer-events: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.main-nav-inner #superfish-main li:hover>ul,
-.main-nav-inner #superfish-main ul:hover {
+/* Only apply hover to main menu level (depth-1), not nested submenus */
+.main-nav-inner #superfish-main > li.sf-depth-1:hover > ul {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
 .main-nav-inner #superfish-main ul li {
-  display: block;
-  position: relative;
+  display: block !important;
+  position: relative !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
+  width: 100% !important;
+  float: none !important;
+  clear: both !important;
+  /* Critical: Parent li must expand to fit nested ul children */
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  background: transparent !important;
 }
 
 .main-nav-inner #superfish-main ul li:last-child {
@@ -232,7 +240,7 @@
 .main-nav-inner #superfish-main ul a {
   display: block;
   padding: 6px 14px;
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
   text-decoration: none;
   white-space: normal;
   word-wrap: break-word;
@@ -243,45 +251,57 @@
   justify-content: flex-start;
   cursor: pointer;
   pointer-events: auto;
+  background: transparent !important;
 }
 
 .main-nav-inner #superfish-main ul a:hover {
-  background: rgba(0, 0, 0, 0.08);
-  color: var(--primary-color);
+  background: rgba(0, 0, 0, 0.08) !important;
+  color: var(--primary-color) !important;
   font-weight: 600;
 }
 
-/* Multi-level submenu positioning */
+/* Sub-submenu positioning - consolidated rules */
 .main-nav-inner #superfish-main ul ul {
-  position: fixed;
-  top: auto;
-  left: auto;
-  background: var(--primary-light);
-  min-width: 200px;
-  max-height: 300px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  border-radius: 8px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-  z-index: 10001;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  pointer-events: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  position: absolute !important;
+  top: 0 !important;
+  left: 100% !important;
+  margin-left: -6px !important; /* slight overlap */
+  z-index: 10001 !important;
+  display: none;
+  background: var(--primary-light) !important;
+  min-width: 200px !important;
+  max-width: 350px !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateX(-10px) !important;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease !important;
+  list-style: none !important;
+  padding: 0 !important;
+  pointer-events: auto !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Arrow indicator removed as per user preference */
 
-/* Nested submenu items styling */
+/* Sub-submenu list items - ensure no positioning conflicts */
 .main-nav-inner #superfish-main ul ul li {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative !important;
+  display: block !important;
+  float: none !important;
+  clear: both !important;
+  width: 100% !important;
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  background: transparent !important;
 }
 
 .main-nav-inner #superfish-main ul ul li:last-child {
@@ -289,36 +309,22 @@
 }
 
 .main-nav-inner #superfish-main ul ul a {
-  color: var(--primary-color);
-  background: transparent;
+  color: var(--primary-color) !important;
+  background: transparent !important;
   padding: 6px 14px;
   min-height: 26px;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .main-nav-inner #superfish-main ul ul a:hover {
-  background: rgba(0, 0, 0, 0.08);
-  color: var(--primary-color);
+  background: rgba(0, 0, 0, 0.08) !important;
+  color: var(--primary-color) !important;
   font-weight: 600;
 }
 
-.main-nav-inner #superfish-main ul li:hover>ul,
-.main-nav-inner #superfish-main ul ul:hover,
-.main-nav-inner #superfish-main ul li.menuparent:hover>ul {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  transition-delay: 0.1s;
-}
-
-.main-nav-inner #superfish-main ul:hover ul {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.main-nav-inner #superfish-main ul li:hover>ul {
-  opacity: 1;
-  visibility: visible;
-}
+/* Hover bridge handled by JavaScript delay timing - nested submenus use translateX */
 
 /* Add arrow indicator for items with submenus */
 .main-nav-inner #superfish-main .menuparent>a:after {
