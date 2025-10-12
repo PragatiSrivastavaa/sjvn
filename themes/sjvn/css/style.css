@@ -1671,15 +1671,15 @@
 
 #superfish-main ul a {
   display: block;
-  padding: 12px 16px;
+  padding: 6px 14px;
   color: #fff;
   text-decoration: none;
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
   height: auto;
-  min-height: 44px;
-  line-height: 1.4;
+  min-height: 26px;
+  line-height: 1.2;
   justify-content: flex-start;
   cursor: pointer;
   pointer-events: auto;
@@ -1700,14 +1700,14 @@
 }
 
 #superfish-main ul ul a {
-  padding: 10px 20px;
+  padding: 6px 16px;
   font-size: 0.9em;
   background: rgba(0, 0, 0, 0.1);
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  min-height: 40px;
-  line-height: 1.3;
+  min-height: 28px;
+  line-height: 1.1;
 }
 
 #superfish-main ul ul a:hover {
@@ -1724,14 +1724,14 @@
 }
 
 #superfish-main ul ul ul a {
-  padding: 8px 25px;
+  padding: 6px 20px;
   font-size: 0.85em;
   background: rgba(0, 0, 0, 0.2);
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  min-height: 36px;
-  line-height: 1.3;
+  min-height: 28px;
+  line-height: 1.2;
 }
 
 #superfish-main ul ul ul a:hover {
@@ -1834,7 +1834,7 @@
 #superfish-main ul li {
   position: relative !important;
   display: block !important;
-  margin-bottom: 2px;
+  margin-bottom: 0.5px;
 }
 
 /* Ensure nested submenu items are visible when parent is expanded */
@@ -1853,16 +1853,16 @@
 
 /* Ensure proper spacing between menu items */
 #superfish-main ul li:not(:last-child) {
-  margin-bottom: 2px;
+  margin-bottom: 0.5px;
 }
 
 /* Ensure sub-submenu items have proper spacing */
 #superfish-main ul ul li {
-  margin-bottom: 1px;
+  margin-bottom: 0px;
 }
 
 #superfish-main ul ul li:not(:last-child) {
-  margin-bottom: 1px;
+  margin-bottom: 0px;
 }
 
 /* Style for different nesting levels */
@@ -1891,12 +1891,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 16px;
+  padding: 6px 16px;
   color: #fff;
   text-decoration: none;
   white-space: nowrap;
   height: auto;
-  min-height: 36px;
+  min-height: 28px;
   line-height: 1.2;
   cursor: pointer;
   pointer-events: auto;
@@ -1911,7 +1911,7 @@
 /* Ensure nested submenu items with children have proper padding for arrow */
 #superfish-main ul li.has-submenu > a,
 #superfish-main ul li:has(> ul) > a {
-  padding-right: 30px;
+  padding-right: 26px;
 }
 
 /* Make menu items with submenus clickable for all levels */
@@ -1959,10 +1959,10 @@
 #superfish-main ul li:has(> ul) > a:after,
 #superfish-main ul li.has-submenu > a:after {
   content: ' ▶';
-  font-size: 0.8em;
+  font-size: 0.6em;
   margin-left: auto;
-  padding-left: 10px;
-  padding-right: 5px;
+  padding-left: 8px;
+  padding-right: 3px;
   transition: transform 0.3s ease;
   color: rgba(255, 255, 255, 0.8);
   font-weight: bold;
@@ -1974,7 +1974,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 15px;
+  padding-right: 12px;
   position: relative;
   user-select: none;
 }
