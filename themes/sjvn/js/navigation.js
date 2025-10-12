@@ -112,47 +112,37 @@
     
     // Function to position nested submenu to the right (Level 2+)
     function positionNestedSubmenu(menuItem, submenu) {
-      const rect = menuItem.getBoundingClientRect();
+      const parentRect = menuItem.getBoundingClientRect();
+      const parentLi = menuItem.closest('li');
       const submenuRect = submenu.getBoundingClientRect();
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
+    
+      // Reset positioning to default (to the right of parent)
+      submenu.style.left = '100%';
+      submenu.style.right = 'auto';
+      submenu.style.top = '0px';
+      submenu.style.marginLeft = '-6px';
+    
+      // Check if submenu would overflow viewport on the right
+      const wouldOverflowRight = parentRect.right + submenuRect.width > viewportWidth - 10;
       
-      // Get the parent submenu container
-      const parentSubmenu = menuItem.closest('ul');
-      const parentRect = parentSubmenu ? parentSubmenu.getBoundingClientRect() : null;
-      
-      // Position submenu directly adjacent to the menu item (no gap)
-      // Align vertically with the menu item, horizontally at the menu item's right edge
-      submenu.style.top = rect.top + 'px'; // Align with menu item vertically
-      
-      // Always position at the right edge of the current menu item with small overlap for seamless connection
-      submenu.style.left = (rect.right - 3) + 'px'; // 3px overlap for seamless attachment
-      
-      // Check if submenu goes off-screen to the right
-      const estimatedRight = (rect.right - 3) + submenuRect.width;
-      if (estimatedRight > viewportWidth - 10) {
-        // Show to the left of the menu item if it overflows right
-        submenu.style.left = (rect.left - submenuRect.width + 3) + 'px';
+      if (wouldOverflowRight) {
+        // Position to the left of parent instead
+        submenu.style.left = 'auto';
+        submenu.style.right = '100%';
+        submenu.style.marginLeft = '0px';
+        submenu.style.marginRight = '-6px';
       }
-      
-      // Check if submenu goes off-screen to the bottom
-      if (rect.top + submenuRect.height > viewportHeight - 10) {
-        // Align to bottom of viewport
-        submenu.style.top = Math.max(10, viewportHeight - submenuRect.height - 10) + 'px';
-      }
-      
-      // Check if submenu goes off-screen to the top
-      const finalTop = parseFloat(submenu.style.top);
-      if (finalTop < 10) {
-        submenu.style.top = '10px';
-      }
-      
-      // Ensure submenu stays within viewport bounds horizontally
-      const finalLeft = parseFloat(submenu.style.left);
-      if (finalLeft < 10) {
-        submenu.style.left = '10px';
+    
+      // Handle bottom-edge overflow
+      const submenuBottom = parentRect.top + submenuRect.height;
+      if (submenuBottom > viewportHeight - 10) {
+        const topAdjustment = Math.min(0, viewportHeight - submenuBottom - 10);
+        submenu.style.top = topAdjustment + 'px';
       }
     }
+    
     
     // Function to setup nested submenu behavior
     function setupNestedMenuBehavior() {
