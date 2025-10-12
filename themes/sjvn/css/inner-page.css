@@ -29,6 +29,7 @@
   background: rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   transition: all 0.3s ease;
+  color: var(--primary-color);
 }
 
 .main-nav-inner .home-link a:hover {
@@ -36,10 +37,10 @@
   transform: scale(1.05);
 }
 
-.main-nav-inner .home-link img {
+.main-nav-inner .home-link svg {
   width: 20px;
   height: 20px;
-  filter: brightness(0) saturate(100%) invert(26%) sepia(52%) saturate(1737%) hue-rotate(191deg) brightness(91%) contrast(101%);
+  color: var(--primary-color);
 }
 
 .main-nav-inner #nav-list {
@@ -547,7 +548,7 @@
     height: 35px;
   }
   
-  .main-nav-inner .home-link img {
+  .main-nav-inner .home-link svg {
     width: 18px;
     height: 18px;
   }
@@ -615,7 +616,7 @@
     height: 32px;
   }
   
-  .main-nav-inner .home-link img {
+  .main-nav-inner .home-link svg {
     width: 16px;
     height: 16px;
   }
@@ -660,7 +661,7 @@
     height: 30px;
   }
   
-  .main-nav-inner .home-link img {
+  .main-nav-inner .home-link svg {
     width: 14px;
     height: 14px;
   }
