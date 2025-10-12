@@ -10,9 +10,43 @@
   overflow-y: hidden;
 }
 
+/* Home icon fixed to left */
+.main-nav-inner .home-link {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 101;
+  flex-shrink: 0;
+}
+
+.main-nav-inner .home-link a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.main-nav-inner .home-link a:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.main-nav-inner .home-link img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) saturate(100%) invert(26%) sepia(52%) saturate(1737%) hue-rotate(191deg) brightness(91%) contrast(101%);
+}
+
 .main-nav-inner #nav-list {
   display: flex !important;
   margin: 0;
+  margin-left: 60px; /* Space for home icon */
+  margin-right: 100px; /* Space for scroll arrows */
   gap: 10px;
   flex-wrap: nowrap;
   color: var(--primary-color);
@@ -24,6 +58,7 @@
   scroll-behavior: smooth;
   position: relative;
   height: 42px;
+  flex: 1;
 }
 
 .main-nav-inner #nav-list::-webkit-scrollbar {
@@ -52,12 +87,58 @@
   -ms-overflow-style: none;
   scroll-behavior: smooth;
   position: relative;
-  padding-right: 60px;
+  padding-right: 80px; /* Space for scroll arrows */
   align-items: center;
+  margin-left: 0; /* Remove left margin since home icon is now absolute */
 }
 
 .main-nav-inner #superfish-main::-webkit-scrollbar {
   display: none;
+}
+
+/* Navigation Scroll Controls */
+.main-nav-inner .nav-scroll-controls {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 5px;
+  z-index: 101;
+}
+
+.main-nav-inner .nav-scroll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.main-nav-inner .nav-scroll-btn:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.main-nav-inner .nav-scroll-btn:active {
+  transform: scale(0.95);
+}
+
+.main-nav-inner .nav-scroll-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.main-nav-inner .nav-scroll-btn svg {
+  width: 16px;
+  height: 16px;
 }
 
 .main-nav-inner #superfish-main li {
@@ -245,49 +326,6 @@
   transform: translateX(2px);
 }
 
-/* Navigation Scroll Arrows for Inner Pages */
-.main-nav-inner .nav-scroll-arrows {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding-right: 10px;
-  z-index: 100;
-}
-
-.main-nav-inner .nav-scroll-arrow {
-  background: rgba(0, 0, 0, 0.2);
-  border: none;
-  color: var(--primary-color);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  margin-left: 5px;
-  transition: all 0.3s ease;
-  font-size: 14px;
-}
-
-.main-nav-inner .nav-scroll-arrow:hover {
-  background: rgba(0, 0, 0, 0.3);
-  transform: scale(1.1);
-}
-
-.main-nav-inner .nav-scroll-arrow:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.main-nav-inner .nav-scroll-arrow:disabled:hover {
-  background: rgba(0, 0, 0, 0.2);
-  transform: none;
-}
 
 /* ========================================
    INNER PAGE BANNER/LOGO BAR SECTION
@@ -465,8 +503,27 @@
     padding-right: 0;
   }
 
-  .main-nav-inner .nav-scroll-arrows {
+  .main-nav-inner .nav-scroll-controls {
     display: none;
+  }
+  
+  .main-nav-inner #nav-list {
+    margin-left: 60px;
+    margin-right: 10px;
+  }
+  
+  .main-nav-inner .home-link {
+    left: 5px;
+  }
+  
+  .main-nav-inner .home-link a {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .main-nav-inner .home-link img {
+    width: 18px;
+    height: 18px;
   }
 
   .main-nav-inner #superfish-main ul {
@@ -527,6 +584,21 @@
   .text-right-inner h1 {
     font-size: 1.2rem;
   }
+  
+  /* Navigation responsive adjustments */
+  .main-nav-inner .home-link a {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .main-nav-inner .home-link img {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .main-nav-inner #nav-list {
+    margin-left: 50px;
+  }
 }
 
 @media (max-width: 360px) {
@@ -556,6 +628,21 @@
 
   .text-right-inner h1 {
     font-size: 1.1rem;
+  }
+  
+  /* Navigation responsive adjustments for very small screens */
+  .main-nav-inner .home-link a {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .main-nav-inner .home-link img {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .main-nav-inner #nav-list {
+    margin-left: 45px;
   }
 }
 
