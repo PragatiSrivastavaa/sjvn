@@ -366,6 +366,11 @@
     gap: 5px !important;
     z-index: 101 !important;
   }
+  
+  /* Hide mobile menu header on desktop */
+  .mobile-menu-header {
+    display: none !important;
+  }
 }
 
 /* Mobile menu styles - ONLY below 576px */
@@ -378,17 +383,77 @@
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1001;
+    z-index: 999; /* Below drawer */
     border: none;
     padding: 8px 10px;
     border-radius: 4px;
     background: rgba(255, 255, 255, 0.1);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  /* Hide hamburger when drawer is open */
+  .navbar-toggler[aria-expanded="true"],
+  .navbar-collapse.show ~ .navbar-toggler {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
   
   .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     width: 24px;
     height: 20px;
+  }
+  
+  /* Mobile Menu Header with Close Button */
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+  }
+  
+  .mobile-menu-header h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .mobile-close-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+  
+  .mobile-close-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: rotate(90deg);
+  }
+  
+  .mobile-close-btn:active {
+    background: rgba(255, 255, 255, 0.25);
+    transform: rotate(90deg) scale(0.95);
+  }
+  
+  .mobile-close-btn svg {
+    pointer-events: none;
   }
   
   /* Move home icon to make space for hamburger */
@@ -402,15 +467,15 @@
     position: fixed !important;
     top: 0;
     left: -100%;
-    width: 280px;
+    width: 300px;
     max-width: 85%;
     height: 100vh;
-    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-    z-index: 1000;
+    background: var(--primary-color); /* Use theme color */
+    z-index: 1050; /* Above everything including hamburger */
     overflow-y: auto;
     transition: left 0.3s ease;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-    padding: 20px 0;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.4);
+    padding: 0;
   }
   
   /* Show menu when expanded */
@@ -428,6 +493,17 @@
     height: 100vh;
     background: rgba(0, 0, 0, 0.5);
     z-index: -1;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Prevent body scroll when drawer is open */
+  body:has(.navbar-collapse.show) {
+    overflow: hidden;
   }
   
   /* Mobile menu list */
@@ -440,6 +516,16 @@
     width: 100%;
     height: auto !important; /* Remove fixed height for mobile */
     overflow: visible !important; /* Allow all items to show */
+  }
+  
+  /* Superfish menu for inner pages - mobile layout */
+  .main-nav-inner #superfish-main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0;
   }
   
   /* Mobile menu items */
@@ -464,19 +550,46 @@
     display: none !important;
   }
   
-  /* Mobile submenus */
+  /* Mobile submenus - solid background */
   #nav-list ul {
     position: static !important;
-    background: rgba(0, 0, 0, 0.15) !important;
+    background: rgba(0, 0, 0, 0.4) !important; /* More opaque */
     box-shadow: none !important;
     margin: 0 !important;
     padding: 0 !important;
     height: 100%;
   }
   
+  /* Sub-submenus - even darker */
+  #nav-list ul ul {
+    background: rgba(0, 0, 0, 0.55) !important; /* Darker for nested */
+  }
+  
+  #nav-list ul ul ul {
+    background: rgba(0, 0, 0, 0.7) !important; /* Even darker for deep nesting */
+  }
+  
+  #nav-list ul li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
   #nav-list ul li a {
     padding-left: 40px !important;
     font-size: 14px !important;
+    color: #fff !important;
+    display: block;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  
+  #nav-list ul ul li a {
+    padding-left: 60px !important;
+    font-size: 13px !important;
+  }
+  
+  #nav-list ul ul ul li a {
+    padding-left: 80px !important;
+    font-size: 12px !important;
   }
 }
 
