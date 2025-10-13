@@ -266,6 +266,523 @@
   }
 }
 
+/* ============================================
+   MOBILE HAMBURGER MENU - ONLY FOR MOBILE
+   Bootstrap navbar-expand-sm (< 576px)
+   ============================================ */
+
+/* ============================================
+   DESKTOP - NEUTRALIZE BOOTSTRAP, KEEP ORIGINAL DESIGN
+   ============================================ */
+@media (min-width: 576px) {
+  
+  /* Hide hamburger completely */
+  .navbar-toggler {
+    display: none !important;
+  }
+  
+  /* Reset all Bootstrap navbar classes - don't interfere with desktop */
+  .navbar,
+  .navbar-expand-sm,
+  .navbar-light,
+  nav.navbar,
+  nav.navbar-expand-sm,
+  nav.main-nav-inner {
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    flex-wrap: nowrap !important;
+    background: var(--primary-color) !important;
+    height: 50px !important;
+    position: relative !important;
+    overflow: visible !important;
+  }
+  
+  /* Reset navbar-collapse - make it behave normally */
+  .navbar-collapse,
+  .collapse,
+  .navbar-collapse.collapse,
+  .navbar-collapse.show {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    height: 50px !important;
+    overflow: visible !important;
+    flex-basis: auto !important;
+    flex-grow: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    transition: none !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+  
+  /* Ensure main-nav and main-nav-inner keep original styles */
+  .main-nav,
+  .main-nav-inner,
+  nav.main-nav,
+  nav.main-nav-inner,
+  nav.navbar {
+    display: flex !important;
+    align-items: center !important;
+    padding: 4px !important;
+    height: 50px !important;
+    position: relative !important;
+    overflow: visible !important;
+    overflow-y: hidden !important;
+    background: var(--primary-color) !important;
+  }
+  
+  /* Keep #nav-list original desktop layout - SCROLLABLE */
+  #nav-list {
+    display: flex !important;
+    flex-direction: row !important;
+    margin: 0 !important;
+    margin-left: 60px !important;
+    margin-right: 100px !important;
+    gap: 10px !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    scroll-behavior: smooth !important;
+    position: relative !important;
+    height: 42px !important;
+    max-height: 42px !important;
+    flex: 1 !important;
+    list-style: none !important;
+    padding: 0 !important;
+    color: #f8fcff !important;
+  }
+  
+  #nav-list::-webkit-scrollbar {
+    display: none !important;
+  }
+  
+  /* Superfish menu inside nav-list */
+  #superfish-main {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+    width: 100% !important;
+    height: 42px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    scroll-behavior: smooth !important;
+    position: relative !important;
+    padding-right: 0 !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  
+  #superfish-main::-webkit-scrollbar {
+    display: none !important;
+  }
+  
+  #superfish-main > li {
+    list-style: none !important;
+    display: flex !important;
+    align-items: center !important;
+    color: white !important;
+    justify-content: space-between !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+    height: 42px !important;
+    max-height: 42px !important;
+  }
+  
+  #superfish-main a {
+    color: white !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    padding: 2px 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 32px !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Keep original home link position */
+  .home-link {
+    position: absolute !important;
+    left: 10px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 101 !important;
+    flex-shrink: 0 !important;
+  }
+  
+  /* Keep scroll controls in original position */
+  .nav-scroll-controls {
+    position: absolute !important;
+    right: 10px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
+    gap: 5px !important;
+    z-index: 101 !important;
+  }
+  
+  /* Hide mobile menu header on desktop */
+  .mobile-menu-header {
+    display: none !important;
+  }
+}
+
+/* Mobile menu styles - ONLY below 576px */
+@media (max-width: 575.98px) {
+  
+  /* Show hamburger button on mobile */
+  .navbar-toggler {
+    display: block !important;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 10px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 24px;
+    height: 20px;
+  }
+  
+  /* Mobile Menu Header with Close Button */
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+  }
+  
+  .mobile-menu-header h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .mobile-close-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+  
+  .mobile-close-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: rotate(90deg);
+  }
+  
+  .mobile-close-btn:active {
+    background: rgba(255, 255, 255, 0.25);
+    transform: rotate(90deg) scale(0.95);
+  }
+  
+  .mobile-close-btn svg {
+    pointer-events: none;
+  }
+  
+  /* Move home icon to make space for hamburger */
+  .main-nav .home-link,
+  .main-nav-inner .home-link {
+    left: 60px !important;
+  }
+  
+  /* Mobile drawer - slide in from left */
+  .navbar-collapse {
+    position: fixed !important;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    max-width: 80%;
+    height: 100vh;
+    background: var(--primary-color) !important;
+    z-index: 1050;
+    overflow-y: auto;
+    transition: left 0.3s ease-in-out;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
+    padding: 0;
+  }
+  
+  /* Inner pages - Light background with dark text */
+  body:not(.path-frontpage) .navbar-collapse {
+    background: var(--primary-light) !important;
+  }
+  
+  /* Show menu when expanded */
+  .navbar-collapse.show,
+  .navbar-collapse.collapsing {
+    left: 0 !important;
+  }
+  
+  /* Backdrop overlay */
+  .navbar-collapse.show::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 280px;
+    width: calc(100vw - 280px);
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Prevent body scroll when drawer is open */
+  body:has(.navbar-collapse.show) {
+    overflow: hidden;
+  }
+  
+  /* Mobile menu header */
+  .navbar-collapse::before {
+    content: 'Menu';
+    display: block;
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Inner pages - Menu header with primary color text */
+  body:not(.path-frontpage) .navbar-collapse::before {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Mobile menu header */
+  .navbar-collapse::before {
+    content: 'Menu';
+    display: block;
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Inner pages - Menu header with primary color text */
+  body:not(.path-frontpage) .navbar-collapse::before {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Mobile menu list */
+  #nav-list {
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    list-style: none !important;
+  }
+  
+  /* Superfish menu for inner pages - mobile layout */
+  .main-nav-inner #superfish-main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0;
+  }
+  
+  /* Mobile menu items - target Superfish items */
+  #nav-list li,
+  #superfish-main > li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    width: 100% !important;
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+  
+  /* Inner pages - Darker border */
+  body:not(.path-frontpage) #nav-list li,
+  body:not(.path-frontpage) #superfish-main > li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  #nav-list li a,
+  #superfish-main > li > a {
+    display: block !important;
+    padding: 8px 12px !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    white-space: normal !important;
+    height: auto !important;
+    line-height: 1.1 !important;
+    font-size: 13.5px !important;
+  }
+  
+  /* Inner pages - Primary color text */
+  body:not(.path-frontpage) #nav-list li a,
+  body:not(.path-frontpage) #superfish-main > li > a {
+    color: var(--primary-color) !important;
+  }
+  
+  #nav-list li a:hover,
+  #superfish-main > li > a:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+  
+  /* Inner pages - Darker hover */
+  body:not(.path-frontpage) #nav-list li a:hover,
+  body:not(.path-frontpage) #superfish-main > li > a:hover {
+    background: rgba(0, 0, 0, 0.05) !important;
+  }
+  
+  /* Hide scroll controls on mobile */
+  .nav-scroll-controls {
+    display: none !important;
+  }
+  
+  /* Mobile submenus - make them static and visible */
+  #nav-list ul,
+  #superfish-main ul {
+    position: static !important;
+    background: rgba(0, 0, 0, 0.15) !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    width: 100% !important;
+    display: none;
+  }
+  
+  /* Sub-submenus - even darker */
+  #nav-list ul ul {
+    background: rgba(0, 0, 0, 0.55) !important; /* Darker for nested */
+  }
+  
+  #nav-list ul ul ul {
+    background: rgba(0, 0, 0, 0.7) !important; /* Even darker for deep nesting */
+  }
+  
+  #nav-list ul li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Inner pages - Lighter submenu background */
+  body:not(.path-frontpage) #nav-list ul,
+  body:not(.path-frontpage) #superfish-main ul {
+    background: rgba(0, 0, 0, 0.05) !important;
+  }
+  
+  /* Show submenu when parent is hovered/tapped */
+  #nav-list li:hover > ul,
+  #superfish-main li:hover > ul,
+  #nav-list li.sfHover > ul,
+  #superfish-main li.sfHover > ul {
+    display: block !important;
+  }
+  
+  #nav-list ul li,
+  #superfish-main ul li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  }
+  
+  /* Inner pages - Darker submenu border */
+  body:not(.path-frontpage) #nav-list ul li,
+  body:not(.path-frontpage) #superfish-main ul li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+  }
+  
+  /* Level 2 submenu - Zero Vertical Padding */
+  #nav-list ul li a,
+  #superfish-main ul li a {
+    padding: 0px 8px 0px 20px !important;
+    font-size: 12px !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    color: #fff !important;
+    line-height: 1.2 !important;
+    height: auto !important;
+    min-height: 16px !important;
+  }
+  
+  /* Inner pages - Primary color text for submenus */
+  body:not(.path-frontpage) #nav-list ul li a,
+  body:not(.path-frontpage) #superfish-main ul li a {
+    background: rgba(0, 0, 0, 0.03) !important;
+    color: var(--primary-color) !important;
+  }
+  
+  /* Level 3 submenu - Zero Vertical Padding */
+  #nav-list ul ul li a,
+  #superfish-main ul ul li a {
+    padding: 0px 6px 0px 38px !important;
+    font-size: 11px !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    line-height: 1.2 !important;
+    min-height: 18px !important;
+  }
+  
+  /* Inner pages - Level 3 styling */
+  body:not(.path-frontpage) #nav-list ul ul li a,
+  body:not(.path-frontpage) #superfish-main ul ul li a {
+    background: rgba(0, 0, 0, 0.05) !important;
+  }
+  
+  /* Level 4 submenu - Zero Vertical Padding */
+  #nav-list ul ul ul li a,
+  #superfish-main ul ul ul li a {
+    padding: 0px 5px 0px 48px !important;
+    font-size: 10.5px !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    line-height: 1.2 !important;
+    min-height: 17px !important;
+  }
+  
+  /* Inner pages - Level 4 styling */
+  body:not(.path-frontpage) #nav-list ul ul ul li a,
+  body:not(.path-frontpage) #superfish-main ul ul ul li a {
+    background: rgba(0, 0, 0, 0.08) !important;
+  }
+}
+
 @media (max-width: 768px) {
   .site-header {
     flex-direction: column;
