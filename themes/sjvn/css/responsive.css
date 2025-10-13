@@ -299,8 +299,8 @@
   }
   
   /* Reset navbar-collapse - make it behave normally */
-  .navbar-collapse,
-  .collapse,
+.navbar-collapse,
+  .navbar-collapse.collapse,
   .navbar-collapse.collapse,
   .navbar-collapse.show {
     display: block !important;
@@ -319,7 +319,7 @@
     transition: none !important;
     transform: none !important;
     width: 100% !important;
-  }
+  } 
   
   /* Ensure main-nav and main-nav-inner keep original styles */
   .main-nav,
