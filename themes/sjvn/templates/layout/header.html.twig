@@ -62,7 +62,7 @@
 </div>
 
 <!-- Main Navigation -->
-<nav class="main-nav">
+<nav class="navbar navbar-expand-sm navbar-light custom-nav main-nav">
   <div class="home-link">
     <a href="{{ base_path }}" aria-label="Home">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -70,9 +70,14 @@
       </svg>
     </a>
   </div>
-  <ul id="nav-list" class="menu">
-    {{ page.primary_menu }}
-  </ul>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul id="nav-list" class="menu">
+      {{ page.primary_menu }}
+    </ul>
+  </div>
   <div class="nav-scroll-controls">
     <button class="nav-scroll-btn nav-scroll-left" aria-label="Scroll Left">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
