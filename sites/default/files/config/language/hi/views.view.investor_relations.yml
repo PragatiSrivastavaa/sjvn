@@ -1,0 +1,36 @@
+display:
+  default:
+    display_options:
+      title: "निगमित प्रशासन\r\n"
+  page_10:
+    display_options:
+      title: 'सहायक कंपनियों के वित्तीय विवरण'
+  page_2:
+    display_options:
+      title: "शेयर होल्डिंग पैटर्न\r\n"
+  page_3:
+    display_options:
+      title: "कॉर्पोरेट घोषणाएँ\r\n"
+  page_4:
+    display_options:
+      title: प्रतिलिपि
+  page_5:
+    display_options:
+      title: "त्रैमासिक / चालू वर्ष रिजल्ट\r\n"
+  page_6:
+    display_options:
+      title: "आईईपीएफ विवरण\r\n"
+      footer:
+        area:
+          content:
+            value: '<p>Procedure for claiming dividend/ shares from IEPF Authority</p><p>Application to the Authority for claiming unpaid amounts/ shares out of Investor Education and Protection Fund (IEPF) shall be filed in Form IEPF - 5 is available on the following link:</p><p><a href="http://www.iepf.gov.in/IEPF/corporates.html">http://www.iepf.gov.in/IEPF/corporates.html</a></p><p>Nodal Officer for IEPF Authority</p><p>Mr Soumendra Das,</p><p>Company Secretary, SJVN Limited</p><p>Shakti Sadan, SJVN Corporate Office Complex,</p><p>Shanan, Shimla - 171006, Himachal Pradesh</p><p>Tel.No. +91 177 2660075</p><p>Fax No. +91 177 2660071</p><p>email: investor.relations@sjvn.nic.in</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; And</p><p>Deputy Nodal Officer for IEPF Authority</p><p>Mr Arun Kumar Sharma,</p><p>Manager (CS), SJVN Limited</p><p>Shakti Sadan, SJVN Corporate Office Complex,</p><p>Shanan, Shimla - 171006, Himachal Pradesh</p><p>Tel.No. +91 177 2660075</p><p>Fax No. +91 177 2660071</p><p>email: investor.relations@sjvn.nic.in</p>'
+            format: full_html
+  page_7:
+    display_options:
+      title: "एजीएम के दौरान सीएमडी भाषण\r\n"
+  page_8:
+    display_options:
+      title: 'वार्षिक रिपोर्ट'
+  page_9:
+    display_options:
+      title: ' वार्षिक विवरणी '
