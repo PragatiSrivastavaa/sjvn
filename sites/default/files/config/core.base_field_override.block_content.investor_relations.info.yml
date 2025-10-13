@@ -1,0 +1,18 @@
+uuid: bfbf65e8-1abf-4f03-929a-39315af637cd
+langcode: hi
+status: true
+dependencies:
+  config:
+    - block_content.type.investor_relations
+id: block_content.investor_relations.info
+field_name: info
+entity_type: block_content
+bundle: investor_relations
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

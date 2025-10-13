@@ -1,17 +1,17 @@
-uuid: 4ad55a6d-0514-4e7d-87d9-43df0429ee76
-langcode: en
+uuid: 60f1a353-0efd-46ed-9fb9-9a46fe492e7d
+langcode: hi
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.month
-id: taxonomy_term.month.status
+    - block_content.type.career
+id: block_content.career.status
 field_name: status
-entity_type: taxonomy_term
-bundle: month
+entity_type: block_content
+bundle: career
 label: Published
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: 1

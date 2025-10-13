@@ -1,0 +1,18 @@
+uuid: bb008d79-16c4-4ee7-b53f-1a5b8de32686
+langcode: hi
+status: true
+dependencies:
+  config:
+    - node.type.investor_relations
+id: node.investor_relations.created
+field_name: created
+entity_type: node
+bundle: investor_relations
+label: 'Authored on'
+description: 'The date and time that the content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,17 +1,17 @@
-uuid: 4ad55a6d-0514-4e7d-87d9-43df0429ee76
-langcode: en
+uuid: b37eaecb-279c-47c1-a9f2-2baf01259d8d
+langcode: hi
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.month
-id: taxonomy_term.month.status
+    - block_content.type.investor_relations
+id: block_content.investor_relations.status
 field_name: status
-entity_type: taxonomy_term
-bundle: month
+entity_type: block_content
+bundle: investor_relations
 label: Published
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: 1

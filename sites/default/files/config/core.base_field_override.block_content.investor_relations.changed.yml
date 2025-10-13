@@ -1,0 +1,18 @@
+uuid: 4d89b8f5-cd81-4984-8ef0-c8bec89a65a7
+langcode: hi
+status: true
+dependencies:
+  config:
+    - block_content.type.investor_relations
+id: block_content.investor_relations.changed
+field_name: changed
+entity_type: block_content
+bundle: investor_relations
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

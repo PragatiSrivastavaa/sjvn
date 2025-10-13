@@ -1,0 +1,18 @@
+uuid: e05456c8-debf-48e0-9efb-1673222329f5
+langcode: hi
+status: true
+dependencies:
+  config:
+    - block_content.type.career
+id: block_content.career.changed
+field_name: changed
+entity_type: block_content
+bundle: career
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

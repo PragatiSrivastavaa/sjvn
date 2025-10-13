@@ -1,19 +1,19 @@
-uuid: ecf70f77-76eb-44a3-b3a0-6d66800607ba
-langcode: en
+uuid: 2a880407-f92a-4f62-a9d8-7b1f7c26d79c
+langcode: hi
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.month
+    - node.type.investor_relations
   module:
     - path
-id: taxonomy_term.month.path
+id: node.investor_relations.path
 field_name: path
-entity_type: taxonomy_term
-bundle: month
+entity_type: node
+bundle: investor_relations
 label: 'URL alias'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

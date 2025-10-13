@@ -1,0 +1,18 @@
+uuid: e8149510-11f5-4661-bdc3-3b8b199c0b40
+langcode: hi
+status: true
+dependencies:
+  config:
+    - node.type.investor_relations
+id: node.investor_relations.title
+field_name: title
+entity_type: node
+bundle: investor_relations
+label: शीर्षक
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

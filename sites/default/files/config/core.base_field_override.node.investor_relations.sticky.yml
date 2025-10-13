@@ -1,0 +1,22 @@
+uuid: aaa3ae2f-9459-49e1-867a-9da0732bac8d
+langcode: hi
+status: true
+dependencies:
+  config:
+    - node.type.investor_relations
+id: node.investor_relations.sticky
+field_name: sticky
+entity_type: node
+bundle: investor_relations
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
