@@ -483,6 +483,11 @@
     padding: 20px 0px;
   }
   
+  /* Inner pages - Light background with dark text */
+  body:not(.path-frontpage) .navbar-collapse {
+    background: var(--primary-light) !important;
+  }
+  
   /* Show menu when expanded */
   .navbar-collapse.show,
   .navbar-collapse.collapsing {
@@ -513,6 +518,13 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
   
+  /* Inner pages - Menu header with primary color text */
+  body:not(.path-frontpage) .navbar-collapse::before {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
   /* Mobile menu list */
   #nav-list {
     display: flex !important;
@@ -536,6 +548,12 @@
     max-height: none !important;
   }
   
+  /* Inner pages - Darker border */
+  body:not(.path-frontpage) #nav-list li,
+  body:not(.path-frontpage) #superfish-main > li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  }
+  
   #nav-list li a,
   #superfish-main > li > a {
     display: block !important;
@@ -546,9 +564,21 @@
     height: auto !important;
   }
   
+  /* Inner pages - Primary color text */
+  body:not(.path-frontpage) #nav-list li a,
+  body:not(.path-frontpage) #superfish-main > li > a {
+    color: var(--primary-color) !important;
+  }
+  
   #nav-list li a:hover,
   #superfish-main > li > a:hover {
     background: rgba(255, 255, 255, 0.15) !important;
+  }
+  
+  /* Inner pages - Darker hover */
+  body:not(.path-frontpage) #nav-list li a:hover,
+  body:not(.path-frontpage) #superfish-main > li > a:hover {
+    background: rgba(0, 0, 0, 0.05) !important;
   }
   
   /* Hide scroll controls on mobile */
@@ -572,6 +602,12 @@
     display: none;
   }
   
+  /* Inner pages - Lighter submenu background */
+  body:not(.path-frontpage) #nav-list ul,
+  body:not(.path-frontpage) #superfish-main ul {
+    background: rgba(0, 0, 0, 0.05) !important;
+  }
+  
   /* Show submenu when parent is hovered/tapped */
   #nav-list li:hover > ul,
   #superfish-main li:hover > ul,
@@ -585,11 +621,25 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
   }
   
+  /* Inner pages - Darker submenu border */
+  body:not(.path-frontpage) #nav-list ul li,
+  body:not(.path-frontpage) #superfish-main ul li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+  }
+  
   #nav-list ul li a,
   #superfish-main ul li a {
     padding-left: 35px !important;
     font-size: 14px !important;
     background: rgba(0, 0, 0, 0.1) !important;
+    color: #fff !important;
+  }
+  
+  /* Inner pages - Primary color text for submenus */
+  body:not(.path-frontpage) #nav-list ul li a,
+  body:not(.path-frontpage) #superfish-main ul li a {
+    background: rgba(0, 0, 0, 0.03) !important;
+    color: var(--primary-color) !important;
   }
   
   /* Nested submenus (Level 3+) */
@@ -600,11 +650,23 @@
     background: rgba(0, 0, 0, 0.2) !important;
   }
   
+  /* Inner pages - Level 3 styling */
+  body:not(.path-frontpage) #nav-list ul ul li a,
+  body:not(.path-frontpage) #superfish-main ul ul li a {
+    background: rgba(0, 0, 0, 0.05) !important;
+  }
+  
   #nav-list ul ul ul li a,
   #superfish-main ul ul ul li a {
     padding-left: 65px !important;
     font-size: 12px !important;
     background: rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  /* Inner pages - Level 4 styling */
+  body:not(.path-frontpage) #nav-list ul ul ul li a,
+  body:not(.path-frontpage) #superfish-main ul ul ul li a {
+    background: rgba(0, 0, 0, 0.08) !important;
   }
 }
 
