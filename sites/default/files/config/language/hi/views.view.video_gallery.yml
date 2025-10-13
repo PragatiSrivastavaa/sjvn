@@ -1,0 +1,5 @@
+label: 'वीडियो गैलरी'
+display:
+  default:
+    display_options:
+      title: "वीडियो गैलरी\r\n"

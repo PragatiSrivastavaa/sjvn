@@ -13,3 +13,7 @@ display:
           content:
             value: '<p><a class="see-more-btn" href="/alerts">और देखें</a></p>'
             format: full_html
+  default:
+    display_options:
+      title: "प्रेस विज्ञप्ति\r\n"
+label: 'प्रेस विज्ञप्ति'
