@@ -184,3 +184,11 @@ function sjvn_preprocess_views_view(&$variables) {
 }
 
 
+function sjvn_preprocess_views_view_unformatted(array &$variables) {
+  $variables['current_language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+}
+
+
+
+
+
