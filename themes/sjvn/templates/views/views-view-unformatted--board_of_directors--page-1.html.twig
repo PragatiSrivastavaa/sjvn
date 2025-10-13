@@ -42,7 +42,6 @@
             <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_degination }}'] }}</p>
             {% set node = row.content['#row']._entity %}
             
-            <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">View profile</a>
 
             <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
   {% if current_language == 'hi' %}
