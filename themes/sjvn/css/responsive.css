@@ -323,9 +323,7 @@
   
   /* Ensure main-nav and main-nav-inner keep original styles */
   .main-nav,
-  .main-nav-inner,
   nav.main-nav,
-  nav.main-nav-inner,
   nav.navbar {
     display: flex !important;
     align-items: center !important;
@@ -335,6 +333,20 @@
     overflow: visible !important;
     overflow-y: hidden !important;
     background: var(--primary-color) !important;
+  }
+
+  .main-nav-inner,
+  nav.main-nav-inner{
+    display: flex !important;
+    align-items: center !important;
+    padding: 4px !important;
+    height: 50px !important;
+    position: relative !important;
+    overflow: visible !important;
+    overflow-y: hidden !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: var(--primary-light) !important;
   }
   
   /* Keep #nav-list original desktop layout - SCROLLABLE */
@@ -402,7 +414,7 @@
   }
   
   #superfish-main a {
-    color: white !important;
+    /* color: white !important; */
     text-decoration: none !important;
     white-space: nowrap !important;
     padding: 2px 16px !important;
@@ -734,7 +746,7 @@
   /* Level 2 submenu - Zero Vertical Padding */
   #nav-list ul li a,
   #superfish-main ul li a {
-    padding: 0px 8px 0px 20px !important;
+    padding: 10px 20px 10px 30px !important;
     font-size: 12px !important;
     background: rgba(0, 0, 0, 0.1) !important;
     color: #fff !important;
