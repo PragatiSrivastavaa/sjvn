@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.key_executive.field_address
     - field.field.node.key_executive.field_degination
     - field.field.node.key_executive.field_executive_category
+    - field.field.node.key_executive.field_image_of_directors
     - field.field.node.key_executive.field_locations
     - field.field.node.key_executive.field_project_area
     - field.field.node.key_executive.field_tel_no
@@ -37,6 +38,7 @@ hidden:
   field_address: true
   field_degination: true
   field_executive_category: true
+  field_image_of_directors: true
   field_locations: true
   field_project_area: true
   field_tel_no: true

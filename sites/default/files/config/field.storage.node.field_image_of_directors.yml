@@ -16,7 +16,7 @@ settings:
   display_default: true
   uri_scheme: public
   default_image:
-    uuid: afb73e68-040d-49d5-8363-9b4334109c4b
+    uuid: ''
     alt: ''
     title: ''
     width: 980

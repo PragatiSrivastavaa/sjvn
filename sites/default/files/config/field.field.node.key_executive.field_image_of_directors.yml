@@ -1,16 +1,16 @@
-uuid: 2fa79088-0c12-4a15-9c22-12defbcf4dd4
+uuid: ca4e01d6-63ee-4c8c-bcea-b8cda8db9b7b
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_image_of_directors
-    - node.type.investor_relations
+    - node.type.key_executive
   module:
     - image
-id: node.investor_relations.field_image_of_directors
+id: node.key_executive.field_image_of_directors
 field_name: field_image_of_directors
 entity_type: node
-bundle: investor_relations
+bundle: key_executive
 label: 'Image of Directors'
 description: ''
 required: false
@@ -30,9 +30,9 @@ settings:
   title_field: false
   title_field_required: false
   default_image:
-    uuid: ''
+    uuid: 2c62f208-0aa8-421d-afb3-ded2d457dd1a
     alt: ''
     title: ''
-    width: null
-    height: null
+    width: 980
+    height: 980
 field_type: image
