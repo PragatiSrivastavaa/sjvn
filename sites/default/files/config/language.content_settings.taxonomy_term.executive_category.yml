@@ -1,0 +1,11 @@
+uuid: 46a9f7d4-df19-4732-8f67-3ebf3b5c98b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.executive_category
+id: taxonomy_term.executive_category
+target_entity_type_id: taxonomy_term
+target_bundle: executive_category
+default_langcode: site_default
+language_alterable: false

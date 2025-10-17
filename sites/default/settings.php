@@ -898,13 +898,14 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
 $databases['default']['default'] = [
- 'database' => 'sjvn',
-  'username' => 'root',
-  'password' => '',
+'database' => 'sjvn',
+  'username' => 'sjvn',
+  'password' => '=ENkIXT7e@Ds',
   'prefix' => '',
   'host' => 'localhost',
   'port' => '3306',
   'driver' => 'mysql',
+  'isolation_level' => 'READ COMMITTED',
   'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
   'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
 ];

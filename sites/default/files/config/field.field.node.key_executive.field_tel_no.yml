@@ -1,0 +1,23 @@
+uuid: 1d3187fb-27b2-444a-9c0b-35256b9450fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tel_no
+    - node.type.key_executive
+id: node.key_executive.field_tel_no
+field_name: field_tel_no
+entity_type: node
+bundle: key_executive
+label: 'Tel. No.  '
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

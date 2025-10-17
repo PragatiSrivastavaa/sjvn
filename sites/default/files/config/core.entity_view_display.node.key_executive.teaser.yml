@@ -1,0 +1,43 @@
+uuid: 961c224b-321e-42bf-9944-d6a1b3d1728c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.key_executive.body
+    - field.field.node.key_executive.field_address
+    - field.field.node.key_executive.field_degination
+    - field.field.node.key_executive.field_executive_category
+    - field.field.node.key_executive.field_locations
+    - field.field.node.key_executive.field_project_area
+    - field.field.node.key_executive.field_tel_no
+    - node.type.key_executive
+  module:
+    - text
+    - user
+id: node.key_executive.teaser
+targetEntityType: node
+bundle: key_executive
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_address: true
+  field_degination: true
+  field_executive_category: true
+  field_locations: true
+  field_project_area: true
+  field_tel_no: true
+  langcode: true

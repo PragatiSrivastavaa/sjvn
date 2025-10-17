@@ -4,11 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.node.investor_relations.body
+    - field.field.node.investor_relations.field_image_of_directors
     - field.field.node.investor_relations.field_investor_relations
     - field.field.node.investor_relations.field_upload_file
+    - image.style.thumbnail
     - node.type.investor_relations
   module:
     - file
+    - image
     - path
     - text
 id: node.investor_relations.default
@@ -31,6 +34,14 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_image_of_directors:
+    type: image_image
+    weight: 125
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
   field_investor_relations:
     type: options_select

@@ -1,0 +1,29 @@
+uuid: 7122cb5b-dbe8-4aca-a538-686f600d95a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_executive_category
+    - node.type.key_executive
+    - taxonomy.vocabulary.executive_category
+id: node.key_executive.field_executive_category
+field_name: field_executive_category
+entity_type: node
+bundle: key_executive
+label: 'Executive Category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      executive_category: executive_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

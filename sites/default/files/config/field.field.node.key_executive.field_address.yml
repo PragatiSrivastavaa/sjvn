@@ -1,0 +1,19 @@
+uuid: bed0e0e5-f1d7-4b47-9830-959eadb80e86
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address
+    - node.type.key_executive
+id: node.key_executive.field_address
+field_name: field_address
+entity_type: node
+bundle: key_executive
+label: Address
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

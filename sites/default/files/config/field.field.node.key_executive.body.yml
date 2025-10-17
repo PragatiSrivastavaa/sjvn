@@ -1,0 +1,24 @@
+uuid: fa6dbb4f-2702-49e6-ad52-a8ac590e3c7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.key_executive
+  module:
+    - text
+id: node.key_executive.body
+field_name: body
+entity_type: node
+bundle: key_executive
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary
