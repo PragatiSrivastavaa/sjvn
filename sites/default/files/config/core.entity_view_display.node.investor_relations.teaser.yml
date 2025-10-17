@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.investor_relations.body
-    - field.field.node.investor_relations.field_image_of_directors
     - field.field.node.investor_relations.field_investor_relations
     - field.field.node.investor_relations.field_upload_file
     - node.type.investor_relations
@@ -31,7 +30,6 @@ content:
     weight: 100
     region: content
 hidden:
-  field_image_of_directors: true
   field_investor_relations: true
   field_upload_file: true
   langcode: true

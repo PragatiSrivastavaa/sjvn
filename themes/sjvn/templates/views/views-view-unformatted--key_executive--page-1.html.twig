@@ -1,0 +1,59 @@
+<section class="inner-sec key-executive container">
+   <div class="row">
+      {% for row in rows %}
+      {% set node = row.content['#row']._entity %}
+      <div class="col-lg-4 col-md-6 mb-4">
+         <div class="key-executive p-3 border rounded">
+            <h6>{{ node.field_project_area.value }}</h6>
+            <div class="key-text-box">
+               <p><strong>{{ node.getTitle() }}</strong></p>
+               <p>{{ node.field_degination.value }}</p>
+               <p>{{ node.field_address.value }}</p>
+               <p>{{ node.field_tel_no.value }}</p>
+               <!-- Trigger modal button -->
+               <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal-{{ loop.index }}">
+               {% if current_language == 'hi' %}
+               प्रोफ़ाइल देखें
+               {% else %}
+               View Profile
+               {% endif %}
+               </button>
+               <!-- Modal -->
+               <div class="modal fade" id="modal-{{ loop.index }}" tabindex="-1" aria-labelledby="modalLabel{{ loop.index }}" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                     <!-- wider modal -->
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <h5 class="modal-title" id="modalLabel{{ loop.index }}">{{ node.getTitle() }}</h5>
+                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                           <div class="row">
+                              <!-- Left: Image -->
+                              {% if node.field_image_of_directors.entity %}
+                              <div class="col-md-4 text-center">
+                                 <img src="{{ file_url(node.field_image_of_directors.entity.fileuri) }}" 
+                                    class="img-fluid mb-2" 
+                                    alt="{{ node.getTitle() }}" 
+                                    >
+                              </div>
+                              {% endif %}
+                              <!-- Right: Content -->
+                              <div class="col-md-8">
+                                 <p>{{ node.body.value|raw }}</p>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- End modal -->
+            </div>
+         </div>
+      </div>
+      {% endfor %}
+   </div>
+</section>
