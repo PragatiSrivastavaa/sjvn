@@ -1,0 +1,24 @@
+uuid: 686416a4-6b0f-410e-a361-c90cd4197e0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.tariff_petition
+  module:
+    - text
+id: node.tariff_petition.body
+field_name: body
+entity_type: node
+bundle: tariff_petition
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

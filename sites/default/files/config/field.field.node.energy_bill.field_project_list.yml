@@ -1,26 +1,26 @@
-uuid: acdd6b48-271d-4f10-ac0e-6edb97e5d163
+uuid: 5ab6d9f3-166b-464a-a22b-a3bceb47fb69
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_business_cat
-    - node.type.our_business
-    - taxonomy.vocabulary.business_cat
-id: node.our_business.field_business_cat
-field_name: field_business_cat
+    - field.storage.node.field_project_list
+    - node.type.energy_bill
+    - taxonomy.vocabulary.project_list
+id: node.energy_bill.field_project_list
+field_name: field_project_list
 entity_type: node
-bundle: our_business
-label: 'Project Category'
+bundle: energy_bill
+label: 'Project List'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      business_cat: business_cat
+      project_list: project_list
     sort:
       field: name
       direction: asc

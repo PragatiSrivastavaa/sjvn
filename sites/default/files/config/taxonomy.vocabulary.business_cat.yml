@@ -2,7 +2,7 @@ uuid: def3e998-1d34-4662-98c0-779bc4ef024e
 langcode: en
 status: true
 dependencies: {  }
-name: 'Business Cat'
+name: 'Project Category'
 vid: business_cat
 description: null
 weight: 0

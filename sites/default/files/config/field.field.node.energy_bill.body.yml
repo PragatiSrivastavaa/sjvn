@@ -1,0 +1,24 @@
+uuid: fbde368d-30dd-4980-93e9-891e4062a35e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.energy_bill
+  module:
+    - text
+id: node.energy_bill.body
+field_name: body
+entity_type: node
+bundle: energy_bill
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

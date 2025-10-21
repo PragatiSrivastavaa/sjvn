@@ -1,4 +1,4 @@
-uuid: 9e2535c4-8b39-411d-9ea7-4307bd16fa53
+uuid: deb51826-2cfc-4015-b4ed-25ce131e975a
 langcode: en
 status: true
 dependencies:
@@ -9,8 +9,8 @@ third_party_settings:
     available_menus:
       - main
     parent: 'main:'
-name: 'Our Project'
-type: our_business
+name: 'Tariff Petition'
+type: tariff_petition
 description: null
 help: null
 new_revision: true

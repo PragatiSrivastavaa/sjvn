@@ -1,9 +1,9 @@
-uuid: ea00ff01-5056-44ae-bbb2-60a221ff5bd7
+uuid: 95b3f490-7803-4124-97ef-fdbda19f9585
 langcode: en
 status: true
 dependencies: {  }
-name: 'Portfolio Category'
-vid: portfolio_cat
+name: 'Project List'
+vid: project_list
 description: null
 weight: 0
 new_revision: false

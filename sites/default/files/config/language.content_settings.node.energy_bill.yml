@@ -1,0 +1,11 @@
+uuid: 751aeba1-3d91-4f2c-88df-5125a9ffc2b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.energy_bill
+id: node.energy_bill
+target_entity_type_id: node
+target_bundle: energy_bill
+default_langcode: site_default
+language_alterable: false

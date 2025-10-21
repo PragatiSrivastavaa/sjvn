@@ -1,19 +1,19 @@
-uuid: acdd6b48-271d-4f10-ac0e-6edb97e5d163
+uuid: 310132c9-6bbe-4282-8e4e-06aed1686810
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_business_cat
-    - node.type.our_business
+    - field.storage.node.field_project_category
+    - node.type.tariff_petition
     - taxonomy.vocabulary.business_cat
-id: node.our_business.field_business_cat
-field_name: field_business_cat
+id: node.tariff_petition.field_project_category
+field_name: field_project_category
 entity_type: node
-bundle: our_business
+bundle: tariff_petition
 label: 'Project Category'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

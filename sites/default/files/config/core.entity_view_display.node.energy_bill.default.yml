@@ -1,0 +1,56 @@
+uuid: 9c2e244e-0742-4935-acc6-e6cd5e86220d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.energy_bill.body
+    - field.field.node.energy_bill.field_financial_year
+    - field.field.node.energy_bill.field_month
+    - field.field.node.energy_bill.field_project_list
+    - node.type.energy_bill
+  module:
+    - text
+    - user
+id: node.energy_bill.default
+targetEntityType: node
+bundle: energy_bill
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_financial_year:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_month:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_project_list:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

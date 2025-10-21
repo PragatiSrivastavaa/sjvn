@@ -18,7 +18,7 @@ id: node.our_business.field_business_image
 field_name: field_business_image
 entity_type: node
 bundle: our_business
-label: 'Business Image'
+label: Image
 description: ''
 required: false
 translatable: true

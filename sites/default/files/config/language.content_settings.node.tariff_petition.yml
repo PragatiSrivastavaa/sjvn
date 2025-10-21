@@ -1,0 +1,11 @@
+uuid: 41346daa-ffa0-4f4f-9f24-8e4347b631eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tariff_petition
+id: node.tariff_petition
+target_entity_type_id: node
+target_bundle: tariff_petition
+default_langcode: site_default
+language_alterable: false

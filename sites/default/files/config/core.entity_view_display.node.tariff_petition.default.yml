@@ -1,0 +1,57 @@
+uuid: 7d70e0ad-2715-4357-b1ce-bd047dfbbd49
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.tariff_petition.body
+    - field.field.node.tariff_petition.field_project_category
+    - field.field.node.tariff_petition.field_project_list
+    - field.field.node.tariff_petition.field_upload_file
+    - node.type.tariff_petition
+  module:
+    - file
+    - text
+    - user
+id: node.tariff_petition.default
+targetEntityType: node
+bundle: tariff_petition
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_project_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_project_list:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_upload_file:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
