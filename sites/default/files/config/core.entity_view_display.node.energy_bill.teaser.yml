@@ -5,9 +5,12 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.energy_bill.body
+    - field.field.node.energy_bill.field_bill_type
     - field.field.node.energy_bill.field_financial_year
     - field.field.node.energy_bill.field_month
     - field.field.node.energy_bill.field_project_list
+    - field.field.node.energy_bill.field_upload_files
+    - field.field.node.energy_bill.field_year
     - node.type.energy_bill
   module:
     - text
@@ -31,7 +34,10 @@ content:
     weight: 100
     region: content
 hidden:
+  field_bill_type: true
   field_financial_year: true
   field_month: true
   field_project_list: true
+  field_upload_files: true
+  field_year: true
   langcode: true

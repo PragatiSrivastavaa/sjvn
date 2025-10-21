@@ -4,11 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.node.energy_bill.body
+    - field.field.node.energy_bill.field_bill_type
     - field.field.node.energy_bill.field_financial_year
     - field.field.node.energy_bill.field_month
     - field.field.node.energy_bill.field_project_list
+    - field.field.node.energy_bill.field_upload_files
+    - field.field.node.energy_bill.field_year
     - node.type.energy_bill
   module:
+    - file
     - text
     - user
 id: node.energy_bill.default
@@ -22,6 +26,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_bill_type:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 108
     region: content
   field_financial_year:
     type: entity_reference_label
@@ -46,6 +58,22 @@ content:
       link: true
     third_party_settings: {  }
     weight: 103
+    region: content
+  field_upload_files:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_year:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 107
     region: content
   links:
     settings: {  }

@@ -1,13 +1,16 @@
-uuid: 869bcdb0-d246-4d29-9904-fbe6be289e46
+uuid: 6a9b47f8-d34c-48eb-b4b7-cda72472a4b8
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_project_category
+    - field.storage.node.field_bill_type
+    - field.storage.node.field_financial_year
+    - field.storage.node.field_month
     - field.storage.node.field_project_list
-    - field.storage.node.field_upload_file
-    - node.type.tariff_petition
-    - taxonomy.vocabulary.business_cat
+    - field.storage.node.field_upload_files
+    - field.storage.node.field_year
+    - node.type.energy_bill
+    - taxonomy.vocabulary.financial_year
     - taxonomy.vocabulary.project_list
   module:
     - better_exposed_filters
@@ -15,8 +18,8 @@ dependencies:
     - node
     - taxonomy
     - user
-id: tariff_petition
-label: 'Tariff Petition'
+id: energy_bill
+label: 'Energy Bill'
 module: views
 description: ''
 tag: ''
@@ -29,7 +32,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Tariff Petition'
+      title: 'Energy Bill'
       fields:
         title:
           id: title
@@ -85,7 +88,7 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: true
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -96,72 +99,10 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_upload_file:
-          id: field_upload_file
-          table: node__field_upload_file
-          field: field_upload_file
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: file_url_plain
-          settings: {  }
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_project_category:
-          id: field_project_category
-          table: node__field_project_category
-          field: field_project_category
+        field_financial_year:
+          id: field_financial_year
+          table: node__field_financial_year
+          field: field_financial_year
           relationship: none
           group_type: group
           admin_label: ''
@@ -210,7 +151,7 @@ display:
           click_sort_column: target_id
           type: entity_reference_label
           settings:
-            link: false
+            link: true
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -273,7 +214,7 @@ display:
           click_sort_column: target_id
           type: entity_reference_label
           settings:
-            link: false
+            link: true
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -284,19 +225,19 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        nothing:
-          id: nothing
-          table: views
-          field: nothing
+        field_year:
+          id: field_year
+          table: node__field_year
+          field: field_year
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: custom
+          plugin_id: field
           label: ''
           exclude: false
           alter:
-            alter_text: true
-            text: "<div class=\"report-div report-3\">\r\n<ul>\r\n<li>\r\n                        <a href=\"{{ field_upload_file }} \" target=\"_blank\">\r\n                            <span class=\"icon-pdf\"></span>\r\n                            <p>\r\n                                {{ title }} \r\n                            </p>\r\n                        </a>\r\n                    </li>\r\n<ul>\r\n</div>"
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -332,9 +273,211 @@ display:
           empty: ''
           hide_empty: false
           empty_zero: false
-          hide_alter_empty: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_month:
+          id: field_month
+          table: node__field_month
+          field: field_month
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_bill_type:
+          id: field_bill_type
+          table: node__field_bill_type
+          field: field_bill_type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_upload_files:
+          id: field_upload_files
+          table: node__field_upload_files
+          field: field_upload_files
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: file_url_plain
+          settings: {  }
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       pager:
-        type: full
+        type: mini
         options:
           offset: 0
           pagination_heading_level: h4
@@ -344,8 +487,6 @@ display:
           tags:
             next: ››
             previous: ‹‹
-            first: '« First'
-            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -354,7 +495,6 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          quantity: 9
       exposed_form:
         type: bef
         options:
@@ -380,23 +520,23 @@ display:
               secondary_open: false
               reset_button_always_show: false
             filter:
-              field_project_category_target_id:
-                plugin_id: default
-                advanced:
-                  sort_options: false
-                  rewrite:
-                    filter_rewrite_values: ' - Any - |Select Project Category'
-                    filter_rewrite_values_key: false
-                  collapsible: false
-                  collapsible_disable_automatic_open: false
-                  is_secondary: false
-                  hide_label: false
               field_project_list_target_id:
                 plugin_id: default
                 advanced:
                   sort_options: false
                   rewrite:
                     filter_rewrite_values: ' - Any - |Select Project'
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_financial_year_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ' - Any - |Select Financial Year'
                     filter_rewrite_values_key: false
                   collapsible: false
                   collapsible_disable_automatic_open: false
@@ -448,55 +588,7 @@ display:
           entity_field: type
           plugin_id: bundle
           value:
-            tariff_petition: tariff_petition
-        field_project_category_target_id:
-          id: field_project_category_target_id
-          table: node__field_project_category
-          field: field_project_category_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: taxonomy_index_tid
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_project_category_target_id_op
-            label: ''
-            description: ''
-            use_operator: false
-            operator: field_project_category_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_project_category_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          vid: business_cat
-          type: select
-          hierarchy: false
-          limit: true
-          error_message: true
+            energy_bill: energy_bill
         field_project_list_target_id:
           id: field_project_list_target_id
           table: node__field_project_list
@@ -545,6 +637,54 @@ display:
           hierarchy: false
           limit: true
           error_message: true
+        field_financial_year_target_id:
+          id: field_financial_year_target_id
+          table: node__field_financial_year
+          field: field_financial_year_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_financial_year_target_id_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: field_financial_year_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_financial_year_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: financial_year
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
       style:
         type: default
       row:
@@ -576,9 +716,12 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_project_category'
+        - 'config:field.storage.node.field_bill_type'
+        - 'config:field.storage.node.field_financial_year'
+        - 'config:field.storage.node.field_month'
         - 'config:field.storage.node.field_project_list'
-        - 'config:field.storage.node.field_upload_file'
+        - 'config:field.storage.node.field_upload_files'
+        - 'config:field.storage.node.field_year'
   page_1:
     id: page_1
     display_title: Page
@@ -586,7 +729,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: tariff-petition
+      path: energy-bill
     cache_metadata:
       max-age: -1
       contexts:
@@ -597,6 +740,9 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_project_category'
+        - 'config:field.storage.node.field_bill_type'
+        - 'config:field.storage.node.field_financial_year'
+        - 'config:field.storage.node.field_month'
         - 'config:field.storage.node.field_project_list'
-        - 'config:field.storage.node.field_upload_file'
+        - 'config:field.storage.node.field_upload_files'
+        - 'config:field.storage.node.field_year'

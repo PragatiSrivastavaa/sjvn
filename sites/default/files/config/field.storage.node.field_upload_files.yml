@@ -1,0 +1,23 @@
+uuid: c38d06c9-939d-41a2-8a2b-4be9a0e714cb
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - node
+id: node.field_upload_files
+field_name: field_upload_files
+entity_type: node
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+module: file
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
