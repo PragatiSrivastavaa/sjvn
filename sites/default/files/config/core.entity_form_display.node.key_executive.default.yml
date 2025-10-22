@@ -83,10 +83,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_tel_no:
-    type: number
-    weight: 14
+    type: string_textfield
+    weight: 126
     region: content
     settings:
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   langcode:
