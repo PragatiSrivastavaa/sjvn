@@ -6,7 +6,14 @@ dependencies:
     - field.storage.node.field_image_of_directors
     - node.type.key_executive
   module:
+    - content_translation
     - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
 id: node.key_executive.field_image_of_directors
 field_name: field_image_of_directors
 entity_type: node
@@ -14,7 +21,7 @@ bundle: key_executive
 label: 'Image of Directors'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

@@ -1,17 +1,17 @@
-uuid: 687f71a5-760d-448a-a9b6-358a9d806703
-langcode: hi
+uuid: e9aed508-d79b-4112-be19-e1271ac6fa86
+langcode: en
 status: true
 dependencies:
   config:
-    - node.type.investor_relations
-id: node.investor_relations.uid
+    - node.type.tariff_petition
+id: node.tariff_petition.uid
 field_name: uid
 entity_type: node
-bundle: investor_relations
+bundle: tariff_petition
 label: 'Authored by'
 description: 'The username of the content author.'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
 settings:

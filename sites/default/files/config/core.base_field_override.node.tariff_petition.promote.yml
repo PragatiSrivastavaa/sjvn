@@ -1,17 +1,17 @@
-uuid: 7fe0f99f-50a8-41fd-ac53-91642b019c0f
-langcode: hi
+uuid: 1f9a9934-b7bf-434e-839b-e0218ac86ec0
+langcode: en
 status: true
 dependencies:
   config:
-    - node.type.investor_relations
-id: node.investor_relations.promote
+    - node.type.tariff_petition
+id: node.tariff_petition.promote
 field_name: promote
 entity_type: node
-bundle: investor_relations
+bundle: tariff_petition
 label: 'Promoted to front page'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: 1

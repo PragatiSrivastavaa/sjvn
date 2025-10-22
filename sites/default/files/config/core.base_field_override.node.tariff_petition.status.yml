@@ -1,17 +1,17 @@
-uuid: fdc65f43-659c-423a-8209-fa096430a4eb
-langcode: hi
+uuid: 28c85f2b-04e7-4e37-a424-296518d5c7d0
+langcode: en
 status: true
 dependencies:
   config:
-    - node.type.investor_relations
-id: node.investor_relations.status
+    - node.type.tariff_petition
+id: node.tariff_petition.status
 field_name: status
 entity_type: node
-bundle: investor_relations
+bundle: tariff_petition
 label: Published
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: 1

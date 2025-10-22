@@ -1,19 +1,19 @@
-uuid: 2a880407-f92a-4f62-a9d8-7b1f7c26d79c
-langcode: hi
+uuid: 16e799ca-7241-4d78-9188-3646459a0b0e
+langcode: en
 status: true
 dependencies:
   config:
-    - node.type.investor_relations
+    - node.type.tariff_petition
   module:
     - path
-id: node.investor_relations.path
+id: node.tariff_petition.path
 field_name: path
 entity_type: node
-bundle: investor_relations
+bundle: tariff_petition
 label: 'URL alias'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
