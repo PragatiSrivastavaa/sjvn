@@ -1,7 +1,6 @@
 <section class="inner-sec key-executive container">
    <div class="row">
       {% for row in rows %}
-      {% set node = row.content['#row']._entity %}
       <div class="col-lg-4 col-md-6 mb-4">
          <div class="key-executive p-3 border rounded">
             <h6>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_project_area }}'] }}</h6>
@@ -45,7 +44,7 @@
                            </div>
                         </div>
                         <div class="modal-footer">
-                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% if current_language == 'hi' %}बंद करना{% else %}Close{% endif %}</button>
                         </div>
                      </div>
                   </div>
