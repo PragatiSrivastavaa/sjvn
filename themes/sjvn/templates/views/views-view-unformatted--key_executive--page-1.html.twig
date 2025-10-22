@@ -4,12 +4,12 @@
       {% set node = row.content['#row']._entity %}
       <div class="col-lg-4 col-md-6 mb-4">
          <div class="key-executive p-3 border rounded">
-            <h6>{{ node.field_project_area.value }}</h6>
+            <h6>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_project_area }}'] }}</h6>
             <div class="key-text-box">
-               <p><strong>{{ node.getTitle() }}</strong></p>
-               <p>{{ node.field_degination.value }}</p>
-               <p>{{ node.field_address.value }}</p>
-               <p>{{ node.field_tel_no.value }}</p>
+               <p><strong>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</strong></p>
+               <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_degination }}'] }}</p>
+               <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_address }}'] }}</p>
+               <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_tel_no }}'] }}</p>
                <!-- Trigger modal button -->
                <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal-{{ loop.index }}">
                {% if current_language == 'hi' %}
@@ -24,7 +24,7 @@
                      <!-- wider modal -->
                      <div class="modal-content">
                         <div class="modal-header">
-                           <h5 class="modal-title" id="modalLabel{{ loop.index }}">{{ node.getTitle() }}</h5>
+                           <h5 class="modal-title" id="modalLabel{{ loop.index }}">{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h5>
                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -40,7 +40,7 @@
                               {% endif %}
                               <!-- Right: Content -->
                               <div class="col-md-8">
-                                 <p>{{ node.body.value|raw }}</p>
+                                 <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ body }}'] }}</p>
                               </div>
                            </div>
                         </div>
