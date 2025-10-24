@@ -2,9 +2,4 @@ name: 'Link generation test support'
 type: module
 description: 'Test hooks fired in link generation.'
 package: Testing
-# version: VERSION
-
-# Information added by Drupal.org packaging script on 2025-09-04
-version: '10.5.3'
-project: 'drupal'
-datestamp: 1756978279
+version: VERSION

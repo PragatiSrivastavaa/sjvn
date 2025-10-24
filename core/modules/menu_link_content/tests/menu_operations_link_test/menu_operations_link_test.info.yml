@@ -5,8 +5,3 @@ description: "Provides testing hooks to alter menu link content entity's operati
 dependencies:
   - drupal:menu_link_content
   - drupal:menu_ui
-
-# Information added by Drupal.org packaging script on 2025-09-04
-version: '10.5.3'
-project: 'drupal'
-datestamp: 1756978279

@@ -1,15 +1,10 @@
 name: 'SDC test theme'
 type: theme
 description: 'Test theme for sdc.'
-# version: VERSION
+version: VERSION
 base theme: sdc_theme_test_base
 
 enforce_prop_schemas: false
 
 libraries:
   - sdc_theme_test/reset
-
-# Information added by Drupal.org packaging script on 2025-09-04
-version: '10.5.3'
-project: 'drupal'
-datestamp: 1756978279

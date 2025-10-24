@@ -4,9 +4,4 @@ description: 'Displays guided tours of the site interface.'
 package: Core
 lifecycle: deprecated
 lifecycle_link: https://www.drupal.org/docs/core-modules-and-themes/deprecated-and-obsolete-modules-and-themes#s-tour
-# version: VERSION
-
-# Information added by Drupal.org packaging script on 2025-09-04
-version: '10.5.3'
-project: 'drupal'
-datestamp: 1756978279
+version: VERSION

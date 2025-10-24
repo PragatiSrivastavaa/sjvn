@@ -2,9 +2,4 @@ name: 'Drupal system cross profile test'
 type: module
 description: 'Support module for testing that a module in one profile can be reused in another profile.'
 package: Testing
-# version: VERSION
-
-# Information added by Drupal.org packaging script on 2025-09-04
-version: '10.5.3'
-project: 'drupal'
-datestamp: 1756978279
+version: VERSION
