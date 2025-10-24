@@ -908,5 +908,5 @@ $databases['default']['default'] = [
   'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
   'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
 ];
-$settings['config_sync_directory'] = 'sites/default/files/config';
+$settings['config_sync_directory'] = 'sites/default/config';
 $config['system.logging']['error_level'] = 'verbose';
