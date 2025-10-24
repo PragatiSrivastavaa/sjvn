@@ -1,0 +1,51 @@
+uuid: c875059c-ad73-49e4-90f4-a4556c1122cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.energy_bills
+    - field.field.block_content.energy_bills.body
+    - field.field.block_content.energy_bills.field_banner_image
+    - image.style.thumbnail
+  module:
+    - image
+    - text
+id: block_content.energy_bills.default
+targetEntityType: block_content
+bundle: energy_bills
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 26
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_banner_image:
+    type: image_image
+    weight: 27
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

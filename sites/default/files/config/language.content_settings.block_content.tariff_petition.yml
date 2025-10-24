@@ -1,0 +1,11 @@
+uuid: b06def56-972e-4c79-b84a-2fde3a27d0f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.tariff_petition
+id: block_content.tariff_petition
+target_entity_type_id: block_content
+target_bundle: tariff_petition
+default_langcode: site_default
+language_alterable: false

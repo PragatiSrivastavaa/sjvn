@@ -1,0 +1,8 @@
+uuid: e03c45c0-8077-4338-bfa0-c84d702c9f50
+langcode: en
+status: true
+dependencies: {  }
+id: tariff_petition
+label: 'Tariff Petition'
+revision: false
+description: null

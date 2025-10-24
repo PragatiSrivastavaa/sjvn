@@ -62,6 +62,8 @@ function sjvn_preprocess_page(&$variables) {
   'investor_relations' => 'Investor Relations',
   'career' => 'career',
   'key_executive' => 'Key Executive',
+  'tariff_petition' => 'Tariff Petition',
+  'energy_bills' => 'Energy Bills',
 
   // Views (their machine names)
   'board_of_directors' => 'Board of Directors',
@@ -72,6 +74,8 @@ function sjvn_preprocess_page(&$variables) {
   'investor_relations' => 'Investor Relations',
   'current_job' => 'career',
   'key_executive' => 'Key Executive',
+  'tariff_petition' => 'Tariff Petition',
+  'energy_bills' => 'Energy Bills',
 ];
   
 
