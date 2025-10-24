@@ -61,6 +61,7 @@ function sjvn_preprocess_page(&$variables) {
   'news_announcement' => 'News Announcement',
   'investor_relations' => 'Investor Relations',
   'career' => 'career',
+  'key_executive' => 'Key Executive',
 
   // Views (their machine names)
   'board_of_directors' => 'Board of Directors',
@@ -70,6 +71,7 @@ function sjvn_preprocess_page(&$variables) {
   'announcements' => 'News Announcement',   // ✅ view ID for News
   'investor_relations' => 'Investor Relations',
   'current_job' => 'career',
+  'key_executive' => 'Key Executive',
 ];
   
 
