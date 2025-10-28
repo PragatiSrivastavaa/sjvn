@@ -23,10 +23,12 @@
 
         <div class="quick-links-container">
           {% for row in rows %}
-          {% set link = row.content['#row']._entity.field_link.uri %}
-{% if link %}
-  {# If field_link has a value, use it #}
-  <a href="{{ link }}">
+         {% set entity = row.content['#row']._entity %}
+    {% set link_field = entity.field_link.value %}
+    
+    {# Check field_link has URL #}
+    {% if link_field and link_field.uri %}
+      <a href="{{ link_field.uri }}">
 {% else %}
   {# If field_link is empty, redirect to node page #}
   <a href="{{ path('entity.node.canonical', {'node': row.content['#row']._entity.id()}) }}">
