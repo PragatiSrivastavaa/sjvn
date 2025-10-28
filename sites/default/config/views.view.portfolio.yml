@@ -616,9 +616,11 @@ display:
         groups:
           1: AND
       defaults:
+        use_ajax: false
         filters: false
         filter_groups: false
         header: false
+      use_ajax: false
       header:
         area:
           id: area
