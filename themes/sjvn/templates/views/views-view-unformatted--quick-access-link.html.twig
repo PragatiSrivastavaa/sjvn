@@ -1,34 +1,50 @@
-<div class="quick-links-container">
-  {% for row in rows %}
-    {% set entity = row.content['#row']._entity %}
-    {% set link_value = entity.field_link.value.uri ?? '' %}
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
 
-    {% if link_value starts with 'http' %}
-      {# External URL #}
-      {% set final_link = link_value %}
-    {% elseif link_value starts with '/' %}
-      {# Internal URL path -> make correct Drupal link #}
-      {% set final_link = path('<front>') %}
-      {% if link_value != '/' %}
-        {% set final_link = link_value %}
-      {% endif %}
-    {% elseif link_value == '<front>' %}
-      {% set final_link = path('<front>') %}
-    {% elseif link_value == '<nolink>' or link_value == '<button>' %}
-      {% set final_link = 'javascript:void(0);' %}
-    {% else %}
-      {# No link → Redirect to node page #}
-      {% set final_link = path('entity.node.canonical', {'node': entity.id()}) %}
-    {% endif %}
 
-    <a href="{{ final_link }}">
-      <div class="quick-card">
-        {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_quick_link_image }}'] }}
-        <h3>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h3>
-        <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_description }}']|striptags|trim }}</p>
+
+      <div class="quick-links-wrapper">
+        <button class="quick-arrow carousel-button left" aria-label="Previous">&#10094;</button>
+
+        <div class="quick-links-container">
+          {% for row in rows %}
+          {% set link = row.content['#row']._entity.field_link.uri %}
+{% if link %}
+  {# If field_link has a value, use it #}
+  <a href="{{ link }}">
+{% else %}
+  {# If field_link is empty, redirect to node page #}
+  <a href="{{ path('entity.node.canonical', {'node': row.content['#row']._entity.id()}) }}">
+{% endif %}
+    <div class="quick-card">
+      {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_quick_link_image }}'] }}
+      <h3>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h3>
+      
+      <p>
+           {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_description }}'] }}
+          </p>
+
+    </div>
+  </a>
+
+
+          {% endfor %}
+        </div>
+
+        <button class="quick-arrow carousel-button right" aria-label="Next">&#10095;</button>
       </div>
-    </a>
-
-  {% endfor %}
-</div>
-<button class="quick-arrow carousel-button right" aria-label="Next">&#10095;</button>
