@@ -23,11 +23,22 @@
 
         <div class="quick-links-container">
           {% for row in rows %}
-          <div class="quick-card">
-            {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_quick_link_image }}'] }}
-            <h3>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h3>
-            <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ body }}'] }}</p>
-          </div>
+          {% set link = row.content['#row']._entity.field_link.uri %}
+{% if link %}
+  {# If field_link has a value, use it #}
+  <a href="{{ link }}">
+{% else %}
+  {# If field_link is empty, redirect to node page #}
+  <a href="{{ path('entity.node.canonical', {'node': row.content['#row']._entity.id()}) }}">
+{% endif %}
+    <div class="quick-card">
+      {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_quick_link_image }}'] }}
+      <h3>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h3>
+      <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ body }}'] }}</p>
+    </div>
+  </a>
+
+
           {% endfor %}
         </div>
 
