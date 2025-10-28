@@ -4,12 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.quick_access_link.body
+    - field.field.node.quick_access_link.field_description
     - field.field.node.quick_access_link.field_link
     - field.field.node.quick_access_link.field_quick_link_image
     - node.type.quick_access_link
   module:
-    - image
-    - link
     - text
     - user
 id: node.quick_access_link.default
@@ -22,35 +21,21 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 1
     region: content
-  field_link:
-    type: link
+  field_description:
+    type: basic_string
     label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
+    settings: {  }
     third_party_settings: {  }
-    weight: 103
-    region: content
-  field_quick_link_image:
-    type: image
-    label: above
-    settings:
-      image_link: ''
-      image_style: ''
-      image_loading:
-        attribute: lazy
-    third_party_settings: {  }
-    weight: 102
+    weight: 2
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
+  field_link: true
+  field_quick_link_image: true
   langcode: true

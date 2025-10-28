@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.quick_access_link.body
+    - field.field.node.quick_access_link.field_description
     - field.field.node.quick_access_link.field_link
     - field.field.node.quick_access_link.field_quick_link_image
     - node.type.quick_access_link
@@ -30,6 +31,7 @@ content:
     weight: 100
     region: content
 hidden:
+  field_description: true
   field_link: true
   field_quick_link_image: true
   langcode: true
