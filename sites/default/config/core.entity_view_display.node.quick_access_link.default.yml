@@ -23,19 +23,13 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  field_description:
-    type: basic_string
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 2
-    region: content
   links:
     settings: {  }
     third_party_settings: {  }
     weight: 0
     region: content
 hidden:
+  field_description: true
   field_link: true
   field_quick_link_image: true
   langcode: true

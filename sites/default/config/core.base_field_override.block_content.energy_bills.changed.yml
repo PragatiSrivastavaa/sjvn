@@ -1,0 +1,18 @@
+uuid: 2115b137-e100-45fe-a0f4-241eeb6d12b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.energy_bills
+id: block_content.energy_bills.changed
+field_name: changed
+entity_type: block_content
+bundle: energy_bills
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

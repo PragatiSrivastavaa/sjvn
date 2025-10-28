@@ -1,0 +1,18 @@
+uuid: cb776f5a-d3f8-4c55-a44e-839b880c9675
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.tariff_petition
+id: block_content.tariff_petition.changed
+field_name: changed
+entity_type: block_content
+bundle: tariff_petition
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

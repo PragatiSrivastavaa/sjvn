@@ -1,4 +1,4 @@
-uuid: 8b68e6ba-c430-48f1-b7a8-ed64beacfa2a
+uuid: 93dae916-0c60-4518-958c-2498716c3e69
 langcode: en
 status: true
 dependencies:
@@ -9,10 +9,10 @@ id: node.quick_access_link.field_description
 field_name: field_description
 entity_type: node
 bundle: quick_access_link
-label: Description
+label: 'Description '
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

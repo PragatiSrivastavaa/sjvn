@@ -1,0 +1,18 @@
+uuid: c2e6636b-5108-4856-b4e1-97fe83e43ff8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.tariff_petition
+id: block_content.tariff_petition.info
+field_name: info
+entity_type: block_content
+bundle: tariff_petition
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
