@@ -2090,7 +2090,7 @@ body.a11y-theme-high-contrast .accessibility-overlay.active {
 .social-media-fixed {
   position: fixed;
   right: 0px;
-  top: calc(45% + 65px);
+  top: calc(45% + 40px);
   z-index: 9997;
   display: flex;
   flex-direction: column;
