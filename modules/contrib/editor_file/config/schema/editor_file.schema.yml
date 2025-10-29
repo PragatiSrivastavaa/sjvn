@@ -1,0 +1,20 @@
+# Plugin \Drupal\editor_file\Plugin\CKEditor5Plugin\File
+ckeditor5.plugin.editor_file_file:
+  type: mapping
+  label: 'Editor file'
+  mapping:
+    status:
+      type: boolean
+      label: 'Status'
+    scheme:
+      type: string
+      label: 'Scheme'
+    directory:
+      type: string
+      label: 'Directory'
+    extensions:
+      type: string
+      label: 'Extensions'
+    max_size:
+      type: string
+      label: 'Maximum size'

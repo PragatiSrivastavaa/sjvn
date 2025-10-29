@@ -3,6 +3,10 @@ display:
     display_title: डीफॉल्ट
     display_options:
       fields:
+        name:
+          label: Username
+        status:
+          label: अवस्था
         operations:
           label: कार्यवाही
       pager:
@@ -10,5 +14,9 @@ display:
           tags:
             next: 'अगला ›'
             previous: '‹ पिछला'
+      filters:
+        status:
+          group_info:
+            label: अवस्था
   page_1:
     display_title: पृष्ठ

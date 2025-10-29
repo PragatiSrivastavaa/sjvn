@@ -25,6 +25,7 @@ settings:
       - '|'
       - blockQuote
       - drupalInsertImage
+      - drupalInsertFile
       - insertTable
       - horizontalLine
       - '|'
@@ -93,6 +94,12 @@ settings:
       multiBlock: true
     ckeditor5_sourceEditing:
       allowed_tags: {  }
+    editor_file_file:
+      status: true
+      scheme: public
+      directory: ''
+      extensions: 'txt pdf doc docx jpg png'
+      max_size: ''
 image_upload:
   status: true
   scheme: public
