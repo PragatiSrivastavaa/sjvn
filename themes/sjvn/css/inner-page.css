@@ -948,19 +948,29 @@ section.aboutscreen {
   list-style: none;
 }
 
-/* Show all languages but hide active one */
+/* Show all languages but hide active one based on hreflang */
 .language-toggle .links li {
   display: inline;
-  padding: 0;
+  padding: 0 0px !important;
   margin: 0;
   list-style: none;
+  border-right: none !important;
 }
 
 .language-toggle .lang-select {
   list-style: none;
 }
 
-/* HIDE the active/current language - show only the OTHER language */
+/* HIDE the active/current language based on body class and hreflang - show only the OTHER language */
+body.lang-en ul.links li[hreflang="en"] {
+  display: none !important;
+}
+
+body.lang-hi ul.links li[hreflang="hi"] {
+  display: none !important;
+}
+
+/* Fallback: Hide .is-active class if hreflang is not available */
 .language-toggle .links li.is-active {
   display: none !important;
 }

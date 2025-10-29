@@ -194,7 +194,29 @@ function sjvn_preprocess_views_view_unformatted(array &$variables) {
   $variables['current_language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
 }
 
-
+/**
+ * Implements hook_preprocess_links().
+ * Add hreflang attribute to language switcher list items.
+ */
+function sjvn_preprocess_links(&$variables) {
+  // Check if this is a language switcher block.
+  if (isset($variables['links']) && is_array($variables['links'])) {
+    foreach ($variables['links'] as $key => &$link) {
+      // Check if link has language information.
+      if (isset($link['link']['#url'])) {
+        $url = $link['link']['#url'];
+        // Get language from the URL or link options.
+        if (method_exists($url, 'getOption') && $language = $url->getOption('language')) {
+          // Add hreflang attribute to the list item.
+          if (!isset($link['attributes'])) {
+            $link['attributes'] = new Attribute();
+          }
+          $link['attributes']['hreflang'] = $language->getId();
+        }
+      }
+    }
+  }
+}
 
 
 
