@@ -303,7 +303,7 @@
   .navbar-collapse.collapse,
   .navbar-collapse.collapse,
   .navbar-collapse.show {
-    display: block !important;
+    /* display: block !important; */
     visibility: visible !important;
     opacity: 1 !important;
     position: static !important;
@@ -696,7 +696,7 @@
   #nav-list ul,
   #superfish-main ul {
     position: static !important;
-    background: rgba(0, 0, 0, 0.15) !important;
+    background: var(--primary-light) !important;
     box-shadow: none !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -707,11 +707,11 @@
   
   /* Sub-submenus - even darker */
   #nav-list ul ul {
-    background: rgba(0, 0, 0, 0.55) !important; /* Darker for nested */
+    background: var(--primary-color) !important; /* Darker for nested */
   }
   
   #nav-list ul ul ul {
-    background: rgba(0, 0, 0, 0.7) !important; /* Even darker for deep nesting */
+    background: var(--primary-color) !important; /* Even darker for deep nesting */
   }
   
   #nav-list ul li {
