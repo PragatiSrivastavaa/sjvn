@@ -2165,6 +2165,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
   text-decoration: none;
   transition: all 0.3s ease;
   font-size: 0.9rem;
+  margin-bottom: 10px;
 }
 
 .see-more-btn:hover {
