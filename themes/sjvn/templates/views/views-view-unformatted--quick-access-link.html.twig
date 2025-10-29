@@ -23,27 +23,26 @@
 
         <div class="quick-links-container">
           {% for row in rows %}
-          {% set link = row.content['#row']._entity.field_link.uri %}
-{% if link %}
-  {# If field_link has a value, use it #}
+  {% set entity = row.content['#row']._entity %}
+  {% set link_item = entity.field_link.0 %}
+
+  {% if link_item %}
+    {# Convert internal/external link to usable URL #}
+    {% set link = link_item.url %}
+  {% else %}
+    {# If linked field is empty, link to node page #}
+    {% set link = path('entity.node.canonical', {'node': entity.id()}) %}
+  {% endif %}
+
   <a href="{{ link }}">
-{% else %}
-  {# If field_link is empty, redirect to node page #}
-  <a href="{{ path('entity.node.canonical', {'node': row.content['#row']._entity.id()}) }}">
-{% endif %}
     <div class="quick-card">
       {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_quick_link_image }}'] }}
       <h3>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h3>
-      
-      <p>
-           {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_description }}'] }}
-          </p>
-
+      <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_description }}']|striptags|trim }}</p>
     </div>
   </a>
+{% endfor %}
 
-
-          {% endfor %}
         </div>
 
         <button class="quick-arrow carousel-button right" aria-label="Next">&#10095;</button>
