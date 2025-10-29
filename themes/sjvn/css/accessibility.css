@@ -1,0 +1,709 @@
+/**
+ * Accessibility Widget Styles
+ * WCAG 2.1 AA Compliant
+ * Government Website Standards
+ */
+
+/* ============================================
+   Floating Accessibility Button
+   ============================================ */
+.accessibility-trigger {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-color, #009EDB);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.accessibility-trigger:hover,
+.accessibility-trigger:focus {
+  background: var(--text-color, #02487B);
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.accessibility-trigger:focus {
+  outline: 3px solid var(--secondary-color, #F6AD0A);
+  outline-offset: 2px;
+}
+
+.accessibility-trigger svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* ============================================
+   Accessibility Drawer
+   ============================================ */
+.accessibility-drawer {
+  position: fixed;
+  right: 0px;
+  top: 0;
+  width: 400px;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.accessibility-drawer.open {
+  right: 0;
+}
+
+/* Drawer Header */
+.accessibility-drawer-header {
+  background: var(--primary-color, #009EDB);
+  color: #ffffff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.accessibility-drawer-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.accessibility-close {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.accessibility-close:hover,
+.accessibility-close:focus {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.accessibility-close:focus {
+  outline: 2px solid #ffcc00;
+  outline-offset: 2px;
+}
+
+/* Drawer Content */
+.accessibility-drawer-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color, #009EDB) var(--bg-light, #f9f9f9);
+}
+
+.accessibility-drawer-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.accessibility-drawer-content::-webkit-scrollbar-track {
+  background: var(--bg-light, #f9f9f9);
+}
+
+.accessibility-drawer-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color, #009EDB);
+  border-radius: 4px;
+}
+
+.accessibility-drawer-content::-webkit-scrollbar-thumb:hover {
+  background: var(--text-color, #02487B);
+}
+
+/* Accessibility Sections */
+.accessibility-section {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.accessibility-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.accessibility-section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color, #02487B);
+  margin: 0 0 12px 0;
+}
+
+/* Button Groups */
+.button-group {
+  display: flex;
+  gap: 8px;
+}
+
+.button-group.horizontal {
+  flex-direction: row;
+}
+
+.button-group button {
+  flex: 1;
+  padding: 10px 16px;
+  border: 2px solid #d1d5db;
+  background: #ffffff;
+  color: #374151;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-group button:hover {
+  border-color: var(--primary-color, #009EDB);
+  background: var(--primary-light, #e6f7ff);
+}
+
+.button-group button:focus {
+  outline: 3px solid var(--primary-color, #009EDB);
+  outline-offset: 2px;
+}
+
+.button-group button.active {
+  background: var(--primary-color, #009EDB) !important;
+  color: #ffffff !important;
+  border-color: var(--primary-color, #009EDB) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 0 4px var(--primary-light, rgba(0, 158, 219, 0.3)) !important;
+  transform: scale(1.05) !important;
+  position: relative !important;
+}
+
+.button-group button.active::after {
+  content: '✓';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--secondary-color, #F6AD0A);
+  color: #000;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  border: 2px solid #fff;
+}
+
+.button-group button.icon-btn {
+  padding: 10px;
+}
+
+/* Radio Groups */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #ffffff;
+  min-height: 44px;
+}
+
+.radio-option:hover {
+  border-color: var(--primary-color, #009EDB);
+  background: var(--primary-light, #e6f7ff);
+}
+
+.radio-option.active {
+  background: var(--primary-light, #e6f7ff) !important;
+  border-color: var(--primary-color, #009EDB) !important;
+  border-width: 3px !important;
+  box-shadow: 0 0 0 3px rgba(0, 158, 219, 0.2) !important;
+  position: relative !important;
+}
+
+.radio-option.active::before {
+  content: '✓';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--primary-color, #009EDB);
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.radio-option input[type="radio"] {
+  width: 22px;
+  height: 22px;
+  margin-right: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: var(--primary-color, #009EDB);
+  border: 2px solid var(--primary-color, #009EDB);
+}
+
+.radio-option input[type="radio"]:checked {
+  background: var(--primary-color, #009EDB);
+  border-color: var(--primary-color, #009EDB);
+}
+
+.radio-option input[type="radio"]:focus {
+  outline: 3px solid var(--primary-color, #009EDB);
+  outline-offset: 2px;
+}
+
+.radio-label {
+  color: #374151;
+  font-size: 0.95rem;
+  font-weight: 500;
+  flex: 1;
+}
+
+.radio-option.active .radio-label {
+  color: var(--text-color, #02487B) !important;
+  font-weight: 700 !important;
+}
+
+/* Checkbox Groups */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #ffffff;
+  min-height: 44px;
+}
+
+.checkbox-option:hover {
+  border-color: var(--primary-color, #009EDB);
+  background: var(--primary-light, #e6f7ff);
+}
+
+.checkbox-option input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: var(--primary-color, #009EDB);
+}
+
+.checkbox-option input[type="checkbox"]:focus {
+  outline: 3px solid var(--primary-color, #009EDB);
+  outline-offset: 2px;
+}
+
+.checkbox-option input[type="checkbox"]:checked + .checkbox-label {
+  color: var(--text-color, #02487B);
+  font-weight: 600;
+}
+
+.checkbox-label {
+  color: #374151;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.action-btn {
+  width: 100%;
+  padding: 12px 20px;
+  background: #f3f4f6;
+  color: #374151;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  min-height: 44px;
+}
+
+.action-btn:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+.action-btn:focus {
+  outline: 3px solid var(--primary-color, #009EDB);
+  outline-offset: 2px;
+}
+
+.action-btn:last-child {
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
+}
+
+.action-btn:last-child:hover {
+  background: #fecaca;
+  border-color: #f87171;
+}
+
+/* Overlay */
+.accessibility-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9997;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.accessibility-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ============================================
+   Accessibility Features Applied to Body
+   ============================================ */
+
+/* Text Size - Centralized using CSS Variables */
+:root {
+  --a11y-font-scale: 1;
+}
+
+body.a11y-text-decrease {
+  --a11y-font-scale: 0.875;
+}
+
+body.a11y-text-increase {
+  --a11y-font-scale: 1.25;
+}
+
+/* Apply to ALL text elements across entire site */
+body.a11y-text-decrease *:not(.accessibility-drawer):not(.accessibility-drawer *),
+body.a11y-text-increase *:not(.accessibility-drawer):not(.accessibility-drawer *) {
+  font-size: calc(1rem * var(--a11y-font-scale)) !important;
+}
+
+/* Specific elements for better coverage */
+body.a11y-text-decrease p,
+body.a11y-text-decrease div,
+body.a11y-text-decrease span,
+body.a11y-text-decrease a,
+body.a11y-text-decrease li,
+body.a11y-text-decrease h1,
+body.a11y-text-decrease h2,
+body.a11y-text-decrease h3,
+body.a11y-text-decrease h4,
+body.a11y-text-decrease h5,
+body.a11y-text-decrease h6,
+body.a11y-text-decrease td,
+body.a11y-text-decrease th,
+body.a11y-text-decrease label,
+body.a11y-text-decrease button {
+  font-size: calc(1rem * 0.875) !important;
+}
+
+body.a11y-text-increase p,
+body.a11y-text-increase div,
+body.a11y-text-increase span,
+body.a11y-text-increase a,
+body.a11y-text-increase li,
+body.a11y-text-increase h1,
+body.a11y-text-increase h2,
+body.a11y-text-increase h3,
+body.a11y-text-increase h4,
+body.a11y-text-increase h5,
+body.a11y-text-increase h6,
+body.a11y-text-increase td,
+body.a11y-text-increase th,
+body.a11y-text-increase label,
+body.a11y-text-increase button {
+  font-size: calc(1rem * 1.25) !important;
+}
+
+/* Headings scale proportionally */
+body.a11y-text-decrease h1 { font-size: calc(2rem * 0.875) !important; }
+body.a11y-text-decrease h2 { font-size: calc(1.75rem * 0.875) !important; }
+body.a11y-text-decrease h3 { font-size: calc(1.5rem * 0.875) !important; }
+
+body.a11y-text-increase h1 { font-size: calc(2rem * 1.25) !important; }
+body.a11y-text-increase h2 { font-size: calc(1.75rem * 1.25) !important; }
+body.a11y-text-increase h3 { font-size: calc(1.5rem * 1.25) !important; }
+
+/* Dark Theme */
+body.a11y-theme-dark {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+}
+
+body.a11y-theme-dark * {
+  background-color: inherit;
+  color: inherit;
+}
+
+body.a11y-theme-dark a {
+  color: #60a5fa !important;
+}
+
+body.a11y-theme-dark .header,
+body.a11y-theme-dark .top-bar,
+body.a11y-theme-dark nav {
+  background: #0a0a0a !important;
+}
+
+/* High Contrast Theme */
+body.a11y-theme-high-contrast {
+  background: #000000 !important;
+  color: #ffff00 !important;
+}
+
+body.a11y-theme-high-contrast * {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border-color: #ffff00 !important;
+}
+
+body.a11y-theme-high-contrast a {
+  color: #00ffff !important;
+  text-decoration: underline !important;
+}
+
+body.a11y-theme-high-contrast button {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+/* Cursor Size */
+body.a11y-cursor-small * {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="black" stroke="white" stroke-width="1"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/></svg>') 4 4, auto !important;
+}
+
+body.a11y-cursor-large * {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="black" stroke="white" stroke-width="1"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/></svg>') 12 12, auto !important;
+}
+
+/* Line Height */
+body.a11y-line-height-tight p,
+body.a11y-line-height-tight li,
+body.a11y-line-height-tight div {
+  line-height: 1.3 !important;
+}
+
+body.a11y-line-height-loose p,
+body.a11y-line-height-loose li,
+body.a11y-line-height-loose div {
+  line-height: 2 !important;
+}
+
+/* Text Alignment */
+body.a11y-align-left p,
+body.a11y-align-left li,
+body.a11y-align-left div {
+  text-align: left !important;
+}
+
+body.a11y-align-center p,
+body.a11y-align-center li,
+body.a11y-align-center div {
+  text-align: center !important;
+}
+
+body.a11y-align-right p,
+body.a11y-align-right li,
+body.a11y-align-right div {
+  text-align: right !important;
+}
+
+/* Text Spacing */
+body.a11y-spacing-tight p,
+body.a11y-spacing-tight li {
+  letter-spacing: -0.5px !important;
+  word-spacing: -1px !important;
+}
+
+body.a11y-spacing-loose p,
+body.a11y-spacing-loose li {
+  letter-spacing: 1px !important;
+  word-spacing: 3px !important;
+}
+
+/* Enhanced Focus Indicators */
+body.a11y-enhanced-focus *:focus {
+  outline: 4px solid var(--primary-color, #009EDB) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px var(--primary-light, rgba(0, 158, 219, 0.2)) !important;
+}
+
+/* Hide Images */
+body.a11y-hide-images img {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+body.a11y-hide-images img::after {
+  content: attr(alt);
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  background: #f3f4f6;
+  padding: 10px;
+  border: 2px dashed #9ca3af;
+  color: #374151;
+}
+
+/* Highlight Links */
+body.a11y-highlight-links a {
+  background: var(--secondary-color, #F6AD0A) !important;
+  padding: 2px 4px !important;
+  border-radius: 2px !important;
+  text-decoration: underline !important;
+  font-weight: 600 !important;
+  color: #000 !important;
+}
+
+/* Show Tooltips */
+body.a11y-show-tooltips [title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background: #1f2937;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  z-index: 10000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Reduce Motion */
+body.a11y-reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+  .accessibility-drawer {
+    width: 100%;
+    right: -100%;
+  }
+  
+  .accessibility-trigger {
+    right: 10px;
+    width: 48px;
+    height: 48px;
+  }
+  
+  .accessibility-trigger svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  .accessibility-trigger,
+  .accessibility-drawer,
+  .accessibility-overlay {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   Reduced Motion Preference
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .accessibility-drawer,
+  .accessibility-trigger,
+  .accessibility-overlay,
+  .button-group button,
+  .radio-option,
+  .checkbox-option,
+  .action-btn {
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   High Contrast Mode
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  .accessibility-trigger {
+    border-width: 3px;
+  }
+  
+  .button-group button,
+  .radio-option,
+  .checkbox-option,
+  .action-btn {
+    border-width: 3px;
+  }
+}
+

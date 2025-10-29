@@ -1693,7 +1693,7 @@
 
 /* Sub-submenu list items - ensure no positioning conflicts */
 #superfish-main ul ul li {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--primary-color);
   position: relative !important;
   display: block !important;
   float: none !important;
@@ -1703,7 +1703,7 @@
 #superfish-main ul ul a {
   padding: 6px 16px;
   font-size: 0.9em;
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--primary-color) !important;
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -1712,12 +1712,13 @@
 }
 
 #superfish-main ul ul a:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--primary-light) !important;
+  color: var(--primary-color) !important;
 }
 
 /* Sub-sub-submenu list items - ensure no positioning conflicts */
 #superfish-main ul ul ul li {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--primary-color);
   position: relative !important;
   display: block !important;
   float: none !important;
@@ -1766,7 +1767,8 @@
 }
 
 #superfish-main ul li:not(.menuparent) > a:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
+  background: var(--primary-light) !important;
+  color: var(--primary-color) !important;
 }
 
 /* Sub-sub-submenus and deeper levels (Level 3+) - inherit positioning from parent rule */
@@ -1905,8 +1907,8 @@
 }
 
 #superfish-main ul ul a:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: var(--primary-light) !important;
+  color: var(--primary-color) !important;
 }
 
 /* Ensure nested submenu items with children have proper padding for arrow */
