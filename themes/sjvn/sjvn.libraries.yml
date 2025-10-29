@@ -81,3 +81,19 @@ key-executive:
       css/key-executive.css: {}
   dependencies:
     - sjvn/global-styling
+
+energy-bill:
+  version: 1.x
+  css:
+    theme:
+      css/energy-bill.css: {}
+  dependencies:
+    - sjvn/global-styling
+
+tariff-petition:
+  version: 1.x
+  css:
+    theme:
+      css/tariff-petition.css: {}
+  dependencies:
+    - sjvn/global-styling

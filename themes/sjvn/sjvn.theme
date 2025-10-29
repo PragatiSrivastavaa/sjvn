@@ -190,6 +190,16 @@ function sjvn_preprocess_views_view(&$variables) {
     $variables['#attached']['library'][] = 'sjvn/key-executive';
   }
   
+  // Attach energy bill library
+  if ($variables['view']->id() === 'energy_bill') {
+    $variables['#attached']['library'][] = 'sjvn/energy-bill';
+  }
+  
+  // Attach tariff petition library
+  if ($variables['view']->id() === 'tariff_petition') {
+    $variables['#attached']['library'][] = 'sjvn/tariff-petition';
+  }
+  
   $variables['current_language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
 }
