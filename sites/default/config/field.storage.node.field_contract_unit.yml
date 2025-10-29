@@ -1,0 +1,20 @@
+uuid: 65052a66-e20c-4723-bd8c-bd464fe0b313
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_contract_unit
+field_name: field_contract_unit
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

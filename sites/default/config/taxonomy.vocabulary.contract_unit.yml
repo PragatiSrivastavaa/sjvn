@@ -1,0 +1,9 @@
+uuid: 040c8ce8-d8ba-47dd-985a-0e255481c4a6
+langcode: en
+status: true
+dependencies: {  }
+name: 'Contract Unit'
+vid: contract_unit
+description: null
+weight: 0
+new_revision: false

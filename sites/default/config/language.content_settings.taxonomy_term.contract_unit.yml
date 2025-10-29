@@ -1,0 +1,11 @@
+uuid: ddd3bce6-3e51-4e47-9087-285d190ef740
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.contract_unit
+id: taxonomy_term.contract_unit
+target_entity_type_id: taxonomy_term
+target_bundle: contract_unit
+default_langcode: site_default
+language_alterable: false

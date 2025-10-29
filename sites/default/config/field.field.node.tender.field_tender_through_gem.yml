@@ -1,0 +1,21 @@
+uuid: 5f10e64c-2b6c-400f-b8ed-99c0af67a696
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tender_through_gem
+    - node.type.tender
+id: node.tender.field_tender_through_gem
+field_name: field_tender_through_gem
+entity_type: node
+bundle: tender
+label: 'Tender through Gem'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

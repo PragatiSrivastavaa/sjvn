@@ -1,0 +1,29 @@
+uuid: 73ab40de-f411-44b9-afc7-dc2dce5dc1af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_locations
+    - node.type.tender
+    - taxonomy.vocabulary.location
+id: node.tender.field_locations
+field_name: field_locations
+entity_type: node
+bundle: tender
+label: Locations
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

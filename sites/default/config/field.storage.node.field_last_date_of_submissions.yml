@@ -1,0 +1,20 @@
+uuid: bfab4e5f-2540-4f50-b136-53cffd066c23
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_last_date_of_submissions
+field_name: field_last_date_of_submissions
+entity_type: node
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
