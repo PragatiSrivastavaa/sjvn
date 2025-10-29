@@ -15,7 +15,9 @@
     textAlign: 'left',
     textSpacing: 'normal',
     lineHeight: 'normal',
-    cursor: 'normal'
+    cursor: 'normal',
+    hideImages: false,
+    highlightLinks: false
   };
   
   // Store original font sizes (base reference)
@@ -361,6 +363,75 @@
       label.onclick = handleCursor;
     });
     
+    // VISUAL OPTIONS (CHECKBOXES)
+    const visualCheckboxes = drawer.querySelectorAll('.checkbox-option input[type="checkbox"]');
+    console.log('Found', visualCheckboxes.length, 'visual option checkboxes');
+    
+    visualCheckboxes.forEach(function(checkbox) {
+      checkbox.onchange = function() {
+        const name = this.getAttribute('name');
+        const checked = this.checked;
+        console.log('👁️ Visual option changed:', name, '=', checked);
+        
+        // Apply visual options
+        if (name === 'hide-images') {
+          if (checked) {
+            document.body.classList.add('a11y-hide-images');
+          } else {
+            document.body.classList.remove('a11y-hide-images');
+          }
+          settings.hideImages = checked;
+          console.log('✅ Hide images:', checked);
+        } else if (name === 'highlight-links') {
+          if (checked) {
+            document.body.classList.add('a11y-highlight-links');
+          } else {
+            document.body.classList.remove('a11y-highlight-links');
+          }
+          settings.highlightLinks = checked;
+          console.log('✅ Highlight links:', checked);
+        }
+        
+        saveSettings();
+      };
+    });
+    
+    // QUICK ACTIONS (BUTTONS)
+    const quickActionButtons = drawer.querySelectorAll('.action-btn');
+    console.log('Found', quickActionButtons.length, 'quick action buttons');
+    
+    quickActionButtons.forEach(function(btn) {
+      btn.onclick = function() {
+        const action = this.getAttribute('data-action');
+        console.log('⚡ Quick action clicked:', action);
+        
+        if (action === 'skip-to-main') {
+          // Skip to main content
+          const mainContent = document.querySelector('#mainSec, main, [role="main"], .main-content');
+          if (mainContent) {
+            mainContent.scrollIntoView({ behavior: 'smooth' });
+            mainContent.setAttribute('tabindex', '-1');
+            mainContent.focus();
+            console.log('✅ Skipped to main content');
+          } else {
+            console.warn('Main content not found');
+          }
+          closeDrawer();
+        } else if (action === 'back-to-top') {
+          // Scroll to top
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          console.log('✅ Scrolled to top');
+          closeDrawer();
+        } else if (action === 'reset-all') {
+          // Reset all settings
+          if (confirm('Are you sure you want to reset all accessibility settings to default?')) {
+            resetAllSettings();
+            console.log('✅ Reset all settings');
+          }
+        }
+      };
+    });
+    
     // Store original sizes FIRST (this is the BASE reference - "A")
     storeOriginalSizes();
     
@@ -484,6 +555,115 @@
     });
     
     console.log('✓ Applied line height to', count, 'elements');
+  }
+  
+  // Close the drawer
+  function closeDrawer() {
+    const drawer = document.getElementById('accessibility-drawer');
+    const overlay = document.getElementById('accessibility-overlay');
+    
+    if (drawer && overlay) {
+      drawer.classList.remove('open');
+      drawer.style.right = '-400px';
+      overlay.classList.remove('active');
+      console.log('📂 Drawer closed');
+    }
+  }
+  
+  // Reset all settings
+  function resetAllSettings() {
+    console.log('🔄 Resetting all settings...');
+    
+    // Reset settings object
+    settings = {
+      textSize: 'normal',
+      theme: 'light',
+      textAlign: 'left',
+      textSpacing: 'normal',
+      lineHeight: 'normal',
+      cursor: 'normal',
+      hideImages: false,
+      highlightLinks: false
+    };
+    
+    // Remove all classes from body
+    document.body.classList.remove(
+      'a11y-text-decrease', 'a11y-text-increase',
+      'a11y-theme-dark', 'a11y-theme-high-contrast',
+      'a11y-align-left', 'a11y-align-center', 'a11y-align-right',
+      'a11y-spacing-tight', 'a11y-spacing-loose',
+      'a11y-line-height-tight', 'a11y-line-height-loose',
+      'a11y-cursor-small', 'a11y-cursor-large',
+      'a11y-hide-images', 'a11y-highlight-links'
+    );
+    
+    // Reset inline styles
+    document.body.style.background = '';
+    document.body.style.color = '';
+    
+    // Reset all text elements to original sizes
+    const elements = document.querySelectorAll('p, div, span, a, li, h1, h2, h3, h4, h5, h6, td, th, label, button');
+    elements.forEach(function(el) {
+      if (!el.closest('#accessibility-drawer')) {
+        const baseSize = originalSizes.get(el);
+        if (baseSize) {
+          el.style.fontSize = baseSize + 'px';
+        } else {
+          el.style.fontSize = '';
+        }
+        el.style.textAlign = '';
+        el.style.letterSpacing = '';
+        el.style.wordSpacing = '';
+        el.style.lineHeight = '';
+      }
+    });
+    
+    // Reset UI - uncheck all checkboxes
+    const drawer = document.getElementById('accessibility-drawer');
+    drawer.querySelectorAll('input[type="checkbox"]').forEach(function(cb) {
+      cb.checked = false;
+    });
+    
+    // Reset button active states
+    drawer.querySelectorAll('[data-action^="text-"]').forEach(function(btn) {
+      btn.classList.remove('active');
+      btn.style.cssText = '';
+    });
+    drawer.querySelector('[data-action="text-normal"]').classList.add('active');
+    drawer.querySelector('[data-action="text-normal"]').style.cssText = 'background: #009EDB !important; color: white !important;';
+    
+    // Reset radio button states
+    drawer.querySelectorAll('input[type="radio"]').forEach(function(radio) {
+      const label = radio.closest('label');
+      label.classList.remove('active');
+      label.style.cssText = '';
+      
+      // Check defaults
+      if ((radio.name === 'theme' && radio.value === 'light') ||
+          (radio.name === 'cursor' && radio.value === 'normal') ||
+          (radio.name === 'line-height' && radio.value === 'normal') ||
+          (radio.name === 'text-spacing' && radio.value === 'normal')) {
+        radio.checked = true;
+        label.classList.add('active');
+        label.style.cssText = 'background: #e6f7ff !important; border: 3px solid #009EDB !important;';
+      } else {
+        radio.checked = false;
+      }
+    });
+    
+    // Reset alignment buttons
+    drawer.querySelectorAll('[data-action^="align-"]').forEach(function(btn) {
+      btn.classList.remove('active');
+      btn.style.cssText = '';
+    });
+    drawer.querySelector('[data-action="align-left"]').classList.add('active');
+    drawer.querySelector('[data-action="align-left"]').style.cssText = 'background: #009EDB !important; color: white !important;';
+    
+    // Save reset settings
+    saveSettings();
+    
+    console.log('✅ All settings reset to default');
+    alert('All accessibility settings have been reset to default.');
   }
   
   // Save settings to localStorage
