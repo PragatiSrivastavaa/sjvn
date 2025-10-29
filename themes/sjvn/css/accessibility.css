@@ -9,8 +9,8 @@
    ============================================ */
 .accessibility-trigger {
   position: fixed;
-  right: 20px;
-  top: 50%;
+  right: 0px;
+  top: 45%;
   transform: translateY(-50%);
   z-index: 9998;
   width: 56px;
@@ -767,14 +767,16 @@ body.a11y-theme-dark .carousel-dots button.active {
 }
 
 body.a11y-theme-dark .carousel-button,
-body.a11y-theme-dark .nav-scroll-btn {
+body.a11y-theme-dark .nav-scroll-btn,
+body.a11y-theme-dark .quick-arrow {
   background: var(--a11y-dark-accent-button) !important;
   color: #ffffff !important;
   border-color: var(--a11y-dark-accent-button) !important;
 }
 
 body.a11y-theme-dark .carousel-button:hover,
-body.a11y-theme-dark .nav-scroll-btn:hover {
+body.a11y-theme-dark .nav-scroll-btn:hover,
+body.a11y-theme-dark .quick-arrow:hover {
   background: var(--a11y-dark-accent-button-hover) !important;
 }
 
@@ -1231,7 +1233,8 @@ body.a11y-theme-high-contrast .carousel-dots button.active {
 
 body.a11y-theme-high-contrast .carousel-button,
 body.a11y-theme-high-contrast .nav-scroll-btn,
-body.a11y-theme-high-contrast .nav-scroll-arrow {
+body.a11y-theme-high-contrast .nav-scroll-arrow,
+body.a11y-theme-high-contrast .quick-arrow {
   background: #ffff00 !important;
   color: #000000 !important;
   border: 3px solid #ffff00 !important;
@@ -1239,7 +1242,8 @@ body.a11y-theme-high-contrast .nav-scroll-arrow {
 }
 
 body.a11y-theme-high-contrast .carousel-button:hover,
-body.a11y-theme-high-contrast .nav-scroll-btn:hover {
+body.a11y-theme-high-contrast .nav-scroll-btn:hover,
+body.a11y-theme-high-contrast .quick-arrow:hover {
   background: #ffffff !important;
   border-color: #ffffff !important;
 }
