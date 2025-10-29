@@ -1879,7 +1879,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: string
-          operator: word
+          operator: allwords
           value: ''
           group: 1
           exposed: true
@@ -2060,7 +2060,7 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: string
-          operator: word
+          operator: allwords
           value: ''
           group: 1
           exposed: false
