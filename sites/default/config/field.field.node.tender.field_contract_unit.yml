@@ -1,0 +1,29 @@
+uuid: 502e9804-3c2f-4c3c-9fdf-df2af9f085c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contract_unit
+    - node.type.tender
+    - taxonomy.vocabulary.contract_unit
+id: node.tender.field_contract_unit
+field_name: field_contract_unit
+entity_type: node
+bundle: tender
+label: 'Contract Unit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contract_unit: contract_unit
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: contract_unit
+field_type: entity_reference
