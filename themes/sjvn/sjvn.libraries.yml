@@ -12,12 +12,13 @@ global-styling:
       css/policies-and-schema.css: {}
       css/table-design.css: {}
       css/gallery.css: {}
+      css/accessibility.css: {}
 global-scripts:
   version: 1.x
   js:
     js/bootstrap.bundle.min.js: {}
     js/script.js: {}
-    js/accessibility.js: {}
+    js/accessibility-simple.js: {}
     js/navigation.js: {}
   dependencies:
     - core/jquery

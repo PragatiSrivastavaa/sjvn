@@ -52,6 +52,186 @@
     {{ page_top }}
     {{ page }}
     {{ page_bottom }}
+    
+    {# Accessibility Widget #}
+    <button id="accessibility-trigger" class="accessibility-trigger" aria-label="Accessibility Options" aria-expanded="false" title="Accessibility Options">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+        <line x1="9" y1="9" x2="9.01" y2="9"></line>
+        <line x1="15" y1="9" x2="15.01" y2="9"></line>
+      </svg>
+    </button>
+
+    <div id="accessibility-drawer" class="accessibility-drawer" role="dialog" aria-labelledby="accessibility-drawer-title" aria-hidden="true">
+      <div class="accessibility-drawer-header">
+        <h2 id="accessibility-drawer-title">Accessibility Options</h2>
+        <button id="accessibility-close" class="accessibility-close" aria-label="Close Accessibility Options">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="accessibility-drawer-content">
+        {# Text Size Section #}
+        <div class="accessibility-section">
+          <h3>Text Size</h3>
+          <div class="button-group horizontal">
+            <button data-action="text-decrease" aria-label="Decrease Text Size">A-</button>
+            <button data-action="text-normal" class="active" aria-label="Normal Text Size">A</button>
+            <button data-action="text-increase" aria-label="Increase Text Size">A+</button>
+          </div>
+        </div>
+
+        {# Theme Section #}
+        <div class="accessibility-section">
+          <h3>Theme</h3>
+          <div class="radio-group">
+            <label class="radio-option active">
+              <input type="radio" name="theme" value="light" checked aria-label="Light Theme">
+              <span class="radio-label">Light Theme</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="theme" value="dark" aria-label="Dark Theme">
+              <span class="radio-label">Dark Theme</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="theme" value="high-contrast" aria-label="High Contrast Theme">
+              <span class="radio-label">High Contrast</span>
+            </label>
+          </div>
+        </div>
+
+        {# Cursor Size Section #}
+        <div class="accessibility-section">
+          <h3>Cursor Size</h3>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="cursor" value="small" aria-label="Small Cursor">
+              <span class="radio-label">Small Cursor</span>
+            </label>
+            <label class="radio-option active">
+              <input type="radio" name="cursor" value="normal" checked aria-label="Normal Cursor">
+              <span class="radio-label">Normal Cursor</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="cursor" value="large" aria-label="Large Cursor">
+              <span class="radio-label">Large Cursor</span>
+            </label>
+          </div>
+        </div>
+
+        {# Line Height Section #}
+        <div class="accessibility-section">
+          <h3>Line Height</h3>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="line-height" value="tight" aria-label="Tight Line Height">
+              <span class="radio-label">Tight</span>
+            </label>
+            <label class="radio-option active">
+              <input type="radio" name="line-height" value="normal" checked aria-label="Normal Line Height">
+              <span class="radio-label">Normal</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="line-height" value="loose" aria-label="Loose Line Height">
+              <span class="radio-label">Loose</span>
+            </label>
+          </div>
+        </div>
+
+        {# Text Alignment Section #}
+        <div class="accessibility-section">
+          <h3>Text Alignment</h3>
+          <div class="button-group horizontal">
+            <button data-action="align-left" class="active icon-btn" aria-label="Align Text Left">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <line x1="17" y1="10" x2="3" y2="10"></line>
+                <line x1="21" y1="6" x2="3" y2="6"></line>
+                <line x1="21" y1="14" x2="3" y2="14"></line>
+                <line x1="17" y1="18" x2="3" y2="18"></line>
+              </svg>
+            </button>
+            <button data-action="align-center" class="icon-btn" aria-label="Align Text Center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <line x1="18" y1="10" x2="6" y2="10"></line>
+                <line x1="21" y1="6" x2="3" y2="6"></line>
+                <line x1="21" y1="14" x2="3" y2="14"></line>
+                <line x1="18" y1="18" x2="6" y2="18"></line>
+              </svg>
+            </button>
+            <button data-action="align-right" class="icon-btn" aria-label="Align Text Right">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <line x1="21" y1="10" x2="7" y2="10"></line>
+                <line x1="21" y1="6" x2="3" y2="6"></line>
+                <line x1="21" y1="14" x2="3" y2="14"></line>
+                <line x1="21" y1="18" x2="7" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {# Text Spacing Section #}
+        <div class="accessibility-section">
+          <h3>Text Spacing</h3>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="text-spacing" value="tight" aria-label="Tight Text Spacing">
+              <span class="radio-label">Tight Spacing</span>
+            </label>
+            <label class="radio-option active">
+              <input type="radio" name="text-spacing" value="normal" checked aria-label="Normal Text Spacing">
+              <span class="radio-label">Normal Spacing</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="text-spacing" value="loose" aria-label="Loose Text Spacing">
+              <span class="radio-label">Loose Spacing</span>
+            </label>
+          </div>
+        </div>
+
+        {# Visual Options Section #}
+        <div class="accessibility-section">
+          <h3>Visual Options</h3>
+          <div class="checkbox-group">
+            <label class="checkbox-option">
+              <input type="checkbox" name="enhanced-focus" aria-label="Enhanced Focus Indicators">
+              <span class="checkbox-label">Enhanced Focus Indicators</span>
+            </label>
+            <label class="checkbox-option">
+              <input type="checkbox" name="hide-images" aria-label="Hide Images">
+              <span class="checkbox-label">Hide Images</span>
+            </label>
+            <label class="checkbox-option">
+              <input type="checkbox" name="highlight-links" aria-label="Highlight Links">
+              <span class="checkbox-label">Highlight Links</span>
+            </label>
+            <label class="checkbox-option">
+              <input type="checkbox" name="show-tooltips" aria-label="Show Tooltips">
+              <span class="checkbox-label">Show Tooltips</span>
+            </label>
+            <label class="checkbox-option">
+              <input type="checkbox" name="reduce-motion" aria-label="Reduce Motion">
+              <span class="checkbox-label">Reduce Motion</span>
+            </label>
+          </div>
+        </div>
+
+        {# Quick Actions Section #}
+        <div class="accessibility-section">
+          <h3>Quick Actions</h3>
+          <div class="action-buttons">
+            <button data-action="skip-to-main" class="action-btn">Skip to Main Content</button>
+            <button data-action="back-to-top" class="action-btn">Back to Top</button>
+            <button data-action="reset-all" class="action-btn">Reset All Settings</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="accessibility-overlay" class="accessibility-overlay" aria-hidden="true"></div>
+    
     <js-bottom-placeholder token="{{ placeholder_token }}">
   </body>
 </html>
