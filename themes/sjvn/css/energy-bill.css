@@ -267,9 +267,9 @@
 
 /* Energy Bill Table Structure - Matching template structure */
 .view-id-energy_bill .view-content {
-    max-width: 1200px;
+    /* max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px; */
 }
 
 /* Remove all list styling */

@@ -13,8 +13,8 @@
   top: 45%;
   transform: translateY(-50%);
   z-index: 9998;
-  width: 56px;
-  height: 56px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background: var(--primary-color, #009EDB);
   color: #ffffff;
@@ -50,7 +50,7 @@
    ============================================ */
 .accessibility-drawer {
   position: fixed;
-  right: 0px;
+  right: -400px;
   top: 0;
   width: 400px;
   height: 100vh;
@@ -2084,6 +2084,142 @@ body.a11y-theme-high-contrast .accessibility-overlay.active {
   background: rgba(0, 0, 0, 0.9) !important;
 }
 
+/* ============================================
+   Social Media Icons - Fixed Position
+   ============================================ */
+.social-media-fixed {
+  position: fixed;
+  right: 0px;
+  top: calc(45% + 65px);
+  z-index: 9997;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.social-media-fixed a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+}
+
+.social-media-fixed a:hover {
+  transform: translateX(-5px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.social-media-fixed a:focus {
+  outline: 3px solid var(--secondary-color, #F6AD0A);
+  outline-offset: 2px;
+}
+
+.social-media-fixed a svg,
+.social-media-fixed a i {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* YouTube */
+.social-media-fixed .social-youtube {
+  background: #FF0000;
+  color: #ffffff;
+}
+
+.social-media-fixed .social-youtube:hover {
+  background: #CC0000;
+}
+
+/* Facebook */
+.social-media-fixed .social-facebook {
+  background: #1877F2;
+  color: #ffffff;
+}
+
+.social-media-fixed .social-facebook:hover {
+  background: #145DBF;
+}
+
+/* Twitter/X */
+.social-media-fixed .social-twitter {
+  background: #000000;
+  color: #ffffff;
+}
+
+.social-media-fixed .social-twitter:hover {
+  background: #1a1a1a;
+}
+
+/* Responsive - Stack below accessibility on smaller screens */
+@media (max-width: 768px) {
+  .social-media-fixed {
+    right: 10px;
+    top: calc(45% + 55px);
+    gap: 0px;
+  }
+  
+  .social-media-fixed a {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .social-media-fixed a svg,
+  .social-media-fixed a i {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Dark Theme - Social Media Icons */
+body.a11y-theme-dark .social-media-fixed a {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+}
+
+body.a11y-theme-dark .social-media-fixed .social-youtube {
+  background: #FF0000;
+  border: 2px solid #CC0000;
+}
+
+body.a11y-theme-dark .social-media-fixed .social-facebook {
+  background: #1877F2;
+  border: 2px solid #145DBF;
+}
+
+body.a11y-theme-dark .social-media-fixed .social-twitter {
+  background: #000000;
+  border: 2px solid #333333;
+}
+
+/* High Contrast - Social Media Icons */
+body.a11y-theme-high-contrast .social-media-fixed a {
+  border: 3px solid #ffffff !important;
+  box-shadow: none !important;
+}
+
+body.a11y-theme-high-contrast .social-media-fixed .social-youtube {
+  background: #FF0000 !important;
+}
+
+body.a11y-theme-high-contrast .social-media-fixed .social-facebook {
+  background: #1877F2 !important;
+}
+
+body.a11y-theme-high-contrast .social-media-fixed .social-twitter {
+  background: #000000 !important;
+}
+
+body.a11y-theme-high-contrast .social-media-fixed a:hover {
+  border-color: #ffff00 !important;
+  box-shadow: none !important;
+}
+
 /* Cursor Size */
 body.a11y-cursor-small * {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="black" stroke="white" stroke-width="1"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/></svg>') 4 4, auto !important;
@@ -2225,7 +2361,8 @@ body.a11y-reduce-motion * {
 @media print {
   .accessibility-trigger,
   .accessibility-drawer,
-  .accessibility-overlay {
+  .accessibility-overlay,
+  .social-media-fixed {
     display: none !important;
   }
 }
@@ -2238,6 +2375,7 @@ body.a11y-reduce-motion * {
   .accessibility-drawer,
   .accessibility-trigger,
   .accessibility-overlay,
+  .social-media-fixed a,
   .button-group button,
   .radio-option,
   .checkbox-option,
