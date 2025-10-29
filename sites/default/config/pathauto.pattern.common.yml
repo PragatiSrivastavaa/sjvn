@@ -9,22 +9,27 @@ label: Common
 type: 'canonical_entities:node'
 pattern: '/[node:title]'
 selection_criteria:
-  4f70c835-945b-4dab-92aa-fa5dfd5d2768:
+  99f440a0-6dfd-4236-89da-f48fa0073528:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 4f70c835-945b-4dab-92aa-fa5dfd5d2768
+    uuid: 99f440a0-6dfd-4236-89da-f48fa0073528
     context_mapping:
       node: node
     bundles:
       board_of_directors: board_of_directors
       career: career
+      energy_bill: energy_bill
       home_banner: home_banner
+      investor_relations: investor_relations
+      key_executive: key_executive
       news_announcement: news_announcement
       our_business: our_business
       our_power_stations: our_power_stations
       page: page
       photo_gallery: photo_gallery
       quick_access_link: quick_access_link
+      tariff_petition: tariff_petition
+      tender: tender
       video_gallery: video_gallery
 selection_logic: and
 weight: -5
