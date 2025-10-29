@@ -185,6 +185,11 @@ function sjvn_preprocess_views_view(&$variables) {
     $variables['#attached']['library'][] = 'sjvn/portfolio';
   }
   
+  // Attach key executive library
+  if ($variables['view']->id() === 'key_executive') {
+    $variables['#attached']['library'][] = 'sjvn/key-executive';
+  }
+  
   $variables['current_language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
 }

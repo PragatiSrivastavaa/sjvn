@@ -769,7 +769,7 @@ section.aboutscreen {
 
 /* Tab menu wrapper for exposed filters */
 .tab-menu-item {
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 /* Hide fieldset border and legend */

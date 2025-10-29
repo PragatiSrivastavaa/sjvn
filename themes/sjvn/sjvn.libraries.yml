@@ -73,3 +73,11 @@ faq:
       css/faq.css: {}
   dependencies:
     - sjvn/global-styling
+
+key-executive:
+  version: 1.x
+  css:
+    theme:
+      css/key-executive.css: {}
+  dependencies:
+    - sjvn/global-styling
