@@ -98,3 +98,11 @@ tariff-petition:
       css/tariff-petition.css: {}
   dependencies:
     - sjvn/global-styling
+
+tender:
+  version: 1.x
+  css:
+    theme:
+      css/tender.css: {}
+  dependencies:
+    - sjvn/global-styling

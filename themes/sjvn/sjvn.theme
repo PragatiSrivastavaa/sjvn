@@ -200,6 +200,11 @@ function sjvn_preprocess_views_view(&$variables) {
     $variables['#attached']['library'][] = 'sjvn/tariff-petition';
   }
   
+  // Attach tender library
+  if ($variables['view']->id() === 'tender') {
+    $variables['#attached']['library'][] = 'sjvn/tender';
+  }
+  
   $variables['current_language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
 }
