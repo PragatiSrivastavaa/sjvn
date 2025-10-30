@@ -3017,10 +3017,32 @@ body.lang-hi ul.links li[hreflang="hi"] {
   width: 100%;
 }
 
-.view-id-current_job .form-item-title-selective select { width: 250px; }
-.view-id-current_job .form-item-field-month-target-id select { width: 150px; }
+.view-id-current_job .form-item-title-selective select { 
+  width: 250px; 
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 30px; /* Space for dropdown arrow */
+}
+
+/* Ensure dropdown options wrap properly */
+.view-id-current_job .form-item-title-selective select option {
+  white-space: normal;
+  word-wrap: break-word;
+  max-width: 250px;
+}
+
+.view-id-current_job .form-item-field-month-target-id select { 
+  width: 150px; 
+  max-width: 150px;
+}
+
 .view-id-current_job .form-item-field-publish-date-value input,
-.view-id-current_job .form-item-field-last-date-of-submission-value input { width: 160px; }
+.view-id-current_job .form-item-field-last-date-of-submission-value input { 
+  width: 160px;
+  max-width: 160px;
+}
 
 /* Current Job View Table Visibility */
 .view-id-current_job table {
