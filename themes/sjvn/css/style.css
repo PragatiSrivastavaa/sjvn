@@ -2649,6 +2649,33 @@ body.lang-hi ul.links li[hreflang="hi"] {
   /* Slides up to cover image */
 }
 
+/* Video Gallery Hover Overlay */
+.video-title {
+  position: absolute;
+  bottom: -110%;
+  /* Start hidden */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: color-mix(in srgb, var(--primary-color) 70%, transparent);
+  /* Mixes primary color with transparency for opacity effect */
+  color: #fff !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  transition: bottom 0.4s ease;
+  margin: 0 !important;
+}
+
+.gallery-item:hover .video-title {
+  bottom: 0;
+  /* Slides up to cover video thumbnail */
+}
+
 .see-more-wrapper {
   text-align: right;
   margin-top: 15px;

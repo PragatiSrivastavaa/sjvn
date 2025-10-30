@@ -1418,7 +1418,8 @@
     height: 160px;
   }
   
-  .gallery-overlay {
+  .gallery-overlay,
+  .video-title {
     font-size: 0.8rem;
     padding: 10px 6px;
   }
@@ -1635,7 +1636,8 @@
     height: 100px;
   }
   
-  .gallery-overlay {
+  .gallery-overlay,
+  .video-title {
     font-size: 0.75rem;
     padding: 8px 6px;
   }
