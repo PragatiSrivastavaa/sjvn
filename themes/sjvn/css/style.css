@@ -2645,6 +2645,10 @@ body.lang-hi ul.links li[hreflang="hi"] {
   transition: bottom 0.4s ease;
 }
 
+.gallery-overlay a{
+  color: #fff !important;
+}
+
 
 .gallery-item:hover .gallery-overlay {
   bottom: 0;

@@ -191,7 +191,6 @@
   font-weight: 600 !important;
   color: #ffffff !important;
   background: var(--primary-color) !important;
-  border: 2px solid var(--primary-color) !important;
   border-radius: 4px !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
@@ -204,8 +203,8 @@
 /* Submit Button Hover */
 .view-id-tender #edit-submit-tender:hover,
 .view-id-tender .button.form-submit:hover {
-  background: var(--primary-light) !important;
-  border-color: var(--primary-light) !important;
+  background: var(--primary-color) !important;
+  border: 2px solid var(--primary-color) !important;
 }
 
 /* Submit Button Active */
