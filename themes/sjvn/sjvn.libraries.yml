@@ -20,6 +20,7 @@ global-scripts:
     js/script.js: {}
     js/accessibility-simple.js: {}
     js/navigation.js: {}
+    js/tabs.js: {}
   dependencies:
     - core/jquery
     - core/drupal
