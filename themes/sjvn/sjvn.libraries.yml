@@ -21,10 +21,12 @@ global-scripts:
     js/accessibility-simple.js: {}
     js/navigation.js: {}
     js/tabs.js: {}
+    js/menu-redirect.js: {}
   dependencies:
     - core/jquery
     - core/drupal
     - core/drupalSettings
+    - core/once
 
 # Page-specific libraries
 home-page:
