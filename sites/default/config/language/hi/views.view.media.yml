@@ -7,6 +7,9 @@ display:
       fields:
         status:
           label: अवस्था
+          settings:
+            format_custom_false: अप्रकाशित
+            format_custom_true: प्रकाशित
         operations:
           label: कार्यवाही
       pager:
@@ -14,6 +17,14 @@ display:
           tags:
             next: 'अगला ›'
             previous: '‹ पिछला'
+      filters:
+        status:
+          group_info:
+            group_items:
+              1:
+                title: प्रकाशित
+              2:
+                title: अप्रकाशित
   media_page_list:
     display_title: मीडिया
     display_options:

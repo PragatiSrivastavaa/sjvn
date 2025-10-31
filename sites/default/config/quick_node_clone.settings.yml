@@ -1,0 +1,17 @@
+_core:
+  default_config_hash: HnNkjzfFj_fgjLEIDkxUVqLrCgeJ-0hPKY3uc61liIs
+exclude:
+  node:
+    tender:
+      - body
+      - field_contract_unit
+      - field_last_date_of_submissions
+      - field_locations
+      - field_nit_date
+      - field_tender_number
+      - field_tender_through_gem
+      - field_upload_file
+  paragraph: {  }
+text_to_prepend_to_title: 'Clone of'
+clone_status: default
+create_group_relationships: true

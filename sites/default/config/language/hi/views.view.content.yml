@@ -7,6 +7,9 @@ display:
           label: शीर्षक
         status:
           label: अवस्था
+          settings:
+            format_custom_false: अप्रकाशित
+            format_custom_true: प्रकाशित
         operations:
           label: कार्यवाही
       pager:
@@ -21,5 +24,11 @@ display:
         status:
           expose:
             label: अवस्था
+          group_info:
+            group_items:
+              1:
+                title: प्रकाशित
+              2:
+                title: अप्रकाशित
   page_1:
     display_title: पृष्ठ

@@ -32,6 +32,7 @@
         "drupal/menu_block": "^1.14",
         "drupal/menu_breadcrumb": "^2.0",
         "drupal/pathauto": "^1.13",
+        "drupal/quick_node_clone": "^1.22",
         "drupal/sitemap": "^2.3",
         "drupal/superfish": "^1.13",
         "drupal/views_selective_filters": "^2.0@alpha",

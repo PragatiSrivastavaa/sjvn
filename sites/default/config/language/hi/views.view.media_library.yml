@@ -4,6 +4,14 @@ display:
     display_options:
       title: मीडिया
       filters:
+        status:
+          group_info:
+            label: प्रकाशित
+            group_items:
+              1:
+                title: प्रकाशित
+              2:
+                title: अप्रकाशित
         name:
           expose:
             label: नाम
