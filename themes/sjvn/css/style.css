@@ -2533,6 +2533,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
   align-items: center;
   justify-content: space-between;
   position: relative;
+  height: 100%;
 }
 
 /* Make image height consistent & centered */
@@ -2553,6 +2554,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
   font-size: 0.9rem;
   font-weight: bold;
   margin: 25px 0px 0px 0px;
+  color: var(--primary-color);
 }
 
 .quick-card p {
@@ -2641,6 +2643,10 @@ body.lang-hi ul.links li[hreflang="hi"] {
   font-weight: bold;
   text-align: center;
   transition: bottom 0.4s ease;
+}
+
+.gallery-overlay a{
+  color: #fff !important;
 }
 
 
