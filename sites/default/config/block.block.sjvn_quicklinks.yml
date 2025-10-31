@@ -25,7 +25,7 @@ settings:
   display_empty: false
   label_link: false
   label_type: parent
-  level: 2
+  level: 1
   depth: 0
   expand_all_items: false
   parent: 'quick-links:'
