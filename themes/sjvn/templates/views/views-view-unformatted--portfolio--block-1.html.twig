@@ -18,6 +18,14 @@
 
 <div class="container">
   <div class="row">
+  {% if current_language == 'hi' %}
+        <p>  एसजेवीएन का लक्ष्य  2030 तक 25000 मेगावाट कंपनी और 2040 तक 50000 मेगावाट कंपनी बनना है। वर्तमान में, एसजेवीएन का कुल परियोजना पोर्टफोलियो 56,803 मेगावाट है, जिसमें से 2,467 मेगावाट परिचालन में, 4,836 मेगावाट निर्माणाधीन, 16,158 मेगावाट पूर्व-निर्माण और एस एंड आई चरण में है और 33,342 मेगावाट क्षमता की परियोजनाएं आवंटन के अधीन हैं।</p>
+        {% else %}
+        <p>SJVN aims to be a 25000 MW company by 2030 and 50000 MW company by 2040. Presently, total project portfolio of SJVN is 67,907.40 MW, out of which 2,786.5 MW is under operation, 4,616 MW is under Construction, 23,626.5 MW is under Pre-construction and S&I stage and 32,427 MW capacity Projects are under allotment.</p>
+        {% endif %}
+    
+
+
     {% for row in rows %}
       {% set node = row.content['#row']._entity %}
         <div class="col-sm-3">
