@@ -36,4 +36,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: "/tender\r\n/rti\r\n/vendor-bill-tracking-system\r\n/medical-facilities\r\n/swachhta-hi-sewa\r\n/posh\r\n/list-member-posh\r\n/sexual-harassment-workplace-act"
+    pages: "/tender\r\n/rti\r\n/vendor-bill-tracking-system\r\n/medical-facilities\r\n/swachhta-hi-sewa\r\n/posh\r\n/list-member-posh\r\n/sexual-harassment-workplace-act\r\n/rti-documents\r\n/contractors-details"
