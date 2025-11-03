@@ -3155,3 +3155,12 @@ body.lang-hi ul.links li[hreflang="hi"] {
 .view-id-investor_relations .view-footer {
   display: block;
 }
+
+
+
+/* Hide all nested menus by default */
+.sidebar .menu .menu {
+  display: none;
+}
+
+

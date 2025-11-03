@@ -27,7 +27,7 @@ settings:
   label_type: parent
   level: 1
   depth: 0
-  expand_all_items: false
+  expand_all_items: true
   parent: 'quick-links:'
   render_parent: true
   suggestion: quick_links

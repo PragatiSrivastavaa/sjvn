@@ -27,7 +27,7 @@ settings:
   label_type: visibility_level_parent
   level: 2
   depth: 0
-  expand_all_items: false
+  expand_all_items: true
   parent: 'main:'
   render_parent: false
   suggestion: main
