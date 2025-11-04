@@ -1,0 +1,29 @@
+uuid: c4fe213a-c162-45c5-ad5c-75b588e941d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mode_of_tendering
+    - node.type.tender_award
+    - taxonomy.vocabulary.mode_of_tendering
+id: node.tender_award.field_mode_of_tendering
+field_name: field_mode_of_tendering
+entity_type: node
+bundle: tender_award
+label: 'Mode Of Tendering'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      mode_of_tendering: mode_of_tendering
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

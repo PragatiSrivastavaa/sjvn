@@ -1,0 +1,20 @@
+uuid: 2b5959c7-9d6b-4a3a-aac3-98ae17fa8f14
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_mode_of_tendering
+field_name: field_mode_of_tendering
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

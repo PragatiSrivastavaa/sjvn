@@ -1,0 +1,19 @@
+uuid: c0e141ce-6611-4ccd-9ff9-77db1433e8b6
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_loa
+field_name: field_loa
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

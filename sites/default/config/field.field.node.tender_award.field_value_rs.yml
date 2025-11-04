@@ -1,0 +1,19 @@
+uuid: c80cfa34-8974-465d-b85b-f3f6b9b20460
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_value_rs
+    - node.type.tender_award
+id: node.tender_award.field_value_rs
+field_name: field_value_rs
+entity_type: node
+bundle: tender_award
+label: 'Value (Rs)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

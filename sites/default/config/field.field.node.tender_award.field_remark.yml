@@ -1,0 +1,19 @@
+uuid: 8376a7b1-af25-4b44-9488-83a7450e8247
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_remark
+    - node.type.tender_award
+id: node.tender_award.field_remark
+field_name: field_remark
+entity_type: node
+bundle: tender_award
+label: Remark
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

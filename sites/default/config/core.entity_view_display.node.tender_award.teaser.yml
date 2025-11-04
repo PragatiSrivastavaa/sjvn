@@ -1,0 +1,45 @@
+uuid: 801b24d6-2ffd-4225-be5a-60f8d92755b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.tender_award.body
+    - field.field.node.tender_award.field_date_of_award
+    - field.field.node.tender_award.field_date_of_nit
+    - field.field.node.tender_award.field_loa
+    - field.field.node.tender_award.field_mode_of_tendering
+    - field.field.node.tender_award.field_remark
+    - field.field.node.tender_award.field_sr_n
+    - field.field.node.tender_award.field_value_rs
+    - node.type.tender_award
+  module:
+    - text
+    - user
+id: node.tender_award.teaser
+targetEntityType: node
+bundle: tender_award
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_date_of_award: true
+  field_date_of_nit: true
+  field_loa: true
+  field_mode_of_tendering: true
+  field_remark: true
+  field_sr_n: true
+  field_value_rs: true
+  langcode: true

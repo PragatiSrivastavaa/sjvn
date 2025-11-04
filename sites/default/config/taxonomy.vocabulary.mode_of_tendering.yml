@@ -1,0 +1,9 @@
+uuid: 0b9bbba2-a2c3-45a7-8d3a-a5f15f2611e4
+langcode: en
+status: true
+dependencies: {  }
+name: 'Mode Of Tendering'
+vid: mode_of_tendering
+description: null
+weight: 0
+new_revision: false

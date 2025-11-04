@@ -1,0 +1,21 @@
+uuid: 23fd1a2f-a137-4829-bcf5-7bdc8f86320e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_of_award
+    - node.type.tender_award
+  module:
+    - datetime
+id: node.tender_award.field_date_of_award
+field_name: field_date_of_award
+entity_type: node
+bundle: tender_award
+label: 'Date of Award'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
