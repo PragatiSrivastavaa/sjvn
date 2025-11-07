@@ -1,0 +1,23 @@
+uuid: 6a6058b4-d3c4-4d91-ae23-4f2d04e9e9a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_google_map
+    - node.type.empanelled_hospital
+  module:
+    - link
+id: node.empanelled_hospital.field_google_map
+field_name: field_google_map
+entity_type: node
+bundle: empanelled_hospital
+label: 'Google Map'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

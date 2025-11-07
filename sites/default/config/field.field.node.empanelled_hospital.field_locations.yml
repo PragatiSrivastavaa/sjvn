@@ -1,0 +1,29 @@
+uuid: 623cd64a-06ca-44ba-9433-c0f2e5d8deca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_locations
+    - node.type.empanelled_hospital
+    - taxonomy.vocabulary.location
+id: node.empanelled_hospital.field_locations
+field_name: field_locations
+entity_type: node
+bundle: empanelled_hospital
+label: State
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

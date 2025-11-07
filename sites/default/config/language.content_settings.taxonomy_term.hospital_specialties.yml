@@ -1,0 +1,11 @@
+uuid: 2c7ad7da-6520-4f80-a729-fabc214c192c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.hospital_specialties
+id: taxonomy_term.hospital_specialties
+target_entity_type_id: taxonomy_term
+target_bundle: hospital_specialties
+default_langcode: site_default
+language_alterable: false

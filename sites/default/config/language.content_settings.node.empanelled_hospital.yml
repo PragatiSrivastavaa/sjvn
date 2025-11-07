@@ -1,0 +1,11 @@
+uuid: 864e051e-f38b-46b8-b05a-522abb1f1e1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.empanelled_hospital
+id: node.empanelled_hospital
+target_entity_type_id: node
+target_bundle: empanelled_hospital
+default_langcode: site_default
+language_alterable: false

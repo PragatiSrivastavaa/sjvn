@@ -1,0 +1,21 @@
+uuid: abd9005c-8613-42b6-8a27-5fef0899d827
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_credit_facility
+    - node.type.empanelled_hospital
+id: node.empanelled_hospital.field_credit_facility
+field_name: field_credit_facility
+entity_type: node
+bundle: empanelled_hospital
+label: 'Credit Facility'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

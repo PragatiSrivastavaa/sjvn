@@ -1,0 +1,20 @@
+uuid: 44b73fa2-85a0-4614-88b8-80f1d0c22c87
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.mode_of_tendering
+  module:
+    - path
+id: taxonomy_term.mode_of_tendering.path
+field_name: path
+entity_type: taxonomy_term
+bundle: mode_of_tendering
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

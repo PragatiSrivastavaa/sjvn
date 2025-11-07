@@ -1,0 +1,20 @@
+uuid: f16f2d77-c27e-4c85-9535-7b653db72450
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tender
+id: node.tender.menu_link
+field_name: menu_link
+entity_type: node
+bundle: tender
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

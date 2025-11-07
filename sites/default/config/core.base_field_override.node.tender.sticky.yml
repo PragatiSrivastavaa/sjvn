@@ -1,0 +1,22 @@
+uuid: 05a4b2f6-a920-4538-9922-de1d2e4c5a59
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tender
+id: node.tender.sticky
+field_name: sticky
+entity_type: node
+bundle: tender
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

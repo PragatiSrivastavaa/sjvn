@@ -1,0 +1,24 @@
+uuid: 18650d05-3955-4546-afb2-0f1ebc840612
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_discount_details
+    - filter.format.full_html
+    - node.type.empanelled_hospital
+  module:
+    - text
+id: node.empanelled_hospital.field_discount_details
+field_name: field_discount_details
+entity_type: node
+bundle: empanelled_hospital
+label: 'Discount Details'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text

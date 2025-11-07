@@ -1,0 +1,22 @@
+uuid: 664b9760-179f-40ec-a2d8-5488e9d1a38c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.mode_of_tendering
+id: taxonomy_term.mode_of_tendering.status
+field_name: status
+entity_type: taxonomy_term
+bundle: mode_of_tendering
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

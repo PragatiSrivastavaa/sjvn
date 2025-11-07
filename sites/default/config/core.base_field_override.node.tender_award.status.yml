@@ -1,0 +1,22 @@
+uuid: 597c01bb-f5e5-4614-ae90-0db22260ada7
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tender_award
+id: node.tender_award.status
+field_name: status
+entity_type: node
+bundle: tender_award
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

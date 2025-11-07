@@ -2,7 +2,7 @@ uuid: ea00ff01-5056-44ae-bbb2-60a221ff5bd7
 langcode: en
 status: true
 dependencies: {  }
-name: 'Portfolio Category'
+name: 'Project Stage'
 vid: portfolio_cat
 description: null
 weight: 0

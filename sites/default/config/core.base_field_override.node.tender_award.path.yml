@@ -1,0 +1,20 @@
+uuid: 0804acba-5e58-4af1-93e2-697f57185a6a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tender_award
+  module:
+    - path
+id: node.tender_award.path
+field_name: path
+entity_type: node
+bundle: tender_award
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

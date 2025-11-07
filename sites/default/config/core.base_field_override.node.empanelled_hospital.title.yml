@@ -1,0 +1,18 @@
+uuid: 13195b57-f10a-4331-b8de-8dab15fd3445
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.empanelled_hospital
+id: node.empanelled_hospital.title
+field_name: title
+entity_type: node
+bundle: empanelled_hospital
+label: 'Hospital Name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

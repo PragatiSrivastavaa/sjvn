@@ -1,0 +1,24 @@
+uuid: c1a63334-aee7-41f2-a8fe-0002a28859f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.empanelled_hospital
+  module:
+    - text
+id: node.empanelled_hospital.body
+field_name: body
+entity_type: node
+bundle: empanelled_hospital
+label: Address
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

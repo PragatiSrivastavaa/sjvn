@@ -1,0 +1,18 @@
+uuid: b637dc87-ee56-4267-9148-ca8d21f1b788
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tender_award
+id: node.tender_award.title
+field_name: title
+entity_type: node
+bundle: tender_award
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

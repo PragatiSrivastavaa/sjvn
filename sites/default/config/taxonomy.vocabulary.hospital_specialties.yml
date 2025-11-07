@@ -1,0 +1,9 @@
+uuid: ec88e7fa-4aed-4b04-93a7-025a28981aee
+langcode: en
+status: true
+dependencies: {  }
+name: 'Hospital Specialties'
+vid: hospital_specialties
+description: null
+weight: 0
+new_revision: false

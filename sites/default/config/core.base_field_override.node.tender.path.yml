@@ -1,0 +1,20 @@
+uuid: d238d23d-e8d0-4a7d-9711-d83328948d3e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tender
+  module:
+    - path
+id: node.tender.path
+field_name: path
+entity_type: node
+bundle: tender
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

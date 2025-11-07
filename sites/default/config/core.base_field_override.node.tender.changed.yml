@@ -1,0 +1,18 @@
+uuid: cb4154c5-741f-4dd5-844a-5995c8cd5402
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tender
+id: node.tender.changed
+field_name: changed
+entity_type: node
+bundle: tender
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

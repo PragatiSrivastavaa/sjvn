@@ -1,0 +1,27 @@
+uuid: f6b2a398-743d-43af-ba17-3dd65c2aa78a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_documents
+    - node.type.empanelled_hospital
+  module:
+    - file
+id: node.empanelled_hospital.field_related_documents
+field_name: field_related_documents
+entity_type: node
+bundle: empanelled_hospital
+label: 'Related Documents'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: txt
+  max_filesize: ''
+  description_field: false
+field_type: file

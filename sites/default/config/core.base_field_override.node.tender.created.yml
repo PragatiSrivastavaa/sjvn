@@ -1,0 +1,18 @@
+uuid: 268809a7-d08c-4b38-93d1-9f50de94bf0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tender
+id: node.tender.created
+field_name: created
+entity_type: node
+bundle: tender
+label: 'Authored on'
+description: 'The date and time that the content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

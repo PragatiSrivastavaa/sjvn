@@ -1,0 +1,29 @@
+uuid: 26611e50-e798-453d-8c94-059f8aa95a96
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_specialties
+    - node.type.empanelled_hospital
+    - taxonomy.vocabulary.hospital_specialties
+id: node.empanelled_hospital.field_specialties
+field_name: field_specialties
+entity_type: node
+bundle: empanelled_hospital
+label: Specialties
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      hospital_specialties: hospital_specialties
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

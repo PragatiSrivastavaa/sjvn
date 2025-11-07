@@ -10,7 +10,7 @@ id: node.our_business.field_portfolio_cat
 field_name: field_portfolio_cat
 entity_type: node
 bundle: our_business
-label: 'Portfolio Cat'
+label: 'Project Stage'
 description: ''
 required: false
 translatable: true

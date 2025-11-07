@@ -1,0 +1,21 @@
+uuid: e7340ed1-7b16-4b73-a0fc-c6a11d982711
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.mode_of_tendering
+  module:
+    - text
+id: taxonomy_term.mode_of_tendering.description
+field_name: description
+entity_type: taxonomy_term
+bundle: mode_of_tendering
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long
