@@ -31,13 +31,12 @@
 	<!--<a class="hide" href="{{ base_path }}screen-reader-access">{% if language.getId() == 'hi' %}स्क्रीन रीडर पहुँच{% else %}Screen Reader Access{% endif %}</a> |-->
   
   <!-- Language Toggle -->
-  | <div class="language-toggle">
-    {% if language.getId() == 'hi' %}
-      <a href="{{ base_path }}" class="language-switch">English</a>
-    {% else %}
-      <a href="{{ base_path }}hi" class="language-switch">हिंदी</a>
-    {% endif %}
-  </div> |
+  <div class="language-toggle">
+          <ul>
+          <li class="lang-select">
+								{{ page.language }}
+					</li></ul>
+        </div> 
 
   <!-- Theme Selectors (Inline) -->
   <div class="theme-inline">
