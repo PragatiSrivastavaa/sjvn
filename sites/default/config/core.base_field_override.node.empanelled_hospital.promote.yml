@@ -1,0 +1,22 @@
+uuid: 4d5d3151-4dfb-4bca-a49c-e3079eeda04e
+langcode: hi
+status: true
+dependencies:
+  config:
+    - node.type.empanelled_hospital
+id: node.empanelled_hospital.promote
+field_name: promote
+entity_type: node
+bundle: empanelled_hospital
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: चालू
+  off_label: बंद
+field_type: boolean

@@ -1,0 +1,221 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Node add/edit form alters.
+ */
+function sjvn_custom_form_node_our_business_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  _sjvn_custom_add_toggle($form);
+}
+
+function sjvn_custom_form_node_our_business_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  _sjvn_custom_add_toggle($form);
+}
+
+/**
+ * Add toggle to nested paragraph fields with robust widget checks.
+ */
+function _sjvn_custom_add_toggle(&$form) {
+
+  if (!isset($form['field_group_content']['widget'])) {
+    return;
+  }
+
+  foreach ($form['field_group_content']['widget'] as $delta => &$item) {
+
+    if (!is_int($delta) || !isset($item['subform']['field_add_content']['widget'])) {
+      continue;
+    }
+
+    foreach ($item['subform']['field_add_content']['widget'] as $child_delta => &$child_item) {
+
+      if (!is_int($child_delta) || !isset($child_item['subform'])) {
+        continue;
+      }
+
+      // Default is description for new paragraphs.
+      $default = 'description';
+
+      // === Robust detection from widget values ===
+      $link_has_value = _sjvn_widget_has_link_value($child_item);
+      $file_has_value = _sjvn_widget_has_file_value($child_item);
+      $desc_has_value = _sjvn_widget_has_description_value($child_item);
+
+      // Priority: link -> file -> description
+      if ($link_has_value) {
+        $default = 'link';
+      } elseif ($file_has_value) {
+        $default = 'file';
+      } elseif ($desc_has_value) {
+        $default = 'description';
+      } else {
+        // If this is an edit form, sometimes the form-level '#default_value' exists
+        // at the field level (not widget). Check and prefer link/file there too.
+        if (!empty($child_item['subform']['field_link']['#default_value'])) {
+          $default = 'link';
+        } elseif (!empty($child_item['subform']['field_upload_files']['#default_value'])) {
+          $default = 'file';
+        } elseif (!empty($child_item['subform']['field_descriptions']['#default_value'])) {
+          $default = 'description';
+        }
+      }
+
+      // Add dropdown
+      $child_item['subform']['group_toggle'] = [
+        '#type' => 'select',
+        '#title' => t('Select Field to Show'),
+        '#options' => [
+          'description' => t('Description'),
+          'link' => t('Link'),
+          'file' => t('File'),
+        ],
+        '#default_value' => $default,
+      ];
+
+      // States
+      if (isset($child_item['subform']['field_descriptions'])) {
+        $child_item['subform']['field_descriptions']['#states'] = [
+          'visible' => [
+            ':input[name="field_group_content['.$delta.'][subform][field_add_content]['.$child_delta.'][subform][group_toggle]"]' => ['value' => 'description'],
+          ],
+        ];
+      }
+      if (isset($child_item['subform']['field_link'])) {
+        $child_item['subform']['field_link']['#states'] = [
+          'visible' => [
+            ':input[name="field_group_content['.$delta.'][subform][field_add_content]['.$child_delta.'][subform][group_toggle]"]' => ['value' => 'link'],
+          ],
+        ];
+      }
+      if (isset($child_item['subform']['field_upload_files'])) {
+        $child_item['subform']['field_upload_files']['#states'] = [
+          'visible' => [
+            ':input[name="field_group_content['.$delta.'][subform][field_add_content]['.$child_delta.'][subform][group_toggle]"]' => ['value' => 'file'],
+          ],
+        ];
+      }
+    }
+  }
+}
+
+/**
+ * Returns TRUE when description widget has meaningful text.
+ */
+function _sjvn_widget_has_description_value(array $child_item) : bool {
+  if (empty($child_item['subform']['field_descriptions']['widget']) || !is_array($child_item['subform']['field_descriptions']['widget'])) {
+    return FALSE;
+  }
+
+  // Usually the first delta holds the value.
+  $widget = $child_item['subform']['field_descriptions']['widget'][0] ?? NULL;
+  if (!is_array($widget)) {
+    return FALSE;
+  }
+
+  // Try multiple paths for the value.
+  $value = NULL;
+  if (isset($widget['value']['#default_value'])) {
+    $value = $widget['value']['#default_value'];
+  } elseif (isset($widget['value']['#value'])) {
+    $value = $widget['value']['#value'];
+  } elseif (isset($child_item['subform']['field_descriptions']['#default_value'])) {
+    $value = $child_item['subform']['field_descriptions']['#default_value'];
+  }
+
+  if (!is_string($value) && !is_numeric($value)) {
+    return FALSE;
+  }
+
+  return trim((string) $value) !== '';
+}
+
+/**
+ * Returns TRUE when link widget has an URI.
+ */
+function _sjvn_widget_has_link_value(array $child_item) : bool {
+  if (empty($child_item['subform']['field_link'])) {
+    return FALSE;
+  }
+
+  // Check widget structure first.
+  $widget = $child_item['subform']['field_link']['widget'][0] ?? NULL;
+  if (is_array($widget)) {
+    // Common places where URI can appear.
+    if (!empty($widget['uri']['#default_value'])) {
+      return trim((string) $widget['uri']['#default_value']) !== '';
+    }
+    if (!empty($widget['uri']['#value'])) {
+      return trim((string) $widget['uri']['#value']) !== '';
+    }
+    // Some link widgets store '#default_value' at field level.
+    if (!empty($child_item['subform']['field_link']['#default_value'])) {
+      // Here #default_value could be an array/object, attempt to read uri.
+      $dv = $child_item['subform']['field_link']['#default_value'];
+      if (is_array($dv) && !empty($dv[0]['uri'])) {
+        return trim((string) $dv[0]['uri']) !== '';
+      }
+      if (is_string($dv) && trim($dv) !== '') {
+        return TRUE;
+      }
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Returns TRUE when file widget has a real uploaded file.
+ *
+ * We check multiple indicators:
+ * - widget[0]['target_id']['#default_value']
+ * - widget[0]['#default_value'] (may contain file IDs)
+ * - presence of 'remove_button' or '#file' in widget (means file exists)
+ */
+function _sjvn_widget_has_file_value(array $child_item) : bool {
+  if (empty($child_item['subform']['field_upload_files'])) {
+    return FALSE;
+  }
+
+  $widget = $child_item['subform']['field_upload_files']['widget'][0] ?? NULL;
+  if (!is_array($widget) && empty($child_item['subform']['field_upload_files']['#default_value'])) {
+    return FALSE;
+  }
+
+  // Check explicit target_id default.
+  if (is_array($widget) && !empty($widget['target_id']['#default_value'])) {
+    // target_id may be scalar or array.
+    if (is_array($widget['target_id']['#default_value'])) {
+      return count(array_filter($widget['target_id']['#default_value'])) > 0;
+    }
+    return (string) $widget['target_id']['#default_value'] !== '';
+  }
+
+  // Check common '#default_value' (file id list).
+  if (!empty($widget['#default_value'])) {
+    if (is_array($widget['#default_value'])) {
+      // array of fids or file arrays.
+      foreach ($widget['#default_value'] as $v) {
+        if (is_numeric($v) || (!empty($v))) {
+          return TRUE;
+        }
+      }
+    } elseif ((string) $widget['#default_value'] !== '') {
+      return TRUE;
+    }
+  }
+
+  // Check field-level #default_value
+  if (!empty($child_item['subform']['field_upload_files']['#default_value'])) {
+    return TRUE;
+  }
+
+  // Check file display indicators (remove_button, #file) that show uploaded file.
+  if (is_array($widget)) {
+    if (!empty($widget['remove_button']) || !empty($widget['#file']) || !empty($widget['display'])) {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
+}

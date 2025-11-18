@@ -1,0 +1,21 @@
+uuid: 99752459-5267-4f28-ad5e-4fcd7a99e279
+langcode: hi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.group_name
+  module:
+    - text
+id: taxonomy_term.group_name.description
+field_name: description
+entity_type: taxonomy_term
+bundle: group_name
+label: उल्लेख
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

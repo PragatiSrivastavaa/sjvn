@@ -1,5 +1,5 @@
 uuid: 67815626-0945-45b3-b93f-d0d86a4a2924
-langcode: en
+langcode: hi
 status: false
 dependencies:
   config:
@@ -19,7 +19,7 @@ base_field: nid
 display:
   default:
     id: default
-    display_title: Default
+    display_title: डीफॉल्ट
     display_plugin: default
     position: 0
     display_options:
@@ -34,7 +34,7 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: field
-          label: Title
+          label: शीर्षक
           exclude: false
           alter:
             alter_text: false
@@ -217,7 +217,7 @@ display:
           submit_button: Apply
           reset_button: false
           reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          exposed_sorts_label: 'क्रमबद्ध द्वारा'
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
@@ -454,7 +454,7 @@ display:
       tags: {  }
   page_1:
     id: page_1
-    display_title: Page
+    display_title: पृष्ठ
     display_plugin: page
     position: 1
     display_options:

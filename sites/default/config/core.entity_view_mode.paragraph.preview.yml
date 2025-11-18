@@ -1,0 +1,13 @@
+uuid: 10862a4d-30ad-4bce-8a36-a8cd79d68354
+langcode: hi
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: h3BeHVei4Lnyqbkao3YiF4KqoY-DhRvUNfEgKG8Rgjg
+id: paragraph.preview
+label: पूर्वावलोकन
+description: ''
+targetEntityType: paragraph
+cache: true

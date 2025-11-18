@@ -1,0 +1,44 @@
+uuid: c34c97cc-11cf-4e7d-a236-03a11a0e2320
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.group_content.field_add_content
+    - field.field.paragraph.group_content.field_group_link_order
+    - field.field.paragraph.group_content.field_group_name
+    - paragraphs.paragraphs_type.group_content
+  module:
+    - entity_reference_revisions
+id: paragraph.group_content.default
+targetEntityType: paragraph
+bundle: group_content
+mode: default
+content:
+  field_add_content:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_group_link_order:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_group_name:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

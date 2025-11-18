@@ -1,5 +1,5 @@
 uuid: b7f1a5dd-fb25-41c7-b758-4d56974cb569
-langcode: en
+langcode: hi
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ base_field: uid
 display:
   default:
     id: default
-    display_title: Default
+    display_title: डीफॉल्ट
     display_plugin: default
     position: 0
     display_options:
@@ -67,7 +67,7 @@ display:
           submit_button: Apply
           reset_button: false
           reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          exposed_sorts_label: 'क्रमबद्ध द्वारा'
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
@@ -187,7 +187,7 @@ display:
       display_description: 'A list of new users'
       display_extenders: {  }
       block_description: "Who's new"
-      block_category: User
+      block_category: प्रयोक्ता
     cache_metadata:
       max-age: -1
       contexts:

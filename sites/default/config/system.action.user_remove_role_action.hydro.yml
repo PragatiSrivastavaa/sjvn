@@ -1,0 +1,14 @@
+uuid: 0b4695d9-7fb8-4e00-96b5-16bdfaa3cc7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.hydro
+  module:
+    - user
+id: user_remove_role_action.hydro
+label: 'Remove the hydro role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: hydro

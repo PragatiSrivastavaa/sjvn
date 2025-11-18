@@ -1,77 +1,222 @@
-{#
-/**
- * @file
- * Theme override to display Our Business node content with tabs.
- */
-#}
+<style>
+  /* Reduce massive Layout Paragraphs spacing in paragraph widgets */
+.paragraphs-subform {
+  padding: 10px !important;
+  margin-bottom: 10px !important;
+  border: 1px solid #d9d9d9 !important;
+}
+
+/* Remove large top spacing */
+.paragraphs-subform > .field--type-paragraph {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Fix expanded paragraph padding */
+.paragraphs-subform .details-wrapper {
+  padding: 10px !important;
+}
+
+</style>
+
 {{ attach_library('sjvn/our-business-tabs') }}
 
-<div class="container">
-  <ul class="nav nav-tabs">
-    {% if node.field_introduction.value %}
-      <li class="active"><a href="#group1">{{ node.field_introduction.fieldDefinition.label }}</a></li>
-    {% endif %}
+<div class="row">
 
-    {% if node.field_location.value %}
-      <li><a href="#group2">{{ node.field_location.fieldDefinition.label }}</a></li>
-    {% endif %}
-    {% if node.field_project_benefits.value %}
-      <li><a href="#group3">{{ node.field_project_benefits.fieldDefinition.label }}</a></li>
-    {% endif %}
-    {% if node.field_salient_features.value %}
-      <li><a href="#group4">{{ node.field_salient_features.fieldDefinition.label }}</a></li>
-    {% endif %}
+  <div class="col-md-3">
+    <div id="accordionSidebar">
 
-     {% if node.field_financing_details.value %}
-      <li><a href="#group5">{{ node.field_financing_details.fieldDefinition.label }}</a></li>
-    {% endif %}
-    {% if node.field_important_events.value %}
-      <li><a href="#group6">{{ node.field_important_events.fieldDefinition.label }}</a></li>
-    {% endif %}
+      {% set grouped = {} %}
+      {% for group_item in node.field_group_content %}
+        {% set group_paragraph = group_item.entity %}
+        {% if not group_paragraph.field_group_link_order.value %}
+          {% set group_name = group_paragraph.field_group_name.entity.label %}
+          {% if grouped[group_name] is not defined %}
+            {% set grouped = grouped|merge({ (group_name): [] }) %}
+          {% endif %}
+          {% set grouped = grouped|merge({ (group_name): grouped[group_name]|merge([group_paragraph]) }) %}
+        {% endif %}
+      {% endfor %}
 
-    {% if node.field_tariff_petition.value %}
-      <li><a href="#group7">{{ node.field_tariff_petition.fieldDefinition.label }}</a></li>
-    {% endif %}
-  </ul>
+      {% set group_index = 0 %}
+      {% for group_name, items in grouped %}
+        {% set group_index = group_index + 1 %}
+        <div class="card mb-1">
+          <div class="card-header" id="heading-{{ group_index }}">
+            <a href="#" class="btn-link"
+               data-bs-toggle="collapse"
+               data-bs-target="#group-links-{{ group_index }}"
+               aria-expanded="false"
+               aria-controls="group-links-{{ group_index }}">
+              {{ group_name }}
+            </a>
+          </div>
+          <div id="group-links-{{ group_index }}"
+               class="collapse"
+               aria-labelledby="heading-{{ group_index }}"
+               data-bs-parent="#accordionSidebar">
+            <div class="card-body p-1">
+              <ul class="list-unstyled">
+                {% set paragraph_index = 0 %}
+                {% for paragraph in items %}
+                  {% set paragraph_index = paragraph_index + 1 %}
+                  {% set child_index = 0 %}
+                  {% for add_item in paragraph.field_add_content %}
+                    {% set add_paragraph = add_item.entity %}
+                    {% set child_index = child_index + 1 %}
+                    {% set sidebar_title = add_paragraph.field_group_title.value ?: 'Untitled' %}
+                    {% set has_description = add_paragraph.field_descriptions.value %}
+                    {% set has_link = add_paragraph.field_link.uri %}
+                    {% set has_files = add_paragraph.field_upload_files|length %}
+                    {% set first_file = has_files ? add_paragraph.field_upload_files|first : null %}
+                    {% set first_file_uri = first_file ? first_file.entity.fileuri : null %}
+                    {% if not has_description and (has_link or first_file_uri) %}
+                      <li>
+                        {% if has_link %}
+                          <a href="{{ add_paragraph.field_link.uri }}" target="_blank" rel="noopener">
+                            {{ sidebar_title }}
+                          </a>
+                        {% else %}
+                          <a href="{{ file_url(first_file_uri) }}" target="_blank" rel="noopener">
+                            {{ sidebar_title }}
+                          </a>
+                        {% endif %}
+                      </li>
+                    {% else %}
+                      <li>
+                        <a href="#sidebar-tab-{{ group_index }}-{{ paragraph_index }}-{{ child_index }}" class="sidebar-tab-link">
+                          {{ sidebar_title }}
+                        </a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
 
-  <div class="tab-content">
-    {% if content.field_introduction %}
-      <div id="group1" class="tab-pane fade in active">
-        {{ content.field_introduction }}
-      </div>
-    {% endif %}
-
-    {% if content.field_location %}
-      <div id="group2" class="tab-pane fade">
-        {{ content.field_location }}
-      </div>
-    {% endif %}
-
-    {% if content.field_project_benefits %}
-      <div id="group3" class="tab-pane fade">
-        {{ content.field_project_benefits }}
-      </div>
-    {% endif %}
-    {% if content.field_salient_features %}
-      <div id="group4" class="tab-pane fade">
-        {{ content.field_salient_features }}
-      </div>
-    {% endif %}
-   
-    {% if content.field_financing_details %}
-      <div id="group5" class="tab-pane fade">
-        {{ content.field_financing_details }}
-      </div>
-    {% endif %}
-    {% if content.field_important_events %}
-      <div id="group6" class="tab-pane fade">
-        {{ content.field_important_events }}
-      </div>
-    {% endif %}
-    {% if content.field_tariff_petition %}
-      <div id="group7" class="tab-pane fade">
-        {{ content.field_tariff_petition }}
-      </div>
-    {% endif %}
+    </div>
   </div>
+
+  <div class="col-md-9" >
+    <div class="top-taps-contents" >
+    <ul class="nav nav-tabs" role="tablist">
+      {% set first_top_tab = true %}
+      {% for group_item in node.field_group_content %}
+        {% set group_paragraph = group_item.entity %}
+        {% if group_paragraph.field_group_link_order.value %}
+          {% for add_item in group_paragraph.field_add_content %}
+            {% set add_paragraph = add_item.entity %}
+            <li class="nav-item" role="presentation">
+              <a class="nav-link {% if first_top_tab %}active{% endif %}" 
+                 data-bs-toggle="tab"
+                 href="#top-tab-{{ loop.parent.loop.index }}-{{ loop.index }}">
+                {{ add_paragraph.field_group_title.value ?: 'Untitled' }}
+              </a>
+            </li>
+            {% set first_top_tab = false %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <div class="tab-content mt-3 top-tab-content-wrapper">
+      {% set first_top_tab_content = true %}
+      {% for group_item in node.field_group_content %}
+        {% set group_paragraph = group_item.entity %}
+        {% if group_paragraph.field_group_link_order.value %}
+          {% for add_item in group_paragraph.field_add_content %}
+            {% set add_paragraph = add_item.entity %}
+            <div class="tab-pane fade {% if first_top_tab_content %}show active{% endif %}" 
+                 id="top-tab-{{ loop.parent.loop.index }}-{{ loop.index }}">
+              {% if add_paragraph.field_descriptions.value %}
+                <div class="group-descriptions">{{ add_paragraph.field_descriptions.value|raw }}</div>
+              {% endif %}
+              
+            </div>
+            {% set first_top_tab_content = false %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
 </div>
+    <div class="tab-content mt-3 sidebar-tab-content sidebar-tab-content-wrapper d-none">
+      {% set first_sidebar_tab_content = true %}
+      {% set group_index = 0 %}
+      {% for group_name, items in grouped %}
+        {% set group_index = group_index + 1 %}
+        {% set paragraph_index = 0 %}
+        {% for paragraph in items %}
+          {% set paragraph_index = paragraph_index + 1 %}
+          {% set child_index = 0 %}
+          {% for add_item in paragraph.field_add_content %}
+            {% set add_paragraph = add_item.entity %}
+            {% set child_index = child_index + 1 %}
+            {% set sidebar_title = add_paragraph.field_group_title.value ?: 'Untitled' %}
+            {% if add_paragraph.field_descriptions.value %}
+              <div class="tab-pane fade {% if first_sidebar_tab_content %}show active{% endif %}" 
+                   id="sidebar-tab-{{ group_index }}-{{ paragraph_index }}-{{ child_index }}">
+                <div class="group-descriptions">{{ add_paragraph.field_descriptions.value|raw }}</div>
+              </div>
+              {% set first_sidebar_tab_content = false %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const sidebarLinks = document.querySelectorAll('.sidebar-tab-link');
+  const topTabs = document.querySelectorAll('.nav-tabs .nav-link');
+  const topWrapper = document.querySelector('.top-tab-content-wrapper');
+  const sidebarWrapper = document.querySelector('.sidebar-tab-content-wrapper');
+
+  const showSidebarContent = () => {
+    sidebarWrapper.classList.remove('d-none');
+    topWrapper.classList.add('d-none');
+  };
+
+  const showTopContent = () => {
+    topWrapper.classList.remove('d-none');
+    sidebarWrapper.classList.add('d-none');
+  };
+
+  showTopContent();
+
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelectorAll('.sidebar-tab-content .tab-pane').forEach(p => p.classList.remove('show', 'active'));
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.classList.add('show', 'active');
+        showSidebarContent();
+      }
+    });
+  });
+
+  topTabs.forEach(tab => {
+    tab.addEventListener('click', showTopContent);
+  });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const rightColumn = document.querySelector('.top-taps-contents');
+
+  document.querySelectorAll('.sidebar-tab-link').forEach(link => {
+    link.addEventListener('click', function() {
+      if (rightColumn) {
+        rightColumn.style.display = 'none'; // hide the entire right column
+      }
+    });
+  });
+});
+</script>

@@ -1,0 +1,22 @@
+uuid: abc3de7a-3135-40d9-afec-8e79eb7a372b
+langcode: hi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.hospital_specialties
+id: taxonomy_term.hospital_specialties.status
+field_name: status
+entity_type: taxonomy_term
+bundle: hospital_specialties
+label: प्रकाशित
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: चालू
+  off_label: बंद
+field_type: boolean

@@ -1,0 +1,29 @@
+uuid: c59269b6-a102-429f-9039-8dcc78ed73a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_group_name
+    - paragraphs.paragraphs_type.group_content
+    - taxonomy.vocabulary.group_name
+id: paragraph.group_content.field_group_name
+field_name: field_group_name
+entity_type: paragraph
+bundle: group_content
+label: 'Group Name'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      group_name: group_name
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

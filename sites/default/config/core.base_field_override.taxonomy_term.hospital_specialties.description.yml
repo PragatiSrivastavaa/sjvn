@@ -1,0 +1,21 @@
+uuid: c62ae9d0-6aae-45e5-9941-465f81ea1048
+langcode: hi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.hospital_specialties
+  module:
+    - text
+id: taxonomy_term.hospital_specialties.description
+field_name: description
+entity_type: taxonomy_term
+bundle: hospital_specialties
+label: उल्लेख
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

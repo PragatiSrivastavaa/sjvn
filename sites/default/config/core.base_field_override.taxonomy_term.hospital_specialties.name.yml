@@ -1,0 +1,18 @@
+uuid: 03dc6dcc-6221-47d9-b761-ad3d592d6d93
+langcode: hi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.hospital_specialties
+id: taxonomy_term.hospital_specialties.name
+field_name: name
+entity_type: taxonomy_term
+bundle: hospital_specialties
+label: नाम
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

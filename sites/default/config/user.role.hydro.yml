@@ -1,0 +1,12 @@
+uuid: 235b4a84-e56d-47c7-95b9-21941a5d9480
+langcode: en
+status: true
+dependencies:
+  module:
+    - tac_lite
+id: hydro
+label: hydro
+weight: 4
+is_admin: null
+permissions:
+  - 'administer tac_lite'

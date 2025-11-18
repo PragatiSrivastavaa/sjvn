@@ -1,5 +1,5 @@
 uuid: 27acfcde-9f81-4eb3-90cc-3cf9e9743069
-langcode: en
+langcode: hi
 status: true
 dependencies:
   config:
@@ -25,11 +25,11 @@ base_field: mid
 display:
   default:
     id: default
-    display_title: Default
+    display_title: डीफॉल्ट
     display_plugin: default
     position: 0
     display_options:
-      title: Media
+      title: मीडिया
       fields:
         media_bulk_form:
           id: media_bulk_form
@@ -81,7 +81,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          action_title: Action
+          action_title: कार्रवाई
           include_exclude: exclude
           selected_actions: {  }
         rendered_entity:
@@ -160,7 +160,7 @@ display:
           submit_button: 'Apply filters'
           reset_button: false
           reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          exposed_sorts_label: 'क्रमबद्ध द्वारा'
           expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
@@ -261,7 +261,7 @@ display:
               authenticated: authenticated
           is_grouped: true
           group_info:
-            label: Published
+            label: प्रकाशित
             description: ''
             identifier: status
             optional: true
@@ -272,11 +272,11 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: Published
+                title: प्रकाशित
                 operator: '='
                 value: '1'
               2:
-                title: Unpublished
+                title: अप्रकाशित
                 operator: '='
                 value: '0'
         name:
@@ -295,7 +295,7 @@ display:
           exposed: true
           expose:
             operator_id: name_op
-            label: Name
+            label: नाम
             description: ''
             use_operator: false
             operator: name_op
@@ -422,7 +422,7 @@ display:
           exposed: true
           expose:
             operator_id: langcode_op
-            label: Language
+            label: भाषा
             description: ''
             use_operator: false
             operator: langcode_op
@@ -488,7 +488,7 @@ display:
       tags: {  }
   page:
     id: page
-    display_title: Page
+    display_title: पृष्ठ
     display_plugin: page
     position: 1
     display_options:
@@ -543,7 +543,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          action_title: Action
+          action_title: कार्रवाई
           include_exclude: exclude
           selected_actions: {  }
         name:
@@ -661,7 +661,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          text: Edit
+          text: 'संपादित करें'
           output_url_as_text: false
           absolute: false
         delete_media:
@@ -714,7 +714,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          text: Delete
+          text: मिटायें
           output_url_as_text: false
           absolute: false
         rendered_entity:
@@ -910,7 +910,7 @@ display:
           exception:
             value: all
             title_enable: false
-            title: All
+            title: सभी
           title_enable: false
           title: ''
           default_argument_type: fixed
@@ -993,7 +993,7 @@ display:
           exposed: true
           expose:
             operator_id: name_op
-            label: Name
+            label: नाम
             description: ''
             use_operator: false
             operator: name_op
@@ -1142,7 +1142,7 @@ display:
           entity_type: media
           entity_field: name
           plugin_id: field
-          label: Name
+          label: नाम
           type: string
           settings:
             link_to_entity: false
@@ -1200,7 +1200,7 @@ display:
           exception:
             value: all
             title_enable: false
-            title: All
+            title: सभी
           title_enable: false
           title: ''
           default_argument_type: fixed
@@ -1283,7 +1283,7 @@ display:
           exposed: true
           expose:
             operator_id: name_op
-            label: Name
+            label: नाम
             description: ''
             use_operator: false
             operator: name_op

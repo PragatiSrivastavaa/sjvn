@@ -1,5 +1,5 @@
 uuid: 7e590697-7a7b-4564-8662-38ad506155e2
-langcode: en
+langcode: hi
 status: true
 dependencies:
   module:
@@ -18,7 +18,7 @@ base_field: cid
 display:
   default:
     id: default
-    display_title: Default
+    display_title: डीफॉल्ट
     display_plugin: default
     position: 0
     display_options:

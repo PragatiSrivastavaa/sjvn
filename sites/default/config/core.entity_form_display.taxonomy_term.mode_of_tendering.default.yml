@@ -1,0 +1,51 @@
+uuid: ea643db8-79ef-403b-9588-2e5e22147c9f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.mode_of_tendering
+  module:
+    - path
+    - text
+id: taxonomy_term.mode_of_tendering.default
+targetEntityType: taxonomy_term
+bundle: mode_of_tendering
+mode: default
+content:
+  description:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,10 @@
+uuid: 63c7962e-7c62-4d9a-a17d-da929206837c
+langcode: en
+status: true
+dependencies: {  }
+id: group_content
+label: 'Group Content'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

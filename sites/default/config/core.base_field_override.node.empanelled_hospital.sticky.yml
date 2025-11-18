@@ -1,0 +1,22 @@
+uuid: fe10ebd1-1a9c-47ee-851b-aaa106092f23
+langcode: hi
+status: true
+dependencies:
+  config:
+    - node.type.empanelled_hospital
+id: node.empanelled_hospital.sticky
+field_name: sticky
+entity_type: node
+bundle: empanelled_hospital
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: चालू
+  off_label: बंद
+field_type: boolean

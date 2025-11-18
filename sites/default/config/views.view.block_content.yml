@@ -1,5 +1,5 @@
 uuid: 64a16b5c-3126-4a61-a7e2-831d1d483a42
-langcode: en
+langcode: hi
 status: true
 dependencies:
   module:
@@ -17,7 +17,7 @@ base_field: id
 display:
   default:
     id: default
-    display_title: Default
+    display_title: डीफॉल्ट
     display_plugin: default
     position: 0
     display_options:
@@ -227,7 +227,7 @@ display:
           admin_label: ''
           entity_type: block_content
           plugin_id: entity_operations
-          label: Operations
+          label: कार्यवाही
           exclude: false
           alter:
             alter_text: false
@@ -278,8 +278,8 @@ display:
           total_pages: null
           id: 0
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
+            next: 'अगला ›'
+            previous: '‹ पिछला'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -294,7 +294,7 @@ display:
           submit_button: Apply
           reset_button: true
           reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          exposed_sorts_label: 'क्रमबद्ध द्वारा'
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
@@ -528,7 +528,7 @@ display:
       tags: {  }
   page_1:
     id: page_1
-    display_title: Page
+    display_title: पृष्ठ
     display_plugin: page
     position: 1
     display_options:

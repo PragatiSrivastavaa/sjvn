@@ -1,6 +1,6 @@
 _core:
   default_config_hash: TA0Gr1ENpR0kj3J9ZK4M04nzYU5Ou5xPsas2_StoIMU
-langcode: en
+langcode: hi
 applies_admin_routes: true
 include_invalid_paths: false
 excluded_paths: ''
@@ -8,7 +8,7 @@ replaced_titles: ''
 custom_paths: ''
 include_home_segment: true
 alternative_title_field: field_breadcrumb_title
-home_segment_title: Home
+home_segment_title: 'मुख्य पृष्ठ'
 home_segment_keep: false
 include_title_segment: true
 title_from_page_when_available: true

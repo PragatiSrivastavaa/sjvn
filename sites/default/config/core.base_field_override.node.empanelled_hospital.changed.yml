@@ -1,0 +1,18 @@
+uuid: 68f2953c-9e40-4b5d-b31a-5cf99a1557a3
+langcode: hi
+status: true
+dependencies:
+  config:
+    - node.type.empanelled_hospital
+id: node.empanelled_hospital.changed
+field_name: changed
+entity_type: node
+bundle: empanelled_hospital
+label: 'बदल गया'
+description: 'The time that the node was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

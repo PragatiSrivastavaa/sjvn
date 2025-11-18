@@ -1,5 +1,5 @@
 uuid: 57055bf4-6e65-4690-89ca-f805506a61ef
-langcode: en
+langcode: hi
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ base_field: uid
 display:
   default:
     id: default
-    display_title: Default
+    display_title: डीफॉल्ट
     display_plugin: default
     position: 0
     display_options:
@@ -134,7 +134,7 @@ display:
           entity_type: user
           entity_field: status
           plugin_id: field
-          label: Status
+          label: अवस्था
           exclude: false
           alter:
             alter_text: false
@@ -352,7 +352,7 @@ display:
           admin_label: ''
           entity_type: user
           plugin_id: entity_operations
-          label: Operations
+          label: कार्यवाही
           exclude: false
           alter:
             alter_text: false
@@ -467,8 +467,8 @@ display:
           total_pages: 0
           id: 0
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
+            next: 'अगला ›'
+            previous: '‹ पिछला'
             first: '« First'
             last: 'Last »'
           expose:
@@ -486,7 +486,7 @@ display:
           submit_button: Filter
           reset_button: true
           reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          exposed_sorts_label: 'क्रमबद्ध द्वारा'
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
@@ -601,7 +601,7 @@ display:
               administrator: '0'
           is_grouped: true
           group_info:
-            label: Status
+            label: अवस्था
             description: ''
             identifier: status
             optional: true
@@ -633,7 +633,7 @@ display:
           exposed: true
           expose:
             operator_id: roles_target_id_op
-            label: Role
+            label: भूमिका
             description: ''
             use_operator: false
             operator: roles_target_id_op
@@ -895,7 +895,7 @@ display:
       tags: {  }
   page_1:
     id: page_1
-    display_title: Page
+    display_title: पृष्ठ
     display_plugin: page
     position: 1
     display_options:
@@ -906,7 +906,7 @@ display:
       path: admin/people/list
       menu:
         type: 'default tab'
-        title: List
+        title: सूची
         description: 'Find and manage people interacting with your site.'
         weight: -10
         menu_name: admin

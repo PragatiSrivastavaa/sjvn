@@ -1,0 +1,18 @@
+uuid: f6b02fe2-2671-4d77-94c4-5687f4911516
+langcode: hi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.group_name
+id: taxonomy_term.group_name.name
+field_name: name
+entity_type: taxonomy_term
+bundle: group_name
+label: नाम
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

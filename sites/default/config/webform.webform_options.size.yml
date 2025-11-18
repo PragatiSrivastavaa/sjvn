@@ -1,5 +1,5 @@
 uuid: 437ceeaa-bc3f-4430-8acc-fccb014b7c2e
-langcode: en
+langcode: hi
 status: true
 dependencies:
   enforced:
@@ -9,7 +9,7 @@ _core:
   default_config_hash: RKkc6tf1VudvYiOtwPCf3Tp_EoA6fov6BFC34D7gMoQ
 id: size
 label: Size
-category: General
+category: सामान्य
 likert: false
 options: |
   Extra Small: Extra Small

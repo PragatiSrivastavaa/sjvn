@@ -1,0 +1,31 @@
+uuid: f956af14-3b6c-4238-817a-4cd33342ba50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_group_content
+    - node.type.our_business
+    - paragraphs.paragraphs_type.group_content
+  module:
+    - entity_reference_revisions
+id: node.our_business.field_group_content
+field_name: field_group_content
+entity_type: node
+bundle: our_business
+label: 'Group Content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      group_content: group_content
+    negate: 0
+    target_bundles_drag_drop:
+      group_content:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

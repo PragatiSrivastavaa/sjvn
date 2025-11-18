@@ -6,7 +6,14 @@ dependencies:
     - field.storage.node.field_related_documents
     - node.type.empanelled_hospital
   module:
+    - content_translation
     - file
+third_party_settings:
+  content_translation:
+    translation_sync:
+      target_id: target_id
+      display: display
+      description: description
 id: node.empanelled_hospital.field_related_documents
 field_name: field_related_documents
 entity_type: node
@@ -14,7 +21,7 @@ bundle: empanelled_hospital
 label: 'Related Documents'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

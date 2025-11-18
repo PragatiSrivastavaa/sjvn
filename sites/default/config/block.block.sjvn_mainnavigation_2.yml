@@ -22,7 +22,7 @@ settings:
   provider: menu_block
   follow: true
   follow_parent: active
-  display_empty: false
+  display_empty: true
   label_link: false
   label_type: visibility_level_parent
   level: 2
@@ -31,7 +31,7 @@ settings:
   parent: 'main:'
   render_parent: false
   suggestion: main
-  hide_on_nonactive: true
+  hide_on_nonactive: false
 visibility:
   request_path:
     id: request_path

@@ -1,0 +1,18 @@
+uuid: 268290d7-fce2-458c-aeee-05e53534fbbc
+langcode: hi
+status: true
+dependencies:
+  config:
+    - node.type.empanelled_hospital
+id: node.empanelled_hospital.created
+field_name: created
+entity_type: node
+bundle: empanelled_hospital
+label: 'कब लिखा गया'
+description: 'The date and time that the content was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,5 +1,5 @@
 uuid: e165a6c2-c48f-41a4-9480-b5fb7f437cdb
-langcode: en
+langcode: hi
 status: true
 dependencies:
   module:
@@ -17,7 +17,7 @@ base_field: cid
 display:
   default:
     id: default
-    display_title: Default
+    display_title: डीफॉल्ट
     display_plugin: default
     position: 0
     display_options:
@@ -73,7 +73,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          action_title: Action
+          action_title: कार्रवाई
           include_exclude: include
           selected_actions:
             - comment_delete_action
@@ -422,7 +422,7 @@ display:
           admin_label: ''
           entity_type: comment
           plugin_id: entity_operations
-          label: Operations
+          label: कार्यवाही
           exclude: false
           alter:
             alter_text: false
@@ -557,7 +557,7 @@ display:
           submit_button: Filter
           reset_button: false
           reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          exposed_sorts_label: 'क्रमबद्ध द्वारा'
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
@@ -740,7 +740,7 @@ display:
           exposed: true
           expose:
             operator_id: langcode_op
-            label: Language
+            label: भाषा
             description: ''
             use_operator: false
             operator: langcode_op
@@ -961,7 +961,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          action_title: Action
+          action_title: कार्रवाई
           include_exclude: include
           selected_actions:
             - comment_delete_action
@@ -1310,7 +1310,7 @@ display:
           admin_label: ''
           entity_type: comment
           plugin_id: entity_operations
-          label: Operations
+          label: कार्यवाही
           exclude: false
           alter:
             alter_text: false
@@ -1559,7 +1559,7 @@ display:
           exposed: true
           expose:
             operator_id: langcode_op
-            label: Language
+            label: भाषा
             description: ''
             use_operator: false
             operator: langcode_op

@@ -1,0 +1,22 @@
+uuid: 5e53ae62-3b85-4da0-a7a3-1b6c7920aa25
+langcode: hi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.group_name
+id: taxonomy_term.group_name.status
+field_name: status
+entity_type: taxonomy_term
+bundle: group_name
+label: प्रकाशित
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: चालू
+  off_label: बंद
+field_type: boolean

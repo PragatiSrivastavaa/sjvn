@@ -1,5 +1,5 @@
 uuid: 898aaee6-2812-4ec6-9110-4ea7d2960d8e
-langcode: en
+langcode: hi
 status: true
 dependencies:
   module:
@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: NYJWABHsIFg-cU-Qya8fiMuQSM4rirBEfPFqkgRtsKA
 id: files
-label: Files
+label: दस्तावेज
 module: file
 description: 'Find and manage files.'
 tag: default
@@ -17,11 +17,11 @@ base_field: fid
 display:
   default:
     id: default
-    display_title: Default
+    display_title: डीफॉल्ट
     display_plugin: default
     position: 0
     display_options:
-      title: Files
+      title: दस्तावेज
       fields:
         fid:
           id: fid
@@ -66,7 +66,7 @@ display:
           entity_type: file
           entity_field: filename
           plugin_id: field
-          label: Name
+          label: नाम
           exclude: false
           alter:
             alter_text: false
@@ -233,7 +233,7 @@ display:
           entity_type: file
           entity_field: status
           plugin_id: field
-          label: Status
+          label: अवस्था
           exclude: false
           alter:
             alter_text: false
@@ -475,7 +475,7 @@ display:
           admin_label: ''
           entity_type: file
           plugin_id: entity_operations
-          label: Operations
+          label: कार्यवाही
           exclude: false
           alter:
             alter_text: false
@@ -526,8 +526,8 @@ display:
           total_pages: 0
           id: 0
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
+            next: 'अगला ›'
+            previous: '‹ पिछला'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -542,7 +542,7 @@ display:
           submit_button: Filter
           reset_button: false
           reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          exposed_sorts_label: 'क्रमबद्ध द्वारा'
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
@@ -580,7 +580,7 @@ display:
           exposed: true
           expose:
             operator_id: filemime_op
-            label: Filename
+            label: 'फ़ाइल का नाम'
             description: ''
             use_operator: false
             operator: filename_op
@@ -664,7 +664,7 @@ display:
           exposed: true
           expose:
             operator_id: status_op
-            label: Status
+            label: अवस्था
             description: ''
             use_operator: false
             operator: status_op
@@ -826,7 +826,7 @@ display:
       path: admin/content/files
       menu:
         type: tab
-        title: Files
+        title: दस्तावेज
         description: ''
         weight: 0
         menu_name: admin
@@ -906,7 +906,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: standard
-          label: 'Entity type'
+          label: 'इकाई का प्रकार'
           exclude: false
           alter:
             alter_text: false
@@ -1062,8 +1062,8 @@ display:
           total_pages: 0
           id: 0
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
+            next: 'अगला ›'
+            previous: '‹ पिछला'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -1088,7 +1088,7 @@ display:
           exception:
             value: all
             title_enable: false
-            title: All
+            title: सभी
           title_enable: true
           title: 'File usage information for {{ arguments.fid }}'
           default_argument_type: fixed

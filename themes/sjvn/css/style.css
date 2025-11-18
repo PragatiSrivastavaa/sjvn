@@ -3164,3 +3164,6 @@ body.lang-hi ul.links li[hreflang="hi"] {
 }
 
 
+.group-toggle-select {
+  display: none;
+}

@@ -1,0 +1,20 @@
+uuid: a4875e59-5cba-4a30-bc9e-538c06906622
+langcode: hi
+status: true
+dependencies:
+  config:
+    - node.type.empanelled_hospital
+id: node.empanelled_hospital.menu_link
+field_name: menu_link
+entity_type: node
+bundle: empanelled_hospital
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

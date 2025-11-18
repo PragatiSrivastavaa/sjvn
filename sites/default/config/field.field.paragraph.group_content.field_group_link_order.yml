@@ -1,0 +1,23 @@
+uuid: e48db7cf-a736-497a-94ba-77811db75ba2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_group_link_order
+    - paragraphs.paragraphs_type.group_content
+id: paragraph.group_content.field_group_link_order
+field_name: field_group_link_order
+entity_type: paragraph
+bundle: group_content
+label: 'Group Order'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Tab
+  off_label: Sidebar
+field_type: boolean

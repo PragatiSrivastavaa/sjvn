@@ -1,0 +1,20 @@
+uuid: eea97813-d912-4d55-8174-6537fb63fa0e
+langcode: hi
+status: true
+dependencies:
+  config:
+    - node.type.empanelled_hospital
+id: node.empanelled_hospital.uid
+field_name: uid
+entity_type: node
+bundle: empanelled_hospital
+label: 'लिखा गया'
+description: 'The username of the content author.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

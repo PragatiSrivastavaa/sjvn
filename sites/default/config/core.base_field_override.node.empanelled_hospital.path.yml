@@ -1,0 +1,20 @@
+uuid: b4e9c621-d1fa-45ec-b6b1-aa513cbc6d58
+langcode: hi
+status: true
+dependencies:
+  config:
+    - node.type.empanelled_hospital
+  module:
+    - path
+id: node.empanelled_hospital.path
+field_name: path
+entity_type: node
+bundle: empanelled_hospital
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

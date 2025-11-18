@@ -1,5 +1,5 @@
 uuid: e5e08343-2cd7-495c-9497-e40e22847f40
-langcode: en
+langcode: hi
 status: true
 dependencies:
   enforced:
@@ -9,7 +9,7 @@ _core:
   default_config_hash: W88NYg31DbaVNQx1Uir_dwwXHVtF09QOq4VBGsH1Snk
 id: yes_no
 label: Yes/No
-category: General
+category: सामान्य
 likert: false
 options: |
   Yes: Yes

@@ -1,5 +1,5 @@
 uuid: ec147841-0f75-4ded-8d0f-be675aef3879
-langcode: en
+langcode: hi
 status: true
 dependencies:
   config:
@@ -11,7 +11,7 @@ dependencies:
 _core:
   default_config_hash: kOTUk5XWeupgBOJuRRarCiDcFKVZcvaW-FT5MTzrML8
 id: media
-label: Media
+label: मीडिया
 module: views
 description: 'Find and manage media.'
 tag: ''
@@ -20,11 +20,11 @@ base_field: mid
 display:
   default:
     id: default
-    display_title: Default
+    display_title: डीफॉल्ट
     display_plugin: default
     position: 0
     display_options:
-      title: Media
+      title: मीडिया
       fields:
         media_bulk_form:
           id: media_bulk_form
@@ -76,7 +76,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          action_title: Action
+          action_title: कार्रवाई
           include_exclude: exclude
           selected_actions: {  }
         thumbnail__target_id:
@@ -204,7 +204,7 @@ display:
           entity_type: media
           entity_field: bundle
           plugin_id: field
-          label: Type
+          label: प्रकार
           exclude: false
           alter:
             alter_text: false
@@ -334,7 +334,7 @@ display:
           entity_type: media
           entity_field: status
           plugin_id: field
-          label: Status
+          label: अवस्था
           exclude: false
           alter:
             alter_text: false
@@ -379,8 +379,8 @@ display:
           type: boolean
           settings:
             format: custom
-            format_custom_false: Unpublished
-            format_custom_true: Published
+            format_custom_false: अप्रकाशित
+            format_custom_true: प्रकाशित
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -476,7 +476,7 @@ display:
           admin_label: ''
           entity_type: media
           plugin_id: entity_operations
-          label: Operations
+          label: कार्यवाही
           exclude: false
           alter:
             alter_text: false
@@ -527,8 +527,8 @@ display:
           total_pages: null
           id: 0
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
+            next: 'अगला ›'
+            previous: '‹ पिछला'
             first: '« First'
             last: 'Last »'
           expose:
@@ -546,7 +546,7 @@ display:
           submit_button: Filter
           reset_button: false
           reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          exposed_sorts_label: 'क्रमबद्ध द्वारा'
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
@@ -646,7 +646,7 @@ display:
           exposed: true
           expose:
             operator_id: bundle_op
-            label: Type
+            label: प्रकार
             description: ''
             use_operator: false
             operator: bundle_op
@@ -714,11 +714,11 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: Published
+                title: प्रकाशित
                 operator: '='
                 value: '1'
               2:
-                title: Unpublished
+                title: अप्रकाशित
                 operator: '='
                 value: '0'
         status_extra:
@@ -776,7 +776,7 @@ display:
           exposed: true
           expose:
             operator_id: langcode_op
-            label: Language
+            label: भाषा
             description: ''
             use_operator: false
             operator: langcode_op
@@ -892,7 +892,7 @@ display:
       tags: {  }
   media_page_list:
     id: media_page_list
-    display_title: Media
+    display_title: मीडिया
     display_plugin: page
     position: 1
     display_options:
@@ -901,7 +901,7 @@ display:
       path: admin/content/media
       menu:
         type: tab
-        title: Media
+        title: मीडिया
         description: ''
         weight: 0
         expanded: false

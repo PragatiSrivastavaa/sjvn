@@ -1,0 +1,10 @@
+uuid: d62a8691-d33c-45fd-abe9-070636f37efd
+langcode: en
+status: true
+dependencies: {  }
+id: descriptions
+label: 'Add Content'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,7 @@
+name: SJVN Custom
+type: module
+description: Custom module to toggle Group Content fields in Our Business content type.
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - core/jquery
