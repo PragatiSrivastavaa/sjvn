@@ -1,0 +1,11 @@
+uuid: 6ef73fb9-1ef6-404c-94e0-9f8a5eb5b3cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.energy_bill_type_and_category
+id: taxonomy_term.energy_bill_type_and_category
+target_entity_type_id: taxonomy_term
+target_bundle: energy_bill_type_and_category
+default_langcode: site_default
+language_alterable: false

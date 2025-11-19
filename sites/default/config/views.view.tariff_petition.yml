@@ -7,8 +7,9 @@ dependencies:
     - field.storage.node.field_project_list
     - field.storage.node.field_upload_file
     - node.type.tariff_petition
-    - taxonomy.vocabulary.business_cat
     - taxonomy.vocabulary.project_list
+  content:
+    - 'taxonomy_term:project_list:58424ea5-9bca-4847-9a6a-369e6180f40c'
   module:
     - better_exposed_filters
     - file
@@ -380,28 +381,17 @@ display:
               secondary_open: false
               reset_button_always_show: false
             filter:
-              field_project_category_target_id:
-                plugin_id: default
+              term_node_tid_depth:
+                plugin_id: bef_hidden
                 advanced:
                   sort_options: false
                   rewrite:
-                    filter_rewrite_values: ' - Any - |Select Project Category'
-                    filter_rewrite_values_key: false
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: true
                   collapsible: false
                   collapsible_disable_automatic_open: false
                   is_secondary: false
-                  hide_label: false
-              field_project_list_target_id:
-                plugin_id: default
-                advanced:
-                  sort_options: false
-                  rewrite:
-                    filter_rewrite_values: ' - Any - |Select Project'
-                    filter_rewrite_values_key: false
-                  collapsible: false
-                  collapsible_disable_automatic_open: false
-                  is_secondary: false
-                  hide_label: false
+                  hide_label: true
       access:
         type: perm
         options:
@@ -409,7 +399,20 @@ display:
       cache:
         type: tag
         options: {  }
-      empty: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: 'Please select a category and project to view results.'
+            format: full_html
+          tokenize: false
       sorts:
         created:
           id: created
@@ -449,102 +452,6 @@ display:
           plugin_id: bundle
           value:
             tariff_petition: tariff_petition
-        field_project_category_target_id:
-          id: field_project_category_target_id
-          table: node__field_project_category
-          field: field_project_category_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: taxonomy_index_tid
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_project_category_target_id_op
-            label: ''
-            description: ''
-            use_operator: false
-            operator: field_project_category_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_project_category_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          vid: business_cat
-          type: select
-          hierarchy: false
-          limit: true
-          error_message: true
-        field_project_list_target_id:
-          id: field_project_list_target_id
-          table: node__field_project_list
-          field: field_project_list_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: taxonomy_index_tid
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_project_list_target_id_op
-            label: ''
-            description: ''
-            use_operator: false
-            operator: field_project_list_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_project_list_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          vid: project_list
-          type: select
-          hierarchy: false
-          limit: true
-          error_message: true
         langcode:
           id: langcode
           table: node_field_data
@@ -587,6 +494,58 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        term_node_tid_depth:
+          id: term_node_tid_depth
+          table: node_field_data
+          field: term_node_tid_depth
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
+          operator: or
+          value:
+            74: 74
+          group: 1
+          exposed: true
+          expose:
+            operator_id: term_node_tid_depth_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: term_node_tid_depth_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: term_node_tid_depth
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              hydro: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: project_list
+          type: shs
+          hierarchy: false
+          limit: true
+          error_message: true
+          depth: 0
       style:
         type: default
       row:
@@ -605,6 +564,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      use_ajax: true
       header: {  }
       footer: {  }
       display_extenders: {  }

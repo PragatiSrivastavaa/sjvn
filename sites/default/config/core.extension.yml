@@ -53,6 +53,7 @@ module:
   quick_node_clone: 0
   search: 0
   shortcut: 0
+  shs: 0
   sitemap: 0
   sjvn_custom: 0
   superfish: 0

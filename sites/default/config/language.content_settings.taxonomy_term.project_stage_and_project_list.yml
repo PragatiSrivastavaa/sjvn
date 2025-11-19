@@ -1,0 +1,11 @@
+uuid: 504e30f4-4abf-46d9-a985-e61ab7da26a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.project_stage_and_project_list
+id: taxonomy_term.project_stage_and_project_list
+target_entity_type_id: taxonomy_term
+target_bundle: project_stage_and_project_list
+default_langcode: en
+language_alterable: false

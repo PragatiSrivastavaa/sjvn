@@ -1,0 +1,9 @@
+uuid: 0eb0f52f-816a-40dc-b806-75de8b25ae14
+langcode: en
+status: true
+dependencies: {  }
+name: 'Energy Bill Type And Category'
+vid: energy_bill_type_and_category
+description: null
+weight: 0
+new_revision: false
