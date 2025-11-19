@@ -11,6 +11,7 @@ dependencies:
   module:
     - file
     - path
+    - shs
     - text
 id: node.tariff_petition.default
 targetEntityType: node
@@ -40,10 +41,14 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_project_list:
-    type: options_select
+    type: options_shs
     weight: 123
     region: content
-    settings: {  }
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
   field_upload_file:
     type: file_generic

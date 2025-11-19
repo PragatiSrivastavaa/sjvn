@@ -1,0 +1,20 @@
+uuid: c3981508-bc6c-4335-b14a-c255318e97f4
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_project_stage_and_project
+field_name: field_project_stage_and_project
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

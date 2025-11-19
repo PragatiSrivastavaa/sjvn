@@ -5,15 +5,18 @@ dependencies:
   config:
     - field.field.node.energy_bill.body
     - field.field.node.energy_bill.field_bill_type
+    - field.field.node.energy_bill.field_energy_bill_type_and_categ
     - field.field.node.energy_bill.field_financial_year
     - field.field.node.energy_bill.field_month
     - field.field.node.energy_bill.field_project_list
+    - field.field.node.energy_bill.field_project_stage_and_project
     - field.field.node.energy_bill.field_upload_files
     - field.field.node.energy_bill.field_year
     - node.type.energy_bill
   module:
     - file
     - path
+    - shs
     - text
 id: node.energy_bill.default
 targetEntityType: node
@@ -44,6 +47,16 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_energy_bill_type_and_categ:
+    type: options_shs
+    weight: 132
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
+    third_party_settings: {  }
   field_financial_year:
     type: options_select
     weight: 124
@@ -61,6 +74,16 @@ content:
     weight: 123
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_project_stage_and_project:
+    type: options_shs
+    weight: 131
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
   field_upload_files:
     type: file_generic
@@ -116,6 +139,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete

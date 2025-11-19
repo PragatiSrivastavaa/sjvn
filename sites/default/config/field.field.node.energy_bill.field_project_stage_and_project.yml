@@ -1,0 +1,29 @@
+uuid: 6e568da4-e5ea-4cd1-aba1-e461073de320
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_project_stage_and_project
+    - node.type.energy_bill
+    - taxonomy.vocabulary.project_stage_and_project_list
+id: node.energy_bill.field_project_stage_and_project
+field_name: field_project_stage_and_project
+entity_type: node
+bundle: energy_bill
+label: 'Project Stage And Project List '
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      project_stage_and_project_list: project_stage_and_project_list
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
