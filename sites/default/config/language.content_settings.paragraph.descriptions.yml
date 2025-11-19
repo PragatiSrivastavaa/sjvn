@@ -1,9 +1,9 @@
-uuid: 6ef73fb9-1ef6-404c-94e0-9f8a5eb5b3cc
+uuid: a21acc71-3d76-46d1-894b-b7c1ad65bf0c
 langcode: en
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.energy_bill_type_and_category
+    - paragraphs.paragraphs_type.descriptions
   module:
     - content_translation
 third_party_settings:
@@ -11,8 +11,8 @@ third_party_settings:
     enabled: true
     bundle_settings:
       untranslatable_fields_hide: '0'
-id: taxonomy_term.energy_bill_type_and_category
-target_entity_type_id: taxonomy_term
-target_bundle: energy_bill_type_and_category
+id: paragraph.descriptions
+target_entity_type_id: paragraph
+target_bundle: descriptions
 default_langcode: site_default
 language_alterable: true

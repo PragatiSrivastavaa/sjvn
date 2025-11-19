@@ -13,7 +13,7 @@ bundle: group_name
 label: उल्लेख
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

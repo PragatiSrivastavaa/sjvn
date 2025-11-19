@@ -6,7 +6,14 @@ dependencies:
     - field.storage.paragraph.field_upload_files
     - paragraphs.paragraphs_type.descriptions
   module:
+    - content_translation
     - file
+third_party_settings:
+  content_translation:
+    translation_sync:
+      target_id: target_id
+      display: display
+      description: description
 id: paragraph.descriptions.field_upload_files
 field_name: field_upload_files
 entity_type: paragraph
@@ -14,7 +21,7 @@ bundle: descriptions
 label: 'Upload files'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

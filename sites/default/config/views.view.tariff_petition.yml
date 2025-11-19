@@ -410,7 +410,7 @@ display:
           plugin_id: text
           empty: true
           content:
-            value: 'Please select a category and project to view results.'
+            value: "No Tariff Petition available for the selected category and project.\r\n"
             format: full_html
           tokenize: false
       sorts:
