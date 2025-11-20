@@ -10,6 +10,9 @@
                <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_degination }}'] }}</p>
                <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_address }}'] }}</p>
                <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_tel_no }}'] }}</p>
+
+               {% if row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ body }}']|striptags|trim != '' %}
+
                <!-- Trigger modal button -->
                <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modal-{{ loop.index }}">
                {% if current_language == 'hi' %}
@@ -51,6 +54,7 @@
                   </div>
                </div>
                <!-- End modal -->
+                {% endif %}
             </div>
          </div>
       </div>
