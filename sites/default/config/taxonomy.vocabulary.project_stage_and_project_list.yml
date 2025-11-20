@@ -1,9 +1,0 @@
-uuid: f0952629-d35a-491a-beed-5087632873f1
-langcode: en
-status: true
-dependencies: {  }
-name: 'Project Stage And Project List'
-vid: project_stage_and_project_list
-description: null
-weight: 0
-new_revision: false
