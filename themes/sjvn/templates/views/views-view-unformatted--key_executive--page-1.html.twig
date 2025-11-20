@@ -33,7 +33,7 @@
                         <div class="modal-body">
                            <div class="row">
                               <!-- Left: Image -->
-                              {% if node.field_image_of_directors.entity %}
+                              {% if node.field_image_of_directors.entity is not empty %}
                               <div class="col-md-4 text-center">
                                  <img src="{{ file_url(node.field_image_of_directors.entity.fileuri) }}" 
                                     class="img-fluid mb-2" 
