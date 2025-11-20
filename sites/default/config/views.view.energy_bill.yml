@@ -10,9 +10,8 @@ dependencies:
     - field.storage.node.field_upload_files
     - field.storage.node.field_year
     - node.type.energy_bill
-    - taxonomy.vocabulary.energy_bill_type_and_category
     - taxonomy.vocabulary.financial_year
-    - taxonomy.vocabulary.project_stage_and_project_list
+    - taxonomy.vocabulary.project_list
   module:
     - better_exposed_filters
     - file
@@ -510,7 +509,7 @@ display:
           text_input_required_format: full_html
           bef:
             general:
-              autosubmit: true
+              autosubmit: false
               autosubmit_exclude_textfield: false
               autosubmit_textfield_delay: 500
               autosubmit_textfield_minimum_length: 3
@@ -521,34 +520,23 @@ display:
               secondary_open: false
               reset_button_always_show: false
             filter:
-              term_node_tid_depth:
-                plugin_id: bef_hidden
-                advanced:
-                  sort_options: false
-                  rewrite:
-                    filter_rewrite_values: ''
-                    filter_rewrite_values_key: false
-                  collapsible: false
-                  collapsible_disable_automatic_open: false
-                  is_secondary: false
-                  hide_label: false
-              term_node_tid_depth_1:
-                plugin_id: bef_hidden
-                advanced:
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                    filter_rewrite_values_key: false
-                  collapsible: false
-                  collapsible_disable_automatic_open: false
-                  is_secondary: false
-                  hide_label: false
               field_financial_year_target_id:
                 plugin_id: default
                 advanced:
                   sort_options: false
                   rewrite:
                     filter_rewrite_values: ' - Any - |Select Financial Year'
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              term_node_tid_depth:
+                plugin_id: bef_hidden
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
                     filter_rewrite_values_key: false
                   collapsible: false
                   collapsible_disable_automatic_open: false
@@ -643,7 +631,7 @@ display:
           exposed: true
           expose:
             operator_id: term_node_tid_depth_op
-            label: ''
+            label: 'Has taxonomy terms (with depth)'
             description: ''
             use_operator: false
             operator: term_node_tid_depth_op
@@ -673,63 +661,12 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          vid: energy_bill_type_and_category
+          vid: project_list
           type: shs
           hierarchy: false
           limit: true
           error_message: true
           depth: 1
-        term_node_tid_depth_1:
-          id: term_node_tid_depth_1
-          table: node_field_data
-          field: term_node_tid_depth
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          plugin_id: taxonomy_index_tid_depth
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: term_node_tid_depth_1_op
-            label: ''
-            description: ''
-            use_operator: false
-            operator: term_node_tid_depth_1_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: term_node_tid_depth_1
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-              hydro: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          vid: project_stage_and_project_list
-          type: textfield
-          hierarchy: false
-          limit: true
-          error_message: true
-          depth: 0
         field_financial_year_target_id:
           id: field_financial_year_target_id
           table: node__field_financial_year

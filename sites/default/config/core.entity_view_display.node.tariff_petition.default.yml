@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.tariff_petition.body
-    - field.field.node.tariff_petition.field_project_category
     - field.field.node.tariff_petition.field_project_list
     - field.field.node.tariff_petition.field_upload_file
     - node.type.tariff_petition
@@ -23,14 +22,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 101
-    region: content
-  field_project_category:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 102
     region: content
   field_project_list:
     type: entity_reference_label

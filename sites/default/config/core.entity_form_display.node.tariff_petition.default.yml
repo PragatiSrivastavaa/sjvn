@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.tariff_petition.body
-    - field.field.node.tariff_petition.field_project_category
     - field.field.node.tariff_petition.field_project_list
     - field.field.node.tariff_petition.field_upload_file
     - node.type.tariff_petition
@@ -31,12 +30,6 @@ content:
   created:
     type: datetime_timestamp
     weight: 10
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_project_category:
-    type: options_select
-    weight: 122
     region: content
     settings: {  }
     third_party_settings: {  }
