@@ -3167,3 +3167,20 @@ body.lang-hi ul.links li[hreflang="hi"] {
 .group-toggle-select {
   display: none;
 }
+
+
+/* organigram */
+.organigram-container {
+    transform: scale(0.55);     /* Adjust size to fit your screen */
+    transform-origin: top left;
+    width: 1800px;              /* Large fixed width */
+}
+
+#organization-chart-wrapper {
+    overflow: visible !important;  /* Remove scroll */
+    height: auto !important;
+}
+
+body {
+    overflow-x: hidden !important;  /* No horizontal scroll */
+}
