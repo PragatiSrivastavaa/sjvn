@@ -3167,23 +3167,3 @@ body.lang-hi ul.links li[hreflang="hi"] {
 .group-toggle-select {
   display: none;
 }
-
-
-
-
-
-/* Very specific selectors to override Organigrams 8.x-2.x */
-body .region-content .organigram-container {
-  transform: scale(0.35) !important;
-  transform-origin: top left !important;
-  width: 5000px !important;
-}
-
-body #organization-chart-wrapper .organigram {
-  overflow: visible !important;
-  flex-wrap: nowrap !important;
-}
-
-body #organization-chart-wrapper .organigram .organigram-items {
-  overflow: visible !important;
-}
