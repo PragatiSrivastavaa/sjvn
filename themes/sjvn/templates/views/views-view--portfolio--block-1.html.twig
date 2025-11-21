@@ -14,8 +14,7 @@
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
 %}
-
-<div{{ attributes.addClass(classes) }}>
+  {# Bootstrap row for two-column layout #}
   {{ title_prefix }}
   {% if title %}
     <h2 class="portfolio-view-title">{{ title }}</h2>
@@ -23,63 +22,37 @@
   {{ title_suffix }}
 
   {% if header %}
-    <div class="about-intro-section">
       {{ header }}
-    </div>
   {% endif %}
 
-  {# Bootstrap row for two-column layout #}
-  <h3 class="portfolio-header">
+<section class="portfolio-section">
+<div class="container text-center">
+  <h2 class="fw-bold text-primary-color">
   {% if current_language == 'hi' %}
-    पोर्टफोलियो
+    Our Project Portfolio>
   {% else %}
-    Portfolio
+  Our Project Portfolio
   {% endif %}
+</h2>
+<p class="mt-3 text-start mb-4"> 
+   {% if current_language == 'hi' %}
+         एसजेवीएन का लक्ष्य  2030 तक 25000 मेगावाट कंपनी और 2040 तक 50000 मेगावाट कंपनी बनना है। वर्तमान में, एसजेवीएन का कुल परियोजना पोर्टफोलियो 56,803 मेगावाट है, जिसमें से 2,467 मेगावाट परिचालन में, 4,836 मेगावाट निर्माणाधीन, 16,158 मेगावाट पूर्व-निर्माण और एस एंड आई चरण में है और 33,342 मेगावाट क्षमता की परियोजनाएं आवंटन के अधीन हैं।
+        {% else %}
+        SJVN aims to be a 25000 MW company by 2030 and 50000 MW company by 2040. Presently, total project portfolio of SJVN is 67,907.40 MW, out of which 2,786.5 MW is under operation, 4,616 MW is under Construction, 23,626.5 MW is under Pre-construction and S&I stage and 32,427 MW capacity Projects are under allotment.
+        {% endif %}
+ </p>
 </h3>
+{% if exposed %}
 
-  <div class="row">
-    
-    {# Left column: exposed filters (width 3 of 12) #}
-  {% if exposed %}
-      <div class="col-md-3 mb-3" id="portfolio-filters">
         {{ exposed }}
-    </div>
+
   {% endif %}
 
-    {# Right column: content rows (width 9 of 12) #}
-    <div class="col-md-9">
   {% if rows %}
       {{ rows }}
-  {% elseif empty %}
-        <div class="view-empty">{{ empty }}</div>
-      {% endif %}
+    {% endif %}
     </div>
+</section>
 
-  </div> {# end row #}
 
-  {% if pager %}
-    <div class="mt-3">
-      {{ pager }}
-    </div>
-  {% endif %}
-  {% if attachment_after %}
-    <div class="attachment attachment-after mt-3">
-      {{ attachment_after }}
-    </div>
-  {% endif %}
-  {% if more %}
-    <div class="mt-3">
-      {{ more }}
-    </div>
-  {% endif %}
-  {% if footer %}
-    <div class="view-footer mt-3">
-      {{ footer }}
-    </div>
-  {% endif %}
-  {% if feed_icons %}
-    <div class="feed-icons mt-3">
-      {{ feed_icons }}
-    </div>
-  {% endif %}
-</div>
+
