@@ -3169,41 +3169,31 @@ body.lang-hi ul.links li[hreflang="hi"] {
 }
 
 
-/* --- ORGANIGRAM ONE-PAGE VIEW --- */
-
-/* Main container scaling */
+/* Make the organigram scale and show fully */
 .organigram-container {
-    transform: scale(0.45);        /* Adjust 0.35–0.55 depending on how much you want to fit */
-    transform-origin: top left;
-    width: 2500px;                 /* Large fixed width for full chart */
-    height: auto !important;
+  transform: scale(0.45);        /* Adjust this value to fit more or less */
+  transform-origin: top left;
+  width: 3000px;                 /* Increase if your chart is very wide */
 }
 
-/* Wrapper must not clip or scroll */
-#organization-chart-wrapper {
-    overflow: visible !important; 
-    height: auto !important;
-    width: auto !important;
+/* Ensure the wrapper container doesn’t hide overflow */
+#organization-chart-wrapper,
+#organization-chart-wrapper * {
+  overflow: visible !important;
+  height: auto !important;
+  width: auto !important;
 }
 
-/* Prevent body from creating scrollbars */
+/* Avoid adding scrollbars to body */
 body {
-    overflow-x: hidden !important;
-    overflow-y: visible !important;   /* Visible vertical allowed (or change to hidden if needed) */
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
 }
 
-/* Chart SVG / elements */
-#organization-chart,
-.organization-chart,
-.orgchart {
-    overflow: visible !important;
-    width: auto !important;
-    height: auto !important;
-}
-
-/* Prevent Drupal container clipping */
-.layout-container,
-.region-content {
-    overflow: visible !important;
+/* If the chart is rendered as SVG or other element */
+.organigram-container svg,
+.organigram-container .orgchart {
+  width: auto !important;
+  height: auto !important;
 }
 
