@@ -23,7 +23,7 @@
               <div class="project-card">
                 
          {% if row.content['#row']._entity.field_business_image is not empty %}
-         
+
           {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_business_image }}'] }}
 
               {% else %}
@@ -38,5 +38,5 @@
               </div>
         </div>
         {% endfor %}
-     </div>>
+     </div>
      </div>
