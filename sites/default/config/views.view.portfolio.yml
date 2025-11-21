@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_business_image
     - field.storage.node.field_portfolio_cat
+    - image.style.medium
     - node.type.our_business
     - taxonomy.vocabulary.portfolio_cat
   content:
@@ -496,6 +497,232 @@ display:
     display_plugin: block
     position: 2
     display_options:
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_portfolio_cat:
+          id: field_portfolio_cat
+          table: node__field_portfolio_cat
+          field: field_portfolio_cat
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_business_image:
+          id: field_business_image
+          table: node__field_business_image
+          field: field_business_image
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: image
+          settings:
+            image_link: ''
+            image_style: medium
+            image_loading:
+              attribute: lazy
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: "<div class=\"col-sm-3\">\r\n        <div class=\"gallery-item\">\r\n           <a href=\"{{ view_node }} \">\r\n          {{ field_business_image }}\r\n          <div class=\"gallery-overlay\">\r\n            <span>{{ title }}</span>\r\n          </div>\r\n          </a>\r\n        </div>\r\n        </div>"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
       filters:
         status:
           id: status
@@ -617,6 +844,7 @@ display:
           1: AND
       defaults:
         use_ajax: false
+        fields: false
         filters: false
         filter_groups: false
         header: false
@@ -632,7 +860,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-6\">\r\n    <img src=\"/sjvn/themes/sjvn/images/about_img.jpg\" alt=\"Banner\" width=\"525\" height=\"456\" >\r\n    </div>\r\n    <div class=\"col-sm-6\" >\r\n      \r\n<p>SJVN Limited, a Navratna CPSE under administrative control of Ministry of Power, Govt. of India, was incorporated on May 24, 1988, as a joint venture of the Government of India (GOI) and the Government of Himachal Pradesh (GOHP). SJVN is now a listed Company having shareholders pattern of 55.00% with Govt. of India, 26.85% with Govt. of Himachal Pradesh and rest of 18.15% with Public. The present paid up capital and authorized capital of SJVN is Rs. 3,929.80 Crore and Rs. 7,000 Crore respectively. The Net Worth as on 31.03.2025 is Rs.14189.26 Crore.</p>\r\n<p>Beginning with a single project and single State operation (i.e. India’s largest 1500 MW Nathpa Jhakri Hydro Power Station in Himachal Pradesh), the Company has commissioned fourteen projects totaling 2968 MW of installed capacity and 123 km Transmission Line. SJVN is presently implementing or operating power projects in Himachal Pradesh, Uttarakhand, Bihar, Maharashtra, Uttar Pradesh, Punjab, Gujarat, Arunachal Pradesh, Rajasthan, Assam, Mizoram, Madhya Pradesh Karnataka and Chhattisgarh in India besides neighboring country of Nepal.</p>\r\n\r\n    </div>\r\n  </div>\r\n</div>"
+            value: "<section class=\"about-section\">\r\n    <div class=\"container\">\r\n      <div class=\"row justify-content-center align-items-center\">\r\n\r\n        <div class=\"col-lg-4 d-flex justify-content-center\">\r\n          <div class=\"about-card\">\r\n            <img src=\"/sjvn/themes/sjvn/images/about_img.jpg\" alt=\"Power Image\" >\r\n          </div>\r\n        </div>\r\n        <div class=\"col-lg-8\">\r\n          <h3 class=\"fw-bold aboutsjvn-sec2 mb-3\">About SJVN Limited</h3>\r\n          <p class=\"text-dark mb-2 text-justify\">\r\n            SJVN Limited,\_a Navratna CPSE under administrative control of Ministry of Power, Govt. of India, was\r\n            incorporated on May 24, 1988, as a joint venture of the Government of India (GOI) and the Government\r\n            of Himachal Pradesh (GOHP). SJVN is now a listed Company having shareholders pattern of 55.00% with Govt.\r\n            of India, 26.85% with Govt. of Himachal Pradesh and rest of 18.15% with Public. The present paid up capital\r\n            and authorized capital of SJVN is\_Rs. 3,929.80 Crore\_and\_Rs. 7,000\_Crore\_respectively.\_The Net Worth\_as on\r\n            31.03.2025 is Rs.14189.26\_Crore.\r\n          </p>\r\n          <p class=\"text-dark mb-2 text-justify\">\r\n            Beginning with a single project and single State operation (i.e. India’s largest 1500 MW Nathpa Jhakri Hydro\r\n            Power Station in Himachal Pradesh), the Company has commissioned fourteen projects totaling 3096.60 MW of\r\n            installed capacity and 123 km Transmission Line. SJVN is presently implementing or operating power projects\r\n            in Himachal Pradesh, Uttarakhand, Bihar, Maharashtra, Uttar Pradesh, Punjab, Gujarat, Arunachal Pradesh,\r\n            Rajasthan,\r\n            Assam, Mizoram, Madhya Pradesh Karnataka and Chhattisgarh in India besides neighboring country of Nepal.\r\n          </p>\r\n\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n  </section>"
             format: full_html
           tokenize: false
       display_extenders: {  }
