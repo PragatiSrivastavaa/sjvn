@@ -3169,31 +3169,41 @@ body.lang-hi ul.links li[hreflang="hi"] {
 }
 
 
-/* Make the organigram scale and show fully */
+/* 1) SCALE DOWN THE WHOLE ORGANIGRAM */
 .organigram-container {
-  transform: scale(0.45);        /* Adjust this value to fit more or less */
-  transform-origin: top left;
-  width: 3000px;                 /* Increase if your chart is very wide */
+    transform: scale(0.38);      /* Adjust: 0.30 → smaller, 0.45 → bigger */
+    transform-origin: top left;
+    width: 4200px !important;    /* Very large width so everything fits */
 }
 
-/* Ensure the wrapper container doesn’t hide overflow */
-#organization-chart-wrapper,
-#organization-chart-wrapper * {
-  overflow: visible !important;
-  height: auto !important;
-  width: auto !important;
+/* 2) REMOVE SCROLLING FROM ORGANIGRAM WRAPPER */
+#organization-chart-wrapper {
+    overflow: visible !important;
+    height: auto !important;
+    width: 100% !important;
+    max-width: none !important;
 }
 
-/* Avoid adding scrollbars to body */
+/* 3) REMOVE SCROLL FROM THE WHOLE PAGE */
 body {
-  overflow-x: hidden !important;
-  overflow-y: visible !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
 }
 
-/* If the chart is rendered as SVG or other element */
-.organigram-container svg,
-.organigram-container .orgchart {
-  width: auto !important;
-  height: auto !important;
+/* 4) FIX FLEXBOX WRAPPING (ORGANIGRAM 8.x-2.x uses flex) */
+.organigram,
+.organigram * {
+    overflow: visible !important;
+    flex-wrap: nowrap !important;
 }
 
+/* 5) ENSURE CHILD ITEMS DO NOT WRAP IN MULTIPLE ROWS */
+.organigram .organigram-items {
+    flex-wrap: nowrap !important;
+}
+
+/* 6) PREVENT CLIPPING OF CONNECTING LINES */
+.organigram .organigram-item,
+.organigram .organigram-children {
+    overflow: visible !important;
+}
