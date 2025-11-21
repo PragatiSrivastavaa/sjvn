@@ -9,6 +9,7 @@ dependencies:
     - contact
     - filter
     - media
+    - organigrams
     - search
     - sitemap
     - system
@@ -23,6 +24,9 @@ permissions:
   - 'access content'
   - 'access site-wide contact form'
   - 'access sitemap'
+  - 'create organigrams'
+  - 'import organigrams'
   - 'search content'
   - 'use text format restricted_html'
   - 'view media'
+  - 'view organigrams'

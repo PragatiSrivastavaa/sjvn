@@ -1,0 +1,30 @@
+uuid: b42a0584-063c-40d9-b787-bbe59e3cd894
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.organization_chart.field_o_css_classes
+    - field.field.taxonomy_term.organization_chart.field_o_image
+    - field.field.taxonomy_term.organization_chart.field_o_position
+    - field.field.taxonomy_term.organization_chart.field_o_url
+    - taxonomy.vocabulary.organization_chart
+  module:
+    - text
+id: taxonomy_term.organization_chart.default
+targetEntityType: taxonomy_term
+bundle: organization_chart
+mode: default
+content:
+  description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_o_css_classes: true
+  field_o_image: true
+  field_o_position: true
+  field_o_url: true
+  langcode: true

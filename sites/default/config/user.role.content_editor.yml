@@ -53,6 +53,7 @@ dependencies:
     - file
     - filter
     - node
+    - organigrams
     - path
     - quick_node_clone
     - system
@@ -264,6 +265,7 @@ permissions:
   - 'use text format full_html'
   - 'view all revisions'
   - 'view news_announcement revisions'
+  - 'view organigrams'
   - 'view our_business revisions'
   - 'view our_power_stations revisions'
   - 'view own unpublished content'

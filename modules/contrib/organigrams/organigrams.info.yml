@@ -1,0 +1,9 @@
+name: Organigrams
+description: Create and manage organigrams.
+type: module
+core_version_requirement: ^8 || ^9 || ^10
+
+# Information added by Drupal.org packaging script on 2022-10-31
+version: '8.x-2.3'
+project: 'organigrams'
+datestamp: 1667221159

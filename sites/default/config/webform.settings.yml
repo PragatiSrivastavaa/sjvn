@@ -112,7 +112,7 @@ settings:
       title: Narrow
       width: 600
     normal:
-      title: Normal
+      title: सामान्य
       width: 800
     wide:
       title: Wide

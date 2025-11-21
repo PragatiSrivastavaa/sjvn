@@ -1,0 +1,11 @@
+uuid: 363f3641-38df-401a-b423-ae697ff1dca3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.organization_chart
+id: taxonomy_term.organization_chart
+target_entity_type_id: taxonomy_term
+target_bundle: organization_chart
+default_langcode: en
+language_alterable: false

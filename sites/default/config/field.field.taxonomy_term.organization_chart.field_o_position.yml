@@ -1,0 +1,23 @@
+uuid: 08c26d5d-e2be-4c1f-bd7d-d92f44861a1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_o_position
+    - taxonomy.vocabulary.organization_chart
+  module:
+    - options
+id: taxonomy_term.organization_chart.field_o_position
+field_name: field_o_position
+entity_type: taxonomy_term
+bundle: organization_chart
+label: Position
+description: 'The position of the organigram item (will be ignored on root items).'
+required: false
+translatable: false
+default_value:
+  -
+    value: u
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,14 @@
+uuid: a8879182-8200-4b73-9da5-904ee04ac72f
+langcode: en
+status: true
+dependencies:
+  module:
+    - organigrams
+third_party_settings:
+  organigrams:
+    is_organigram: true
+name: 'Organization Chart'
+vid: organization_chart
+description: null
+weight: 0
+new_revision: false
