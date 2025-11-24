@@ -3167,3 +3167,10 @@ body.lang-hi ul.links li[hreflang="hi"] {
 .group-toggle-select {
   display: none;
 }
+
+
+
+body.page-organization-chart .views_organization_chart_wrapper .orgchart {
+    display: flex !important;
+    flex-direction: row !important;
+}
