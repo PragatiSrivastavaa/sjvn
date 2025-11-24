@@ -1002,3 +1002,23 @@ body.lang-hi ul.links li[hreflang="hi"] {
     text-align: center;
   }
 }
+
+
+
+
+/* Target the Views Organization Chart container */
+.views_organization_chart_wrapper .orgchart {
+  display: flex;
+  flex-direction: row; /* horizontal structure */
+}
+
+.views_organization_chart_wrapper .orgchart li {
+  margin: 0 20px; /* space between nodes horizontally */
+}
+
+.views_organization_chart_wrapper .orgchart .node {
+  background-color: #f5f5f5;
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 4px;
+}
