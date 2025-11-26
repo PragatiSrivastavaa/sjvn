@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_business_image
     - field.storage.node.field_portfolio_cat
-    - image.style.medium
     - node.type.our_business
     - taxonomy.vocabulary.portfolio_cat
   content:
@@ -661,7 +660,7 @@ display:
           type: image
           settings:
             image_link: ''
-            image_style: medium
+            image_style: ''
             image_loading:
               attribute: lazy
           group_column: ''

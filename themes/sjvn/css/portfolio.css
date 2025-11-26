@@ -111,7 +111,9 @@
 
   .project-card img {
     border-radius: 12px;
-  }
+    height: 250px;
+    width: 100%;
+}
 
 
   /* ------------------------------transmission-section -------------------------------------------- */
