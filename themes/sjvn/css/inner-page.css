@@ -1033,3 +1033,35 @@ body.lang-hi ul.links li[hreflang="hi"] {
   padding: 10px;
   border-radius: 4px;
 }
+/*-------------------------------- Our Project Portfolio --------------------------*/
+.bef-links ul{
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.bef-links ul li {
+    margin-right: 10px;
+}
+
+/* Default button style on <a> */
+.bef-links ul li a {
+    display: block;
+    padding: 5px 12px;
+    font-weight: 500;
+    background: white;
+    border-radius: 30px;
+    box-shadow: #c3c3c3 0px 2px 8px 0px;
+    text-decoration: none;
+    color: #000;
+}
+
+/* Active/Selected style */
+.bef-links ul li a.bef-link--selected {
+    background:var(--primary-color);
+      
+    color: #fff;
+}

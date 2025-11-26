@@ -433,10 +433,10 @@ body.lang-hi ul.links li[hreflang="hi"] {
   display: flex;
   flex-direction: column;
   gap: 0;
-  background: #fff;
+  /* background: #fff; */
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
 }
 
 /* Filter section heading if present */
@@ -459,11 +459,6 @@ body.lang-hi ul.links li[hreflang="hi"] {
   color: #fff;
 }
 
-.portfolio-exposed-form .form-item {
-  margin: 0;
-  padding: 0;
-  border-bottom: 1px solid #e0e0e0;
-}
 
 .portfolio-exposed-form .form-item:last-child {
   border-bottom: none;
