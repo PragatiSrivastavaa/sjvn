@@ -46,12 +46,15 @@
   {% endif %}
   {{ title_suffix }}
   {% if header %}
+  <div class="inner-container">
+
     <div class="view-header">
       {{ header }}
     </div>
   {% endif %}
   {% if exposed %}
-    <div class="view-filters">
+  <div class="innerbox">
+ <div class="view-filters">
       {{ exposed }}
     </div>
   {% endif %}
@@ -65,6 +68,8 @@
     <div class="view-content">
       {{ rows }}
     </div>
+  </div>  
+  </div>
   {% elseif empty %}
     <div class="view-empty">
       {{ empty }}

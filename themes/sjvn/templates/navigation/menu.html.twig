@@ -26,7 +26,7 @@
 #}
 {{ menus.menu_links(items, attributes, 0) }}
 
-{% macro menu_links(items, attributes, menu_level) %}
+<!-- {% macro menu_links(items, attributes, menu_level) %}
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
@@ -52,4 +52,64 @@
     {% endfor %}
     </ul>
   {% endif %}
+{% endmacro %} -->
+
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <div class="menu-wrapper">
+        <ul{{ attributes.addClass('menu') }}>
+    {% else %}
+      <ul class="menu">
+    {% endif %}
+
+    {% for item in items %}
+      {% set classes = [
+        'menu-item',
+        item.is_expanded ? 'menu-item--expanded',
+        item.is_collapsed ? 'menu-item--collapsed',
+        item.in_active_trail ? 'menu-item--active-trail',
+      ] %}
+
+      <li{{ item.attributes.addClass(classes) }}>
+        {{ link(item.title, item.url) }}
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+
+    </ul>
+
+    {% if menu_level == 0 %}
+      <button class="menu-toggle">More ▼</button>
+      </div>
+    {% endif %}
+  {% endif %}
 {% endmacro %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const menu = document.querySelector(".menu-wrapper .menu");
+  const toggleBtn = document.querySelector(".menu-wrapper .menu-toggle");
+
+  let expanded = false;
+
+  toggleBtn.addEventListener("click", () => {
+    expanded = !expanded;
+
+    if (expanded) {
+      menu.style.flexWrap = "wrap";        // multi row expand
+      menu.style.overflowX = "visible";    // disable scroll
+      toggleBtn.textContent = "Close ▲";   // update button text
+    } else {
+      menu.style.flexWrap = "nowrap";      // single row
+      menu.style.overflowX = "auto";       // scroll enabled
+      toggleBtn.textContent = "More ▼";    // update button text
+    }
+  });
+});
+
+</script>

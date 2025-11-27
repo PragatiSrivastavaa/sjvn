@@ -27,7 +27,8 @@
           {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_business_image }}'] }}
 
               {% else %}
-          <img src="./themes/sjvn/images/gallery/no-image.png" alt="No Image Available" class="img-fluid project-img">
+              <!-- ./themes/sjvn/images/gallery/no-image.png -->
+          <img src="/themes/sjvn/images/gallery/photo-gallery.png" alt="No Image Available" class="img-fluid project-img">
               {% endif %}
                 <div class="d-flex justify-content-between align-items-center mt-3 cursor-pointer">
                   <h5 class="project-title mb-0">{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}</h5>

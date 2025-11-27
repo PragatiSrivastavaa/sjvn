@@ -683,7 +683,7 @@ i.bi.bi-house {
 }
 
 /* enner body css sidebar */
-.sidebar .menu {
+/* .sidebar .menu {
   border: none;
   border-radius: 0;
   background: transparent;
@@ -691,6 +691,9 @@ i.bi.bi-house {
   padding: 0;
   margin: 0;
 }
+
+
+
 
 .sidebar .menu li {
   display: flex;
@@ -714,13 +717,117 @@ i.bi.bi-house {
 .sidebar .menu li:hover {
   background-color: #e9ecef;
   color: #495057;
-}
-
+  
+} 
 .sidebar .menu-item--active-trail {
   background-color: var(--primary-color) !important;
   color: #fff !important;
   font-weight: 600;
+}  
+*/
+ /*------------------------ updateder tabs  --------------------------*/
+ @media (min-width: 1200px) {
+.sidebar {
+    width: 94%;
+    margin-left: 2%;
 }
+.inner-container{
+      width: 94%;
+    margin-left: 2%;
+}
+.menu-wrapper .menu-toggle {
+    right: 5px !important;
+   }
+}
+
+.sidebar .menu {
+   display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    margin-top: 22px;
+    padding-bottom: 20px;
+    list-style: none;
+    border-bottom: 1px solid #00aeef;
+    overflow-x: auto;       
+    white-space: nowrap;    
+    flex-wrap: nowrap;
+    scroll-behavior: smooth;
+}
+
+.sidebar .menu::-webkit-scrollbar {
+    height: 2px;
+}
+
+.sidebar .menu::-webkit-scrollbar-thumb {
+    background: #00aeef;  
+    border-radius: 10px;
+}
+
+
+.sidebar .menu-item a {
+    display: inline-block;
+    padding: 8px 22px;
+    border: 2px solid #00AEEF;
+    border-radius: 15px;
+    color: #00AEEF;
+    font-size: 14px;
+    font-weight: 600;
+    background: white;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.sidebar .menu-item a:hover {
+    background: #00AEEF;
+    color: white !important;
+}
+
+.menu-item--active-trail a,
+.menu-item a.is-active {
+    background: #00AEEF;
+    color: white;
+    border-color: #00AEEF;
+}
+.sidebar .menu-item--active-trail {
+  background-color: var(--primary-color) !important;
+  color: #fff !important;
+      border-radius: 15px;
+  font-weight: 600;
+}
+
+.menu-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.menu-wrapper .menu {
+  display: flex;
+  flex-wrap: nowrap;    
+  overflow-x: auto;   
+  white-space: nowrap;
+  flex: 1;
+  scroll-behavior: smooth;
+}
+
+.menu-wrapper .menu-toggle {
+    padding: 11px 15px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    position: absolute;
+    right: 33px;
+    background: white;
+    top: 32px;
+    border: none;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+
+/*------------------- new updated end --------------*/
+
 
 .sidebar .menu li a {
   color: var(--primary-color);
@@ -807,8 +914,6 @@ i.bi.bi-house {
   gap: 10px;
   padding: 0;
   margin: 0;
-  border-bottom: 2px solid #e0e0e0;
-  background: transparent;
 }
 
 /* Individual tab item */
@@ -834,22 +939,22 @@ i.bi.bi-house {
 
 /* Tab label styling */
 .tab-menu-item .form-radios label {
-  display: inline-flex;
-  align-items: center;
-  padding: 12px 24px;
-  margin: 0;
-  background: #f8f9fa;
-  color: #333;
-  font-weight: 500;
-  font-size: 0.95rem;
-  border: 2px solid transparent;
-  border-bottom: none;
-  border-radius: 8px 8px 0 0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  position: relative;
-  bottom: -2px;
+ display: inline-flex;
+    align-items: center;
+    padding: 6px 22px;
+    margin: 4px;
+    background: #f8f9fa;
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.95rem;
+    border: 1px solid var(--primary-color);
+    /* border-bottom: none; */   /* Remove this line */
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    margin-bottom: 10px;
+
 }
 
 /* Tab hover state */
@@ -1050,10 +1155,10 @@ body.lang-hi ul.links li[hreflang="hi"] {
 /* Default button style on <a> */
 .bef-links ul li a {
     display: block;
-    padding: 5px 12px;
+    padding: 7px 30px;
     font-weight: 500;
     background: white;
-    border-radius: 30px;
+    border-radius: 15px;
     box-shadow: #c3c3c3 0px 2px 8px 0px;
     text-decoration: none;
     color: #000;
@@ -1064,4 +1169,21 @@ body.lang-hi ul.links li[hreflang="hi"] {
     background:var(--primary-color);
       
     color: #fff;
+}
+
+.view.view-our-project .view-header {
+    margin-bottom: 30px;
+}
+
+
+.innerbox {
+    padding: 25px;
+    border-radius: 21px;
+    margin-bottom: 30px;
+   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.innerbox .view-filters {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid gray;
 }
