@@ -1238,6 +1238,10 @@ ul.vmo-card__list {
     width: 96%;
     margin-left: 2%;
 }
+.field--type-text-with-summary.field--label-hidden.field__item h2 {
+    width: 96%;
+    margin-left: 2%;
+}
 }
  @media (max-width: 992px) {
 img.vmo-card__image {

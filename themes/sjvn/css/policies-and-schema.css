@@ -53,6 +53,7 @@
     .report-div ul li {
         padding: 30px 20px;
         position: relative;
+        padding-bottom: 45px;
     }
     .view-pdf-btn{
         position: absolute;
@@ -105,7 +106,7 @@
 
 .pdf-btn {
     background: linear-gradient(90deg, #2774AC, #009EDB);
-    color: #fff;
+    color: #fff !important;
     padding: 7px 22px;
     border-radius: 50px;
     font-size: 14px;
@@ -127,8 +128,7 @@
     .report-div ul li a {
         font-size: 14px;
         font-weight: 500;
-        margin-bottom: 35px;
-        color: var(--text-color);
+        color: var( --dark-gray);
         transition: color 0.3s ease;
     }
 
