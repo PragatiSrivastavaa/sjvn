@@ -27,6 +27,8 @@
         {% if current_category != '' %}
           </div> {# Close previous row #}
         {% endif %}
+
+        <div class="accordion" id="accordionExample">
         <h2 class="subtitle mt-5">{{ category }}</h2>
         <div class="row">
         {% set current_category = category %}
@@ -52,6 +54,27 @@
           </div>
         </div>
       </div>
+
+{% set category = row.content['#view'].style_plugin.render_tokens[loop.index0]['field_directors_category'] %}
+
+{% if category is empty and paragraph_printed == false %}
+  <div class="col-sm-6 col-lg-6">
+    <p class="directors-message">
+       {% if current_language == 'hi' %}
+      कंपनी का व्यवसाय पूर्णकालिक निदेशकों और अंशकालिक निदेशकों से मिलकर बने निदेशक मंडल द्वारा प्रबंधित किया जाता है। एसजेवीएन का नेतृत्व वर्तमान में एक अध्यक्ष एवं प्रबंध निदेशक (सीएमडी) और तीन (3) कार्यात्मक निदेशक अर्थात निदेशक (कार्मिक), निदेशक (वित्त) और निदेशक (परियोजनाएं) करते हैं। इसके अलावा, भारत सरकार और हिमाचल प्रदेश सरकार का प्रतिनिधित्व करने वाले दो (2) अंशकालिक निदेशक हैं। कंपनी के बोर्ड में दो गैर-आधिकारिक अंशकालिक स्वतंत्र निदेशक भी हैं।
+        {% else %}
+      The business of the Company is managed by a Board of Directors consisting of Whole Time Directors and Part-Time Directors.
+      SJVN is currently headed by a Chairman and Managing Director (CMD) and Three (3) Functional Directors viz.
+      Director (Personnel), Director (Finance) and Director (Projects).
+      In addition, there are Two (2) Part-Time Directors representing the Government of India and Government of Himachal Pradesh.
+      There are also Two Non-Official Part-Time Independent Directors on the Board of the Company.
+     {% endif %}
+    </p>
+  </div>
+  {% set paragraph_printed = true %}
+{% endif %}
+
+
       
 {% endfor %}
 

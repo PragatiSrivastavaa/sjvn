@@ -1333,20 +1333,7 @@ display:
         row: false
         fields: false
         header: false
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: text
-          empty: false
-          content:
-            value: "<div class=\"\">\r\n<p class=\"directors-message\">The business of the Company is managed by a Board of Directors consisting of Whole Time Directors and Part-Time Directors. SJVN is currently headed by a Chairman and Managing Director (CMD) and Three (3) Functional Directors viz. Director (Personnel), Director (Finance) and Director (Projects). In addition, there are Two (2) Part-Time Directors representing the Government of India and Government of Himachal Pradesh. There are also Two Non-Official Part-Time Independent Directors on the Board of the Company.</p> \r\n</div>"
-            format: full_html
-          tokenize: false
+      header: {  }
       display_extenders: {  }
       path: board-of-directors
     cache_metadata:
