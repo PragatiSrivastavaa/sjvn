@@ -16,7 +16,7 @@
 }
 
 /* Category Subtitle */
-.board_of_directors .subtitle {
+/* .board_of_directors .subtitle {
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--primary-color);
@@ -25,9 +25,9 @@
   padding-bottom: 10px;
   border-bottom: 3px solid var(--primary-color);
   position: relative;
-}
+} */
 
-.board_of_directors .subtitle::after {
+/* .board_of_directors .subtitle::after {
   content: '';
   position: absolute;
   bottom: -3px;
@@ -35,7 +35,7 @@
   width: 80px;
   height: 3px;
   background: var(--secondary-color);
-}
+} */
 
 /* Profile Card - Compact Version */
 .board_of_directors .profile {

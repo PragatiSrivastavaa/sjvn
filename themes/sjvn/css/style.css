@@ -851,8 +851,9 @@ body.lang-hi ul.links li[hreflang="hi"] {
 /* Old styles for compatibility */
 .about-section h3 {
   color: var(--primary-color);
-  font-size: 26px;
-  margin-bottom: 15px;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
 .about-section-main {

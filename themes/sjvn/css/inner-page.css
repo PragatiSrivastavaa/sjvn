@@ -726,19 +726,7 @@ i.bi.bi-house {
 }  
 */
  /*------------------------ updateder tabs  --------------------------*/
- @media (min-width: 1200px) {
-.sidebar {
-    width: 94%;
-    margin-left: 2%;
-}
-.inner-container{
-      width: 94%;
-    margin-left: 2%;
-}
-.menu-wrapper .menu-toggle {
-    right: 5px !important;
-   }
-}
+
 
 .sidebar .menu {
    display: flex;
@@ -1175,6 +1163,10 @@ body.lang-hi ul.links li[hreflang="hi"] {
     margin-bottom: 30px;
 }
 
+h3.vmo-card__title {
+    border-bottom: 3px solid !important;
+    position: absolute !important;
+}
 
 .innerbox {
     padding: 25px;
@@ -1186,4 +1178,66 @@ body.lang-hi ul.links li[hreflang="hi"] {
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid gray;
+}
+/*--------------------------------- vision and mision --------------------------------*/
+.vmo-card {
+        box-shadow: rgb(0 158 219) 0px 1px 4px;
+    border-radius: 15px;
+}
+img.vmo-card__image {
+      width: 110px;
+    padding: 17px;
+    background: #E9F0FF;
+    box-shadow: #6c757d 0px 4px 12px;
+    border: 1px solid #0dcaf0;
+    border-radius: 65px;
+}
+.Vision-icon.mb-3 .vmo-card__image {
+    padding: 16px 7px 5px 17px;
+}
+.Objective-icon.mb-3 .vmo-card__image {
+    padding: 17px 17px 11px 17px;
+}
+strong.vmo-card__highlight {
+    font-size: 17px;
+}
+p.vmo-card__desc {
+    margin-top: 70px;
+        margin-left: 0px !important;
+        font-size: 14px;
+    color: #343434;
+}
+ul.vmo-card__list {
+    font-size: 14px;
+    color: #343434;
+}
+
+
+/*--------------------------------- screen responsive ----------------------------*/
+ @media (min-width: 1200px) {
+.sidebar {
+    width: 94%;
+    margin-left: 2%;
+}
+.inner-container{
+      width: 94%;
+    margin-left: 2%;
+}
+.menu-wrapper .menu-toggle {
+    right: 5px !important;
+   }
+.field--label-hidden.field__item p {
+    width: 96%;
+    margin-left: 2%;
+}
+}
+ @media (max-width: 992px) {
+img.vmo-card__image {
+      width: 95px;
+    padding: 12px;
+    background: #E9F0FF;
+    box-shadow: #6c757d 0px 4px 12px;
+    border: 1px solid #0dcaf0;
+    border-radius: 65px;
+}
 }
