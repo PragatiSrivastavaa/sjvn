@@ -30,7 +30,7 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
         padding: 10px;
-        max-width: 1200px;
+        /* max-width: 1200px; */
         margin: 0 auto;
     }
 
@@ -50,52 +50,84 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         border-color: var(--primary-color);
     }
-
+    .report-div ul li {
+        padding: 30px 20px;
+        position: relative;
+    }
+    .view-pdf-btn{
+        position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%); 
+    width: max-content;
+    }
     .report-div ul li a {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding: 30px 20px;
         text-decoration: none;
         color: #333;
-        min-height: 160px;
         justify-content: center;
         position: relative;
     }
 
     .report-div ul li a img {
-        width: 48px;
-        height: 48px;
+               width: 80px;
+        height: 80px;
+        padding: 16px;
+        border-radius: 50px;
+        overflow: inherit;
         margin-bottom: 15px;
         opacity: 0.7;
         transition: opacity 0.3s ease;
+       background: #009edb3b;
     }
 
     .report-div ul li:hover a img {
         opacity: 1;
     }
 
-    .report-div ul li a::before {
+    /* .report-div ul li a::before {
         content: "📄";
         font-size: 48px;
         margin-bottom: 15px;
         opacity: 0.6;
         transition: opacity 0.3s ease;
-    }
+    } */
 
-    .report-div ul li a img {
+    /* .report-div ul li a img {
         display: none;
-    }
+    } */
+
+
+/*------------------------ pdf section ------------------------------*/
+
+.pdf-btn {
+    background: linear-gradient(90deg, #2774AC, #009EDB);
+    color: #fff;
+    padding: 7px 22px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    box-shadow: none;
+    transition: 0.3s ease;
+}
+
+.pdf-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 15px rgba(0, 136, 204, 0.35);
+}
 
     .report-div ul li:hover a::before {
         opacity: 1;
     }
 
     .report-div ul li a {
-        font-size: 0.7rem;
-        line-height: 1.2;
+        font-size: 14px;
         font-weight: 500;
+        margin-bottom: 35px;
         color: var(--text-color);
         transition: color 0.3s ease;
     }
@@ -107,15 +139,15 @@
     /* Large screens - ensure 3 columns */
     @media (min-width: 1200px) {
         .report-div ul {
-            grid-template-columns: repeat(3, 1fr);
-            max-width: 1400px;
+            grid-template-columns: repeat(4, 1fr);
+            /* max-width: 1400px; */
         }
     }
 
     /* Medium screens - 2 columns */
     @media (max-width: 1199px) and (min-width: 769px) {
         .report-div ul {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             padding: 15px;
             gap: 15px;
         }
@@ -131,7 +163,7 @@
         
         .report-div ul li a {
             padding: 25px 15px;
-            min-height: 140px;
+            /* min-height: 140px; */
         }
         
         .report-div ul li a::before {
