@@ -1163,6 +1163,10 @@ body.lang-hi ul.links li[hreflang="hi"] {
     margin-bottom: 30px;
 }
 
+h3.vmo-card__title {
+    border-bottom: 3px solid;
+    position: absolute;
+}
 
 .innerbox {
     padding: 25px;
