@@ -1227,19 +1227,19 @@ ul.vmo-card__list {
     right: 5px !important;
    }
 .field--label-hidden.field__item p {
-    width: 96%;
+    width: 94%;
     margin-left: 2%;
 }
 .field--type-text-with-summary.field--label-hidden.field__item .subtitle {
-    width: 96%;
+    width: 94%;
     margin-left: 2%;
 }
 .field--type-text-with-summary.field--label-hidden.field__item .report-div.report-3 {
-    width: 96%;
+    width: 94%;
     margin-left: 2%;
 }
 .field--type-text-with-summary.field--label-hidden.field__item h2 {
-    width: 96%;
+    width: 94%;
     margin-left: 2%;
 }
 }
