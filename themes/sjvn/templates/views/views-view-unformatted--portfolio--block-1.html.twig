@@ -31,6 +31,12 @@
                 {% set clean_base = request.basePath|replace({'/en': ''}) %}
           <img src="{{ request.schemeAndHttpHost ~ clean_base ~ '/sjvn/themes/sjvn/images/gallery/no-img-found.png' }}" alt="No Image Available" class="img-fluid project-img">
               {% endif %}
+                {# === CATEGORY BADGE === #}
+    {% set node = row.content['#row']._entity %}
+
+<span class="badge  about-us power-badge">
+  {{ node.field_business_cat.entity.label }}
+</span>
                 <div class="d-flex justify-content-between align-items-center mt-3 cursor-pointer">
                   <h5 class="project-title mb-0">{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}</h5>
                   <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">

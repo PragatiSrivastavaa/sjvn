@@ -773,7 +773,7 @@ i.bi.bi-house {
 .menu-item--active-trail a,
 .menu-item a.is-active {
     background: #00AEEF;
-    color: white;
+    color: white !important;
     border-color: #00AEEF;
 }
 .sidebar .menu-item--active-trail {
@@ -1170,14 +1170,25 @@ h3.vmo-card__title {
 
 .innerbox {
     padding: 25px;
-    border-radius: 21px;
+    padding-bottom: 40px;
+    border-radius: 15px;
     margin-bottom: 30px;
-   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .innerbox .view-filters {
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid gray;
+}
+span.badge.about-us.power-badge {
+    position: absolute;
+    left: 35px;
+    bottom: 90px;
+    background: #2774AC;
+    color: #fff;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 6px;
 }
 /*--------------------------------- vision and mision --------------------------------*/
 .vmo-card {
@@ -1254,11 +1265,18 @@ img.vmo-card__image {
 }
 }
 
-
-/* ---------------- Project Card ---------------- */
-.conteainer-category {
-  border-bottom: 1px solid gray;
+/* hydro power Innerpage css */
+.project-card img.image-style-medium {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
 }
+ 
+/* ---------------- Project Card ---------------- */
+/* .conteainer-category {
+  border-bottom: 1px solid gray;
+} */
 
 .project-card {
   position: relative;
@@ -1274,13 +1292,7 @@ img.vmo-card__image {
   transform: translateY(-4px);
 }
 
-/* Image */
-.project-card .project-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-}
+
 
 /* Badge on Image */
 .power-badge {
@@ -1296,8 +1308,8 @@ img.vmo-card__image {
 
 /* Title */
 .project-card .title {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   margin: 14px 0 9px;
   width: 90%;
   white-space: nowrap;
