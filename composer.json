@@ -43,7 +43,6 @@
         "drupal/superfish": "^1.13",
         "drupal/tac_lite": "^2.0",
         "drupal/views_organization_chart": "^1.0",
-        "drupal/views_selective_filters": "^2.0@alpha",
         "drupal/views_slideshow": "^5.0",
         "drupal/webform": "^6.3@beta",
         "drush/drush": "^13.6"

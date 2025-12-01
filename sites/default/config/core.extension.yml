@@ -69,7 +69,6 @@ module:
   update: 0
   user: 0
   views_organization_chart: 0
-  views_selective_filters: 0
   views_slideshow: 0
   views_slideshow_cycle: 0
   views_ui: 0
