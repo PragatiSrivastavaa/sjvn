@@ -26,7 +26,7 @@
           {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_business_image }}'] }}
           {% else %}
           <!-- ./themes/sjvn/images/gallery/no-image.png -->
-          <img src="/themes/sjvn/images/gallery/no-image.png" alt="No Image Available">
+          <img src="{{ base_path }}/themes/sjvn/images/gallery/no-img-found.png" alt="No Image Available">
           {% endif %}
           <div class="gallery-overlay">
             <span>{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}</span>

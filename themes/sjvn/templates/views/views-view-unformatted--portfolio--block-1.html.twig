@@ -28,7 +28,7 @@
 
               {% else %}
               <!-- ./themes/sjvn/images/gallery/no-image.png -->
-          <img src="/themes/sjvn/images/gallery/photo-gallery.png" alt="No Image Available" class="img-fluid project-img">
+          <img src="{{ base_path }}/themes/sjvn/images/gallery/no-img-found.png" alt="No Image Available" class="img-fluid project-img">
               {% endif %}
                 <div class="d-flex justify-content-between align-items-center mt-3 cursor-pointer">
                   <h5 class="project-title mb-0">{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}</h5>
