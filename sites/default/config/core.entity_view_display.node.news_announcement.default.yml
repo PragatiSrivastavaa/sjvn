@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.news_announcement.field_upload_file
     - node.type.news_announcement
   module:
+    - datetime
     - text
     - user
 id: node.news_announcement.default
@@ -23,6 +24,15 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 2
+    region: content
+  field_start_date:
+    type: datetime_custom
+    label: hidden
+    settings:
+      timezone_override: Asia/Kolkata
+      date_format: 'D, d M Y'
+    third_party_settings: {  }
     weight: 1
     region: content
   links:
@@ -34,6 +44,5 @@ hidden:
   field_category: true
   field_end_date: true
   field_link: true
-  field_start_date: true
   field_upload_file: true
   langcode: true
