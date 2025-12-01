@@ -9,10 +9,10 @@ dependencies:
     - field.field.node.career.field_last_date_of_submission
     - field.field.node.career.field_month
     - field.field.node.career.field_publish_date
+    - field.field.node.career.field_upload_files
     - node.type.career
   module:
-    - datetime
-    - link
+    - file
     - text
     - user
 id: node.career.default
@@ -25,58 +25,25 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 1
     region: content
-  field_advertisement_no:
-    type: string
-    label: above
+  field_upload_files:
+    type: file_default
+    label: hidden
     settings:
-      link_to_entity: false
+      use_description_as_link_text: true
     third_party_settings: {  }
-    weight: 102
-    region: content
-  field_apply_online_link:
-    type: link
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 105
-    region: content
-  field_last_date_of_submission:
-    type: datetime_default
-    label: above
-    settings:
-      timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
-    weight: 104
-    region: content
-  field_month:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 106
-    region: content
-  field_publish_date:
-    type: datetime_default
-    label: above
-    settings:
-      timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
-    weight: 103
+    weight: 109
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
+  field_advertisement_no: true
+  field_apply_online_link: true
+  field_last_date_of_submission: true
+  field_month: true
+  field_publish_date: true
   langcode: true

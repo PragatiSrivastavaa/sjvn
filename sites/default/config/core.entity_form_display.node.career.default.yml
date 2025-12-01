@@ -9,9 +9,11 @@ dependencies:
     - field.field.node.career.field_last_date_of_submission
     - field.field.node.career.field_month
     - field.field.node.career.field_publish_date
+    - field.field.node.career.field_upload_files
     - node.type.career
   module:
     - datetime
+    - file
     - link
     - path
     - text
@@ -70,6 +72,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_upload_files:
+    type: file_generic
+    weight: 130
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
   langcode:
     type: language_select
     weight: 2
@@ -111,6 +120,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete

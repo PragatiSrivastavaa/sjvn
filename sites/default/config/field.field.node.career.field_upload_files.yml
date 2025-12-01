@@ -1,0 +1,27 @@
+uuid: 94987369-ba29-4cdc-8e96-3fd5c9ab8c8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_upload_files
+    - node.type.career
+  module:
+    - file
+id: node.career.field_upload_files
+field_name: field_upload_files
+entity_type: node
+bundle: career
+label: 'Upload Files'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt pdf mp3 html xls xlsx'
+  max_filesize: ''
+  description_field: true
+field_type: file
