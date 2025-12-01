@@ -1253,3 +1253,86 @@ img.vmo-card__image {
     border-radius: 65px;
 }
 }
+
+
+/* ---------------- Project Card ---------------- */
+.conteainer-category {
+  border-bottom: 1px solid gray;
+}
+
+.project-card {
+  position: relative;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Image */
+.project-card .project-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Badge on Image */
+.power-badge {
+  position: absolute;
+  left: 25px;
+  bottom: 70px;
+  background: #2774AC;
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+/* Title */
+.project-card .title {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 14px 0 9px;
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+/* Arrow Icon Button (Single Style Kept) */
+.icon-btn {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  background: #eef3ff;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.icon-btn:hover {
+  background: #004b88;
+  color: #fff;
+}
+
+.project-card h6 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.outbusiness-container {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 40px;
+  margin-bottom: 30px;
+  border-radius: 15px;
+}
