@@ -1,10 +1,11 @@
-uuid: 55087316-9828-4ae2-b71c-15ab7d29a057
+uuid: 705a7940-ac95-49d6-a23c-2fbc2bd24ce7
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.media.full
-    - core.entity_view_mode.media.media_library
+    - core.entity_view_mode.media.token
+    - core.entity_view_mode.node.full
     - field.field.node.video_gallery.body
     - field.field.node.video_gallery.field_thumbnail_image
     - field.field.node.video_gallery.field_upload_video
@@ -13,10 +14,10 @@ dependencies:
     - colorbox
     - text
     - user
-id: node.video_gallery.default
+id: node.video_gallery.full
 targetEntityType: node
 bundle: video_gallery
-mode: default
+mode: full
 content:
   body:
     type: text_default
@@ -29,9 +30,9 @@ content:
     type: colorbox_view_modes
     label: hidden
     settings:
-      colorbox_view_mode: media_library
+      colorbox_view_mode: token
       colorbox_modal_view_mode: full
-      colorbox_gallery: field_page
+      colorbox_gallery: none
       colorbox_gallery_custom: ''
     third_party_settings: {  }
     weight: 2

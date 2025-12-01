@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f91a79a15e3f90013b37dd9fa60b12b",
+    "content-hash": "24691b74c628a6cab6ee435852cdba1e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2775,57 +2775,6 @@
                 "source": "https://git.drupalcode.org/project/nouislider_js/-/tree/15.8.0"
             },
             "time": "2025-01-03T10:53:20+00:00"
-        },
-        {
-            "name": "drupal/oembed_providers",
-            "version": "2.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/oembed_providers.git",
-                "reference": "2.2.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/oembed_providers-2.2.2.zip",
-                "reference": "2.2.2",
-                "shasum": "b5eacbc4df5011a7d77a85f91bdbbaaf67e763b7"
-            },
-            "require": {
-                "drupal/core": "^10|^11"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "2.2.2",
-                    "datestamp": "1746638293",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Burge",
-                    "homepage": "https://www.drupal.org/u/chris-burge",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Allows site builders and developers to manage oEmbed providers.",
-            "homepage": "https://drupal.org/project/oembed_providers",
-            "keywords": [
-                "Drupal",
-                "Media",
-                "oEmbed"
-            ],
-            "support": {
-                "source": "https://git.drupalcode.org/project/oembed_providers",
-                "issues": "https://www.drupal.org/project/issues/oembed_providers"
-            }
         },
         {
             "name": "drupal/organigrams",

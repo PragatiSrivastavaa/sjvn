@@ -47,7 +47,9 @@ content:
     weight: 122
     region: content
     settings:
-      media_types: {  }
+      media_types:
+        - video
+        - remote_video
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -90,6 +92,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete

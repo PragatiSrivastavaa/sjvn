@@ -1,108 +1,33 @@
-<style>
-.video-modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8);
-  justify-content: center;
-  align-items: center;
-}
-.video-content {
-  position: relative;
-  background: #000;
-  padding: 10px;
-  border-radius: 10px;
-}
-.video-content video {
-  width: 600px;
-  max-width: 90vw;
-  height: auto;
-  display: block;
-}
-.video-close {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  font-size: 30px;
-  color: #fff;
-  cursor: pointer;
-}
-</style>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const modal = document.getElementById("video-modal");
-  const video = document.getElementById("popup-video");
-  const closeBtn = document.querySelector(".video-close");
-
-  document.querySelectorAll(".video-trigger").forEach(trigger => {
-    trigger.addEventListener("click", function (e) {
-      e.preventDefault();
-      const src = this.getAttribute("data-video");
-      video.querySelector("source").setAttribute("src", src);
-      video.load();
-      video.currentTime = 0;
-      modal.style.display = "flex";
-      video.play();
-    });
-  });
-
-  closeBtn.addEventListener("click", function () {
-    modal.style.display = "none";
-    video.pause();
-  });
-
-  modal.addEventListener("click", function (e) {
-    if (e.target === modal) {
-      modal.style.display = "none";
-      video.pause();
-    }
-  });
-});
-</script>
-
-<div class="container">
-  <div class="row">
-    {% for row in rows %}
-      {% set video_html = row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_upload_video }}'] ?? '' %}
-      {% set thumbnail_html = row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_thumbnail_image }}'] ?? '' %}
-      {% set title_html = row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] ?? '' %}
-
-      {# Extract video source from <source src="..."> #}
-      {% set video_src = '' %}
-      {% if video_html %}
-        {% set parts = video_html|split('src="') %}
-        {% if parts|length > 1 %}
-          {% set after = parts[1] %}
-          {% set video_src = (after|split('"'))[0] %}
-        {% endif %}
-      {% endif %}
-
-      <div class="col-sm-4">
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+ 
+<div class="photo-gallery-grid">
+        {% for row in rows %}
+        {% set node = row.content['#row']._entity %}
         <div class="gallery-item">
-          <a href="#" class="video-trigger" data-video="{{ video_src }}">
-            {{ thumbnail_html|raw }}
-          </a>
-
-          <div class="video-title">
-            {{ title_html|raw }}
+           <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
+          {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_thumbnail_image }}'] }}
+          <div class="gallery-overlay">
+            <span>{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}</span>
           </div>
+          </a>
         </div>
+        {% endfor %}
       </div>
-    {% endfor %}
-  </div>
-</div>
 
-<!-- Video Popup Modal -->
-<div id="video-modal" class="video-modal">
-  <div class="video-content">
-    <span class="video-close">&times;</span>
-    <video id="popup-video" controls>
-      <source src="" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</div>
-
+     
