@@ -1,116 +1,120 @@
-{#
-/**
- * @file
- * Theme override to display a view of unformatted rows.
- */
-#}
-
 <section class="inner-sec board_of_directors">
   <div class="container">
 
     {% set current_category = '' %}
     {% set paragraph_printed = false %}
 
-    {% for row in rows %}
+    <div class="accordion" id="directorsAccordion">
 
-      {# Get category #}
-      {% set category = row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_directors_category }}'] %}
+      {% for row in rows %}
 
-      {% set category_new = row.content['#view'].style_plugin.render_tokens[loop.index0]['field_directors_category'] %}
+        {% set category = row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_directors_category }}'] %}
+        {% set category_raw = row.content['#view'].style_plugin.render_tokens[loop.index0]['field_directors_category'] %}
+        {% set node = row.content['#row']._entity ?? null %}
 
+        {# ---- SPECIAL PARAGRAPH BLOCK (Only once, NO accordion) ---- #}
+        {% if category_raw is empty and not paragraph_printed %}
+            <div class="row mb-4">
+              <div class="col-sm-3 col-lg-3">
+                <div class="profile">
+                  <div class="profile-img">
+                    {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] }}
+                  </div>
+                  <div class="profile-text">
+                    <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['title'] }}</h5>
+                    {% if node %}
+                      <a href="{{ path('entity.node.canonical', {'node': node.id()}) }}">
+                        {% if current_language == 'hi' %} प्रोफ़ाइल देखें {% else %} View profile {% endif %}
+                      </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
 
+              <div class="col-sm-8 col-lg-8">
+                <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h5>
+                <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_degination }}'] }}</p>
 
-      {# Print new category heading when category changes #}
-      {% if category != current_category %}
-        {% if current_category != '' %}
-          </div>  {# Close previous row #}
+                <p class="directors-message">
+                  {% if current_language == 'hi' %}
+                    कंपनी का व्यवसाय पूर्णकालिक निदेशकों और अंशकालिक निदेशकों से मिलकर बने निदेशक मंडल द्वारा प्रबंधित किया जाता है। एसजेवीएन का नेतृत्व वर्तमान में एक अध्यक्ष एवं प्रबंध निदेशक (सीएमडी) और तीन (3) कार्यात्मक निदेशक अर्थात निदेशक (कार्मिक), निदेशक (वित्त) और निदेशक (परियोजनाएं) करते हैं। इसके अलावा, भारत सरकार और हिमाचल प्रदेश सरकार का प्रतिनिधित्व करने वाले दो (2) अंशकालिक निदेशक हैं। कंपनी के बोर्ड में दो गैर-आधिकारिक अंशकालिक स्वतंत्र निदेशक भी हैं।
+                  {% else %}
+                    The business of the Company is managed by a Board of Directors consisting of Whole Time Directors and Part-Time Directors. SJVN is currently headed by a Chairman and Managing Director (CMD) and Three (3) Functional Directors viz. Director (Personnel), Director (Finance) and Director (Projects). In addition, there are Two (2) Part-Time Directors representing the Government of India and Government of Himachal Pradesh. There are also Two Non-Official Part-Time Independent Directors on the Board of the Company.
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+
+            {% set paragraph_printed = true %}
+
+        {% else %}
+
+          {# ---- NORMAL PROFILE BLOCK (inside accordion) ---- #}
+
+          {# Start new accordion-item if category changes #}
+          {% if category != current_category %}
+
+            {# Close previous accordion-item #}
+            {% if current_category != '' %}
+                    </div>   {# close .row #}
+                  </div>     {# close accordion-body #}
+                </div>       {# close accordion-collapse #}
+              </div>         {# close accordion-item #}
+            {% endif %}
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading{{ loop.index }}">
+                <button class="accordion-button {{ loop.first ? '' : 'collapsed' }}"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapse{{ loop.index }}"
+                        aria-expanded="{{ loop.first ? 'true' : 'false' }}"
+                        aria-controls="collapse{{ loop.index }}">
+                  {{ category ?: 'No Category' }}
+                </button>
+              </h2>
+
+              <div id="collapse{{ loop.index }}"
+                   class="accordion-collapse collapse {{ loop.first ? 'show' : '' }}"
+                   aria-labelledby="heading{{ loop.index }}"
+                   data-bs-parent="#directorsAccordion">
+                <div class="accordion-body">
+                  <div class="row">
+
+            {% set current_category = category %}
+          {% endif %}
+
+          {# ---- Profile inside accordion ---- #}
+          <div class="col-sm-3 col-lg-3">
+            <div class="profile">
+              <div class="profile-img">
+                {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] }}
+              </div>
+              <div class="profile-text">
+                <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h5>
+                <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_degination }}'] }}</p>
+
+                {% if node %}
+                  <a href="{{ path('entity.node.canonical', {'node': node.id()}) }}">
+                    {% if current_language == 'hi' %} प्रोफ़ाइल देखें {% else %} View profile {% endif %}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          {# ---- Close last accordion-item after loop ends ---- #}
+          {% if loop.last %}
+                  </div>  {# close .row #}
+                </div>    {# close accordion-body #}
+              </div>      {# close accordion-collapse #}
+            </div>        {# close accordion-item #}
+          {% endif %}
+
         {% endif %}
 
-  <div class="accordion" id="accordionExample">
-      <h2 class="subtitle mt-5">{{ category }}</h2>
-      <div class="row">
-        {% set current_category = category %}
-      {% endif %}
+      {% endfor %}
 
-      {# Get node safely #}
-      {% set node = row.content['#row']._entity ?? null %}
-
-      {# FIRST BLOCK: Category empty and paragraph not printed #}
-      {% if category_new is empty and not paragraph_printed %}
-
-        <div class="col-sm-3 col-lg-3">
-          <div class="profile">
-            <div class="profile-img">
-               {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] }}
-            </div>
-
-            <div class="profile-text">
-              <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['title'] }}</h5>
-
-              {% if node %}
-                <a href="{{ path('entity.node.canonical', {'node': node.id()}) }}">
-                  {% if current_language == 'hi' %}
-                    प्रोफ़ाइल देखें
-                  {% else %}
-                    View profile
-                  {% endif %}
-                </a>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-8 col-lg-8">
-          <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h5>
-            <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_degination }}'] }}</p>
-            {% set node = row.content['#row']._entity %}
-          <p class="directors-message">
-       {% if current_language == 'hi' %}
-      कंपनी का व्यवसाय पूर्णकालिक निदेशकों और अंशकालिक निदेशकों से मिलकर बने निदेशक मंडल द्वारा प्रबंधित किया जाता है। एसजेवीएन का नेतृत्व वर्तमान में एक अध्यक्ष एवं प्रबंध निदेशक (सीएमडी) और तीन (3) कार्यात्मक निदेशक अर्थात निदेशक (कार्मिक), निदेशक (वित्त) और निदेशक (परियोजनाएं) करते हैं। इसके अलावा, भारत सरकार और हिमाचल प्रदेश सरकार का प्रतिनिधित्व करने वाले दो (2) अंशकालिक निदेशक हैं। कंपनी के बोर्ड में दो गैर-आधिकारिक अंशकालिक स्वतंत्र निदेशक भी हैं।
-        {% else %}
-      The business of the Company is managed by a Board of Directors consisting of Whole Time Directors and Part-Time Directors.
-      SJVN is currently headed by a Chairman and Managing Director (CMD) and Three (3) Functional Directors viz.
-      Director (Personnel), Director (Finance) and Director (Projects).
-      In addition, there are Two (2) Part-Time Directors representing the Government of India and Government of Himachal Pradesh.
-      There are also Two Non-Official Part-Time Independent Directors on the Board of the Company.
-     {% endif %}
-    </p>     
-        </div>
-
-        {% set paragraph_printed = true %}
-
-      {% else %}
-
-        {# NORMAL BLOCK #}
-        <div class="col-sm-3 col-lg-3">
-          <div class="profile">
-            <div class="profile-img">
-               {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] }}
-            </div>
-
-            <div class="profile-text">
-              <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h5>
-            <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_degination }}'] }}</p>
-            {% set node = row.content['#row']._entity %}
-
-              {% if node %}
-                <a href="{{ path('entity.node.canonical', {'node': node.id()}) }}">
-                  {% if current_language == 'hi' %}
-                    प्रोफ़ाइल देखें
-                  {% else %}
-                    View profile
-                  {% endif %}
-                </a>
-              {% endif %}
-
-            </div>
-          </div>
-        </div>
-
-      {% endif %}
-
-    {% endfor %}
-
-    </div>
+    </div>  {# close accordion #}
   </div>
 </section>
