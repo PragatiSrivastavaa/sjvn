@@ -12,3 +12,149 @@ a {
   color: var(--primary-color);
   text-decoration: none;
 }
+
+/*---------------------- Accordion Header (Left side)-----------------------------*/
+div#accordionSidebar {
+  border: 1px solid #009edb;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: #009edb40 0px 1px 4px;
+}
+
+#accordionSidebar .card {
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* Header Part (Even / Odd background) */
+#accordionSidebar .card-header {
+  padding: 0;
+  border-bottom: 1px solid #dce3eb;
+  background: #e8f1ff;
+  border-radius: 0;
+}
+
+#accordionSidebar .card:nth-child(odd) .card-header {
+  background-color: #ffffff;
+  color: #004b88;
+}
+
+#accordionSidebar .card:nth-child(even) .card-header {
+  background-color: #e6f4ff;
+  color: #004b88;
+}
+
+/* Active Selected Header */
+#accordionSidebar .card.active-header .card-header {
+  background-color: #0095d9 !important;
+  color: #fff !important;
+}
+
+#accordionSidebar .card.active-header .btn-link {
+  color: #fff !important;
+}
+
+/* Header Link */
+#accordionSidebar .card-header .btn-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 15px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  color: inherit;
+  position: relative;
+}
+
+/* Arrow Icon */
+#accordionSidebar .card-header .btn-link::after {
+  content: "\F282"; /* bi-chevron-down */
+  font-family: "bootstrap-icons";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform .3s ease;
+  font-size: 16px;
+}
+
+#accordionSidebar .card-header .btn-link[aria-expanded="true"]::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+.card-body.p-1 {
+  border-bottom: 1px solid #dce3eb;
+}
+/* Hover effect */
+#accordionSidebar .card-header:hover {
+  background-color: #d7ebff;
+  transition: .3s ease;
+}
+
+/* Body */
+#accordionSidebar .card-body {
+  background: #fff;
+}
+
+/* List Items */
+#accordionSidebar .list-unstyled li {
+  margin: 2px 0;
+}
+
+#accordionSidebar .list-unstyled a {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Hover & Active */
+#accordionSidebar .list-unstyled a:hover {
+  background: #e3efff;
+  color: #004b88;
+}
+
+#accordionSidebar .list-unstyled a.active,
+#accordionSidebar .list-unstyled a:focus {
+  background: #009EDB !important;
+  color: #fff !important;
+}
+/*-------------------------------------- container and tabs data (Right Side)--------------------------*/
+.top-taps-contents {
+    padding: 25px;
+    padding-bottom: 40px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+/* Common styles for all tabs */
+.top-taps-contents .nav-item .nav-link {
+    border: 1px solid #009EDB;
+    border-radius: 30px;
+    font-size: 14px;   
+    padding: 6px 22px;
+    background-color: #fff;  
+    color: #009EDB;            
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Hover effect */
+.top-taps-contents .nav-item .nav-link:hover {
+    background-color: #009EDB;
+    color: #fff;
+    border-color: #009EDB;
+}
+
+/* Active tab style */
+.top-taps-contents .nav-item .nav-link.active {
+    background-color: #009EDB; 
+    color: #fff; 
+    font-weight: 600; 
+    border-color: #009EDB;
+}

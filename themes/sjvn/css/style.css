@@ -2819,19 +2819,19 @@ body.lang-hi ul.links li[hreflang="hi"] {
 
 .nav-tabs {
   display: flex;
-  gap: 20px;
+  gap: 15px;
   margin-bottom: 20px;
 }
 
 .nav-tabs li{
   list-style: none;
-  padding: 10px 20px;
+  padding-bottom: 10px;
 } 
 
-.nav-tabs .active{
+/* .nav-tabs .active{
   background: var(--primary-color);
   color: #fff;
-}
+} */
 
 .nav-tabs a{
   color: var(--primary-color);

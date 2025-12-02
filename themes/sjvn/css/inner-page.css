@@ -828,7 +828,8 @@ i.bi.bi-house {
 }
 
 .sidebar .menu-item--active-trail a {
-  color: #fff !important;
+    color: #ffffff !important;
+    background: #009edb !important;
 }
 
 .sidebar .menu .menu-item--active-trail:hover {
@@ -1230,27 +1231,31 @@ ul.vmo-card__list {
     width: 94%;
     margin-left: 2%;
 }
-.inner-container{
+/* .inner-container{
       width: 94%;
     margin-left: 2%;
-}
+} */
 .menu-wrapper .menu-toggle {
     right: 5px !important;
    }
-.field--label-hidden.field__item p {
+/* .field--label-hidden.field__item p {
     width: 94%;
     margin-left: 2%;
-}
-.field--type-text-with-summary.field--label-hidden.field__item .subtitle {
+} */
+/* .field--type-text-with-summary.field--label-hidden.field__item .subtitle {
     width: 94%;
     margin-left: 2%;
-}
-.field--type-text-with-summary.field--label-hidden.field__item .report-div.report-3 {
+} */
+/* .field--type-text-with-summary.field--label-hidden.field__item .report-div.report-3 {
     width: 94%;
     margin-left: 2%;
-}
-.field--type-text-with-summary.field--label-hidden.field__item h2 {
+} */
+/* .field--type-text-with-summary.field--label-hidden.field__item h2 {
     width: 94%;
+    margin-left: 2%;
+} */
+.content-area{
+      width: 94%;
     margin-left: 2%;
 }
 }

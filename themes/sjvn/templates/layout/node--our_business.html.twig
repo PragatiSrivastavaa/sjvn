@@ -21,9 +21,9 @@
 
 {{ attach_library('sjvn/our-business-tabs') }}
 
-<div class="row">
+<div class="row mt-4 mb-5">
 
-  <div class="col-md-3">
+  <div class="col-md-3 col-lg-3 col-xxl-2">
     <div id="accordionSidebar">
 
       {% set grouped = {} %}
@@ -41,7 +41,7 @@
       {% set group_index = 0 %}
       {% for group_name, items in grouped %}
         {% set group_index = group_index + 1 %}
-        <div class="card mb-1">
+        <div class="card">
           <div class="card-header" id="heading-{{ group_index }}">
             <a href="#" class="btn-link"
                data-bs-toggle="collapse"
@@ -97,10 +97,10 @@
         </div>
       {% endfor %}
 
-    </div>
+    </div> 
   </div>
 
-  <div class="col-md-9" >
+  <div class="col-md-9 cl-lg-9 col-xxl-10" >
     <div class="top-taps-contents" >
     <ul class="nav nav-tabs" role="tablist">
       {% set first_top_tab = true %}
@@ -219,4 +219,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+//-------------------------- Active accordian header--------------------------------//
+
+document.querySelectorAll("#accordionSidebar .list-unstyled a").forEach(link => {
+  link.addEventListener("click", function () {
+    // Remove active from all li
+    document.querySelectorAll("#accordionSidebar .list-unstyled a").forEach(l =>
+      l.classList.remove("active")
+    );
+    // Add active to clicked li
+    this.classList.add("active");
+
+    // Remove active-header class from all cards
+    document.querySelectorAll("#accordionSidebar .card").forEach(card =>
+      card.classList.remove("active-header")
+    );
+
+    // Add active-header to the parent .card
+    this.closest(".card").classList.add("active-header");
+  });
+});
+
 </script>
