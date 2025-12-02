@@ -7,14 +7,23 @@
   font-size: 1rem;
   line-height: 1.7;
   color: #555;
-  padding: 18px 20px;
+  /* padding: 18px 20px;
   background: #ebebeb;
-  border-left: 4px solid var(--primary-color);
+  border-left: 4px solid var(--primary-color); */
   border-radius: 8px;
   text-align: justify;
   margin-bottom: 15px;
 }
-
+h5.bording-director-name {
+    color: #2774AC;
+    font-size: 20px;
+    font-weight: 600;
+}
+p.bording-director-post {
+    color: black;
+    font-weight: 600;
+    font-size: 20px;
+}
 /* Category Subtitle */
 /* .board_of_directors .subtitle {
   font-size: 1.8rem;
@@ -39,15 +48,15 @@
 
 /* Profile Card - Compact Version */
 .board_of_directors .profile {
-  background: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  margin-bottom: 0;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    max-height: 300px;
+    border-radius: 50%;
+    border: 10px solid #ffffff;
+    max-width: 300px;
+    flex-direction: column;
 }
 
 /* Profile Image Container - Reduced Height */
@@ -55,7 +64,8 @@
   position: relative;
   overflow: hidden;
   background: #f0f0f0;
-  height: 220px;
+  max-height: 300px;
+  max-width: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,14 +79,12 @@
 
 /* Profile Text Content - Compact */
 .board_of_directors .profile-text {
-  padding: 15px 12px;
-  text-align: center;
-  background: #ffffff;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex-grow: 1;
-  justify-content: space-between;
+  position: absolute;
+    bottom: 15px;  
+    left: 50%;  
+    transform: translateX(-50%); 
+    text-align: center; 
+    width: 100%;  
 }
 
 /* Generic profile text styles (for grid/card views) */
@@ -115,21 +123,76 @@
 }
 
 .board_of_directors .profile-text a {
-  display: inline-block;
-  padding: 8px 20px;
-  background: var(--primary-color);
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 0.85rem;
-  margin-top: 0;
+    display: inline-block;
+    padding: 5px 19px;
+    background: #ffffffcf;
+    box-shadow: rgb(255 255 255) 1px 1px 24px;
+    color: #009edb;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.75rem;
 }
 
-.board_of_directors .profile-text a:hover {
-  background: var(--secondary-color);
+/* updated hover affect  */
+.profile {
+    position: relative;
+    overflow: hidden;
 }
 
+.profile .profile-text a {
+    position: absolute;
+    bottom: -40px;              
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.4s ease;   
+}
+
+/* Hover effect */
+.profile:hover .profile-text a {
+    bottom: 15px;  
+    max-width: 130px;          
+    opacity: 1;               
+}
+/* updated css */
+.director-card {
+  border-bottom: 1px solid #e6e6e6;
+  padding: 18px 0;
+}
+
+/* Image rounded + soft shadow */
+.profile-img img {
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Slide up effect */
+.profile-text {
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.profile:hover .profile-text {
+  bottom: 8px;
+  opacity: 1;
+}
+
+/* Mobile center alignment */
+@media (max-width: 767px) {
+  .director-card {
+    text-align: center;
+  }
+}
+ 
 /* Director with Full Content Layout - Side by Side */
 .board_of_directors .director {
   display: flex;
@@ -147,15 +210,14 @@
 }
 
 .board_of_directors .director .profile-text {
-  text-align: center;
-  padding: 20px 15px;
-  flex-grow: 1;
-  justify-content: flex-start;
-  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
-  border-radius: 0 0 10px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+     text-align: center;
+    padding: 7px 12px;
+    flex-grow: 1;
+    bottom: 0px;
+    justify-content: flex-start;
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+    display: flex;
+    flex-direction: column;
 }
 
 .board_of_directors .director .profile-text h5 {
@@ -304,7 +366,7 @@
   }
 
   .board_of_directors .profile-img {
-    height: 200px;
+    height: 250px;
   }
 
   .board_of_directors .director .profile-img {
@@ -349,9 +411,11 @@
     padding: 15px 20px;
     font-size: 0.95rem;
   }
-
+.bording-director-img {
+    text-align: -webkit-center;
+}
   .board_of_directors .profile-img {
-    height: 180px;
+    height: 240px;
   }
 
   .board_of_directors .director .profile-img {
@@ -404,7 +468,7 @@
 
 @media (max-width: 576px) {
   .board_of_directors .profile-img {
-    height: 200px;
+    height: 270px;
   }
 
   .board_of_directors .profile-text {
@@ -532,3 +596,73 @@
   background: #f8f9fa;
 }
 
+/*---------------------------------------- new css class ----------------------------------------*/
+.board_of_directors .profile-team-section {
+    background: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+    height: 350px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    padding: 6px; /* 6px spacing all sides */
+}
+
+.board_of_directors .profile-team-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+/* IMAGE WRAPPER */
+.board_of_directors .derector-teamimg {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.board_of_directors .derector-teamimg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+/* TEXT BOX ON TOP OF IMAGE */
+.board_of_directors .Profile-details {
+    position: absolute;
+      bottom: 12px;
+    left: 12px;
+    right: 12px;           
+    background: #eef2f5d9; 
+    padding: 8px 6px;
+    border-radius: 8px;
+    text-align: center;
+    backdrop-filter: blur(4px);
+}
+
+/* TEXT STYLE */
+.board_of_directors .Profile-details h5 {
+    font-size: 14px;
+    margin: 0 0 4px;
+    font-weight: 700;
+    color: #000;
+}
+
+.board_of_directors .Profile-details p {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0;
+    color: #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 767px) {
+    .board_of_directors .profile-team-section {
+        height: auto;
+    }
+}

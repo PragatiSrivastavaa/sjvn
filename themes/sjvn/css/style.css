@@ -2911,7 +2911,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
 }
 
 .view-footer {
-  display: flex;
+  /* display: flex; */
   justify-content: end;
   /* margin-top: 20px; */
 }
