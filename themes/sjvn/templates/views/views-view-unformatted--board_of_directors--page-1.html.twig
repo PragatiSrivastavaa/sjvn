@@ -2,64 +2,69 @@
 /**
  * @file
  * Theme override to display a view of unformatted rows.
- *
- * Available variables:
- * - title: The title of this group of rows. May be empty.
- * - rows: A list of the view's row items.
- *   - attributes: The row's HTML attributes.
- *   - content: The row's content.
- * - view: The view object.
- * - default_row_class: A flag indicating whether default classes should be
- *   used on rows.
- *
- * @see template_preprocess_views_view_unformatted()
  */
 #}
+
 <section class="inner-sec board_of_directors">
   <div class="container">
+
     {% set current_category = '' %}
+    {% set paragraph_printed = false %}
 
     {% for row in rows %}
+
+      {# Get category #}
       {% set category = row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_directors_category }}'] %}
 
-      {# Print heading and start a new row when category changes #}
+      {% set category_new = row.content['#view'].style_plugin.render_tokens[loop.index0]['field_directors_category'] %}
+
+
+
+      {# Print new category heading when category changes #}
       {% if category != current_category %}
         {% if current_category != '' %}
-          </div> {# Close previous row #}
+          </div>  {# Close previous row #}
         {% endif %}
 
-        <div class="accordion" id="accordionExample">
-        <h2 class="subtitle mt-5">{{ category }}</h2>
-        <div class="row">
+  <div class="accordion" id="accordionExample">
+      <h2 class="subtitle mt-5">{{ category }}</h2>
+      <div class="row">
         {% set current_category = category %}
       {% endif %}
 
-      <div class="col-sm-3 col-lg-3">
-        <div class="profile">
-          <div class="profile-img">
-            {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] }}
-          </div>
-          <div class="profile-text">
-            <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h5>
-            <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_degination }}'] }}</p>
-            {% set node = row.content['#row']._entity %}
+      {# Get node safely #}
+      {% set node = row.content['#row']._entity ?? null %}
 
-      <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
-        {% if current_language == 'hi' %}
-           प्रोफ़ाइल देखें
-        {% else %}
-         View profile
-        {% endif %}
-          </a>
+      {# FIRST BLOCK: Category empty and paragraph not printed #}
+      {% if category_new is empty and not paragraph_printed %}
+
+        <div class="col-sm-3 col-lg-3">
+          <div class="profile">
+            <div class="profile-img">
+               {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] }}
+            </div>
+
+            <div class="profile-text">
+              <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['title'] }}</h5>
+
+              {% if node %}
+                <a href="{{ path('entity.node.canonical', {'node': node.id()}) }}">
+                  {% if current_language == 'hi' %}
+                    प्रोफ़ाइल देखें
+                  {% else %}
+                    View profile
+                  {% endif %}
+                </a>
+              {% endif %}
+            </div>
           </div>
         </div>
-      </div>
 
-{% set category = row.content['#view'].style_plugin.render_tokens[loop.index0]['field_directors_category'] %}
-
-{% if category is empty and paragraph_printed == false %}
-  <div class="col-sm-8 col-lg-8">
-    <p class="directors-message">
+        <div class="col-sm-8 col-lg-8">
+          <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h5>
+            <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_degination }}'] }}</p>
+            {% set node = row.content['#row']._entity %}
+          <p class="directors-message">
        {% if current_language == 'hi' %}
       कंपनी का व्यवसाय पूर्णकालिक निदेशकों और अंशकालिक निदेशकों से मिलकर बने निदेशक मंडल द्वारा प्रबंधित किया जाता है। एसजेवीएन का नेतृत्व वर्तमान में एक अध्यक्ष एवं प्रबंध निदेशक (सीएमडी) और तीन (3) कार्यात्मक निदेशक अर्थात निदेशक (कार्मिक), निदेशक (वित्त) और निदेशक (परियोजनाएं) करते हैं। इसके अलावा, भारत सरकार और हिमाचल प्रदेश सरकार का प्रतिनिधित्व करने वाले दो (2) अंशकालिक निदेशक हैं। कंपनी के बोर्ड में दो गैर-आधिकारिक अंशकालिक स्वतंत्र निदेशक भी हैं।
         {% else %}
@@ -69,16 +74,43 @@
       In addition, there are Two (2) Part-Time Directors representing the Government of India and Government of Himachal Pradesh.
       There are also Two Non-Official Part-Time Independent Directors on the Board of the Company.
      {% endif %}
-    </p>
-  </div>
-  {% set paragraph_printed = true %}
-{% endif %}
+    </p>     
+        </div>
 
+        {% set paragraph_printed = true %}
 
-      
-{% endfor %}
+      {% else %}
+
+        {# NORMAL BLOCK #}
+        <div class="col-sm-3 col-lg-3">
+          <div class="profile">
+            <div class="profile-img">
+               {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] }}
+            </div>
+
+            <div class="profile-text">
+              <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h5>
+            <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_degination }}'] }}</p>
+            {% set node = row.content['#row']._entity %}
+
+              {% if node %}
+                <a href="{{ path('entity.node.canonical', {'node': node.id()}) }}">
+                  {% if current_language == 'hi' %}
+                    प्रोफ़ाइल देखें
+                  {% else %}
+                    View profile
+                  {% endif %}
+                </a>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+
+      {% endif %}
+
+    {% endfor %}
 
     </div>
   </div>
 </section>
-
