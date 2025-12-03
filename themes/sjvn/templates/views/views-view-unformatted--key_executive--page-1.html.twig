@@ -1,9 +1,9 @@
-<section class="inner-sec key-executive container">
+<section class="inner-sec key-executive container-fluid">
    <div class="row">
       {% for row in rows %}
       {% set node = row.content['#row']._entity %}
       <div class="col-lg-4 col-md-6 mb-4">
-         <div class="key-executive p-3 border rounded">
+         <div class="key-executive hover-afect">
             <h6>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_project_area }}'] }}</h6>
             <div class="key-text-box">
                <p><strong>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</strong></p>

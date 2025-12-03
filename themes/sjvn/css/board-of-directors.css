@@ -319,7 +319,7 @@ p.bording-director-post {
 .board_of_directors:not(.board-block-view) .row {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  /* gap: 10px; */
   margin-bottom: 10px;
 }
 
@@ -342,7 +342,11 @@ p.bording-director-post {
   padding-right: 15px;
 }
 
-/* Responsive Design */
+.accordion-button:focus{
+    box-shadow: none;
+}
+
+/*--------------------- Responsive Design -------------------------------*/
 @media (min-width: 1200px) {
   .board-block-view .container {
     padding: 0 30px;
@@ -635,10 +639,10 @@ p.bording-director-post {
 /* TEXT BOX ON TOP OF IMAGE */
 .board_of_directors .Profile-details {
     position: absolute;
-      bottom: 12px;
+    bottom: 12px;
     left: 12px;
     right: 12px;           
-    background: #eef2f5d9; 
+    background: #ffffff;
     padding: 8px 6px;
     border-radius: 8px;
     text-align: center;
@@ -665,4 +669,30 @@ p.bording-director-post {
     .board_of_directors .profile-team-section {
         height: auto;
     }
+}
+/*------------------- view profile button ------------------------*/
+.profile-team-section .Profile-details a {
+  position: absolute;
+  bottom: -50px; /* button hide initially */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #009edb;
+  color: #fff;
+  padding: 6px 15px;
+  font-size: 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+/* Hover ke time slide-up + fade in */
+.profile-team-section:hover .Profile-details a {
+  bottom: 10px;
+  opacity: 1;
+}
+
+/* optional button hover effect */
+.profile-team-section .Profile-details a:hover {
+  background: #0077a6;
 }
