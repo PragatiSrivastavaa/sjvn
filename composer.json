@@ -41,6 +41,7 @@
         "drupal/shield": "^1.8",
         "drupal/shs": "^3.0@beta",
         "drupal/sitemap": "^2.3",
+        "drupal/statistics": "^1.0",
         "drupal/superfish": "^1.13",
         "drupal/tac_lite": "^2.0",
         "drupal/views_organization_chart": "^1.0",
