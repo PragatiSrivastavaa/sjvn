@@ -1132,15 +1132,45 @@ body.lang-hi ul.links li[hreflang="hi"] {
   display: flex;
   list-style: none;
   justify-content: center;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 20px;
+  padding: 10px;
+  margin: 0 0 10px 0;
+  flex-wrap: nowrap; 
+  overflow-x: auto;  
+  -webkit-overflow-scrolling: touch;
 }
 
 .bef-links ul li {
-    margin-right: 10px;
+  margin-right: 10px;
+  white-space: nowrap; 
+}
+.bef-links ul::-webkit-scrollbar {
+    height: 4px ;
 }
 
+.bef-links ul::-webkit-scrollbar-track {
+    background: #ddd !important;
+    border-radius: 10px;
+}
+
+.bef-links ul::-webkit-scrollbar-thumb {
+    background: #009edb !important;
+    border-radius: 10px;
+}
+@media (max-width: 992px) {
+  .bef-links ul{
+  display: flex;
+  list-style: none;
+  justify-content: left;
+  padding: 10px;
+  margin: 0 0 10px 0;
+  flex-wrap: nowrap; 
+  overflow-x: auto;  
+  -webkit-overflow-scrolling: touch;
+}
+.about-card{
+  margin-bottom: 15px;
+}
+}
 /* Default button style on <a> */
 .bef-links ul li a {
     display: block;
@@ -1156,7 +1186,6 @@ body.lang-hi ul.links li[hreflang="hi"] {
 /* Active/Selected style */
 .bef-links ul li a.bef-link--selected {
     background:var(--primary-color);
-      
     color: #fff;
 }
 
@@ -1183,8 +1212,8 @@ h3.vmo-card__title {
 }
 span.badge.about-us.power-badge {
     position: absolute;
-    left: 35px;
-    bottom: 90px;
+    left: 25px;
+    bottom: 65px;
     background: #2774AC;
     color: #fff;
     font-size: 13px;
@@ -1238,22 +1267,7 @@ ul.vmo-card__list {
 .menu-wrapper .menu-toggle {
     right: 5px !important;
    }
-/* .field--label-hidden.field__item p {
-    width: 94%;
-    margin-left: 2%;
-} */
-/* .field--type-text-with-summary.field--label-hidden.field__item .subtitle {
-    width: 94%;
-    margin-left: 2%;
-} */
-/* .field--type-text-with-summary.field--label-hidden.field__item .report-div.report-3 {
-    width: 94%;
-    margin-left: 2%;
-} */
-/* .field--type-text-with-summary.field--label-hidden.field__item h2 {
-    width: 94%;
-    margin-left: 2%;
-} */
+
 .content-area{
       width: 94%;
     margin-left: 2%;
@@ -1273,7 +1287,7 @@ img.vmo-card__image {
 /* hydro power Innerpage css */
 .project-card img.image-style-medium {
     width: 100%;
-    height: 250px;
+    height: 200px;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -1315,7 +1329,7 @@ img.vmo-card__image {
 .project-card .title {
   font-size: 14px;
   font-weight: 500;
-  margin: 14px 0 9px;
+  margin: 18px 0 0px;
   width: 90%;
   white-space: nowrap;
   overflow: hidden;
@@ -1325,16 +1339,19 @@ img.vmo-card__image {
 
 /* Arrow Icon Button (Single Style Kept) */
 .icon-btn {
-  position: absolute;
-  right: 15px;
-  bottom: 15px;
-  background: #eef3ff;
-  border: none;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 0.3s;
+    position: absolute;
+    right: 15px;
+    bottom: 18px;
+    background: #eef3ff;
+    border: none;
+    width: 24px;
+    display: flex;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+    align-items: center;
+    justify-self: center;
 }
 
 .icon-btn:hover {
