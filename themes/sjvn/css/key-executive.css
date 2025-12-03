@@ -51,7 +51,7 @@
   -moz-appearance: none !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
-  height: 45px !important;
+  height: 40px !important;
 }
 
 .tab-menu-item .form-select:hover {
@@ -85,7 +85,7 @@
   border: 2px solid #bbb !important;
   border-radius: 4px !important;
   transition: all 0.2s ease !important;
-  height: 45px !important;
+  height: 40px !important;
 }
 
 .tab-menu-item .form-text::placeholder {
@@ -118,7 +118,7 @@
 /* Submit Button Styling */
 .tab-menu-item #edit-submit-key-executive,
 .tab-menu-item .button.form-submit {
-  padding: 12px 35px !important;
+  padding: 6px 35px !important;
   font-size: 1rem !important;
   font-weight: 600 !important;
   color: #ffffff !important;
@@ -130,7 +130,7 @@
   cursor: pointer !important;
   transition: all 0.2s ease !important;
   white-space: nowrap !important;
-  height: 45px !important;
+  height: 40px !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -260,9 +260,9 @@
 }
 
 /* Main Section Styling */
-.key-executive.inner-sec {
+/* .key-executive.inner-sec {
   padding: 40px 0;
-}
+} */
 
 .key-executive.container {
   max-width: 1200px;
@@ -283,7 +283,7 @@
 
 /* Executive Card Base Styling */
 .key-executive .key-executive {
-  background: #ffffff;
+  /* background: #ffffff;
   border-radius: 4px;
   overflow: visible;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -291,21 +291,27 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid #d0d0d0 !important;
+  border: 1px solid #d0d0d0 !important; */
+  background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid #d7ecf5;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+    transition: all 0.4s ease;
+    height: 100%;
 }
 
 .key-executive .key-executive:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-
 /* Project Area Header */
 .key-executive .key-executive h6 {
   font-size: 0.85rem;
   font-weight: 700;
   color: #ffffff;
-  background: var(--primary-color);
-  padding: 12px 15px;
-  margin: -12px -12px 0 -12px;
+  /* background: var(--primary-color);
+  padding: 12px 15px; */
+  background: linear-gradient(135deg, #009edb, #007cb1);
   border-radius: 4px 4px 0 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -314,12 +320,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 3px solid var(--secondary-color, #2c5aa0);
+  /* border-bottom: 3px solid var(--secondary-color, #2c5aa0); */
 }
 
 /* Key Text Box - Main Content Area */
 .key-executive .key-text-box {
-  padding: 20px 0px 0px 0px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -330,7 +336,7 @@
 .key-executive .key-text-box p:first-of-type strong {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--second-primary-color);
   line-height: 1.4;
   display: block;
   margin-bottom: 8px;
@@ -393,14 +399,17 @@
   padding: 10px 20px;
   font-size: 0.9rem;
   font-weight: 600;
-  border-radius: 3px;
+  border-radius: 10px;
   text-transform: uppercase;
   letter-spacing: 0.3px;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-  border: 2px solid var(--primary-color);
+  /* transition: background-color 0.2s ease, border-color 0.2s ease;
+  border: 2px solid var(--primary-color); */
   margin-top: auto;
+      transition: all 0.3s ease;
 }
-
+.hover-afect:hover .btn {
+    transform: scale(1.03);
+}
 .key-executive .key-text-box .btn-info {
   background: var(--primary-color);
   color: #ffffff;
@@ -428,8 +437,8 @@
 
 /* Modal Content */
 .key-executive .modal-content {
-  border-radius: 4px;
-  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  border: 1px solid var(--primary-color);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
@@ -516,7 +525,7 @@
   padding: 10px 30px;
   font-size: 0.95rem;
   font-weight: 600;
-  border-radius: 3px;
+  border-radius: 10px;
   background: #6c757d;
   border-color: #6c757d;
   transition: background-color 0.2s ease;
@@ -536,7 +545,7 @@
 
   .key-executive .key-executive h6 {
     font-size: 0.9rem;
-    min-height: 48px;
+    min-height: 60px;
     padding: 13px 15px;
   }
 
@@ -561,7 +570,7 @@
 
   .key-executive .key-executive h6 {
     font-size: 0.8rem;
-    min-height: 42px;
+    min-height: 55px;
     padding: 9px 12px;
   }
 
@@ -601,17 +610,17 @@
     padding: 0 7px;
   }
 
-  .key-executive .key-executive {
+  /* .key-executive .key-executive {
     border-radius: 4px;
-  }
+  } */
 
-  .key-executive .key-executive h6 {
+  /* .key-executive .key-executive h6 {
     font-size: 0.8rem;
     min-height: 40px;
     padding: 10px 10px;
     margin: -12px -12px 0 -12px;
     border-radius: 4px 4px 0 0;
-  }
+  } */
 
   .key-executive .key-text-box {
     padding: 15px 12px 12px;

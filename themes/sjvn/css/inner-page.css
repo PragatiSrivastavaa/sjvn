@@ -973,9 +973,9 @@ i.bi.bi-house {
 }
 
 /* Hide submit button (auto-submit is enabled) */
-.tab-menu-item .form-actions {
+/* .tab-menu-item .form-actions {
   display: none;
-}
+} */
 
 /* Responsive - Tablets */
 @media (max-width: 992px) {
