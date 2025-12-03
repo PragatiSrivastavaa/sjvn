@@ -49,6 +49,7 @@ module:
   node: 0
   options: 0
   organigrams: 0
+  orgchart: 0
   page_cache: 0
   paragraphs_asymmetric_translation_widgets: 0
   path: 0

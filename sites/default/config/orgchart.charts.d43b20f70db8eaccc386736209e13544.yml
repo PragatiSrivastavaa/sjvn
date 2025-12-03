@@ -1,0 +1,202 @@
+title: orgchart
+path: organization-chart
+config:
+  colors:
+    bgcolor: '#064771'
+    textcolor: '#ffffff'
+    textsize: '15'
+    descbgcolor: '#000000'
+    desctextcolor: '#ffffff'
+    linebgcolor: '#064771'
+    levels:
+      1:
+        bgcolor: '#064771'
+        textcolor: '#fff'
+      2:
+        bgcolor: '#035EA5'
+        textcolor: '#fff'
+      3:
+        bgcolor: '#0098DB'
+        textcolor: '#fff'
+      4:
+        bgcolor: '#00cfdb'
+        textcolor: '#fff'
+      5:
+        bgcolor: '#00dbb0'
+        textcolor: '#fff'
+  desktop:
+    active: 1
+    width: '1200'
+  tablet:
+    active: 1
+    width: '900'
+  phone:
+    active: 1
+    width: '500'
+build:
+  desktop:
+    height: '2400'
+    values:
+      cells:
+        -
+          id: 1
+          title: 'Chairman & Managing Director'
+          link: ''
+          left: 455px
+          top: 0px
+          width: 300px
+          height: 65px
+          size: grande
+          color: ''
+          bgcolor: ''
+          fontweight: bold
+          level: '1'
+          subtitle: ''
+        -
+          id: 2
+          title: 'Director (Projects'
+          link: ''
+          left: 140px
+          top: 135px
+          width: 115px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 3
+          title: 'Director (Projects'
+          link: ''
+          left: 645px
+          top: 135px
+          width: 110px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 4
+          title: 'Director (Projects'
+          link: ''
+          left: 905px
+          top: 135px
+          width: 110px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 5
+          title: 'Director (Projects'
+          link: ''
+          left: 775px
+          top: 135px
+          width: 110px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 6
+          title: 'Director (Projects'
+          link: ''
+          left: 1025px
+          top: 135px
+          width: 110px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+      lines:
+        -
+          id: 2
+          orientation: horizontal
+          left: 200px
+          top: 100px
+          width: 870px
+          height: 2px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: ''
+        -
+          id: 3
+          orientation: vertical
+          left: 200px
+          top: 100px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 4
+          orientation: vertical
+          left: 700px
+          top: 100px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 5
+          orientation: vertical
+          left: 1070px
+          top: 100px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 6
+          orientation: vertical
+          left: 950px
+          top: 100px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 7
+          orientation: vertical
+          left: 825px
+          top: 100px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 8
+          orientation: vertical
+          left: 600px
+          top: 65px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'

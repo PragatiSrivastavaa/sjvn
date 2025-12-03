@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c125138cb7a929b9c55dc3e403267482",
+    "content-hash": "f91595d26664289a1c8aec5dc1a59317",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2824,6 +2824,56 @@
             "support": {
                 "source": "https://cgit.drupalcode.org/organigrams",
                 "issues": "https://drupal.org/project/issues/organigrams"
+            }
+        },
+        {
+            "name": "drupal/orgchart",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/orgchart.git",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/orgchart-1.0.0.zip",
+                "reference": "1.0.0",
+                "shasum": "723745c2a27e897d54a4899699cb521e8fee9e2c"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10",
+                "drupal/jquery_ui_draggable": "*",
+                "drupal/jquery_ui_resizable": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0",
+                    "datestamp": "1733916070",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "jmauricio",
+                    "homepage": "https://www.drupal.org/user/274084"
+                }
+            ],
+            "description": "Organizational Charts",
+            "homepage": "https://www.drupal.org/project/orgchart",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/orgchart",
+                "issues": "https://www.drupal.org/project/issues/orgchart"
             }
         },
         {
