@@ -38,6 +38,7 @@
         "drupal/paragraphs_asymmetric_translation_widgets": "^1.4",
         "drupal/pathauto": "^1.13",
         "drupal/quick_node_clone": "^1.22",
+        "drupal/shield": "^1.8",
         "drupal/shs": "^3.0@beta",
         "drupal/sitemap": "^2.3",
         "drupal/superfish": "^1.13",

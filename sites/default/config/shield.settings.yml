@@ -1,0 +1,17 @@
+_core:
+  default_config_hash: FLJZME3II5fjmMSrdEvJHp95ZJf8V_X0jbX0VdVU1BU
+shield_enable: true
+credential_provider: shield
+credentials:
+  shield:
+    user: admin
+    pass: admin
+allow_cli: true
+debug_header: false
+unset_basic_auth_headers: true
+print: Hello!
+method: 0
+paths: "/\r\n/sjvn\r\n\r\n\r\n"
+allowlist: ''
+http_method_allowlist: {  }
+domains: ''

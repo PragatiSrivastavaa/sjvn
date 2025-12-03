@@ -55,6 +55,7 @@ module:
   path_alias: 0
   quick_node_clone: 0
   search: 0
+  shield: 0
   shortcut: 0
   shs: 0
   sitemap: 0
