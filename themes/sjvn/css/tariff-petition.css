@@ -37,7 +37,7 @@
 /* Select Dropdowns Base Styling */
 .tab-menu-item .form-select {
   width: 100% !important;
-  font-size: 1rem !important;
+  font-size: 0.9rem !important;
   font-weight: 500 !important;
   color: #333 !important;
   background: #ffffff !important;
@@ -46,7 +46,7 @@
   background-position: right 15px center !important;
   background-size: 12px 8px !important;
   border: 2px solid #bbb !important;
-  border-radius: 4px !important;
+  border-radius: 6px !important;
   appearance: none !important;
   -webkit-appearance: none !important;
   -moz-appearance: none !important;

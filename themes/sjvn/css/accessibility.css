@@ -2170,7 +2170,7 @@ body.a11y-theme-high-contrast .accessibility-overlay.active {
 /* Responsive - Stack below accessibility on smaller screens */
 @media (max-width: 768px) {
   .social-media-fixed {
-    right: 10px;
+    right: -7px;
     top: calc(45% + 55px);
     gap: 0px;
   }
@@ -2354,7 +2354,7 @@ body.a11y-reduce-motion * {
   }
   
   .accessibility-trigger {
-    right: 10px;
+    right: -0px;
     width: 48px;
     height: 48px;
   }

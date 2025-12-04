@@ -1259,7 +1259,7 @@ ul.vmo-card__list {
  @media (min-width: 1200px) {
 .sidebar {
     width: 94%;
-    margin-left: 2%;
+    margin-left: 2.5%;
 }
 /* .inner-container{
       width: 94%;
@@ -1271,7 +1271,7 @@ ul.vmo-card__list {
 
 .content-area{
       width: 94%;
-    margin-left: 2%;
+    margin-left: 2.5%;
 }
 }
  @media (max-width: 992px) {

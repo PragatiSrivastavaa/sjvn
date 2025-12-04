@@ -2175,6 +2175,8 @@ body.lang-hi ul.links li[hreflang="hi"] {
 .news-alert-section {
   background: var(--primary-color);
   /* Green background */
+      gap: 20px;
+  display: flex;
   padding: 40px 20px;
   color: #fff;
 }
@@ -2188,6 +2190,25 @@ body.lang-hi ul.links li[hreflang="hi"] {
   gap: 50px;
   justify-content: space-between;
 }
+/* customise responsive  */
+.news-alert-section .news-alert-container,
+.news-alert-section .alert-column {
+  /* width: 50%; */
+  /* or */
+   flex: 1; 
+}
+@media (max-width: 767px) {
+  .news-alert-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+.news-alert-section .news-alert-container,
+.news-alert-section .alert-column {
+    width: 100%;
+  }
+}
+
 
 /* Section Headings */
 .section-heading {
@@ -2833,7 +2854,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
   color: #fff;
 } */
 
-.nav-tabs a{
+/* .nav-tabs a{
   color: var(--primary-color);
   text-decoration: none;
 }
@@ -2841,7 +2862,45 @@ body.lang-hi ul.links li[hreflang="hi"] {
 .nav-tabs .active a{
   color: #fff;
   text-decoration: none;
+} */
+ /*------------------------- css Only for Overview-tab -----------------------------*/
+.Overview-tab.nav-tabs {
+  border-bottom: none;
+  display: flex;
+  gap: 10px;
 }
+
+.Overview-tab.nav-tabs li {
+  margin-bottom: 0;
+}
+
+.Overview-tab.nav-tabs li a {
+     display: inline-block;
+    padding: 6px 16px;
+    background: #ffffff;
+    border: 2px solid #009edb;
+    color: #009edb !important;
+    font-size: 14px;
+    border-radius: 26px;
+    /* border: none !important; */
+    font-weight: 600;
+    transition: 0.3s ease;
+    text-align: center;
+}
+
+.Overview-tab.nav-tabs li:hover a {
+  background: #009edb; 
+   color: #fff !important;         /* hover color */
+}
+
+.Overview-tab.nav-tabs li.active a,
+.Overview-tab.nav-tabs li.active a:focus,
+.Overview-tab.nav-tabs li.active a:hover {
+  background: #009edb !important;
+  color: #fff !important;
+}
+
+
 
 
 @media (max-width: 768px) {
@@ -2912,6 +2971,8 @@ body.lang-hi ul.links li[hreflang="hi"] {
 
 .view-footer {
   margin-bottom: 20px;
+      margin-top: 10px;
+    text-align-last: right;
 }
 
 
@@ -3189,4 +3250,18 @@ body.page-organization-chart .views_organization_chart_wrapper .orgchart {
     justify-content: center;
     align-content: center;
     flex-direction: column;
+}
+/*-------------------------- footer overwrite ------------------------*/
+a#superfish-footer-toggle {
+    display: none;
+    padding-left: 15px !important;
+}
+  ul#superfish-footer {
+    display: block !important;
+}
+
+ul.sf-menu a, ul.sf-menu span.nolink {
+    display: block;
+    padding: 0.4em 0.1em;
+    position: relative;
 }

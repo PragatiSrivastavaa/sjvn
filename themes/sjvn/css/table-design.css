@@ -8,10 +8,9 @@
         width: 100%;
         border-collapse: collapse;
         background: #ffffff;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
         border-radius: 8px;
         overflow: hidden;
-        margin: 20px 0;
         font-size: 14px;
     }
 
@@ -23,10 +22,42 @@
         background-color: var(--primary-color, #2c5aa0);
         color: #ffffff;
         font-weight: 600;
+        font-size: 16px;
         padding: 15px 12px;
-        text-align: center;
-        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        /* text-align: center; */
+       
     }
+.scroll-mobile {
+  overflow-x: auto;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0px;
+  display: block;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  white-space: nowrap;
+  padding-bottom: 10px;
+}
+
+.scroll-mobile::-webkit-scrollbar {
+  height: 5px;
+}
+
+.scroll-mobile::-webkit-scrollbar-track {
+  background: #e6f4f9;
+  border-radius: 10px;
+}
+
+.scroll-mobile::-webkit-scrollbar-thumb {
+  background: #006b7a;
+  border-radius: 10px;
+}
+
+.act-table {
+  white-space: nowrap; /* columns stay in one line */
+  scroll-snap-align: start;
+}
 
     .table th:last-child {
         border-right: none;
@@ -47,12 +78,13 @@
     }
 
     .table td {
-        padding: 15px 12px;
-        text-align: center;
-        border-right: 1px solid #e0e0e0;
+        padding: 17px 17px;
+        /* text-align: center; */
+        /* border-right: 1px solid #e0e0e0; */
         vertical-align: middle;
-        color: #333;
-        font-size: 13px;
+        font-weight: 500;
+        color: #444444;
+        font-size: 14px;
     }
 
     .table td:last-child {
@@ -69,13 +101,17 @@
         border-right: 2px solid rgba(255, 255, 255, 0.3);
     }
 
-    .table tr:not(:first-child) td:nth-child(3),
+    /* .table tr:not(:first-child) td:nth-child(3),
     .table tr:not(:first-child) td:nth-child(6) {
         border-right: 2px solid #d0d7de;
+    } */
+         td:nth-child(2) {
+       
+        text-align: left;
     }
 
     /* Responsive Design */
-    @media (max-width: 1024px) {
+    /* @media (max-width: 1024px) {
         .table {
             font-size: 13px;
         }
@@ -83,9 +119,9 @@
         .table td {
             padding: 12px 8px;
         }
-    }
+    } */
 
-    @media (max-width: 768px) {
+    /* @media (max-width: 768px) {
         .table {
             font-size: 12px;
             display: block;
@@ -120,7 +156,7 @@
             padding: 8px 4px;
             font-size: 10px;
         }
-    }
+    } */
 
     /* Accessibility improvements */
     .table tr:focus-within {
