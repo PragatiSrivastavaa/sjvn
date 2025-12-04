@@ -12,6 +12,7 @@ dependencies:
     - filter
     - media
     - organigrams
+    - orgchart
     - search
     - shortcut
     - system
@@ -24,8 +25,11 @@ is_admin: false
 permissions:
   - 'access comments'
   - 'access content'
+  - 'access orgchart'
   - 'access shortcuts'
   - 'access site-wide contact form'
+  - 'administer orgchart'
+  - 'administer orgchart yaml'
   - 'create organigrams'
   - 'delete own files'
   - 'import organigrams'
