@@ -21,6 +21,7 @@
 .page-node-636, 
 .page-node-69,
 .page-node-70,
+.page-node-164,
 .page-node-71{
     .report-div ul {
         list-style: none;
@@ -135,7 +136,9 @@
     .report-div ul li:hover a {
         color: var(--primary-color);
     }
-
+.report-div.report-3 {
+    margin-bottom: 40px;
+}
     /* Large screens - ensure 3 columns */
     @media (min-width: 1200px) {
         .report-div ul {
@@ -162,7 +165,7 @@
         }
         
         .report-div ul li a {
-            padding: 25px 15px;
+            padding: 7px 20px;
             /* min-height: 140px; */
         }
         
@@ -177,11 +180,11 @@
             gap: 10px;
         }
         
-        .report-div ul li a {
+        /* .report-div ul li a {
             padding: 20px 10px;
             min-height: 120px;
             font-size: 13px;
-        }
+        } */
         
         .report-div ul li a::before {
             font-size: 36px;

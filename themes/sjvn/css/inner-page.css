@@ -726,7 +726,11 @@ i.bi.bi-house {
 }  
 */
  /*------------------------ updateder tabs  --------------------------*/
-
+h2.subtitle {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
 
 .sidebar .menu {
    display: flex;
@@ -743,7 +747,7 @@ i.bi.bi-house {
 }
 
 .sidebar .menu::-webkit-scrollbar {
-    height: 2px;
+    height: 4px;
 }
 
 .sidebar .menu::-webkit-scrollbar-thumb {
@@ -847,9 +851,9 @@ i.bi.bi-house {
 
 /* Hide sidebar on mobile screens */
 @media (max-width: 768px) {
-  .sidebar {
+  /* .sidebar {
     display: none;
-  }
+  } */
 
   /* Adjust content area to full width on mobile */
   .col-md-8.col-lg-9 {
@@ -875,9 +879,6 @@ i.bi.bi-house {
    ======================================== */
 
 /* Tab menu wrapper for exposed filters */
-.tab-menu-item {
-  /* margin-top: 20px; */
-}
 
 /* Hide fieldset border and legend */
 .tab-menu-item fieldset {
