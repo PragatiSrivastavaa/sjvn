@@ -56,8 +56,8 @@ build:
           id: 2
           title: 'Director (Projects'
           link: ''
-          left: 140px
-          top: 135px
+          left: 235px
+          top: 130px
           width: 115px
           height: 55px
           size: pequena
@@ -68,10 +68,10 @@ build:
           subtitle: ''
         -
           id: 3
-          title: 'Director (Projects'
+          title: 'Director (Personnel)'
           link: ''
-          left: 645px
-          top: 135px
+          left: 670px
+          top: 130px
           width: 110px
           height: 55px
           size: pequena
@@ -82,10 +82,10 @@ build:
           subtitle: ''
         -
           id: 4
-          title: 'Director (Projects'
+          title: 'Chief Vigilance Officer'
           link: ''
-          left: 905px
-          top: 135px
+          left: 915px
+          top: 130px
           width: 110px
           height: 55px
           size: pequena
@@ -96,10 +96,10 @@ build:
           subtitle: ''
         -
           id: 5
-          title: 'Director (Projects'
+          title: 'Director (Finance)'
           link: ''
-          left: 775px
-          top: 135px
+          left: 790px
+          top: 130px
           width: 110px
           height: 55px
           size: pequena
@@ -110,10 +110,10 @@ build:
           subtitle: ''
         -
           id: 6
-          title: 'Director (Projects'
+          title: 'Corporate Functions'
           link: ''
-          left: 1025px
-          top: 135px
+          left: 1045px
+          top: 130px
           width: 110px
           height: 55px
           size: pequena
@@ -122,13 +122,741 @@ build:
           fontweight: normal
           level: '1'
           subtitle: ''
+        -
+          id: 7
+          title: 'Subsidiaries & JVs'
+          link: ''
+          left: 530px
+          top: 250px
+          width: 130px
+          height: 70px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 8
+          title: Projects
+          link: ''
+          left: 300px
+          top: 250px
+          width: 130px
+          height: 55px
+          size: normal
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 9
+          title: 'Corporate Functions'
+          link: ''
+          left: 50px
+          top: 250px
+          width: 125px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 10
+          title: 'Under Constrcution'
+          link: ''
+          left: 325px
+          top: 360px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 11
+          title: 'Under Operation'
+          link: ''
+          left: 215px
+          top: 360px
+          width: 100px
+          height: 50px
+          size: pequena
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 12
+          title: 'BDE Department Corporate HQ'
+          link: ''
+          left: 115px
+          top: 370px
+          width: 90px
+          height: 50px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ' Shimla'
+        -
+          id: 13
+          title: 'Coporate Planning Corporate HQ'
+          link: ''
+          left: 0px
+          top: 370px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ' Shimla'
+        -
+          id: 14
+          title: Pre-Construction
+          link: ''
+          left: 430px
+          top: 360px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 15
+          title: 'SJVN Arun-3 Power Dev. Company (SAPDC) 900 MW'
+          link: ''
+          left: 540px
+          top: 345px
+          width: 115px
+          height: 65px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 16
+          title: 'Deputy CVO'
+          link: ''
+          left: 925px
+          top: 210px
+          width: 110px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 17
+          title: 'orp. F&A Corporate HQ '
+          link: ''
+          left: 795px
+          top: 200px
+          width: 110px
+          height: 45px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 18
+          title: 'HOD Corp. HR Corpoate HQ '
+          link: ''
+          left: 670px
+          top: 200px
+          width: 110px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 19
+          title: 'HOD CM&C Corporate HQ '
+          link: ''
+          left: 1055px
+          top: 200px
+          width: 110px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 20
+          title: 'elhi Finance Corporate HQ '
+          link: ''
+          left: 795px
+          top: 285px
+          width: 110px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Delhi
+        -
+          id: 21
+          title: 'Company Secretary Corporate HQ '
+          link: ''
+          left: 1055px
+          top: 390px
+          width: 110px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 22
+          title: 'HOD Internal Audit Corporate HQ '
+          link: ''
+          left: 1060px
+          top: 295px
+          width: 110px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 23
+          title: 'Commercial & System Operation Corporate HQ '
+          link: ''
+          left: 800px
+          top: 375px
+          width: 110px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 24
+          title: 'vil Contracts Corporate HQ '
+          link: ''
+          left: 675px
+          top: 285px
+          width: 105px
+          height: 40px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 25
+          title: 'Liaison Office Corporate HQ '
+          link: ''
+          left: 675px
+          top: 360px
+          width: 110px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Delhi
+        -
+          id: 26
+          title: 'Khirvire WPS 47.6 MW Maharashtra'
+          link: ''
+          left: 680px
+          top: 730px
+          width: 95px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ' Under Operation'
+        -
+          id: 27
+          title: 'SJVN Green Energy Limited (SGEL)'
+          link: ''
+          left: 680px
+          top: 625px
+          width: 95px
+          height: 60px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ' [Wholly Owned Subsidiary]'
+        -
+          id: 28
+          title: 'Information Technology Corporate HQ'
+          link: ''
+          left: 685px
+          top: 530px
+          width: 95px
+          height: 60px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ' Shimla'
+        -
+          id: 29
+          title: 'Electrical Contracts Corporate HQ '
+          link: ''
+          left: 675px
+          top: 440px
+          width: 110px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 30
+          title: 'SJVN Lower Arun Power Development Company (SLPDC) 669 MW'
+          link: ''
+          left: 545px
+          top: 430px
+          width: 115px
+          height: 75px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 31
+          title: 'SJVN SPPs 900 MW '
+          link: ''
+          left: 680px
+          top: 1000px
+          width: 95px
+          height: 65px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Gujarat
+        -
+          id: 32
+          title: 'Charanka SPS 5.6 MW Gujarat'
+          link: ''
+          left: 680px
+          top: 820px
+          width: 95px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: 'Under Operation'
+        -
+          id: 33
+          title: 'Sadla WPS 50 MW Gujarat '
+          link: ''
+          left: 680px
+          top: 910px
+          width: 95px
+          height: 55px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: 'Under Operation'
+        -
+          id: 34
+          title: 'Cross Border Power Transmission Company (CPTC) Joint Venture'
+          link: ''
+          left: 545px
+          top: 695px
+          width: 115px
+          height: 75px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 35
+          title: 'Assam Renewable Energy Limited (SAREL)'
+          link: ''
+          left: 545px
+          top: 610px
+          width: 110px
+          height: 70px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 36
+          title: 'SJVN Thermal Private Limited (STPL) 1320 MW'
+          link: ''
+          left: 545px
+          top: 525px
+          width: 110px
+          height: 65px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ''
+        -
+          id: 37
+          title: 'Electrical Contracts Corporate HQ'
+          link: ''
+          left: 0px
+          top: 465px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ' Shimla'
+        -
+          id: 38
+          title: 'Electrical Design Corporate HQ '
+          link: ''
+          left: 115px
+          top: 465px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 39
+          title: 'athpa Jhakri HPS 1500 MW Himachal Pradesh'
+          link: ''
+          left: 220px
+          top: 430px
+          width: 100px
+          height: 60px
+          size: pequena
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: 'Under Operation'
+        -
+          id: 40
+          title: 'Dhaulasidh HEP 66 MW Himachal Pradesh '
+          link: ''
+          left: 325px
+          top: 430px
+          width: 95px
+          height: 60px
+          size: pequena
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: 'Under Construction'
+        -
+          id: 41
+          title: 'Etalin HEP 3097 MW Arunachal Pradesh'
+          link: ''
+          left: 430px
+          top: 430px
+          width: 90px
+          height: 60px
+          size: pequena
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ' Pre-Construction'
+        -
+          id: 42
+          title: 'HM Design Corporate HQ '
+          link: ''
+          left: 0px
+          top: 660px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 43
+          title: 'Civil Design Corporate HQ'
+          link: ''
+          left: 5px
+          top: 560px
+          width: 100px
+          height: 50px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ' Shimla'
+        -
+          id: 44
+          title: 'Business Development Expansion Corporate HQ '
+          link: ''
+          left: 125px
+          top: 750px
+          width: 95px
+          height: 65px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 45
+          title: 'Roof Top Solar Corporate HQ '
+          link: ''
+          left: 130px
+          top: 860px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Delhi
+        -
+          id: 46
+          title: 'Architecture Corporate HQ '
+          link: ''
+          left: 120px
+          top: 660px
+          width: 95px
+          height: 45px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 47
+          title: 'Corporate Facility Management Deptt. Corporate HQ '
+          link: ''
+          left: 125px
+          top: 560px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 48
+          title: 'REIA Corporate HQ '
+          link: ''
+          left: 0px
+          top: 955px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Delhi
+        -
+          id: 49
+          title: 'Power Trading & BDE Corporate HQ'
+          link: ''
+          left: 15px
+          top: 860px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ' Delhi'
+        -
+          id: 50
+          title: 'Quality Assurance & Inspection Corporate HQ '
+          link: ''
+          left: 5px
+          top: 760px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 51
+          title: 'Sunni Dam HEP 382 MW Himachal Pradesh '
+          link: ''
+          left: 325px
+          top: 640px
+          width: 95px
+          height: 65px
+          size: pequena
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: 'Under Construction'
+        -
+          id: 52
+          title: 'Luhri HEP Stage-1 210 MW Himachal Pradesh '
+          link: ''
+          left: 325px
+          top: 530px
+          width: 100px
+          height: 70px
+          size: pequena
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: 'Under Construction'
+        -
+          id: 53
+          title: 'Naitwar Mori HPS 60 MW Uttarakhand '
+          link: ''
+          left: 225px
+          top: 640px
+          width: 95px
+          height: 65px
+          size: pequena
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: 'Under Operation'
+        -
+          id: 54
+          title: 'Rampur HPS 412 MW Himachal Pradesh '
+          link: ''
+          left: 225px
+          top: 530px
+          width: 95px
+          height: 70px
+          size: pequena
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: 'Under Operation'
+        -
+          id: 55
+          title: 'Chenab HEPs Himachal Pradesh '
+          link: ''
+          left: 435px
+          top: 840px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Pre-Construction
+        -
+          id: 56
+          title: 'Jakhol Sankri & Devsari HEPs Uttarakhand '
+          link: ''
+          left: 435px
+          top: 750px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Pre-Construction
+        -
+          id: 57
+          title: 'Emini/ Amulin Mihomdom HEPs Arunachal Pradesh'
+          link: ''
+          left: 440px
+          top: 635px
+          width: 90px
+          height: 75px
+          size: pequena
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: ' Pre-Construction'
+        -
+          id: 58
+          title: 'Attunli HEP 680 MW Arunachal Pradesh '
+          link: ''
+          left: 440px
+          top: 530px
+          width: 90px
+          height: 70px
+          size: pequena
+          color: red
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Pre-Construction
       lines:
         -
           id: 2
           orientation: horizontal
-          left: 200px
-          top: 100px
-          width: 870px
+          left: 290px
+          top: 95px
+          width: 805px
           height: 2px
           linecolor: ''
           linetype: normal
@@ -137,8 +865,8 @@ build:
         -
           id: 3
           orientation: vertical
-          left: 200px
-          top: 100px
+          left: 290px
+          top: 95px
           width: 2px
           height: 35px
           linecolor: ''
@@ -148,8 +876,8 @@ build:
         -
           id: 4
           orientation: vertical
-          left: 700px
-          top: 100px
+          left: 735px
+          top: 95px
           width: 2px
           height: 35px
           linecolor: ''
@@ -159,8 +887,8 @@ build:
         -
           id: 5
           orientation: vertical
-          left: 1070px
-          top: 100px
+          left: 1095px
+          top: 95px
           width: 2px
           height: 35px
           linecolor: ''
@@ -170,8 +898,8 @@ build:
         -
           id: 6
           orientation: vertical
-          left: 950px
-          top: 100px
+          left: 970px
+          top: 95px
           width: 2px
           height: 35px
           linecolor: ''
@@ -181,8 +909,8 @@ build:
         -
           id: 7
           orientation: vertical
-          left: 825px
-          top: 100px
+          left: 850px
+          top: 95px
           width: 2px
           height: 35px
           linecolor: ''
@@ -196,6 +924,721 @@ build:
           top: 65px
           width: 2px
           height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 9
+          orientation: vertical
+          left: 110px
+          top: 215px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 10
+          orientation: horizontal
+          left: 110px
+          top: 215px
+          width: 485px
+          height: 2px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: ''
+        -
+          id: 11
+          orientation: vertical
+          left: 595px
+          top: 215px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 12
+          orientation: vertical
+          left: 360px
+          top: 215px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 13
+          orientation: vertical
+          left: 285px
+          top: 180px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 14
+          orientation: vertical
+          left: 470px
+          top: 325px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 15
+          orientation: horizontal
+          left: 265px
+          top: 325px
+          width: 205px
+          height: 2px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: ''
+        -
+          id: 16
+          orientation: horizontal
+          left: 50px
+          top: 335px
+          width: 120px
+          height: 2px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: ''
+        -
+          id: 17
+          orientation: vertical
+          left: 170px
+          top: 925px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 18
+          orientation: vertical
+          left: 110px
+          top: 295px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 19
+          orientation: vertical
+          left: 50px
+          top: 335px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 20
+          orientation: vertical
+          left: 365px
+          top: 290px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 21
+          orientation: vertical
+          left: 170px
+          top: 335px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 22
+          orientation: vertical
+          left: 365px
+          top: 325px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 23
+          orientation: vertical
+          left: 265px
+          top: 325px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 24
+          orientation: vertical
+          left: 595px
+          top: 310px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 25
+          orientation: vertical
+          left: 725px
+          top: 175px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 26
+          orientation: vertical
+          left: 840px
+          top: 175px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 27
+          orientation: vertical
+          left: 840px
+          top: 260px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 28
+          orientation: vertical
+          left: 1110px
+          top: 365px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 29
+          orientation: vertical
+          left: 1105px
+          top: 270px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 30
+          orientation: vertical
+          left: 1105px
+          top: 175px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 31
+          orientation: vertical
+          left: 965px
+          top: 185px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 32
+          orientation: horizontal
+          left: 45px
+          top: 640px
+          width: 120px
+          height: 2px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: ''
+        -
+          id: 33
+          orientation: horizontal
+          left: 50px
+          top: 540px
+          width: 120px
+          height: 2px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: ''
+        -
+          id: 34
+          orientation: horizontal
+          left: 45px
+          top: 450px
+          width: 120px
+          height: 2px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: ''
+        -
+          id: 35
+          orientation: horizontal
+          left: 50px
+          top: 735px
+          width: 120px
+          height: 2px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: ''
+        -
+          id: 36
+          orientation: horizontal
+          left: 60px
+          top: 840px
+          width: 120px
+          height: 2px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: ''
+        -
+          id: 37
+          orientation: horizontal
+          left: 50px
+          top: 935px
+          width: 120px
+          height: 2px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: ''
+        -
+          id: 38
+          orientation: vertical
+          left: 45px
+          top: 435px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 39
+          orientation: vertical
+          left: 165px
+          top: 430px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 40
+          orientation: vertical
+          left: 170px
+          top: 525px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 41
+          orientation: vertical
+          left: 50px
+          top: 525px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 42
+          orientation: vertical
+          left: 170px
+          top: 715px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 43
+          orientation: vertical
+          left: 60px
+          top: 825px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 44
+          orientation: vertical
+          left: 165px
+          top: 625px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 45
+          orientation: vertical
+          left: 45px
+          top: 625px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 46
+          orientation: vertical
+          left: 50px
+          top: 725px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 47
+          orientation: vertical
+          left: 180px
+          top: 825px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 48
+          orientation: vertical
+          left: 50px
+          top: 920px
+          width: 2px
+          height: 35px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 50
+          orientation: vertical
+          left: 735px
+          top: 505px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 51
+          orientation: vertical
+          left: 595px
+          top: 405px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 52
+          orientation: vertical
+          left: 735px
+          top: 410px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 53
+          orientation: vertical
+          left: 845px
+          top: 350px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 54
+          orientation: vertical
+          left: 725px
+          top: 335px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 55
+          orientation: vertical
+          left: 725px
+          top: 260px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 56
+          orientation: vertical
+          left: 730px
+          top: 705px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 57
+          orientation: vertical
+          left: 470px
+          top: 405px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 58
+          orientation: vertical
+          left: 735px
+          top: 600px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 59
+          orientation: vertical
+          left: 725px
+          top: 795px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 60
+          orientation: vertical
+          left: 730px
+          top: 885px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 61
+          orientation: vertical
+          left: 730px
+          top: 975px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 62
+          orientation: vertical
+          left: 600px
+          top: 670px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 63
+          orientation: vertical
+          left: 600px
+          top: 500px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 64
+          orientation: vertical
+          left: 595px
+          top: 585px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 65
+          orientation: vertical
+          left: 475px
+          top: 505px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 66
+          orientation: vertical
+          left: 360px
+          top: 615px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 67
+          orientation: vertical
+          left: 365px
+          top: 405px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 68
+          orientation: vertical
+          left: 365px
+          top: 505px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 69
+          orientation: vertical
+          left: 480px
+          top: 815px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 70
+          orientation: vertical
+          left: 480px
+          top: 725px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 71
+          orientation: vertical
+          left: 260px
+          top: 405px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 72
+          orientation: vertical
+          left: 265px
+          top: 505px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 73
+          orientation: vertical
+          left: 270px
+          top: 615px
+          width: 2px
+          height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 74
+          orientation: vertical
+          left: 480px
+          top: 610px
+          width: 2px
+          height: 25px
           linecolor: ''
           linetype: normal
           left_top_arrow: ''
