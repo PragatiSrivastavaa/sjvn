@@ -453,6 +453,59 @@
     }
 }
 
+/*----------------------------- SMART Online Dispute Resolution (ODR) css ------------------------------*/
+
+.clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list{
+        display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 10px;
+    margin: 0 auto;
+    
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+   .clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+   .clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575px) {
+   .clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+.clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list li{
+    background: #ffffff;
+    position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    counter-increment: doc-counter;
+    transition: all .3s ease;
+}
+.clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list li:hover{
+    transform: translateY(-2px);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
+    border-color: var(--primary-color);
+    
+}
+.result-list li:hover img {
+    opacity: 1;
+}
+
+.result-list li:hover a {
+    color: #006ca8;
+}
 
 .result-list {
     list-style: none;
@@ -592,3 +645,35 @@
         align-items: stretch;
     }
 }
+
+
+/*--------------------------- Dividend Previous Years. table css --------------------------------*/
+
+.scroll-mobile {
+        overflow-x: auto;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0px;
+        display: block;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        white-space: nowrap;
+        padding-bottom: 10px;
+    }
+        .table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #ffffff;
+        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+        border-radius: 8px;
+        overflow: hidden;
+        font-size: 14px;
+    }
+        .table th {
+        background-color: var(--primary-color, #2c5aa0);
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 16px;
+        padding: 15px 12px;
+    }
