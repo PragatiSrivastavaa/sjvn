@@ -427,7 +427,7 @@
 } */
 
 /*-------------------------------------- new css for pdf container  ----------------------------*/
-.view-content {
+.view.view-investor-relations.view-id-investor_relations .view-content {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
@@ -436,19 +436,19 @@
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-    .view-content {
+   .view.view-investor-relations.view-id-investor_relations .view-content {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-    .view-content {
+   .view.view-investor-relations.view-id-investor_relations .view-content {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 575px) {
-    .view-content {
+   .view.view-investor-relations.view-id-investor_relations .view-content {
         grid-template-columns: repeat(1, 1fr);
     }
 }
