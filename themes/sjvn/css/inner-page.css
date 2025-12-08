@@ -366,7 +366,7 @@
   padding: 14px 25px;
   padding-bottom: 90px;
   min-height: 200px;
-  color: var(--primary-color);
+  color: white;
   overflow: hidden;
 }
 
@@ -1210,6 +1210,10 @@ h3.vmo-card__title {
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid gray;
+}
+.innerbox .view-empty {
+    text-align: center;
+    padding: 5%;
 }
 span.badge.about-us.power-badge {
     position: absolute;

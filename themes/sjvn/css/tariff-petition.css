@@ -8,10 +8,10 @@
 
 /* Main Filter Container */
 .tab-menu-item.form--inline {
-  margin-bottom: 35px !important;
+  margin-bottom: 15px !important;
   display: flex !important;
   flex-wrap: nowrap !important;
-  gap: 20px !important;
+  gap: 10px !important;
   align-items: flex-end !important;
 }
 
@@ -44,15 +44,15 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23555' d='M6 8L0 0h12z'/%3E%3C/svg%3E") !important;
   background-repeat: no-repeat !important;
   background-position: right 15px center !important;
-  background-size: 12px 8px !important;
-  border: 2px solid #bbb !important;
+  background-size: 9px 8px !important;
+  /* border: 2px solid #bbb !important; */
   border-radius: 6px !important;
   appearance: none !important;
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
-  height: 45px !important;
+  /* height: 45px !important; */
 }
 
 .tab-menu-item .form-select:hover {
@@ -81,23 +81,26 @@
   flex-shrink: 0 !important;
   margin: 0 !important;
 }
-
+.shs-field-container {
+    margin-bottom: 0rem;
+    display: flex;
+    gap: 10px;
+}
 /* Submit Button Styling */
 .tab-menu-item #edit-submit-tariff-petition,
 .tab-menu-item .button.form-submit {
-  padding: 12px 35px !important;
-  font-size: 1rem !important;
-  font-weight: 600 !important;
+  padding: 6px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
   color: #ffffff !important;
   background: var(--primary-color) !important;
-  border: 2px solid var(--primary-color) !important;
-  border-radius: 4px !important;
-  text-transform: uppercase !important;
+  border: 1px solid var(--primary-color) !important;
+  border-radius: 6px !important;
   letter-spacing: 0.5px !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
   white-space: nowrap !important;
-  height: 45px !important;
+ 
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -127,10 +130,6 @@
 
 /* Large Tablets (992px-1199px) */
 @media (max-width: 1199px) {
-  .tab-menu-item.form--inline {
-    padding: 22px 25px !important;
-    gap: 15px !important;
-  }
 
   .tab-menu-item .form-item {
     min-width: 160px !important;
@@ -140,11 +139,11 @@
     font-size: 0.95rem !important;
   }
 
-  .tab-menu-item #edit-submit-tariff-petition,
+  /* .tab-menu-item #edit-submit-tariff-petition,
   .tab-menu-item .button.form-submit {
     padding: 11px 25px !important;
     font-size: 0.95rem !important;
-  }
+  } */
 }
 
 /* Medium Tablets (768px-991px) */
@@ -268,6 +267,11 @@
 /* Tariff Petition Table Structure - Pure CSS with Counter */
 .view-id-tariff_petition .view-content {
     counter-reset: doc-counter;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;                         
+    width: 100%;
+    padding: 10px;
 }
 
 /* Remove all list styling */

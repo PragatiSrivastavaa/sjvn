@@ -2765,7 +2765,8 @@ body.lang-hi ul.links li[hreflang="hi"] {
 }
 
 .validation-icons img {
-  height: 40px;
+  height: 60px;
+  margin-top: 11px;
   margin-right: 10px;
   cursor: pointer;
   vertical-align: top;
@@ -3258,10 +3259,30 @@ a#superfish-footer-toggle {
 }
   ul#superfish-footer {
     display: block !important;
+    margin-left: 2%;
+    margin-top: 0.7%;
 }
 
 ul.sf-menu a, ul.sf-menu span.nolink {
     display: block;
     padding: 0.4em 0.1em;
     position: relative;
+}
+
+.clearfix.text-formatted.field.field--name-body{
+    position: relative;
+}
+.clearfix.text-formatted.field.field--name-body.field--type-text-with-summary.field--label-hidden.field__item .text-show {
+    position: absolute;
+    top: 45%;
+    font-size: 13px;
+    left: 15%;
+}
+@media (max-width: 676px) {
+  ul.sf-menu a,
+  ul.sf-menu span.nolink {
+        padding: 0.4em 0.1em;
+        font-size: 10px;
+        text-align: center;
+  }
 }
