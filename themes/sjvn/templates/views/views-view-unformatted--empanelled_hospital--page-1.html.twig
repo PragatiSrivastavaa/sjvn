@@ -1,0 +1,23 @@
+<section class="inner-sec empanelled-hospital container-fluid">
+   <div class="row">
+      {% for row in rows %}
+      {% set node = row.content['#row']._entity %}
+      <div class="col-lg-4 col-md-6 mb-4">
+         <div class="empanelled-hospital hover-afect">
+            <h6>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h6>
+            <div class="key-text-box">
+               <p><strong>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</strong></p>
+               <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_specialties }}'] }}</p>
+               <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ body }}'] }}</p>
+               <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_discount_details }}'] }}</p>
+               <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_locations }}'] }}</p>
+               <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_district }}'] }}</p>
+               <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_google_map }}'] }}</p>
+               <p>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_related_documents }}'] }}</p>
+
+            </div>
+         </div>
+      </div>
+      {% endfor %}
+   </div>
+</section>
