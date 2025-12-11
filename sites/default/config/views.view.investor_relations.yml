@@ -230,7 +230,7 @@ display:
           expose:
             items_per_page: true
             items_per_page_label: 'Recent Per Page'
-            items_per_page_options: '10, 20, 30, 40, 50, 60, 70, 80'
+            items_per_page_options: '10, 25, 50, 75, 100'
             items_per_page_options_all: true
             items_per_page_options_all_label: '- All -'
             offset: false
