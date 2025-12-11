@@ -32,10 +32,6 @@
     border-radius: 6px;
     background: #cdcdcd;
 }
-.clearfix.text-formatted.field.field--name-body.field--type-text-with-summary.field--label-hidden.field__item img{
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
 
 /* Enhanced Pagination Styles */
 #pagination-heading + ul.pager__items {
@@ -223,17 +219,25 @@ p.subheadd {
     font-weight: 800;
 }
 /*----------------------------------------------- video screen css -----------------------------------*/
+
 .field.field--name-field-upload-video.field--type-entity-reference.field--label-hidden.field__items{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 15px;
     margin: 20px auto;
+    margin-bottom: 30px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 15px;
+
 }
 .field.field--name-field-upload-video.field--type-entity-reference.field--label-hidden.field__items .field__item {
     display: flex;
     justify-content: center;  
     align-items: center; 
-        background: aliceblue;
+    background: aliceblue;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
         
 }
 .field__item video {
