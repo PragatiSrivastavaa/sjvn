@@ -5,6 +5,7 @@
     margin: 0 auto;
     width: 100%;
     height: 100%;
+    border-radius: 6px;
     align-items: center;
     border: 1px solid var(--primary-color);
     margin-bottom: 10px;
@@ -20,6 +21,20 @@
     color: #fff;
     min-width: 120px;
     height: 100%;
+}
+
+.field.field--name-field-start-date.field--type-datetime.field--label-hidden.field__item {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 13px;
+    font-weight: 600;
+    padding: 7px;
+    border-radius: 6px;
+    background: #cdcdcd;
+}
+.clearfix.text-formatted.field.field--name-body.field--type-text-with-summary.field--label-hidden.field__item img{
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
 /* Enhanced Pagination Styles */
@@ -206,4 +221,33 @@
 }
 p.subheadd {
     font-weight: 800;
+}
+/*----------------------------------------------- video screen css -----------------------------------*/
+.field.field--name-field-upload-video.field--type-entity-reference.field--label-hidden.field__items{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    margin: 20px auto;
+}
+.field.field--name-field-upload-video.field--type-entity-reference.field--label-hidden.field__items .field__item {
+    display: flex;
+    justify-content: center;  
+    align-items: center; 
+        background: aliceblue;
+        
+}
+.field__item video {
+     width: 100%;
+    height: auto;
+    max-width: 640px;   /* optional: max size control */
+    display: block;
+}
+.field.field--name-field-media-oembed-video.field--type-string.field--label-hidden.field__item {
+    text-align-last: center;
+    padding: 10px;
+}
+
+article.media.media--type-remote-video.media--view-mode-default {
+    background: #e6f7ff;
+    border-radius: 6px;
 }
