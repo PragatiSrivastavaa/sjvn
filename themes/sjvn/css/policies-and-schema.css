@@ -598,7 +598,7 @@
     align-items: end;
     gap: 12px;
     flex-wrap: wrap;
-    padding: 10px 0;
+   
 }
 
 .tab-menu-item .form-item {
@@ -703,3 +703,6 @@
         margin-top: 10px;
         position: relative;
     }
+.accordion-body {
+    background: #e6f7ff;
+}

@@ -1207,8 +1207,8 @@ h3.vmo-card__title {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .innerbox .view-filters {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
     border-bottom: 1px solid gray;
 }
 .innerbox .view-empty {

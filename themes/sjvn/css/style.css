@@ -3095,8 +3095,8 @@ body.lang-hi ul.links li[hreflang="hi"] {
 }
 
 .view-id-current_job .form--inline .form-item {
-  margin-right: 1rem;
-  flex: 1 1 auto;
+  margin-right: 1rem !important;
+  /* flex: 1 1 auto; */
 }
 
 .view-id-current_job .form-item select,
@@ -3125,11 +3125,11 @@ body.lang-hi ul.links li[hreflang="hi"] {
   max-width: 150px;
 }
 
-.view-id-current_job .form-item-field-publish-date-value input,
+/* .view-id-current_job .form-item-field-publish-date-value input,
 .view-id-current_job .form-item-field-last-date-of-submission-value input { 
   width: 160px;
   max-width: 160px;
-}
+} */
 
 /* Current Job View Table Visibility */
 .view-id-current_job table {
