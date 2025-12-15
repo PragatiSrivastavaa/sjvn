@@ -169,7 +169,7 @@ display:
           entity_type: webform_submission
           entity_field: created
           plugin_id: field
-          label: Created
+          label: निर्मित
           exclude: false
           alter:
             alter_text: false
@@ -941,7 +941,7 @@ display:
           entity_type: webform_submission
           entity_field: created
           plugin_id: field
-          label: Created
+          label: निर्मित
           exclude: false
           alter:
             alter_text: false
@@ -1881,7 +1881,7 @@ display:
           entity_type: webform_submission
           entity_field: created
           plugin_id: field
-          label: Created
+          label: निर्मित
           exclude: false
           alter:
             alter_text: false
@@ -2733,7 +2733,7 @@ display:
           entity_type: webform_submission
           entity_field: created
           plugin_id: field
-          label: Created
+          label: निर्मित
           exclude: false
           alter:
             alter_text: false

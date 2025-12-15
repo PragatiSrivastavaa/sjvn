@@ -181,3 +181,43 @@
     }
 }
 
+/*------------------------------- accordian css ----------------------------  */
+.custom-accrodian .card{
+    margin-bottom: 10px;
+}
+/* Accordion header link */
+.custom-accrodian .card-header .btn-link {
+    position: relative;
+    padding-right: 40px; /* icon ke liye space */
+    padding: 7px;
+    font-size: 17px !important;
+    display: block;
+    text-decoration: none;
+}
+
+/* Right side icon */
+.custom-accrodian .card-header .btn-link::after {
+    content: "+";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid #0d6efd;
+    border-radius: 50%;          /* round icon */
+    color: #0d6efd;
+    transition: all 0.3s ease;
+}
+
+/* Jab accordion open ho */
+.custom-accrodian .card-header .btn-link:not(.collapsed)::after {
+    content: "−";
+    background: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+}
+

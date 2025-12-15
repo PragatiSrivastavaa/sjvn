@@ -3,14 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.media.full
-    - core.entity_view_mode.media.media_library
     - field.field.node.video_gallery.body
     - field.field.node.video_gallery.field_thumbnail_image
     - field.field.node.video_gallery.field_upload_video
     - node.type.video_gallery
   module:
-    - colorbox
     - text
     - user
 id: node.video_gallery.default
@@ -26,13 +23,11 @@ content:
     weight: 1
     region: content
   field_upload_video:
-    type: colorbox_view_modes
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      colorbox_view_mode: media_library
-      colorbox_modal_view_mode: full
-      colorbox_gallery: field_page
-      colorbox_gallery_custom: ''
+      view_mode: default
+      link: false
     third_party_settings: {  }
     weight: 2
     region: content

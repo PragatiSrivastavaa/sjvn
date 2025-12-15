@@ -388,6 +388,19 @@
   flex-shrink: 0;
 }
 
+
+/*----------------------------------- hospital css ---------------------------------*/
+.empanelled-hospital .key-executive {
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid #d7ecf5;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+    transition: all 0.4s ease;
+    height: 100%;
+}
+
+
 /* Generic paragraph styling - reset margins */
 .key-executive .key-text-box p {
   margin: 0;
