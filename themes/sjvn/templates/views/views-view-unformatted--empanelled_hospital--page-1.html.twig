@@ -3,21 +3,20 @@
       {% for row in rows %}
       {% set node = row.content['#row']._entity %}
       <div class="col-lg-4 col-md-6 mb-4">
-         <div class="key-executive hover-afect">
+         <div class="key-executive hover-afect ">
             <h6>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h6>
-            <div class="key-text-box hospital">
+            <div class="key-text-box hospital d-flex flex-column">
                <p class="mb-0"><strong>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</strong></p>
                <p class="hospotal-sec"><span>Specialties:</span>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_specialties }}'] }}</p>
                <p class="hospotal-sec"><span>Discount:</span> {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_discount_details }}'] }}</p>
                <p class="hospotal-sec"><span>City:</span> {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_locations }}'] }}</p>
                <p class="hospotal-sec"><span>State:</span>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_district }}'] }}</p>
                <p class="hospotal-sec"><span>Address:</span>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ body }}'] }}</p>
-              <div class="d-flex gap-3 flex-wrap mt-2">
+              <div class="d-flex gap-3 mt-auto pt-2 flex-wrap mt-2">
                <p class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-location-dot"></i> {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_google_map }}'] }}</p>
                <p class="btn btn-outline-danger btn-sm">{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_related_documents }}'] }}</p>
               </div>
               
-
             </div>
          </div>
       </div>
@@ -73,6 +72,7 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    height: 87%;
     flex-grow: 1;
     justify-content: space-between;
 }
