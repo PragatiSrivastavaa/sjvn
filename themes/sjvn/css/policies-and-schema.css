@@ -616,6 +616,7 @@
     border: 1px solid #ccc;
     padding: 6px 14px;
     font-size: 14px;
+    width: 100%;
 }
 .tab-menu-item input[type="text"]:focus-visible {
     outline: #009edb auto 0.5px;
