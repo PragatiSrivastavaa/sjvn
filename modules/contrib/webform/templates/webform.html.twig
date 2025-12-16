@@ -26,3 +26,126 @@
   {{ children }}
   {{ title_suffix }}
 </form>
+<style>
+/* ===============================
+   Base Form Card
+================================ */
+.webform-submission-form {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 10px;
+  max-width: 960px;
+  margin: 20px auto;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===============================
+   Grid Feel (Responsive)
+================================ */
+.webform-submission-form .form-item {
+  margin-bottom: 18px;
+}
+
+/* ===============================
+   Labels
+================================ */
+.webform-submission-form label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+/* ===============================
+   Inputs / Select / Textarea
+================================ */
+.webform-submission-form input[type="text"],
+.webform-submission-form input[type="email"],
+.webform-submission-form select,
+.webform-submission-form textarea {
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #d6d6d6;
+  background-color: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Focus State */
+.webform-submission-form input:focus,
+.webform-submission-form select:focus,
+.webform-submission-form textarea:focus {
+  outline: none;
+  border-color: #009edb;
+  box-shadow: 0 0 0 2px rgba(106, 27, 154, 0.12);
+}
+
+/* ===============================
+   Textarea
+================================ */
+.webform-submission-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* ===============================
+   Select Arrow (Clean)
+================================ */
+/* .webform-submission-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236a1b9a' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+} */
+
+/* ===============================
+   Submit Button
+================================ */
+.webform-submission-form .form-actions {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.webform-submission-form .form-submit {
+  background: #009edb;
+  color: #fff;
+  border: none;
+  padding: 10px 36px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition:  0.25s ease;
+}
+
+.webform-submission-form .form-submit:hover {
+  background: #11bcff;
+}
+
+/* ===============================
+   Section Separation (Light)
+================================ */
+.webform-submission-form .js-form-item {
+  background: #fafafa;
+  padding: 14px;
+  border-radius: 8px;
+}
+
+/* ===============================
+   Mobile Optimization
+================================ */
+@media (max-width: 768px) {
+  .webform-submission-form {
+    padding: 18px;
+  }
+
+  .webform-submission-form .form-submit {
+    width: 100%;
+  }
+}
+
+</style>
