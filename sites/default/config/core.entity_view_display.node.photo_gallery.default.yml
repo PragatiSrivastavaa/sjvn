@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.photo_gallery.body
     - field.field.node.photo_gallery.field_gallery_image
+    - field.field.node.photo_gallery.field_image_gallery_cat
     - field.field.node.photo_gallery.field_thumbnail_image
     - node.type.photo_gallery
   module:
@@ -43,5 +44,6 @@ content:
     weight: 0
     region: content
 hidden:
+  field_image_gallery_cat: true
   field_thumbnail_image: true
   langcode: true

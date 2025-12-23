@@ -1,0 +1,9 @@
+uuid: 32df0c6a-90ae-49be-ba1b-bff75868186e
+langcode: en
+status: true
+dependencies: {  }
+name: 'Image Gallery Cat'
+vid: image_gallery_cat
+description: null
+weight: 0
+new_revision: false

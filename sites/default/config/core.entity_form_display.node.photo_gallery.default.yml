@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.photo_gallery.body
     - field.field.node.photo_gallery.field_gallery_image
+    - field.field.node.photo_gallery.field_image_gallery_cat
     - field.field.node.photo_gallery.field_thumbnail_image
     - image.style.thumbnail
     - node.type.photo_gallery
@@ -35,15 +36,21 @@ content:
     third_party_settings: {  }
   field_gallery_image:
     type: image_image
-    weight: 10
+    weight: 11
     region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
+  field_image_gallery_cat:
+    type: options_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_thumbnail_image:
     type: image_image
-    weight: 9
+    weight: 10
     region: content
     settings:
       progress_indicator: throbber
@@ -90,6 +97,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 12
+    region: content
+    settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
