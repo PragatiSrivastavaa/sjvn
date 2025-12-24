@@ -48,8 +48,8 @@ class ChoosePdfStyleForm extends ConfigFormBase {
        // Instantiates this form class.
        return new static(
        // Load the service required to construct this class.
-       $container->get('messenger'),
-       $container->get('config.factory')
+       $container->get('config.factory'),
+       $container->get('messenger')
        );
     }
 
