@@ -988,6 +988,8 @@ display:
         fields: false
         filters: false
         filter_groups: false
+        footer: false
+      footer: {  }
       display_extenders: {  }
       path: vigilance-events
     cache_metadata:
