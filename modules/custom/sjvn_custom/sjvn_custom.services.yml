@@ -1,0 +1,6 @@
+services:
+  sjvn_custom.security_headers_subscriber:
+    class: Drupal\sjvn_custom\EventSubscriber\SecurityHeadersSubscriber
+    arguments: ['@current_user']
+    tags:
+      - { name: event_subscriber }
