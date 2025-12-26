@@ -165,6 +165,7 @@
   height: 42px;
   box-sizing: border-box;
   font-weight: 500;
+  font-size: 14px;
 }
 
 .main-nav-inner #superfish-main a:hover,

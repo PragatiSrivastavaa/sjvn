@@ -2,6 +2,34 @@ console.log("✅ script.js is loading");
 
 // search box toggle
 jQuery(document).ready(function($){
+	
+	
+	$('.set h2, .set h3, .set h4, .set h5').on('click', function () {
+
+  const $heading = $(this);
+
+  if ($heading.hasClass('active')) {
+    $heading.removeClass('active');
+    $heading.find('button').attr('aria-expanded', false);
+    $heading.parents('.set').removeClass('active-tab');
+    $heading.siblings('.acc-content').slideUp(200);
+    $heading.find('svg').removeClass('fa-minus').addClass('fa-plus');
+  } else {
+    $heading.find('svg').removeClass('fa-plus').addClass('fa-minus');
+    $heading.addClass('active');
+    $heading.find('button').attr('aria-expanded', true);
+    $heading.parents('.set').addClass('active-tab');
+    $heading.siblings('.acc-content').slideDown(200);
+
+    /* 👉 Scroll to clicked heading */
+    $('html, body').animate({
+      scrollTop: $heading.offset().top - 100
+    }, 400);
+  }
+});
+
+	
+	
   $(".search-btn a").click(function(e){
     e.preventDefault();
     $("#search-block-form").toggleClass("search-block-form-ShowBox");
