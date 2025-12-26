@@ -18,6 +18,7 @@ module:
   contact: 0
   contextual: 0
   counter: 0
+  csp: 0
   datetime: 0
   dblog: 0
   dynamic_page_cache: 0
