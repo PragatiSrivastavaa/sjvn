@@ -188,7 +188,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: user_roles
-          label: Roles
+          label: भूमिका
           exclude: false
           alter:
             alter_text: false

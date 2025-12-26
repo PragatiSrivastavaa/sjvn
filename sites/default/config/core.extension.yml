@@ -4,6 +4,7 @@ module:
   admin_toolbar: 0
   admin_toolbar_tools: 0
   announcements_feed: 0
+  autologout: 0
   automated_cron: 0
   better_exposed_filters: 0
   big_pipe: 0
@@ -37,6 +38,7 @@ module:
   jquery_ui_datepicker: 0
   jquery_ui_draggable: 0
   jquery_ui_resizable: 0
+  js_cookie: 0
   language: 0
   layout_discovery: 0
   link: 0
@@ -53,10 +55,19 @@ module:
   orgchart: 0
   page_cache: 0
   paragraphs_asymmetric_translation_widgets: 0
+  password_policy_blacklist: 0
+  password_policy_character_types: 0
+  password_policy_characters: 0
+  password_policy_consecutive: 0
+  password_policy_delay: 0
+  password_policy_history: 0
+  password_policy_length: 0
+  password_policy_username: 0
   path: 0
   path_alias: 0
   quick_node_clone: 0
   search: 0
+  session_limit: 0
   shield: 0
   shortcut: 0
   shs: 0
@@ -90,6 +101,7 @@ module:
   webform_ui: 0
   pathauto: 1
   content_translation: 10
+  password_policy: 10
   views: 10
   paragraphs: 11
   tac_lite: 100
