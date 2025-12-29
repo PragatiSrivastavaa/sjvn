@@ -1,0 +1,7 @@
+uuid: 2be19f1f-a544-4775-a250-df7c50702343
+langcode: en
+status: false
+dependencies: {  }
+formId: node_quick_access_link_form
+captchaType: default
+label: node_quick_access_link_form

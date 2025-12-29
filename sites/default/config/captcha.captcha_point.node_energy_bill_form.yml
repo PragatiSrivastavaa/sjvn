@@ -1,0 +1,7 @@
+uuid: 4ee2e404-b618-4b65-a96e-9d8641e7e4d2
+langcode: en
+status: false
+dependencies: {  }
+formId: node_energy_bill_form
+captchaType: default
+label: node_energy_bill_form

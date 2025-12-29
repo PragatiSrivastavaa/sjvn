@@ -1,0 +1,7 @@
+uuid: eec8186b-24bb-4970-a7fe-dbee214158fc
+langcode: en
+status: false
+dependencies: {  }
+formId: node_tariff_petition_form
+captchaType: default
+label: node_tariff_petition_form

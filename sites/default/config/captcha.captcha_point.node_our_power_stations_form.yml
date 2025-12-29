@@ -1,0 +1,7 @@
+uuid: 0abd92b0-c83c-471f-acba-2bdd603f7aaa
+langcode: en
+status: false
+dependencies: {  }
+formId: node_our_power_stations_form
+captchaType: default
+label: node_our_power_stations_form

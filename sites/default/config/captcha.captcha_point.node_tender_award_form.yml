@@ -1,0 +1,7 @@
+uuid: 5427622c-5f0e-4a71-a44f-1429b378c0a0
+langcode: en
+status: false
+dependencies: {  }
+formId: node_tender_award_form
+captchaType: default
+label: node_tender_award_form
