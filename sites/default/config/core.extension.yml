@@ -68,6 +68,7 @@ module:
   path: 0
   path_alias: 0
   quick_node_clone: 0
+  remove_http_headers: 0
   search: 0
   seckit: 0
   session_limit: 0

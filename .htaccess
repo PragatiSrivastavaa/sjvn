@@ -183,14 +183,4 @@ AddEncoding gzip svgz
   Header always set X-Content-Type-Options nosniff
   # Disable Proxy header, since it's an attack vector.
   RequestHeader unset Proxy
-
-  # Hide server version details and other sensitive headers
-  Header always unset Server
-  Header unset X-Powered-By
-  Header unset X-Generator
-  Header unset X-Drupal-Cache
-  Header unset X-Drupal-Dynamic-Cache
 </IfModule>
-
-# Hide Apache version on error pages
-ServerSignature Off
