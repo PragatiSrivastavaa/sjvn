@@ -44,6 +44,7 @@
         "drupal/password_policy": "^4.0",
         "drupal/pathauto": "^1.13",
         "drupal/quick_node_clone": "^1.22",
+        "drupal/seckit": "^2.0",
         "drupal/session_limit": "^2.0",
         "drupal/shield": "^1.8",
         "drupal/shs": "^3.0@beta",
