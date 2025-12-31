@@ -2,22 +2,22 @@ _core:
   default_config_hash: zzgpgFFYVnDh4Bu8k2ZNyNtoVeOOmmjTKvv41SWyRXo
 seckit_xss:
   csp:
-    checkbox: false
+    checkbox: true
     vendor-prefix:
       x: false
       webkit: false
     report-only: false
-    default-src: ''
-    script-src: ''
-    object-src: ''
-    style-src: ''
-    img-src: ''
+    default-src: "'self'"
+    script-src: "'self'"
+    object-src: "'none'"
+    style-src: "'self' 'unsafe-inline' cdn.jsdelivr.net cdnjs.cloudflare.com fonts.googleapis.com unpkg.com"
+    img-src: "'self' data: https:"
     media-src: ''
     frame-src: ''
-    frame-ancestors: ''
+    frame-ancestors: "'self'"
     child-src: ''
-    font-src: ''
-    connect-src: ''
+    font-src: "'self' fonts.gstatic.com"
+    connect-src: "'self' https:"
     report-uri: /report-csp-violation
     upgrade-req: false
     policy-uri: ''
@@ -42,11 +42,11 @@ seckit_ct:
   report_uri: ''
   enforce: false
 seckit_fp:
-  feature_policy: true
+  feature_policy: false
   feature_policy_policy: ''
 seckit_various:
   from_origin: false
   from_origin_destination: same
   referrer_policy: true
-  referrer_policy_policy: no-referrer-when-downgrade
+  referrer_policy_policy: strict-origin-when-cross-origin
   disable_autocomplete: false
