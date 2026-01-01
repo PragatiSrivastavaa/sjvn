@@ -5,8 +5,6 @@ report-only:
   directives:
     object-src:
       base: none
-    script-src:
-      base: self
     style-src:
       base: self
     webrtc: block
@@ -25,12 +23,8 @@ enforce:
   directives:
     object-src:
       base: none
-    script-src:
-      base: self
     style-src:
       base: self
-      flags:
-        - unsafe-inline
     base-uri:
       base: self
     default-src:
