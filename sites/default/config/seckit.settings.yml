@@ -10,7 +10,7 @@ seckit_xss:
     default-src: "'self'"
     script-src: "'self'"
     object-src: "'none'"
-    style-src: "'self' 'unsafe-inline' cdn.jsdelivr.net cdnjs.cloudflare.com fonts.googleapis.com unpkg.com"
+    style-src: "'self' cdn.jsdelivr.net cdnjs.cloudflare.com fonts.googleapis.com unpkg.com"
     img-src: "'self' data: https:"
     media-src: ''
     frame-src: ''

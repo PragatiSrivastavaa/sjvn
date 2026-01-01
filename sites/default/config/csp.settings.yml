@@ -7,17 +7,8 @@ report-only:
       base: none
     script-src:
       base: self
-      flags:
-        - report-sample
-        - inline-speculation-rules
-        - unsafe-hashes
-        - unsafe-inline
-        - unsafe-eval
-        - wasm-unsafe-eval
     style-src:
       base: self
-      flags:
-        - report-sample
     webrtc: block
     worker-src:
       base: self
