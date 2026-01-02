@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Contains hooks for the Session Invalidator module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter() for the user account forms.
+ */
+function session_invalidator_form_user_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Add a custom submit handler to the user form.
+  $form['actions']['submit']['#submit'][] = 'session_invalidator_custom_submit_handler';
+}
+
+/**
+ * Custom submit handler for the user account form.
+ */
+function session_invalidator_custom_submit_handler(array &$form, FormStateInterface $form_state) {
+  $account = $form_state->getFormObject()->getEntity();
+  // Check if user submitted the password field.
+  if ($account instanceof UserInterface && !$form_state->isValueEmpty('pass')) {
+    session_invalidator_invalidate_user_sessions($account, $form_state);
+  }
+}
+
+/**
+ * Invalidate all sessions for a specific user and log out if the user changed their own password.
+ *
+ * @param \Drupal\user\UserInterface $account
+ *   The user entity whose password is changed.
+ * @param FormStateInterface $form_state
+ *   The form state object.
+ */
+function session_invalidator_invalidate_user_sessions(UserInterface $account, FormStateInterface $form_state) {
+  $current_user = \Drupal::currentUser();
+  $session_manager = \Drupal::service('session_manager');
+
+  // Invalidate all sessions for the user whose password has been changed.
+  $session_manager->delete($account->id());
+
+  // Check if the user is changing their own password.
+  if ($current_user->id() === $account->id()) {
+    // Log out the current user session and redirect to login page since they changed their own password.
+    user_logout();
+    $form_state->setRedirect('user.login');
+    \Drupal::messenger()->addMessage('Your password has been changed. You have been logged out and will need to log in again.');
+  } else {
+    // For an admin or another user changing someone else's password, just show a message.
+    // No logout or redirect is performed here as per your requirement.
+    \Drupal::messenger()->addMessage("The user's password has been changed and their sessions have been invalidated.");
+  }
+}
+

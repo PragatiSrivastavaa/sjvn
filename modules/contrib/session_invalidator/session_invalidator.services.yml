@@ -1,0 +1,6 @@
+services:
+  session_invalidator.password_change_subscriber:
+    class: Drupal\session_invalidator\EventSubscriber\PasswordChangeListener
+    arguments: ['@current_user', '@database', '@messenger']
+    tags:
+      - { name: 'event_subscriber' }

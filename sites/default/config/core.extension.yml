@@ -73,6 +73,7 @@ module:
   remove_http_headers: 0
   search: 0
   seckit: 0
+  session_invalidator: 0
   session_limit: 0
   shield: 0
   shortcut: 0

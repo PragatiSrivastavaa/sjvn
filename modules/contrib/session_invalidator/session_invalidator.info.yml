@@ -1,0 +1,10 @@
+name: 'Session Invalidator'
+type: module
+description: 'Invalidates all sessions for a user when their password is changed.'
+package: Custom
+core_version_requirement: ^8 || ^9 || ^10
+
+# Information added by Drupal.org packaging script on 2024-04-03
+version: '1.0.0'
+project: 'session_invalidator'
+datestamp: 1712152765

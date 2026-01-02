@@ -76,7 +76,7 @@ function password_encrypt_page_attachments_alter(&$page) {
  * Implements hook_form_alter().
  */
 function password_encrypt_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
-  if ($form_id == 'user_login_form' || $form_id == 'user_login_block' || $form_id == 'user_register_form') {
+  if ($form_id == 'user_login_form' || $form_id == 'user_login_block' || $form_id == 'user_register_form' || $form_id == 'user_form') {
     array_unshift($form['#validate'], 'password_encrypt_user_decrypt_password');
   }
 }
@@ -123,7 +123,7 @@ function password_encrypt_user_decrypt_password(&$form, FormStateInterface $form
   }
 
   // Decrypt 'current_pass' if present (e.g. password change form).
-/*   if ($form_state->hasValue('current_pass')) {
+  if ($form_state->hasValue('current_pass')) {
     $encrypted = $form_state->getValue('current_pass');
     $decrypted_pass = password_encrypt_crypto_js_aes_decrypt($password_encrypt_passkey, $encrypted);
 
@@ -136,7 +136,7 @@ function password_encrypt_user_decrypt_password(&$form, FormStateInterface $form
       $form_state->setValue('current_pass', $decrypted_pass);
       \Drupal::logger('password_encrypt')->debug('Current password decrypted successfully.');
     }
-  } */
+  }
 
   // Clear the session passkey after use so it can't be reused (optional).
   if ($session->has($session_key)) {
