@@ -3,3 +3,25 @@ parameters:
     debug: true
     auto_reload: true
     cache: false
+
+  cors.config:
+    enabled: true
+    allowedHeaders:
+      - 'Content-Type'
+      - 'Authorization'
+      - 'X-Requested-With'
+      - 'Accept'
+      - 'Origin'
+    allowedMethods:
+      - 'GET'
+      - 'POST'
+      - 'PUT'
+      - 'PATCH'
+      - 'DELETE'
+      - 'OPTIONS'
+    allowedOrigins:
+      - 'https://i5l.95d.mytemp.website'
+    allowedOriginsPatterns: []
+    exposedHeaders: false
+    maxAge: 1000
+    supportsCredentials: true
