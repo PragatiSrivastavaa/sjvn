@@ -2,7 +2,7 @@ parameters:
   twig.config:
     debug: false
     auto_reload: true
-    cache: false
+    cache: true
 
   cors.config:
     enabled: true
