@@ -274,13 +274,56 @@ function image_captcha_captcha($op, $captcha_type = '', $captcha_sid = NULL) {
           return captcha_captcha('generate', 'Math');
         }
         // Generate a CAPTCHA code.
-        $allowed_chars = _image_captcha_utf8_split($config->get('image_captcha_image_allowed_chars'));
-        $code_length = (int) $config->get('image_captcha_code_length');
-        $code = '';
+        // Hardcode allowed characters to ensure pool exists.
+        $allowed_chars_str = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+        $allowed_chars = _image_captcha_utf8_split($allowed_chars_str);
+        // Force length to 6 as requested.
+        $code_length = 6;
+        $code_array = [];
 
-        for ($i = 0; $i < $code_length; $i++) {
-          $code .= $allowed_chars[array_rand($allowed_chars)];
+        // Segregate characters.
+        $uppers = [];
+        $lowers = [];
+        $digits = [];
+
+        foreach ($allowed_chars as $char) {
+          if (preg_match('/[A-Z]/', $char)) {
+            $uppers[] = $char;
+          }
+          elseif (preg_match('/[a-z]/', $char)) {
+            $lowers[] = $char;
+          }
+          elseif (preg_match('/[0-9]/', $char)) {
+            $digits[] = $char;
+          }
         }
+
+        // Ensure at least one of each required type if available.
+        if (!empty($uppers)) {
+          $code_array[] = $uppers[array_rand($uppers)];
+        }
+        if (!empty($lowers)) {
+          $code_array[] = $lowers[array_rand($lowers)];
+        }
+        if (!empty($digits)) {
+          $code_array[] = $digits[array_rand($digits)];
+        }
+
+        // Fill the rest of the code length with random allowable characters.
+        while (count($code_array) < $code_length) {
+          $code_array[] = $allowed_chars[array_rand($allowed_chars)];
+        }
+
+        // Shuffle the characters.
+        shuffle($code_array);
+        $code = implode('', $code_array);
+
+        \Drupal::logger('image_captcha_debug')->info('Generated Code: @code. Uppers: @u, Lowers: @l, Digits: @d', [
+          '@code' => $code,
+          '@u' => count($uppers),
+          '@l' => count($lowers),
+          '@d' => count($digits),
+        ]);
 
         // Build the result to return.
         $result = [];
@@ -300,7 +343,7 @@ function image_captcha_captcha($op, $captcha_type = '', $captcha_sid = NULL) {
           '#theme' => 'image',
           '#uri' => Url::fromRoute('image_captcha.generator', [
             'session_id' => $captcha_sid,
-            'timestamp' => \Drupal::time()->getRequestTime(),
+            'timestamp' => (int) (microtime(TRUE) * 1000),
           ])->toString(),
           '#width' => $width,
           '#height' => $height,
