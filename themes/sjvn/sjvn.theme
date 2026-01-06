@@ -239,24 +239,6 @@ function sjvn_preprocess_links(&$variables) {
   }
 }
 
-/**
- * Force-disable BigPipe lazy loading for all language switcher blocks.
- */
-function sjvn_block_view_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
-
-  $plugin_id = $block->getPluginId();
-  $base_id = $block->getBaseId();
-
-  // Catch all language-related blocks (all variants).
-  if (
-    strpos($plugin_id, 'language') !== FALSE ||
-    strpos($base_id, 'language') !== FALSE
-  ) {
-    unset($build['#lazy_builder']);
-    unset($build['#create_placeholder']);
-    $build['#cache']['max-age'] = 0;
-  }
-}
 
 
 
