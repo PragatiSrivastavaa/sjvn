@@ -64,12 +64,13 @@ AddEncoding gzip svgz
 <IfModule mod_rewrite.c>
  RewriteEngine On
 
-  # Block registration page for all languages
-  RewriteCond %{REQUEST_URI} ^/sjvn/(en|hi)?/user/register/?$ [NC]
+
+  # Block registration pages for all languages (including default)
+  RewriteCond %{REQUEST_URI} ^/sjvn(/(en|hi))?/user/register/?$ [NC]
   RewriteRule ^ - [R=404,L]
 
-  # Block password reset page for all languages
-  RewriteCond %{REQUEST_URI} ^/sjvn/(en|hi)?/user/password/?$ [NC]
+  # Block password reset pages for all languages
+  RewriteCond %{REQUEST_URI} ^/sjvn(/(en|hi))?/user/password/?$ [NC]
   RewriteRule ^ - [R=404,L]
 
   # Pass all other requests to index.php (Drupal front controller)
