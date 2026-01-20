@@ -3,7 +3,25 @@
   // This function is strict.
   Drupal.behaviors.password_encrypt = {
     attach: function (context, settings) {
-      var passkey = drupalSettings.password_encrypt.passkey;
+      // Read the token from the obfuscated setting name. 
+      // We check both the incoming 'settings' and the global 'drupalSettings'.
+      var token = null;
+      if (settings.password_encrypt_conf && settings.password_encrypt_conf._tok) {
+        token = settings.password_encrypt_conf._tok;
+      } else if (drupalSettings.password_encrypt_conf && drupalSettings.password_encrypt_conf._tok) {
+        token = drupalSettings.password_encrypt_conf._tok;
+      }
+
+      // If we found a token, store it globally in the behavior so it persists across AJAX calls 
+      // where the token might NOT be sent (for security).
+      if (token) {
+        this.token = token;
+      }
+
+      var passkey = this.token;
+      if (!passkey) {
+        return;
+      }
       var cipher;
       var pass;
       var cpass;
@@ -12,9 +30,7 @@
       $('form.user-login, form.user-login-form', context).submit(function (event) {
         pass = $('#edit-pass').val();
         if (pass !== '') {
-          console.log('Encrypting login password with key:', passkey);
           cipher = CryptoJS.AES.encrypt(pass, passkey).toString();
-          console.log('Ciphertext generated:', cipher.substring(0, 20) + '...');
           $('#edit-pass').val(cipher);
         }
       });
@@ -34,13 +50,11 @@
         }
 
         if (current_pass && current_pass !== '') {
-          console.log('Encrypting current_pass with key:', passkey);
           cipher = CryptoJS.AES.encrypt(current_pass, passkey).toString();
           $('#edit-current-pass').val(cipher);
         }
 
         if (pass && pass !== '') {
-          console.log('Encrypting new pass with key:', passkey);
           cipher = CryptoJS.AES.encrypt(pass, passkey).toString();
           $('#edit-pass-pass1').val(cipher);
           $('#edit-pass-pass2').val(cipher);
