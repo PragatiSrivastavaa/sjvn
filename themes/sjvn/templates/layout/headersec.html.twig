@@ -28,7 +28,8 @@
       <!-- Right Section -->
       <div class="right-links">
         <a href="{{ base_path }}sitemap">{% if language.getId() == 'hi' %}साइट मैप{% else %}Sitemap{% endif %}</a> |
-        <a href="#mainSec" class="hide skiptomain">{% if language.getId() == 'hi' %}मुख्य सामग्री पर जाएं{% else %}Skip to Main Content{% endif %}</a>
+        <a href="{{ base_path }}screen-reader-access">{% if language.getId() == 'hi' %}स्क्रीन रीडर{% else %}Screen Reader{% endif %}</a> |
+        <a href="#mainSec">{% if language.getId() == 'hi' %}मुख्य सामग्री पर जाएं{% else %}Skip to Main Content{% endif %}</a>
 
         <!-- Language Toggle -->
         | <div class="language-toggle">

@@ -1,103 +1,107 @@
 {#
 /**
- * @file
- * Theme override to display a region.
- *
- * Available variables:
- * - content: The content for this region, typically blocks.
- * - attributes: HTML attributes for the region <div>.
- * - region: The name of the region variable as defined in the theme's
- *   .info.yml file.
- *
- * @see template_preprocess_region()
- */
-#}
+* @file
+* Theme override to display a region.
+*
+* Available variables:
+* - content: The content for this region, typically blocks.
+* - attributes: HTML attributes for the region <div>.
+  * - region: The name of the region variable as defined in the theme's
+  * .info.yml file.
+  *
+  * @see template_preprocess_region()
+  */
+  #}
 
-	<!-- Top Utility Bar -->
-<div class="top-bar">
-  <!-- Left Section -->
-  <div class="left-links">
-  {{ page.header }}
-  </div>
-  <!-- Center Logos -->
-  <div class="middle-logs">
-  {{ page.center_logos}}
-  </div>
-
-  <!-- Right Section -->
-  <div class="right-links">
-  <a href="{{ base_path }}sitemap">{% if language.getId() == 'hi' %}साइट मैप{% else %}Sitemap{% endif %}</a> |
-  <a href="#mainSec" class="hide skiptomain">{% if language.getId() == 'hi' %}मुख्य सामग्री पर जाएं{% else %}Skip to Main Content{% endif %}</a>
-	<!--<a class="hide" href="{{ base_path }}screen-reader-access">{% if language.getId() == 'hi' %}स्क्रीन रीडर पहुँच{% else %}Screen Reader Access{% endif %}</a> |-->
-  
-  <!-- Language Toggle -->
-  <div class="language-toggle">
-          <ul>
-          <li class="lang-select">
-								{{ page.language }}
-					</li></ul>
-        </div> 
-
-  <!-- Theme Selectors (Inline) -->
-  <div class="theme-inline">
-    <div class="theme-color blue" data-theme="blue" title="Default Theme"></div>
-    <div class="theme-color green" data-theme="green" title="Green Theme"></div>
-  </div>
-  <div>
-    <div class="search_icons_mobile">							
-			<div class="nav-item search-btn">
-			<a href="javascript:void(0)"><i class="bi bi-search" aria-hidden="true"></i></a>
-			</div>
-			<div class="searchSection">{{ page.search_section }}</div>
+  <!-- Top Utility Bar -->
+  <div class="top-bar">
+    <!-- Left Section -->
+    <div class="left-links">
+      {{ page.header }}
     </div>
+    <!-- Center Logos -->
+    <div class="middle-logs">
+      {{ page.center_logos}}
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-links">
+      <a href="{{ base_path }}sitemap">{% if language.getId() == 'hi' %}साइट मैप{% else %}Sitemap{% endif %}</a> |
+      <a href="{{ base_path }}screen-reader-access">{% if language.getId() == 'hi' %}स्क्रीन रीडर{% else %}Screen
+        Reader{% endif %}</a> |
+      <a href="#mainSec">{% if language.getId() == 'hi' %}मुख्य सामग्री पर जाएं{% else
+        %}Skip to Main Content{% endif
+        %}</a>
+
+      <!-- Language Toggle -->
+      <div class="language-toggle">
+        <ul>
+          <li class="lang-select">
+            {{ page.language }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- Theme Selectors (Inline) -->
+      <div class="theme-inline">
+        <div class="theme-color blue" data-theme="blue" title="Default Theme"></div>
+        <div class="theme-color green" data-theme="green" title="Green Theme"></div>
+      </div>
+      <div>
+        <div class="search_icons_mobile">
+          <div class="nav-item search-btn">
+            <a href="javascript:void(0)"><i class="bi bi-search" aria-hidden="true"></i></a>
+          </div>
+          <div class="searchSection">{{ page.search_section }}</div>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
 
-</div>
-
-<!-- Logo & Banner Section -->
-<div class="logo-bar">
-  {{ page.logo }}
-</div>
-
-<!-- Main Navigation -->
-<nav class="navbar navbar-expand-sm navbar-light custom-nav main-nav">
-  <div class="home-link">
-    <a href="{{ base_path }}" aria-label="Home">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-      </svg>
-    </a>
+  <!-- Logo & Banner Section -->
+  <div class="logo-bar">
+    {{ page.logo }}
   </div>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <div class="mobile-menu-header">
-      <h3>Menu</h3>
-      <button class="mobile-close-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
+
+  <!-- Main Navigation -->
+  <nav class="navbar navbar-expand-sm navbar-light custom-nav main-nav">
+    <div class="home-link">
+      <a href="{{ base_path }}" aria-label="Home">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+        </svg>
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <div class="mobile-menu-header">
+        <h3>Menu</h3>
+        <button class="mobile-close-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <ul id="nav-list" class="menu">
+        {{ page.primary_menu }}
+      </ul>
+    </div>
+    <div class="nav-scroll-controls">
+      <button class="nav-scroll-btn nav-scroll-left" aria-label="Scroll Left">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M12 16L6 10L12 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+      <button class="nav-scroll-btn nav-scroll-right" aria-label="Scroll Right">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M8 4L14 10L8 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
         </svg>
       </button>
     </div>
-    <ul id="nav-list" class="menu">
-      {{ page.primary_menu }}
-    </ul>
-  </div>
-  <div class="nav-scroll-controls">
-    <button class="nav-scroll-btn nav-scroll-left" aria-label="Scroll Left">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <path d="M12 16L6 10L12 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-    <button class="nav-scroll-btn nav-scroll-right" aria-label="Scroll Right">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <path d="M8 4L14 10L8 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-  </div>
-</nav>
-
-
+  </nav>
