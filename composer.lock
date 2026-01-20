@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b921d79330cb6d7b3cb41cf2fe30d2b",
+    "content-hash": "cd44df2518883d9751f3c19cfce0e050",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -807,6 +807,129 @@
             "time": "2024-12-13T19:25:56+00:00"
         },
         {
+            "name": "cweagans/composer-configurable-plugin",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cweagans/composer-configurable-plugin.git",
+                "reference": "15433906511a108a1806710e988629fd24b89974"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cweagans/composer-configurable-plugin/zipball/15433906511a108a1806710e988629fd24b89974",
+                "reference": "15433906511a108a1806710e988629fd24b89974",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "require-dev": {
+                "codeception/codeception": "~4.0",
+                "codeception/module-asserts": "^2.0",
+                "composer/composer": "~2.0",
+                "php-coveralls/php-coveralls": "~2.0",
+                "php-parallel-lint/php-parallel-lint": "^1.0.0",
+                "phpro/grumphp": "^1.8.0",
+                "sebastian/phpcpd": "^6.0",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "cweagans\\Composer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cameron Eagans",
+                    "email": "me@cweagans.net"
+                }
+            ],
+            "description": "Provides a lightweight configuration system for Composer plugins.",
+            "support": {
+                "issues": "https://github.com/cweagans/composer-configurable-plugin/issues",
+                "source": "https://github.com/cweagans/composer-configurable-plugin/tree/2.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/cweagans",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-02-12T04:58:58+00:00"
+        },
+        {
+            "name": "cweagans/composer-patches",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cweagans/composer-patches.git",
+                "reference": "bfa6018a5f864653d9ed899b902ea72f858a2cf7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/bfa6018a5f864653d9ed899b902ea72f858a2cf7",
+                "reference": "bfa6018a5f864653d9ed899b902ea72f858a2cf7",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^2.0",
+                "cweagans/composer-configurable-plugin": "^2.0",
+                "ext-json": "*",
+                "php": ">=8.0.0"
+            },
+            "require-dev": {
+                "codeception/codeception": "~4.0",
+                "codeception/module-asserts": "^2.0",
+                "codeception/module-cli": "^2.0",
+                "codeception/module-filesystem": "^2.0",
+                "composer/composer": "~2.0",
+                "php-coveralls/php-coveralls": "~2.0",
+                "php-parallel-lint/php-parallel-lint": "^1.0.0",
+                "phpro/grumphp": "^1.8.0",
+                "sebastian/phpcpd": "^6.0",
+                "squizlabs/php_codesniffer": "^4.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "_": "The following two lines ensure that composer-patches is loaded as early as possible.",
+                "class": "cweagans\\Composer\\Plugin\\Patches",
+                "plugin-modifies-downloads": true,
+                "plugin-modifies-install-path": true
+            },
+            "autoload": {
+                "psr-4": {
+                    "cweagans\\Composer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cameron Eagans",
+                    "email": "me@cweagans.net"
+                }
+            ],
+            "description": "Provides a way to patch Composer packages.",
+            "support": {
+                "issues": "https://github.com/cweagans/composer-patches/issues",
+                "source": "https://github.com/cweagans/composer-patches/tree/2.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/cweagans",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-10-30T23:44:22+00:00"
+        },
+        {
             "name": "dflydev/dot-access-data",
             "version": "v3.0.3",
             "source": {
@@ -1171,6 +1294,104 @@
             }
         },
         {
+            "name": "drupal/autologout",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/autologout.git",
+                "reference": "2.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/autologout-2.0.1.zip",
+                "reference": "2.0.1",
+                "shasum": "61407ffa8b857b1e5d22d03ededac94b5119bd60"
+            },
+            "require": {
+                "drupal/core": "^9.2 || ^10 || ^11",
+                "drupal/js_cookie": "^1.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.1",
+                    "datestamp": "1732235105",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "ajits",
+                    "homepage": "https://www.drupal.org/user/981944"
+                },
+                {
+                    "name": "AjK",
+                    "homepage": "https://www.drupal.org/user/39030"
+                },
+                {
+                    "name": "boshtian",
+                    "homepage": "https://www.drupal.org/user/1773456"
+                },
+                {
+                    "name": "dandrews",
+                    "homepage": "https://www.drupal.org/user/2014490"
+                },
+                {
+                    "name": "darksnow",
+                    "homepage": "https://www.drupal.org/user/391915"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "johnennew",
+                    "homepage": "https://www.drupal.org/user/1150042"
+                },
+                {
+                    "name": "jrglasgow",
+                    "homepage": "https://www.drupal.org/user/36590"
+                },
+                {
+                    "name": "kmasood",
+                    "homepage": "https://www.drupal.org/user/1262860"
+                },
+                {
+                    "name": "levelos",
+                    "homepage": "https://www.drupal.org/user/54135"
+                },
+                {
+                    "name": "prabeen.giri",
+                    "homepage": "https://www.drupal.org/user/913078"
+                },
+                {
+                    "name": "scott_earnest",
+                    "homepage": "https://www.drupal.org/user/416158"
+                },
+                {
+                    "name": "str8",
+                    "homepage": "https://www.drupal.org/user/2865063"
+                },
+                {
+                    "name": "the_g_bomb",
+                    "homepage": "https://www.drupal.org/user/492012"
+                }
+            ],
+            "description": "Adds automated timed logout.",
+            "homepage": "http://drupal.org/project/autologout",
+            "support": {
+                "source": "https://git.drupalcode.org/project/autologout",
+                "issues": "https://www.drupal.org/project/issues/autologout"
+            }
+        },
+        {
             "name": "drupal/better_exposed_filters",
             "version": "7.0.5",
             "source": {
@@ -1242,6 +1463,86 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/better_exposed_filters",
                 "issues": "https://www.drupal.org/project/issues/better_exposed_filters"
+            }
+        },
+        {
+            "name": "drupal/captcha",
+            "version": "2.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/captcha.git",
+                "reference": "2.0.9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/captcha-2.0.9.zip",
+                "reference": "2.0.9",
+                "shasum": "15b2ba18fab75ea88bfa8f75fb1be09f7cd52cbb"
+            },
+            "require": {
+                "drupal/core": "^9.5 || ^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.9",
+                    "datestamp": "1753701287",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "branch-alias": {
+                    "dev-8.x-1.x": "1.x-dev"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "anybody",
+                    "homepage": "https://www.drupal.org/user/291091"
+                },
+                {
+                    "name": "elachlan",
+                    "homepage": "https://www.drupal.org/user/1021502"
+                },
+                {
+                    "name": "grevil",
+                    "homepage": "https://www.drupal.org/user/3668491"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "naveenvalecha",
+                    "homepage": "https://www.drupal.org/user/2665733"
+                },
+                {
+                    "name": "podarok",
+                    "homepage": "https://www.drupal.org/user/116002"
+                },
+                {
+                    "name": "robloach",
+                    "homepage": "https://www.drupal.org/user/61114"
+                },
+                {
+                    "name": "thomas.frobieter",
+                    "homepage": "https://www.drupal.org/user/409335"
+                },
+                {
+                    "name": "wundo",
+                    "homepage": "https://www.drupal.org/user/25523"
+                }
+            ],
+            "description": "The CAPTCHA module provides this feature to virtually any user facing web form on a Drupal site.",
+            "homepage": "https://www.drupal.org/project/captcha",
+            "support": {
+                "source": "https://git.drupalcode.org/project/captcha",
+                "issues": "https://www.drupal.org/project/issues/captcha"
             }
         },
         {
@@ -1729,6 +2030,54 @@
             "homepage": "http://drupal.org/project/counter",
             "support": {
                 "source": "https://git.drupalcode.org/project/counter"
+            }
+        },
+        {
+            "name": "drupal/csp",
+            "version": "2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/csp.git",
+                "reference": "2.2.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/csp-2.2.2.zip",
+                "reference": "2.2.2",
+                "shasum": "4ae305859e6997c62296ddbeee480ba619557fe8"
+            },
+            "require": {
+                "drupal/core": "^10.2 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.2.2",
+                    "datestamp": "1741822236",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "gapple",
+                    "homepage": "https://www.drupal.org/user/490940"
+                }
+            ],
+            "description": "Provide Content-Security-Policy headers",
+            "homepage": "https://www.drupal.org/project/csp",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/csp",
+                "issues": "https://www.drupal.org/project/issues/csp"
             }
         },
         {
@@ -2588,6 +2937,62 @@
             }
         },
         {
+            "name": "drupal/js_cookie",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/js_cookie.git",
+                "reference": "1.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/js_cookie-1.0.2.zip",
+                "reference": "1.0.2",
+                "shasum": "effcbee68083efc866aca2a1bfa3fc6e14fe0c2f"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.2",
+                    "datestamp": "1762168962",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "anybody",
+                    "homepage": "https://www.drupal.org/user/291091"
+                },
+                {
+                    "name": "dave reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "grevil",
+                    "homepage": "https://www.drupal.org/user/3668491"
+                },
+                {
+                    "name": "jan kellermann",
+                    "homepage": "https://www.drupal.org/user/371731"
+                }
+            ],
+            "description": "Provides the js-cookie library as a dependency.",
+            "homepage": "https://www.drupal.org/project/js_cookie",
+            "support": {
+                "source": "https://git.drupalcode.org/project/js_cookie"
+            }
+        },
+        {
             "name": "drupal/key",
             "version": "1.20.0",
             "source": {
@@ -3073,6 +3478,79 @@
             }
         },
         {
+            "name": "drupal/password_policy",
+            "version": "4.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/password_policy.git",
+                "reference": "4.0.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/password_policy-4.0.3.zip",
+                "reference": "4.0.3",
+                "shasum": "f583ede0ebd749459538d02dd527028d57a4e1ac"
+            },
+            "require": {
+                "drupal/core": "^9.1 || ^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "4.0.3",
+                    "datestamp": "1723552706",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "aohrvetpv",
+                    "homepage": "https://www.drupal.org/user/2760115"
+                },
+                {
+                    "name": "deekayen",
+                    "homepage": "https://www.drupal.org/user/972"
+                },
+                {
+                    "name": "kristen pol",
+                    "homepage": "https://www.drupal.org/user/8389"
+                },
+                {
+                    "name": "miglius",
+                    "homepage": "https://www.drupal.org/user/18741"
+                },
+                {
+                    "name": "nerdstein",
+                    "homepage": "https://www.drupal.org/user/1557710"
+                },
+                {
+                    "name": "paulocs",
+                    "homepage": "https://www.drupal.org/user/3640109"
+                },
+                {
+                    "name": "shrop",
+                    "homepage": "https://www.drupal.org/user/14767"
+                },
+                {
+                    "name": "vishalkhode",
+                    "homepage": "https://www.drupal.org/user/2439156"
+                }
+            ],
+            "description": "Sets up constraints and expiration of passwords.",
+            "homepage": "https://www.drupal.org/project/password_policy",
+            "support": {
+                "source": "https://git.drupalcode.org/project/password_policy",
+                "issues": "https://www.drupal.org/project/issues/password_policy"
+            }
+        },
+        {
             "name": "drupal/pathauto",
             "version": "1.13.0",
             "source": {
@@ -3200,6 +3678,247 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/quick_node_clone",
                 "issues": "https://www.drupal.org/project/issues/quick_node_clone"
+            }
+        },
+        {
+            "name": "drupal/remove_http_headers",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/remove_http_headers.git",
+                "reference": "2.1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/remove_http_headers-2.1.2.zip",
+                "reference": "2.1.2",
+                "shasum": "1dde47df9ed6565c817af9eaaf8fd4dcc4eaf170"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.1.2",
+                    "datestamp": "1728551290",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Orlando Thöny",
+                    "homepage": "https://www.drupal.org/user/291091",
+                    "email": "orlando.thoeny@gmail.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "grevil",
+                    "homepage": "https://www.drupal.org/user/3668491"
+                },
+                {
+                    "name": "guilherme-lima-almeida",
+                    "homepage": "https://www.drupal.org/user/3636010"
+                },
+                {
+                    "name": "marco-s",
+                    "homepage": "https://www.drupal.org/user/3396620"
+                },
+                {
+                    "name": "rdamjanov",
+                    "homepage": "https://www.drupal.org/user/913518"
+                }
+            ],
+            "description": "Removes configured HTTP Response headers.",
+            "homepage": "https://drupal.org/project/remove_http_headers",
+            "keywords": [
+                "Drupal",
+                "HTTP headers",
+                "Security"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/remove_http_headers"
+            }
+        },
+        {
+            "name": "drupal/seckit",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/seckit.git",
+                "reference": "2.0.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/seckit-2.0.3.zip",
+                "reference": "2.0.3",
+                "shasum": "34d38f2daaf99781ef6b7e7fbe2eeabc73a7ca16"
+            },
+            "require": {
+                "drupal/core": "^9.5 || ^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.3",
+                    "datestamp": "1726075930",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "badjava",
+                    "homepage": "https://www.drupal.org/user/83372"
+                },
+                {
+                    "name": "jweowu",
+                    "homepage": "https://www.drupal.org/user/152788"
+                },
+                {
+                    "name": "mcdruid",
+                    "homepage": "https://www.drupal.org/user/255969"
+                },
+                {
+                    "name": "p0deje",
+                    "homepage": "https://www.drupal.org/user/529960"
+                }
+            ],
+            "description": "SecKit provides Drupal with various security-hardening options.",
+            "homepage": "https://www.drupal.org/project/seckit",
+            "keywords": [
+                "Drupal",
+                "security"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/seckit",
+                "issues": "http://drupal.org/project/issues/seckit"
+            }
+        },
+        {
+            "name": "drupal/session_invalidator",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/session_invalidator.git",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/session_invalidator-1.0.0.zip",
+                "reference": "1.0.0",
+                "shasum": "502dd462ccf20cd21e17dc5dd4c03ef052a93c28"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0",
+                    "datestamp": "1712152763",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vinod Kannan",
+                    "homepage": "https://www.drupal.org/user/3614509"
+                }
+            ],
+            "description": "Invalidates all sessions for a user when their password is changed.",
+            "homepage": "https://www.drupal.org/project/session_invalidator",
+            "support": {
+                "source": "https://git.drupalcode.org/project/session_invalidator"
+            }
+        },
+        {
+            "name": "drupal/session_limit",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/session_limit.git",
+                "reference": "2.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/session_limit-2.0.2.zip",
+                "reference": "2.0.2",
+                "shasum": "ff0334f1a11dc9664c43d348db5f87b0184fba21"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.2",
+                    "datestamp": "1720956748",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "deekayen",
+                    "homepage": "https://www.drupal.org/user/972"
+                },
+                {
+                    "name": "ipwa",
+                    "homepage": "https://www.drupal.org/user/130909"
+                },
+                {
+                    "name": "johnennew",
+                    "homepage": "https://www.drupal.org/user/1150042"
+                },
+                {
+                    "name": "paul.moloney",
+                    "homepage": "https://www.drupal.org/user/274172"
+                },
+                {
+                    "name": "suzymasri",
+                    "homepage": "https://www.drupal.org/user/2428842"
+                },
+                {
+                    "name": "VladimirAus",
+                    "homepage": "https://www.drupal.org/user/673120"
+                },
+                {
+                    "name": "xiwar",
+                    "homepage": "https://www.drupal.org/user/3309931"
+                }
+            ],
+            "description": "Limit simultaneous user sessions.",
+            "homepage": "https://www.drupal.org/project/session_limit",
+            "support": {
+                "source": "https://git.drupalcode.org/project/session_limit",
+                "issues": "https://www.drupal.org/project/issues/session_limit"
             }
         },
         {
@@ -8547,5 +9266,5 @@
     "prefer-lowest": false,
     "platform": {},
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }

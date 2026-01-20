@@ -3,6 +3,10 @@
 #
 
 # Protect files and directories from prying eyes.
+
+<FilesMatch "\.md$">
+  Require all denied
+</FilesMatch>
 <FilesMatch "\.(engine|inc|install|make|module|profile|po|sh|.*sql|theme|twig|tpl(\.php)?|xtmpl|yml)(~|\.sw[op]|\.bak|\.orig|\.save)?$|^(\.(?!well-known).*|Entries.*|Repository|Root|Tag|Template|composer\.(json|lock)|web\.config|yarn\.lock|package\.json)$|^#.*#$|\.php(~|\.sw[op]|\.bak|\.orig|\.save)$">
   <IfModule mod_authz_core.c>
     Require all denied
@@ -58,7 +62,22 @@ AddEncoding gzip svgz
 
 # Various rewrite rules.
 <IfModule mod_rewrite.c>
-  RewriteEngine on
+ RewriteEngine On
+
+
+  # Block registration pages for all languages (including default)
+  RewriteCond %{REQUEST_URI} ^/sjvn(/(en|hi))?/user/register/?$ [NC]
+  RewriteRule ^ - [R=404,L]
+
+  # Block password reset pages for all languages
+  RewriteCond %{REQUEST_URI} ^/sjvn(/(en|hi))?/user/password/?$ [NC]
+  RewriteRule ^ - [R=404,L]
+
+  # Pass all other requests to index.php (Drupal front controller)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.php [L]
+
 
   # Set "protossl" to "s" if we were accessed via https://.  This is used later
   # if you enable "www." stripping or enforcement, in order to ensure that
@@ -183,4 +202,72 @@ AddEncoding gzip svgz
   Header always set X-Content-Type-Options nosniff
   # Disable Proxy header, since it's an attack vector.
   RequestHeader unset Proxy
+</IfModule>
+
+
+# ===============================
+# Security Headers
+# ===============================
+
+<IfModule mod_headers.c>
+
+    # Prevent MIME-type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Enable XSS protection (legacy browsers)
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Control referrer information
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Permissions policy (formerly Feature-Policy)
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+
+    # Enforce HTTPS (only if SSL is enabled)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    Header always unset Surrogate-Control
+    Header unset Surrogate-Control
+    Header always unset X-Powered-By
+    Header unset X-Powered-By
+
+</IfModule>
+
+# ===============================
+# Hide PHP Version
+# ===============================
+
+# Disable PHP version exposure
+<IfModule mod_php.c>
+    php_flag expose_php Off
+    php_flag display_errors Off
+</IfModule>
+
+# ===============================
+# Hide Apache Version
+# ===============================
+
+ServerSignature Off
+
+# ===============================
+# Disable Directory Listing
+# ===============================
+
+Options -Indexes
+
+# ===============================
+# Protect Sensitive Files
+# ===============================
+
+<FilesMatch "^(\.env|\.htaccess|\.htpasswd|composer\.json|composer\.lock)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule \.txt$ - [R=404,L]
 </IfModule>

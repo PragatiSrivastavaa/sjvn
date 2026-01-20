@@ -1,0 +1,17 @@
+{
+    "_hash": "da4d24fa6514a7f630a705ffbf671e6f58232c4bdafaceada9ff06c93e325e3c",
+    "patches": {
+        "drupal/flipbook": [
+            {
+                "package": "drupal/flipbook",
+                "description": "Fixes multiple instances and form error",
+                "url": "patches/flipbook-fixes.patch",
+                "sha256": "7cec6b39a8b15c6e21cfe18f61b864f83412ba041d96a3baa2ce5d7588b27364",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}
