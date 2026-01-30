@@ -13,15 +13,15 @@
     <div class="announcement-left">
       <span class="announcement-title">{% if language.getId() == 'hi' %} घोषणाएं 📢{% else %} ANNOUNCEMENTS 📢 {% endif
         %}</span>
+      <!-- Controls moved here -->
+      <div class="announcement-controls">
+        <span class="ann-prev">⟨</span>
+        <span class="ann-pause">⏸</span>
+        <span class="ann-next">⟩</span>
+      </div>
     </div>
     <div class="announcement-track-wrapper">
       {{ page.announcements }}
-    </div>
-    <!-- Right Controls -->
-    <div class="announcement-controls">
-      <span class="ann-prev">⟨</span>
-      <span class="ann-pause">⏸</span>
-      <span class="ann-next">⟩</span>
     </div>
   </div>
   <!-- About Us Section -->

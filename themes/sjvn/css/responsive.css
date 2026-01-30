@@ -715,7 +715,7 @@
   #nav-list ul,
   #superfish-main ul {
     position: static !important;
-    background: var(--primary-light) !important;
+    /* background: var(--primary-light) !important; */
     box-shadow: none !important;
     margin: 0 !important;
     padding: 0 !important;
