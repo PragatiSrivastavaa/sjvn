@@ -158,3 +158,61 @@ div#accordionSidebar {
     font-weight: 600; 
     border-color: #009EDB;
 }
+
+/*================================================= search input css =================================================*/
+.search-block-form-ShowBox {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    gap: 8px;
+}
+#search-block-form {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 260px !important;
+}
+.search-block-form-ShowBox .form-item {
+    flex: 1; /* input full width le */
+}
+
+.search-block-form-ShowBox .form-search {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.search-block-form-ShowBox .form-search:focus {
+    border-color: #009edb;
+}
+
+.search-block-form-ShowBox .form-actions {
+    flex-shrink: 0;
+}
+
+.search-block-form-ShowBox .form-submit {
+    padding: 4px 18px;
+    font-size: 14px;
+        border: 1px solid #009edb;
+    background: #009edb;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    transition: background 0.3s ease;
+}
+
+.search-block-form-ShowBox .form-submit:hover {
+    background: #0056b3;
+}

@@ -10,17 +10,17 @@
  * 2. Controlled expansion of nested submenus via click
  * 3. All levels of nested menus are accessible
  */
-(function() {
+(function () {
   'use strict';
 
   // Wait for DOM to be ready
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     const superfishMain = document.getElementById('superfish-main');
     const navList = document.getElementById('nav-list');
-    
+
     // Setup nav-list scroll controls (new template-based arrows)
     setupNavListScrollControls();
-    
+
     if (!superfishMain) return;
 
     // Function to setup nav-list scroll controls
@@ -28,27 +28,27 @@
       const navList = document.getElementById('nav-list');
       const leftBtn = document.querySelector('.nav-scroll-left');
       const rightBtn = document.querySelector('.nav-scroll-right');
-      
+
       if (!navList || !leftBtn || !rightBtn) return;
-      
+
       // Scroll amount in pixels
       const scrollAmount = 200;
-      
+
       // Handle left arrow click
-      leftBtn.addEventListener('click', function() {
+      leftBtn.addEventListener('click', function () {
         navList.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
       });
-      
+
       // Handle right arrow click
-      rightBtn.addEventListener('click', function() {
+      rightBtn.addEventListener('click', function () {
         navList.scrollBy({ left: scrollAmount, behavior: 'smooth' });
       });
-      
+
       // Update button states based on scroll position
       function updateButtonStates() {
         const scrollLeft = navList.scrollLeft;
         const maxScroll = navList.scrollWidth - navList.clientWidth;
-        
+
         // Disable left button if at start
         if (scrollLeft <= 0) {
           leftBtn.disabled = true;
@@ -57,7 +57,7 @@
           leftBtn.disabled = false;
           leftBtn.style.opacity = '1';
         }
-        
+
         // Disable right button if at end
         if (scrollLeft >= maxScroll - 1) {
           rightBtn.disabled = true;
@@ -67,16 +67,16 @@
           rightBtn.style.opacity = '1';
         }
       }
-      
+
       // Update button states on scroll
       navList.addEventListener('scroll', updateButtonStates);
-      
+
       // Update button states on window resize
       window.addEventListener('resize', updateButtonStates);
-      
+
       // Initial button state update
       updateButtonStates();
-      
+
       // Update after a short delay to account for menu rendering
       setTimeout(updateButtonStates, 500);
     }
@@ -88,28 +88,28 @@
       const submenuRect = submenu.getBoundingClientRect();
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
-      
+
       // Position submenu directly below the menu item
       submenu.style.top = (rect.bottom) + 'px';
       submenu.style.left = rect.left + 'px';
-      
+
       // Check if submenu goes off-screen to the right
       if (rect.left + submenuRect.width > viewportWidth) {
         submenu.style.left = (rect.right - submenuRect.width) + 'px';
       }
-      
+
       // Check if submenu goes off-screen to the bottom
       if (rect.bottom + submenuRect.height > viewportHeight) {
         submenu.style.top = (rect.top - submenuRect.height) + 'px';
       }
-      
+
       // Ensure submenu stays within viewport bounds
       const finalLeft = parseFloat(submenu.style.left);
       if (finalLeft < 0) {
         submenu.style.left = '0px';
       }
     }
-    
+
     // Function to position nested submenu to the right (Level 2+)
     function positionNestedSubmenu(menuItem, submenu) {
       const parentRect = menuItem.getBoundingClientRect();
@@ -117,16 +117,16 @@
       const submenuRect = submenu.getBoundingClientRect();
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
-    
+
       // Reset positioning to default (to the right of parent)
       submenu.style.left = '100%';
       submenu.style.right = 'auto';
       submenu.style.top = '0px';
       submenu.style.marginLeft = '-6px';
-    
+
       // Check if submenu would overflow viewport on the right
       const wouldOverflowRight = parentRect.right + submenuRect.width > viewportWidth - 10;
-      
+
       if (wouldOverflowRight) {
         // Position to the left of parent instead
         submenu.style.left = 'auto';
@@ -134,7 +134,7 @@
         submenu.style.marginLeft = '0px';
         submenu.style.marginRight = '-6px';
       }
-    
+
       // Handle bottom-edge overflow
       const submenuBottom = parentRect.top + submenuRect.height;
       if (submenuBottom > viewportHeight - 10) {
@@ -142,19 +142,19 @@
         submenu.style.top = topAdjustment + 'px';
       }
     }
-    
-    
+
+
     // Function to setup nested submenu behavior
     function setupNestedMenuBehavior() {
       // Mark items with children for styling
       const nestedMenuItems = superfishMain.querySelectorAll('li.menuparent:not(.sf-depth-1)');
-      nestedMenuItems.forEach(function(menuItem) {
+      nestedMenuItems.forEach(function (menuItem) {
         menuItem.classList.add('has-submenu');
       });
-      
+
       console.log('All submenus are positioned as overlays');
     }
-    
+
     // Helper function to determine nesting level
     function getNestingLevel(element) {
       let level = 0;
@@ -177,7 +177,7 @@
 
     // Initialize nested menu behavior immediately
     setupNestedMenuBehavior();
-    
+
     // Run again after a short delay to catch Superfish initialization
     setTimeout(setupNestedMenuBehavior, 100);
     setTimeout(setupNestedMenuBehavior, 500);
@@ -193,27 +193,29 @@
     // Handle hover events for all menu levels
     function setupMenuHoverEvents() {
       const allMenuItems = superfishMain.querySelectorAll('li');
-      
-      allMenuItems.forEach(function(menuItem) {
+
+      allMenuItems.forEach(function (menuItem) {
         const submenu = menuItem.querySelector(':scope > ul');
-        
+
         if (submenu) {
           // Check if this is a main navigation submenu (level 1) or nested
           const parentSubmenu = menuItem.closest('ul');
           const isMainSubmenu = !parentSubmenu || parentSubmenu === superfishMain;
-          
+
           if (isMainSubmenu) {
             // Level 1: Show submenu below
-            menuItem.addEventListener('mouseenter', function() {
+            menuItem.addEventListener('mouseenter', function () {
+              if (window.innerWidth < 992) return; // Disable hover on mobile/tablet
               positionSubmenu(menuItem, submenu);
-              
+
               submenu.style.transitionDelay = '0s';
               submenu.style.opacity = '1';
               submenu.style.visibility = 'visible';
               submenu.style.transform = 'translateY(0)';
             });
-            
-            menuItem.addEventListener('mouseleave', function() {
+
+            menuItem.addEventListener('mouseleave', function () {
+              if (window.innerWidth < 992) return;
               submenu.style.transitionDelay = '0.1s';
               submenu.style.opacity = '0';
               submenu.style.visibility = 'hidden';
@@ -222,41 +224,45 @@
           } else {
             // Level 2+: Show submenu to the right
             let hideTimeout;
-            
-            menuItem.addEventListener('mouseenter', function() {
+
+            menuItem.addEventListener('mouseenter', function () {
+              if (window.innerWidth < 992) return;
               // Clear any pending hide timeout
               clearTimeout(hideTimeout);
-              
+
               positionNestedSubmenu(menuItem, submenu);
-              
+
               submenu.style.transitionDelay = '0s';
               submenu.style.opacity = '1';
               submenu.style.visibility = 'visible';
               submenu.style.transform = 'translateX(0)';
             });
-            
-            menuItem.addEventListener('mouseleave', function() {
+
+            menuItem.addEventListener('mouseleave', function () {
+              if (window.innerWidth < 992) return;
               // Delay hiding to allow mouse movement to submenu - increased to 300ms for easier access
-              hideTimeout = setTimeout(function() {
+              hideTimeout = setTimeout(function () {
                 submenu.style.transitionDelay = '0s';
                 submenu.style.opacity = '0';
                 submenu.style.visibility = 'hidden';
                 submenu.style.transform = 'translateX(-10px)';
               }, 300); // 300ms delay for easier navigation
             });
-            
+
             // Keep submenu visible when mouse enters it
-            submenu.addEventListener('mouseenter', function() {
+            submenu.addEventListener('mouseenter', function () {
+              if (window.innerWidth < 992) return;
               clearTimeout(hideTimeout);
               submenu.style.transitionDelay = '0s';
               submenu.style.opacity = '1';
               submenu.style.visibility = 'visible';
               submenu.style.transform = 'translateX(0)';
             });
-            
-            submenu.addEventListener('mouseleave', function() {
+
+            submenu.addEventListener('mouseleave', function () {
+              if (window.innerWidth < 992) return;
               // Delay hiding when leaving submenu as well
-              hideTimeout = setTimeout(function() {
+              hideTimeout = setTimeout(function () {
                 submenu.style.transitionDelay = '0s';
                 submenu.style.opacity = '0';
                 submenu.style.visibility = 'hidden';
@@ -267,23 +273,77 @@
         }
       });
     }
-    
+
     // Initialize hover events
     setupMenuHoverEvents();
-    
+
+    // MOBILE MENU CLICK HANDLER
+    function setupMobileMenuClicks() {
+      const parentLinks = superfishMain.querySelectorAll('li.menuparent > a');
+
+      parentLinks.forEach(function (link) {
+        // Remove any existing click listeners to avoid double firing
+        link.removeEventListener('click', mobileClickHandler);
+        link.addEventListener('click', mobileClickHandler);
+      });
+    }
+
+    function mobileClickHandler(e) {
+      // Only apply this logic on mobile and tablet view (up to 992px)
+      if (window.innerWidth < 992) {
+        const parentLi = this.parentElement;
+        const submenu = parentLi.querySelector(':scope > ul');
+
+        if (submenu) {
+          // 🚫 Stop navigation and hover events
+          e.preventDefault();
+          e.stopPropagation();
+
+          const isOpen = parentLi.classList.contains('is-open');
+
+          // Close sibling submenus (accordion effect)
+          const siblings = parentLi.parentElement.querySelectorAll(':scope > li.menuparent');
+          siblings.forEach(li => {
+            if (li !== parentLi) li.classList.remove('is-open');
+          });
+
+          // Toggle current submenu
+          if (isOpen) {
+            parentLi.classList.remove('is-open');
+            // Clear inline styles to ensure static positioning works
+            submenu.style.top = '';
+            submenu.style.left = '';
+            submenu.style.transform = '';
+          } else {
+            parentLi.classList.add('is-open');
+            // Ensure inline styles don't conflict with accordion layout
+            submenu.style.top = '';
+            submenu.style.left = '';
+            submenu.style.transform = '';
+          }
+        }
+      }
+    }
+
+    // Initialize mobile clicks
+    setupMobileMenuClicks();
+
     // Reposition visible submenus on window resize and scroll
     let resizeTimeout;
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', function () {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(function() {
+      resizeTimeout = setTimeout(function () {
+        // Only reposition on desktop
+        if (window.innerWidth < 992) return;
+
         // Reposition all visible submenus
         const allSubmenus = superfishMain.querySelectorAll('ul');
-        allSubmenus.forEach(function(submenu) {
+        allSubmenus.forEach(function (submenu) {
           const menuItem = submenu.parentElement;
           if (submenu.style.visibility === 'visible' || submenu.style.opacity === '1') {
             const parentSubmenu = menuItem.closest('ul');
             const isMainSubmenu = !parentSubmenu || parentSubmenu === superfishMain;
-            
+
             if (isMainSubmenu) {
               positionSubmenu(menuItem, submenu);
             } else {
@@ -293,16 +353,19 @@
         });
       }, 100);
     });
-    
-    window.addEventListener('scroll', function() {
+
+    window.addEventListener('scroll', function () {
+      // Only reposition on desktop
+      if (window.innerWidth < 992) return;
+
       // Reposition all visible submenus on scroll
       const allSubmenus = superfishMain.querySelectorAll('ul');
-      allSubmenus.forEach(function(submenu) {
+      allSubmenus.forEach(function (submenu) {
         const menuItem = submenu.parentElement;
         if (submenu.style.visibility === 'visible' || submenu.style.opacity === '1') {
           const parentSubmenu = menuItem.closest('ul');
           const isMainSubmenu = !parentSubmenu || parentSubmenu === superfishMain;
-          
+
           if (isMainSubmenu) {
             positionSubmenu(menuItem, submenu);
           } else {
@@ -318,41 +381,41 @@
       const level2Menus = superfishMain.querySelectorAll('ul > li');
       const level3Menus = superfishMain.querySelectorAll('ul ul > li');
       const level4Menus = superfishMain.querySelectorAll('ul ul ul > li');
-      
+
       console.log('=== Menu Level Debug ===');
       console.log('Level 1 menu items:', level1Menus.length);
       console.log('Level 2 menu items:', level2Menus.length);
       console.log('Level 3 menu items:', level3Menus.length);
       console.log('Level 4 menu items:', level4Menus.length);
-      
+
       // Check which items have submenus
-      level2Menus.forEach(function(item, index) {
+      level2Menus.forEach(function (item, index) {
         const submenu = item.querySelector('ul');
         if (submenu) {
           console.log(`Level 2 item ${index + 1} has submenu:`, item.textContent.trim());
         }
       });
-      
-      level3Menus.forEach(function(item, index) {
+
+      level3Menus.forEach(function (item, index) {
         const submenu = item.querySelector('ul');
         if (submenu) {
           console.log(`Level 3 item ${index + 1} has submenu:`, item.textContent.trim());
         }
       });
-      
-      level4Menus.forEach(function(item, index) {
+
+      level4Menus.forEach(function (item, index) {
         const submenu = item.querySelector('ul');
         if (submenu) {
           console.log(`Level 4 item ${index + 1} has submenu:`, item.textContent.trim());
         }
       });
     }
-    
+
     // Run debug function
     debugAllMenuLevels();
 
     // Initialize nested menu behavior
-    setTimeout(function() {
+    setTimeout(function () {
       setupNestedMenuBehavior();
       console.log('Nested submenu hover behavior initialized');
     }, 1000);
@@ -360,7 +423,7 @@
     // Handle Superfish initialization if it exists
     if (typeof Drupal !== 'undefined' && Drupal.behaviors.superfish) {
       // Wait for Superfish to initialize
-      setTimeout(function() {
+      setTimeout(function () {
         setupNestedMenuBehavior();
         setupMenuHoverEvents(); // Re-setup events after Superfish loads
         debugAllMenuLevels(); // Debug again after Superfish loads

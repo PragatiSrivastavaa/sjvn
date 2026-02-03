@@ -414,12 +414,43 @@ body.lang-hi ul.links li[hreflang="hi"] {
 /* Mobile Responsive for Announcement Bar */
 @media (max-width: 768px) {
   .announcement-bar {
-    padding: 8px 10px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    overflow: visible;
+  }
+
+  .announcement-left {
+    width: 100%;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    padding: 8px 15px;
+    border-radius: 4px;
+    white-space: normal;
+  }
+
+  .announcement-title {
+    font-size: 0.9rem;
+    margin-bottom: 0;
   }
 
   .announcement-controls {
-    justify-content: center;
-    margin-top: 3px;
+    justify-content: flex-end;
+    margin-top: 0;
+    gap: 8px;
+  }
+
+  .announcement-controls span {
+    padding: 4px 10px;
+    font-size: 0.9rem;
+  }
+
+  .announcement-track-wrapper {
+    width: 100%;
+    margin-top: 0;
+    border-radius: 4px;
+    padding: 8px;
   }
 }
 
@@ -990,7 +1021,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
 .power-station-section h3 {
   color: var(--primary-color) !important;
   line-height: 30px !important;
-  margin-bottom: 0 !important;
+  margin-bottom: 10px !important;
 }
 
 /* Custom carousel wrapper - prevent Bootstrap interference */
@@ -2019,7 +2050,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
 
 #superfish-main>li.menuparent:hover>a:after,
 #superfish-main>li:has(> ul):hover>a:after {
-  transform: rotate(180deg);
+  transform: rotate(60deg);
 }
 
 /* Add arrow indicator for nested submenu items (all levels) */
@@ -2137,6 +2168,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
   padding: 0px 80px;
   box-shadow: 0px 2px 6px var(--primary-light);
   gap: 30px;
+  padding-bottom: 10px;
   margin-bottom: 30px;
   min-height: 300px;
 }
@@ -2597,7 +2629,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
   scroll-behavior: smooth;
   scrollbar-width: none;
   margin: 0px 10px;
-  padding-top: 70px;
+  padding-top: 72px;
 }
 
 .quick-links-container::-webkit-scrollbar {
@@ -2664,12 +2696,12 @@ body.lang-hi ul.links li[hreflang="hi"] {
 
 /* Make image height consistent & centered */
 .quick-card img {
-  height: 80px;
-  width: 80px;
+  height: 90px;
+  width: 90px;
   position: absolute;
   object-fit: cover;
   margin-bottom: 10px;
-  top: -50px;
+  top: -60px;
   border: 1px solid #ddd;
   transition: transform 0.3s ease;
   border-radius: 50%;
