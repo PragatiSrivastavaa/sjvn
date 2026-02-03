@@ -13,7 +13,7 @@ third_party_settings:
     translation_sync:
       target_id: target_id
       display: display
-      description: description
+      description: '0'
 id: node.energy_bill.field_upload_files
 field_name: field_upload_files
 entity_type: node
@@ -30,5 +30,5 @@ settings:
   file_directory: '[date:custom:Y]-[date:custom:m]'
   file_extensions: 'txt pdf mp3 html xls xlsx'
   max_filesize: ''
-  description_field: true
+  description_field: false
 field_type: file

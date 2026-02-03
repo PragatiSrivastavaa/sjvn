@@ -1,80 +1,93 @@
 <section>
-  {% set current_group = '' %}
+  {# Step 1: Group rows by month and bill type (taxonomy term) #}
+  {% set grouped = {} %}
 
   {% for row in rows %}
     {% set entity = row.content['#row']._entity %}
-    {% set month_year = entity.field_month.entity.label ~ ' — ' ~ entity.field_year.entity.label %}
 
-    {# When month-year changes, close previous group and start new #}
-    {% if month_year != current_group %}
-      {% if current_group != '' %}
-          </div> <!-- Close previous accordion-body -->
-        </div> <!-- Close previous accordion-item -->
-      </div> <!-- Close previous accordion -->
-      {% endif %}
+    {# Safe access for multi-value fields #}
+    {% set month_label = entity.field_month[0].entity.label ?? '' %}
+    {% set year_label = entity.field_year[0].entity.label ?? '' %}
+    {% set month_year = month_label ~ ' ' ~ year_label %}
 
-      <div class="accordion mb-3" id="accordion-{{ loop.index }}">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="heading-{{ loop.index }}">
-            <button class="accordion-button {% if current_group != '' %}collapsed{% endif %}" type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#month-{{ loop.index }}"
-                    aria-expanded="{{ current_group == '' ? 'true' : 'false' }}"
-                    aria-controls="month-{{ loop.index }}">
-              {{ month_year }}
-            </button>
-          </h2>
-          <div id="month-{{ loop.index }}"
-               class="accordion-collapse collapse {% if current_group == '' %}show{% endif %}"
-               aria-labelledby="heading-{{ loop.index }}"
-               data-bs-parent="#accordion-{{ loop.index }}">
-            <div class="accordion-body">
-    {% set current_group = month_year %}
+    {# Correct bill type field: taxonomy term reference #}
+    {% set bill_type = entity.field_energy_bill_type_and_categ[0].entity.label ?? 'Other' %}
+
+    {# Initialize grouped arrays if not exist #}
+    {% if grouped[month_year] is not defined %}
+      {% set grouped = grouped|merge({ (month_year) : {} }) %}
+    {% endif %}
+    {% if grouped[month_year][bill_type] is not defined %}
+      {% set grouped = grouped|merge({ (month_year) : grouped[month_year]|merge({ (bill_type) : [] }) }) %}
     {% endif %}
 
-    {# Bill Type Accordion inside each Month-Year group #}
-    <div class="accordion mb-2" id="accordion-{{ loop.index }}-bill">
+    {# Add entity to the correct month/bill_type group #}
+    {% set grouped = grouped|merge({
+      (month_year) : grouped[month_year]|merge({
+        (bill_type) : grouped[month_year][bill_type] | merge([entity])
+      })
+    }) %}
+  {% endfor %}
+
+  {# Step 2: Loop over grouped data to build nested accordions #}
+  {% set month_index = 0 %}
+  {% for month, bills in grouped %}
+    {% set month_index = month_index + 1 %}
+    <div class="accordion mb-3" id="month-accordion-{{ month_index }}">
       <div class="accordion-item">
-        <h2 class="accordion-header" id="heading-{{ loop.index }}-1">
-          <button class="accordion-button collapsed" type="button"
+        <h2 class="accordion-header">
+          <button class="accordion-button {% if month_index != 1 %}collapsed{% endif %}"
                   data-bs-toggle="collapse"
-                  data-bs-target="#collapse-{{ loop.index }}-1"
-                  aria-expanded="false"
-                  aria-controls="collapse-{{ loop.index }}-1">
-            {{ entity.field_bill_type.value }}
+                  data-bs-target="#month-collapse-{{ month_index }}"
+                  aria-expanded="{{ month_index == 1 ? 'true' : 'false' }}">
+            {{ month }}
           </button>
         </h2>
 
-        <div id="collapse-{{ loop.index }}-1"
-             class="accordion-collapse collapse"
-             aria-labelledby="heading-{{ loop.index }}-1"
-             data-bs-parent="#accordion-{{ loop.index }}-bill">
+        <div id="month-collapse-{{ month_index }}"
+             class="accordion-collapse collapse {% if month_index == 1 %}show{% endif %}">
           <div class="accordion-body">
-            <ul class="result-list no-even mb-0">
-              {% for file_item in entity.field_upload_files %}
-                {% set file_entity = file_item.entity %}
-                {% if file_entity %}
-                  <li>
-                    <a href="{{ file_url(file_entity.fileuri) }}" target="_blank">
-                      <p>{{ file_item.description ?: 'No description provided' }}</p>
-                      <span class="icon-pdf"></span>
-                    </a>
-                  </li>
-                {% endif %}
-              {% else %}
-                <li>No files uploaded</li>
+            <div class="accordion" id="bill-accordion-{{ month_index }}">
+              {% set bill_index = 0 %}
+              {% for bill, entities in bills %}
+                {% set bill_index = bill_index + 1 %}
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button {% if bill_index != 1 %}collapsed{% endif %}"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#bill-collapse-{{ month_index }}-{{ bill_index }}"
+                            aria-expanded="{{ bill_index == 1 ? 'true' : 'false' }}">
+                      {{ bill }}
+                    </button>
+                  </h2>
+
+                  <div id="bill-collapse-{{ month_index }}-{{ bill_index }}"
+                       class="accordion-collapse collapse {% if bill_index == 1 %}show{% endif %}">
+                    <div class="accordion-body">
+                      <ul class="result-list no-even mb-0">
+                        {% for entity in entities %}
+                          {% if entity.field_upload_files is defined and entity.field_upload_files|length %}
+                            {% for file_item in entity.field_upload_files %}
+                              {% if file_item.entity is defined and file_item.entity %}
+                                <li>
+                                  <a href="{{ file_url(file_item.entity.fileuri) }}" target="_blank">
+                                    <p>{{ entity.title.value ?? 'Untitled' }}</p>
+                                    <span class="icon-pdf"></span>
+                                  </a>
+                                </li>
+                              {% endif %}
+                            {% endfor %}
+                          {% endif %}
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               {% endfor %}
-            </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    {# Close the last group after loop ends #}
-    {% if loop.last %}
-          </div> <!-- Close accordion-body -->
-        </div> <!-- Close accordion-item -->
-      </div> <!-- Close accordion -->
-    {% endif %}
   {% endfor %}
 </section>
