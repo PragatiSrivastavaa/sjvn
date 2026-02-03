@@ -1,36 +1,36 @@
 console.log("✅ script.js is loading");
 
 // search box toggle
-jQuery(document).ready(function($){
-	
-	
-	$('.set h2, .set h3, .set h4, .set h5').on('click', function () {
+jQuery(document).ready(function ($) {
 
-  const $heading = $(this);
 
-  if ($heading.hasClass('active')) {
-    $heading.removeClass('active');
-    $heading.find('button').attr('aria-expanded', false);
-    $heading.parents('.set').removeClass('active-tab');
-    $heading.siblings('.acc-content').slideUp(200);
-    $heading.find('svg').removeClass('fa-minus').addClass('fa-plus');
-  } else {
-    $heading.find('svg').removeClass('fa-plus').addClass('fa-minus');
-    $heading.addClass('active');
-    $heading.find('button').attr('aria-expanded', true);
-    $heading.parents('.set').addClass('active-tab');
-    $heading.siblings('.acc-content').slideDown(200);
+  $('.set h2, .set h3, .set h4, .set h5').on('click', function () {
 
-    /* 👉 Scroll to clicked heading */
-    $('html, body').animate({
-      scrollTop: $heading.offset().top - 100
-    }, 400);
-  }
-});
+    const $heading = $(this);
 
-	
-	
-  $(".search-btn a").click(function(e){
+    if ($heading.hasClass('active')) {
+      $heading.removeClass('active');
+      $heading.find('button').attr('aria-expanded', false);
+      $heading.parents('.set').removeClass('active-tab');
+      $heading.siblings('.acc-content').slideUp(200);
+      $heading.find('svg').removeClass('fa-minus').addClass('fa-plus');
+    } else {
+      $heading.find('svg').removeClass('fa-plus').addClass('fa-minus');
+      $heading.addClass('active');
+      $heading.find('button').attr('aria-expanded', true);
+      $heading.parents('.set').addClass('active-tab');
+      $heading.siblings('.acc-content').slideDown(200);
+
+      /* 👉 Scroll to clicked heading */
+      $('html, body').animate({
+        scrollTop: $heading.offset().top - 100
+      }, 400);
+    }
+  });
+
+
+
+  $(".search-btn a").click(function (e) {
     e.preventDefault();
     $("#search-block-form").toggleClass("search-block-form-ShowBox");
   });
@@ -181,30 +181,120 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.querySelector(".announcement-track-wrapper");
   const track = document.querySelector(".announcement-track");
   const pauseBtn = document.querySelector(".ann-pause");
   const prevBtn = document.querySelector(".ann-prev");
   const nextBtn = document.querySelector(".ann-next");
 
+  if (!wrapper || !track || !pauseBtn || !prevBtn || !nextBtn) return;
+
+  // Clone items TWICE to ensure a perfectly seamless loop without gaps
+  const items = Array.from(track.children);
+  const oneSetWidth = track.scrollWidth; // get initial width
+
+  items.forEach(item => track.appendChild(item.cloneNode(true)));
+  items.forEach(item => track.appendChild(item.cloneNode(true)));
+
   let isPaused = false;
+  let isNavigating = false;
+  let scrollPos = 0;
+  const speed = 0.5;
+  let navTimeout = null;
+
+  function ticker() {
+    if (!isPaused && !isNavigating) {
+      scrollPos += speed;
+      // When we reach the end of the first set, jump back quietly
+      if (scrollPos >= oneSetWidth) {
+        scrollPos = 0;
+      }
+      wrapper.scrollLeft = scrollPos;
+    }
+    requestAnimationFrame(ticker);
+  }
+
+  const syncState = () => {
+    let currentX = wrapper.scrollLeft;
+    // Keep internal scrollPos within the first set range
+    if (currentX >= oneSetWidth) {
+      currentX = currentX % oneSetWidth;
+      wrapper.scrollLeft = currentX;
+    }
+    scrollPos = currentX;
+  };
+
+  const setPause = (paused) => {
+    isPaused = paused;
+    pauseBtn.textContent = isPaused ? "▶" : "⏸";
+  };
 
   pauseBtn.addEventListener("click", () => {
     if (isPaused) {
-      track.style.animationPlayState = "running";
-      pauseBtn.textContent = "⏸";
+      if (navTimeout) clearTimeout(navTimeout);
+      isNavigating = false;
+      syncState();
+      setPause(false);
     } else {
-      track.style.animationPlayState = "paused";
-      pauseBtn.textContent = "▶";
+      setPause(true);
     }
-    isPaused = !isPaused;
   });
 
-  prevBtn.addEventListener("click", () => {
-    track.scrollLeft -= 150;
+  const moveToIndex = (direction) => {
+    if (navTimeout) clearTimeout(navTimeout);
+    isNavigating = true;
+    setPause(true);
+
+    const allItems = Array.from(track.children);
+    const currentX = wrapper.scrollLeft;
+    let targetX = currentX;
+    const tolerance = 20;
+
+    if (direction === "next") {
+      for (let item of allItems) {
+        if (item.offsetLeft > currentX + tolerance) {
+          targetX = item.offsetLeft;
+          break;
+        }
+      }
+    } else {
+      for (let i = allItems.length - 1; i >= 0; i--) {
+        if (allItems[i].offsetLeft < currentX - tolerance) {
+          targetX = allItems[i].offsetLeft;
+          break;
+        }
+      }
+    }
+
+    wrapper.scrollTo({
+      left: targetX,
+      behavior: "smooth"
+    });
+
+    navTimeout = setTimeout(() => {
+      syncState();
+      isNavigating = false;
+      navTimeout = null;
+    }, 600);
+  };
+
+  nextBtn.addEventListener("click", () => moveToIndex("next"));
+  prevBtn.addEventListener("click", () => moveToIndex("prev"));
+
+  requestAnimationFrame(ticker);
+
+  wrapper.addEventListener("scroll", () => {
+    if (isPaused && !isNavigating) {
+      syncState();
+    }
   });
 
-  nextBtn.addEventListener("click", () => {
-    track.scrollLeft += 150;
+  wrapper.addEventListener("mouseenter", () => setPause(true));
+  wrapper.addEventListener("mouseleave", () => {
+    if (pauseBtn.textContent === "⏸") {
+      syncState();
+      setPause(false);
+    }
   });
 });
 
@@ -217,36 +307,28 @@ const rightButton = document.querySelector('.power-station-carousel-button.right
 let activeIndex = 2; // start from center item
 
 function updateCarousel() {
+  const total = items.length;
   items.forEach((item, index) => {
-    item.className = 'power-item'; // reset classes
-    
-    // Calculate relative position to active item
-    const relativePosition = index - activeIndex;
-    
-    if (relativePosition === 0) {
-      // Active item
+    item.className = 'power-item';
+    item.style.display = 'flex';
+
+    // Calculate circular relative position
+    let diff = index - activeIndex;
+    if (diff > total / 2) diff -= total;
+    if (diff <= -total / 2) diff += total;
+
+    if (diff === 0) {
       item.classList.add('active');
-    } else if (relativePosition === -1) {
-      // Left adjacent
+    } else if (diff === -1) {
       item.classList.add('left1');
-    } else if (relativePosition === -2) {
-      // Left second
+    } else if (diff === -2) {
       item.classList.add('left2');
-    } else if (relativePosition === 1) {
-      // Right adjacent
+    } else if (diff === 1) {
       item.classList.add('right1');
-    } else if (relativePosition === 2) {
-      // Right second
+    } else if (diff === 2) {
       item.classList.add('right2');
-    } else if (relativePosition === -3) {
-      // Left third - show as hidden but visible
-      item.classList.add('hidden');
-    } else if (relativePosition === 3) {
-      // Right third - show as hidden but visible
-      item.classList.add('hidden');
     } else {
-      // Completely hidden items (more than 3 positions away)
-      item.style.display = 'none';
+      item.classList.add('hidden');
     }
   });
 }

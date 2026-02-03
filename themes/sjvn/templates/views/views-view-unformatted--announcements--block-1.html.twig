@@ -19,13 +19,11 @@
 
 
       <!-- Center (Scrolling Track) -->
-      <div class="announcement-track-wrapper">
         <div class="announcement-track">
 		{% for row in rows %}
           <span class="announcement-item">{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}</span>
         {% endfor %}
         </div>
-      </div>
 
 
 

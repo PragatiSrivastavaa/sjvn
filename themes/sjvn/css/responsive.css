@@ -203,12 +203,12 @@
     font-size: 20px !important;
     top: 55% !important;
   }
-  
+
   .power-station-section .carousel-button.left,
   .power-station-section .power-station-carousel-button.left {
     left: 10px !important;
   }
-  
+
   .power-station-section .carousel-button.right,
   .power-station-section .power-station-carousel-button.right {
     right: 10px !important;
@@ -223,7 +223,7 @@
   .photo-gallery-section {
     padding: 25px 20px;
   }
-  
+
   .quick-links-wrapper .quick-arrow {
     width: 40px !important;
     height: 40px !important;
@@ -292,13 +292,13 @@
 /* ============================================
    DESKTOP - NEUTRALIZE BOOTSTRAP, KEEP ORIGINAL DESIGN
    ============================================ */
-@media (min-width: 576px) {
-  
+@media (min-width: 992px) {
+
   /* Hide hamburger completely */
   .navbar-toggler {
     display: none !important;
   }
-  
+
   /* Reset all Bootstrap navbar classes - don't interfere with desktop */
   .navbar,
   .navbar-expand-sm,
@@ -315,9 +315,9 @@
     position: relative !important;
     overflow: visible !important;
   }
-  
+
   /* Reset navbar-collapse - make it behave normally */
-.navbar-collapse,
+  .navbar-collapse,
   .navbar-collapse.collapse,
   .navbar-collapse.collapse,
   .navbar-collapse.show {
@@ -337,8 +337,8 @@
     transition: none !important;
     transform: none !important;
     width: 100% !important;
-  } 
-  
+  }
+
   /* Ensure main-nav and main-nav-inner keep original styles */
   .main-nav,
   nav.main-nav,
@@ -354,7 +354,7 @@
   }
 
   .main-nav-inner,
-  nav.main-nav-inner{
+  nav.main-nav-inner {
     display: flex !important;
     align-items: center !important;
     padding: 4px !important;
@@ -366,7 +366,7 @@
     align-items: center !important;
     background: var(--primary-light) !important;
   }
-  
+
   /* Keep #nav-list original desktop layout - SCROLLABLE */
   #nav-list {
     display: flex !important;
@@ -390,11 +390,11 @@
     padding: 0 !important;
     color: #f8fcff !important;
   }
-  
+
   #nav-list::-webkit-scrollbar {
     display: none !important;
   }
-  
+
   /* Superfish menu inside nav-list */
   #superfish-main {
     display: flex !important;
@@ -414,12 +414,12 @@
     padding: 0 !important;
     list-style: none !important;
   }
-  
+
   #superfish-main::-webkit-scrollbar {
     display: none !important;
   }
-  
-  #superfish-main > li {
+
+  #superfish-main>li {
     list-style: none !important;
     display: flex !important;
     align-items: center !important;
@@ -430,7 +430,7 @@
     height: 42px !important;
     max-height: 42px !important;
   }
-  
+
   #superfish-main a {
     /* color: white !important; */
     text-decoration: none !important;
@@ -441,7 +441,7 @@
     height: 32px !important;
     box-sizing: border-box !important;
   }
-  
+
   /* Keep original home link position */
   .home-link {
     position: absolute !important;
@@ -451,7 +451,7 @@
     z-index: 101 !important;
     flex-shrink: 0 !important;
   }
-  
+
   /* Keep scroll controls in original position */
   .nav-scroll-controls {
     position: absolute !important;
@@ -462,17 +462,17 @@
     gap: 5px !important;
     z-index: 101 !important;
   }
-  
+
   /* Hide mobile menu header on desktop */
   .mobile-menu-header {
     display: none !important;
   }
 }
 
-/* Mobile menu styles - ONLY below 576px */
-@media (max-width: 575.98px) {
-  
-  /* Show hamburger button on mobile */
+/* Mobile menu styles - ONLY below 992px */
+@media (max-width: 991.98px) {
+
+  /* Hamburger Toggle Button */
   .navbar-toggler {
     display: block !important;
     position: absolute;
@@ -485,336 +485,443 @@
     border-radius: 4px;
     background: rgba(255, 255, 255, 0.1);
   }
-  
+
   .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     width: 24px;
     height: 20px;
     filter: invert(1);
   }
-  
-  /* Mobile Menu Header with Close Button */
-  .mobile-menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    backdrop-filter: blur(10px);
-  }
-  
-  .mobile-menu-header h3 {
-    margin: 0;
-    color: #070707;
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-  
-  .mobile-close-btn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    color: #000000;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: all 0.2s ease;
-  }
-  
-  .mobile-close-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: rotate(90deg);
-  }
-  
-  .mobile-close-btn:active {
-    background: rgba(255, 255, 255, 0.25);
-    transform: rotate(90deg) scale(0.95);
-  }
-  
-  .mobile-close-btn svg {
-    pointer-events: none;
-  }
-  
-  /* Move home icon to make space for hamburger */
-  .main-nav .home-link,
-  .main-nav-inner .home-link {
-    left: 60px !important;
-  }
-  
-  /* Mobile drawer - slide in from left */
+
+  /* SIDE DRAWER (SIDEBAR) CORE */
   .navbar-collapse {
     position: fixed !important;
     top: 0;
     left: -100%;
-    width: 280px;
-    max-width: 80%;
+    /* Fully hidden by default */
+    width: 300px !important;
+    max-width: 300px !important;
     height: 100vh;
-    background: var(--primary-color) !important;
-    z-index: 1050;
-    overflow-y: auto;
-    transition: left 0.3s ease-in-out;
-    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
-    padding: 0;
+    background: linear-gradient(180deg, #007cb1 0%, #004b88 100%) !important;
+    z-index: 2000;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.4);
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
-  
-  /* Inner pages - Light background with dark text */
+
+  /* Inner Page Version - Unified Dark Sidebar for High Contrast */
   body:not(.path-frontpage) .navbar-collapse {
-    background: var(--primary-light) !important;
+    background: linear-gradient(180deg, #007cb1 0%, #004b88 100%) !important;
   }
-  
-  /* Show menu when expanded */
-  .navbar-collapse.show,
-  .navbar-collapse.collapsing {
+
+  .navbar-collapse.show {
     left: 0 !important;
   }
-  
-  /* Backdrop overlay */
-  .navbar-collapse.show::before {
+
+  /* Backdrop Overlay */
+  .navbar-collapse.show::after {
     content: '';
     position: fixed;
     top: 0;
-    left: 280px;
-    width: calc(100vw - 280px);
+    left: 0;
+    width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     z-index: -1;
-    animation: fadeIn 0.3s ease;
+    animation: fadeIn 0.4s ease forwards;
   }
-  
+
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
-  
-  /* Prevent body scroll when drawer is open */
+
+  /* Prevent Scroll when Menu Open */
   body:has(.navbar-collapse.show) {
-    overflow: hidden;
+    overflow: hidden !important;
   }
-  
-  /* Mobile menu header */
-  .navbar-collapse::before {
-    content: 'Menu';
-    display: block;
-    padding: 6px 12px;
-    background: rgba(0, 0, 0, 0.2);
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 600;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Inner pages - Menu header with primary color text */
-  body:not(.path-frontpage) .navbar-collapse::before {
-    background: rgba(0, 0, 0, 0.05);
-    color: var(--primary-color);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Mobile menu header */
-  .navbar-collapse::before {
-    content: 'Menu';
-    display: block;
-    padding: 6px 12px;
-    background: rgba(0, 0, 0, 0.2);
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 600;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Inner pages - Menu header with primary color text */
-  body:not(.path-frontpage) .navbar-collapse::before {
-    background: rgba(0, 0, 0, 0.05);
-    color: var(--primary-color);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Mobile menu list */
-  #nav-list {
+
+  /* Sidebar Header */
+  .mobile-menu-header {
     display: flex !important;
-    flex-direction: column !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    gap: 0 !important;
-    width: 100% !important;
-    height: auto !important;
-    overflow: visible !important;
-    list-style: none !important;
-  }
-  
-  /* Superfish menu for inner pages - mobile layout */
-  .main-nav-inner #superfish-main {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #004b88 !important;
+    /* Branded Primary Dark Blue */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
     width: 100%;
-    margin: 0 !important;
-    padding: 0;
   }
-  
-  /* Mobile menu items - target Superfish items */
-  #nav-list li,
-  #superfish-main > li {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    width: 100% !important;
-    display: block !important;
-    height: auto !important;
-    max-height: none !important;
-  }
-  
-  /* Inner pages - Darker border */
-  body:not(.path-frontpage) #nav-list li,
-  body:not(.path-frontpage) #superfish-main > li {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-  }
-  
-  #nav-list li a,
-  #superfish-main > li > a {
-    display: block !important;
-    padding: 8px 12px !important;
-    color: #fff !important;
-    text-decoration: none !important;
-    white-space: normal !important;
-    height: auto !important;
-    line-height: 1.1 !important;
-    font-size: 13.5px !important;
-  }
-  
-  /* Inner pages - Primary color text */
-  body:not(.path-frontpage) #nav-list li a,
-  body:not(.path-frontpage) #superfish-main > li > a {
-    color: var(--primary-color) !important;
-  }
-  
-  #nav-list li a:hover,
-  #superfish-main > li > a:hover {
-    background: rgba(255, 255, 255, 0.15) !important;
-  }
-  
-  /* Inner pages - Darker hover */
-  body:not(.path-frontpage) #nav-list li a:hover,
-  body:not(.path-frontpage) #superfish-main > li > a:hover {
-    background: rgba(0, 0, 0, 0.05) !important;
-  }
-  
-  /* Hide scroll controls on mobile */
-  .nav-scroll-controls {
-    display: none !important;
-  }
-  
-  /* Mobile submenus - make them static and visible */
-  #nav-list ul,
-  #superfish-main ul {
-    position: static !important;
-    background: var(--primary-light) !important;
-    box-shadow: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    height: auto !important;
-    width: 100% !important;
-    display: none;
-  }
-  
-  /* Sub-submenus - even darker */
-  #nav-list ul ul {
-    background: var(--primary-color) !important; /* Darker for nested */
-  }
-  
-  #nav-list ul ul ul {
-    background: var(--primary-color) !important; /* Even darker for deep nesting */
-  }
-  
-  #nav-list ul li {
+
+  body:not(.path-frontpage) .mobile-menu-header {
+    background: #004b88 !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
-  /* Inner pages - Lighter submenu background */
-  body:not(.path-frontpage) #nav-list ul,
+
   body:not(.path-frontpage) #superfish-main ul {
-    background: rgba(0, 0, 0, 0.05) !important;
+    background-color: #004b88 !important;
+    border-left: 4px solid #F6AD0A !important;
+    max-height: 400px !important;
+    overflow: auto !important;
   }
-  
-  /* Show submenu when parent is hovered/tapped */
-  #nav-list li:hover > ul,
-  #superfish-main li:hover > ul,
-  #nav-list li.sfHover > ul,
-  #superfish-main li.sfHover > ul {
+
+  .mobile-menu-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #fff !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .mobile-close-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  body:not(.path-frontpage) .mobile-close-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff !important;
+  }
+
+  /* NAVIGATION LIST */
+  #nav-list,
+  #superfish-main {
     display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 10px 0 !important;
+    list-style: none !important;
+    height: auto !important;
+    overflow: visible !important;
   }
-  
-  #nav-list ul li,
-  #superfish-main ul li {
+
+  #superfish-main {
+    flex-direction: column !important;
+  }
+
+  /* Menu Items - Neutralize Desktop Layout */
+  #superfish-main>li,
+  #nav-list li,
+  #superfish-main li {
+    display: block !important;
+    width: 100% !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    position: relative !important;
+    height: auto !important;
+    max-height: none !important;
+    float: none !important;
+    overflow: visible !important;
+    margin: 0 !important;
+  }
+
+  body:not(.path-frontpage) #superfish-main>li,
+  body:not(.path-frontpage) #superfish-main li {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
   }
-  
-  /* Inner pages - Darker submenu border */
-  body:not(.path-frontpage) #nav-list ul li,
-  body:not(.path-frontpage) #superfish-main ul li {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
-  }
-  
-  /* Level 2 submenu - Zero Vertical Padding */
-  #nav-list ul li a,
-  #superfish-main ul li a {
-    padding: 10px 20px 10px 30px !important;
-    font-size: 12px !important;
-    background: rgba(0, 0, 0, 0.1) !important;
+
+  #superfish-main a,
+  #nav-list li a {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px !important;
     color: #fff !important;
-    line-height: 1.2 !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    transition: background 0.3s;
     height: auto !important;
-    min-height: 16px !important;
+    line-height: normal !important;
+    white-space: normal !important;
+    word-break: break-word;
   }
-  
-  /* Inner pages - Primary color text for submenus */
-  body:not(.path-frontpage) #nav-list ul li a,
-  body:not(.path-frontpage) #superfish-main ul li a {
-    background: rgba(0, 0, 0, 0.03) !important;
-    color: var(--primary-color) !important;
+
+  body:not(.path-frontpage) #superfish-main a {
+    color: #fff !important;
   }
-  
-  /* Level 3 submenu - Zero Vertical Padding */
-  #nav-list ul ul li a,
-  #superfish-main ul ul li a {
-    padding: 0px 6px 0px 38px !important;
-    font-size: 11px !important;
-    background: rgba(0, 0, 0, 0.2) !important;
-    line-height: 1.2 !important;
-    min-height: 18px !important;
+
+  /* FULLY DISABLE ALL HOVER EFFECTS */
+  #superfish-main a:hover,
+  #superfish-main a:focus,
+  #superfish-main a:active,
+  #nav-list li a:hover,
+  #superfish-main li:hover>a,
+  #superfish-main li.sfHover>a {
+    background: transparent !important;
+    color: inherit !important;
+    text-decoration: none !important;
+    transition: none !important;
+    -webkit-tap-highlight-color: transparent !important;
   }
-  
-  /* Inner pages - Level 3 styling */
-  body:not(.path-frontpage) #nav-list ul ul li a,
-  body:not(.path-frontpage) #superfish-main ul ul li a {
-    background: rgba(0, 0, 0, 0.05) !important;
+
+  /* Transition for accordion sliding effect */
+  #superfish-main ul {
+    transition: max-height 0.4s ease-out, opacity 0.3s ease !important;
   }
-  
-  /* Level 4 submenu - Zero Vertical Padding */
-  #nav-list ul ul ul li a,
-  #superfish-main ul ul ul li a {
-    padding: 0px 5px 0px 48px !important;
-    font-size: 10.5px !important;
-    background: rgba(0, 0, 0, 0.3) !important;
-    line-height: 1.2 !important;
-    min-height: 17px !important;
+
+  /* Keep active/open state distinct without relying on hover - THEME COLORS */
+  #superfish-main li.is-open>a {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #F6AD0A !important;
+    /* Secondary Yellow Highlight for active parent */
   }
-  
-  /* Inner pages - Level 4 styling */
-  body:not(.path-frontpage) #nav-list ul ul ul li a,
-  body:not(.path-frontpage) #superfish-main ul ul ul li a {
-    background: rgba(0, 0, 0, 0.08) !important;
+
+  body:not(.path-frontpage) #superfish-main li.is-open>a {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #F6AD0A !important;
+    font-weight: 600 !important;
+  }
+
+  /* SUBMENUS (STRICT VERTICAL ACCORDION - NO SIDE OPENING) */
+  #superfish-main ul,
+  #superfish-main ul ul,
+  #superfish-main ul ul ul,
+  #superfish-main ul ul ul ul,
+  #superfish-main .sf-mega {
+    display: block !important;
+    position: static !important;
+    /* Force vertical flow */
+    width: 100% !important;
+    min-width: 100% !important;
+    background-color: #004b88 !important;
+    /* Branded Primary Dark Blue */
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    max-height: 0;
+    overflow: hidden !important;
+    opacity: 0;
+    visibility: hidden;
+    list-style: none !important;
+    border-left: 4px solid #F6AD0A !important;
+    /* Secondary Yellow Highlight */
+    float: none !important;
+    /* Neutralize Superfish JS positioning */
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin-left: 0 !important;
+  }
+
+  /* Inner Page Version - Submenu Background (Unified Dark Theme for Mobile) */
+  body:not(.path-frontpage) #superfish-main ul {
+    background-color: #004b88 !important;
+    border-left: 4px solid #F6AD0A !important;
+  }
+
+  /* Level 3 (Nested Submenu) Background - Higher Distinction */
+  #superfish-main ul ul {
+    background-color: #002a4d !important;
+    /* Deeper Darker Blue */
+    border-left: 3px solid #aaddff !important;
+    /* Distinct Light Blue Border for Level 3 */
+  }
+
+  body:not(.path-frontpage) #superfish-main ul ul {
+    background-color: #002a4d !important;
+    border-left: 3px solid #aaddff !important;
+  }
+
+  #superfish-main li.is-open>ul {
+    max-height: 400px !important;
+    /* Confined height for scrolling */
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    padding: 10px 0 !important;
+    /* Spacing only when open */
+  }
+
+  #superfish-main>li>ul {
+    width: 295px !important;
+    max-height: 400px !important;
+    overflow: auto !important;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Submenu Links - FORCED WHITE ON DARK BG */
+  #superfish-main ul a {
+    padding: 12px 20px 12px 35px !important;
+    font-size: 14px !important;
+    background: transparent !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+  }
+
+  .main-nav-inner #superfish-main ul li {
+    width: 295px !important;
+    max-height: none;
+  }
+
+  #superfish-main ul ul a {
+    padding-left: 50px !important;
+    font-size: 13px !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  #superfish-main>li>ul {
+    width: 295px !important;
+  }
+
+  #superfish-main ul ul a:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+  }
+
+  #superfish-main ul li,
+  .main-nav-inner #superfish-main ul li,
+  #superfish-main li {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .main-nav-inner #superfish-main ul ul a {
+    color: #ffffff !important;
+    background: #0dcaf0 !important;
+  }
+
+  .main-nav-inner #nav-list {
+    display: block !important;
+  }
+
+  /* Expand/Collapse Indicator */
+  #superfish-main li.menuparent>a::after {
+    /* content: '\f107' !important; */
+    /* FontAwesome Down Arrow */
+    font-family: 'Font Awesome 6 Free' !important;
+    font-weight: 900 !important;
+    font-size: 14px;
+    transition: transform 0.3s;
+    margin-left: 10px;
+    display: inline-block;
+  }
+
+  #superfish-main li.menuparent.is-open>a::after {
+    transform: rotate(180deg);
+  }
+
+  /* Active states */
+  #superfish-main li.active>a {
+    color: #fdb913 !important;
+    font-weight: 700 !important;
+  }
+
+  /* Hide scroll controls and desktop home link */
+  .nav-scroll-controls,
+  .main-nav .home-link,
+  .main-nav-inner .home-link {
+    display: none !important;
+  }
+
+  /* Container adjustment for both Navbars - ENSURE SCROLLING */
+  .main-nav,
+  .main-nav-inner,
+  #nav-list,
+  #superfish-main,
+  #superfish-main li,
+  #nav-list li {
+    justify-content: flex-start !important;
+    height: auto !important;
+    min-height: 50px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    /* Critical to allow submenu scroll */
+    overflow-y: visible !important;
+  }
+
+  /* Consolidated Accordion Open State - STRICTLY VERTICAL & SCROLLABLE */
+  #superfish-main li.is-open>ul,
+  #superfish-main li.is-open>ul ul,
+  #superfish-main li.is-open>ul ul ul,
+  .main-nav-inner #superfish-main li.is-open>ul,
+  .main-nav-inner #superfish-main li.is-open>ul ul,
+  .main-nav-inner #superfish-main li.is-open>ul ul ul {
+    position: static !important;
+    max-height: 350px !important;
+    /* Reduced for better mobile trigger */
+    opacity: 1 !important;
+    visibility: visible !important;
+    padding: 10px 0 !important;
+    overflow-y: auto !important;
+    /* Forces scrollbar */
+    overflow-x: hidden !important;
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary-color) rgba(255, 255, 255, 0.1);
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  #superfish-main li.is-open>ul::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  #superfish-main li.is-open>ul::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 10px;
+  }
+
+  #superfish-main li.is-open>ul::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
   }
 }
 
+
 @media (max-width: 768px) {
+  .org-text p {
+    margin: 0.7px 0;
+    font-size: 0.7rem;
+  }
+
+  .logo-bar-inner {
+    text-align: left !important;
+  }
+
   .site-header {
     flex-direction: column;
     text-align: center;
@@ -835,6 +942,7 @@
     padding: 8px 10px;
     min-height: auto;
   }
+
   /* Stack left and right sections vertically */
   .top-bar .left-links,
   .top-bar .right-links {
@@ -908,117 +1016,83 @@
     padding: 10px;
   }
 
-  /* Mobile submenu adjustments */
-  .menu ul {
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    box-shadow: none;
-    background: rgba(0,0,0,0.1);
-    margin-left: 20px;
-    border-radius: 0;
-  }
-
-  .menu ul ul {
-    position: static;
-    margin-left: 20px;
-  }
-
-  .menu ul ul:before {
-    display: none;
-  }
-
-  .menu li:hover > ul {
-    transform: none;
-  }
-
-  /* Superfish mobile adjustments */
-  #superfish-main {
-    max-width: 100vw;
-    overflow-x: auto;
-    padding-right: 0; /* Remove padding on mobile */
-  }
-
-  .nav-scroll-arrows {
-    display: none; /* Hide arrows on mobile */
-  }
-  
-  .nav-scroll-controls {
-    display: none !important; /* Hide scroll controls on mobile */
-  }
-  
   /* Mobile navigation adjustments */
-  .main-nav {
+  .main-nav,
+  .main-nav-inner {
     height: auto;
     min-height: 50px;
   }
-  
-  .main-nav .home-link {
+
+  .main-nav .home-link,
+  .main-nav-inner .home-link {
     position: absolute;
     left: 5px;
     top: 50%;
     transform: translateY(-50%);
     z-index: 101;
   }
-  
-  .main-nav .home-link a {
+
+  .main-nav .home-link a,
+  .main-nav-inner .home-link a {
     width: 35px;
     height: 35px;
   }
-  
-  .main-nav .home-link svg {
+
+  .main-nav .home-link svg,
+  .main-nav-inner .home-link svg {
     width: 18px;
     height: 18px;
   }
-  
+
   #nav-list {
-    margin-left: 50px; /* Reduced space for home icon on mobile */
-    padding-right: 0; /* Remove padding on mobile */
-  }
-  
-  #superfish-main {
-    padding-right: 0; /* Remove padding on mobile */
+    margin-left: 50px;
+    /* Reduced space for home icon on mobile */
+    padding-right: 0;
+    /* Remove padding on mobile */
   }
 
-  #superfish-main ul {
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    box-shadow: none;
-    background: rgba(0,0,0,0.1);
-    margin-left: 20px;
-    border-radius: 0;
-  }
-
-  #superfish-main ul ul {
-    position: static;
-    margin-left: 20px;
-  }
-
-  #superfish-main ul ul:before {
-    display: none;
-  }
-
-  #superfish-main li:hover > ul {
-    transform: none;
-  }
 
   /* Announcement Bar Optimization */
   .announcement-bar {
-    /* flex-direction: column; */
-    /* padding: 8px 10px; */
+    padding: 10px;
+    flex-direction: column !important;
+    align-items: stretch !important;
     gap: 8px;
     font-size: 0.8rem;
+    overflow: visible;
   }
 
   .announcement-left {
-    display: none;
+    display: flex !important;
+    width: 100% !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    padding: 8px 15px !important;
+    border-radius: 4px;
+    white-space: normal;
+    background: #fdb913;
+  }
+
+  .announcement-title {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
   }
 
   .announcement-controls {
-    display: none;
+    display: flex !important;
+    justify-content: flex-end;
+    margin-top: 0;
+    gap: 8px;
+  }
+
+  .announcement-track-wrapper {
+    width: 100% !important;
+    margin-top: 0;
+    border-radius: 4px;
+    padding: 8px;
+    background: var(--primary-color);
   }
 
   /* About Section Optimization */
@@ -1120,12 +1194,12 @@
     font-size: 18px !important;
     top: 55% !important;
   }
-  
+
   .power-station-section .carousel-button.left,
   .power-station-section .power-station-carousel-button.left {
     left: 5px !important;
   }
-  
+
   .power-station-section .carousel-button.right,
   .power-station-section .power-station-carousel-button.right {
     right: 5px !important;
@@ -1210,17 +1284,17 @@
     font-size: 22px;
     margin-bottom: 15px;
   }
-  
+
   .quick-links-wrapper .quick-arrow {
     width: 35px !important;
     height: 35px !important;
     font-size: 16px !important;
   }
-  
+
   .quick-links-wrapper .quick-arrow.left {
     margin-right: 10px !important;
   }
-  
+
   .quick-links-wrapper .quick-arrow.right {
     margin-left: 10px !important;
   }
@@ -1273,6 +1347,20 @@
 
 /* Additional responsive breakpoints for better top bar optimization */
 @media (max-width: 480px) {
+  #superfish-main ul li {
+    display: block !important;
+    position: relative !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 300px !important;
+    float: none !important;
+    clear: both !important;
+    /* Critical: Parent li must expand to fit nested ul children */
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
   /* Extra small screens - further optimize top bar */
   .top-bar {
     padding: 6px 8px;
@@ -1282,6 +1370,7 @@
   .top-bar .right-links {
     font-size: 0.75rem;
     gap: 6px;
+    justify-content: right;
   }
 
   /* Make language toggle more compact */
@@ -1330,8 +1419,8 @@
   }
 
   .power-station-section .power-item {
-    width: 70px !important;
-    height: 70px !important;
+    width: 120px !important;
+    height: 120px !important;
     padding: 12px !important;
   }
 
@@ -1376,14 +1465,14 @@
     width: 30px !important;
     height: 30px !important;
     font-size: 16px !important;
-    top: 55% !important;
+    top: 65% !important;
   }
-  
+
   .power-station-section .carousel-button.left,
   .power-station-section .power-station-carousel-button.left {
     left: 3px !important;
   }
-  
+
   .power-station-section .carousel-button.right,
   .power-station-section .power-station-carousel-button.right {
     right: 3px !important;
@@ -1395,17 +1484,17 @@
   .quick-action-section-heading {
     font-size: 18px;
   }
-  
+
   .quick-links-wrapper .quick-arrow {
     width: 30px !important;
     height: 30px !important;
     font-size: 14px !important;
   }
-  
+
   .quick-links-wrapper .quick-arrow.left {
     margin-right: 8px !important;
   }
-  
+
   .quick-links-wrapper .quick-arrow.right {
     margin-left: 8px !important;
   }
@@ -1418,7 +1507,7 @@
   .gallery-item {
     height: 160px;
   }
-  
+
   .gallery-overlay,
   .video-title {
     font-size: 0.8rem;
@@ -1431,12 +1520,12 @@
     margin: 0 10px;
   }
 
-   .see-more-btn {
+  .see-more-btn {
     font-size: 12px;
     padding: 6px 12px;
   }
 
-  .power-item .label{
+  .power-item .label {
     font-size: 12px;
     line-height: 12px;
   }
@@ -1457,10 +1546,6 @@
     border-radius: 8px;
   }
 
-  .chairman-image img {
-    max-width: 160px;
-  }
-
   .chairman-content blockquote {
     font-size: 0.9rem;
     margin: 8px 0 6px 0;
@@ -1479,6 +1564,7 @@
 }
 
 @media (max-width: 360px) {
+
   /* Very small screens - minimal top bar */
   .top-bar {
     padding: 4px 6px;
@@ -1586,12 +1672,12 @@
     font-size: 14px !important;
     top: 55% !important;
   }
-  
+
   .power-station-section .carousel-button.left,
   .power-station-section .power-station-carousel-button.left {
     left: 3px !important;
   }
-  
+
   .power-station-section .carousel-button.right,
   .power-station-section .power-station-carousel-button.right {
     right: 3px !important;
@@ -1613,17 +1699,17 @@
   .quick-action-section-heading {
     font-size: 16px;
   }
-  
+
   .quick-links-wrapper .quick-arrow {
     width: 28px !important;
     height: 28px !important;
     font-size: 12px !important;
   }
-  
+
   .quick-links-wrapper .quick-arrow.left {
     margin-right: 6px !important;
   }
-  
+
   .quick-links-wrapper .quick-arrow.right {
     margin-left: 6px !important;
   }
@@ -1636,7 +1722,7 @@
   .gallery-item {
     height: 100px;
   }
-  
+
   .gallery-overlay,
   .video-title {
     font-size: 0.75rem;
@@ -1657,7 +1743,7 @@
     padding: 6px 12px;
   }
 
-  .power-item .label{
+  .power-item .label {
     font-size: 12px;
     line-height: 12px;
   }
