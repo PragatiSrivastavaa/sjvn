@@ -2356,10 +2356,11 @@ body.lang-hi ul.links li[hreflang="hi"] {
   gap: 12px;
 }
 
-.news-item {
+.news-item a {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 6px;
+  color: white;
   padding: 8px 12px;
   position: relative;
   font-size: 0.85rem;
@@ -2370,11 +2371,11 @@ body.lang-hi ul.links li[hreflang="hi"] {
   transition: background 0.3s ease;
 }
 
-.news-item:hover {
+.news-item a:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.news-item .arrow {
+.news-item a .arrow {
   font-weight: bold;
   font-size: 1.2rem;
 }
