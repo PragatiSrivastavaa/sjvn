@@ -453,6 +453,33 @@
     }
 }
 
+/*===============================Statutory Compliance =========================================*/
+.view-id-statutory_compliance.view-display-id-page_1 .view-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .view-id-statutory_compliance.view-display-id-page_1 .view-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .view-id-statutory_compliance.view-display-id-page_1 .view-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575px) {
+    .view-id-statutory_compliance.view-display-id-page_1 .view-content {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
 /*----------------------------- SMART Online Dispute Resolution (ODR) css ------------------------------*/
 
 .clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list {
