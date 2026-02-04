@@ -572,3 +572,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+// Menu Toggle for Inner Pages - "More" Button Logic
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggleBtn = document.querySelector('.menu-wrapper .menu-toggle');
+  const menuList = document.querySelector('.menu-wrapper .menu');
+
+  if (menuToggleBtn && menuList) {
+    menuToggleBtn.addEventListener('click', function () {
+      menuList.classList.toggle('expanded');
+
+      // Update button text logic
+      if (menuList.classList.contains('expanded')) {
+        menuToggleBtn.textContent = 'Less ▲';
+      } else {
+        menuToggleBtn.textContent = 'More ▼';
+      }
+    });
+  }
+});

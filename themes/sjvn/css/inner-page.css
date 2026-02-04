@@ -769,20 +769,58 @@ h2.subtitle {
   white-space: nowrap;
   flex: 1;
   scroll-behavior: smooth;
+  transition: all 0.3s ease;
+}
+
+.menu-wrapper .menu.expanded {
+  flex-wrap: wrap;
+  white-space: normal;
+  overflow-x: visible;
+  height: auto;
 }
 
 .menu-wrapper .menu-toggle {
-  padding: 11px 15px;
-  border-radius: 30px;
-  font-size: 12px;
-  font-weight: 500;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
   position: absolute;
-  right: 33px;
-  background: white;
+  right: 0;
   top: 32px;
-  border: none;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  box-shadow: 0 4px 10px #2774AC;
+  background: linear-gradient(90deg, #2774AC, #009EDB);
+  color: #ffffff;
+  /* box-shadow: 0 4px 10px rgba(0, 158, 219, 0.25); */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  z-index: 10;
+}
+
+/* Hover */
+.menu-wrapper .menu-toggle:hover {
+  background: #ffffff;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 6px 16px rgba(0, 158, 219, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Active / Click */
+.menu-wrapper .menu-toggle:active {
+  background: var(--primary-color);
+  color: #ffffff;
+  transform: translateY(0) scale(0.96);
+  box-shadow: 0 3px 8px rgba(0, 158, 219, 0.2);
+}
+
+/* Focus (Accessibility) */
+.menu-wrapper .menu-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 158, 219, 0.35);
 }
 
 
@@ -1252,13 +1290,6 @@ ul.vmo-card__list {
     margin-left: 2.5%;
   }
 
-  /* .inner-container{
-      width: 94%;
-    margin-left: 2%;
-} */
-  .menu-wrapper .menu-toggle {
-    right: 5px !important;
-  }
 
   .content-area {
     width: 94%;
