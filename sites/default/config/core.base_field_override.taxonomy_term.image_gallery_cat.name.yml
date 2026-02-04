@@ -1,0 +1,18 @@
+uuid: 6ad6f3a4-7c0a-4144-b476-108d53f58c3c
+langcode: hi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.image_gallery_cat
+id: taxonomy_term.image_gallery_cat.name
+field_name: name
+entity_type: taxonomy_term
+bundle: image_gallery_cat
+label: नाम
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

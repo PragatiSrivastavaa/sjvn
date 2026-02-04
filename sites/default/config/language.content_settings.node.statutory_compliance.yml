@@ -1,9 +1,9 @@
-uuid: b1e68955-90e3-4a11-a8b1-8ad15b44dc7a
+uuid: 9dd2fec5-2158-420b-93f2-76960dbcd2a8
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.tender_award
+    - node.type.statutory_compliance
   module:
     - content_translation
 third_party_settings:
@@ -11,8 +11,8 @@ third_party_settings:
     enabled: true
     bundle_settings:
       untranslatable_fields_hide: '0'
-id: node.tender_award
+id: node.statutory_compliance
 target_entity_type_id: node
-target_bundle: tender_award
+target_bundle: statutory_compliance
 default_langcode: site_default
 language_alterable: true

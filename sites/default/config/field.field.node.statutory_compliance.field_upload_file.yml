@@ -1,27 +1,20 @@
-uuid: d34ab8b2-55b4-4869-8200-f749d8015f9f
+uuid: 987e8d30-cb12-4494-b761-f8d36dbf2a2d
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_upload_file
-    - node.type.tender
+    - node.type.statutory_compliance
   module:
-    - content_translation
     - file
-third_party_settings:
-  content_translation:
-    translation_sync:
-      target_id: target_id
-      display: display
-      description: description
-id: node.tender.field_upload_file
+id: node.statutory_compliance.field_upload_file
 field_name: field_upload_file
 entity_type: node
-bundle: tender
+bundle: statutory_compliance
 label: 'Upload File'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -30,5 +23,5 @@ settings:
   file_directory: '[date:custom:Y]-[date:custom:m]'
   file_extensions: 'txt pdf mp3 html xls xlsx'
   max_filesize: ''
-  description_field: true
+  description_field: false
 field_type: file

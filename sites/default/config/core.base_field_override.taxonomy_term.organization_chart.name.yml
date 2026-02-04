@@ -1,0 +1,18 @@
+uuid: 80259606-e540-4a60-91c3-be11b0aeb4d2
+langcode: hi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.organization_chart
+id: taxonomy_term.organization_chart.name
+field_name: name
+entity_type: taxonomy_term
+bundle: organization_chart
+label: नाम
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

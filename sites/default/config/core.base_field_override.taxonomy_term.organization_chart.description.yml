@@ -1,0 +1,21 @@
+uuid: b75e377a-5dce-4c5b-8da5-e15341240e89
+langcode: hi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.organization_chart
+  module:
+    - text
+id: taxonomy_term.organization_chart.description
+field_name: description
+entity_type: taxonomy_term
+bundle: organization_chart
+label: उल्लेख
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

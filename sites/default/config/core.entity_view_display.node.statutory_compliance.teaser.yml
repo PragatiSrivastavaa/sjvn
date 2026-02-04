@@ -1,0 +1,33 @@
+uuid: 8124418a-d4bb-4519-adc1-7c2bcf77df57
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.statutory_compliance.body
+    - field.field.node.statutory_compliance.field_upload_file
+    - node.type.statutory_compliance
+  module:
+    - text
+    - user
+id: node.statutory_compliance.teaser
+targetEntityType: node
+bundle: statutory_compliance
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_upload_file: true
+  langcode: true

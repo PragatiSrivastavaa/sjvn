@@ -1,9 +1,9 @@
-uuid: b1e68955-90e3-4a11-a8b1-8ad15b44dc7a
-langcode: en
+uuid: 5c774a95-4c7b-44f5-82e0-f3878098dd14
+langcode: hi
 status: true
 dependencies:
   config:
-    - node.type.tender_award
+    - node.type.webform
   module:
     - content_translation
 third_party_settings:
@@ -11,8 +11,8 @@ third_party_settings:
     enabled: true
     bundle_settings:
       untranslatable_fields_hide: '0'
-id: node.tender_award
+id: node.webform
 target_entity_type_id: node
-target_bundle: tender_award
+target_bundle: webform
 default_langcode: site_default
 language_alterable: true

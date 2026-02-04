@@ -20,7 +20,7 @@
           {% set node = row.content['#row']._entity %}
           <div class="news-item">
             
-            <a href="{{ path('entity.node.canonical', {'node': node.id}) }}"></a>
+            <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
             {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}
             <span class="arrow">➔</span>
           </a>
