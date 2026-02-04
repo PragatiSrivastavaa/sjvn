@@ -1,0 +1,39 @@
+uuid: 6077770b-ee71-4b37-8245-2fe6aabc27f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.statutory_compliance.body
+    - field.field.node.statutory_compliance.field_upload_file
+    - node.type.statutory_compliance
+  module:
+    - file
+    - text
+    - user
+id: node.statutory_compliance.default
+targetEntityType: node
+bundle: statutory_compliance
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_upload_file:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

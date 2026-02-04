@@ -14,7 +14,7 @@ bundle: tender
 label: 'Last Date of Submission'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

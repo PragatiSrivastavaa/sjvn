@@ -1,0 +1,18 @@
+uuid: fa96a076-ad12-43e8-a1b4-d5148a30265b
+langcode: hi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.image_gallery_cat
+id: taxonomy_term.image_gallery_cat.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: image_gallery_cat
+label: 'बदल गया'
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

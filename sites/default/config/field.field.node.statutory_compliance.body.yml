@@ -1,16 +1,16 @@
-uuid: f0710b66-4ec8-4ea2-a55a-84b9bfefd83c
+uuid: 8ce63595-5154-49f2-977c-97eca780792b
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.body
-    - node.type.tender
+    - node.type.statutory_compliance
   module:
     - text
-id: node.tender.body
+id: node.statutory_compliance.body
 field_name: body
 entity_type: node
-bundle: tender
+bundle: statutory_compliance
 label: Body
 description: ''
 required: false

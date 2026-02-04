@@ -1,0 +1,21 @@
+uuid: 38525fe8-9056-4490-9022-a38e485421d2
+langcode: hi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.image_gallery_cat
+  module:
+    - text
+id: taxonomy_term.image_gallery_cat.description
+field_name: description
+entity_type: taxonomy_term
+bundle: image_gallery_cat
+label: उल्लेख
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

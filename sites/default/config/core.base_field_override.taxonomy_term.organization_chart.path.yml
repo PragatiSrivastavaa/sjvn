@@ -1,0 +1,20 @@
+uuid: 4477ae8a-35c4-4536-903d-f28af79e32af
+langcode: hi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.organization_chart
+  module:
+    - path
+id: taxonomy_term.organization_chart.path
+field_name: path
+entity_type: taxonomy_term
+bundle: organization_chart
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path
