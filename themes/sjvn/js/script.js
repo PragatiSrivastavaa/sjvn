@@ -434,3 +434,119 @@ document.querySelectorAll('.quick-arrow').forEach(button => {
 });
 
 
+
+// Back to Top functionality with Progress Ring
+document.addEventListener("DOMContentLoaded", function () {
+  let backToTopBtn = document.getElementById("back-to-top");
+
+  // FAILSAFE: Inject button if missing (e.g. different template)
+  if (!backToTopBtn) {
+    const btnHTML = `
+      <button id="back-to-top" class="back-to-top" aria-label="Back to Top" title="Back to Top">
+        <svg class="progress-ring" width="100%" height="100%" viewBox="0 0 100 100">
+          <circle class="progress-ring-bg" cx="50" cy="50" r="46" stroke="none" stroke-width="0" fill="#009edb" style="fill: var(--primary-color, #009edb)" />
+          <circle class="progress-ring-path" cx="50" cy="50" r="46" stroke-width="4" fill="none" stroke="#fdb913" style="stroke: var(--secondary-color, #fdb913)" />
+        </svg>
+        <span class="icon-container">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+          </svg>
+        </span>
+      </button>
+    `;
+    document.body.insertAdjacentHTML('beforeend', btnHTML);
+    backToTopBtn = document.getElementById("back-to-top");
+  }
+
+  const progressPath = backToTopBtn.querySelector('.progress-ring-path');
+
+  if (backToTopBtn && progressPath) {
+    // Circumference = 2 * PI * r
+    // r = 46, so C ≈ 289.02
+    const circumference = 2 * Math.PI * 46;
+
+    // Set initial dasharray and offset
+    progressPath.style.strokeDasharray = `${circumference} ${circumference}`;
+    progressPath.style.strokeDashoffset = circumference;
+
+    const setProgress = (percent) => {
+      const offset = circumference - (percent / 100) * circumference;
+      progressPath.style.strokeDashoffset = offset;
+    };
+
+    const updateProgress = (e) => {
+      let scrollTop = 0;
+      let scrollHeight = 0;
+      let clientHeight = 0;
+
+      // Detect who is scrolling
+      if (e && e.target && e.target !== document) {
+        // Scrolling inside a div/element
+        scrollTop = e.target.scrollTop;
+        scrollHeight = e.target.scrollHeight;
+        clientHeight = e.target.clientHeight;
+      } else {
+        // Window/Body scrolling
+        scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+        clientHeight = document.documentElement.clientHeight || window.innerHeight;
+      }
+
+      // If we found a valid scroll position, update the button
+      if (typeof scrollTop !== 'number') return;
+
+      // Show/Hide button logic (Threshold 50px)
+      if (scrollTop > 50) {
+        backToTopBtn.classList.add("show");
+        backToTopBtn.style.opacity = "1";
+        backToTopBtn.style.visibility = "visible";
+      } else {
+        backToTopBtn.classList.remove("show");
+        backToTopBtn.style.opacity = "0";
+        backToTopBtn.style.visibility = "hidden";
+      }
+
+      // Calculate Scroll Percentage
+      const scrollTotal = scrollHeight - clientHeight;
+      let scrollPercentage = 0;
+      if (scrollTotal > 0) {
+        scrollPercentage = (scrollTop / scrollTotal) * 100;
+      }
+
+      // Cap at 100%
+      if (scrollPercentage > 100) scrollPercentage = 100;
+      if (scrollPercentage < 0) scrollPercentage = 0;
+
+      setProgress(scrollPercentage);
+    };
+
+    // USE CAPTURE PHASE: Pass 'true' as third argument
+    // This catches 'scroll' events from ANY element (div, iframe, etc.) before they bubble (which they don't usually do)
+    document.addEventListener("scroll", updateProgress, true);
+
+    // Fallback: Check window scroll periodically just in case
+    setInterval(() => {
+      updateProgress();
+    }, 1000); // Check every second
+
+    // Button Click Logic - Try to scroll EVERYTHING
+    backToTopBtn.addEventListener("click", function () {
+      // 1. Try Window
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+      document.body.scrollTo({ top: 0, behavior: "smooth" });
+
+      // 2. Try to find scrolling containers and scroll them too
+      const scrollables = document.querySelectorAll('*');
+      for (let el of scrollables) {
+        if (el.scrollTop > 0) {
+          try {
+            el.scrollTo({ top: 0, behavior: "smooth" });
+          } catch (e) {
+            el.scrollTop = 0; // Fallback if scrollTo not supported
+          }
+        }
+      }
+    });
+  }
+});
