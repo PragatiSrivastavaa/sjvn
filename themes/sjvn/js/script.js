@@ -539,11 +539,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // USE CAPTURE PHASE: Pass 'true' as third argument
     // This catches 'scroll' events from ANY element (div, iframe, etc.) before they bubble (which they don't usually do)
     document.addEventListener("scroll", updateProgress, true);
+    // Also listen to window scroll explicitly (more reliable for the front page in some layouts).
+    window.addEventListener("scroll", () => updateProgress(), { passive: true });
 
     // Fallback: Check window scroll periodically just in case
     setInterval(() => {
       updateProgress();
     }, 1000); // Check every second
+
+    // Initialize state once after render so Home page starts consistent.
+    setTimeout(() => updateProgress(), 0);
 
     // Button Click Logic - Try to scroll EVERYTHING
     backToTopBtn.addEventListener("click", function () {
