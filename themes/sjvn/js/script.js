@@ -129,6 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentSlide = 0;
   let autoSlide;
 
+  // Only run carousel logic on pages that actually have the carousel markup.
+  if (!slides.length || !prevBtn || !nextBtn || !dotsContainer) return;
+
   // Create pagination dots dynamically
   slides.forEach((_, index) => {
     const dot = document.createElement("button");
@@ -299,60 +302,65 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const carousel = document.getElementById('carousel');
-const items = carousel.querySelectorAll('.power-item');
-const leftButton = document.querySelector('.power-station-carousel-button.left');
-const rightButton = document.querySelector('.power-station-carousel-button.right');
+document.addEventListener("DOMContentLoaded", () => {
+  const carousel = document.getElementById('carousel');
+  if (!carousel) return;
 
-let activeIndex = 2; // start from center item
+  const items = carousel.querySelectorAll('.power-item');
+  const leftButton = document.querySelector('.power-station-carousel-button.left');
+  const rightButton = document.querySelector('.power-station-carousel-button.right');
+  if (!items.length || !leftButton || !rightButton) return;
 
-function updateCarousel() {
-  const total = items.length;
+  let activeIndex = 2; // start from center item
+
+  function updateCarousel() {
+    const total = items.length;
+    items.forEach((item, index) => {
+      item.className = 'power-item';
+      item.style.display = 'flex';
+
+      // Calculate circular relative position
+      let diff = index - activeIndex;
+      if (diff > total / 2) diff -= total;
+      if (diff <= -total / 2) diff += total;
+
+      if (diff === 0) {
+        item.classList.add('active');
+      } else if (diff === -1) {
+        item.classList.add('left1');
+      } else if (diff === -2) {
+        item.classList.add('left2');
+      } else if (diff === 1) {
+        item.classList.add('right1');
+      } else if (diff === 2) {
+        item.classList.add('right2');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+  }
+
+  // Add click functionality to carousel items
   items.forEach((item, index) => {
-    item.className = 'power-item';
-    item.style.display = 'flex';
-
-    // Calculate circular relative position
-    let diff = index - activeIndex;
-    if (diff > total / 2) diff -= total;
-    if (diff <= -total / 2) diff += total;
-
-    if (diff === 0) {
-      item.classList.add('active');
-    } else if (diff === -1) {
-      item.classList.add('left1');
-    } else if (diff === -2) {
-      item.classList.add('left2');
-    } else if (diff === 1) {
-      item.classList.add('right1');
-    } else if (diff === 2) {
-      item.classList.add('right2');
-    } else {
-      item.classList.add('hidden');
-    }
+    item.addEventListener('click', () => {
+      activeIndex = index;
+      updateCarousel();
+    });
   });
-}
 
-// Add click functionality to carousel items
-items.forEach((item, index) => {
-  item.addEventListener('click', () => {
-    activeIndex = index;
+  leftButton.addEventListener('click', () => {
+    activeIndex = (activeIndex - 1 + items.length) % items.length;
     updateCarousel();
   });
-});
 
-leftButton.addEventListener('click', () => {
-  activeIndex = (activeIndex - 1 + items.length) % items.length;
+  rightButton.addEventListener('click', () => {
+    activeIndex = (activeIndex + 1) % items.length;
+    updateCarousel();
+  });
+
+  // Initial display
   updateCarousel();
 });
-
-rightButton.addEventListener('click', () => {
-  activeIndex = (activeIndex + 1) % items.length;
-  updateCarousel();
-});
-
-// Initial display
-updateCarousel();
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -360,6 +368,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const dotsContainer = document.querySelector(".alert-dots");
   let currentIndex = 0;
   let autoSlide;
+
+  // Only run alerts carousel logic where the required markup exists.
+  if (!alerts.length || !dotsContainer) return;
 
   // Create dots dynamically
   alerts.forEach((_, i) => {
@@ -397,8 +408,11 @@ document.addEventListener("DOMContentLoaded", () => {
   startAutoSlide();
 
   // Pause on hover
-  document.querySelector(".alert-carousel").addEventListener("mouseenter", stopAutoSlide);
-  document.querySelector(".alert-carousel").addEventListener("mouseleave", startAutoSlide);
+  const alertCarousel = document.querySelector(".alert-carousel");
+  if (alertCarousel) {
+    alertCarousel.addEventListener("mouseenter", stopAutoSlide);
+    alertCarousel.addEventListener("mouseleave", startAutoSlide);
+  }
 });
 
 
@@ -423,6 +437,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.querySelectorAll('.quick-arrow').forEach(button => {
   button.addEventListener('click', () => {
     const container = document.querySelector('.quick-links-container');
+    if (!container) return;
     const scrollAmount = 250; // adjust as needed
 
     if (button.classList.contains('left')) {
@@ -438,6 +453,7 @@ document.querySelectorAll('.quick-arrow').forEach(button => {
 // Back to Top functionality with Progress Ring
 document.addEventListener("DOMContentLoaded", function () {
   let backToTopBtn = document.getElementById("back-to-top");
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // FAILSAFE: Inject button if missing (e.g. different template)
   if (!backToTopBtn) {
@@ -532,16 +548,17 @@ document.addEventListener("DOMContentLoaded", function () {
     // Button Click Logic - Try to scroll EVERYTHING
     backToTopBtn.addEventListener("click", function () {
       // 1. Try Window
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
-      document.body.scrollTo({ top: 0, behavior: "smooth" });
+      const behavior = prefersReducedMotion ? "auto" : "smooth";
+      window.scrollTo({ top: 0, behavior });
+      document.documentElement.scrollTo({ top: 0, behavior });
+      document.body.scrollTo({ top: 0, behavior });
 
       // 2. Try to find scrolling containers and scroll them too
       const scrollables = document.querySelectorAll('*');
       for (let el of scrollables) {
         if (el.scrollTop > 0) {
           try {
-            el.scrollTo({ top: 0, behavior: "smooth" });
+            el.scrollTo({ top: 0, behavior });
           } catch (e) {
             el.scrollTop = 0; // Fallback if scrollTo not supported
           }

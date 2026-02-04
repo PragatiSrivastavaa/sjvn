@@ -3505,6 +3505,17 @@ ul.sf-menu span.nolink {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
+.back-to-top:focus-visible {
+  outline: 3px solid var(--secondary-color, #fdb913);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top {
+    transition: none;
+  }
+}
+
 /* SVG Progress Ring Container */
 .back-to-top .progress-ring {
   position: absolute;
