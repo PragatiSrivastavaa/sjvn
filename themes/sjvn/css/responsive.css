@@ -1784,32 +1784,3 @@
     font-size: 0.7rem;
   }
 }
-
-/* Back to Top Feature - Force Visibility on All Screens */
-.back-to-top {
-  display: flex !important;
-  visibility: hidden;
-  /* Controlled by JS opacity/visibility */
-  opacity: 0;
-  z-index: 2147483647 !important;
-}
-
-.back-to-top.show {
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-@media (max-width: 768px) {
-  .back-to-top {
-    right: 10px !important;
-    bottom: 80px !important;
-    /* Move up slightly on mobile to avoid overlap with bottom bars if any */
-    width: 42px !important;
-    height: 42px !important;
-  }
-
-  .back-to-top svg {
-    width: 18px !important;
-    height: 18px !important;
-  }
-}

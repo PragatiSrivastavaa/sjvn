@@ -5,7 +5,7 @@ body {
   font-family: var(--font-main);
   background: var(--bg-light);
   color: var(--text-color);
-  
+
 }
 
 a {
@@ -71,7 +71,8 @@ div#accordionSidebar {
 
 /* Arrow Icon */
 #accordionSidebar .card-header .btn-link::after {
-  content: "\F282"; /* bi-chevron-down */
+  content: "\F282";
+  /* bi-chevron-down */
   font-family: "bootstrap-icons";
   position: absolute;
   right: 15px;
@@ -84,9 +85,11 @@ div#accordionSidebar {
 #accordionSidebar .card-header .btn-link[aria-expanded="true"]::after {
   transform: translateY(-50%) rotate(180deg);
 }
+
 .card-body.p-1 {
   border-bottom: 1px solid #dce3eb;
 }
+
 /* Hover effect */
 #accordionSidebar .card-header:hover {
   background-color: #d7ebff;
@@ -123,96 +126,134 @@ div#accordionSidebar {
   background: #009EDB !important;
   color: #fff !important;
 }
+
 /*-------------------------------------- container and tabs data (Right Side)--------------------------*/
 .top-taps-contents {
-    padding: 25px;
-    padding-bottom: 40px;
-    border-radius: 15px;
-    margin-bottom: 30px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 25px;
+  padding-bottom: 40px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
 /* Common styles for all tabs */
 .top-taps-contents .nav-item .nav-link {
-    border: 1px solid #009EDB;
-    border-radius: 30px;
-    font-size: 14px;   
-    padding: 6px 22px;
-    background-color: #fff;  
-    color: #009EDB;            
-    font-weight: 500;
-    transition: all 0.3s ease;
-    text-align: center;
+  border: 1px solid #009EDB;
+  border-radius: 30px;
+  font-size: 14px;
+  padding: 6px 22px;
+  background-color: #fff;
+  color: #009EDB;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
 /* Hover effect */
 .top-taps-contents .nav-item .nav-link:hover {
-    background-color: #009EDB;
-    color: #fff;
-    border-color: #009EDB;
+  background-color: #009EDB;
+  color: #fff;
+  border-color: #009EDB;
 }
 
 /* Active tab style */
 .top-taps-contents .nav-item .nav-link.active {
-    background-color: #009EDB; 
-    color: #fff; 
-    font-weight: 600; 
-    border-color: #009EDB;
+  background-color: #009EDB;
+  color: #fff;
+  font-weight: 600;
+  border-color: #009EDB;
 }
 
 /*================================================= search input css =================================================*/
 .search-block-form-ShowBox {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  gap: 8px;
 }
+
 #search-block-form {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    min-width: 260px !important;
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 260px !important;
 }
+
 .search-block-form-ShowBox .form-item {
-    flex: 1; /* input full width le */
+  flex: 1;
+  /* input full width le */
 }
 
 .search-block-form-ShowBox .form-search {
-    width: 100%;
-    padding: 10px 14px;
-    font-size: 14px;
-    height: 30px;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
-    outline: none;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  outline: none;
 }
 
 .search-block-form-ShowBox .form-search:focus {
-    border-color: #009edb;
+  border-color: #009edb;
 }
 
 .search-block-form-ShowBox .form-actions {
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .search-block-form-ShowBox .form-submit {
-    padding: 4px 18px;
-    font-size: 14px;
-        border: 1px solid #009edb;
-    background: #009edb;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 0 4px 4px 0;
-    transition: background 0.3s ease;
+  padding: 4px 18px;
+  font-size: 14px;
+  border: 1px solid #009edb;
+  background: #009edb;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  transition: background 0.3s ease;
 }
 
 .search-block-form-ShowBox .form-submit:hover {
-    background: #0056b3;
+  background: #0056b3;
+}
+
+/* Back to Top Feature - Force Visibility on All Screens */
+.back-to-top {
+  display: flex !important;
+  visibility: hidden;
+  /* Controlled by JS opacity/visibility */
+  opacity: 0;
+  z-index: 2147483647 !important;
+}
+
+.back-to-top.show {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    right: 10px !important;
+    bottom: 80px !important;
+    /* Move up slightly on mobile to avoid overlap with bottom bars if any */
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .back-to-top svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
+li.Statutory-li {
+  position: relative;
 }
