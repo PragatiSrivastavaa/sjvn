@@ -84,7 +84,7 @@
     </ul>
 
     {% if menu_level == 0 %}
-      <button class="menu-toggle">▼</button>
+      <button class="menu-toggle"><span>More</span> ▼</button>
       </div>
     {% endif %}
   {% endif %}
@@ -103,11 +103,11 @@
     if (expanded) {
       menu.style.flexWrap = "wrap";        // multi row expand
       menu.style.overflowX = "visible";    // disable scroll
-      toggleBtn.textContent = "▲";   // update button text
+      toggleBtn.innerHTML = "<span>Close</span> ▲";   // update button text
     } else {
       menu.style.flexWrap = "nowrap";      // single row
       menu.style.overflowX = "auto";       // scroll enabled
-      toggleBtn.textContent = "▼";    // update button text
+      toggleBtn.innerHTML = "<span>More</span> ▼";    // update button text
     }
   });
 });

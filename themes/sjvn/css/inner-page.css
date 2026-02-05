@@ -701,10 +701,12 @@ h2.subtitle {
 
 .sidebar .menu {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   padding: 10px 0;
   margin-top: 22px;
-  padding-bottom: 20px;
+  margin-right: 80px;
+  padding-bottom: 15px;
+  padding-right: 10px;
   list-style: none;
   border-bottom: 1px solid #00aeef;
   overflow-x: auto;
@@ -780,26 +782,56 @@ h2.subtitle {
 }
 
 .menu-wrapper .menu-toggle {
-  padding: 0;
-  border-radius: 50%;
-  font-size: 13px;
+  padding: 20px 14px;
+  border-radius: 30px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   position: absolute;
-  right: -15px;
+  right: -0px;
   top: 32px;
-  box-shadow: 0 4px 10px #2774AC;
+  box-shadow: 0 4px 20px 7px rgba(39, 116, 172, 0.4);
   background: linear-gradient(90deg, #2774AC, #009EDB);
   color: #ffffff;
-  /* box-shadow: 0 4px 10px rgba(0, 158, 219, 0.25); */
+  border: none;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0;
-  width: 35px;
+  gap: 8px;
+  width: auto;
   height: 35px;
   z-index: 10;
+  letter-spacing: 0.5px;
+}
+
+.menu-wrapper .menu-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(39, 116, 172, 0.5);
+  background: linear-gradient(90deg, #009EDB, #2774AC);
+}
+
+.menu-wrapper .menu-toggle:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .menu-wrapper .menu-toggle span {
+    display: none;
+  }
+
+  .menu-wrapper .menu-toggle {
+    padding: 0;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    justify-content: center;
+    font-size: 13px;
+  }
+
+  .sidebar .menu {
+    margin-right: 45px;
+  }
 }
 
 /* Hover */

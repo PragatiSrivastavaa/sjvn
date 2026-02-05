@@ -565,9 +565,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Update button text logic
       if (menuList.classList.contains('expanded')) {
-        menuToggleBtn.textContent = '▲';
+        menuToggleBtn.innerHTML = '<span>Close</span> ▲';
       } else {
-        menuToggleBtn.textContent = '▼';
+        menuToggleBtn.innerHTML = '<span>More</span> ▼';
       }
     });
   }
