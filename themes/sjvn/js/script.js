@@ -490,26 +490,12 @@ document.addEventListener("DOMContentLoaded", function () {
       progressPath.style.strokeDashoffset = offset;
     };
 
-    const updateProgress = (e) => {
-      let scrollTop = 0;
-      let scrollHeight = 0;
-      let clientHeight = 0;
-
-      // Detect who is scrolling
-      if (e && e.target && e.target !== document) {
-        // Scrolling inside a div/element
-        scrollTop = e.target.scrollTop;
-        scrollHeight = e.target.scrollHeight;
-        clientHeight = e.target.clientHeight;
-      } else {
-        // Window/Body scrolling
-        scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-        clientHeight = document.documentElement.clientHeight || window.innerHeight;
-      }
-
-      // If we found a valid scroll position, update the button
-      if (typeof scrollTop !== 'number') return;
+    const updateProgress = () => {
+      // FIX: Strictly use Window/Body scroll for the global Back to Top button
+      // This prevents internal scrollable elements (like tickers) from hijacking the logic and hiding the button
+      const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight || window.innerHeight;
 
       // Show/Hide button logic (Threshold 50px)
       if (scrollTop > 50) {
@@ -536,19 +522,14 @@ document.addEventListener("DOMContentLoaded", function () {
       setProgress(scrollPercentage);
     };
 
-    // USE CAPTURE PHASE: Pass 'true' as third argument
-    // This catches 'scroll' events from ANY element (div, iframe, etc.) before they bubble (which they don't usually do)
-    document.addEventListener("scroll", updateProgress, true);
-    // Also listen to window scroll explicitly (more reliable for the front page in some layouts).
-    window.addEventListener("scroll", () => updateProgress(), { passive: true });
+    // Listen to window scroll (passive for performance)
+    window.addEventListener("scroll", updateProgress, { passive: true });
 
-    // Fallback: Check window scroll periodically just in case
-    setInterval(() => {
-      updateProgress();
-    }, 1000); // Check every second
+    // Fallback: Check periodically just in case
+    setInterval(updateProgress, 1000);
 
-    // Initialize state once after render so Home page starts consistent.
-    setTimeout(() => updateProgress(), 0);
+    // Initialize state immediately
+    updateProgress();
 
     // Button Click Logic - Try to scroll EVERYTHING
     backToTopBtn.addEventListener("click", function () {

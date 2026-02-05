@@ -241,16 +241,16 @@ div#accordionSidebar {
 
 @media (max-width: 768px) {
   .back-to-top {
-    right: 10px !important;
-    bottom: 80px !important;
-    /* Move up slightly on mobile to avoid overlap with bottom bars if any */
-    width: 42px !important;
-    height: 42px !important;
+    right: 15px !important;
+    bottom: 25px !important;
+    width: 40px !important;
+    height: 40px !important;
   }
 
-  .back-to-top svg {
-    width: 18px !important;
-    height: 18px !important;
+  /* Only target the inner icon, NOT the progress ring */
+  .back-to-top .icon-container svg {
+    width: 20px !important;
+    height: 20px !important;
   }
 }
 
