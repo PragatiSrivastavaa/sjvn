@@ -780,13 +780,13 @@ h2.subtitle {
 }
 
 .menu-wrapper .menu-toggle {
-  padding: 8px 24px;
-  border-radius: 50px;
+  padding: 0;
+  border-radius: 50%;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   position: absolute;
-  right: 0;
+  right: -15px;
   top: 32px;
   box-shadow: 0 4px 10px #2774AC;
   background: linear-gradient(90deg, #2774AC, #009EDB);
@@ -796,7 +796,9 @@ h2.subtitle {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 0;
+  width: 35px;
+  height: 35px;
   z-index: 10;
 }
 
