@@ -23,6 +23,7 @@ global-scripts:
     js/tabs.js: {}
     js/menu-redirect.js: {}
     js/filter-labels.js: {}
+    js/overview-redirect.js: {}
   dependencies:
     - core/jquery
     - core/drupal
