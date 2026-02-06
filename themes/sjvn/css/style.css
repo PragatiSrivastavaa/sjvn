@@ -205,9 +205,11 @@ body.lang-hi ul.links li[hreflang="hi"] {
 .hero-carousel {
   position: relative;
   width: 100%;
-  height: 60vh;
-  /* fixed height */
+  height: 500px;
+  /* Fixed px height as requested */
   overflow: hidden;
+  background: url('../images/banner-bg.svg') no-repeat center center;
+  background-size: cover;
 }
 
 .carousel-container {
@@ -223,16 +225,20 @@ body.lang-hi ul.links li[hreflang="hi"] {
   animation: fade 0.8s ease-in-out;
 }
 
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* ✅ fills width & height, crops edges if needed */
-  display: block;
+.carousel-slide.active {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
 }
 
-.carousel-slide.active {
+.carousel-slide img {
+  width: auto !important;
+  height: 100% !important;
+  max-width: 100%;
+  object-fit: contain !important;
   display: block;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fade {
@@ -2161,8 +2167,10 @@ body.lang-hi ul.links li[hreflang="hi"] {
 .section-title {
   text-align: center;
   color: var(--primary-color);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 /* Main Card */
@@ -2265,8 +2273,10 @@ body.lang-hi ul.links li[hreflang="hi"] {
 .see-more-btn {
   display: inline-block;
   align-self: flex-end;
-  background: #fdb913;
-  color: #000;
+  /* background: #fdb913;
+  color: #000; */
+  background: linear-gradient(135deg, #ffcc00, #ffb300);
+  color: #1a1a1a;
   font-weight: bold;
   padding: 8px 25px;
   border-radius: 20px;
@@ -2277,9 +2287,10 @@ body.lang-hi ul.links li[hreflang="hi"] {
 }
 
 .see-more-btn:hover {
-  background: #e6a800;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #ffb300, #ffcc00);
+  box-shadow: 0 6px 14px rgba(255, 179, 0, 0.45);
+  transform: translateY(-2px) scale(1.03);
+  color: #000;
 }
 
 
@@ -2289,8 +2300,13 @@ body.lang-hi ul.links li[hreflang="hi"] {
   /* Green background */
   gap: 20px;
   display: flex;
-  padding: 30px 20px;
+  padding: 15px 20px;
   color: #fff;
+}
+
+.alert-card p {
+  font-size: 16px;
+  color: white;
 }
 
 /* Two-Column Layout */
@@ -2507,13 +2523,18 @@ body.lang-hi ul.links li[hreflang="hi"] {
   flex-wrap: wrap;
   justify-content: center;
   flex: 1 1 45%;
+  background: linear-gradient(rgba(0, 48, 73, 0.8), rgba(0, 96, 156, 0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .business-item {
   flex: 0 0 33.333%;
   background: var(--primary-light);
   border: 1px solid var(--primary-light2);
-  padding: 15px;
+  padding: 20px 15px;
+  /* More breathing room */
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -2536,7 +2557,6 @@ body.lang-hi ul.links li[hreflang="hi"] {
   font-size: 2.5rem;
   color: var(--primary-color);
   display: block;
-  /* margin-bottom: 10px; */
   transition: color 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -2551,10 +2571,19 @@ body.lang-hi ul.links li[hreflang="hi"] {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.business-item span {
-  font-size: 0.8rem;
+.business-item:hover .business-icon,
+.business-item:hover span {
   color: var(--primary-color);
+  /* Keep blue text on hover */
+}
+
+.business-item span {
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  /* Blue text matching screenshot */
   font-weight: 600;
+  margin-top: 8px;
+  transition: color 0.3s ease;
 }
 
 /* Right Image Area */
@@ -2611,18 +2640,22 @@ body.lang-hi ul.links li[hreflang="hi"] {
 
 /* quick-links-section */
 
+/* quick-links-section */
+
 .quick-links-section {
-  background: linear-gradient(to bottom, white, var(--secondary-color));
-  padding: 20px 0px 30px 0px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #005a8d 50%, #004e7a 100%);
+  padding: 40px 0px 50px 0px;
   text-align: center;
   width: 100%;
 }
 
 .quick-action-section-heading {
-  color: var(--primary-color);
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-bottom: 12px;
+  color: #ffffff !important;
+  /* White text on dark bg */
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .quick-links-wrapper {
@@ -2639,14 +2672,17 @@ body.lang-hi ul.links li[hreflang="hi"] {
   scroll-behavior: smooth;
   scrollbar-width: none;
   margin: 0px 10px;
-  padding-top: 72px;
+  padding-top: 80px;
+  padding-bottom: 20px;
+  /* Space for shadow */
 }
 
+/* ... scrollbar styles ... */
 .quick-links-container::-webkit-scrollbar {
   display: none;
-  /* Hide scrollbar in Chrome/Safari */
 }
 
+/* ... arrows ... */
 .quick-links-wrapper .quick-arrow {
   background-color: var(--primary-color) !important;
   border: none !important;
@@ -2659,7 +2695,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   z-index: 10 !important;
   position: relative !important;
   flex-shrink: 0 !important;
@@ -2668,10 +2704,12 @@ body.lang-hi ul.links li[hreflang="hi"] {
 
 .quick-links-wrapper .quick-arrow:hover {
   background-color: var(--primary-color) !important;
-  opacity: 0.8 !important;
-  transform: scale(1.05) !important;
+  opacity: 0.9 !important;
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
 }
 
+/* ... focus ... */
 .quick-links-wrapper .quick-arrow:focus {
   outline: none !important;
   box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.3) !important;
@@ -2690,56 +2728,67 @@ body.lang-hi ul.links li[hreflang="hi"] {
   max-width: 220px;
   flex: 0 0 auto;
   background: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  /* Extremely subtle border */
+  border-radius: 20px;
+  /* More rounded */
+  padding: 6px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  /* Premium soft shadow */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   position: relative;
   height: 100%;
+  margin-top: 10px;
+  /* Align with shadow */
 }
 
 /* Make image height consistent & centered */
 .quick-card img {
-  height: 90px;
-  width: 90px;
+  height: 110px;
+  width: 110px;
   position: absolute;
   object-fit: cover;
   margin-bottom: 10px;
-  top: -60px;
-  border: 1px solid #ddd;
-  transition: transform 0.3s ease;
+  top: -70px;
+  border: 4px solid #ffffff;
+  /* White border makes it pop */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   border-radius: 50%;
+  z-index: 2;
 }
 
-/* Title & description stay same */
 .quick-card h3 {
-  font-size: 0.9rem;
-  font-weight: bold;
-  margin: 25px 0px 0px 0px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 40px 0px 5px 0px;
   color: var(--primary-color);
 }
 
 .quick-card p {
   font-size: 0.8rem;
-  color: #333;
+  color: #555;
+  line-height: 1.4;
 }
 
 /* Hover Effect */
 .quick-card:hover {
-  transform: translateY(-5px);
-  border: 2px solid var(--secondary-color);
-  box-shadow: 0 4px 10px rgba(255, 165, 0, 0.5);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  /* Deep soft shadow */
+  border-color: transparent;
 }
 
 .quick-card:hover img {
-  transform: scale(1.2);
-  border: 2px solid var(--secondary-color);
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-color: #ffffff;
+  /* Keep white border */
 }
 
 

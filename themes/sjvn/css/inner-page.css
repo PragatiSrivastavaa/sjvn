@@ -395,7 +395,8 @@
 }
 
 .main-logo-inner {
-  height: 112px;
+  height: 90px;
+  width: 75px;
   margin-right: 10px;
 }
 
@@ -522,7 +523,7 @@ i.bi.bi-house {
   }
 
   .main-logo-inner {
-    height: 80px;
+    height: 75px;
   }
 
   .org-text-inner h1 {
