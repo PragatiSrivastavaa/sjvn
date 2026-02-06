@@ -94,7 +94,15 @@
       <div class="col-12">
         <div class="content-area main-body" id="mainSec">
           <div id="{{ unique_page_id }}">
-            {{ page.content }}
+            {% if page.content|render|striptags|trim is not empty %}
+              {{ page.content }}
+            {% else %}
+              <div class="no-content-box text-center py-5">
+                <h3 class="mb-3" style="color: #555;">{% if language.getId() == 'hi' %}पृष्ठ नहीं मिला{% else %}Page Not Found{% endif %}</h3>
+                <p class="mb-4" style="color: #777;">{% if language.getId() == 'hi' %}क्षमा करें, इस पृष्ठ पर कोई सामग्री उपलब्ध नहीं है।{% else %}Sorry, The content you are looking for is not available.{% endif %}</p>
+                 <a href="{{ front_page }}" class="btn btn-primary">{% if language.getId() == 'hi' %}होम पेज पर जाएं{% else %}Go to Home Page{% endif %}</a>
+              </div>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -102,7 +110,15 @@
       {% else %}
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-body" id="mainSec">
         <div id="{{ unique_page_id }}">
-          {{ page.content }}
+          {% if page.content|render|striptags|trim is not empty %}
+            {{ page.content }}
+          {% else %}
+            <div class="no-content-box text-center py-5">
+              <h3 class="mb-3" style="color: #555;">{% if language.getId() == 'hi' %}पृष्ठ नहीं मिला{% else %}Page Not Found{% endif %}</h3>
+              <p class="mb-4" style="color: #777;">{% if language.getId() == 'hi' %}क्षमा करें, इस पृष्ठ पर कोई सामग्री उपलब्ध नहीं है।{% else %}Sorry, The content you are looking for is not available.{% endif %}</p>
+               <a href="{{ front_page }}" class="btn btn-primary">{% if language.getId() == 'hi' %}होम पेज पर जाएं{% else %}Go to Home Page{% endif %}</a>
+            </div>
+          {% endif %}
         </div>
       </div>
     </div>

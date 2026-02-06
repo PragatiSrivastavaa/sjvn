@@ -141,10 +141,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const dots = dotsContainer.querySelectorAll("button");
 
+  // Create/Select blur background element
+  const heroCarousel = document.querySelector('.hero-carousel');
+  let bgBlur = document.querySelector('.hero-bg-blur');
+  if (heroCarousel && !bgBlur) {
+    bgBlur = document.createElement('div');
+    bgBlur.className = 'hero-bg-blur';
+    heroCarousel.insertBefore(bgBlur, heroCarousel.firstChild);
+  }
+
+  function updateBackground(index) {
+    if (!bgBlur || !slides[index]) return;
+    const img = slides[index].querySelector('img');
+    if (img) {
+      bgBlur.style.backgroundImage = `url('${img.src}')`;
+    }
+  }
+
   function showSlide(index) {
     slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
     dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
     currentSlide = index;
+    updateBackground(index);
   }
 
   function nextSlide() {
