@@ -1,0 +1,41 @@
+uuid: 323754a2-331c-4aa2-82a6-836b215da9cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.operational_performance.body
+    - field.field.node.operational_performance.field_capacity_index_paf_njhps
+    - field.field.node.operational_performance.field_capacity_index_paf_rhps
+    - field.field.node.operational_performance.field_gross_energy_generation_mu
+    - field.field.node.operational_performance.field_mu_rhps
+    - field.field.node.operational_performance.field_sr_no
+    - node.type.operational_performance
+  module:
+    - text
+    - user
+id: node.operational_performance.teaser
+targetEntityType: node
+bundle: operational_performance
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_capacity_index_paf_njhps: true
+  field_capacity_index_paf_rhps: true
+  field_gross_energy_generation_mu: true
+  field_mu_rhps: true
+  field_sr_no: true
+  langcode: true

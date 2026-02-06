@@ -1,0 +1,19 @@
+uuid: 22086c41-d5a4-4f16-8cc2-eb83fb916c86
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_capacity_index_paf_njhps
+    - node.type.operational_performance
+id: node.operational_performance.field_capacity_index_paf_njhps
+field_name: field_capacity_index_paf_njhps
+entity_type: node
+bundle: operational_performance
+label: 'Capacity index / PAF (%) NJHPS'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

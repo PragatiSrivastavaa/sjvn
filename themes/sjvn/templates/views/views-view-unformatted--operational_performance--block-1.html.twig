@@ -1,0 +1,72 @@
+<h2 class="subtitle mt-4">
+    Operational Performance:
+</h2>
+<p>
+    The year wise operational performance of Nathpa Jhakri HPS (NJHPS) &amp; Rampur HPS (RHPS) is as follows:
+</p>
+<div class="scroll-mobile">
+    <table class="table common-table">
+        <thead>
+            <tr>
+                <th colspan="2">
+                    &nbsp;
+                </th>
+                <th colspan="2">
+                    Gross Energy Generation (MU)
+                </th>
+                <th colspan="3">
+                    Capacity index / PAF (%)
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Sr. No.
+                </th>
+                <th>
+                    FY:
+                </th>
+                <th>
+                    NJHPS
+                </th>
+                <th>
+                    RHPS
+                </th>
+                <th>
+                    NJHPS
+                </th>
+                <th>
+                    RHPS
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+          {% for row in rows %}
+            <tr>
+                <td>
+                    {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_sr_no }}'] }}
+                </td>
+                <td>
+                    {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}
+                </td>
+                <td>
+                    {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_gross_energy_generation_mu }}'] }}
+                </td>
+                <td>
+                   {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_mu_rhps }}'] }}
+                </td>
+                
+                    <td>{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_capacity_index_paf_njhps }}'] }}</td>
+                
+                <td>
+                  {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_capacity_index_paf_rhps }}'] }}
+                </td>
+                
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,19 @@
+uuid: 62b3ef95-60d9-47ff-b70c-9b1e5d67296d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mu_rhps
+    - node.type.operational_performance
+id: node.operational_performance.field_mu_rhps
+field_name: field_mu_rhps
+entity_type: node
+bundle: operational_performance
+label: 'Gross Energy Generation (MU) RHPS'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

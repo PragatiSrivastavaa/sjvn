@@ -1,0 +1,38 @@
+uuid: 650c5dc6-827a-46b6-921b-8d08d6d2c096
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.under_operation_maintenance.body
+    - field.field.node.under_operation_maintenance.field_project_list
+    - node.type.under_operation_maintenance
+  module:
+    - text
+    - user
+id: node.under_operation_maintenance.default
+targetEntityType: node
+bundle: under_operation_maintenance
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_project_list:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

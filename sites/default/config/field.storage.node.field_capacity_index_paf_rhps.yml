@@ -1,0 +1,21 @@
+uuid: fffe3a6e-93e0-425e-bf61-039aa90cc4d9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_capacity_index_paf_rhps
+field_name: field_capacity_index_paf_rhps
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

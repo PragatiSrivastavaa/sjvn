@@ -13,7 +13,7 @@ third_party_settings:
     translation_sync:
       target_id: target_id
       display: display
-      description: '0'
+      description: description
 id: node.energy_bill.field_upload_files
 field_name: field_upload_files
 entity_type: node

@@ -1,0 +1,18 @@
+uuid: 9724e96e-8024-4212-8b24-9bac3c01553e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.operational_performance
+id: node.operational_performance.title
+field_name: title
+entity_type: node
+bundle: operational_performance
+label: FY
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

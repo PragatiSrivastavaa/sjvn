@@ -1,16 +1,16 @@
-uuid: cfe96fd1-5f8f-4a04-b12d-2e0943bca300
+uuid: 13a54d4e-0206-487a-9264-57588cb8fe33
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_image_gallery_cat
-    - node.type.photo_gallery
-    - taxonomy.vocabulary.image_gallery_cat
-id: node.photo_gallery.field_image_gallery_cat
-field_name: field_image_gallery_cat
+    - field.storage.node.field_project_list
+    - node.type.under_operation_maintenance
+    - taxonomy.vocabulary.project_list
+id: node.under_operation_maintenance.field_project_list
+field_name: field_project_list
 entity_type: node
-bundle: photo_gallery
-label: 'Image Gallery Cat'
+bundle: under_operation_maintenance
+label: 'Project List'
 description: ''
 required: false
 translatable: true
@@ -20,7 +20,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      image_gallery_cat: image_gallery_cat
+      project_list: project_list
     sort:
       field: name
       direction: asc

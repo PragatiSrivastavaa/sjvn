@@ -1,0 +1,74 @@
+uuid: e24d4c17-1b41-4d15-8b7c-471f222f1316
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.operational_performance.body
+    - field.field.node.operational_performance.field_capacity_index_paf_njhps
+    - field.field.node.operational_performance.field_capacity_index_paf_rhps
+    - field.field.node.operational_performance.field_gross_energy_generation_mu
+    - field.field.node.operational_performance.field_mu_rhps
+    - field.field.node.operational_performance.field_sr_no
+    - node.type.operational_performance
+  module:
+    - text
+    - user
+id: node.operational_performance.default
+targetEntityType: node
+bundle: operational_performance
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_capacity_index_paf_njhps:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_capacity_index_paf_rhps:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_gross_energy_generation_mu:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_mu_rhps:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_sr_no:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

@@ -6,7 +6,14 @@ dependencies:
     - field.storage.node.field_upload_files
     - node.type.career
   module:
+    - content_translation
     - file
+third_party_settings:
+  content_translation:
+    translation_sync:
+      target_id: target_id
+      display: display
+      description: description
 id: node.career.field_upload_files
 field_name: field_upload_files
 entity_type: node
@@ -14,7 +21,7 @@ bundle: career
 label: 'Upload Files'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

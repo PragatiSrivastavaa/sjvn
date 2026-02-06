@@ -1,0 +1,18 @@
+uuid: b2ef6d46-21e6-445b-9f3a-1578d96de976
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.operational_performance
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.operational_performance
+target_entity_type_id: node
+target_bundle: operational_performance
+default_langcode: site_default
+language_alterable: true
