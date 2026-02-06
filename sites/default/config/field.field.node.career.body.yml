@@ -11,7 +11,7 @@ id: node.career.body
 field_name: body
 entity_type: node
 bundle: career
-label: Body
+label: Descriptions
 description: ''
 required: false
 translatable: true

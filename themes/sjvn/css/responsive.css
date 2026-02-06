@@ -1775,4 +1775,9 @@
     padding: 4px 12px;
     font-size: 0.7rem;
   }
+
+  .views-row {
+    position: relative;
+}
+
 }

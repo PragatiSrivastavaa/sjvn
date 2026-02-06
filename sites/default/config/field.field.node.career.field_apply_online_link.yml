@@ -11,7 +11,7 @@ id: node.career.field_apply_online_link
 field_name: field_apply_online_link
 entity_type: node
 bundle: career
-label: 'Apply Online Link'
+label: 'Add Link'
 description: ''
 required: false
 translatable: true
