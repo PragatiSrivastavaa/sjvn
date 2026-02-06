@@ -969,15 +969,17 @@ ul.result-list.Clearances-and-Reports li {
     transform: translateX(-50%);
     width: max-content;
 }
-li.statutory-compliance-div {
-  position: relative;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+li.statutory-compliance {
+    position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-    li.statutory-compliance-div:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        border-color: var(--primary-color);
-    }
+
+li.statutory-compliance:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
