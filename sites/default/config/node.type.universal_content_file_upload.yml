@@ -1,0 +1,17 @@
+uuid: 275c2c44-2990-402c-9a77-2c8c5007567e
+langcode: hi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Universal Content File Upload'
+type: universal_content_file_upload
+description: null
+help: null
+new_revision: false
+preview_mode: 1
+display_submitted: false

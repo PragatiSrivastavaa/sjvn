@@ -1,0 +1,11 @@
+uuid: 9eaf1ff5-40a6-491e-91a7-fdf03f62925f
+langcode: hi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.category
+id: taxonomy_term.category
+target_entity_type_id: taxonomy_term
+target_bundle: category
+default_langcode: en
+language_alterable: false

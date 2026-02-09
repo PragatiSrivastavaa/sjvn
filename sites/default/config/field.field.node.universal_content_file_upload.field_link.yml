@@ -1,0 +1,23 @@
+uuid: 12c152e3-7fee-4929-ba10-b5476a1031e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_link
+    - node.type.universal_content_file_upload
+  module:
+    - link
+id: node.universal_content_file_upload.field_link
+field_name: field_link
+entity_type: node
+bundle: universal_content_file_upload
+label: link
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

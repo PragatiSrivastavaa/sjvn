@@ -1,0 +1,21 @@
+uuid: 94688977-b89b-42d8-a533-2c9ed4878d48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_credit_facility
+    - node.type.universal_content_file_upload
+id: node.universal_content_file_upload.field_credit_facility
+field_name: field_credit_facility
+entity_type: node
+bundle: universal_content_file_upload
+label: URL
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

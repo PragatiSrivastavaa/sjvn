@@ -1,0 +1,22 @@
+uuid: 271badc0-7a36-42f9-8071-4b1ec9335cd2
+langcode: hi
+status: true
+dependencies:
+  config:
+    - node.type.universal_content_file_upload
+id: node.universal_content_file_upload.promote
+field_name: promote
+entity_type: node
+bundle: universal_content_file_upload
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

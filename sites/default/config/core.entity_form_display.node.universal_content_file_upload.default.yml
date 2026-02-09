@@ -1,18 +1,22 @@
-uuid: 791625d5-c499-4377-9f05-07a7713459cd
-langcode: en
+uuid: a1fc0098-605f-4553-8b02-635f0c5ed9f7
+langcode: hi
 status: true
 dependencies:
   config:
-    - field.field.node.under_operation_maintenance.body
-    - field.field.node.under_operation_maintenance.field_project_list
-    - node.type.under_operation_maintenance
+    - field.field.node.universal_content_file_upload.body
+    - field.field.node.universal_content_file_upload.field_category_of_page
+    - field.field.node.universal_content_file_upload.field_credit_facility
+    - field.field.node.universal_content_file_upload.field_file_upload
+    - field.field.node.universal_content_file_upload.field_link
+    - node.type.universal_content_file_upload
   module:
+    - file
+    - link
     - path
-    - shs
     - text
-id: node.under_operation_maintenance.default
+id: node.universal_content_file_upload.default
 targetEntityType: node
-bundle: under_operation_maintenance
+bundle: universal_content_file_upload
 mode: default
 content:
   body:
@@ -31,15 +35,33 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_project_list:
-    type: options_shs
-    weight: 11
+  field_category_of_page:
+    type: options_select
+    weight: 123
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_credit_facility:
+    type: boolean_checkbox
+    weight: 12
     region: content
     settings:
-      display_node_count: false
-      create_new_items: false
-      create_new_levels: false
-      force_deepest: false
+      display_label: true
+    third_party_settings: {  }
+  field_file_upload:
+    type: file_generic
+    weight: 122
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 123
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   langcode:
     type: language_select
