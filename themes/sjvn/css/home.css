@@ -19,8 +19,8 @@
 .announcement-bar {
   display: flex;
   align-items: center;
-  background: #fdb913;
-  color: #000;
+  background: var(--primary-color);
+  color: #fff;
   font-weight: bold;
   padding: 0px 10px;
   gap: 10px;
@@ -61,7 +61,7 @@
   border: 1px solid var(--secondary-color);
   border-radius: 20px;
   padding: 2px 20px 2px 20px;
-  color: #3E3E3E;
+  color: #fff;
   font-size: 0.85rem;
   display: inline-flex;
   align-items: center;

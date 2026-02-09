@@ -350,8 +350,8 @@ body.lang-hi ul.links li[hreflang="hi"] {
   align-items: center;
   flex-wrap: wrap;
   /* Allow wrapping for mobile, but constrained on desktop */
-  background: #009edb;
-  color: #000;
+  background: var(--primary-color);
+  color: #fff;
   font-weight: bold;
   /* padding: 0px 10px; */
   gap: 10px;
@@ -370,7 +370,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
   flex-shrink: 0;
   padding: 5px 10px;
   background: #fdb913;
-  /* Match bar color */
+  color: #000;
 }
 
 .announcement-title {
@@ -403,7 +403,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
   border: 1px solid var(--secondary-color);
   border-radius: 20px;
   padding: 2px 20px 2px 20px;
-  color: #3E3E3E;
+  color: #fff;
   font-size: 0.85rem;
   display: inline-flex;
   align-items: center;
