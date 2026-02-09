@@ -97,10 +97,22 @@
             {% if page.content|render|striptags|trim is not empty %}
               {{ page.content }}
             {% else %}
-              <div class="no-content-box text-center py-5">
-                <h3 class="mb-3" style="color: #555;">{% if language.getId() == 'hi' %}पृष्ठ नहीं मिला{% else %}Page Not Found{% endif %}</h3>
-                <p class="mb-4" style="color: #777;">{% if language.getId() == 'hi' %}क्षमा करें, इस पृष्ठ पर कोई सामग्री उपलब्ध नहीं है।{% else %}Sorry, The content you are looking for is not available.{% endif %}</p>
-                 <a href="{{ front_page }}" class="btn btn-primary">{% if language.getId() == 'hi' %}होम पेज पर जाएं{% else %}Go to Home Page{% endif %}</a>
+              <div class="no-content-wrapper">
+                <div class="empty-state-card">
+                  <div class="empty-state-icon-wrapper">
+                    <div class="empty-state-icon-bg"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder-minus main-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path><line x1="9" y1="14" x2="15" y2="14"></line></svg>
+                    <div class="decorative-dot dot-1"></div>
+                    <div class="decorative-dot dot-2"></div>
+                    <div class="decorative-dot dot-3"></div>
+                  </div>
+                  <h3 class="empty-state-title">{% if language.getId() == 'hi' %}अभी कोई जानकारी उपलब्ध नहीं है{% else %}No Information Available{% endif %}</h3>
+                  <p class="empty-state-desc">{% if language.getId() == 'hi' %}हम इस पृष्ठ पर सामग्री जोड़ने के लिए काम कर रहे हैं।<br>कृपया बाद में दोबारा जांचें।{% else %}We are working on adding content to this page.<br>Please check back later.{% endif %}</p>
+                   <a href="{{ front_page }}" class="btn btn-modern-primary">
+                    <i class="bi bi-arrow-left me-2"></i>
+                    {% if language.getId() == 'hi' %}होम पेज पर वापस जाएं{% else %}Back to Home Page{% endif %}
+                   </a>
+                </div>
               </div>
             {% endif %}
           </div>
@@ -113,10 +125,22 @@
           {% if page.content|render|striptags|trim is not empty %}
             {{ page.content }}
           {% else %}
-            <div class="no-content-box text-center py-5">
-              <h3 class="mb-3" style="color: #555;">{% if language.getId() == 'hi' %}पृष्ठ नहीं मिला{% else %}Page Not Found{% endif %}</h3>
-              <p class="mb-4" style="color: #777;">{% if language.getId() == 'hi' %}क्षमा करें, इस पृष्ठ पर कोई सामग्री उपलब्ध नहीं है।{% else %}Sorry, The content you are looking for is not available.{% endif %}</p>
-               <a href="{{ front_page }}" class="btn btn-primary">{% if language.getId() == 'hi' %}होम पेज पर जाएं{% else %}Go to Home Page{% endif %}</a>
+            <div class="no-content-wrapper">
+              <div class="empty-state-card">
+                <div class="empty-state-icon-wrapper">
+                  <div class="empty-state-icon-bg"></div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder-minus main-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path><line x1="9" y1="14" x2="15" y2="14"></line></svg>
+                  <div class="decorative-dot dot-1"></div>
+                  <div class="decorative-dot dot-2"></div>
+                  <div class="decorative-dot dot-3"></div>
+                </div>
+                <h3 class="empty-state-title">{% if language.getId() == 'hi' %}अभी कोई जानकारी उपलब्ध नहीं है{% else %}No Information Available{% endif %}</h3>
+                <p class="empty-state-desc">{% if language.getId() == 'hi' %}हम इस पृष्ठ पर सामग्री जोड़ने के लिए काम कर रहे हैं।<br>कृपया बाद में दोबारा जांचें।{% else %}We are working on adding content to this page.<br>Please check back later.{% endif %}</p>
+                 <a href="{{ front_page }}" class="btn btn-modern-primary">
+                  <i class="bi bi-arrow-left me-2"></i>
+                  {% if language.getId() == 'hi' %}होम पेज पर वापस जाएं{% else %}Back to Home Page{% endif %}
+                 </a>
+              </div>
             </div>
           {% endif %}
         </div>
