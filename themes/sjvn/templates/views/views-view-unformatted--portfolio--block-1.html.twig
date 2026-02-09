@@ -39,8 +39,8 @@
 </span> -->
                 <div class="d-flex justify-content-between align-items-center mt-3 cursor-pointer">
                   <h5 class="project-title pt-1 mb-0">{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}</h5>
-                  <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
-                 <button class="icon-btn" aria-label="View Project"> <i class="fa-solid fa-angle-right"></i> </button></a>
+                  <a href="{{ path('entity.node.canonical', {'node': node.id}) }}" aria-label="View Project">
+                 <span class="icon-btn"> <i class="fa-solid fa-angle-right" aria-hidden="true"></i> </span></a>
                   
                 </div>
                
