@@ -1,0 +1,11 @@
+uuid: 08a3fa39-8a31-4489-8959-cc23a2671b62
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.accordion_category
+id: taxonomy_term.accordion_category
+target_entity_type_id: taxonomy_term
+target_bundle: accordion_category
+default_langcode: site_default
+language_alterable: false
