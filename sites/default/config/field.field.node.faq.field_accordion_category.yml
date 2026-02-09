@@ -1,0 +1,29 @@
+uuid: 71d81e29-1277-4f46-9070-7e7e8a8d8000
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_accordion_category
+    - node.type.faq
+    - taxonomy.vocabulary.accordion_category
+id: node.faq.field_accordion_category
+field_name: field_accordion_category
+entity_type: node
+bundle: faq
+label: 'Accordion Category '
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      accordion_category: accordion_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

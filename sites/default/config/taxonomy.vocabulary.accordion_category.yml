@@ -1,0 +1,9 @@
+uuid: 841d7f06-2b52-41b0-b0c6-679804e27b76
+langcode: en
+status: true
+dependencies: {  }
+name: 'Accordion Category'
+vid: accordion_category
+description: null
+weight: 0
+new_revision: false
