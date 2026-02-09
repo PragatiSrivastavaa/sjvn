@@ -426,6 +426,19 @@ display:
         options: {  }
       empty: {  }
       sorts:
+        field_directors_category_target_id:
+          id: field_directors_category_target_id
+          table: node__field_directors_category
+          field: field_directors_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
         created:
           id: created
           table: node_field_data
