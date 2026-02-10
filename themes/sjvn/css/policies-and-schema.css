@@ -590,7 +590,7 @@
     margin-top: 20px;
 }
 
-.pdf-btn {
+/* .pdf-btn {
     background: linear-gradient(90deg, rgb(39, 116, 172), rgb(0, 158, 219));
     padding: 7px 22px;
     border-radius: 50px;
@@ -605,7 +605,46 @@
 .pdf-btn:hover {
     background: #006ca8;
     color: #ffffff;
+} */
+.pdf-btn {
+    position: relative;
+    background: linear-gradient(90deg, rgb(39, 116, 172), rgb(0, 158, 219));
+    padding: 7px 22px;
+    border-radius: 50px;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    border: none;
+    box-shadow: none;
+    transition: color 0.8s ease;
+    color: #fff !important;
+    overflow: hidden;
+    z-index: 1;
 }
+
+.pdf-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: #006ca8;
+    /* Hover fill color */
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.8s ease;
+    z-index: -1;
+}
+
+.pdf-btn:hover::before {
+    transform: translate(-50%, -50%) scale(25);
+    /* Center se bahar round spread */
+}
+
+.pdf-btn:hover {
+    color: #ffffff;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -982,4 +1021,52 @@ li.statutory-compliance:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border-color: var(--primary-color);
+}
+
+/* ==================================== CSR Policy & Schemes ================================ */
+.view-id-universal_content_file_upload.view-display-id-page_1 .view-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.view-id-universal_content_file_upload.view-display-id-page_1 .view-content .views-row {
+    background: #ffffff;
+    position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    counter-increment: doc-counter;
+    transition: all .3s ease;
+
+}
+
+.view-id-universal_content_file_upload.view-display-id-page_1 .view-content .views-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .view-id-universal_content_file_upload.view-display-id-page_1 .view-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .view-id-universal_content_file_upload.view-display-id-page_1 .view-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575px) {
+    .view-id-universal_content_file_upload.view-display-id-page_1 .view-content {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
