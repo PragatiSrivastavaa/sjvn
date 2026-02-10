@@ -8,7 +8,7 @@ dependencies:
     - node.type.our_business
     - taxonomy.vocabulary.portfolio_cat
   content:
-    - 'block_content:basic:897a444a-3ab7-4933-af35-bbb26a4184e5'
+    - 'block_content:basic:a2d8abf1-dbbf-464b-937a-37ae8d17ffb6'
     - 'taxonomy_term:portfolio_cat:4a759c84-feeb-486a-81fe-cec0fdba5a16'
     - 'taxonomy_term:portfolio_cat:5ca0d3f2-8b9a-4ee1-8d01-1771ffd34f7e'
     - 'taxonomy_term:portfolio_cat:76744826-b1c0-4c22-872e-9119d1e1b5be'
@@ -859,7 +859,7 @@ display:
           admin_label: ''
           plugin_id: entity
           empty: true
-          target: 897a444a-3ab7-4933-af35-bbb26a4184e5
+          target: a2d8abf1-dbbf-464b-937a-37ae8d17ffb6
           view_mode: default
           tokenize: true
           bypass_access: true
