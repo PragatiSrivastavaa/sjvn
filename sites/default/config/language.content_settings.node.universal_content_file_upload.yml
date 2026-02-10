@@ -1,0 +1,18 @@
+uuid: ffc49a33-187a-4269-948b-4f023ceafd78
+langcode: hi
+status: true
+dependencies:
+  config:
+    - node.type.universal_content_file_upload
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.universal_content_file_upload
+target_entity_type_id: node
+target_bundle: universal_content_file_upload
+default_langcode: site_default
+language_alterable: true

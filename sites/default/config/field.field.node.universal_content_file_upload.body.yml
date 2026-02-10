@@ -1,0 +1,24 @@
+uuid: 19e4723a-6417-430e-b39b-044869175a5a
+langcode: hi
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.universal_content_file_upload
+  module:
+    - text
+id: node.universal_content_file_upload.body
+field_name: body
+entity_type: node
+bundle: universal_content_file_upload
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

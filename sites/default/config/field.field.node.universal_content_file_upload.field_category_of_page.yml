@@ -1,0 +1,29 @@
+uuid: ebaf7448-cdd7-4a45-be52-828f9d8589f9
+langcode: hi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_category_of_page
+    - node.type.universal_content_file_upload
+    - taxonomy.vocabulary.category
+id: node.universal_content_file_upload.field_category_of_page
+field_name: field_category_of_page
+entity_type: node
+bundle: universal_content_file_upload
+label: 'Category of Page'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      category: category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

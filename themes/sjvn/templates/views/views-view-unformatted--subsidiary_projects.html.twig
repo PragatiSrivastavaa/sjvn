@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Theme override to display subsidiary projects in unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+<div class="container-fluid">
+  <div class="row g-4">
+        {% for row in rows %}
+        {% set node = row.content['#row']._entity %}
+
+         <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
+            <div class="project-card rounded position-relative">
+               {% if row.content['#row']._entity.field_business_image is not empty %}
+          {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_business_image }}'] }}
+          {% else %}
+          <!-- ./themes/sjvn/images/gallery/no-image.png -->
+           {% set clean_base = request.basePath|replace({'/en': ''}) %}
+          <img src="{{ request.schemeAndHttpHost ~ clean_base ~ '/sjvn/themes/sjvn/images/gallery/no-img-found.png' }}" alt="No Image Available" class="img-fluid  image-style-medium">
+          {% endif %}
+
+    {# === CATEGORY BADGE === #}
+    {% set node = row.content['#row']._entity %}
+
+<!-- <span class="badge power-badge">
+  {{ node.field_main_category.entity.label }}
+</span> -->
+
+    {# === NODE TITLE LINK === #}
+    {% set node = row.content['#row']._entity %}
+    <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
+      <h6 class="title">
+        {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}
+      </h6>
+      <span class="icon-btn"> <i class="fa-solid fa-angle-right" aria-hidden="true"></i> </span>
+
+      
+    </a>
+            </div>
+          </div>
+
+        {% endfor %}
+</div>
+</div>

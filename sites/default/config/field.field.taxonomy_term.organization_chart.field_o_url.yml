@@ -12,7 +12,7 @@ bundle: organization_chart
 label: URL
 description: 'Add a link to this organigram item.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

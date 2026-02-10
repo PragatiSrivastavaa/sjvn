@@ -1,0 +1,54 @@
+<h2 class="subtitle">Clearances and Reports</h2>
+
+<div class="accordion" id="accordionExample">
+  {% for row in rows %}
+    {% set node = row.content['#row']._entity %}
+    {% set faq_id = 'faq' ~ loop.index %}
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading-{{ loop.index }}">
+        <button class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#{{ faq_id }}"
+                aria-expanded="false"
+                aria-controls="{{ faq_id }}">
+          {{ node.label }}
+        </button>
+      </h2>
+
+      <div id="{{ faq_id }}"
+           class="accordion-collapse collapse"
+           aria-labelledby="heading-{{ loop.index }}"
+           data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+
+          {# Group Content loop #}
+          {% for group_item in node.field_group_content %}
+            {% set group = group_item.entity %}
+
+            {% if group.field_group_name.entity.label == 'Clearances' %}
+
+              {# Add Content loop #}
+              {% for add_item in group.field_add_content %}
+                {% set add = add_item.entity %}
+
+                {# PDF files loop #}
+                {% for file_item in add.field_upload_files %}
+                  {% set file = file_item.entity %}
+                  <p>
+                    <a href="{{ file_url(file.fileuri) }}" target="_blank">
+                      {{ add.field_group_title.value ?: file.filename.value }}
+                    </a>
+                  </p>
+                {% endfor %}
+
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
