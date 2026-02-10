@@ -1,29 +1,30 @@
-uuid: bebf0923-45b2-4f9f-9191-615ca643803a
+uuid: 7886eb6b-18e1-4552-8fb8-af2752a9f78f
 langcode: en
 status: true
 dependencies:
   config:
-    - views.view.portfolio
+    - views.view.subsidiaries
   module:
     - system
     - views
   theme:
     - sjvn
-id: sjvn_views_block__portfolio_block_1
+id: sjvn_views_block__subsidiaries_block_1
 theme: sjvn
 region: content
-weight: -21
+weight: -20
 provider: null
-plugin: 'views_block:portfolio-block_1'
+plugin: 'views_block:subsidiaries-block_1'
 settings:
-  id: 'views_block:portfolio-block_1'
+  id: 'views_block:subsidiaries-block_1'
   label: ''
   label_display: '0'
   provider: views
+  context_mapping: {  }
   views_label: ''
   items_per_page: none
 visibility:
   request_path:
     id: request_path
     negate: false
-    pages: "/company-profile\r\n/kanpanai-kaa-paraicaya"
+    pages: /company-profile

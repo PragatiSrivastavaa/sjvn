@@ -14,7 +14,7 @@ bundle: organization_chart
 label: Position
 description: 'The position of the organigram item (will be ignored on root items).'
 required: false
-translatable: false
+translatable: true
 default_value:
   -
     value: u

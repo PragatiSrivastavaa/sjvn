@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.our_business.field_important_events
     - field.field.node.our_business.field_introduction
     - field.field.node.our_business.field_location
+    - field.field.node.our_business.field_main_category
     - field.field.node.our_business.field_portfolio_cat
     - field.field.node.our_business.field_project_benefits
     - field.field.node.our_business.field_salient_features
@@ -88,6 +89,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 6
+    region: content
+  field_main_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 13
     region: content
   field_portfolio_cat:
     type: entity_reference_label

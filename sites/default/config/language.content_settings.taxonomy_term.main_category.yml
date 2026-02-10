@@ -1,9 +1,9 @@
-uuid: 9eaf1ff5-40a6-491e-91a7-fdf03f62925f
-langcode: hi
+uuid: cfff4ed3-531b-4bee-8108-ab85c4aa3dec
+langcode: en
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.category
+    - taxonomy.vocabulary.main_category
   module:
     - content_translation
 third_party_settings:
@@ -11,8 +11,8 @@ third_party_settings:
     enabled: true
     bundle_settings:
       untranslatable_fields_hide: '0'
-id: taxonomy_term.category
+id: taxonomy_term.main_category
 target_entity_type_id: taxonomy_term
-target_bundle: category
-default_langcode: en
+target_bundle: main_category
+default_langcode: site_default
 language_alterable: true

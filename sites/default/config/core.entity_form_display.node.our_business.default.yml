@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.our_business.field_important_events
     - field.field.node.our_business.field_introduction
     - field.field.node.our_business.field_location
+    - field.field.node.our_business.field_main_category
     - field.field.node.our_business.field_portfolio_cat
     - field.field.node.our_business.field_project_benefits
     - field.field.node.our_business.field_salient_features
@@ -21,6 +22,7 @@ dependencies:
     - image
     - paragraphs
     - path
+    - shs
     - text
 id: node.our_business.default
 targetEntityType: node
@@ -116,6 +118,16 @@ content:
       summary_rows: 3
       placeholder: ''
       show_summary: false
+    third_party_settings: {  }
+  field_main_category:
+    type: options_shs
+    weight: 26
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
   field_portfolio_cat:
     type: options_select
