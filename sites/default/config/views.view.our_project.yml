@@ -599,19 +599,19 @@ display:
         filter_groups: true
         header: false
       header:
-        area:
-          id: area
+        entity_taxonomy_term:
+          id: entity_taxonomy_term
           table: views
-          field: area
+          field: entity_taxonomy_term
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: text
-          empty: false
-          content:
-            value: "Beginning from a single hydropower project company, SJVN today has a footprint in a Hydroelectric Projects in Himachal Pradesh, Uttrakhand and in the neighboring countries of Nepal and Bhutan.\r\n\r\nSJVN is successfully operating the country’s largest 1500 MW Nathpa Jhakri Hydropower Station and is setting new benchmarks in generation and maintenance year after year, after having tackled the silt erosion problems in under-water turbine parts."
-            format: full_html
-          tokenize: false
+          plugin_id: entity
+          empty: true
+          target: 'a8957c63-8486-4b39-8864-9776c8800313'
+          view_mode: default
+          tokenize: true
+          bypass_access: true
       display_extenders: {  }
       path: hydropower
     cache_metadata:
@@ -801,19 +801,19 @@ display:
         filter_groups: false
         header: false
       header:
-        area:
-          id: area
+        entity_taxonomy_term:
+          id: entity_taxonomy_term
           table: views
-          field: area
+          field: entity_taxonomy_term
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: text
-          empty: false
-          content:
-            value: 'After experience gained in harnessing the country’s hydropower potential, SJVN forayed into generation of thermal power. The first project taken up for execution is the 1320 MW capacity Buxar Thermal Power Plant in Distt. Buxar, Bihar. SJVN took over Buxar Bijlee Company Pvt. Ltd. on 04.07.2013 and name was changed to SJVN Thermal Pvt. Ltd. (wholly owned subsidiary of SJVN Ltd.) on 17.10.2013.'
-            format: full_html
-          tokenize: false
+          plugin_id: entity
+          empty: true
+          target: 'ab3142be-10c6-45ce-b909-95f464c60306'
+          view_mode: default
+          tokenize: true
+          bypass_access: true
       display_extenders: {  }
       path: thermalpower
     cache_metadata:
@@ -1043,19 +1043,19 @@ display:
         filter_groups: false
         header: false
       header:
-        area:
-          id: area
+        entity_taxonomy_term:
+          id: entity_taxonomy_term
           table: views
-          field: area
+          field: entity_taxonomy_term
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: text
-          empty: false
-          content:
-            value: 'SJVN has diversified into Wind Power generation with commissioning of its first project i.e. 47.6 MW Khirvire Wind Power Project at Khirvire and Kombhalne villages in Ahmednagar district of Maharashtra. Second wind project i.e. Sadla Wind Power Project of 50 MW Capacity situated in village Sadla, District Surendranagar in the state of Gujarat has also been commissioned.'
-            format: full_html
-          tokenize: false
+          plugin_id: entity
+          empty: true
+          target: '90b4db7a-c133-4508-b0c4-d0372bcc6064'
+          view_mode: default
+          tokenize: true
+          bypass_access: true
       display_extenders: {  }
       path: windpower
     cache_metadata:
@@ -1288,19 +1288,19 @@ display:
         filter_groups: false
         header: false
       header:
-        area:
-          id: area
+        entity_taxonomy_term:
+          id: entity_taxonomy_term
           table: views
-          field: area
+          field: entity_taxonomy_term
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: text
-          empty: false
-          content:
-            value: "SJVN has diversified into Solar Power generation with commissioning of its first project in Charanka Solar Park, Gujarat on 31.03.2017. As on date, 8 Solar projects with total installed capacity of 396.91 MW are under operation. \r\n"
-            format: full_html
-          tokenize: false
+          plugin_id: entity
+          empty: true
+          target: '1239a0f4-018f-408f-967b-50375b7ed862'
+          view_mode: default
+          tokenize: true
+          bypass_access: true
       display_extenders: {  }
       path: solarpower
     cache_metadata:
@@ -1533,19 +1533,19 @@ display:
         filter_groups: false
         header: false
       header:
-        area:
-          id: area
+        entity_taxonomy_term:
+          id: entity_taxonomy_term
           table: views
-          field: area
+          field: entity_taxonomy_term
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: text
-          empty: false
-          content:
-            value: "From a power generation company, SJVN has also entered into Power Transmission Sector by partnering with others companies to lay out the Cross Border Indo-Nepal Power Transmission Line. The above mentioned Power Transmission Line has been declared commercial on 19th February, 2016 and dedicated to the nations jointly by Hon'ble Prime Minister of India & Nepal on 20th Feb, 2016."
-            format: full_html
-          tokenize: false
+          plugin_id: entity
+          empty: true
+          target: 'c0d654a7-3133-47ac-99d7-131bb31aba77'
+          view_mode: default
+          tokenize: true
+          bypass_access: true
       display_extenders: {  }
       path: powertransmission
     cache_metadata:
