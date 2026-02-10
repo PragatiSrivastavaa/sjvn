@@ -21,9 +21,9 @@
   {% endif %}
   
   {# 379 is Subsidiaries, 380 is JVs #}
-  {% if parent_id == '380' %}
+  {% if parent_id == '412' %}
     {% set jv_rows = jv_rows|merge([row]) %}
-  {% elseif parent_id == '379' %}
+  {% elseif parent_id == '413' %}
     {% set subs_rows = subs_rows|merge([row]) %}
   {% else %}
     {# Final fallback: check by name if it's CPTC #}
