@@ -310,13 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  wrapper.addEventListener("mouseenter", () => setPause(true));
-  wrapper.addEventListener("mouseleave", () => {
-    if (pauseBtn.textContent === "⏸") {
-      syncState();
-      setPause(false);
-    }
-  });
+  // Removed hover pause logic as per user request
 });
 
 

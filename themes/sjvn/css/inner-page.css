@@ -375,14 +375,22 @@
 
 .logo-bar-inner {
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 25px;
-  padding-bottom: 90px;
+  padding: 0;
   min-height: 200px;
   color: white;
   overflow: hidden;
+  display: block;
+  /* Let inner container handle layout */
+}
+
+.inner-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  position: relative;
+  z-index: 5;
+  width: 100%;
 }
 
 .logo-left-inner {
@@ -511,10 +519,14 @@ i.bi.bi-house {
 
   /* Logo bar responsive */
   .logo-bar-inner {
+    padding: 0;
+    min-height: 150px;
+  }
+
+  .inner-header-container {
     flex-direction: column;
     text-align: center;
     padding: 30px 15px;
-    min-height: 150px;
   }
 
   .logo-left-inner {
@@ -559,8 +571,12 @@ i.bi.bi-house {
 
   /* Logo bar responsive */
   .logo-bar-inner {
-    padding: 20px 10px;
+    padding: 0;
     min-height: 120px;
+  }
+
+  .inner-header-container {
+    padding: 20px 10px;
   }
 
   .logo-left-inner {

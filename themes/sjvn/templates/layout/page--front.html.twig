@@ -2,35 +2,36 @@
 <div id="header-placeholder"></div>
 {% include 'themes/sjvn/templates/layout/header.html.twig' %}
 <main>
+  <h1 class="visually-hidden">SJVN Limited Home</h1>
   <!-- Hero section -->
   <section>
     {{ page.banner_section }}
   </section>
 
   <!-- Announcements Bar -->
-  <div class="announcement-bar" id="mainSec">
+  <section class="announcement-bar" id="mainSec" aria-label="Announcements">
     <!-- Left Section -->
     <div class="announcement-left">
-      <span class="announcement-title">{% if language.getId() == 'hi' %} घोषणाएं {% else %} ANNOUNCEMENTS {% endif
-        %}</span>
+      <h2 class="announcement-title">{% if language.getId() == 'hi' %} घोषणाएं {% else %} ANNOUNCEMENTS {% endif
+        %}</h2>
       <!-- Controls moved here -->
       <div class="announcement-controls">
-        <span class="ann-prev">⟨</span>
-        <span class="ann-pause">⏸</span>
-        <span class="ann-next">⟩</span>
+        <button type="button" class="ann-prev" aria-label="Previous Announcement">⟨</button>
+        <button type="button" class="ann-pause" aria-label="Pause Announcements">⏸</button>
+        <button type="button" class="ann-next" aria-label="Next Announcement">⟩</button>
       </div>
     </div>
     <div class="announcement-track-wrapper">
       {{ page.announcements }}
     </div>
-  </div>
+  </section>
   <!-- About Us Section -->
   <section class="about-section">
     {{ page.about_us }}
   </section>
 
   <section class="power-station-section">
-    <h3>{% if language.getId() == 'hi' %} हमारे पावर स्टेशन{% else %} Our Power Stations {% endif %}</h3>
+    <h2>{% if language.getId() == 'hi' %} हमारे पावर स्टेशन{% else %} Our Power Stations {% endif %}</h2>
     {{ page.our_power_stations }}
   </section>
   <section class="chairman-section">
@@ -39,13 +40,15 @@
   <!--news-alert-section-->
   <section class="news-alert-section">
     <div class="news-alert-container">
-      <div class="news-column">
-        <h3 class="section-heading">{% if language.getId() == 'hi' %} समाचार और मुख्य अंश{% else %} News & Highlights {%
-          endif %}</h3>
+      <div class="news-column" role="region" aria-labelledby="news-heading">
+        <h2 id="news-heading" class="section-heading">{% if language.getId() == 'hi' %} समाचार और मुख्य अंश{% else %}
+          News & Highlights {%
+          endif %}</h2>
         {{ page.news_highlights }}
       </div>
-      <div class="alert-column">
-        <h3 class="section-heading">{% if language.getId() == 'hi' %} चेतावनी{% else %} Alert {% endif %}</h3>
+      <div class="alert-column" role="region" aria-labelledby="alert-heading">
+        <h2 id="alert-heading" class="section-heading">{% if language.getId() == 'hi' %} चेतावनी{% else %} Alert {%
+          endif %}</h2>
         {{ page.alerts }}
       </div>
     </div>
