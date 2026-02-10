@@ -7,6 +7,217 @@ body {
   /* Ensure window scrolling */
 }
 
+/* =========================================
+   GIGW 3.0 Compliant Print A4 Stylesheet
+   ========================================= */
+@media print {
+
+  /* 1. Page Setup for A4 */
+  @page {
+    size: A4;
+    margin: 1.5cm;
+  }
+
+  /* 2. Reset & Typography */
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000 !important;
+    background: #fff !important;
+    font-family: 'Times New Roman', Times, serif;
+    /* Serif is often better for print */
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 3. Hide Non-Essential Elements (Navigation, Sidebars, Footer, Tools) */
+  nav,
+  header.header,
+  footer,
+  aside.sidebar,
+  .top-bar,
+  .navbar,
+  .social-media-fixed,
+  .accessibility-trigger,
+  .accessibility-drawer,
+  .back-to-top,
+  .skip-link,
+  .no-print,
+  .breadcrumb,
+  .search_icons_mobile,
+  .language-toggle,
+  .theme-inline,
+  #accessibility-trigger,
+  #back-to-top,
+  .nav-scroll-controls,
+  button.navbar-toggler {
+    display: none !important;
+  }
+
+  /* 4. Layout Reset */
+  main,
+  .content-area,
+  .main-body,
+  .container,
+  .container-fluid,
+  .row,
+  .col,
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-5,
+  .col-6,
+  .col-7,
+  .col-8,
+  .col-9,
+  .col-10,
+  .col-11,
+  .col-12 {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    flex: none !important;
+    display: block !important;
+    position: static !important;
+    overflow: visible !important;
+    /* Ensure content doesn't clip */
+  }
+
+  /* 5. Content Specifics */
+  /* Hide decorative banner images but keep logo and title */
+  .logo-bar-inner>img {
+    display: none !important;
+  }
+
+  /* Ensure Logo and Title are visible and aligned */
+  .logo-bar-inner {
+    border-bottom: 2px solid #000;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
+
+  .logo-left-inner,
+  .text-right-inner {
+    display: block !important;
+    text-align: center;
+    width: 100%;
+  }
+
+  .logo-left-inner img {
+    max-width: 150px;
+    height: auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    color: #000 !important;
+  }
+
+  p,
+  ul,
+  ol {
+    widows: 3;
+    orphans: 3;
+  }
+
+  /* 6. Link Handling (Exclude internal anchors/JS) */
+  a {
+    text-decoration: underline !important;
+    color: #000 !important;
+  }
+
+  /* Show URL for external links only - Cleaner look */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    word-wrap: break-word;
+  }
+
+  a[href^="/"]:after,
+  a[href^="#"]:after,
+  a[href^="javascript"]:after {
+    content: "";
+  }
+
+  /* 7. Tables & Borders */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  thead {
+    display: table-header-group;
+    /* Repeat header on new page - Browser support varies */
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid #000 !important;
+    padding: 6px;
+    background: transparent !important;
+  }
+
+  /* 8. Org Chart Specifics (If printed) */
+  .org-chart-wrapper {
+    overflow: visible !important;
+  }
+
+  .org-chart-tree ul {
+    padding-top: 0;
+  }
+
+  /* 9. Images */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+  }
+
+  /* 10. Forms */
+  input,
+  textarea {
+    border: 1px solid #ccc;
+    background: #fff;
+    display: block;
+    width: 100%;
+  }
+
+  /* Hide functional buttons in print */
+  button:not(.btn-unstyled),
+  .btn,
+  input[type="submit"],
+  input[type="button"] {
+    display: none !important;
+  }
+
+  /* Add source footer */
+  body:after {
+    content: "Printed from SJVN Website";
+    display: block;
+    text-align: center;
+    font-size: 10pt;
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
+}
+
+/*================= end A4 size paper par properly print ================*/
 
 /* Top Utility Bar */
 .top-bar {
@@ -377,6 +588,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
 }
 
 .announcement-title {
+  font-size: 14px;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -433,7 +645,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
   /* Small gap below heading */
 }
 
-.announcement-controls span {
+.announcement-controls button {
   background: var(--secondary-color);
   color: #000;
   border: 1px solid #00000033;
@@ -444,7 +656,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
   transition: background 0.3s;
 }
 
-.announcement-controls span:hover {
+.announcement-controls button:hover {
   background: #eab100;
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -480,7 +692,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
     gap: 8px;
   }
 
-  .announcement-controls span {
+  .announcement-controls button {
     padding: 4px 10px;
     font-size: 0.9rem;
   }
@@ -2726,12 +2938,12 @@ body.lang-hi ul.links li[hreflang="hi"] {
   transition: all 0.3s ease !important;
 }
 
-.quick-links-wrapper .quick-arrow:hover {
+/* .quick-links-wrapper .quick-arrow:hover {
   background-color: var(--primary-color) !important;
   opacity: 0.9 !important;
   transform: scale(1.1) !important;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
-}
+} */
 
 /* ... focus ... */
 .quick-links-wrapper .quick-arrow:focus {
@@ -4236,4 +4448,183 @@ body.dark-mode .empty-state-desc {
     width: 50px;
     height: 50px;
   }
+}
+
+/* Enhanced File Link Styles */
+.file-link-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.file-link-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.file-link-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.file-link-text {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  line-height: 1.4;
+}
+
+.file-link-text a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.file-link-text a:hover {
+  text-decoration: underline;
+}
+
+.file-meta {
+  color: #666;
+  font-weight: 400;
+  font-size: 0.95rem;
+  margin-left: 5px;
+}
+
+.file-info-row {
+  font-size: 0.9rem;
+  color: #444;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.file-label {
+  font-weight: 700;
+  color: #222;
+  margin-right: 6px;
+}
+
+/* Enhanced Document Display Styles */
+.file-link-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 10px 0;
+  padding: 12px;
+  background: #f8fbff;
+  border-radius: 8px;
+  border: 1px solid #e1e8f5;
+}
+
+.file-link-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.file-size-format {
+  color: #6c757d;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.file-metadata-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 28px;
+  margin-top: 5px;
+  border-top: 1px solid #eee;
+  padding-top: 8px;
+}
+
+.file-meta-row {
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+.meta-label {
+  font-weight: 700;
+  color: #212529;
+  margin-right: 5px;
+}
+
+/*============================================= contect Us =================================*/
+.contact-modern {
+  padding: 70px 20px;
+  /* background: linear-gradient(135deg, #eaf3fb, #f7fbff); */
+}
+
+.contact-wrapper {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.contact-header h2 {
+  font-size: 34px;
+  color: #02487b;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.contact-header p {
+  font-size: 16px;
+  color: #4a6b85;
+  margin-top: 8px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.contact-card {
+  background: #ffffff;
+  padding: 28px 30px;
+  border-radius: 16px;
+  border-top: 6px solid #02487b;
+  box-shadow: 0 10px 28px rgba(2, 72, 123, 0.15);
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(2, 72, 123, 0.25);
+}
+
+.contact-card h3 {
+  font-size: 20px;
+  color: #02487b;
+  margin-bottom: 15px;
+}
+
+.contact-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-card li {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.contact-card strong {
+  color: #02487b;
+}
+
+.placeholder {
+  color: #9aa8b4;
+  font-style: italic;
 }
