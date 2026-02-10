@@ -8,6 +8,7 @@ dependencies:
     - node.type.our_business
     - taxonomy.vocabulary.portfolio_cat
   content:
+    - 'block_content:basic:897a444a-3ab7-4933-af35-bbb26a4184e5'
     - 'taxonomy_term:portfolio_cat:4a759c84-feeb-486a-81fe-cec0fdba5a16'
     - 'taxonomy_term:portfolio_cat:5ca0d3f2-8b9a-4ee1-8d01-1771ffd34f7e'
     - 'taxonomy_term:portfolio_cat:76744826-b1c0-4c22-872e-9119d1e1b5be'
@@ -849,19 +850,19 @@ display:
         header: false
       use_ajax: false
       header:
-        area:
-          id: area
+        entity_block_content:
+          id: entity_block_content
           table: views
-          field: area
+          field: entity_block_content
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: text
-          empty: false
-          content:
-            value: "<section class=\"about-section\">\r\n    <div class=\"container\">\r\n      <div class=\"row justify-content-center align-items-center\">\r\n\r\n        <div class=\"col-lg-4 d-flex justify-content-center\">\r\n          <div class=\"about-card\">\r\n            <img src=\"/sjvn/sites/default/files/2025-11/Rectangle-87.png\" alt=\"Power Image\" >\r\n          </div>\r\n        </div>\r\n        <div class=\"col-lg-8\">\r\n          <h3 class=\"fw-bold aboutsjvn-sec2 mb-2\">About SJVN Limited</h3>\r\n          <p class=\"text-dark mb-4 text-justify\">\r\n            SJVN Limited,\_a Navratna CPSE under administrative control of Ministry of Power, Govt. of India, was\r\n            incorporated on May 24, 1988, as a joint venture of the Government of India (GOI) and the Government\r\n            of Himachal Pradesh (GOHP). SJVN is now a listed Company having shareholders pattern of 55.00% with Govt.\r\n            of India, 26.85% with Govt. of Himachal Pradesh and rest of 18.15% with Public. The present paid up capital\r\n            and authorized capital of SJVN is\_Rs. 3,929.80 Crore\_and\_Rs. 7,000\_Crore\_respectively.\_The Net Worth\_as on\r\n            31.03.2025 is Rs.14189.26\_Crore.\r\n          </p>\r\n          <p class=\"text-dark mb-2 text-justify\">\r\n            Beginning with a single project and single State operation (i.e. India’s largest 1500 MW Nathpa Jhakri Hydro\r\n            Power Station in Himachal Pradesh), the Company has commissioned fourteen projects totaling 3096.60 MW of\r\n            installed capacity and 123 km Transmission Line. SJVN is presently implementing or operating power projects\r\n            in Himachal Pradesh, Uttarakhand, Bihar, Maharashtra, Uttar Pradesh, Punjab, Gujarat, Arunachal Pradesh,\r\n            Rajasthan,\r\n            Assam, Mizoram, Madhya Pradesh Karnataka and Chhattisgarh in India besides neighboring country of Nepal.\r\n          </p>\r\n\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n  </section>"
-            format: full_html
-          tokenize: false
+          plugin_id: entity
+          empty: true
+          target: 897a444a-3ab7-4933-af35-bbb26a4184e5
+          view_mode: default
+          tokenize: true
+          bypass_access: true
       display_extenders: {  }
     cache_metadata:
       max-age: -1

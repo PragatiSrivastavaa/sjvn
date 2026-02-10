@@ -608,7 +608,7 @@ display:
           admin_label: ''
           plugin_id: entity
           empty: true
-          target: 'a8957c63-8486-4b39-8864-9776c8800313'
+          target: a8957c63-8486-4b39-8864-9776c8800313
           view_mode: default
           tokenize: true
           bypass_access: true
@@ -810,7 +810,7 @@ display:
           admin_label: ''
           plugin_id: entity
           empty: true
-          target: 'ab3142be-10c6-45ce-b909-95f464c60306'
+          target: ab3142be-10c6-45ce-b909-95f464c60306
           view_mode: default
           tokenize: true
           bypass_access: true
@@ -1052,7 +1052,7 @@ display:
           admin_label: ''
           plugin_id: entity
           empty: true
-          target: '90b4db7a-c133-4508-b0c4-d0372bcc6064'
+          target: 90b4db7a-c133-4508-b0c4-d0372bcc6064
           view_mode: default
           tokenize: true
           bypass_access: true
@@ -1297,7 +1297,7 @@ display:
           admin_label: ''
           plugin_id: entity
           empty: true
-          target: '1239a0f4-018f-408f-967b-50375b7ed862'
+          target: 1239a0f4-018f-408f-967b-50375b7ed862
           view_mode: default
           tokenize: true
           bypass_access: true
@@ -1542,7 +1542,7 @@ display:
           admin_label: ''
           plugin_id: entity
           empty: true
-          target: 'c0d654a7-3133-47ac-99d7-131bb31aba77'
+          target: c0d654a7-3133-47ac-99d7-131bb31aba77
           view_mode: default
           tokenize: true
           bypass_access: true
