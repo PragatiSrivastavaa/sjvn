@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Theme override to display a taxonomy term for main_category.
+ *
+ * Available variables:
+ * - url: URL of the current term.
+ * - name: (optional) Name of the current term.
+ * - content: Items for the content of the term (fields and description).
+ * - attributes: HTML attributes for the wrapper.
+ * - page: Flag for the full page state.
+ * - term: The taxonomy term entity.
+ * - view_mode: View mode, e.g. 'full', 'teaser', etc.
+ */
+#}
+{%
+  set classes = [
+    'taxonomy-term',
+    'vocabulary-' ~ term.bundle|clean_class,
+  ]
+%}
+<div{{ attributes.setAttribute('id', 'taxonomy-term-' ~ term.id).addClass(classes) }}>
+  {{ title_prefix }}
+  {% if name and not page %}
+    <h2>{{ name }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  <div class="content">
+    {{ content }}
+  </div>
+</div>
