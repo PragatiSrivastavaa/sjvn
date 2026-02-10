@@ -2880,18 +2880,18 @@ body.lang-hi ul.links li[hreflang="hi"] {
 
 .quick-links-section {
   background: linear-gradient(135deg, var(--primary-color) 0%, #005a8d 50%, #004e7a 100%);
-  padding: 40px 0px 50px 0px;
+  padding: 0px 0px 50px 0px;
   text-align: center;
   width: 100%;
 }
 
 .quick-action-section-heading {
-  color: #ffffff !important;
-  /* White text on dark bg */
+  color: #006da0 !important;
   font-size: 1.5rem;
+  background: white;
+  padding: 10px;
   font-weight: 700;
   margin-bottom: 20px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .quick-links-wrapper {
@@ -3038,10 +3038,15 @@ body.lang-hi ul.links li[hreflang="hi"] {
   text-align: center;
 }
 
+.power-station-section h2 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-weight: bold;
+}
 
 .gallery-section-heading {
   color: var(--primary-color);
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 12px;
 }
