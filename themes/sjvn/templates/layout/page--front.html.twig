@@ -1,7 +1,7 @@
 <!-- Header Include -->
 <div id="header-placeholder"></div>
 {% include 'themes/sjvn/templates/layout/header.html.twig' %}
-<main>
+<main id="main-content">
   <h1 class="visually-hidden">SJVN Limited Home</h1>
   <!-- Hero section -->
   <section>
@@ -16,9 +16,9 @@
         %}</h2>
       <!-- Controls moved here -->
       <div class="announcement-controls">
-        <button type="button" class="ann-prev" aria-label="Previous Announcement">⟨</button>
-        <button type="button" class="ann-pause" aria-label="Pause Announcements">⏸</button>
-        <button type="button" class="ann-next" aria-label="Next Announcement">⟩</button>
+        <button type="button" class="ann-prev" aria-label="Previous Announcement">⟨<span class="visually-hidden">Previous Announcement</span></button>
+        <button type="button" class="ann-pause" aria-label="Pause Announcements">⏸<span class="visually-hidden">Pause Announcements</span></button>
+        <button type="button" class="ann-next" aria-label="Next Announcement">⟩<span class="visually-hidden">Next Announcement</span></button>
       </div>
     </div>
     <div class="announcement-track-wrapper">

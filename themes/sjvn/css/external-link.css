@@ -1,0 +1,162 @@
+/* =========================================
+   GIGW 3.0 External Link Warning Modal
+   ========================================= */
+
+.elw-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.elw-modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.elw-modal {
+    background: #fff;
+    width: 90%;
+    max-width: 550px;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.elw-modal-overlay.active .elw-modal {
+    transform: translateY(0);
+}
+
+.elw-header {
+    background: #0072bc;
+    color: #fff;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.elw-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.elw-close {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.elw-body {
+    padding: 30px 25px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.elw-alert-title {
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.elw-icon {
+    color: #0072bc;
+    font-size: 1.5rem;
+}
+
+.elw-text {
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.elw-policy-box {
+    background: #f0f7ff;
+    border-left: 4px solid #0072bc;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.elw-footer {
+    padding: 20px 25px 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.elw-btn {
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.elw-btn-cancel {
+    background: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.elw-btn-cancel:hover {
+    background: #e5e5e5;
+}
+
+.elw-btn-continue {
+    background: #0072bc;
+    color: #fff;
+    border: 1px solid #0072bc;
+}
+
+.elw-btn-continue:hover {
+    background: #005a96;
+    box-shadow: 0 4px 12px rgba(0, 114, 188, 0.3);
+    color: #fff;
+}
+
+/* Accessibility */
+.elw-modal:focus {
+    outline: none;
+}
+
+@media (max-width: 576px) {
+    .elw-modal {
+        width: 95%;
+    }
+
+    .elw-footer {
+        flex-direction: column;
+    }
+
+    .elw-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
