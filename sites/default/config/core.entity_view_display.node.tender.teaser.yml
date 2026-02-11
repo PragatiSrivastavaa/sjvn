@@ -5,10 +5,12 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.tender.body
+    - field.field.node.tender.field_beyond_date
     - field.field.node.tender.field_contract_unit
     - field.field.node.tender.field_last_date_of_submissions
     - field.field.node.tender.field_locations
     - field.field.node.tender.field_nit_date
+    - field.field.node.tender.field_show_beyond_date
     - field.field.node.tender.field_tender_number
     - field.field.node.tender.field_tender_through_gem
     - field.field.node.tender.field_upload_file
@@ -35,10 +37,12 @@ content:
     weight: 100
     region: content
 hidden:
+  field_beyond_date: true
   field_contract_unit: true
   field_last_date_of_submissions: true
   field_locations: true
   field_nit_date: true
+  field_show_beyond_date: true
   field_tender_number: true
   field_tender_through_gem: true
   field_upload_file: true

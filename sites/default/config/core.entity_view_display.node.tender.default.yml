@@ -4,21 +4,43 @@ status: true
 dependencies:
   config:
     - field.field.node.tender.body
+    - field.field.node.tender.field_beyond_date
     - field.field.node.tender.field_contract_unit
     - field.field.node.tender.field_last_date_of_submissions
     - field.field.node.tender.field_locations
     - field.field.node.tender.field_nit_date
+    - field.field.node.tender.field_show_beyond_date
     - field.field.node.tender.field_tender_number
     - field.field.node.tender.field_tender_through_gem
     - field.field.node.tender.field_upload_file
     - node.type.tender
   module:
+    - datetime
     - user
 id: node.tender.default
 targetEntityType: node
 bundle: tender
 mode: default
 content:
+  field_beyond_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_show_beyond_date:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }

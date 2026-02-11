@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.tender.body
+    - field.field.node.tender.field_beyond_date
     - field.field.node.tender.field_contract_unit
     - field.field.node.tender.field_last_date_of_submissions
     - field.field.node.tender.field_locations
     - field.field.node.tender.field_nit_date
+    - field.field.node.tender.field_show_beyond_date
     - field.field.node.tender.field_tender_number
     - field.field.node.tender.field_tender_through_gem
     - field.field.node.tender.field_upload_file
@@ -38,6 +40,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_beyond_date:
+    type: datetime_default
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_contract_unit:
     type: options_select
     weight: 12
@@ -59,6 +67,12 @@ content:
   field_nit_date:
     type: datetime_default
     weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_show_beyond_date:
+    type: options_buttons
+    weight: 26
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -124,6 +138,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
