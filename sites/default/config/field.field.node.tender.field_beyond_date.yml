@@ -1,0 +1,21 @@
+uuid: f4e78786-f3ba-4cbe-a2a6-cb139966d4df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_beyond_date
+    - node.type.tender
+  module:
+    - datetime
+id: node.tender.field_beyond_date
+field_name: field_beyond_date
+entity_type: node
+bundle: tender
+label: 'Beyond last date of submission'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,23 @@
+uuid: 52697bd2-74bc-4ceb-80e4-59b41e21b65d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_beyond_date
+    - node.type.tender
+id: node.tender.field_show_beyond_date
+field_name: field_show_beyond_date
+entity_type: node
+bundle: tender
+label: 'Show on website beyond last date of submission'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
