@@ -68,7 +68,9 @@
                     href.startsWith('mailto:') ||
                     href.startsWith('tel:') ||
                     href.startsWith('javascript:') ||
-                    href.includes(currentHost)) {
+                    href.startsWith('?') || // Exclude query-only links (common in pagination)
+                    href.includes(currentHost) ||
+                    $link.closest('.pager, .pagination').length > 0) { // Exclude links inside pagers
                     return;
                 }
 

@@ -1994,8 +1994,6 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-right: 50px;
-    /* Space from toggler */
   }
 }
 

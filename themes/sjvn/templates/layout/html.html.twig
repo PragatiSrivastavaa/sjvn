@@ -93,7 +93,7 @@ db_offline ? 'db-offline',
     </button>
 
     {# Social Media Icons - Fixed Position Below Accessibility #}
-    <div class="social-media-fixed">
+    <nav class="social-media-fixed" aria-label="Social Media Links">
       <a href="https://www.youtube.com/@sjvnlimited5476" class="social-youtube" target="_blank"
         rel="noopener noreferrer" aria-label="Visit our YouTube Channel" title="YouTube">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
@@ -118,10 +118,10 @@ db_offline ? 'db-offline',
             d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
         </svg>
       </a>
-    </div>
+    </nav>
 
-    <div id="accessibility-drawer" class="accessibility-drawer" role="dialog"
-      aria-labelledby="accessibility-drawer-title" aria-hidden="true">
+    <aside id="accessibility-drawer" class="accessibility-drawer" role="dialog"
+      aria-labelledby="accessibility-drawer-title" aria-modal="true" aria-hidden="true">
       <div class="accessibility-drawer-header">
         <h2 id="accessibility-drawer-title">Accessibility Options</h2>
         <button id="accessibility-close" class="accessibility-close" aria-label="Close Accessibility Options">
@@ -136,76 +136,76 @@ db_offline ? 'db-offline',
 
       <div class="accessibility-drawer-content">
         {# Text Size Section #}
-        <div class="accessibility-section">
-          <h3>Text Size</h3>
-          <div class="button-group horizontal">
+        <section class="accessibility-section" aria-labelledby="a11y-heading-text-size">
+          <h3 id="a11y-heading-text-size">Text Size</h3>
+          <div class="button-group horizontal" role="group" aria-labelledby="a11y-heading-text-size">
             <button data-action="text-decrease" aria-label="Decrease Text Size">A-</button>
             <button data-action="text-normal" class="active" aria-label="Normal Text Size">A</button>
             <button data-action="text-increase" aria-label="Increase Text Size">A+</button>
           </div>
-        </div>
+        </section>
 
         {# Theme Section #}
-        <div class="accessibility-section">
-          <h3>Theme</h3>
-          <div class="radio-group">
+        <section class="accessibility-section" aria-labelledby="a11y-heading-theme">
+          <h3 id="a11y-heading-theme">Theme</h3>
+          <div class="radio-group" role="radiogroup" aria-labelledby="a11y-heading-theme">
             <label class="radio-option active">
-              <input type="radio" name="theme" value="light" checked aria-label="Light Theme">
+              <input type="radio" name="theme" value="light" checked>
               <span class="radio-label">Light Theme</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="theme" value="dark" aria-label="Dark Theme">
+              <input type="radio" name="theme" value="dark">
               <span class="radio-label">Dark Theme</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="theme" value="high-contrast" aria-label="High Contrast Theme">
+              <input type="radio" name="theme" value="high-contrast">
               <span class="radio-label">High Contrast</span>
             </label>
           </div>
-        </div>
+        </section>
 
         {# Cursor Size Section #}
-        <div class="accessibility-section">
-          <h3>Cursor Size</h3>
-          <div class="radio-group">
+        <section class="accessibility-section" aria-labelledby="a11y-heading-cursor">
+          <h3 id="a11y-heading-cursor">Cursor Size</h3>
+          <div class="radio-group" role="radiogroup" aria-labelledby="a11y-heading-cursor">
             <label class="radio-option">
-              <input type="radio" name="cursor" value="small" aria-label="Small Cursor">
+              <input type="radio" name="cursor" value="small">
               <span class="radio-label">Small Cursor</span>
             </label>
             <label class="radio-option active">
-              <input type="radio" name="cursor" value="normal" checked aria-label="Normal Cursor">
+              <input type="radio" name="cursor" value="normal" checked>
               <span class="radio-label">Normal Cursor</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="cursor" value="large" aria-label="Large Cursor">
+              <input type="radio" name="cursor" value="large">
               <span class="radio-label">Large Cursor</span>
             </label>
           </div>
-        </div>
+        </section>
 
         {# Line Height Section #}
-        <div class="accessibility-section">
-          <h3>Line Height</h3>
-          <div class="radio-group">
+        <section class="accessibility-section" aria-labelledby="a11y-heading-line-height">
+          <h3 id="a11y-heading-line-height">Line Height</h3>
+          <div class="radio-group" role="radiogroup" aria-labelledby="a11y-heading-line-height">
             <label class="radio-option">
-              <input type="radio" name="line-height" value="tight" aria-label="Tight Line Height">
+              <input type="radio" name="line-height" value="tight">
               <span class="radio-label">Tight</span>
             </label>
             <label class="radio-option active">
-              <input type="radio" name="line-height" value="normal" checked aria-label="Normal Line Height">
+              <input type="radio" name="line-height" value="normal" checked>
               <span class="radio-label">Normal</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="line-height" value="loose" aria-label="Loose Line Height">
+              <input type="radio" name="line-height" value="loose">
               <span class="radio-label">Loose</span>
             </label>
           </div>
-        </div>
+        </section>
 
         {# Text Alignment Section #}
-        <div class="accessibility-section">
-          <h3>Text Alignment</h3>
-          <div class="button-group horizontal">
+        <section class="accessibility-section" aria-labelledby="a11y-heading-alignment">
+          <h3 id="a11y-heading-alignment">Text Alignment</h3>
+          <div class="button-group horizontal" role="group" aria-labelledby="a11y-heading-alignment">
             <button data-action="align-left" class="active icon-btn" aria-label="Align Text Left">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -237,53 +237,53 @@ db_offline ? 'db-offline',
               <span class="visually-hidden">Align Text Right</span>
             </button>
           </div>
-        </div>
+        </section>
 
         {# Text Spacing Section #}
-        <div class="accessibility-section">
-          <h3>Text Spacing</h3>
-          <div class="radio-group">
+        <section class="accessibility-section" aria-labelledby="a11y-heading-spacing">
+          <h3 id="a11y-heading-spacing">Text Spacing</h3>
+          <div class="radio-group" role="radiogroup" aria-labelledby="a11y-heading-spacing">
             <label class="radio-option">
-              <input type="radio" name="text-spacing" value="tight" aria-label="Tight Text Spacing">
+              <input type="radio" name="text-spacing" value="tight">
               <span class="radio-label">Tight Spacing</span>
             </label>
             <label class="radio-option active">
-              <input type="radio" name="text-spacing" value="normal" checked aria-label="Normal Text Spacing">
+              <input type="radio" name="text-spacing" value="normal" checked>
               <span class="radio-label">Normal Spacing</span>
             </label>
             <label class="radio-option">
-              <input type="radio" name="text-spacing" value="loose" aria-label="Loose Text Spacing">
+              <input type="radio" name="text-spacing" value="loose">
               <span class="radio-label">Loose Spacing</span>
             </label>
           </div>
-        </div>
+        </section>
 
         {# Visual Options Section #}
-        <div class="accessibility-section">
-          <h3>Visual Options</h3>
-          <div class="checkbox-group">
+        <section class="accessibility-section" aria-labelledby="a11y-heading-visual">
+          <h3 id="a11y-heading-visual">Visual Options</h3>
+          <div class="checkbox-group" role="group" aria-labelledby="a11y-heading-visual">
             <label class="checkbox-option">
-              <input type="checkbox" name="hide-images" aria-label="Hide Images">
+              <input type="checkbox" name="hide-images">
               <span class="checkbox-label">Hide Images</span>
             </label>
             <label class="checkbox-option">
-              <input type="checkbox" name="highlight-links" aria-label="Highlight Links">
+              <input type="checkbox" name="highlight-links">
               <span class="checkbox-label">Highlight Links</span>
             </label>
           </div>
-        </div>
+        </section>
 
         {# Quick Actions Section #}
-        <div class="accessibility-section">
-          <h3>Quick Actions</h3>
+        <section class="accessibility-section" aria-labelledby="a11y-heading-actions">
+          <h3 id="a11y-heading-actions">Quick Actions</h3>
           <div class="action-buttons">
             <button data-action="skip-to-main" class="action-btn">Skip to Main Content</button>
             <button data-action="back-to-top" class="action-btn">Back to Top</button>
             <button data-action="reset-all" class="action-btn">Reset All Settings</button>
           </div>
-        </div>
+        </section>
       </div>
-    </div>
+    </aside>
     <div id="accessibility-overlay" class="accessibility-overlay" aria-hidden="true"></div>
 
     <js-bottom-placeholder token="{{ placeholder_token }}">

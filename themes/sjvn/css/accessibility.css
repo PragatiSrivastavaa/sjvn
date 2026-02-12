@@ -8,26 +8,25 @@
    Floating Accessibility Button
    ============================================ */
 .accessibility-trigger {
-position: fixed;
-    right: 0px;
-    padding: 10px;
-    top: 45%;
-    transform: translateY(-50%);
-    z-index: 9998;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: #ffffff;
-    color: #2774AC;
-    border: 5px solid #2774AC;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    /* cursor: pointer; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s 
-ease;
-    padding: 0;
+  position: fixed;
+  right: 0px;
+  padding: 10px;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #2774AC;
+  border: 5px solid #2774AC;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  /* cursor: pointer; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
 }
 
 .accessibility-trigger:hover,
@@ -160,70 +159,111 @@ ease;
 /* Button Groups */
 .button-group {
   display: flex;
-  gap: 8px;
+  gap: 10px;
+  width: 100%;
 }
 
 .button-group.horizontal {
   flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  margin-top: 30px;
+  margin-left: 15px;
 }
 
 .button-group button {
-  flex: 1;
-  padding: 10px 16px;
-  border: 2px solid #d1d5db;
-  background: #ffffff;
-  color: #374151;
-  font-size: 0.95rem;
-  font-weight: 500;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  flex: 1 1 0;
+  min-width: 0;
   min-height: 44px;
+  padding: 8px 12px;
+  background: #fdfdfd;
+  color: #4b5563;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: visible;
 }
 
 .button-group button:hover {
+  background: #f9fafb;
   border-color: var(--primary-color, #009EDB);
-  background: var(--primary-light, #e6f7ff);
+  color: var(--primary-color, #009EDB);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .button-group button:focus {
-  outline: 3px solid var(--primary-color, #009EDB);
-  outline-offset: 2px;
+  outline: none;
+  border-color: var(--primary-color, #009EDB);
+  box-shadow: 0 0 0 3px var(--primary-light, rgba(0, 158, 219, 0.2));
 }
 
 .button-group button.active {
   background: var(--primary-color, #009EDB) !important;
   color: #ffffff !important;
   border-color: var(--primary-color, #009EDB) !important;
-  font-weight: 700 !important;
-  box-shadow: 0 0 0 4px var(--primary-light, rgba(0, 158, 219, 0.3)) !important;
-  transform: scale(1.05) !important;
-  position: relative !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px var(--primary-light, rgba(0, 158, 219, 0.3)) !important;
+  z-index: 1;
 }
 
 .button-group button.active::after {
   content: '✓';
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: -6px;
+  right: -6px;
   background: var(--secondary-color, #F6AD0A);
   color: #000;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
-  border: 2px solid #fff;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
 }
 
 .button-group button.icon-btn {
-  padding: 10px;
+  padding: 8px;
+}
+
+.button-group button.icon-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.button-group button.icon-btn:hover svg {
+  transform: scale(1.1);
+}
+
+.button-group button.active.icon-btn svg {
+  stroke: #ffffff;
+}
+
+/* Visually Hidden Helper (for icon labels) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 /* Radio Groups */
@@ -346,7 +386,7 @@ ease;
   outline-offset: 2px;
 }
 
-.checkbox-option input[type="checkbox"]:checked + .checkbox-label {
+.checkbox-option input[type="checkbox"]:checked+.checkbox-label {
   color: var(--text-color, #02487B);
   font-weight: 600;
 }
@@ -480,13 +520,29 @@ body.a11y-text-increase button {
 }
 
 /* Headings scale proportionally */
-body.a11y-text-decrease h1 { font-size: calc(2rem * 0.875) !important; }
-body.a11y-text-decrease h2 { font-size: calc(1.75rem * 0.875) !important; }
-body.a11y-text-decrease h3 { font-size: calc(1.5rem * 0.875) !important; }
+body.a11y-text-decrease h1 {
+  font-size: calc(2rem * 0.875) !important;
+}
 
-body.a11y-text-increase h1 { font-size: calc(2rem * 1.25) !important; }
-body.a11y-text-increase h2 { font-size: calc(1.75rem * 1.25) !important; }
-body.a11y-text-increase h3 { font-size: calc(1.5rem * 1.25) !important; }
+body.a11y-text-decrease h2 {
+  font-size: calc(1.75rem * 0.875) !important;
+}
+
+body.a11y-text-decrease h3 {
+  font-size: calc(1.5rem * 0.875) !important;
+}
+
+body.a11y-text-increase h1 {
+  font-size: calc(2rem * 1.25) !important;
+}
+
+body.a11y-text-increase h2 {
+  font-size: calc(1.75rem * 1.25) !important;
+}
+
+body.a11y-text-increase h3 {
+  font-size: calc(1.5rem * 1.25) !important;
+}
 
 /* ============================================
    Dark Theme - CSS Variables
@@ -501,7 +557,7 @@ body.a11y-text-increase h3 { font-size: calc(1.5rem * 1.25) !important; }
   --a11y-dark-text: #e8e8e8;
   --a11y-dark-border: #404040;
   --a11y-dark-border-light: #606060;
-  
+
   /* High Contrast Mode Colors */
   --a11y-hc-bg: #000000;
   --a11y-hc-bg-secondary: #0a0a0a;
@@ -536,7 +592,7 @@ body.a11y-theme-dark span,
 body.a11y-theme-dark li,
 body.a11y-theme-dark div,
 body.a11y-theme-dark label {
-  color: var( --text-color) !important;
+  color: var(--text-color) !important;
 }
 
 /* Headings - All variations */
@@ -592,12 +648,12 @@ body.a11y-theme-dark .main-nav-inner {
 }
 
 body.a11y-theme-dark #superfish-main a,
-body.a11y-theme-dark #nav-list > li > a {
+body.a11y-theme-dark #nav-list>li>a {
   color: var(--a11y-dark-text) !important;
 }
 
 body.a11y-theme-dark #superfish-main a:hover,
-body.a11y-theme-dark #nav-list > li > a:hover {
+body.a11y-theme-dark #nav-list>li>a:hover {
   background: var(--a11y-dark-border) !important;
   color: var(--a11y-dark-accent) !important;
 }
@@ -726,7 +782,7 @@ body.a11y-theme-dark .sidebar .menu li {
   background: var(--a11y-dark-bg-secondary) !important;
   border-color: var(--a11y-dark-border) !important;
   color: var(--a11y-dark-text) !important;
-      border-radius: 16px;
+  border-radius: 16px;
 }
 
 body.a11y-theme-dark .sidebar .menu li:hover {
@@ -1023,13 +1079,13 @@ body.a11y-theme-high-contrast .main-nav-inner {
 }
 
 body.a11y-theme-high-contrast #superfish-main a,
-body.a11y-theme-high-contrast #nav-list > li > a {
+body.a11y-theme-high-contrast #nav-list>li>a {
   color: #ffffff !important;
   font-weight: 600 !important;
 }
 
 body.a11y-theme-high-contrast #superfish-main a:hover,
-body.a11y-theme-high-contrast #nav-list > li > a:hover {
+body.a11y-theme-high-contrast #nav-list>li>a:hover {
   background: #1a1a1a !important;
   color: #ffff00 !important;
   border: 2px solid #ffff00 !important;
@@ -1354,7 +1410,7 @@ body.a11y-theme-high-contrast [class*="heading"] {
 body.a11y-theme-high-contrast nav a,
 body.a11y-theme-high-contrast .menu a,
 body.a11y-theme-high-contrast .navigation a {
-  color: #ffffff ;
+  color: #ffffff;
   text-decoration: underline !important;
   font-weight: 600 !important;
 }
@@ -1830,7 +1886,7 @@ body.a11y-theme-dark .checkbox-label {
   color: var(--a11y-dark-text) !important;
 }
 
-body.a11y-theme-dark .checkbox-option input[type="checkbox"]:checked + .checkbox-label {
+body.a11y-theme-dark .checkbox-option input[type="checkbox"]:checked+.checkbox-label {
   color: var(--a11y-dark-accent) !important;
 }
 
@@ -2030,7 +2086,7 @@ body.a11y-theme-high-contrast .checkbox-label {
   font-weight: 600 !important;
 }
 
-body.a11y-theme-high-contrast .checkbox-option input[type="checkbox"]:checked + .checkbox-label {
+body.a11y-theme-high-contrast .checkbox-option input[type="checkbox"]:checked+.checkbox-label {
   color: #ffff00 !important;
   font-weight: 700 !important;
 }
@@ -2093,31 +2149,31 @@ body.a11y-theme-high-contrast .accessibility-overlay.active {
    Social Media Icons - Fixed Position
    ============================================ */
 .social-media-fixed {
- position: fixed;
-    padding: 10px 15px 10px 10px;
-    border-radius: 10px;
-    right: -7px;
-    border: 1px solid #C5C5C5;
-    background: #f9f9f9;
-    top: calc(45% + 40px);
-    z-index: 9997;
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
+  position: fixed;
+  padding: 10px 15px 10px 10px;
+  border-radius: 10px;
+  right: -7px;
+  border: 1px solid #C5C5C5;
+  background: #f9f9f9;
+  top: calc(45% + 40px);
+  z-index: 9997;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
 }
 
 .social-media-fixed a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    border-radius: 35px;
-    height: 35px;
-    margin-bottom: 5px;
-    border-radius: 30px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  border-radius: 35px;
+  height: 35px;
+  margin-bottom: 5px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
 }
 
 .social-media-fixed a:hover {
@@ -2174,12 +2230,12 @@ body.a11y-theme-high-contrast .accessibility-overlay.active {
     top: calc(45% + 55px);
     gap: 0px;
   }
-  
+
   .social-media-fixed a {
     width: 38px;
     height: 38px;
   }
-  
+
   .social-media-fixed a svg,
   .social-media-fixed a i {
     font-size: 18px;
@@ -2352,13 +2408,13 @@ body.a11y-reduce-motion * {
     width: 100%;
     right: -100%;
   }
-  
+
   .accessibility-trigger {
     right: -0px;
     width: 48px;
     height: 48px;
   }
-  
+
   .accessibility-trigger svg {
     width: 24px;
     height: 24px;
@@ -2370,6 +2426,7 @@ body.a11y-reduce-motion * {
    ============================================ */
 
 @media print {
+
   .accessibility-trigger,
   .accessibility-drawer,
   .accessibility-overlay,
@@ -2383,6 +2440,7 @@ body.a11y-reduce-motion * {
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
+
   .accessibility-drawer,
   .accessibility-trigger,
   .accessibility-overlay,
@@ -2403,7 +2461,7 @@ body.a11y-reduce-motion * {
   .accessibility-trigger {
     border-width: 3px;
   }
-  
+
   .button-group button,
   .radio-option,
   .checkbox-option,
@@ -2411,4 +2469,3 @@ body.a11y-reduce-motion * {
     border-width: 3px;
   }
 }
-
