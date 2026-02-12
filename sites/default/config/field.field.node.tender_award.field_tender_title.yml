@@ -1,0 +1,29 @@
+uuid: b20f0e3c-a6c8-4435-ba48-1507ab91ec82
+langcode: hi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tender_title
+    - node.type.tender
+    - node.type.tender_award
+id: node.tender_award.field_tender_title
+field_name: field_tender_title
+entity_type: node
+bundle: tender_award
+label: 'Tender Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      tender: tender
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.tender_award.field_mode_of_tendering
     - field.field.node.tender_award.field_remark
     - field.field.node.tender_award.field_sr_n
+    - field.field.node.tender_award.field_tender_title
     - field.field.node.tender_award.field_value_rs
     - node.type.tender_award
   module:
@@ -80,6 +81,12 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_tender_title:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_value_rs:
     type: string_textfield
     weight: 12
@@ -129,6 +136,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete

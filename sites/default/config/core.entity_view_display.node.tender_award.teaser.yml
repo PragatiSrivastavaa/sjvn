@@ -41,5 +41,6 @@ hidden:
   field_mode_of_tendering: true
   field_remark: true
   field_sr_n: true
+  field_tender_title: true
   field_value_rs: true
   langcode: true
