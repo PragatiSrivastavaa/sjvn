@@ -135,6 +135,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Create pagination dots dynamically
   slides.forEach((_, index) => {
     const dot = document.createElement("button");
+    dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
+    dot.innerHTML = `<span class="visually-hidden">Go to slide ${index + 1}</span>`;
     dot.addEventListener("click", () => goToSlide(index));
     dotsContainer.appendChild(dot);
   });

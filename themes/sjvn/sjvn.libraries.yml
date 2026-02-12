@@ -13,6 +13,7 @@ global-styling:
       css/table-design.css: {}
       css/gallery.css: {}
       css/accessibility.css: {}
+      css/external-link.css: {}
 global-scripts:
   version: 1.x
   js:
@@ -24,6 +25,7 @@ global-scripts:
     js/menu-redirect.js: {}
     js/filter-labels.js: {}
     js/overview-redirect.js: {}
+    js/external-link.js: {}
   dependencies:
     - core/jquery
     - core/drupal

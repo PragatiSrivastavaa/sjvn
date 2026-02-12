@@ -1173,3 +1173,54 @@ li.statutory-compliance:hover {
         padding-bottom: 0 !important;
     }
 }
+
+/* =================================== Investor Relations (Contact Information) ======================================= */
+.blue-box {
+    background: #ffffff;
+    height: 100%;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.blue-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+/* Header Style */
+.blue-box h6 {
+    background: linear-gradient(90deg, #009edb, #0dcaf0);
+    color: #ffffff;
+    padding: 20px;
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    border-radius: 14px 14px 0 0;
+}
+
+/* Body Text */
+.blue-box p {
+    padding: 18px 20px;
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: #2c3e50;
+}
+
+.blue-box strong {
+    color: #172b4d;
+}
+
+.blue-box a {
+    color: #1a2980;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.blue-box a:hover {
+    text-decoration: underline;
+}
