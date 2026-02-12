@@ -1287,6 +1287,7 @@ body.lang-hi ul.links li[hreflang="hi"] {
 
   .about-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 
   .about-section-main p {

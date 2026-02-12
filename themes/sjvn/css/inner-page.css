@@ -1232,9 +1232,6 @@ body.lang-hi ul.links li[hreflang="hi"] {
     -webkit-overflow-scrolling: touch;
   }
 
-  .about-card {
-    margin-bottom: 15px;
-  }
 }
 
 /* Default button style on <a> */
@@ -1404,7 +1401,8 @@ ul.vmo-card__list {
 .project-card .title {
   font-size: 14px;
   font-weight: 500;
-  margin: 18px 0 0px;
+  padding-top: 5px;
+  margin: 15px 0 0px;
   width: 90%;
   white-space: nowrap;
   overflow: hidden;

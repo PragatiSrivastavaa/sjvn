@@ -580,10 +580,13 @@
   font-size: 18px;
 } */
 
-.quick-links-wrapper .quick-arrow {
+/* .quick-links-wrapper .quick-arrow {
   width: 30px !important;
   height: 30px !important;
   font-size: 14px !important;
+} */
+table.views-table.views-view-table.cols-0 {
+  width: 100%;
 }
 
 .quick-links-wrapper .quick-arrow.left {
@@ -1302,7 +1305,7 @@
   }
 
   .about-card {
-    padding: 15px;
+    font-weight: 500;
   }
 
   .about-card h4 {
@@ -1875,6 +1878,11 @@
     /* Slide in */
   }
 
+  /* Hide carousel play/pause button when mobile menu is open to prevent overlapping */
+  body:has(.navbar-collapse.show) .carousel-pause-toggle {
+    display: none !important;
+  }
+
   /* Mobile Menu Header */
   .mobile-menu-header {
     display: flex !important;
@@ -2046,5 +2054,169 @@
   .visitor-count p {
     text-align: center;
     display: inline-block;
+  }
+
+  .power-station-section .power-item.active .label {
+    font-weight: 400 !important;
+  }
+
+  .carousel-prev,
+  .carousel-next {
+    font-size: 1rem;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* ==========================================================
+   WCAG 2.1 SC 1.4.10 - REFLOW OPTIMIZATION (320px x 256px)
+   Prevents 2D scrolling and ensure content remains readable.
+   ========================================================== */
+@media (max-width: 320px) {
+
+  /* 1. Global Reflow Reset */
+  html,
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    position: relative;
+  }
+
+  /* 2. Force Vertical Stacking */
+  .container,
+  .container-fluid,
+  .row,
+  .grid,
+  .middle-logs,
+  .top-bar,
+  .right-links,
+  .logo-bar,
+  .business-grid,
+  .about-grid,
+  .quick-links-container,
+  .photo-gallery-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    gap: 15px !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  /* 3. Handle Logos to prevent overflow */
+  .logo-bar img,
+  .middle-logs img,
+  .logo-left-inner img {
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 10px 0 !important;
+  }
+
+  /* 4. Top Utility Bar Reflow */
+  .top-bar {
+    padding: 10px 0 !important;
+  }
+
+  .left-links,
+  .right-links {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .language-toggle ul {
+    justify-content: center !important;
+    padding: 0 !important;
+  }
+
+  /* 5. Hero Carousel Reflow */
+  .hero-carousel {
+    height: auto !important;
+    min-height: 200px !important;
+  }
+
+  .carousel-slide img {
+    height: auto !important;
+    width: 100% !important;
+    object-fit: cover;
+  }
+
+  /* 6. Power Stations Section - Stack vertically instead of complex carousel */
+  .power-station-section .carousel-wrapper {
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
+    overflow: visible !important;
+  }
+
+  .power-item {
+    position: static !important;
+    transform: none !important;
+    margin-bottom: 20px !important;
+    width: 90% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .power-station-carousel-button {
+    display: none !important;
+  }
+
+  /* 7. Announcement Ticker - Stop flow and wrap */
+  .announcement-track-wrapper {
+    overflow-x: visible !important;
+    white-space: normal !important;
+  }
+
+  .announcement-track {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .announcement-item {
+    width: 100% !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 0 !important;
+  }
+
+  /* 8. Text Size Adjustments for Small Viewport */
+  h1,
+  h2,
+  h3 {
+    word-break: break-word !important;
+    hyphens: auto;
+  }
+
+  .section-title {
+    font-size: 1.4rem !important;
+  }
+
+  /* 9. Utility Classes */
+  .no-2d-scroll {
+    overflow-x: hidden !important;
+  }
+}
+
+/* Handle Low Height Viewports (256px) */
+@media (max-height: 256px) {
+  .logo-bar {
+    padding: 5px 0 !important;
+  }
+
+  .hero-carousel {
+    min-height: 150px !important;
+  }
+
+  /* Ensure fixed headers don't hide everything */
+  header {
+    position: static !important;
   }
 }

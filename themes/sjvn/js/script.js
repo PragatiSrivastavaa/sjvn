@@ -98,10 +98,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const prevBtn = document.querySelector(".carousel-prev");
     const nextBtn = document.querySelector(".carousel-next");
     const dotsContainer = document.querySelector(".carousel-dots");
+    const carouselSection = document.querySelector('.hero-carousel');
     let currentSlide = 0;
     let autoSlide;
+    let isCarouselPaused = false;
 
-    if (!slides.length || !prevBtn || !nextBtn || !dotsContainer) return;
+    if (!slides.length || !prevBtn || !nextBtn || !dotsContainer || !carouselSection) return;
+
+    // Inject Pause/Play Button
+    const pauseToggle = document.createElement("button");
+    pauseToggle.className = "carousel-pause-toggle";
+    pauseToggle.setAttribute("aria-label", "Pause auto-playing banner");
+    pauseToggle.innerHTML = '<i class="bi bi-pause-fill"></i>';
+    carouselSection.appendChild(pauseToggle);
 
     slides.forEach((_, index) => {
         const dot = document.createElement("button");
@@ -136,6 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function nextSlide() {
+        if (isCarouselPaused) return;
         let nextIndex = (currentSlide + 1) % slides.length;
         showSlide(nextIndex);
     }
@@ -152,8 +162,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function resetAutoSlide() {
         clearInterval(autoSlide);
-        autoSlide = setInterval(nextSlide, 5000);
+        if (!isCarouselPaused) {
+            autoSlide = setInterval(nextSlide, 5000);
+        }
     }
+
+    function togglePause() {
+        isCarouselPaused = !isCarouselPaused;
+        if (isCarouselPaused) {
+            clearInterval(autoSlide);
+            pauseToggle.innerHTML = '<i class="bi bi-play-fill"></i>';
+            pauseToggle.setAttribute("aria-label", "Play auto-playing banner");
+            pauseToggle.classList.add('paused');
+        } else {
+            resetAutoSlide();
+            pauseToggle.innerHTML = '<i class="bi bi-pause-fill"></i>';
+            pauseToggle.setAttribute("aria-label", "Pause auto-playing banner");
+            pauseToggle.classList.remove('paused');
+        }
+    }
+
+    pauseToggle.addEventListener("click", togglePause);
 
     prevBtn.addEventListener("click", () => {
         prevSlide();
@@ -327,6 +356,35 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCarousel();
 });
 
+// Our Business Section Hover/Click Logic
+document.addEventListener("DOMContentLoaded", () => {
+    const businessItems = document.querySelectorAll(".business-item");
+    const businessDisplay = document.getElementById("business-display");
+
+    if (!businessItems.length || !businessDisplay) return;
+
+    businessItems.forEach(item => {
+        item.addEventListener("mouseenter", () => {
+            const imgSrc = item.getAttribute("data-image");
+            if (imgSrc) {
+                // Smooth transition effect
+                businessDisplay.style.opacity = '0.5';
+                setTimeout(() => {
+                    businessDisplay.src = imgSrc;
+                    businessDisplay.style.opacity = '1';
+                }, 150);
+            }
+        });
+
+        item.addEventListener("click", () => {
+            const link = item.getAttribute("data-link");
+            if (link) {
+                window.location.href = link;
+            }
+        });
+    });
+});
+
 // Quick Links Scroll
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.quick-arrow').forEach(button => {
@@ -338,6 +396,85 @@ document.addEventListener("DOMContentLoaded", () => {
                 container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
             } else {
                 container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        });
+    });
+});
+
+// Alerts Carousel
+document.addEventListener("DOMContentLoaded", () => {
+    const alerts = document.querySelectorAll(".alert-card");
+    const dotsContainer = document.querySelector(".alert-dots");
+    let currentIndex = 0;
+    let autoSlide;
+
+    if (!alerts.length || !dotsContainer) return;
+
+    // Create dots dynamically
+    alerts.forEach((_, i) => {
+        const dot = document.createElement("span");
+        dot.addEventListener("click", () => showSlide(i));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll("span");
+
+    function showSlide(index) {
+        alerts.forEach((alert, i) => {
+            alert.classList.toggle("active", i === index);
+            if (dots[i]) dots[i].classList.toggle("active", i === index);
+        });
+        currentIndex = index;
+    }
+
+    function nextSlide() {
+        if (document.body.classList.contains('a11y-stop-animations')) return;
+        let nextIndex = (currentIndex + 1) % alerts.length;
+        showSlide(nextIndex);
+    }
+
+    function startAutoSlide() {
+        if (!document.body.classList.contains('a11y-stop-animations')) {
+            autoSlide = setInterval(nextSlide, 4000);
+        }
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlide);
+    }
+
+    showSlide(0);
+    startAutoSlide();
+
+    const alertCarousel = document.querySelector(".alert-carousel");
+    if (alertCarousel) {
+        alertCarousel.addEventListener("mouseenter", stopAutoSlide);
+        alertCarousel.addEventListener("mouseleave", startAutoSlide);
+    }
+});
+
+// More Menu Toggle
+document.addEventListener("DOMContentLoaded", () => {
+    const wrappers = document.querySelectorAll(".menu-wrapper");
+    wrappers.forEach(wrapper => {
+        const menu = wrapper.querySelector(".menu");
+        const toggleBtn = wrapper.querySelector(".menu-toggle");
+        if (!menu || !toggleBtn) return;
+
+        let expanded = false;
+        toggleBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            expanded = !expanded;
+            if (expanded) {
+                menu.style.flexWrap = "wrap";
+                menu.style.overflowX = "visible";
+                toggleBtn.innerHTML = "<span>Close</span> ▲";
+                toggleBtn.classList.add('expanded');
+            } else {
+                menu.style.flexWrap = "nowrap";
+                menu.style.overflowX = "auto";
+                toggleBtn.innerHTML = "<span>More</span> ▼";
+                toggleBtn.classList.remove('expanded');
             }
         });
     });

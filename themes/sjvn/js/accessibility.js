@@ -52,7 +52,7 @@
       init();
     }
   }
-  
+
   // Wait a bit to ensure Drupal has finished loading
   if (typeof Drupal !== 'undefined' && Drupal.behaviors) {
     // Use Drupal behaviors for better compatibility
@@ -75,23 +75,23 @@
    */
   function init() {
     console.log('🔧 Initializing SJVN Accessibility Widget...');
-    
+
     // Check if elements exist
     const trigger = document.querySelector(CONFIG.triggerSelector);
     const drawer = document.querySelector(CONFIG.drawerSelector);
-    
+
     if (!trigger) {
       console.error('❌ Accessibility trigger button not found!');
       return;
     }
-    
+
     if (!drawer) {
       console.error('❌ Accessibility drawer not found!');
       return;
     }
-    
+
     console.log('✅ Accessibility elements found');
-    
+
     // Load saved settings
     loadSettings();
 
@@ -106,7 +106,7 @@
 
     // Check for system preferences
     checkSystemPreferences();
-    
+
     console.log('✅ SJVN Accessibility Widget initialized successfully!');
   }
 
@@ -128,32 +128,32 @@
       });
       return;
     }
-    
+
     console.log('✅ Accessibility widget initialized successfully');
 
     // Open drawer - with debugging
-    trigger.addEventListener('click', function(e) {
+    trigger.addEventListener('click', function (e) {
       console.log('🖱️ Accessibility button clicked!');
-        e.preventDefault();
+      e.preventDefault();
       e.stopPropagation();
       openDrawer();
     }, false);
-    
+
     // Also try with onclick as backup
-    trigger.onclick = function(e) {
+    trigger.onclick = function (e) {
       console.log('🖱️ Button clicked via onclick');
       openDrawer();
       return false;
     };
-    
+
     // Close drawer
-    closeBtn.addEventListener('click', function(e) {
+    closeBtn.addEventListener('click', function (e) {
       console.log('❌ Close button clicked');
       e.preventDefault();
       closeDrawer();
     });
-    
-    overlay.addEventListener('click', function(e) {
+
+    overlay.addEventListener('click', function (e) {
       console.log('🔲 Overlay clicked');
       closeDrawer();
     });
@@ -164,7 +164,7 @@
     // Text size buttons
     const textButtons = drawer.querySelectorAll('[data-action^="text-"]');
     textButtons.forEach(btn => {
-      btn.addEventListener('click', function(e) {
+      btn.addEventListener('click', function (e) {
         console.log('📝 Text size button clicked:', this.getAttribute('data-action'));
         handleTextSize.call(this, e);
       });
@@ -173,15 +173,15 @@
     // Theme radio buttons
     const themeInputs = drawer.querySelectorAll('input[name="theme"]');
     themeInputs.forEach(input => {
-      input.addEventListener('change', function(e) {
+      input.addEventListener('change', function (e) {
         console.log('🎨 Theme radio changed:', this.value);
         handleThemeChange.call(this, e);
       });
-      
+
       // Also handle clicks on label for better UX
       const label = input.closest('label');
       if (label) {
-        label.addEventListener('click', function(e) {
+        label.addEventListener('click', function (e) {
           console.log('🎨 Theme label clicked');
           // Remove active from all
           drawer.querySelectorAll('input[name="theme"]').forEach(inp => {
@@ -264,7 +264,7 @@
    */
   function openDrawer() {
     console.log('📂 Opening drawer...');
-    
+
     const drawer = document.querySelector(CONFIG.drawerSelector);
     const trigger = document.querySelector(CONFIG.triggerSelector);
     const overlay = document.querySelector(CONFIG.overlaySelector);
@@ -281,17 +281,17 @@
     // Add classes to open drawer
     drawer.classList.add('open');
     overlay.classList.add('active');
-    
+
     // Force styles as backup
     drawer.style.right = '0';
     overlay.style.opacity = '1';
     overlay.style.visibility = 'visible';
-    
+
     // Update ARIA attributes
     drawer.setAttribute('aria-hidden', 'false');
     trigger.setAttribute('aria-expanded', 'true');
     overlay.setAttribute('aria-hidden', 'false');
-    
+
     console.log('✅ Drawer opened!', {
       drawerClasses: drawer.className,
       overlayClasses: overlay.className,
@@ -315,7 +315,7 @@
    */
   function closeDrawer() {
     console.log('📂 Closing drawer...');
-    
+
     const drawer = document.querySelector(CONFIG.drawerSelector);
     const trigger = document.querySelector(CONFIG.triggerSelector);
     const overlay = document.querySelector(CONFIG.overlaySelector);
@@ -326,19 +326,19 @@
 
     drawer.classList.remove('open');
     overlay.classList.remove('active');
-    
+
     // Remove forced styles
     drawer.style.right = '';
     overlay.style.opacity = '';
     overlay.style.visibility = '';
-    
+
     drawer.setAttribute('aria-hidden', 'true');
     trigger.setAttribute('aria-expanded', 'false');
     overlay.setAttribute('aria-hidden', 'true');
 
     // Return focus to trigger button
     trigger.focus();
-    
+
     console.log('✅ Drawer closed!');
   }
 
@@ -347,7 +347,7 @@
    */
   function handleKeyboardNavigation(e) {
     const drawer = document.querySelector(CONFIG.drawerSelector);
-    
+
     // Close on Escape key
     if (e.key === 'Escape' && drawer.classList.contains('open')) {
       closeDrawer();
@@ -364,7 +364,7 @@
     const firstFocusable = focusableElements[0];
     const lastFocusable = focusableElements[focusableElements.length - 1];
 
-    element.addEventListener('keydown', function(e) {
+    element.addEventListener('keydown', function (e) {
       if (e.key !== 'Tab') return;
 
       if (e.shiftKey) {
@@ -387,9 +387,9 @@
   function handleTextSize(e) {
     const action = this.getAttribute('data-action');
     console.log('📝 Text size button clicked:', action);
-    
+
     const drawer = document.querySelector(CONFIG.drawerSelector);
-    
+
     // IMPORTANT: Remove active class from ALL text size buttons first
     const allTextButtons = drawer.querySelectorAll('[data-action^="text-"]');
     console.log('   Removing active from', allTextButtons.length, 'buttons');
@@ -397,7 +397,7 @@
       btn.classList.remove('active');
       console.log('   - Removed active from:', btn.getAttribute('data-action'));
     });
-    
+
     // Add active class to clicked button
     this.classList.add('active');
     console.log('   ✓ Added active to:', action);
@@ -422,7 +422,7 @@
 
     saveSettings();
     console.log('💾 Settings saved:', settings);
-    
+
     // Force UI refresh
     setTimeout(() => {
       updateUIState();
@@ -436,9 +436,9 @@
   function handleThemeChange(e) {
     const value = this.value;
     console.log('🎨 Theme changed to:', value);
-    
+
     const drawer = document.querySelector(CONFIG.drawerSelector);
-    
+
     // IMPORTANT: Remove active class from ALL theme options first
     console.log('   Removing active from all theme options...');
     drawer.querySelectorAll('input[name="theme"]').forEach(input => {
@@ -448,7 +448,7 @@
         console.log('   - Removed active from:', input.value);
       }
     });
-    
+
     // Add active class to selected option
     const thisLabel = this.closest('label');
     if (thisLabel) {
@@ -474,7 +474,7 @@
     settings.theme = value;
     saveSettings();
     console.log('💾 Settings saved:', settings);
-    
+
     // Force UI refresh
     setTimeout(() => {
       updateUIState();
@@ -488,7 +488,7 @@
   function handleCursorChange() {
     const value = this.value;
     const drawer = document.querySelector(CONFIG.drawerSelector);
-    
+
     // Update UI
     drawer.querySelectorAll('input[name="cursor"]').forEach(input => {
       const label = input.closest('label');
@@ -519,7 +519,7 @@
   function handleLineHeightChange() {
     const value = this.value;
     const drawer = document.querySelector(CONFIG.drawerSelector);
-    
+
     // Update UI
     drawer.querySelectorAll('input[name="line-height"]').forEach(input => {
       const label = input.closest('label');
@@ -550,12 +550,12 @@
   function handleTextAlign(e) {
     const action = e.currentTarget.getAttribute('data-action');
     const drawer = document.querySelector(CONFIG.drawerSelector);
-    
+
     // Remove active class from all alignment buttons
     drawer.querySelectorAll('[data-action^="align-"]').forEach(btn => {
       btn.classList.remove('active');
     });
-    
+
     // Add active class to clicked button
     e.currentTarget.classList.add('active');
 
@@ -583,7 +583,7 @@
   function handleTextSpacingChange() {
     const value = this.value;
     const drawer = document.querySelector(CONFIG.drawerSelector);
-    
+
     // Update UI
     drawer.querySelectorAll('input[name="text-spacing"]').forEach(input => {
       const label = input.closest('label');
@@ -939,7 +939,7 @@
     openDrawer: openDrawer,
     closeDrawer: closeDrawer,
     resetAll: resetAll,
-    getSettings: function() { return settings; }
+    getSettings: function () { return settings; }
   };
 
 })();
