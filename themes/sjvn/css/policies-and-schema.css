@@ -1175,52 +1175,68 @@ li.statutory-compliance:hover {
 }
 
 /* =================================== Investor Relations (Contact Information) ======================================= */
-.blue-box {
+.info-card i {
+    color: #009edb;
+    margin-right: 6px;
+}
+
+.info-card.highlight i {
+    color: #fff;
+}
+
+.info-card {
     background: #ffffff;
+    border-radius: 16px;
+    padding: 22px;
     height: 100%;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
+    border: 1px solid #eff8ff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
-.blue-box:hover {
+.info-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba #00000026 (0, 0, 0, 0.15);
     border-color: var(--primary-color);
 }
 
-/* Header Style */
-.blue-box h6 {
-    background: linear-gradient(90deg, #009edb, #0dcaf0);
-    color: #ffffff;
-    padding: 20px;
-    margin: 0;
-    font-size: 17px;
-    font-weight: 700;
-    border-radius: 14px 14px 0 0;
-}
-
-/* Body Text */
-.blue-box p {
-    padding: 18px 20px;
-    margin: 0;
-    font-size: 14.5px;
-    line-height: 1.7;
-    color: #2c3e50;
-}
-
-.blue-box strong {
-    color: #172b4d;
-}
-
-.blue-box a {
-    color: #1a2980;
-    text-decoration: none;
+.info-card h5 {
+    font-size: 16px;
     font-weight: 600;
+    color: #0077b6;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #cdefff;
+    padding-bottom: 6px;
 }
 
-.blue-box a:hover {
+.info-card p,
+.info-card address {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.info-card address {
+    font-style: normal;
+}
+
+.info-card a {
+    color: #009edb;
+    text-decoration: none;
+}
+
+.info-card a:hover {
     text-decoration: underline;
+}
+
+.info-card.highlight h5 {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.info-card.highlight p,
+.info-card.highlight address,
+.info-card.highlight a {
+    color: #f7fcff;
 }
