@@ -1491,7 +1491,7 @@ ul.vmo-card__list {
 /* ==================================== login css ========================================== */
 
 form#user-login-form {
-  max-width: 430px;
+  max-width: 480px;
   margin: 30px auto;
   padding: 45px 40px;
   border-radius: 24px;
