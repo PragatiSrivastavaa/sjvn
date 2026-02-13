@@ -14,177 +14,115 @@
   text-align: justify;
   margin-bottom: 15px;
 }
+
 h5.bording-director-name {
-    color: #2774AC;
-    font-size: 20px;
-    font-weight: 600;
+  color: #2774AC;
+  font-size: 20px;
+  font-weight: 600;
 }
+
 p.bording-director-post {
-    color: black;
-    font-weight: 600;
-    font-size: 20px;
+  color: black;
+  font-weight: 600;
+  font-size: 20px;
 }
-/* Category Subtitle */
-/* .board_of_directors .subtitle {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  margin-top: 20px;
-  margin-bottom: 12px;
-  padding-bottom: 10px;
-  border-bottom: 3px solid var(--primary-color);
-  position: relative;
-} */
 
-/* .board_of_directors .subtitle::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 80px;
-  height: 3px;
-  background: var(--secondary-color);
-} */
+section.inner-sec.board_of_directors {
+  padding: 20px 0px;
+}
 
-/* Profile Card - Compact Version */
+/* Profile Card - Compact Version (Circular) */
 .board_of_directors .profile {
-    background: #ffffff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    position: relative;
-    overflow: hidden;
-    max-height: 300px;
-    border-radius: 50%;
-    border: 10px solid #ffffff;
-    max-width: 300px;
-    flex-direction: column;
-}
-
-/* Profile Image Container - Reduced Height */
-.board_of_directors .profile-img {
+  background: #ffffff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 8px solid #ffffff;
+  margin: 0 auto 20px;
+}
+
+/* Profile Image Container */
+.board_of_directors .profile-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   background: #f0f0f0;
-  max-height: 300px;
-  max-width: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 50%;
 }
 
 .board_of_directors .profile-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-/* Profile Text Content - Compact */
-.board_of_directors .profile-text {
+/* Profile Hover Effect - Original Slide Up Button */
+.profile .profile-text {
   position: absolute;
-    bottom: 15px;  
-    left: 50%;  
-    transform: translateX(-50%); 
-    text-align: center; 
-    width: 100%;  
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  transition: all 0.4s ease;
+  z-index: 10;
+  opacity: 0;
 }
 
-/* Generic profile text styles (for grid/card views) */
-.board_of_directors .profile-text h5 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #222;
-  margin: 0;
-  line-height: 1.3;
-  min-height: 2.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.board_of_directors .profile-text p {
-  font-size: 0.9rem;
-  color: #666;
-  margin: 0;
-  line-height: 1.4;
-  min-height: 2.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Override for director profile in block view */
-.board_of_directors .director .profile-text h5 {
-  min-height: unset;
-  display: block;
-}
-
-.board_of_directors .director .profile-text p {
-  min-height: unset;
-  display: block;
-}
-
-.board_of_directors .profile-text a {
-    display: inline-block;
-    padding: 5px 19px;
-    background: #ffffffcf;
-    box-shadow: rgb(255 255 255) 1px 1px 24px;
-    color: #009edb;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 500;
-    font-size: 0.75rem;
-}
-
-/* updated hover affect  */
-.profile {
-    position: relative;
-    overflow: hidden;
+.profile:hover .profile-text {
+  bottom: 15px;
+  opacity: 1;
 }
 
 .profile .profile-text a {
-    position: absolute;
-    bottom: -40px;              
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    width: 100%;
-    opacity: 0;
-    transition: all 0.4s ease;   
+  display: inline-block;
+  padding: 5px 19px;
+  background: #ffffffcf;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  color: #009edb;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
-/* Hover effect */
-.profile:hover .profile-text a {
-    bottom: 15px;  
-    max-width: 130px;          
-    opacity: 1;               
+.profile .profile-text a:hover {
+  background: #ffffff;
+  color: #0077a6;
+  transform: scale(1.05);
 }
+
+/* Base Profile Transitions */
+.profile {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.profile:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
 /* updated css */
 .director-card {
   border-bottom: 1px solid #e6e6e6;
   padding: 18px 0;
 }
 
-/* Image rounded + soft shadow */
-.profile-img img {
-  border-radius: 50%;
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-}
 
-/* Slide up effect */
-.profile-text {
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: all 0.4s ease;
-}
-
-.profile:hover .profile-text {
-  bottom: 8px;
-  opacity: 1;
-}
 
 /* Mobile center alignment */
 @media (max-width: 767px) {
@@ -192,7 +130,7 @@ p.bording-director-post {
     text-align: center;
   }
 }
- 
+
 /* Director with Full Content Layout - Side by Side */
 .board_of_directors .director {
   display: flex;
@@ -210,14 +148,14 @@ p.bording-director-post {
 }
 
 .board_of_directors .director .profile-text {
-     text-align: center;
-    padding: 7px 12px;
-    flex-grow: 1;
-    bottom: 0px;
-    justify-content: flex-start;
-    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
-    display: flex;
-    flex-direction: column;
+  text-align: center;
+  padding: 7px 12px;
+  flex-grow: 1;
+  bottom: 0px;
+  justify-content: flex-start;
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  display: flex;
+  flex-direction: column;
 }
 
 .board_of_directors .director .profile-text h5 {
@@ -311,7 +249,7 @@ p.bording-director-post {
   align-items: stretch !important;
 }
 
-.board-block-view .row > [class*="col-"] > * {
+.board-block-view .row>[class*="col-"]>* {
   height: 100%;
 }
 
@@ -323,7 +261,7 @@ p.bording-director-post {
   margin-bottom: 10px;
 }
 
-.board_of_directors:not(.board-block-view) .row > [class*="col-"] {
+.board_of_directors:not(.board-block-view) .row>[class*="col-"] {
   flex: 0 0 auto;
   padding-left: 5px;
   padding-right: 5px;
@@ -337,13 +275,13 @@ p.bording-director-post {
   margin-right: -15px;
 }
 
-.board-block-view .row > [class*="col-"] {
+.board-block-view .row>[class*="col-"] {
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.accordion-button:focus{
-    box-shadow: none;
+.accordion-button:focus {
+  box-shadow: none;
 }
 
 /*--------------------- Responsive Design -------------------------------*/
@@ -358,7 +296,7 @@ p.bording-director-post {
     max-width: 100%;
     padding: 0 20px;
   }
-  
+
   .board-block-view .container {
     max-width: 100%;
   }
@@ -369,9 +307,7 @@ p.bording-director-post {
     font-size: 1.6rem;
   }
 
-  .board_of_directors .profile-img {
-    height: 250px;
-  }
+
 
   .board_of_directors .director .profile-img {
     height: 280px;
@@ -391,17 +327,17 @@ p.bording-director-post {
   .board-block-view {
     padding: 20px 0;
   }
-  
+
   .board-block-view .container {
     padding: 0 15px;
   }
-  
+
   .board-block-view .row {
     margin-left: -10px;
     margin-right: -10px;
   }
-  
-  .board-block-view .row > [class*="col-"] {
+
+  .board-block-view .row>[class*="col-"] {
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -415,12 +351,15 @@ p.bording-director-post {
     padding: 15px 20px;
     font-size: 0.95rem;
   }
-.bording-director-img {
-    text-align: -webkit-center;
-}
-  .board_of_directors .profile-img {
-    height: 240px;
+
+  .bording-director-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
   }
+
+
 
   .board_of_directors .director .profile-img {
     height: 240px;
@@ -463,17 +402,15 @@ p.bording-director-post {
   .board_of_directors:not(.board-block-view) .row {
     gap: 8px;
   }
-  
-  .board_of_directors:not(.board-block-view) .row > [class*="col-"] {
+
+  .board_of_directors:not(.board-block-view) .row>[class*="col-"] {
     padding-left: 4px;
     padding-right: 4px;
   }
 }
 
 @media (max-width: 576px) {
-  .board_of_directors .profile-img {
-    height: 270px;
-  }
+
 
   .board_of_directors .profile-text {
     padding: 15px;
@@ -602,78 +539,81 @@ p.bording-director-post {
 
 /*---------------------------------------- new css class ----------------------------------------*/
 .board_of_directors .profile-team-section {
-    background: #ffffff;
-    border: 1px solid #dcdcdc;
-    border-radius: 12px;
-    overflow: hidden;
-    text-align: center;
-    width: 100%;
-    height: 350px;
-    position: relative;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    padding: 6px; /* 6px spacing all sides */
+  background: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  height: 350px;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  padding: 6px;
+  /* 6px spacing all sides */
 }
 
 .board_of_directors .profile-team-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
 /* IMAGE WRAPPER */
 .board_of_directors .derector-teamimg {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
 }
 
 .board_of_directors .derector-teamimg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* TEXT BOX ON TOP OF IMAGE */
 .board_of_directors .Profile-details {
-    position: absolute;
-    bottom: 12px;
-    left: 12px;
-    right: 12px;           
-    background: #ffffff;
-    padding: 8px 6px;
-    border-radius: 8px;
-    text-align: center;
-    backdrop-filter: blur(4px);
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: #ffffff;
+  padding: 8px 6px;
+  border-radius: 8px;
+  text-align: center;
+  backdrop-filter: blur(4px);
 }
 
 /* TEXT STYLE */
 .board_of_directors .Profile-details h5 {
-    font-size: 14px;
-    margin: 0 0 4px;
-    font-weight: 700;
-    color: #000;
+  font-size: 14px;
+  margin: 0 0 4px;
+  font-weight: 700;
+  color: #000;
 }
 
 .board_of_directors .Profile-details p {
-    font-size: 12px;
-    font-weight: 600;
-    margin: 0;
-    color: #000;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
 }
 
 /* RESPONSIVE */
 @media (max-width: 767px) {
-    .board_of_directors .profile-team-section {
-        height: auto;
-    }
+  .board_of_directors .profile-team-section {
+    height: auto;
+  }
 }
+
 /*------------------- view profile button ------------------------*/
 .profile-team-section .Profile-details a {
   position: absolute;
-  bottom: -50px; /* button hide initially */
+  bottom: -50px;
+  /* button hide initially */
   left: 50%;
   transform: translateX(-50%);
   background: #009edb;

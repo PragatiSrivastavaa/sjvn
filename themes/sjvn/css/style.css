@@ -7,6 +7,10 @@ body {
   /* Ensure window scrolling */
 }
 
+.node__content {
+  padding: 20px 0px;
+}
+
 /* Visually Hidden Helper (Accessibility) */
 .visually-hidden {
   position: absolute !important;

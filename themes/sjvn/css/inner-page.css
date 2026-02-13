@@ -666,49 +666,6 @@ i.bi.bi-house {
   }
 }
 
-/* enner body css sidebar */
-/* .sidebar .menu {
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  min-width: 200px;
-  padding: 0;
-  margin: 0;
-}
-
-
-
-
-.sidebar .menu li {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border: none;
-  border: 1px solid #D0D0D0;
-  text-align: center;
-  font-weight: 500;
-  background-color: #ffffff;
-  padding: 5px 16px;
-  margin: 0;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 50px;
-  list-style: none;
-}
-
-.sidebar .menu li:hover {
-  background-color: #e9ecef;
-  color: #495057;
-  
-} 
-.sidebar .menu-item--active-trail {
-  background-color: var(--primary-color) !important;
-  color: #fff !important;
-  font-weight: 600;
-}  
-*/
 /*------------------------ updateder tabs  --------------------------*/
 h2.subtitle {
   font-size: 22px;
@@ -721,6 +678,7 @@ h2.subtitle {
   gap: 10px;
   padding: 10px 0;
   margin-top: 22px;
+  margin-bottom: 0px;
   margin-right: 80px;
   padding-bottom: 15px;
   padding-right: 10px;
@@ -1528,4 +1486,142 @@ ul.vmo-card__list {
 .back-to-top>svg {
   width: 100%;
   height: 100%;
+}
+
+/* ==================================== login css ========================================== */
+
+#block-sjvn-content--2 {
+  max-width: 430px;
+  margin: 30px auto;
+  padding: 45px 40px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: 0.4s ease;
+}
+
+#block-sjvn-content--2:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 70px rgba(0, 123, 255, 0.15);
+}
+
+/* ================= FORM ================= */
+
+.user-login-form .form-item {
+  margin-bottom: 22px;
+}
+
+.user-login-form label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Inputs */
+
+.user-login-form .form-text {
+  width: 100%;
+  padding: 9px 16px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  font-size: 14px;
+  transition: all 0.35s ease;
+}
+
+.user-login-form .form-text:focus {
+  border-color: #009EDB;
+  box-shadow: 0 0 0 4px rgba(0, 158, 219, 0.15);
+  transform: scale(1.02);
+  outline: none;
+}
+
+/* ================= CAPTCHA ================= */
+
+.user-login-form .captcha {
+  background: linear-gradient(135deg, #f0f7ff, #ffffff);
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid #e6f0ff;
+  margin-bottom: 10px;
+}
+
+/* Image wrapper */
+
+.user-login-form .captcha__image-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-login-form .captcha__image-wrapper img {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #dce3f0;
+}
+
+/* ===== HIDE TEXT ===== */
+
+.user-login-form .reload-captcha {
+  font-size: 0;
+  /* Hide text */
+}
+
+/* ===== MODERN REFRESH ICON BUTTON ===== */
+
+
+/* CAPTCHA Input */
+
+.user-login-form .js-form-item-captcha-response .form-text {
+  padding: 10px 12px;
+}
+
+/* Description */
+
+.user-login-form .captcha__description,
+.user-login-form .description {
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* ================= BUTTON ================= */
+
+.user-login-form #edit-submit {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(90deg, #2774AC, #009EDB, #00c6ff);
+  background-size: 200% auto;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.4s ease;
+}
+
+.user-login-form #edit-submit:hover {
+  background-position: right center;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 158, 219, 0.3);
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+  #block-sjvn-content--2 {
+    width: 92%;
+    padding: 30px 22px;
+  }
+
+  .user-login-form .reload-captcha::after {
+    right: -38px;
+  }
 }

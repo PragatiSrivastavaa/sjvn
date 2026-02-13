@@ -660,6 +660,16 @@ table.views-table.views-view-table.cols-0 {
   font-size: 0.75rem;
 }
 
+#render_orgchart .desktop {
+  margin: 20px 0px !important;
+}
+
+@media (max-width: 1200px) {
+  #render_orgchart .desktop {
+    display: block !important;
+  }
+}
+
 /* Mobile menu styles - ONLY below 992px */
 @media (max-width: 991.98px) {
 
