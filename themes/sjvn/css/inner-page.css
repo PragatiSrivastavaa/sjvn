@@ -1490,7 +1490,7 @@ ul.vmo-card__list {
 
 /* ==================================== login css ========================================== */
 
-#block-sjvn-content--2 {
+form#user-login-form {
   max-width: 430px;
   margin: 30px auto;
   padding: 45px 40px;
@@ -1503,7 +1503,7 @@ ul.vmo-card__list {
   transition: 0.4s ease;
 }
 
-#block-sjvn-content--2:hover {
+form#user-login-form:hover {
   transform: translateY(-4px);
   box-shadow: 0 30px 70px rgba(0, 123, 255, 0.15);
 }
