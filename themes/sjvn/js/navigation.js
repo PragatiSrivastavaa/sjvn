@@ -190,92 +190,192 @@
       superfishMain.addEventListener('scroll', handleSubmenuInitialization);
     }
 
-    // Handle hover events for all menu levels
-    function setupMenuHoverEvents() {
+    // Handle hover and focus events for all menu levels
+    function setupMenuEvents() {
       const allMenuItems = superfishMain.querySelectorAll('li');
 
       allMenuItems.forEach(function (menuItem) {
         const submenu = menuItem.querySelector(':scope > ul');
+        const link = menuItem.querySelector(':scope > a');
+
+        // Function helpers for show/hide with types
+        const parentUl = menuItem.parentElement;
+        const isMainSubmenu = parentUl && (parentUl.id === 'superfish-main' || parentUl.id === 'nav-list' || parentUl.classList.contains('sf-menu'));
+
+        const showFn = () => {
+          if (window.innerWidth < 992) return;
+          if (submenu) {
+            if (isMainSubmenu) {
+              positionSubmenu(menuItem, submenu);
+              submenu.style.transform = 'translateY(0)';
+            } else {
+              positionNestedSubmenu(menuItem, submenu);
+              submenu.style.transform = 'translateX(0)';
+            }
+            submenu.style.transitionDelay = '0s';
+            submenu.style.opacity = '1';
+            submenu.style.visibility = 'visible';
+          }
+        };
+
+        const hideFn = () => {
+          if (window.innerWidth < 992) return;
+          if (submenu) {
+            submenu.style.transitionDelay = '0.1s';
+            submenu.style.opacity = '0';
+            submenu.style.visibility = 'hidden';
+            if (isMainSubmenu) {
+              submenu.style.transform = 'translateY(-10px)';
+            } else {
+              submenu.style.transform = 'translateX(-10px)';
+            }
+          }
+        };
 
         if (submenu) {
-          // Check if this is a main navigation submenu (level 1) or nested
-          const parentSubmenu = menuItem.closest('ul');
-          const isMainSubmenu = !parentSubmenu || parentSubmenu === superfishMain;
+          menuItem.addEventListener('mouseenter', showFn);
+          menuItem.addEventListener('mouseleave', hideFn);
+          menuItem.addEventListener('focusin', showFn);
+          menuItem.addEventListener('focusout', (e) => {
+            if (!menuItem.contains(e.relatedTarget)) {
+              hideFn();
+            }
+          });
+        }
 
-          if (isMainSubmenu) {
-            // Level 1: Show submenu below
-            menuItem.addEventListener('mouseenter', function () {
-              if (window.innerWidth < 992) return; // Disable hover on mobile/tablet
-              positionSubmenu(menuItem, submenu);
+        // --- KEYBOARD NAVIGATION (WCAG 2.4.3) ---
+        if (link) {
+          link.addEventListener('keydown', function (e) {
+            const items = Array.from(menuItem.parentElement.children);
+            const index = items.indexOf(menuItem);
 
-              submenu.style.transitionDelay = '0s';
-              submenu.style.opacity = '1';
-              submenu.style.visibility = 'visible';
-              submenu.style.transform = 'translateY(0)';
-            });
+            switch (e.key) {
+              case 'Enter':
+              case ' ':
+                if (submenu) {
+                  e.preventDefault();
+                  showFn();
+                  const firstSubLink = submenu.querySelector('a');
+                  if (firstSubLink) firstSubLink.focus();
+                }
+                break;
 
-            menuItem.addEventListener('mouseleave', function () {
-              if (window.innerWidth < 992) return;
-              submenu.style.transitionDelay = '0.1s';
-              submenu.style.opacity = '0';
-              submenu.style.visibility = 'hidden';
-              submenu.style.transform = 'translateY(-10px)';
-            });
-          } else {
-            // Level 2+: Show submenu to the right
-            let hideTimeout;
+              case 'ArrowDown':
+                e.preventDefault();
+                if (submenu && submenu.style.visibility === 'visible') {
+                  const firstSubLink = submenu.querySelector('a');
+                  if (firstSubLink) firstSubLink.focus();
+                } else if (index < items.length - 1) {
+                  const nextLink = items[index + 1].querySelector('a');
+                  if (nextLink) nextLink.focus();
+                }
+                break;
 
-            menuItem.addEventListener('mouseenter', function () {
-              if (window.innerWidth < 992) return;
-              // Clear any pending hide timeout
-              clearTimeout(hideTimeout);
+              case 'ArrowUp':
+                e.preventDefault();
+                if (index > 0) {
+                  const prevLink = items[index - 1].querySelector('a');
+                  if (prevLink) prevLink.focus();
+                }
+                break;
 
-              positionNestedSubmenu(menuItem, submenu);
+              case 'ArrowRight':
+                if (submenu) {
+                  e.preventDefault();
+                  showFn();
+                  const firstSubLink = submenu.querySelector('a');
+                  if (firstSubLink) firstSubLink.focus();
+                } else if (isMainSubmenu && index < items.length - 1) {
+                  const nextLink = items[index + 1].querySelector('a');
+                  if (nextLink) nextLink.focus();
+                }
+                break;
 
-              submenu.style.transitionDelay = '0s';
-              submenu.style.opacity = '1';
-              submenu.style.visibility = 'visible';
-              submenu.style.transform = 'translateX(0)';
-            });
+              case 'ArrowLeft':
+                if (!isMainSubmenu) {
+                  e.preventDefault();
+                  const parentLink = menuItem.parentElement.parentElement.querySelector('a');
+                  if (parentLink) {
+                    parentLink.focus();
+                    const parentSubmenu = menuItem.parentElement;
+                    parentSubmenu.style.visibility = 'hidden';
+                    parentSubmenu.style.opacity = '0';
+                  }
+                } else if (index > 0) {
+                  const prevLink = items[index - 1].querySelector('a');
+                  if (prevLink) prevLink.focus();
+                }
+                break;
 
-            menuItem.addEventListener('mouseleave', function () {
-              if (window.innerWidth < 992) return;
-              // Delay hiding to allow mouse movement to submenu - increased to 300ms for easier access
-              hideTimeout = setTimeout(function () {
-                submenu.style.transitionDelay = '0s';
-                submenu.style.opacity = '0';
-                submenu.style.visibility = 'hidden';
-                submenu.style.transform = 'translateX(-10px)';
-              }, 300); // 300ms delay for easier navigation
-            });
+              case 'Escape':
+                e.preventDefault();
+                hideFn();
+                if (!isMainSubmenu) {
+                  const parentLink = menuItem.parentElement.parentElement.querySelector('a');
+                  if (parentLink) parentLink.focus();
+                }
+                break;
+            }
+          });
 
-            // Keep submenu visible when mouse enters it
-            submenu.addEventListener('mouseenter', function () {
-              if (window.innerWidth < 992) return;
-              clearTimeout(hideTimeout);
-              submenu.style.transitionDelay = '0s';
-              submenu.style.opacity = '1';
-              submenu.style.visibility = 'visible';
-              submenu.style.transform = 'translateX(0)';
-            });
+          // DISABLING LINKS ON HOMEPAGE
+          link.addEventListener('click', function (e) {
+            const isFrontPage = document.body.classList.contains('path-frontpage') ||
+              document.body.classList.contains('front');
+            if (isFrontPage && submenu) {
+              e.preventDefault();
+              e.stopImmediatePropagation();
+              return false;
+            }
+          });
 
-            submenu.addEventListener('mouseleave', function () {
-              if (window.innerWidth < 992) return;
-              // Delay hiding when leaving submenu as well
-              hideTimeout = setTimeout(function () {
-                submenu.style.transitionDelay = '0s';
-                submenu.style.opacity = '0';
-                submenu.style.visibility = 'hidden';
-                submenu.style.transform = 'translateX(-10px)';
-              }, 200); // 200ms delay when leaving submenu
-            });
+          // Fallback Href for Homepage
+          const isFrontPage = document.body.classList.contains('path-frontpage') ||
+            document.body.classList.contains('front');
+          if (isFrontPage && submenu && link.getAttribute('href') && link.getAttribute('href') !== '#') {
+            link.setAttribute('href', 'javascript:void(0)');
           }
         }
       });
     }
 
-    // Initialize hover events
-    setupMenuHoverEvents();
+    // Initialize events
+    setupMenuEvents();
+
+    // GLOBAL DELEGATION TO DISABLE PARENT LINKS (Interception)
+    // Only apply on Homepage as per user request
+    document.addEventListener('click', function (e) {
+      // Check if we are on the homepage
+      const isFrontPage = document.body.classList.contains('path-frontpage') ||
+        document.body.classList.contains('front') ||
+        window.location.pathname === '/' ||
+        window.location.pathname.endsWith('/index.php');
+
+      if (!isFrontPage) return; // Exit if not on homepage, allowing links to work
+
+      // Find the closest link being clicked
+      const link = e.target.closest('a');
+      if (!link) return;
+
+      const parentLi = link.parentElement;
+      if (!parentLi) return;
+
+      // Check if this link is a parent (has a dropdown)
+      const hasSubmenu = parentLi.querySelector(':scope > ul');
+
+      if (hasSubmenu) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        console.log('Homepage Interception: Navigation blocked for parent link:', link.textContent.trim());
+
+        // Trigger mobile menu toggle if on mobile
+        if (window.innerWidth < 992) {
+          mobileClickHandler.call(link, e);
+        }
+        return false;
+      }
+    }, true); // Use capture phase
 
     // MOBILE MENU CLICK HANDLER
     function setupMobileMenuClicks() {
@@ -425,7 +525,7 @@
       // Wait for Superfish to initialize
       setTimeout(function () {
         setupNestedMenuBehavior();
-        setupMenuHoverEvents(); // Re-setup events after Superfish loads
+        setupMenuEvents(); // Re-setup events after Superfish loads
         debugAllMenuLevels(); // Debug again after Superfish loads
       }, 500);
     }

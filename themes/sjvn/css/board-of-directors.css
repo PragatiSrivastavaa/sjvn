@@ -15,7 +15,7 @@
   margin-bottom: 15px;
 }
 
-h5.bording-director-name {
+h2.h5.bording-director-name {
   color: #2774AC;
   font-size: 20px;
   font-weight: 600;
@@ -373,11 +373,11 @@ section.inner-sec.board_of_directors {
     padding: 18px 15px;
   }
 
-  .board_of_directors .profile-text h5 {
+  .board_of_directors .profile-text h2.h5 {
     font-size: 1.05rem;
   }
 
-  .board_of_directors .director .profile-text h5 {
+  .board_of_directors .director .profile-text h2.h5 {
     font-size: 1.1rem;
   }
 
@@ -588,7 +588,7 @@ section.inner-sec.board_of_directors {
 }
 
 /* TEXT STYLE */
-.board_of_directors .Profile-details h5 {
+.board_of_directors .Profile-details h2.h5 {
   font-size: 14px;
   margin: 0 0 4px;
   font-weight: 700;

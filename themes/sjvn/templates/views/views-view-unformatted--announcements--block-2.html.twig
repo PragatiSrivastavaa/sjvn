@@ -22,7 +22,7 @@
             
             <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
             {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}
-            <span class="arrow">➔</span>
+            <span class="arrow" aria-hidden="true">➔</span>
           </a>
           </div>
           {% endfor %}

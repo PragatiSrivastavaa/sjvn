@@ -40,9 +40,9 @@
     {# === NODE TITLE LINK === #}
     {% set node = row.content['#row']._entity %}
     <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
-      <h6 class="title">
+      <h2 class="title h6">
         {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}
-      </h6>
+      </h2>
       <span class="icon-btn"> <i class="fa-solid fa-angle-right" aria-hidden="true"></i> </span>
 
       

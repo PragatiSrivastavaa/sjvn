@@ -427,10 +427,9 @@
 }
 
 .quick-links-wrapper .quick-arrow:focus {
-  outline: none !important;
-  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.3) !important;
-  outline: 3px solid rgba(var(--primary-color-rgb), 0.5) !important;
-  /* Fallback/Additional visiblity */
+  outline: 3px solid #fdb913 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 10px rgba(253, 185, 19, 0.5) !important;
 }
 
 .quick-links-wrapper .quick-arrow.left {

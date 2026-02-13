@@ -38,7 +38,7 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
-.accessibility-trigger:focus {
+.accessibility-trigger:focus-visible {
   outline: 3px solid var(--secondary-color, #F6AD0A);
   outline-offset: 2px;
 }
@@ -106,7 +106,7 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
-.accessibility-close:focus {
+.accessibility-close:focus-visible {
   outline: 2px solid #ffcc00;
   outline-offset: 2px;
 }
@@ -199,10 +199,10 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.button-group button:focus {
-  outline: none;
-  border-color: var(--primary-color, #009EDB);
-  box-shadow: 0 0 0 3px var(--primary-light, rgba(0, 158, 219, 0.2));
+.button-group button:focus-visible {
+  outline: 3px solid var(--secondary-color, #F6AD0A) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 10px rgba(246, 173, 10, 0.3) !important;
 }
 
 .button-group button.active {
@@ -331,7 +331,7 @@
   border-color: var(--primary-color, #009EDB);
 }
 
-.radio-option input[type="radio"]:focus {
+.radio-option input[type="radio"]:focus-visible {
   outline: 3px solid var(--primary-color, #009EDB);
   outline-offset: 2px;
 }
@@ -381,7 +381,7 @@
   accent-color: var(--primary-color, #009EDB);
 }
 
-.checkbox-option input[type="checkbox"]:focus {
+.checkbox-option input[type="checkbox"]:focus-visible {
   outline: 3px solid var(--primary-color, #009EDB);
   outline-offset: 2px;
 }
@@ -424,7 +424,7 @@
   border-color: #9ca3af;
 }
 
-.action-btn:focus {
+.action-btn:focus-visible {
   outline: 3px solid var(--primary-color, #009EDB);
   outline-offset: 2px;
 }

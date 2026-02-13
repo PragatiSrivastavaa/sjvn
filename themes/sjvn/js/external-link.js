@@ -52,7 +52,12 @@
 
             const $overlay = $('#elw-overlay');
             const $continueBtn = $overlay.find('.elw-btn-continue');
+            const $cancelBtn = $overlay.find('.elw-btn-cancel');
             const $closeBtns = $overlay.find('.elw-close, .elw-btn-cancel');
+
+            // Set descriptive labels for static buttons
+            $cancelBtn.attr('aria-label', isHindi ? `${content.cancel} (वेबसाइट पर रुकें)` : `${content.cancel} (Stay on this site)`);
+            $overlay.find('.elw-close').attr('aria-label', isHindi ? 'बंद करें' : 'Close');
 
             // 2. Identify External Links
             const currentHost = window.location.host;
@@ -83,6 +88,13 @@
 
                     // Prep the modal
                     $continueBtn.attr('href', targetUrl);
+
+                    // Add descriptive aria-label for GIGW/WCAG
+                    const continueLabel = isHindi
+                        ? `${content.continue} (${targetUrl} पर जाएं)`
+                        : `${content.continue} to ${targetUrl}`;
+                    $continueBtn.attr('aria-label', continueLabel);
+
                     if (targetAttr === '_blank') {
                         $continueBtn.attr('target', '_blank');
                     } else {

@@ -525,7 +525,6 @@ i.bi.bi-house {
 
   .inner-header-container {
     flex-direction: column;
-    text-align: center;
     padding: 30px 15px;
   }
 
@@ -1390,7 +1389,7 @@ ul.vmo-card__list {
   color: #fff;
 }
 
-.project-card h6 {
+.project-card h2 {
   font-size: 15px;
   font-weight: 600;
 }
@@ -1617,11 +1616,16 @@ form#user-login-form:hover {
 
 @media (max-width: 480px) {
   #block-sjvn-content--2 {
-    width: 92%;
-    padding: 30px 22px;
+    width: 100%;
+    padding: 0px;
   }
 
   .user-login-form .reload-captcha::after {
     right: -38px;
+  }
+
+  .sidebar .menu-item a {
+    display: inline-block;
+    padding: 4px 6px;
   }
 }

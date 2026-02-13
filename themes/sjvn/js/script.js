@@ -760,3 +760,124 @@ document.addEventListener("DOMContentLoaded", () => {
     setupclones();
     startAutoSlide();
 });
+
+/**
+ * GIGW 3.0 / WCAG 2.1 Compliance: Descriptive Link Text & Interactive Elements
+ * Automatically enhances generic links (Read More, Click Here, etc.)
+ * and interactive role="button" elements.
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    const genericTexts = [
+        'read more', 'click here', 'view all', 'see more', 'learn more',
+        'view detail', 'view', 'continue', 'proceed', 'go', 'explore',
+        'details', 'more', 'view more', 'link', 'download', 'visit'
+    ];
+
+    const hindiGeneric = [
+        'और पढ़ें', 'यहाँ क्लिक करें', 'सभी देखें', 'अधिक देखें',
+        'जारी रखें', 'विस्तार से', 'विवरण', 'यहाँ देखें', 'अधिक जानकारी',
+        'डाउनलोड', 'लिंक', 'सब देखें', 'अधिक'
+    ];
+
+    const enhanceElements = () => {
+        const lang = document.documentElement.lang || 'en';
+        const isHindi = lang.startsWith('hi');
+        const activeGeneric = [...genericTexts, ...hindiGeneric];
+
+        // Process Links, Buttons and Role="button" elements
+        document.querySelectorAll('a, [role="button"], button').forEach(el => {
+            const text = el.textContent.trim().toLowerCase();
+            if (!text || text.length > 35) return;
+
+            // More inclusive matching for generic phrases
+            let isGeneric = activeGeneric.some(gt => {
+                const cleanText = text.replace(/[^a-z\s\u0900-\u097F]/g, '').trim();
+                return cleanText === gt || (cleanText.length < 20 && cleanText.includes(gt));
+            });
+
+            if (isGeneric) {
+                // Find context from identifiable container
+                const contextContainer = el.closest('.custom-card, .news-item, .announcement-item, article, .view-row, .node, .power-item, .business-item, .alert-card, .views-row, .views-field, .field-item, .block, .news-column, .alert-column, .card, td, li');
+
+                if (contextContainer) {
+                    const heading = contextContainer.querySelector('h1, h2, h3, h4, h5, .title, .node__title, .label, .card-title, .views-field-title, .section-heading, strong, b, span:first-child');
+                    if (heading && heading !== el) {
+                        const desc = heading.textContent.trim();
+                        // Only add if desc is long enough to be meaningful
+                        if (desc && desc.length > 3) {
+                            const currentAria = el.getAttribute('aria-label');
+
+                            if (!currentAria || currentAria === el.textContent.trim()) {
+                                const newAria = isHindi
+                                    ? `${el.textContent.trim()} (${desc} के बारे में)`
+                                    : `${el.textContent.trim()} about ${desc}`;
+
+                                el.setAttribute('aria-label', newAria);
+                                if (!el.getAttribute('title')) el.setAttribute('title', newAria);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Handle icon-only links (Social media, etc.)
+        document.querySelectorAll('a').forEach(link => {
+            if (!link.textContent.trim() && !link.getAttribute('aria-label')) {
+                const icon = link.querySelector('i, svg, img');
+                if (icon) {
+                    let label = "";
+                    const cls = (icon.className || "").toLowerCase();
+                    const src = (icon.src || "").toLowerCase();
+                    const alt = icon.alt || "";
+
+                    if (alt) label = alt;
+                    else if (cls.includes('facebook')) label = 'Facebook';
+                    else if (cls.includes('twitter') || cls.includes('x-twitter')) label = 'Twitter';
+                    else if (cls.includes('youtube')) label = 'YouTube';
+                    else if (cls.includes('linkedin')) label = 'LinkedIn';
+                    else if (cls.includes('instagram')) label = 'Instagram';
+                    else if (cls.includes('search')) label = 'Search';
+                    else if (cls.includes('home')) label = 'Home';
+
+                    if (label) {
+                        link.setAttribute('aria-label', isHindi ? `${label}` : label);
+                        link.setAttribute('title', label);
+                    }
+                }
+            }
+        });
+
+        // Handle File download links explicitly
+        document.querySelectorAll('a[href*=".pdf"], a[href*=".doc"], a[href*=".docx"], a[href*=".xls"], a[href*=".xlsx"]').forEach(link => {
+            const href = link.getAttribute('href').toLowerCase();
+            const extMatch = href.match(/\.(pdf|docx?|xlsx?)$/);
+            if (extMatch) {
+                const ext = extMatch[1].toUpperCase();
+                const contentText = link.textContent.trim();
+
+                if (!contentText.includes(ext)) {
+                    const label = isHindi ? `डाउनलोड (${ext})` : `Download (${ext})`;
+                    const currentAria = link.getAttribute('aria-label') || contentText;
+                    if (!currentAria.includes(ext)) {
+                        link.setAttribute('aria-label', `${currentAria} - ${label}`);
+                    }
+                }
+            }
+        });
+    };
+
+    // Initial run
+    enhanceElements();
+
+    // Re-run for dynamic content (Views AJAX, Modals, etc.)
+    const observer = new MutationObserver((mutations) => {
+        let shouldEnhance = false;
+        mutations.forEach(m => {
+            if (m.addedNodes.length > 0) shouldEnhance = true;
+        });
+        if (shouldEnhance) enhanceElements();
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+});

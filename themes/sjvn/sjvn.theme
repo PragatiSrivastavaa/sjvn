@@ -208,6 +208,24 @@ function sjvn_preprocess_views_view(&$variables) {
   
   $variables['current_language'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
+  // Enhance "More" link with descriptive text for WCAG compliance
+  if (!empty($variables['more'])) {
+    $title = $view->getTitle();
+    // Fallback titles if view title is empty
+    if (!$title) {
+        $view_id = $view->id();
+        if ($view_id == 'announcements') $title = t('Announcements');
+        elseif ($view_id == 'news') $title = t('News');
+        else $title = ucfirst(str_replace(['_', '-'], ' ', $view_id));
+    }
+
+    if ($title) {
+      $lang = $variables['current_language'];
+      $prefix = ($lang == 'hi') ? 'सभी देखें' : 'View all';
+      $variables['more']['#title'] = $prefix . ' ' . $title;
+      $variables['more']['#attributes']['aria-label'] = $prefix . ' ' . $title;
+    }
+  }
 }
 
 
@@ -223,6 +241,11 @@ function sjvn_preprocess_links(&$variables) {
   // Check if this is a language switcher block.
   if (isset($variables['links']) && is_array($variables['links'])) {
     foreach ($variables['links'] as $key => &$link) {
+      // Add descriptive labels for screen readers
+      if (isset($link['text'])) {
+          $link['link']['#attributes']['aria-label'] = t('Switch to @language', ['@language' => $link['text']]);
+      }
+      
       // Check if link has language information.
       if (isset($link['link']['#url'])) {
         $url = $link['link']['#url'];
@@ -234,6 +257,65 @@ function sjvn_preprocess_links(&$variables) {
           }
           $link['attributes']['hreflang'] = $language->getId();
         }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function sjvn_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  $title = $node->label();
+  
+  // Teaser read more links
+  if (isset($variables['content']['links']['node']['#links']['node-readmore'])) {
+    $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $read_more_text = ($lang == 'hi') ? 'के बारे में और पढ़ें' : 'Read More about';
+    $label = $read_more_text . ' ' . $title;
+    
+    $variables['content']['links']['node']['#links']['node-readmore']['title'] = $label;
+    $variables['content']['links']['node']['#links']['node-readmore']['attributes']['aria-label'] = $label;
+  }
+}
+
+/**
+ * Implements hook_preprocess_file_link().
+ */
+function sjvn_preprocess_file_link(&$variables) {
+  $file = $variables['file'];
+  if ($file instanceof \Drupal\file\Entity\File) {
+    $filename = $file->getFilename();
+    $extension = strtoupper(pathinfo($filename, PATHINFO_EXTENSION));
+    $size = format_size($file->getSize());
+    
+    $variables['file_extension'] = $extension;
+    $variables['file_size_formatted'] = $size;
+    
+    // Safety check for link attributes
+    if (!isset($variables['attributes'])) {
+      $variables['attributes'] = [];
+    }
+    
+    // Add descriptive aria-label to the whole span
+    $variables['attributes']['aria-label'] = t('@title (@extension file, @size)', [
+      '@title' => $filename,
+      '@extension' => $extension,
+      '@size' => $size,
+    ]);
+  }
+}
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function sjvn_preprocess_menu(&$variables) {
+  // Add descriptive labels to home link and others if they are just icons
+  if (isset($variables['items'])) {
+    foreach ($variables['items'] as &$item) {
+      if ($item['url']->isRouted() && $item['url']->getRouteName() == '<front>') {
+        $item['attributes']['aria-label'] = t('Home');
       }
     }
   }

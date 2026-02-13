@@ -44,7 +44,7 @@
                                     <td> {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_last_date_of_submissions }}'] }} </td>
                                 </tr>
                                 <tr>
-                                    <td><strong> Tender detail: </strong></td>
+                                    <td><strong> {% if current_language == 'hi' %}निविदा विवरण{% else %} Tender Description {% endif %}: </strong></td>
                                         <td>
 {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ body }}'] }}
 </td>

@@ -74,28 +74,135 @@
     </div>
     <div class="log-right-inner">
       <div class="text-right-inner">
-        <h1>{{ page.page_title }}</h1>
+        <div class="page-title-block">{{ page.page_title }}</div>
         {{ page.breadcrumb }}
       </div>
     </div>
   </div>
 </div>
 
-<main id="main-content">
+<main id="main-content" class="body-screen">
 
-<section class="aboutscreen">
-  <div class="container-fluid">
-    <div class="row">
-      {% if page.right_menu %}
-      <div class="col-12">
-        <aside class="sidebar" aria-label="Sidebar Menu">
-          <div class="list-group">
-            {{ page.right_menu }}
+  <section class="aboutscreen">
+    <div class="container-fluid">
+      <div class="row">
+        {% if page.right_menu %}
+        <div class="col-12">
+          <aside class="sidebar" aria-label="Sidebar Menu">
+            <div class="list-group">
+              {{ page.right_menu }}
+            </div>
+          </aside>
+        </div>
+        <div class="col-12">
+          <div class="content-area main-body" id="mainSec">
+            <div id="{{ unique_page_id }}">
+              {% if 'Organization Chart' in page.page_title|render|striptags %}
+              <div class="org-chart-wrapper">
+                <div class="org-chart-tree">
+                  <ul>
+                    <li>
+                      <button type="button" class="btn-unstyled">
+                        <div class="node-content">
+                          <img src="{{ base_path }}themes/sjvn/images/chairman.jpg" class="node-avatar" alt="CMD">
+                          <span class="node-name">Sh. Sushil Sharma</span>
+                          <span class="node-title">Chairman & Managing Director</span>
+                        </div>
+                      </button>
+                      <ul>
+                        <li>
+                          <button type="button" class="btn-unstyled">
+                            <div class="node-content">
+                              <img src="{{ base_path }}themes/sjvn/images/icons/account_circle.svg" class="node-avatar"
+                                alt="Director">
+                              <span class="node-name">Sh. Akhileshwar Singh</span>
+                              <span class="node-title">Director (Finance)</span>
+                            </div>
+                          </button>
+                        </li>
+                        <li>
+                          <button type="button" class="btn-unstyled">
+                            <div class="node-content">
+                              <img src="{{ base_path }}themes/sjvn/images/icons/account_circle.svg" class="node-avatar"
+                                alt="Director">
+                              <span class="node-name">Sh. Ajay Alok</span>
+                              <span class="node-title">Director (Personnel)</span>
+                            </div>
+                          </button>
+                        </li>
+                        <li>
+                          <button type="button" class="btn-unstyled">
+                            <div class="node-content">
+                              <img src="{{ base_path }}themes/sjvn/images/icons/account_circle.svg" class="node-avatar"
+                                alt="Director">
+                              <span class="node-name">Sh. V. Sankaranarayanan</span>
+                              <span class="node-title">Director (Civil)</span>
+                            </div>
+                          </button>
+                        </li>
+                        <li>
+                          <button type="button" class="btn-unstyled">
+                            <div class="node-content">
+                              <img src="{{ base_path }}themes/sjvn/images/icons/account_circle.svg" class="node-avatar"
+                                alt="Director">
+                              <span class="node-name">Sh. Salil Shamsher Jang Bahadur</span>
+                              <span class="node-title">Director (Electrical)</span>
+                            </div>
+                          </button>
+                        </li>
+                        <li>
+                          <button type="button" class="btn-unstyled">
+                            <div class="node-content">
+                              <img src="{{ base_path }}themes/sjvn/images/icons/account_circle.svg" class="node-avatar"
+                                alt="CVO">
+                              <span class="node-name">Sh. Prem Prakash (IOFS)</span>
+                              <span class="node-title">Chief Vigilance Officer</span>
+                            </div>
+                          </button>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              {% elseif page.content|render|trim is not empty %}
+              {{ page.content }}
+              {% else %}
+              <div class="no-content-wrapper">
+                <div class="empty-state-card">
+                  <div class="empty-state-icon-wrapper">
+                    <div class="empty-state-icon-bg"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-folder-minus main-icon">
+                      <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                      <line x1="9" y1="14" x2="15" y2="14"></line>
+                    </svg>
+                    <div class="decorative-dot dot-1"></div>
+                    <div class="decorative-dot dot-2"></div>
+                    <div class="decorative-dot dot-3"></div>
+                  </div>
+                  <h3 class="empty-state-title">
+                    {{ page.page_title }} - {% if language.getId() == 'hi' %}अपडेट जारी है{% else %}Update in Progress{%
+                    endif %}
+                  </h3>
+                  <p class="empty-state-desc">{% if language.getId() == 'hi' %}हम इस पृष्ठ पर सामग्री जोड़ने के लिए काम
+                    कर
+                    रहे हैं।<br>कृपया बाद में दोबारा जांचें।{% else %}We are working on adding content to this
+                    page.<br>Please check back later.{% endif %}</p>
+                  <a href="{{ front_page }}" class="btn btn-modern-primary">
+                    <i class="bi bi-arrow-left me-2"></i>
+                    {% if language.getId() == 'hi' %}होम पेज पर वापस जाएं{% else %}Back to Home Page{% endif %}
+                  </a>
+                </div>
+              </div>
+              {% endif %}
+            </div>
           </div>
-        </aside>
-      </div>
-      <div class="col-12">
-        <div class="content-area main-body" id="mainSec">
+        </div>
+
+        {% else %}
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-body" id="mainSec">
           <div id="{{ unique_page_id }}">
             {% if 'Organization Chart' in page.page_title|render|striptags %}
             <div class="org-chart-wrapper">
@@ -182,8 +289,10 @@
                   <div class="decorative-dot dot-2"></div>
                   <div class="decorative-dot dot-3"></div>
                 </div>
-                <h3 class="empty-state-title">{% if language.getId() == 'hi' %}अभी कोई जानकारी उपलब्ध नहीं है{% else
-                  %}No Information Available{% endif %}</h3>
+                <h3 class="empty-state-title">
+                  {{ page.page_title }} - {% if language.getId() == 'hi' %}अपडेट जारी है{% else %}Update in Progress{%
+                  endif %}
+                </h3>
                 <p class="empty-state-desc">{% if language.getId() == 'hi' %}हम इस पृष्ठ पर सामग्री जोड़ने के लिए काम कर
                   रहे हैं।<br>कृपया बाद में दोबारा जांचें।{% else %}We are working on adding content to this
                   page.<br>Please check back later.{% endif %}</p>
@@ -197,113 +306,9 @@
           </div>
         </div>
       </div>
-
-      {% else %}
-      <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-body" id="mainSec">
-        <div id="{{ unique_page_id }}">
-          {% if 'Organization Chart' in page.page_title|render|striptags %}
-          <div class="org-chart-wrapper">
-            <div class="org-chart-tree">
-              <ul>
-                <li>
-                  <button type="button" class="btn-unstyled">
-                    <div class="node-content">
-                      <img src="{{ base_path }}themes/sjvn/images/chairman.jpg" class="node-avatar" alt="CMD">
-                      <span class="node-name">Sh. Sushil Sharma</span>
-                      <span class="node-title">Chairman & Managing Director</span>
-                    </div>
-                  </button>
-                  <ul>
-                    <li>
-                      <button type="button" class="btn-unstyled">
-                        <div class="node-content">
-                          <img src="{{ base_path }}themes/sjvn/images/icons/account_circle.svg" class="node-avatar"
-                            alt="Director">
-                          <span class="node-name">Sh. Akhileshwar Singh</span>
-                          <span class="node-title">Director (Finance)</span>
-                        </div>
-                      </button>
-                    </li>
-                    <li>
-                      <button type="button" class="btn-unstyled">
-                        <div class="node-content">
-                          <img src="{{ base_path }}themes/sjvn/images/icons/account_circle.svg" class="node-avatar"
-                            alt="Director">
-                          <span class="node-name">Sh. Ajay Alok</span>
-                          <span class="node-title">Director (Personnel)</span>
-                        </div>
-                      </button>
-                    </li>
-                    <li>
-                      <button type="button" class="btn-unstyled">
-                        <div class="node-content">
-                          <img src="{{ base_path }}themes/sjvn/images/icons/account_circle.svg" class="node-avatar"
-                            alt="Director">
-                          <span class="node-name">Sh. V. Sankaranarayanan</span>
-                          <span class="node-title">Director (Civil)</span>
-                        </div>
-                      </button>
-                    </li>
-                    <li>
-                      <button type="button" class="btn-unstyled">
-                        <div class="node-content">
-                          <img src="{{ base_path }}themes/sjvn/images/icons/account_circle.svg" class="node-avatar"
-                            alt="Director">
-                          <span class="node-name">Sh. Salil Shamsher Jang Bahadur</span>
-                          <span class="node-title">Director (Electrical)</span>
-                        </div>
-                      </button>
-                    </li>
-                    <li>
-                      <button type="button" class="btn-unstyled">
-                        <div class="node-content">
-                          <img src="{{ base_path }}themes/sjvn/images/icons/account_circle.svg" class="node-avatar"
-                            alt="CVO">
-                          <span class="node-name">Sh. Prem Prakash (IOFS)</span>
-                          <span class="node-title">Chief Vigilance Officer</span>
-                        </div>
-                      </button>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-          {% elseif page.content|render|trim is not empty %}
-          {{ page.content }}
-          {% else %}
-          <div class="no-content-wrapper">
-            <div class="empty-state-card">
-              <div class="empty-state-icon-wrapper">
-                <div class="empty-state-icon-bg"></div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                  class="feather feather-folder-minus main-icon">
-                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-                  <line x1="9" y1="14" x2="15" y2="14"></line>
-                </svg>
-                <div class="decorative-dot dot-1"></div>
-                <div class="decorative-dot dot-2"></div>
-                <div class="decorative-dot dot-3"></div>
-              </div>
-              <h3 class="empty-state-title">{% if language.getId() == 'hi' %}अभी कोई जानकारी उपलब्ध नहीं है{% else %}No
-                Information Available{% endif %}</h3>
-              <p class="empty-state-desc">{% if language.getId() == 'hi' %}हम इस पृष्ठ पर सामग्री जोड़ने के लिए काम कर
-                रहे हैं।<br>कृपया बाद में दोबारा जांचें।{% else %}We are working on adding content to this
-                page.<br>Please check back later.{% endif %}</p>
-              <a href="{{ front_page }}" class="btn btn-modern-primary">
-                <i class="bi bi-arrow-left me-2"></i>
-                {% if language.getId() == 'hi' %}होम पेज पर वापस जाएं{% else %}Back to Home Page{% endif %}
-              </a>
-            </div>
-          </div>
-          {% endif %}
-        </div>
-      </div>
+      {% endif %}
     </div>
-    {% endif %}
-  </div>
-  </div>
-</section>
+    </div>
+  </section>
 </main>
 {% include 'themes/sjvn/templates/layout/footer.html.twig' %}
