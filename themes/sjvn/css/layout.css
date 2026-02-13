@@ -475,3 +475,31 @@ div#accordionSidebar {
 .carousel-pause-toggle.paused {
   background: #009edb1f;
 }
+
+/* Keyboard Accessibility Focus Styles */
+/* Global indicator for all focusable elements */
+.a11y-focus-mode a:focus,
+.a11y-focus-mode button:focus,
+.a11y-focus-mode input:focus,
+.a11y-focus-mode select:focus,
+.a11y-focus-mode textarea:focus,
+.a11y-focus-mode [tabindex="0"]:focus {
+  outline: 3px solid #fdb913 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 10px rgba(253, 185, 19, 0.5) !important;
+  z-index: 10000 !important;
+}
+
+.a11y-focus-mode .business-item:focus,
+.a11y-focus-mode .power-item:focus,
+.a11y-focus-mode .ann-prev:focus,
+.a11y-focus-mode .ann-pause:focus,
+.a11y-focus-mode .ann-next:focus,
+.a11y-focus-mode .alert-dots button:focus {
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}
+
+main#main-content {
+  min-height: 500px;
+}

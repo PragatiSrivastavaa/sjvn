@@ -341,6 +341,13 @@ document.addEventListener("DOMContentLoaded", () => {
             activeIndex = index;
             updateCarousel();
         });
+        item.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                activeIndex = index;
+                updateCarousel();
+            }
+        });
     });
 
     leftButton.addEventListener('click', () => {
@@ -364,7 +371,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!businessItems.length || !businessDisplay) return;
 
     businessItems.forEach(item => {
-        item.addEventListener("mouseenter", () => {
+        const updateImage = () => {
             const imgSrc = item.getAttribute("data-image");
             if (imgSrc) {
                 // Smooth transition effect
@@ -374,12 +381,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     businessDisplay.style.opacity = '1';
                 }, 150);
             }
-        });
+        };
 
-        item.addEventListener("click", () => {
+        item.addEventListener("mouseenter", updateImage);
+        item.addEventListener("focus", updateImage);
+
+        const activateItem = () => {
             const link = item.getAttribute("data-link");
             if (link) {
                 window.location.href = link;
+            }
+        };
+
+        item.addEventListener("click", activateItem);
+        item.addEventListener("keydown", (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                activateItem();
             }
         });
     });
@@ -412,12 +430,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Create dots dynamically
     alerts.forEach((_, i) => {
-        const dot = document.createElement("span");
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.setAttribute("aria-label", `Show alert ${i + 1}`);
         dot.addEventListener("click", () => showSlide(i));
         dotsContainer.appendChild(dot);
     });
 
-    const dots = dotsContainer.querySelectorAll("span");
+    const dots = dotsContainer.querySelectorAll("button");
 
     function showSlide(index) {
         alerts.forEach((alert, i) => {

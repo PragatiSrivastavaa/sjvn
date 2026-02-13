@@ -41,7 +41,8 @@ db_offline ? 'db-offline',
       content="SJVN Limited - A Joint Venture of Govt. of India & Govt. of Himachal Pradesh. Leading Power Sector PSU.">
     <meta name="keywords" content="SJVN, Power, Energy, Hydro, Wind, Solar, PSU, Government, Electricity">
     <head-placeholder token="{{ placeholder_token }}">
-      <title>{{ head_title|safe_join(' | ') }}</title>
+      <title>{{ head_title|safe_join(' | ') }} | SJVN Limited - A Joint Venture of Govt. of India & Govt. of Himachal
+        Pradesh</title>
       <css-placeholder token="{{ placeholder_token }}">
         <js-placeholder token="{{ placeholder_token }}">
           <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -184,6 +185,7 @@ db_offline ? 'db-offline',
         </section>
 
         {# Line Height Section #}
+        {# Line Height Section #}
         <section class="accessibility-section" aria-labelledby="a11y-heading-line-height">
           <h3 id="a11y-heading-line-height">Line Height</h3>
           <div class="radio-group" role="radiogroup" aria-labelledby="a11y-heading-line-height">
@@ -198,6 +200,21 @@ db_offline ? 'db-offline',
             <label class="radio-option">
               <input type="radio" name="line-height" value="loose">
               <span class="radio-label">Loose</span>
+            </label>
+          </div>
+        </section>
+
+        {# Focus Mode Section #}
+        <section class="accessibility-section" aria-labelledby="a11y-heading-focus">
+          <h3 id="a11y-heading-focus">Focus Mode</h3>
+          <div class="radio-group" role="radiogroup" aria-labelledby="a11y-heading-focus">
+            <label class="radio-option active">
+              <input type="radio" name="focus-mode" value="disable" checked>
+              <span class="radio-label">Disable</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="focus-mode" value="enable">
+              <span class="radio-label">Enable</span>
             </label>
           </div>
         </section>

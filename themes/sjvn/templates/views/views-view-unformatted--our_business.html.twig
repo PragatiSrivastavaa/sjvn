@@ -27,6 +27,8 @@
       {% set term_translated = term.hasTranslation(lang) ? term.getTranslation(lang) : term %}
 
       <div class="business-item" 
+           role="button"
+           tabindex="0"
            data-image="{{ file_url(term_translated.field_image.entity.fileuri) }}" 
            data-link="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': term_translated.id()}) }}">
 
