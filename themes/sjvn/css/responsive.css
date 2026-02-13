@@ -259,7 +259,7 @@
 
 
   .carousel-track img {
-    height: 45px;
+    height: 90px;
     margin: 0 18px;
   }
 
@@ -560,7 +560,7 @@
   width: 30px !important;
   height: 30px !important;
   font-size: 16px !important;
-  top: 65% !important;
+  top: 50% !important;
 }
 
 .power-station-section .carousel-button.left,
@@ -603,7 +603,11 @@ table.views-table.views-view-table.cols-0 {
 }
 
 .gallery-item {
-  height: 160px;
+  height: 200px;
+}
+
+.photo-gallery-grid-slider {
+  gap: 10px;
 }
 
 .gallery-overlay,
@@ -1535,7 +1539,7 @@ table.views-table.views-view-table.cols-0 {
   }
 
   .carousel-track img {
-    height: 35px;
+    height: 80px;
     margin: 0 15px;
   }
 
@@ -1769,7 +1773,7 @@ table.views-table.views-view-table.cols-0 {
 
 
   .carousel-track img {
-    height: 25px;
+    height: 60px;
     margin: 0 8px;
   }
 

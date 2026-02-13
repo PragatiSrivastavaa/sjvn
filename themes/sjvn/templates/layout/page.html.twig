@@ -165,7 +165,7 @@
                 </ul>
               </div>
             </div>
-            {% elseif page.content|render|striptags|trim is not empty %}
+            {% elseif page.content|render|trim is not empty %}
             {{ page.content }}
             {% else %}
             <div class="no-content-wrapper">
@@ -269,7 +269,7 @@
               </ul>
             </div>
           </div>
-          {% elseif page.content|render|striptags|trim is not empty %}
+          {% elseif page.content|render|trim is not empty %}
           {{ page.content }}
           {% else %}
           <div class="no-content-wrapper">

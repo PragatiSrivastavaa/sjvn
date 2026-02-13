@@ -1,33 +1,40 @@
 {#
 /**
- * @file
- * Theme override to display a view of unformatted rows.
- *
- * Available variables:
- * - title: The title of this group of rows. May be empty.
- * - rows: A list of the view's row items.
- *   - attributes: The row's HTML attributes.
- *   - content: The row's content.
- * - view: The view object.
- * - default_row_class: A flag indicating whether default classes should be
- *   used on rows.
- *
- * @see template_preprocess_views_view_unformatted()
- */
+* @file
+* Theme override to display a view of unformatted rows.
+*
+* Available variables:
+* - title: The title of this group of rows. May be empty.
+* - rows: A list of the view's row items.
+* - attributes: The row's HTML attributes.
+* - content: The row's content.
+* - view: The view object.
+* - default_row_class: A flag indicating whether default classes should be
+* used on rows.
+*
+* @see template_preprocess_views_view_unformatted()
+*/
 #}
- 
-<div class="photo-gallery-grid">
-        {% for row in rows %}
-        {% set node = row.content['#row']._entity %}
-        <div class="gallery-item">
-           <a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
-          {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_thumbnail_image }}'] }}
-          <div class="gallery-overlay">
-            <span>{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}</span>
-          </div>
-          </a>
-        </div>
-        {% endfor %}
-      </div>
 
-     
+<div class="photo-gallery-slider-container">
+  <div class="photo-gallery-grid-slider">
+    {% for row in rows %}
+    <div class="gallery-item">
+      {% if row.content['#row'].nid %}
+      <a href="{{ path('entity.node.canonical', {'node': row.content['#row'].nid}) }}">
+        {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_thumbnail_image }}'] }}
+        <div class="gallery-overlay">
+          <span>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</span>
+        </div>
+      </a>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="gallery-slider-controls">
+    <button type="button" class="gallery-prev" aria-label="Previous">&#60;</button>
+    <button type="button" class="gallery-play-pause" aria-label="Play/Pause">⏸</button>
+    <button type="button" class="gallery-next" aria-label="Next">&#62;</button>
+  </div>
+</div>

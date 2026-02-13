@@ -540,3 +540,223 @@ document.addEventListener("DOMContentLoaded", function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });
+
+// Photo Gallery Slider Logic - Circular / Infinite Loop
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector(".photo-gallery-slider-container");
+    const track = document.querySelector(".photo-gallery-grid-slider");
+    let slides = document.querySelectorAll(".photo-gallery-grid-slider .gallery-item");
+    const prevBtn = document.querySelector(".gallery-prev");
+    const nextBtn = document.querySelector(".gallery-next");
+    const playPauseBtn = document.querySelector(".gallery-play-pause");
+
+    if (!container || !track || slides.length === 0) return;
+
+    let currentIndex = 0;
+    let isPlaying = true;
+    let autoSlideInterval;
+    let isTransitioning = false;
+    const slideIntervalTime = 5000;
+
+    function getVisibleSlides() {
+        if (window.innerWidth >= 1024) return 4;
+        if (window.innerWidth >= 768) return 2;
+        return 1;
+    }
+
+    // Clone slides for infinite effect
+    function setupclones() {
+        const visibleSlides = getVisibleSlides();
+        // Remove existing clones if any
+        const existingClones = track.querySelectorAll('.clone');
+        existingClones.forEach(c => c.remove());
+
+        // Clone first set and append
+        for (let i = 0; i < visibleSlides; i++) {
+            const clone = slides[i].cloneNode(true);
+            clone.classList.add('clone');
+            track.appendChild(clone);
+        }
+        // Clone last set and prepend
+        for (let i = slides.length - 1; i >= slides.length - visibleSlides; i--) {
+            const clone = slides[i].cloneNode(true);
+            clone.classList.add('clone');
+            track.insertBefore(clone, track.firstChild);
+        }
+
+        // Update slides reference
+        currentIndex = visibleSlides; // Start at the first real slide
+        updateSlider(false);
+    }
+
+    function updateSlider(animate = true) {
+        const visibleSlides = getVisibleSlides();
+        const slideWidth = container.offsetWidth / visibleSlides;
+        const allSlides = track.querySelectorAll(".gallery-item");
+
+        allSlides.forEach(slide => {
+            slide.style.minWidth = `${slideWidth}px`;
+            slide.style.flex = `0 0 ${slideWidth}px`;
+            slide.style.boxSizing = "border-box";
+            slide.style.padding = "0 3.5px";
+        });
+
+        track.style.transition = animate ? "transform 0.5s ease-in-out" : "none";
+        const offset = -currentIndex * slideWidth;
+        track.style.transform = `translateX(${offset}px)`;
+    }
+
+    function nextSlide() {
+        if (isTransitioning) return;
+        const visibleSlides = getVisibleSlides();
+        currentIndex++;
+        isTransitioning = true;
+        updateSlider(true);
+
+        // Check if we reached the clone of the first slide
+        if (currentIndex >= slides.length + visibleSlides) {
+            setTimeout(() => {
+                track.style.transition = "none";
+                currentIndex = visibleSlides;
+                updateSlider(false);
+                isTransitioning = false;
+            }, 500);
+        } else {
+            setTimeout(() => isTransitioning = false, 500);
+        }
+    }
+
+    function prevSlide() {
+        if (isTransitioning) return;
+        const visibleSlides = getVisibleSlides();
+        currentIndex--;
+        isTransitioning = true;
+        updateSlider(true);
+
+        // Check if we reached the clone of the last slide
+        if (currentIndex < visibleSlides) {
+            // Wait for transition to end then jump to real slide
+            if (currentIndex < 0) {
+                // Should not happen with visibleSlides buffer but safety check
+            }
+        }
+
+        if (currentIndex < visibleSlides) {
+            setTimeout(() => {
+                track.style.transition = "none";
+                currentIndex = slides.length + visibleSlides - 1;
+                // Since handles are simple, just jump to the corresponding real one
+                if (currentIndex < visibleSlides) currentIndex = slides.length;
+                updateSlider(false);
+                isTransitioning = false;
+            }, 500);
+        } else {
+            setTimeout(() => isTransitioning = false, 500);
+        }
+    }
+
+    // Simplified loop logic for circular
+    function handleLoop() {
+        const visibleSlides = getVisibleSlides();
+        if (currentIndex >= slides.length + visibleSlides) {
+            track.style.transition = "none";
+            currentIndex = visibleSlides;
+            updateSlider(false);
+        }
+        if (currentIndex < visibleSlides) {
+            track.style.transition = "none";
+            currentIndex = slides.length + visibleSlides - 1;
+            updateSlider(false);
+        }
+    }
+
+    function startAutoSlide() {
+        stopAutoSlide();
+        autoSlideInterval = setInterval(() => {
+            if (isPlaying) nextSlide();
+        }, slideIntervalTime);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    function togglePlayPause() {
+        isPlaying = !isPlaying;
+        playPauseBtn.textContent = isPlaying ? "⏸" : "▶";
+        playPauseBtn.setAttribute("aria-label", isPlaying ? "Pause" : "Play");
+    }
+
+    // Container Styles
+    container.style.overflow = "hidden";
+    container.style.position = "relative";
+    container.style.width = "100%";
+    container.style.padding = "10px 0";
+
+    track.style.display = "flex";
+    track.style.width = "max-content";
+
+    // Controls Styles
+    const controls = document.querySelector(".gallery-slider-controls");
+    const seeMoreWrapper = document.querySelector(".photo-gallery-section .see-more-wrapper");
+
+    if (controls) {
+        controls.style.display = "flex";
+        controls.style.justifyContent = "center";
+        controls.style.alignItems = "center";
+        controls.style.gap = "10px";
+        controls.style.marginTop = "10px";
+        controls.style.position = "relative";
+        controls.style.width = "100%";
+
+        // Move "See More" button into the same line if it exists
+        if (seeMoreWrapper) {
+            seeMoreWrapper.style.position = "absolute";
+            seeMoreWrapper.style.right = "0";
+            seeMoreWrapper.style.marginTop = "0";
+            seeMoreWrapper.style.top = "50%";
+            seeMoreWrapper.style.transform = "translateY(-50%)";
+            controls.appendChild(seeMoreWrapper);
+        }
+    }
+
+    const buttons = [prevBtn, nextBtn, playPauseBtn];
+    buttons.forEach(btn => {
+        if (btn) {
+            btn.style.background = "var(--primary-color, #009edb)";
+            btn.style.color = "white";
+            btn.style.border = "none";
+            btn.style.width = "30px";  // Shrinked from 40px
+            btn.style.height = "30px"; // Shrinked from 40px
+            btn.style.borderRadius = "50%";
+            btn.style.cursor = "pointer";
+            btn.style.fontSize = "0.9rem"; // Shrinked from 1.2rem
+            btn.style.display = "flex";
+            btn.style.alignItems = "center";
+            btn.style.justifyContent = "center";
+            btn.style.transition = "all 0.3s ease";
+            btn.style.boxShadow = "0 2px 5px rgba(0,0,0,0.2)";
+
+            btn.addEventListener("mouseover", () => {
+                btn.style.transform = "scale(1.1)";
+                btn.style.background = "var(--secondary-color, #fdb913)";
+            });
+            btn.addEventListener("mouseout", () => {
+                btn.style.transform = "scale(1)";
+                btn.style.background = "var(--primary-color, #009edb)";
+            });
+        }
+    });
+
+    if (nextBtn) nextBtn.addEventListener("click", () => { nextSlide(); if (isPlaying) startAutoSlide(); });
+    if (prevBtn) prevBtn.addEventListener("click", () => { prevSlide(); if (isPlaying) startAutoSlide(); });
+    if (playPauseBtn) playPauseBtn.addEventListener("click", togglePlayPause);
+
+    window.addEventListener("resize", () => {
+        setupclones();
+        updateSlider(false);
+    });
+
+    setupclones();
+    startAutoSlide();
+});

@@ -499,7 +499,3 @@ div#accordionSidebar {
   transform: scale(1.02);
   transition: transform 0.2s ease;
 }
-
-main#main-content {
-  min-height: 500px;
-}
