@@ -35,19 +35,19 @@
         <a href="#main-content">{% if language.getId() == 'hi' %}मुख्य सामग्री पर जाएं{% else %}Skip to Main Content{%
           endif %}</a>
 
-        <!-- Language Toggle -->
-        | <nav class="language-toggle" aria-label="Language Switcher">
+        <span class="separator" aria-hidden="true">|</span>
+        <div class="language-toggle" aria-label="Language Switcher">
           <ul>
             <li class="lang-select">
               {{ page.language }}
             </li>
           </ul>
-        </nav>
+        </div>
 
         <!-- Theme Selectors (Inline) -->
         <div class="theme-inline">
           <button type="button" class="theme-color blue" data-theme="blue" title="Default Theme"
-            aria-label="Blue Theme"><span class="visually-hidden">Blue Theme</span></button>
+            aria-label="Default Theme"><span class="visually-hidden">Default Theme</span></button>
           <button type="button" class="theme-color green" data-theme="green" title="Green Theme"
             aria-label="Green Theme"><span class="visually-hidden">Green Theme</span></button>
         </div>

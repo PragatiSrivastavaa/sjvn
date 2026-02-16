@@ -1,12 +1,13 @@
 /**
- * Simplified Accessibility Widget - GUARANTEED TO WORK
- * This version uses multiple initialization methods to ensure it loads
+ * Simplified Accessibility Widget - Multi-step Apply Version
+ * This version ensures no automatic settings are applied without 'Apply Settings' click
+ * complying with WCAG 2.1 – 3.2.2 (On Input).
  */
 
 (function () {
   'use strict';
 
-  console.log('🚀 Loading Accessibility Widget...');
+  console.log('🚀 Loading Accessibility Widget (Compliance Version)...');
 
   // Settings storage
   let settings = {
@@ -20,6 +21,9 @@
     highlightLinks: false,
     focusMode: 'disable'
   };
+
+  // Draft settings (pending application)
+  let pendingSettings = JSON.parse(JSON.stringify(settings));
 
   // Store original font sizes (base reference)
   let originalSizes = new Map();
@@ -38,6 +42,7 @@
     const drawer = document.getElementById('accessibility-drawer');
     const overlay = document.getElementById('accessibility-overlay');
     const closeBtn = document.getElementById('accessibility-close');
+    const applyBtn = document.getElementById('a11y-apply');
 
     if (!trigger || !drawer || !overlay || !closeBtn) {
       console.warn('Accessibility elements not ready yet, will retry...');
@@ -49,14 +54,17 @@
 
     // OPEN/CLOSE DRAWER
     trigger.onclick = function () {
-      console.log('🖱️ Trigger clicked');
+      console.log('🖱️ Drawer opened - Syncing pending settings');
+      // Sync pending with currently applied settings
+      pendingSettings = JSON.parse(JSON.stringify(settings));
+      updateUIState(); // Ensure UI matches pending settings
+
       drawer.classList.add('open');
       drawer.style.right = '0';
       overlay.classList.add('active');
     };
 
     closeBtn.onclick = function () {
-      console.log('❌ Close clicked');
       drawer.classList.remove('open');
       drawer.style.right = '-400px';
       overlay.classList.remove('active');
@@ -66,557 +74,370 @@
       closeBtn.click();
     };
 
+    // APPLY SETTINGS BUTTON
+    if (applyBtn) {
+      applyBtn.onclick = function () {
+        console.log('💾 Applying settings...', pendingSettings);
+        settings = JSON.parse(JSON.stringify(pendingSettings));
+        applyAllToBody();
+        saveSettings();
+
+        // Visual feedback
+        const originalText = applyBtn.textContent;
+        applyBtn.textContent = 'Applied!';
+        applyBtn.style.background = '#28a745';
+
+        setTimeout(() => {
+          applyBtn.textContent = originalText;
+          applyBtn.style.background = '';
+          closeBtn.click();
+        }, 800);
+      };
+    }
+
     // TEXT SIZE BUTTONS
     const textButtons = drawer.querySelectorAll('[data-action^="text-"]');
-    console.log('Found', textButtons.length, 'text size buttons');
-
     textButtons.forEach(function (btn) {
       btn.onclick = function () {
         const action = this.getAttribute('data-action');
-        console.log('📝 Text size clicked:', action);
+        let val = 'normal';
+        if (action === 'text-decrease') val = 'decrease';
+        else if (action === 'text-increase') val = 'increase';
 
-        // Remove active from all
-        textButtons.forEach(function (b) {
-          b.classList.remove('active');
-          b.style.background = '';
-          b.style.color = '';
-          b.style.border = '';
-        });
-
-        // Make this one active
-        this.classList.add('active');
-        this.style.background = '#009EDB';
-        this.style.color = '#fff';
-        this.style.border = '2px solid #009EDB';
-
-        console.log('✓ Made button active');
-
-        // Remove all text size classes
-        document.body.classList.remove('a11y-text-decrease', 'a11y-text-increase');
-
-        // Apply new size relative to BASE
-        if (action === 'text-decrease') {
-          document.body.classList.add('a11y-text-decrease');
-          applyTextSize(0.85); // A- = BASE × 0.85 (15% smaller)
-          settings.textSize = 'decrease';
-          console.log('✅ A- Applied: BASE size × 0.85 (smaller)');
-        } else if (action === 'text-increase') {
-          document.body.classList.add('a11y-text-increase');
-          applyTextSize(1.2); // A+ = BASE × 1.2 (20% larger)
-          settings.textSize = 'increase';
-          console.log('✅ A+ Applied: BASE size × 1.2 (larger)');
-        } else {
-          applyTextSize(1); // A = BASE × 1 (original/normal)
-          settings.textSize = 'normal';
-          console.log('✅ A Applied: Restored to BASE size (original)');
-        }
-
-        saveSettings();
+        pendingSettings.textSize = val;
+        updateUIState();
       };
     });
 
     // THEME RADIO BUTTONS
     const themeInputs = drawer.querySelectorAll('input[name="theme"]');
-    console.log('Found', themeInputs.length, 'theme options');
-
     themeInputs.forEach(function (input) {
       const label = input.closest('label');
-
-      // Handle both input change and label click
-      function handleTheme() {
-        const value = input.value;
-        console.log('🎨 Theme selected:', value);
-
-        // Remove active from all
-        themeInputs.forEach(function (inp) {
-          const lbl = inp.closest('label');
-          lbl.classList.remove('active');
-          lbl.style.background = '';
-          lbl.style.border = '';
-        });
-
-        // Make this one active
-        label.classList.add('active');
-        label.style.background = '#e6f7ff';
-        label.style.border = '3px solid #009EDB';
-        input.checked = true;
-
-        console.log('✓ Made option active');
-
-        // Remove all theme classes
-        document.body.classList.remove('a11y-theme-dark', 'a11y-theme-high-contrast');
-
-        // Apply theme
-        if (value === 'dark') {
-          document.body.classList.add('a11y-theme-dark');
-          document.body.style.background = '#1a1a1a';
-          document.body.style.color = '#ffffff';
-          settings.theme = 'dark';
-          console.log('✅ Applied dark theme');
-        } else if (value === 'high-contrast') {
-          document.body.classList.add('a11y-theme-high-contrast');
-          document.body.style.background = '#000000';
-          document.body.style.color = '#ffff00';
-          settings.theme = 'high-contrast';
-          console.log('✅ Applied high contrast theme');
-        } else {
-          document.body.style.background = '';
-          document.body.style.color = '';
-          settings.theme = 'light';
-          console.log('✅ Applied light theme');
-        }
-
-        saveSettings();
+      function handleThemeSelection() {
+        pendingSettings.theme = input.value;
+        updateUIState();
       }
-
-      input.onchange = handleTheme;
-      label.onclick = handleTheme;
+      input.onchange = handleThemeSelection;
+      label.onclick = handleThemeSelection;
     });
 
     // TEXT ALIGNMENT BUTTONS
     const alignButtons = drawer.querySelectorAll('[data-action^="align-"]');
-    console.log('Found', alignButtons.length, 'text alignment buttons');
-
     alignButtons.forEach(function (btn) {
       btn.onclick = function () {
         const action = this.getAttribute('data-action');
-        console.log('↔️ Text alignment clicked:', action);
-
-        // Remove active from all
-        alignButtons.forEach(function (b) {
-          b.classList.remove('active');
-          b.style.cssText = '';
-        });
-
-        // Make this one active
-        this.classList.add('active');
-        this.style.cssText = 'background: #009EDB !important; color: white !important;';
-
-        // Remove all alignment classes
-        document.body.classList.remove('a11y-align-left', 'a11y-align-center', 'a11y-align-right');
-
-        // Apply alignment
-        if (action === 'align-left') {
-          document.body.classList.add('a11y-align-left');
-          applyTextAlignment('left');
-          settings.textAlign = 'left';
-          console.log('✅ Applied left alignment');
-        } else if (action === 'align-center') {
-          document.body.classList.add('a11y-align-center');
-          applyTextAlignment('center');
-          settings.textAlign = 'center';
-          console.log('✅ Applied center alignment');
-        } else if (action === 'align-right') {
-          document.body.classList.add('a11y-align-right');
-          applyTextAlignment('right');
-          settings.textAlign = 'right';
-          console.log('✅ Applied right alignment');
-        }
-
-        saveSettings();
+        pendingSettings.textAlign = action.replace('align-', '');
+        updateUIState();
       };
     });
 
     // TEXT SPACING RADIO BUTTONS
     const spacingInputs = drawer.querySelectorAll('input[name="text-spacing"]');
-    console.log('Found', spacingInputs.length, 'text spacing options');
-
     spacingInputs.forEach(function (input) {
       const label = input.closest('label');
-
-      function handleSpacing() {
-        const value = input.value;
-        console.log('📐 Text spacing selected:', value);
-
-        // Remove active from all
-        spacingInputs.forEach(function (inp) {
-          const lbl = inp.closest('label');
-          lbl.classList.remove('active');
-          lbl.style.cssText = '';
-        });
-
-        // Make this one active
-        label.classList.add('active');
-        label.style.cssText = 'background: #e6f7ff !important; border: 3px solid #009EDB !important;';
-        input.checked = true;
-
-        // Remove all spacing classes
-        document.body.classList.remove('a11y-spacing-tight', 'a11y-spacing-loose');
-
-        // Apply spacing
-        if (value === 'tight') {
-          document.body.classList.add('a11y-spacing-tight');
-          applyTextSpacing(-0.5, -1);
-          settings.textSpacing = 'tight';
-          console.log('✅ Applied tight spacing');
-        } else if (value === 'loose') {
-          document.body.classList.add('a11y-spacing-loose');
-          applyTextSpacing(1, 3);
-          settings.textSpacing = 'loose';
-          console.log('✅ Applied loose spacing');
-        } else {
-          applyTextSpacing(0, 0);
-          settings.textSpacing = 'normal';
-          console.log('✅ Applied normal spacing');
-        }
-
-        saveSettings();
+      function handleSpacingSelection() {
+        pendingSettings.textSpacing = input.value;
+        updateUIState();
       }
-
-      input.onchange = handleSpacing;
-      label.onclick = handleSpacing;
+      input.onchange = handleSpacingSelection;
+      label.onclick = handleSpacingSelection;
     });
 
     // LINE HEIGHT RADIO BUTTONS
     const lineHeightInputs = drawer.querySelectorAll('input[name="line-height"]');
-    console.log('Found', lineHeightInputs.length, 'line height options');
-
     lineHeightInputs.forEach(function (input) {
       const label = input.closest('label');
-
-      function handleLineHeight() {
-        const value = input.value;
-        console.log('📏 Line height selected:', value);
-
-        // Remove active from all
-        lineHeightInputs.forEach(function (inp) {
-          const lbl = inp.closest('label');
-          lbl.classList.remove('active');
-          lbl.style.cssText = '';
-        });
-
-        // Make this one active
-        label.classList.add('active');
-        label.style.cssText = 'background: #e6f7ff !important; border: 3px solid #009EDB !important;';
-        input.checked = true;
-
-        // Remove all line height classes
-        document.body.classList.remove('a11y-line-height-tight', 'a11y-line-height-loose');
-
-        // Apply line height
-        if (value === 'tight') {
-          document.body.classList.add('a11y-line-height-tight');
-          applyLineHeight(1.3);
-          settings.lineHeight = 'tight';
-          console.log('✅ Applied tight line height');
-        } else if (value === 'loose') {
-          document.body.classList.add('a11y-line-height-loose');
-          applyLineHeight(2.0);
-          settings.lineHeight = 'loose';
-          console.log('✅ Applied loose line height');
-        } else {
-          applyLineHeight(1.5);
-          settings.lineHeight = 'normal';
-          console.log('✅ Applied normal line height');
-        }
-
-        saveSettings();
+      function handleLineHeightSelection() {
+        pendingSettings.lineHeight = input.value;
+        updateUIState();
       }
-
-      input.onchange = handleLineHeight;
-      label.onclick = handleLineHeight;
+      input.onchange = handleLineHeightSelection;
+      label.onclick = handleLineHeightSelection;
     });
 
     // CURSOR SIZE RADIO BUTTONS
     const cursorInputs = drawer.querySelectorAll('input[name="cursor"]');
-    console.log('Found', cursorInputs.length, 'cursor size options');
-
     cursorInputs.forEach(function (input) {
       const label = input.closest('label');
-
-      function handleCursor() {
-        const value = input.value;
-        console.log('🖱️ Cursor size selected:', value);
-
-        // Remove active from all
-        cursorInputs.forEach(function (inp) {
-          const lbl = inp.closest('label');
-          lbl.classList.remove('active');
-          lbl.style.cssText = '';
-        });
-
-        // Make this one active
-        label.classList.add('active');
-        label.style.cssText = 'background: #e6f7ff !important; border: 3px solid #009EDB !important;';
-        input.checked = true;
-
-        // Remove all cursor classes
-        document.body.classList.remove('a11y-cursor-small', 'a11y-cursor-large');
-
-        // Apply cursor
-        if (value === 'small') {
-          document.body.classList.add('a11y-cursor-small');
-          settings.cursor = 'small';
-          console.log('✅ Applied small cursor');
-        } else if (value === 'large') {
-          document.body.classList.add('a11y-cursor-large');
-          settings.cursor = 'large';
-          console.log('✅ Applied large cursor');
-        } else {
-          settings.cursor = 'normal';
-          console.log('✅ Applied normal cursor');
-        }
-
-        saveSettings();
+      function handleCursorSelection() {
+        pendingSettings.cursor = input.value;
+        updateUIState();
       }
-
-      input.onchange = handleCursor;
-      label.onclick = handleCursor;
+      input.onchange = handleCursorSelection;
+      label.onclick = handleCursorSelection;
     });
 
     // FOCUS MODE RADIO BUTTONS
     const focusInputs = drawer.querySelectorAll('input[name="focus-mode"]');
-    console.log('Found', focusInputs.length, 'focus mode options');
-
     focusInputs.forEach(function (input) {
       const label = input.closest('label');
-
-      function handleFocus() {
-        const value = input.value;
-        console.log('🎯 Focus mode selected:', value);
-
-        // Remove active from all
-        focusInputs.forEach(function (inp) {
-          const lbl = inp.closest('label');
-          lbl.classList.remove('active');
-          lbl.style.cssText = '';
-        });
-
-        // Make this one active
-        label.classList.add('active');
-        label.style.cssText = 'background: #e6f7ff !important; border: 3px solid #009EDB !important;';
-        input.checked = true;
-
-        // Apply/Remove focus mode class
-        if (value === 'enable') {
-          document.body.classList.add('a11y-focus-mode');
-          settings.focusMode = 'enable';
-          console.log('✅ Focus mode enabled');
-        } else {
-          document.body.classList.remove('a11y-focus-mode');
-          settings.focusMode = 'disable';
-          console.log('✅ Focus mode disabled');
-        }
-
-        saveSettings();
+      function handleFocusSelection() {
+        pendingSettings.focusMode = input.value;
+        updateUIState();
       }
-
-      input.onchange = handleFocus;
-      label.onclick = handleFocus;
+      input.onchange = handleFocusSelection;
+      label.onclick = handleFocusSelection;
     });
 
     // VISUAL OPTIONS (CHECKBOXES)
     const visualCheckboxes = drawer.querySelectorAll('.checkbox-option input[type="checkbox"]');
-    console.log('Found', visualCheckboxes.length, 'visual option checkboxes');
-
     visualCheckboxes.forEach(function (checkbox) {
       checkbox.onchange = function () {
         const name = this.getAttribute('name');
-        const checked = this.checked;
-        console.log('👁️ Visual option changed:', name, '=', checked);
-
-        // Apply visual options
-        if (name === 'hide-images') {
-          if (checked) {
-            document.body.classList.add('a11y-hide-images');
-          } else {
-            document.body.classList.remove('a11y-hide-images');
-          }
-          settings.hideImages = checked;
-          console.log('✅ Hide images:', checked);
-        } else if (name === 'highlight-links') {
-          if (checked) {
-            document.body.classList.add('a11y-highlight-links');
-          } else {
-            document.body.classList.remove('a11y-highlight-links');
-          }
-          settings.highlightLinks = checked;
-          console.log('✅ Highlight links:', checked);
-        }
-
-        saveSettings();
+        if (name === 'hide-images') pendingSettings.hideImages = this.checked;
+        if (name === 'highlight-links') pendingSettings.highlightLinks = this.checked;
+        updateUIState();
       };
     });
 
     // QUICK ACTIONS (BUTTONS)
     const quickActionButtons = drawer.querySelectorAll('.action-btn');
-    console.log('Found', quickActionButtons.length, 'quick action buttons');
-
     quickActionButtons.forEach(function (btn) {
-      btn.onclick = function () {
-        const action = this.getAttribute('data-action');
-        console.log('⚡ Quick action clicked:', action);
+      const action = btn.getAttribute('data-action');
+      if (action === 'apply-settings') return; // Handled separately
 
+      btn.onclick = function () {
+        console.log('⚡ Quick action:', action);
         if (action === 'skip-to-main') {
-          // Skip to main content
           const mainContent = document.querySelector('#mainSec, main, [role="main"], .main-content');
           if (mainContent) {
             mainContent.scrollIntoView({ behavior: 'smooth' });
             mainContent.setAttribute('tabindex', '-1');
             mainContent.focus();
-            console.log('✅ Skipped to main content');
-          } else {
-            console.warn('Main content not found');
           }
-          closeDrawer();
+          closeBtn.click();
         } else if (action === 'back-to-top') {
-          // Scroll to top
           window.scrollTo({ top: 0, behavior: 'smooth' });
-          console.log('✅ Scrolled to top');
-          closeDrawer();
+          closeBtn.click();
         } else if (action === 'reset-all') {
-          // Reset all settings
           if (confirm('Are you sure you want to reset all accessibility settings to default?')) {
             resetAllSettings();
-            console.log('✅ Reset all settings');
           }
         }
       };
     });
 
-    // Store original sizes FIRST (this is the BASE reference - "A")
+    // Store original sizes FIRST
     storeOriginalSizes();
 
     // Load saved settings
     loadSettings();
-    applySettings();
+    pendingSettings = JSON.parse(JSON.stringify(settings));
+    applyAllToBody();
+    updateUIState();
 
-    console.log('✅ Accessibility Widget Initialized Successfully!');
+    console.log('✅ Accessibility Widget Initialized!');
   }
 
-  // Store original font sizes as BASE reference
-  function storeOriginalSizes() {
-    console.log('📐 Storing original (BASE) font sizes...');
+  // Update Drawer UI to match pendingSettings
+  function updateUIState() {
+    const drawer = document.getElementById('accessibility-drawer');
+    if (!drawer) return;
 
-    const elements = document.querySelectorAll('p, div, span, a, li, h1, h2, h3, h4, h5, h6, td, th, label, button');
-    let count = 0;
+    // Update Text Size Buttons
+    const textButtons = drawer.querySelectorAll('[data-action^="text-"]');
+    textButtons.forEach(btn => {
+      const action = btn.getAttribute('data-action');
+      const isMatch = (action === 'text-decrease' && pendingSettings.textSize === 'decrease') ||
+        (action === 'text-normal' && pendingSettings.textSize === 'normal') ||
+        (action === 'text-increase' && pendingSettings.textSize === 'increase');
 
-    elements.forEach(function (el) {
-      // Don't store accessibility drawer elements
-      if (!el.closest('#accessibility-drawer')) {
-        const computedStyle = window.getComputedStyle(el);
-        const originalSize = parseFloat(computedStyle.fontSize);
-
-        // Store the original size for this element
-        originalSizes.set(el, originalSize);
-        count++;
+      if (isMatch) {
+        btn.classList.add('active');
+        btn.style.cssText = 'background: #009EDB !important; color: white !important; border: 2px solid #009EDB !important;';
+      } else {
+        btn.classList.remove('active');
+        btn.style.cssText = '';
       }
     });
 
-    console.log('✓ Stored', count, 'original (BASE) font sizes');
-    console.log('📌 "A" button will restore to these BASE sizes');
+    // Update Radio Groups (Theme, Spacing, Line Height, Cursor, Focus)
+    const radios = drawer.querySelectorAll('input[type="radio"]');
+    radios.forEach(radio => {
+      const name = radio.name;
+      const val = radio.value;
+      const label = radio.closest('label');
+
+      let isMatch = false;
+      if (name === 'theme') isMatch = (pendingSettings.theme === val);
+      else if (name === 'text-spacing') isMatch = (pendingSettings.textSpacing === val);
+      else if (name === 'line-height') isMatch = (pendingSettings.lineHeight === val);
+      else if (name === 'cursor') isMatch = (pendingSettings.cursor === val);
+      else if (name === 'focus-mode') isMatch = (pendingSettings.focusMode === val);
+
+      radio.checked = isMatch;
+      if (isMatch) {
+        label.classList.add('active');
+        label.style.cssText = 'background: #e6f7ff !important; border: 3px solid #009EDB !important;';
+      } else {
+        label.classList.remove('active');
+        label.style.cssText = '';
+      }
+    });
+
+    // Update Alignment Buttons
+    const alignButtons = drawer.querySelectorAll('[data-action^="align-"]');
+    alignButtons.forEach(btn => {
+      const action = btn.getAttribute('data-action').replace('align-', '');
+      if (pendingSettings.textAlign === action) {
+        btn.classList.add('active');
+        btn.style.cssText = 'background: #009EDB !important; color: white !important;';
+      } else {
+        btn.classList.remove('active');
+        btn.style.cssText = '';
+      }
+    });
+
+    // Update Checkboxes
+    const checkboxes = drawer.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(cb => {
+      const name = cb.getAttribute('name');
+      if (name === 'hide-images') cb.checked = pendingSettings.hideImages;
+      if (name === 'highlight-links') cb.checked = pendingSettings.highlightLinks;
+    });
   }
 
-  // Apply text size relative to BASE (original) sizes
-  function applyTextSize(scale) {
-    console.log('📏 Applying text size scale:', scale, 'relative to BASE');
+  // Apply all CURRENTLY SAVED settings to body
+  function applyAllToBody() {
+    console.log('🛠️ Applying settings to body:', settings);
 
+    // Remove all classes first
+    document.body.classList.remove(
+      'a11y-text-decrease', 'a11y-text-increase',
+      'a11y-theme-dark', 'a11y-theme-high-contrast',
+      'a11y-align-left', 'a11y-align-center', 'a11y-align-right',
+      'a11y-spacing-tight', 'a11y-spacing-loose',
+      'a11y-line-height-tight', 'a11y-line-height-loose',
+      'a11y-cursor-small', 'a11y-cursor-large',
+      'a11y-hide-images', 'a11y-highlight-links', 'a11y-focus-mode'
+    );
+
+    // 1. Text Size
+    if (settings.textSize === 'decrease') {
+      document.body.classList.add('a11y-text-decrease');
+      applyTextSize(0.85);
+    } else if (settings.textSize === 'increase') {
+      document.body.classList.add('a11y-text-increase');
+      applyTextSize(1.2);
+    } else {
+      applyTextSize(1);
+    }
+
+    // 2. Theme
+    document.body.style.background = '';
+    document.body.style.color = '';
+    if (settings.theme === 'dark') {
+      document.body.classList.add('a11y-theme-dark');
+      document.body.style.background = '#1a1a1a';
+      document.body.style.color = '#ffffff';
+    } else if (settings.theme === 'high-contrast') {
+      document.body.classList.add('a11y-theme-high-contrast');
+      document.body.style.background = '#000000';
+      document.body.style.color = '#ffff00';
+    }
+
+    // 3. Alignment
+    if (settings.textAlign !== 'left') {
+      document.body.classList.add('a11y-align-' + settings.textAlign);
+      applyTextAlignment(settings.textAlign);
+    } else {
+      // Clear inline style if it was set before
+      const elements = document.querySelectorAll('p, div, span, a, li, h1, h2, h3, h4, h5, h6, td, th');
+      elements.forEach(function (el) {
+        if (!el.closest('#accessibility-drawer')) el.style.textAlign = '';
+      });
+    }
+
+
+    // 4. Spacing
+    if (settings.textSpacing === 'tight') {
+      document.body.classList.add('a11y-spacing-tight');
+      applyTextSpacing(-0.5, -1);
+    } else if (settings.textSpacing === 'loose') {
+      document.body.classList.add('a11y-spacing-loose');
+      applyTextSpacing(1, 3);
+    } else {
+      applyTextSpacing(0, 0);
+    }
+
+    // 5. Line Height
+    if (settings.lineHeight === 'tight') {
+      document.body.classList.add('a11y-line-height-tight');
+      applyLineHeight(1.3);
+    } else if (settings.lineHeight === 'loose') {
+      document.body.classList.add('a11y-line-height-loose');
+      applyLineHeight(2.0);
+    } else {
+      applyLineHeight(1.5);
+    }
+
+    // 6. Cursor
+    if (settings.cursor !== 'normal') {
+      document.body.classList.add('a11y-cursor-' + settings.cursor);
+    }
+
+    // 7. Focus Mode
+    if (settings.focusMode === 'enable') {
+      document.body.classList.add('a11y-focus-mode');
+    }
+
+    // 8. Visual Options
+    if (settings.hideImages) document.body.classList.add('a11y-hide-images');
+    if (settings.highlightLinks) document.body.classList.add('a11y-highlight-links');
+  }
+
+  // --- Utility Functions ---
+
+  function storeOriginalSizes() {
     const elements = document.querySelectorAll('p, div, span, a, li, h1, h2, h3, h4, h5, h6, td, th, label, button');
-    let count = 0;
-
     elements.forEach(function (el) {
-      // Don't apply to accessibility drawer itself
       if (!el.closest('#accessibility-drawer')) {
-        // Get the BASE (original) size for this element
-        let baseSize = originalSizes.get(el);
+        const computedStyle = window.getComputedStyle(el);
+        const originalSize = parseFloat(computedStyle.fontSize);
+        originalSizes.set(el, originalSize);
+      }
+    });
+  }
 
-        // If we don't have it stored, get current size as base
+  function applyTextSize(scale) {
+    const elements = document.querySelectorAll('p, div, span, a, li, h1, h2, h3, h4, h5, h6, td, th, label, button');
+    elements.forEach(function (el) {
+      if (!el.closest('#accessibility-drawer')) {
+        let baseSize = originalSizes.get(el);
         if (!baseSize) {
           baseSize = parseFloat(window.getComputedStyle(el).fontSize);
           originalSizes.set(el, baseSize);
         }
-
-        // Calculate new size relative to BASE
-        if (scale === 1) {
-          // A button: Restore to BASE (original) size
-          el.style.fontSize = baseSize + 'px';
-        } else {
-          // A+ or A-: Scale from BASE
-          const newSize = baseSize * scale;
-          el.style.fontSize = newSize + 'px';
-        }
-        count++;
+        el.style.fontSize = (scale === 1) ? baseSize + 'px' : (baseSize * scale) + 'px';
       }
     });
-
-    console.log('✓ Applied to', count, 'elements (BASE × ' + scale + ')');
   }
 
-  // Apply text alignment
   function applyTextAlignment(align) {
-    console.log('↔️ Applying text alignment:', align);
-
     const elements = document.querySelectorAll('p, div, span, a, li, h1, h2, h3, h4, h5, h6, td, th');
-    let count = 0;
-
     elements.forEach(function (el) {
-      if (!el.closest('#accessibility-drawer')) {
-        el.style.textAlign = align;
-        count++;
-      }
+      if (!el.closest('#accessibility-drawer')) el.style.textAlign = align;
     });
-
-    console.log('✓ Applied alignment to', count, 'elements');
   }
 
-  // Apply text spacing
   function applyTextSpacing(letterSpacing, wordSpacing) {
-    console.log('📐 Applying text spacing:', letterSpacing + 'px letter, ' + wordSpacing + 'px word');
-
     const elements = document.querySelectorAll('p, div, span, a, li, h1, h2, h3, h4, h5, h6');
-    let count = 0;
-
     elements.forEach(function (el) {
       if (!el.closest('#accessibility-drawer')) {
-        if (letterSpacing === 0 && wordSpacing === 0) {
-          el.style.letterSpacing = '';
-          el.style.wordSpacing = '';
-        } else {
-          el.style.letterSpacing = letterSpacing + 'px';
-          el.style.wordSpacing = wordSpacing + 'px';
-        }
-        count++;
+        el.style.letterSpacing = (letterSpacing === 0) ? '' : letterSpacing + 'px';
+        el.style.wordSpacing = (wordSpacing === 0) ? '' : wordSpacing + 'px';
       }
     });
-
-    console.log('✓ Applied spacing to', count, 'elements');
   }
 
-  // Apply line height
   function applyLineHeight(height) {
-    console.log('📏 Applying line height:', height);
-
     const elements = document.querySelectorAll('p, div, li, h1, h2, h3, h4, h5, h6');
-    let count = 0;
-
     elements.forEach(function (el) {
-      if (!el.closest('#accessibility-drawer')) {
-        el.style.lineHeight = height;
-        count++;
-      }
+      if (!el.closest('#accessibility-drawer')) el.style.lineHeight = height;
     });
-
-    console.log('✓ Applied line height to', count, 'elements');
   }
 
-  // Close the drawer
-  function closeDrawer() {
-    const drawer = document.getElementById('accessibility-drawer');
-    const overlay = document.getElementById('accessibility-overlay');
-
-    if (drawer && overlay) {
-      drawer.classList.remove('open');
-      drawer.style.right = '-400px';
-      overlay.classList.remove('active');
-      console.log('📂 Drawer closed');
-    }
-  }
-
-  // Reset all settings
   function resetAllSettings() {
-    console.log('🔄 Resetting all settings...');
-
-    // Reset settings object
     settings = {
       textSize: 'normal',
       theme: 'light',
@@ -628,32 +449,17 @@
       hideImages: false,
       highlightLinks: false
     };
+    pendingSettings = JSON.parse(JSON.stringify(settings));
 
-    // Remove all classes from body
-    document.body.classList.remove(
-      'a11y-text-decrease', 'a11y-text-increase',
-      'a11y-theme-dark', 'a11y-theme-high-contrast',
-      'a11y-align-left', 'a11y-align-center', 'a11y-align-right',
-      'a11y-spacing-tight', 'a11y-spacing-loose',
-      'a11y-line-height-tight', 'a11y-line-height-loose',
-      'a11y-cursor-small', 'a11y-cursor-large',
-      'a11y-hide-images', 'a11y-highlight-links', 'a11y-focus-mode'
-    );
-
-    // Reset inline styles
+    // Clear inline styles on body
     document.body.style.background = '';
     document.body.style.color = '';
 
-    // Reset all text elements to original sizes
+    // Clear inline styles on all elements
     const elements = document.querySelectorAll('p, div, span, a, li, h1, h2, h3, h4, h5, h6, td, th, label, button');
     elements.forEach(function (el) {
       if (!el.closest('#accessibility-drawer')) {
-        const baseSize = originalSizes.get(el);
-        if (baseSize) {
-          el.style.fontSize = baseSize + 'px';
-        } else {
-          el.style.fontSize = '';
-        }
+        el.style.fontSize = '';
         el.style.textAlign = '';
         el.style.letterSpacing = '';
         el.style.wordSpacing = '';
@@ -661,178 +467,31 @@
       }
     });
 
-    // Reset UI - uncheck all checkboxes
-    const drawer = document.getElementById('accessibility-drawer');
-    drawer.querySelectorAll('input[type="checkbox"]').forEach(function (cb) {
-      cb.checked = false;
-    });
-
-    // Reset button active states
-    drawer.querySelectorAll('[data-action^="text-"]').forEach(function (btn) {
-      btn.classList.remove('active');
-      btn.style.cssText = '';
-    });
-    drawer.querySelector('[data-action="text-normal"]').classList.add('active');
-    drawer.querySelector('[data-action="text-normal"]').style.cssText = 'background: #009EDB !important; color: white !important;';
-
-    // Reset radio button states
-    drawer.querySelectorAll('input[type="radio"]').forEach(function (radio) {
-      const label = radio.closest('label');
-      label.classList.remove('active');
-      label.style.cssText = '';
-
-      // Check defaults
-      if ((radio.name === 'theme' && radio.value === 'light') ||
-        (radio.name === 'cursor' && radio.value === 'normal') ||
-        (radio.name === 'line-height' && radio.value === 'normal') ||
-        (radio.name === 'text-spacing' && radio.value === 'normal') ||
-        (radio.name === 'focus-mode' && radio.value === 'disable')) {
-        radio.checked = true;
-        label.classList.add('active');
-        label.style.cssText = 'background: #e6f7ff !important; border: 3px solid #009EDB !important;';
-      } else {
-        radio.checked = false;
-      }
-    });
-
-    // Reset alignment buttons
-    drawer.querySelectorAll('[data-action^="align-"]').forEach(function (btn) {
-      btn.classList.remove('active');
-      btn.style.cssText = '';
-    });
-    drawer.querySelector('[data-action="align-left"]').classList.add('active');
-    drawer.querySelector('[data-action="align-left"]').style.cssText = 'background: #009EDB !important; color: white !important;';
-
-    // Save reset settings
+    applyAllToBody();
+    updateUIState();
     saveSettings();
-
-    console.log('✅ All settings reset to default');
     alert('All accessibility settings have been reset to default.');
   }
 
-  // Save settings to localStorage
   function saveSettings() {
     try {
       localStorage.setItem('sjvn_accessibility', JSON.stringify(settings));
-      console.log('💾 Settings saved:', settings);
-    } catch (e) {
-      console.warn('Could not save settings:', e);
-    }
+    } catch (e) { }
   }
 
-  // Load settings from localStorage
   function loadSettings() {
     try {
       const saved = localStorage.getItem('sjvn_accessibility');
-      if (saved) {
-        settings = JSON.parse(saved);
-        console.log('📂 Settings loaded:', settings);
-      }
-    } catch (e) {
-      console.warn('Could not load settings:', e);
-    }
+      if (saved) settings = JSON.parse(saved);
+    } catch (e) { }
   }
 
-  // Apply saved settings on load
-  function applySettings() {
-    console.log('🔄 Applying saved settings...');
-
-    // Apply text size
-    if (settings.textSize === 'decrease') {
-      const btn = document.querySelector('[data-action="text-decrease"]');
-      if (btn) btn.click();
-    } else if (settings.textSize === 'increase') {
-      const btn = document.querySelector('[data-action="text-increase"]');
-      if (btn) btn.click();
-    }
-
-    // Apply theme
-    if (settings.theme !== 'light') {
-      const input = document.querySelector('input[name="theme"][value="' + settings.theme + '"]');
-      if (input) {
-        input.checked = true;
-        const label = input.closest('label');
-        if (label) label.click();
-      }
-    }
-
-    // Apply focus mode
-    if (settings.focusMode !== 'disable') {
-      const input = document.querySelector('input[name="focus-mode"][value="' + settings.focusMode + '"]');
-      if (input) {
-        input.checked = true;
-        const label = input.closest('label');
-        if (label) label.click();
-      }
-    }
-
-    // Apply visual options
-    if (settings.hideImages) {
-      const cb = document.querySelector('input[name="hide-images"]');
-      if (cb) {
-        cb.checked = true;
-        cb.dispatchEvent(new Event('change'));
-      }
-    }
-    if (settings.highlightLinks) {
-      const cb = document.querySelector('input[name="highlight-links"]');
-      if (cb) {
-        cb.checked = true;
-        cb.dispatchEvent(new Event('change'));
-      }
-    }
-    if (settings.focusMode) {
-      const cb = document.querySelector('input[name="focus-mode"]');
-      if (cb) {
-        cb.checked = true;
-        cb.dispatchEvent(new Event('change'));
-      }
-    }
-  }
-
-  // Try to initialize multiple times
-  console.log('Setting up initialization...');
-
-  // Method 1: DOMContentLoaded
+  // Initialization methods
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
-      console.log('📍 DOMContentLoaded triggered');
-      setTimeout(init, 100);
-    });
+    document.addEventListener('DOMContentLoaded', () => setTimeout(init, 100));
   } else {
-    console.log('📍 DOM already loaded');
     setTimeout(init, 100);
   }
-
-  // Method 2: Window load
-  window.addEventListener('load', function () {
-    console.log('📍 Window load triggered');
-    setTimeout(init, 200);
-  });
-
-  // Method 3: Drupal behaviors (if available)
-  if (typeof Drupal !== 'undefined' && Drupal.behaviors) {
-    Drupal.behaviors.sjvnAccessibilitySimple = {
-      attach: function (context) {
-        if (context === document) {
-          console.log('📍 Drupal behaviors triggered');
-          setTimeout(init, 300);
-        }
-      }
-    };
-  }
-
-  // Method 4: Direct init after delay
-  setTimeout(function () {
-    console.log('📍 Delayed init triggered');
-    init();
-  }, 500);
-
-  // Expose to window for manual testing
-  window.initAccessibility = init;
-
-  console.log('✅ Accessibility script loaded');
-  console.log('💡 If not working, run: window.initAccessibility()');
+  window.onload = () => setTimeout(init, 500);
 
 })();
-

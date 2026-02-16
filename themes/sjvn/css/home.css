@@ -338,7 +338,21 @@
   margin-bottom: 25px;
   padding-bottom: 15px;
   border-bottom: 3px solid var(--primary-color);
+  text-align: center;
+  position: relative;
 }
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--secondary-color, #fdb913);
+}
+
 
 /* Our Business Section */
 .our-business-section {

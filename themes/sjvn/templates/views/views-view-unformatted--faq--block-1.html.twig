@@ -1,13 +1,13 @@
 <h2 class="subtitle">Sub-Committees of the Board
 </h2>
 
-<div class="accordion" id="accordionExample">
+<div class="accordion" id="accordionFaqBlock1">
   {% for row in rows %}
     
-    {% set faq_id = 'faq' ~ loop.index %}
+    {% set faq_id = 'faq-block1-' ~ loop.index %}
 
     <div class="accordion-item">
-      <h2 class="accordion-header" id="heading-{{ loop.index }}">
+      <h2 class="accordion-header" id="heading-faq-block1-{{ loop.index }}">
         <button class="accordion-button collapsed"
                 type="button"
                 data-bs-toggle="collapse"
@@ -20,8 +20,8 @@
 
       <div id="{{ faq_id }}"
            class="accordion-collapse collapse"
-           aria-labelledby="heading-{{ loop.index }}"
-           data-bs-parent="#accordionExample">
+           aria-labelledby="heading-faq-block1-{{ loop.index }}"
+           data-bs-parent="#accordionFaqBlock1">
         <div class="accordion-body">
           {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ body }}'] }}
         </div>

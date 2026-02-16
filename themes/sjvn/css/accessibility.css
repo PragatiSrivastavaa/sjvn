@@ -440,6 +440,30 @@
   border-color: #f87171;
 }
 
+/* Apply Settings Button */
+.apply-btn {
+  background: var(--primary-color, #009EDB) !important;
+  color: #ffffff !important;
+  border-color: var(--primary-color, #009EDB) !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 15px !important;
+  box-shadow: 0 4px 12px rgba(0, 158, 219, 0.3) !important;
+}
+
+.apply-btn:hover {
+  background: var(--text-color, #02487B) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 158, 219, 0.4) !important;
+}
+
+/* Ensure Form Actions are visible (no auto-submit without button) */
+.form-actions {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 /* Overlay */
 .accessibility-overlay {
   position: fixed;

@@ -35,34 +35,38 @@
     {% set month_index = month_index + 1 %}
     <div class="accordion mb-3" id="month-accordion-{{ month_index }}">
       <div class="accordion-item">
-        <h2 class="accordion-header">
+        <h2 class="accordion-header" id="heading-month-{{ month_index }}">
           <button class="accordion-button {% if month_index != 1 %}collapsed{% endif %}"
                   data-bs-toggle="collapse"
                   data-bs-target="#month-collapse-{{ month_index }}"
-                  aria-expanded="{{ month_index == 1 ? 'true' : 'false' }}">
+                  aria-expanded="{{ month_index == 1 ? 'true' : 'false' }}"
+                  aria-controls="month-collapse-{{ month_index }}">
             {{ month }}
           </button>
         </h2>
 
         <div id="month-collapse-{{ month_index }}"
-             class="accordion-collapse collapse {% if month_index == 1 %}show{% endif %}">
+             class="accordion-collapse collapse {% if month_index == 1 %}show{% endif %}"
+             aria-labelledby="heading-month-{{ month_index }}">
           <div class="accordion-body">
             <div class="accordion" id="bill-accordion-{{ month_index }}">
               {% set bill_index = 0 %}
               {% for bill, entities in bills %}
                 {% set bill_index = bill_index + 1 %}
                 <div class="accordion-item">
-                  <h2 class="accordion-header">
+                  <h2 class="accordion-header" id="heading-bill-{{ month_index }}-{{ bill_index }}">
                     <button class="accordion-button {% if bill_index != 1 %}collapsed{% endif %}"
                             data-bs-toggle="collapse"
                             data-bs-target="#bill-collapse-{{ month_index }}-{{ bill_index }}"
-                            aria-expanded="{{ bill_index == 1 ? 'true' : 'false' }}">
+                            aria-expanded="{{ bill_index == 1 ? 'true' : 'false' }}"
+                            aria-controls="bill-collapse-{{ month_index }}-{{ bill_index }}">
                       {{ bill }}
                     </button>
                   </h2>
 
                   <div id="bill-collapse-{{ month_index }}-{{ bill_index }}"
-                       class="accordion-collapse collapse {% if bill_index == 1 %}show{% endif %}">
+                       class="accordion-collapse collapse {% if bill_index == 1 %}show{% endif %}"
+                       aria-labelledby="heading-bill-{{ month_index }}-{{ bill_index }}">
                     <div class="accordion-body">
                       <ul class="result-list no-even mb-0">
                         {% for entity in entities %}

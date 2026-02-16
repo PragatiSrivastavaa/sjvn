@@ -456,8 +456,9 @@
   margin: 0;
   background: transparent;
   padding: 0;
-  justify-content: flex-end;
+  justify-content: center;
 }
+
 
 .text-right-inner .breadcrumb ol {
   display: flex;
@@ -1593,14 +1594,13 @@ form#user-login-form:hover {
 /* ================= BUTTON ================= */
 
 .user-login-form #edit-submit {
-  width: 100%;
-  padding: 14px;
+  padding: 9px;
   border-radius: 10px;
   border: none;
   background: linear-gradient(90deg, #2774AC, #009EDB, #00c6ff);
   background-size: 200% auto;
   color: #fff;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: 0.4s ease;
@@ -1628,4 +1628,35 @@ form#user-login-form:hover {
     display: inline-block;
     padding: 4px 6px;
   }
+}
+
+.js-form-item.form-item.js-form-type-search.form-type-search.js-form-item-keys.form-item-keys.form-no-label {
+  margin-bottom: 0px;
+}
+
+/* Ensure view filters have visible submit buttons for WCAG 2.1 compliance */
+.view-filters .form-actions {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  clear: both;
+  margin-top: 15px;
+}
+
+.view-filters .form-submit {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 8px 25px !important;
+  background: var(--primary-color, #009EDB) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+}
+
+.view-filters .form-submit:hover {
+  background: var(--text-color, #02487B) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
 }

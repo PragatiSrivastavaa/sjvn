@@ -42,18 +42,18 @@
       {% for group_name, items in grouped %}
         {% set group_index = group_index + 1 %}
         <div class="card">
-          <div class="card-header" id="heading-{{ group_index }}">
+          <div class="card-header" id="business-heading-{{ group_index }}">
             <a href="#" class="btn-link"
                data-bs-toggle="collapse"
-               data-bs-target="#group-links-{{ group_index }}"
+               data-bs-target="#business-group-links-{{ group_index }}"
                aria-expanded="false"
-               aria-controls="group-links-{{ group_index }}">
+               aria-controls="business-group-links-{{ group_index }}">
               {{ group_name }}
             </a>
           </div>
-          <div id="group-links-{{ group_index }}"
+          <div id="business-group-links-{{ group_index }}"
                class="collapse"
-               aria-labelledby="heading-{{ group_index }}"
+               aria-labelledby="business-heading-{{ group_index }}"
                data-bs-parent="#accordionSidebar">
             <div class="card-body p-1">
               <ul class="list-unstyled">

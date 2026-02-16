@@ -469,9 +469,10 @@ body.lang-hi ul.links li[hreflang="hi"] {
   color: var(--text-color);
 }
 
+
 .logo-left {
   display: flex;
-  align-items: center;
+  align-items: right;
   gap: 10px;
   color: var(--bg-light);
 }
@@ -4728,4 +4729,52 @@ body.dark-mode .empty-state-desc {
 .placeholder {
   color: #9aa8b4;
   font-style: italic;
+}
+
+/* ========================================
+   LANGUAGE SWITCH NOTIFICATION
+   ======================================== */
+.language-notification {
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-color, #009edb);
+  color: #fff;
+  padding: 14px 40px;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  z-index: 2147483647;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 320px;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+}
+
+.language-notification.show {
+  top: 0;
+}
+
+.language-notification.loading {
+  background: var(--secondary-color, #fdb913);
+  color: #000;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.language-notification.success {
+  background: var(--primary-color, #28a745);
+  color: #fff;
+  border-bottom: 3px solid var(--secondary-color);
+}
+
+
+.language-notification .spinner-border {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-width: 0.2em;
 }

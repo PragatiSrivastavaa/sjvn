@@ -63,20 +63,20 @@
             {% endif %}
 
             <div class="accordion-item">
-              <h2 class="accordion-header" id="heading{{ loop.index }}">
+              <h2 class="accordion-header" id="heading-directors-{{ loop.index }}">
                 <button class="accordion-button {{ loop.first ? '' : 'collapsed' }}"
                         type="button"
                         data-bs-toggle="collapse"
-                        data-bs-target="#collapse{{ loop.index }}"
+                        data-bs-target="#collapse-directors-{{ loop.index }}"
                         aria-expanded="{{ loop.first ? 'true' : 'false' }}"
-                        aria-controls="collapse{{ loop.index }}">
+                        aria-controls="collapse-directors-{{ loop.index }}">
                   {{ category ?: 'No Category' }}
                 </button>
               </h2>
 
-              <div id="collapse{{ loop.index }}"
+              <div id="collapse-directors-{{ loop.index }}"
                    class="accordion-collapse collapse {{ loop.first ? 'show' : '' }}"
-                   aria-labelledby="heading{{ loop.index }}"
+                   aria-labelledby="heading-directors-{{ loop.index }}"
                    data-bs-parent="#directorsAccordion">
                 <div class="accordion-body">
                   <div class="row">
@@ -103,17 +103,15 @@
             </div>
           </div>
 
-          {# ---- Close last accordion-item after loop ends ---- #}
-          {% if loop.last %}
-                  </div>  {# close .row #}
-                </div>    {# close accordion-body #}
-              </div>      {# close accordion-collapse #}
-            </div>        {# close accordion-item #}
-          {% endif %}
-
-        {% endif %}
-
       {% endfor %}
+
+      {# ---- Close last accordion-item after loop ends ---- #}
+      {% if current_category != '' %}
+              </div>  {# close .row #}
+            </div>    {# close accordion-body #}
+          </div>      {# close accordion-collapse #}
+        </div>        {# close accordion-item #}
+      {% endif %}
 
     </div>  {# close accordion #}
   </div>

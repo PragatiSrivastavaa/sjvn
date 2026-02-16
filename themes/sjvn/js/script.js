@@ -881,3 +881,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(document.body, { childList: true, subtree: true });
 });
+
+/**
+ * Language Switch Notification Logic
+ * Displays a message when the user clicks a language switcher link 
+ * and after the page reloads in the new language.
+ */
+function initLanguageNotification() {
+    const notification = document.createElement('div');
+    notification.id = 'language-notification';
+    notification.className = 'language-notification';
+    notification.setAttribute('aria-live', 'polite');
+    document.body.prepend(notification);
+
+    const isHindi = document.documentElement.lang === 'hi';
+
+    // Check if we just switched language
+    const pendingLang = sessionStorage.getItem('sjvn_switching_lang');
+    if (pendingLang) {
+        const successMsg = isHindi
+            ? `भाषा बदलकर ${pendingLang} कर दी गई है।`
+            : `Language has been changed to ${pendingLang}.`;
+
+        notification.innerHTML = `<i class="bi bi-check-circle-fill"></i> <span>${successMsg}</span>`;
+        notification.classList.add('show', 'success');
+        sessionStorage.removeItem('sjvn_switching_lang');
+
+        // Hide after 5 seconds
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 5000);
+    }
+
+    // Listen for language switcher clicks
+    document.addEventListener('click', (e) => {
+        const langLink = e.target.closest('.language-toggle a, .language-switcher-language-url a');
+
+        if (langLink) {
+            const targetLang = langLink.textContent.trim();
+            const loadingMsg = isHindi
+                ? `भाषा को ${targetLang} में बदला जा रहा है...`
+                : `Changing language to ${targetLang}...`;
+
+            notification.innerHTML = `<div class="spinner-border text-light" role="status"><span class="visually-hidden">Loading...</span></div> <span>${loadingMsg}</span>`;
+            notification.classList.add('show', 'loading');
+
+            sessionStorage.setItem('sjvn_switching_lang', targetLang);
+        }
+    });
+}
+
+// Initialize on DOM load
+document.addEventListener('DOMContentLoaded', initLanguageNotification);
+
