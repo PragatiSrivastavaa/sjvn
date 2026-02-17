@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_contract_unit
     - field.field.user.user.field_last_password_reset
     - field.field.user.user.field_password_expiration
     - field.field.user.user.field_pending_expire_sent
@@ -23,9 +24,19 @@ content:
   account:
     weight: -10
     region: content
+    settings: {  }
+    third_party_settings: {  }
   contact:
     weight: 5
     region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_contract_unit:
+    type: options_select
+    weight: 31
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_last_password_reset:
     type: datetime_default
     weight: 4
@@ -42,6 +53,8 @@ content:
   language:
     weight: 0
     region: content
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 30
@@ -51,6 +64,8 @@ content:
   timezone:
     weight: 6
     region: content
+    settings: {  }
+    third_party_settings: {  }
   user_picture:
     type: image_image
     weight: -1

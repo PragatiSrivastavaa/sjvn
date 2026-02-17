@@ -11,7 +11,7 @@ id: node.tender.body
 field_name: body
 entity_type: node
 bundle: tender
-label: Body
+label: Descriptions
 description: ''
 required: false
 translatable: true

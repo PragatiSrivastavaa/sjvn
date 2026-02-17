@@ -9,10 +9,12 @@ dependencies:
     - field.field.node.tender.field_last_date_of_submissions
     - field.field.node.tender.field_locations
     - field.field.node.tender.field_nit_date
+    - field.field.node.tender.field_on_behalf_of
     - field.field.node.tender.field_show_beyond_date
     - field.field.node.tender.field_tender_number
     - field.field.node.tender.field_tender_through_gem
     - field.field.node.tender.field_upload_file
+    - field.field.node.tender.field_vender_list
     - node.type.tender
   module:
     - datetime
@@ -42,19 +44,19 @@ content:
     third_party_settings: {  }
   field_beyond_date:
     type: datetime_default
-    weight: 27
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
   field_contract_unit:
     type: options_select
-    weight: 12
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   field_last_date_of_submissions:
     type: datetime_default
-    weight: 14
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -66,13 +68,19 @@ content:
     third_party_settings: {  }
   field_nit_date:
     type: datetime_default
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_on_behalf_of:
+    type: options_select
     weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   field_show_beyond_date:
     type: options_buttons
-    weight: 26
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -86,16 +94,26 @@ content:
     third_party_settings: {  }
   field_tender_through_gem:
     type: options_buttons
-    weight: 11
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   field_upload_file:
     type: file_generic
-    weight: 15
+    weight: 19
     region: content
     settings:
       progress_indicator: throbber
+    third_party_settings: {  }
+  field_vender_list:
+    type: entity_reference_autocomplete
+    weight: 20
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -140,7 +158,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }

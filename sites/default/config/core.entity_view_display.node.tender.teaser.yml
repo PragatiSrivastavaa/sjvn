@@ -10,10 +10,12 @@ dependencies:
     - field.field.node.tender.field_last_date_of_submissions
     - field.field.node.tender.field_locations
     - field.field.node.tender.field_nit_date
+    - field.field.node.tender.field_on_behalf_of
     - field.field.node.tender.field_show_beyond_date
     - field.field.node.tender.field_tender_number
     - field.field.node.tender.field_tender_through_gem
     - field.field.node.tender.field_upload_file
+    - field.field.node.tender.field_vender_list
     - node.type.tender
   module:
     - text
@@ -42,8 +44,10 @@ hidden:
   field_last_date_of_submissions: true
   field_locations: true
   field_nit_date: true
+  field_on_behalf_of: true
   field_show_beyond_date: true
   field_tender_number: true
   field_tender_through_gem: true
   field_upload_file: true
+  field_vender_list: true
   langcode: true

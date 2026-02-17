@@ -10,8 +10,8 @@ use Drupal\Core\Form\FormStateInterface;
  * Implements hook_node_access().
  */
 function sjvn_term_access_node_access(NodeInterface $node, $op, AccountInterface $account) {
-    // Only restrict update and delete. View access remains open (public).
-    if (!in_array($op, ['update', 'delete'])) {
+    // Only restrict update, delete and clone. View access remains open (public).
+    if (!in_array($op, ['update', 'delete', 'clone'])) {
         return AccessResult::neutral();
     }
 
@@ -20,9 +20,55 @@ function sjvn_term_access_node_access(NodeInterface $node, $op, AccountInterface
         return AccessResult::neutral();
     }
 
+    // Check if user is explicitly selected in 'Vendor List' field.
+    if ($node->hasField('field_vender_list') && !$node->get('field_vender_list')->isEmpty()) {
+        foreach ($node->get('field_vender_list') as $item) {
+            if ($item->target_id == $account->id()) {
+                return AccessResult::allowed()->cachePerUser()->addCacheableDependency($node);
+            }
+        }
+    }
+
+    // Check if user belongs to the same Contract Unit as the tender (Direct or On Behalf Of).
+    $node_cu_ids = [];
+    if ($node->hasField('field_contract_unit') && !$node->get('field_contract_unit')->isEmpty()) {
+        foreach ($node->get('field_contract_unit') as $item) {
+            $node_cu_ids[] = $item->target_id;
+        }
+    }
+    if ($node->hasField('field_on_behalf_of') && !$node->get('field_on_behalf_of')->isEmpty()) {
+        foreach ($node->get('field_on_behalf_of') as $item) {
+            $node_cu_ids[] = $item->target_id;
+        }
+    }
+
+    if (!empty($node_cu_ids)) {
+        // Load full user entity to check fields.
+        $user_entity = \Drupal\user\Entity\User::load($account->id());
+        if ($user_entity && $user_entity->hasField('field_contract_unit') && !$user_entity->get('field_contract_unit')->isEmpty()) {
+            $user_cu_ids = [];
+            foreach ($user_entity->get('field_contract_unit') as $item) {
+                $user_cu_ids[] = $item->target_id;
+            }
+            
+            if (array_intersect($node_cu_ids, $user_cu_ids)) {
+                return AccessResult::allowed()->cachePerUser()->addCacheableDependency($node);
+            }
+        }
+    }
+
     /** @var \Drupal\permissions_by_term\Service\AccessStorage $access_storage */
     $access_storage = \Drupal::service('permissions_by_term.access_storage');
-    $user_tids = $access_storage->getPermittedTids($account->id(), $account->getRoles());
+    $user_tids = (array) $access_storage->getPermittedTids($account->id(), $account->getRoles());
+
+    // Also include terms from the user's 'field_contract_unit' profile field.
+    $user_entity = \Drupal\user\Entity\User::load($account->id());
+    if ($user_entity && $user_entity->hasField('field_contract_unit')) {
+        foreach ($user_entity->get('field_contract_unit') as $item) {
+            $user_tids[] = $item->target_id;
+        }
+    }
+    $user_tids = array_unique($user_tids);
 
     // Get the vocabularies configured in Permissions by Term settings.
     $config = \Drupal::config('permissions_by_term.settings');
@@ -123,7 +169,16 @@ function sjvn_term_access_node_create_access(AccountInterface $account, array $c
 
     /** @var \Drupal\permissions_by_term\Service\AccessStorage $access_storage */
     $access_storage = \Drupal::service('permissions_by_term.access_storage');
-    $user_tids = $access_storage->getPermittedTids($account->id(), $account->getRoles());
+    $user_tids = (array) $access_storage->getPermittedTids($account->id(), $account->getRoles());
+
+    // Also include terms from the user's 'field_contract_unit' profile field.
+    $user_entity = \Drupal\user\Entity\User::load($account->id());
+    if ($user_entity && $user_entity->hasField('field_contract_unit')) {
+        foreach ($user_entity->get('field_contract_unit') as $item) {
+            $user_tids[] = $item->target_id;
+        }
+    }
+    $user_tids = array_unique($user_tids);
 
     $config = \Drupal::config('permissions_by_term.settings');
     $target_vids = $config->get('target_bundles') ?: [];
@@ -209,6 +264,11 @@ function sjvn_term_access_form_node_form_alter(&$form, FormStateInterface $form_
     $fields = $node->getFieldDefinitions();
 
     foreach ($fields as $field_name => $definition) {
+        // Skip filtering for 'On behalf of' field as it should show the full list.
+        if ($field_name === 'field_on_behalf_of') {
+            continue;
+        }
+
         if ($definition->getType() !== 'entity_reference' || !isset($form[$field_name])) {
             continue;
         }

@@ -1,0 +1,28 @@
+uuid: 01b8f6ca-bded-4bde-806f-79f94f7336b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_vender_list
+    - node.type.tender
+id: node.tender.field_vender_list
+field_name: field_vender_list
+entity_type: node
+bundle: tender
+label: 'Vendor List'
+description: 'Select users who should have access to this tender.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: false
+field_type: entity_reference

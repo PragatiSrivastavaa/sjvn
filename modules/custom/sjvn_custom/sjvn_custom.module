@@ -108,10 +108,84 @@ function sjvn_custom_form_node_our_business_edit_form_alter(&$form, FormStateInt
  */
 function sjvn_custom_form_node_tender_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   _sjvn_custom_tender_states($form);
+  _sjvn_custom_tender_handle_cu($form, $form_state);
 }
 
 function sjvn_custom_form_node_tender_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   _sjvn_custom_tender_states($form);
+  _sjvn_custom_tender_handle_cu($form, $form_state);
+}
+
+/**
+ * Handle Contract Unit fields: Pre-populate, Filter, and Re-populate options.
+ */
+function _sjvn_custom_tender_handle_cu(&$form, FormStateInterface $form_state) {
+  // 1. Force FULL list for 'On behalf of' (bypass PbT).
+  if (isset($form['field_on_behalf_of']['widget']['#options'])) {
+    $vids = ['contract_unit'];
+    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['vid' => $vids]);
+    uasort($terms, function($a, $b) {
+      return strcasecmp($a->getName(), $b->getName());
+    });
+    
+    $full_options = ['_none' => t('- None -')];
+    foreach ($terms as $term) {
+      $full_options[$term->id()] = $term->label();
+    }
+    $form['field_on_behalf_of']['widget']['#options'] = $full_options;
+  }
+
+  // 2. Use #after_build for 'Contract Unit' to ensure it's restricted to 1 option.
+  if (isset($form['field_contract_unit'])) {
+    $form['field_contract_unit']['#after_build'][] = '_sjvn_custom_tender_cu_after_build';
+  }
+}
+
+/**
+ * After build callback to lock Contract Unit to exactly 1 option.
+ */
+function _sjvn_custom_tender_cu_after_build($element, FormStateInterface $form_state) {
+  $form_object = $form_state->getFormObject();
+  if (!method_exists($form_object, 'getEntity')) {
+    return $element;
+  }
+  
+  $node = $form_object->getEntity();
+  $author = $node->getOwner();
+  if (!$author || $author->isAnonymous()) {
+    $author = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+  }
+
+  $target_tid = NULL;
+  
+  // Priority 1: Already saved value.
+  if (!$node->isNew()) {
+    $target_tid = $node->get('field_contract_unit')->target_id;
+  }
+  
+  // Priority 2: Author's primary unit.
+  if (!$target_tid && $author && $author->hasField('field_contract_unit') && !$author->get('field_contract_unit')->isEmpty()) {
+    $target_tid = $author->get('field_contract_unit')->first()->target_id;
+  }
+
+  if ($target_tid) {
+    $term = \Drupal\taxonomy\Entity\Term::load($target_tid);
+    if ($term) {
+      // For select widgets, options are in the first child.
+      $element['widget']['#options'] = [
+        $target_tid => $term->label(),
+      ];
+      // Also ensure default value is set.
+      $element['widget']['#default_value'] = [$target_tid];
+    }
+  }
+  else {
+    // Fallback: If no unit found, don't clear everything if it's already there, 
+    // but the requirement is "create kiya hai uska aaye". 
+    // If still empty, we might want to show a message or keep default.
+  }
+
+  return $element;
 }
 
 /**
