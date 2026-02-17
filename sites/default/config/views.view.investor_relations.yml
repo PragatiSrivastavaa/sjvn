@@ -165,6 +165,136 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        filesize:
+          id: filesize
+          table: file_managed
+          field: filesize
+          relationship: field_upload_file_target_id
+          group_type: group
+          admin_label: ''
+          entity_type: file
+          entity_field: filesize
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: file_size
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        langcode:
+          id: langcode
+          table: node
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: field_language
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: language
+          settings:
+            link_to_entity: false
+            native_language: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         nothing:
           id: nothing
           table: views
@@ -177,7 +307,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"report-div report-3\">\r\n        <ul class=\"result-list\">\r\n            <li>\r\n                <a target=\"_blank\" href=\"{{ field_upload_file }} \">\r\n                     <img src=\" /sjvn/sites/default/files/2025-10/pdffileicon.png\">\r\n                    {{ title }}\r\n                    <div class=\"d-flex view-pdf-btn justify-content-center\">\r\n                        <a target=\"_blank\" href=\"{{ field_upload_file }} \" \r\n                        class=\"btn pdf-btn d-flex align-items-center justify-content-center\">\r\n                            View PDF\r\n                        </a>\r\n                    </div>\r\n                </a>\r\n\r\n            </li>\r\n        </ul>\r\n    </div>"
+            text: "<div class=\"report-div report-3\">\r\n    <ul class=\"result-list\">\r\n        <li>\r\n\r\n            <div class=\"message-item-info\">\r\n\r\n                <!-- Decorative icon -->\r\n                <img src=\"/sjvn/sites/default/files/2025-10/pdffileicon.png\"\r\n                     alt=\" PDf Icon\"\r\n                     role=\"presentation\">\r\n\r\n                <!-- Document Title as Heading -->\r\n                <h3 class=\"document-title\">\r\n                    {{ title }}\r\n                </h3>\r\n\r\n                <!-- File Metadata -->\r\n                <div class=\"file-meta\">\r\n                    <span class=\"file-size\">\r\n                        File Size: {{ filesize }}\r\n                    </span>\r\n                    <span class=\"file-language\">\r\n                        | Language: {{ langcode }}\r\n                    </span>\r\n                </div>\r\n\r\n            </div>\r\n\r\n            <!-- Accessible View Button -->\r\n            <div class=\"d-flex view-pdf-btn justify-content-center\">\r\n                <a target=\"_blank\"\r\n                   href=\"{{ field_upload_file }}\"\r\n                   class=\"btn pdf-btn d-flex align-items-center justify-content-center\"\r\n                   aria-label=\"View PDF of {{ title }} (opens in new tab)\">\r\n                    View PDF\r\n                </a>\r\n            </div>\r\n\r\n        </li>\r\n    </ul>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -466,7 +596,16 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      relationships: {  }
+      relationships:
+        field_upload_file_target_id:
+          id: field_upload_file_target_id
+          table: node__field_upload_file
+          field: field_upload_file_target_id
+          relationship: none
+          group_type: group
+          admin_label: 'file from field_upload_file'
+          plugin_id: standard
+          required: true
       use_more: false
       use_more_always: true
       use_more_text: more

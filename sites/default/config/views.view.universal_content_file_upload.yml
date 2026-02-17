@@ -9,37 +9,12 @@ dependencies:
     - node.type.universal_content_file_upload
     - taxonomy.vocabulary.category
   content:
-    - 'taxonomy_term:category:0b71173b-1f45-42cb-b379-f17543348945'
-    - 'taxonomy_term:category:0fcce150-3f8d-4c35-a7fb-41baaec6b2ef'
-    - 'taxonomy_term:category:1cec4330-9203-413d-8f38-febec99994d4'
-    - 'taxonomy_term:category:1d957ce2-c365-474d-aaae-f715b0d68131'
-    - 'taxonomy_term:category:276d7547-b329-401c-a3c8-2714ed93629f'
-    - 'taxonomy_term:category:29c9d48b-6a37-46ff-863b-555128884400'
-    - 'taxonomy_term:category:4dce111d-5197-4cdc-af59-dc3ef0ada83c'
-    - 'taxonomy_term:category:51d29e96-a25b-4ee6-818b-e1f09956d904'
-    - 'taxonomy_term:category:53116c11-2d9f-400a-afe0-4419eff65cb4'
-    - 'taxonomy_term:category:538b928e-f24a-4ae2-9b6f-68ed9a5e6e70'
-    - 'taxonomy_term:category:5856135b-20fa-4564-92a8-d62528363ac5'
-    - 'taxonomy_term:category:5e90fb9f-82ba-4d39-8a0b-cf239d9761e8'
-    - 'taxonomy_term:category:66c834ba-10bc-4b54-a6e6-545b430a4ae1'
-    - 'taxonomy_term:category:7599de12-7801-452a-a659-9b869c3d8d1c'
-    - 'taxonomy_term:category:75d99057-852f-44c1-930c-d41755e8affc'
-    - 'taxonomy_term:category:839b87e0-e40b-4eb7-a594-5dfc017f78ee'
-    - 'taxonomy_term:category:8d32291e-177e-42e6-8302-673ac9d84a4a'
-    - 'taxonomy_term:category:8ffde8af-4c51-46b9-9c70-88b52746526b'
-    - 'taxonomy_term:category:9e65bf73-449e-4ea5-a1fe-933105b88ce2'
-    - 'taxonomy_term:category:a171d687-39cf-42c0-8c10-a63a1242b6dc'
-    - 'taxonomy_term:category:b245207a-328a-4e22-bd41-e95d2a55dde0'
-    - 'taxonomy_term:category:c1f559a1-bb37-4434-86ec-574d9c9b1a0e'
-    - 'taxonomy_term:category:c4c4ebe5-d3b0-4923-949a-5a97d470ad40'
-    - 'taxonomy_term:category:cf38a1cc-bef0-4f05-89d2-1b04e8ecbec5'
-    - 'taxonomy_term:category:cf85443f-f595-41bd-9a1b-507cefee929a'
-    - 'taxonomy_term:category:d7fb4a3f-8c89-4956-9a14-f2043f949723'
-    - 'taxonomy_term:category:e511c716-5d14-45b1-91f8-8577d3a03e3e'
-    - 'taxonomy_term:category:ed4d7011-358d-45ee-bfff-72c27fce1b15'
-    - 'taxonomy_term:category:f3f808b9-53a0-463a-a938-3a92702fdd71'
-    - 'taxonomy_term:category:f688c650-0e35-43fb-b2f7-3da331ac8f5c'
-    - 'taxonomy_term:category:ff3d4c19-e64d-47ef-991b-4ab9a71fb079'
+    - 'taxonomy_term:category:36e8ce55-253b-4aa4-a6ac-1664acf03127'
+    - 'taxonomy_term:category:3db3b227-f4ba-4aeb-9448-74fb815955ca'
+    - 'taxonomy_term:category:5c936e3c-7024-4684-8354-b59c3e4a5366'
+    - 'taxonomy_term:category:734a0767-f4df-41e2-acc9-80f5dd13d272'
+    - 'taxonomy_term:category:bd3e510c-ad13-4b9b-87c8-b422a1ba20fa'
+    - 'taxonomy_term:category:db23f61d-ad1c-4691-93e1-0dd5c9e55973'
   module:
     - file
     - link
@@ -319,6 +294,136 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        filesize:
+          id: filesize
+          table: file_managed
+          field: filesize
+          relationship: field_file_upload_target_id
+          group_type: group
+          admin_label: ''
+          entity_type: file
+          entity_field: filesize
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: file_size
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        langcode:
+          id: langcode
+          table: node
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: field_language
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: language
+          settings:
+            link_to_entity: false
+            native_language: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         nothing:
           id: nothing
           table: views
@@ -331,7 +436,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"report-div\">\r\n  <ul>\r\n\r\n    {% set file_url = '' %}\r\n    {% set ext = '' %}\r\n\r\n    {% if field_file_upload is not empty %}\r\n      {% set file_url = field_file_upload|striptags|trim %}\r\n      {% set ext = file_url|split('.')|last|lower %}\r\n    {% elseif field_link is not empty %}\r\n      {% set file_url = field_link|striptags|trim %}\r\n      {% set ext = 'link' %}\r\n    {% endif %}\r\n\r\n    {% if file_url %}\r\n      <li>\r\n\r\n        <p>\r\n          <a href=\"{{ file_url }}\" target=\"_blank\">\r\n\r\n            {% if ext == 'pdf' %}\r\n              <img src=\"/sjvn/sites/default/files/2025-10/pdffileicon.png\"\r\n                   width=\"128\" height=\"128\" loading=\"lazy\" alt=\"PDF\">\r\n\r\n            {% elseif ext in ['jpg','jpeg','png','gif','webp'] %}\r\n              <img src=\"/sjvn/sites/default/files/2026-02/Black%20and%20white%20image%20file%20icon.png\"\r\n                   width=\"128\" height=\"128\" loading=\"lazy\" alt=\"Image\">\r\n\r\n            {% else %}\r\n              <img src=\"/sjvn/sites/default/files/2026-02/Black%20and%20white%20link%20icon.png\"\r\n                   width=\"128\" height=\"128\" loading=\"lazy\" alt=\"Link\">\r\n            {% endif %}\r\n\r\n            {{ title }}\r\n          </a>\r\n        </p>\r\n\r\n        <div>\r\n          <a href=\"{{ file_url }}\" target=\"_blank\" class=\"btn pdf-btn\">\r\n            {% if ext == 'pdf' %}\r\n              View PDF\r\n            {% elseif ext in ['jpg','jpeg','png','gif','webp'] %}\r\n              View Image\r\n            {% else %}\r\n              View Link\r\n            {% endif %}\r\n          </a>\r\n        </div>\r\n\r\n      </li>\r\n    {% endif %}\r\n\r\n  </ul>\r\n</div>\r\n"
+            text: "<div class=\"report-div report-3\">\r\n<ul class=\"result-list\">\r\n\r\n    {% set file_url = '' %}\r\n    {% set ext = '' %}\r\n\r\n    {% if field_file_upload is not empty %}\r\n      {% set file_url = field_file_upload|striptags|trim %}\r\n      {% set ext = file_url|split('.')|last|lower %}\r\n    {% elseif field_link is not empty %}\r\n      {% set file_url = field_link|striptags|trim %}\r\n      {% set ext = 'link' %}\r\n    {% endif %}\r\n\r\n    {% if file_url %}\r\n      <li>\r\n\r\n   \r\n         \r\n            <div class=\"message-item-info\">\r\n\r\n            {% if ext == 'pdf' %}\r\n              <img src=\"/sjvn/sites/default/files/2025-10/pdffileicon.png\"\r\n                   width=\"128\" height=\"128\" loading=\"lazy\" alt=\"PDF\">\r\n\r\n            {% elseif ext in ['jpg','jpeg','png','gif','webp'] %}\r\n              <img src=\"/sjvn/sites/default/files/2026-02/Black%20and%20white%20image%20file%20icon.png\"\r\n                   width=\"128\" height=\"128\" loading=\"lazy\" alt=\"Image\">\r\n\r\n            {% else %}\r\n              <img src=\"/sjvn/sites/default/files/2026-02/Black%20and%20white%20link%20icon.png\"\r\n                   width=\"128\" height=\"128\" loading=\"lazy\" alt=\"Link\">\r\n            {% endif %}\r\n\r\n            {{ title }}\r\n          </div>\r\n  \r\n\r\n        <!-- File Meta -->\r\n        <div class=\"file-meta\">\r\n\r\n          {# Show file size only for PDF & Image #}\r\n          {% if ext != 'link' %}\r\n            <span class=\"file-size\">\r\n              File Size: {{ filesize }}\r\n            </span>\r\n          {% endif %}\r\n\r\n          <span class=\"file-language\">\r\n            {% if ext != 'link' %} | {% endif %}\r\n            {{ langcode }}\r\n          </span>\r\n\r\n        </div>\r\n\r\n        <div>\r\n          <a target=\"_blank\"\r\n   href=\"{{ file_url }}\"\r\n   class=\"btn pdf-btn d-flex align-items-center justify-content-center\"\r\n   aria-label=\"\r\n   {% if ext == 'pdf' %}\r\n     View PDF of {{ title }} \r\n   {% elseif ext in ['jpg','jpeg','png','gif','webp'] %}\r\n     View Image of {{ title }}\r\n   {% else %}\r\n     View External Link of {{ title }}\r\n   {% endif %}\r\n   \">\r\n\t\t  \r\n\t\t  \r\n            {% if ext == 'pdf' %}\r\n              View PDF\r\n            {% elseif ext in ['jpg','jpeg','png','gif','webp'] %}\r\n              View Image\r\n            {% else %}\r\n              View Link\r\n            {% endif %}\r\n          </a>\r\n        </div>\r\n\r\n      </li>\r\n    {% endif %}\r\n\r\n  </ul>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -507,7 +612,16 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      relationships: {  }
+      relationships:
+        field_file_upload_target_id:
+          id: field_file_upload_target_id
+          table: node__field_file_upload
+          field: field_file_upload_target_id
+          relationship: none
+          group_type: group
+          admin_label: 'file from field_file_upload'
+          plugin_id: standard
+          required: false
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -529,6 +643,80 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            universal_content_file_upload: universal_content_file_upload
+        field_category_of_page_target_id:
+          id: field_category_of_page_target_id
+          table: node__field_category_of_page
+          field: field_category_of_page_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            - 356
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: category
+          type: textfield
+          hierarchy: false
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        filters: false
+        filter_groups: false
       display_description: ''
       display_extenders: {  }
       path: csr-policy--schemes
