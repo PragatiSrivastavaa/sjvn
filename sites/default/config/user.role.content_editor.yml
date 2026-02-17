@@ -55,6 +55,7 @@ dependencies:
     - node
     - organigrams
     - path
+    - permissions_by_term
     - quick_node_clone
     - system
     - taxonomy
@@ -115,6 +116,7 @@ permissions:
   - 'create investor_relations content'
   - 'create key_executive content'
   - 'create news_announcement content'
+  - 'create our_business content'
   - 'create our_power_stations content'
   - 'create page content'
   - 'create photo_gallery content'
@@ -122,6 +124,7 @@ permissions:
   - 'create tariff_petition content'
   - 'create tender content'
   - 'create tender_award content'
+  - 'create universal_content_file_upload content'
   - 'create terms in business_cat'
   - 'create terms in contract_unit'
   - 'create terms in directors_category'
@@ -145,6 +148,7 @@ permissions:
   - 'delete any investor_relations content'
   - 'delete any key_executive content'
   - 'delete any news_announcement content'
+  - 'delete any our_business content'
   - 'delete any our_power_stations content'
   - 'delete any page content'
   - 'delete any photo_gallery content'
@@ -152,6 +156,7 @@ permissions:
   - 'delete any tariff_petition content'
   - 'delete any tender content'
   - 'delete any tender_award content'
+  - 'delete any universal_content_file_upload content'
   - 'delete any video_gallery content'
   - 'delete content translations'
   - 'delete own article content'
@@ -201,6 +206,7 @@ permissions:
   - 'edit any news_announcement block content'
   - 'edit any news_announcement content'
   - 'edit any our_business block content'
+  - 'edit any our_business content'
   - 'edit any our_power_stations content'
   - 'edit any page content'
   - 'edit any photo_gallery block content'
@@ -210,6 +216,7 @@ permissions:
   - 'edit any tariff_petition content'
   - 'edit any tender content'
   - 'edit any tender_award content'
+  - 'edit any universal_content_file_upload content'
   - 'edit any video_gallery content'
   - 'edit own article content'
   - 'edit own board_of_directors content'
@@ -241,6 +248,9 @@ permissions:
   - 'edit terms in project_list'
   - 'edit terms in year'
   - 'revert all revisions'
+  - 'show term permission form on term page'
+  - 'show term permissions on node edit page'
+  - 'show term permissions on user edit page'
   - 'translate block_content'
   - 'translate board_of_directors node'
   - 'translate career node'

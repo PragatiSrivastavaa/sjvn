@@ -1,0 +1,7 @@
+name: 'SJVN Term Access'
+type: module
+description: 'Restricts editing of our_business nodes based on taxonomy term assignments.'
+core_version_requirement: '^10 || ^11'
+package: Custom
+dependencies:
+  - permissions_by_term:permissions_by_term

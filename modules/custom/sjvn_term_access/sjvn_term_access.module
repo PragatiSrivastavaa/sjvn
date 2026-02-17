@@ -1,0 +1,237 @@
+<?php
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_node_access().
+ */
+function sjvn_term_access_node_access(NodeInterface $node, $op, AccountInterface $account) {
+    // Only restrict update and delete. View access remains open (public).
+    if (!in_array($op, ['update', 'delete'])) {
+        return AccessResult::neutral();
+    }
+
+    // Admins and users with bypass permission are not restricted.
+    if ($account->hasPermission('bypass node access') || in_array('administrator', $account->getRoles())) {
+        return AccessResult::neutral();
+    }
+
+    /** @var \Drupal\permissions_by_term\Service\AccessStorage $access_storage */
+    $access_storage = \Drupal::service('permissions_by_term.access_storage');
+    $user_tids = $access_storage->getPermittedTids($account->id(), $account->getRoles());
+
+    // Get the vocabularies configured in Permissions by Term settings.
+    $config = \Drupal::config('permissions_by_term.settings');
+    $target_vids = $config->get('target_bundles') ?: [];
+    
+    // Ensure $target_vids is an array.
+    if (is_string($target_vids)) {
+        $target_vids = str_replace(['[', ']', "'", '"', ' '], '', $target_vids);
+        $target_vids = explode(',', $target_vids);
+    }
+    $target_vids = (array) $target_vids;
+
+    if (empty($target_vids)) {
+        return AccessResult::neutral();
+    }
+
+    $restricted_vocab_found = false;
+    $access_denied = false;
+    $denial_message = "";
+
+    $fields = $node->getFieldDefinitions();
+    foreach ($fields as $field_name => $definition) {
+        if ($definition->getType() !== 'entity_reference') {
+            continue;
+        }
+
+        $settings = $definition->getSettings();
+        if ($settings['target_type'] !== 'taxonomy_term') {
+            continue;
+        }
+
+        $handler_settings = $settings['handler_settings'] ?? [];
+        $vids = (array) ($handler_settings['target_bundles'] ?? []);
+
+        $relevant_vids = array_intersect($vids, $target_vids);
+
+        if (!empty($relevant_vids)) {
+            $vocab_tids = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->getQuery()
+                ->condition('vid', $relevant_vids, 'IN')
+                ->accessCheck(FALSE)
+                ->execute();
+
+            $user_vid_tids = array_intersect((array)$user_tids, (array)$vocab_tids);
+
+            if (!empty($user_vid_tids)) {
+                $restricted_vocab_found = true;
+                
+                $node_field_tids = [];
+                foreach ($node->get($field_name) as $item) {
+                    $node_field_tids[] = $item->target_id;
+                }
+
+                if (!array_intersect((array)$node_field_tids, (array)$user_vid_tids)) {
+                    $access_denied = true;
+                    $denial_message = "You are not allowed to $op this content (Restriction: " . implode(', ', $relevant_vids) . ")";
+                    break;
+                }
+            }
+        }
+    }
+
+    if ($access_denied) {
+        return AccessResult::forbidden($denial_message)
+            ->cachePerUser()
+            ->addCacheableDependency($node);
+    }
+
+    if (!$restricted_vocab_found) {
+        $has_target_fields = false;
+        foreach ($fields as $field_name => $definition) {
+            $f_settings = $definition->getSettings();
+            if ($definition->getType() === 'entity_reference' && isset($f_settings['handler_settings']['target_bundles'])) {
+                $f_vids = (array)$f_settings['handler_settings']['target_bundles'];
+                if (array_intersect($f_vids, $target_vids)) {
+                    $has_target_fields = true;
+                    break;
+                }
+            }
+        }
+
+        if ($has_target_fields) {
+            return AccessResult::forbidden('You do not have permission to edit this category of content.')
+                ->cachePerUser();
+        }
+    }
+
+    return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_node_create_access().
+ */
+function sjvn_term_access_node_create_access(AccountInterface $account, array $context, $entity_bundle) {
+    // Admins bypass.
+    if ($account->hasPermission('bypass node access') || in_array('administrator', $account->getRoles())) {
+        return AccessResult::neutral();
+    }
+
+    /** @var \Drupal\permissions_by_term\Service\AccessStorage $access_storage */
+    $access_storage = \Drupal::service('permissions_by_term.access_storage');
+    $user_tids = $access_storage->getPermittedTids($account->id(), $account->getRoles());
+
+    $config = \Drupal::config('permissions_by_term.settings');
+    $target_vids = $config->get('target_bundles') ?: [];
+    if (is_string($target_vids)) {
+        $target_vids = str_replace(['[', ']', "'", '"', ' '], '', $target_vids);
+        $target_vids = explode(',', $target_vids);
+    }
+    $target_vids = (array) $target_vids;
+
+    if (empty($target_vids)) {
+        return AccessResult::neutral();
+    }
+
+    $fields = \Drupal::service('entity_field.manager')->getFieldDefinitions('node', $entity_bundle);
+    $relevant_vids_for_bundle = [];
+    foreach ($fields as $definition) {
+        $f_settings = $definition->getSettings();
+        if ($definition->getType() === 'entity_reference' && isset($f_settings['handler_settings']['target_bundles'])) {
+            $f_vids = (array)$f_settings['handler_settings']['target_bundles'];
+            $intersect = array_intersect($f_vids, $target_vids);
+            if (!empty($intersect)) {
+                $relevant_vids_for_bundle = array_unique(array_merge($relevant_vids_for_bundle, $intersect));
+            }
+        }
+    }
+
+    if (empty($relevant_vids_for_bundle)) {
+        return AccessResult::neutral();
+    }
+
+    foreach ($relevant_vids_for_bundle as $vid) {
+        $vocab_tids = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->getQuery()
+            ->condition('vid', $vid)
+            ->accessCheck(FALSE)
+            ->execute();
+
+        if (array_intersect((array)$user_tids, (array)$vocab_tids)) {
+            return AccessResult::neutral();
+        }
+    }
+
+    return AccessResult::forbidden('You do not have permission to create this type of content in any category.')->cachePerUser();
+}
+
+/**
+ * Implements hook_entity_operation_alter().
+ */
+function sjvn_term_access_entity_operation_alter(array &$operations, EntityInterface $entity) {
+    if (!$entity instanceof NodeInterface) {
+        return;
+    }
+
+    // Hide all operations (Edit, Delete, Translate, etc.) if the user doesn't have edit access.
+    if (!$entity->access('update')) {
+        $operations = [];
+    }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for node_form.
+ */
+function sjvn_term_access_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+    $account = \Drupal::currentUser();
+    // Admins see everything.
+    if ($account->hasPermission('bypass node access') || in_array('administrator', $account->getRoles())) {
+        return;
+    }
+
+    /** @var \Drupal\permissions_by_term\Service\AccessStorage $access_storage */
+    $access_storage = \Drupal::service('permissions_by_term.access_storage');
+    $user_tids = $access_storage->getPermittedTids($account->id(), $account->getRoles());
+
+    $config = \Drupal::config('permissions_by_term.settings');
+    $target_vids = (array) $config->get('target_bundles') ?: [];
+    if (is_string($target_vids)) {
+        $target_vids = str_replace(['[', ']', "'", '"', ' '], '', $target_vids);
+        $target_vids = explode(',', $target_vids);
+    }
+    $target_vids = (array) $target_vids;
+
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $form_state->getFormObject()->getEntity();
+    $fields = $node->getFieldDefinitions();
+
+    foreach ($fields as $field_name => $definition) {
+        if ($definition->getType() !== 'entity_reference' || !isset($form[$field_name])) {
+            continue;
+        }
+
+        $settings = $definition->getSettings();
+        if ($settings['target_type'] !== 'taxonomy_term') {
+            continue;
+        }
+
+        $handler_settings = $settings['handler_settings'] ?? [];
+        $vids = (array) ($handler_settings['target_bundles'] ?? []);
+        $relevant_vids = array_intersect($vids, $target_vids);
+
+        if (!empty($relevant_vids)) {
+            // Filter standard option-based widgets (Select, Checkboxes, SHS).
+            if (isset($form[$field_name]['widget']['#options'])) {
+                foreach ($form[$field_name]['widget']['#options'] as $tid => $label) {
+                    if ($tid === '_none' || $tid === '') continue;
+                    if (!in_array($tid, $user_tids)) {
+                        unset($form[$field_name]['widget']['#options'][$tid]);
+                    }
+                }
+            }
+        }
+    }
+}
