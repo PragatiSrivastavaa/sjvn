@@ -68,6 +68,8 @@ module:
   password_policy_username: 0
   path: 0
   path_alias: 0
+  permissions_by_entity: 0
+  permissions_by_term: 0
   quick_node_clone: 0
   remove_http_headers: 0
   search: 0
@@ -78,10 +80,10 @@ module:
   shs: 0
   sitemap: 0
   sjvn_custom: 0
+  sjvn_term_access: 0
   statistics: 0
   superfish: 0
   system: 0
-  tac_lite_create: 0
   taxonomy: 0
   text: 0
   token: 0
@@ -109,7 +111,6 @@ module:
   password_policy: 10
   views: 10
   paragraphs: 11
-  tac_lite: 100
   standard: 1000
 theme:
   olivero: 0

@@ -458,7 +458,6 @@ display:
         - 'languages:language_interface'
         - url
         - user.permissions
-        - user.tac_lite_grants
       tags: {  }
   block_1:
     id: block_1
@@ -474,7 +473,6 @@ display:
         - 'languages:language_interface'
         - url
         - user.permissions
-        - user.tac_lite_grants
       tags: {  }
   page_1:
     id: page_1
@@ -491,5 +489,4 @@ display:
         - 'languages:language_interface'
         - url
         - user.permissions
-        - user.tac_lite_grants
       tags: {  }
