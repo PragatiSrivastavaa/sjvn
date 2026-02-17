@@ -77,6 +77,7 @@
 /* Text Input Styling */
 .tab-menu-item .form-text {
   width: 100% !important;
+  margin-bottom: 0px;
   padding: 12px 15px !important;
   font-size: 1rem !important;
   font-weight: 500 !important;
@@ -276,7 +277,7 @@
   margin: 0 -10px;
 }
 
-.key-executive .row > [class*="col-"] {
+.key-executive .row>[class*="col-"] {
   padding: 0 10px;
   margin-bottom: 0;
 }
@@ -293,17 +294,18 @@
   flex-direction: column;
   border: 1px solid #d0d0d0 !important; */
   background: #ffffff;
-    border-radius: 18px;
-    overflow: hidden;
-    border: 1px solid #d7ecf5;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
-    transition: all 0.4s ease;
-    height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #d7ecf5;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+  transition: all 0.4s ease;
+  height: 100%;
 }
 
 .key-executive .key-executive:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
 /* Project Area Header */
 .key-executive .key-executive h6 {
   font-size: 0.85rem;
@@ -391,13 +393,13 @@
 
 /*----------------------------------- hospital css ---------------------------------*/
 .empanelled-hospital .key-executive {
-    background: #ffffff;
-    border-radius: 18px;
-    overflow: hidden;
-    border: 1px solid #d7ecf5;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
-    transition: all 0.4s ease;
-    height: 100%;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #d7ecf5;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+  transition: all 0.4s ease;
+  height: 100%;
 }
 
 
@@ -418,11 +420,13 @@
   /* transition: background-color 0.2s ease, border-color 0.2s ease;
   border: 2px solid var(--primary-color); */
   margin-top: auto;
-      transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
+
 .hover-afect:hover .btn {
-    transform: scale(1.03);
+  transform: scale(1.03);
 }
+
 .key-executive .key-text-box .btn-info {
   background: var(--primary-color);
   color: #ffffff;
@@ -619,7 +623,7 @@
     margin: 0 -7px;
   }
 
-  .key-executive .row > [class*="col-"] {
+  .key-executive .row>[class*="col-"] {
     padding: 0 7px;
   }
 
@@ -805,6 +809,7 @@
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
+
   .key-executive .key-executive,
   .key-executive .key-text-box .btn,
   .key-executive .modal.fade .modal-dialog,
@@ -883,4 +888,3 @@
   margin: 0;
   font-weight: 500;
 }
-
