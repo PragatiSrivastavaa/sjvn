@@ -6,6 +6,94 @@ use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\node\Entity\Node;
 
 /**
+ * Implements hook_config_schema_info_alter().
+ */
+function sjvn_custom_config_schema_info_alter(&$definitions) {
+  if (isset($definitions['orgchart.charts.*'])) {
+    // Mark top-level title as translatable.
+    $definitions['orgchart.charts.*']['mapping']['title']['translatable'] = TRUE;
+    
+    // Mark cell titles and subtitles as translatable for all layouts.
+    $layouts = ['desktop', 'tablet', 'phone'];
+    foreach ($layouts as $layout) {
+      if (isset($definitions['orgchart.charts.*']['mapping']['build']['mapping'][$layout]['mapping']['values']['mapping']['cells']['sequence']['mapping'])) {
+        $cell_mapping = &$definitions['orgchart.charts.*']['mapping']['build']['mapping'][$layout]['mapping']['values']['mapping']['cells']['sequence']['mapping'];
+        $cell_mapping['title']['translatable'] = TRUE;
+        $cell_mapping['subtitle']['translatable'] = TRUE;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function sjvn_custom_page_attachments_alter(array &$page) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  
+  // Apply translation fix for Orgchart routes.
+  if (str_starts_with($route_name, 'orgchart.charts.')) {
+    $current_lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    
+    // If we are on a non-English page, try to load translations.
+    if ($current_lang !== 'en') {
+      $config_name = $route_name;
+      /** @var \Drupal\language\Config\LanguageConfigOverride $config_override */
+      $config_override = \Drupal::languageManager()->getLanguageConfigOverride($current_lang, $config_name);
+      
+      if (!$config_override->isNew()) {
+        $translated_build = $config_override->get('build');
+        if (!empty($translated_build) && isset($page['#attached']['drupalSettings']['orgcharts'])) {
+          foreach ($translated_build as $layout => $layout_data) {
+            if (isset($page['#attached']['drupalSettings']['orgcharts'][$layout])) {
+              // Decode the JSON values provided by the Orgchart module.
+              $values = json_decode($page['#attached']['drupalSettings']['orgcharts'][$layout]['values'], TRUE);
+              
+              if (isset($layout_data['values']['cells'])) {
+                foreach ($layout_data['values']['cells'] as $index => $cell_data) {
+                  // Apply translated Title.
+                  if (!empty($cell_data['title']) && isset($values['cells'][$index])) {
+                    $values['cells'][$index]['title'] = $cell_data['title'];
+                  }
+                  // Apply translated Subtitle.
+                  if (!empty($cell_data['subtitle']) && isset($values['cells'][$index])) {
+                    $values['cells'][$index]['subtitle'] = $cell_data['subtitle'];
+                  }
+                }
+              }
+              
+              // Re-encode and override the drupalSettings.
+              $page['#attached']['drupalSettings']['orgcharts'][$layout]['values'] = json_encode($values);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function sjvn_custom_menu_local_tasks_alter(&$data, $route_name, \Drupal\Core\Cache\RefinableCacheableDependencyInterface &$cacheability) {
+  // Add Translate tab to Orgchart pages.
+  if (str_starts_with($route_name, 'orgchart.configuration.chart.')) {
+    $id = \Drupal::routeMatch()->getParameter('id');
+    if ($id) {
+      $data['tabs'][0]['sjvn_custom.orgchart_translate'] = [
+        '#theme' => 'menu_local_task',
+        '#link' => [
+          'title' => t('Translate'),
+          'url' => \Drupal\Core\Url::fromRoute('sjvn_custom.orgchart_translate', ['id' => $id]),
+        ],
+        '#weight' => 10,
+        '#access' => \Drupal::currentUser()->hasPermission('translate configuration'),
+      ];
+    }
+  }
+}
+
+/**
  * Node add/edit form alters for Tender Award.
  */
 function sjvn_custom_form_node_tender_award_form_alter(&$form, FormStateInterface $form_state, $form_id) {

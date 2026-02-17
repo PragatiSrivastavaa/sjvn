@@ -1,0 +1,7 @@
+sjvn_custom.orgchart_translate:
+  path: '/admin/config/orgchart/{id}/translate'
+  defaults:
+    _form: '\Drupal\sjvn_custom\Form\OrgchartTranslateForm'
+    _title: 'Translate Orgchart'
+  requirements:
+    _permission: 'translate configuration'
