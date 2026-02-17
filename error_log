@@ -1,0 +1,245 @@
+[11-Feb-2026 12:21:47 Asia/Kolkata] PDOException: SQLSTATE[HY000]: General error: 2014 Cannot execute queries while other unbuffered queries are active.  Consider using PDOStatement::fetchAll().  Alternatively, if your code is only ever going to run against mysql, you may enable query buffering by setting the PDO::MYSQL_ATTR_USE_BUFFERED_QUERY attribute. in /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/StatementWrapperIterator.php:113
+Stack trace:
+#0 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/StatementWrapperIterator.php(113): PDOStatement->execute()
+#1 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Connection.php(851): Drupal\Core\Database\StatementWrapperIterator->execute()
+#2 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Schema.php(178): Drupal\Core\Database\Connection->query()
+#3 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php(214): Drupal\Core\Database\Schema->tableExists()
+#4 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php(176): Drupal\Core\Lock\DatabaseLockBackend->catchException()
+#5 /home/u4vhfz3nt3v5/public_html/sjvn/core/includes/bootstrap.inc(547): Drupal\Core\Lock\DatabaseLockBackend->releaseAll()
+#6 [internal function]: _drupal_shutdown_function()
+#7 {main}
+
+Next Drupal\Core\Database\DatabaseExceptionWrapper: SQLSTATE[HY000]: General error: 2014 Cannot execute queries while other unbuffered queries are active.  Consider using PDOStatement::fetchAll().  Alternatively, if your code is only ever going to run against mysql, you may enable query buffering by setting the PDO::MYSQL_ATTR_USE_BUFFERED_QUERY attribute.: SELECT 1 FROM information_schema.tables WHERE ("table_schema" = :db_condition_placeholder_0) AND ("table_name" = :db_condition_placeholder_1); Array
+(
+    [:db_condition_placeholder_0] => sjvn
+    [:db_condition_placeholder_1] => semaphore
+)
+ in /home/u4vhfz3nt3v5/public_html/sjvn/core/modules/mysql/src/Driver/Database/mysql/ExceptionHandler.php:56
+Stack trace:
+#0 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Connection.php(883): Drupal\mysql\Driver\Database\mysql\ExceptionHandler->handleExecutionException()
+#1 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Schema.php(178): Drupal\Core\Database\Connection->query()
+#2 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php(214): Drupal\Core\Database\Schema->tableExists()
+#3 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php(176): Drupal\Core\Lock\DatabaseLockBackend->catchException()
+#4 /home/u4vhfz3nt3v5/public_html/sjvn/core/includes/bootstrap.inc(547): Drupal\Core\Lock\DatabaseLockBackend->releaseAll()
+#5 [internal function]: _drupal_shutdown_function()
+#6 {main}
+[12-Feb-2026 12:10:26 Asia/Kolkata] PDOException: SQLSTATE[HY000]: General error: 2014 Cannot execute queries while other unbuffered queries are active.  Consider using PDOStatement::fetchAll().  Alternatively, if your code is only ever going to run against mysql, you may enable query buffering by setting the PDO::MYSQL_ATTR_USE_BUFFERED_QUERY attribute. in /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/StatementWrapperIterator.php:113
+Stack trace:
+#0 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/StatementWrapperIterator.php(113): PDOStatement->execute()
+#1 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Connection.php(851): Drupal\Core\Database\StatementWrapperIterator->execute()
+#2 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Schema.php(178): Drupal\Core\Database\Connection->query()
+#3 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php(214): Drupal\Core\Database\Schema->tableExists()
+#4 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php(176): Drupal\Core\Lock\DatabaseLockBackend->catchException()
+#5 /home/u4vhfz3nt3v5/public_html/sjvn/core/includes/bootstrap.inc(547): Drupal\Core\Lock\DatabaseLockBackend->releaseAll()
+#6 [internal function]: _drupal_shutdown_function()
+#7 {main}
+
+Next Drupal\Core\Database\DatabaseExceptionWrapper: SQLSTATE[HY000]: General error: 2014 Cannot execute queries while other unbuffered queries are active.  Consider using PDOStatement::fetchAll().  Alternatively, if your code is only ever going to run against mysql, you may enable query buffering by setting the PDO::MYSQL_ATTR_USE_BUFFERED_QUERY attribute.: SELECT 1 FROM information_schema.tables WHERE ("table_schema" = :db_condition_placeholder_0) AND ("table_name" = :db_condition_placeholder_1); Array
+(
+    [:db_condition_placeholder_0] => sjvn
+    [:db_condition_placeholder_1] => semaphore
+)
+ in /home/u4vhfz3nt3v5/public_html/sjvn/core/modules/mysql/src/Driver/Database/mysql/ExceptionHandler.php:56
+Stack trace:
+#0 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Connection.php(883): Drupal\mysql\Driver\Database\mysql\ExceptionHandler->handleExecutionException()
+#1 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Schema.php(178): Drupal\Core\Database\Connection->query()
+#2 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php(214): Drupal\Core\Database\Schema->tableExists()
+#3 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php(176): Drupal\Core\Lock\DatabaseLockBackend->catchException()
+#4 /home/u4vhfz3nt3v5/public_html/sjvn/core/includes/bootstrap.inc(547): Drupal\Core\Lock\DatabaseLockBackend->releaseAll()
+#5 [internal function]: _drupal_shutdown_function()
+#6 {main}
+[12-Feb-2026 12:25:21 Asia/Kolkata] PDOException: SQLSTATE[HY000]: General error: 2014 Cannot execute queries while other unbuffered queries are active.  Consider using PDOStatement::fetchAll().  Alternatively, if your code is only ever going to run against mysql, you may enable query buffering by setting the PDO::MYSQL_ATTR_USE_BUFFERED_QUERY attribute. in /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/StatementWrapperIterator.php:113
+Stack trace:
+#0 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/StatementWrapperIterator.php(113): PDOStatement->execute()
+#1 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Connection.php(851): Drupal\Core\Database\StatementWrapperIterator->execute()
+#2 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Schema.php(178): Drupal\Core\Database\Connection->query()
+#3 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php(214): Drupal\Core\Database\Schema->tableExists()
+#4 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php(176): Drupal\Core\Lock\DatabaseLockBackend->catchException()
+#5 /home/u4vhfz3nt3v5/public_html/sjvn/core/includes/bootstrap.inc(547): Drupal\Core\Lock\DatabaseLockBackend->releaseAll()
+#6 [internal function]: _drupal_shutdown_function()
+#7 {main}
+
+Next Drupal\Core\Database\DatabaseExceptionWrapper: SQLSTATE[HY000]: General error: 2014 Cannot execute queries while other unbuffered queries are active.  Consider using PDOStatement::fetchAll().  Alternatively, if your code is only ever going to run against mysql, you may enable query buffering by setting the PDO::MYSQL_ATTR_USE_BUFFERED_QUERY attribute.: SELECT 1 FROM information_schema.tables WHERE ("table_schema" = :db_condition_placeholder_0) AND ("table_name" = :db_condition_placeholder_1); Array
+(
+    [:db_condition_placeholder_0] => sjvn
+    [:db_condition_placeholder_1] => semaphore
+)
+ in /home/u4vhfz3nt3v5/public_html/sjvn/core/modules/mysql/src/Driver/Database/mysql/ExceptionHandler.php:56
+Stack trace:
+#0 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Connection.php(883): Drupal\mysql\Driver\Database\mysql\ExceptionHandler->handleExecutionException()
+#1 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Schema.php(178): Drupal\Core\Database\Connection->query()
+#2 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php(214): Drupal\Core\Database\Schema->tableExists()
+#3 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Lock/DatabaseLockBackend.php(176): Drupal\Core\Lock\DatabaseLockBackend->catchException()
+#4 /home/u4vhfz3nt3v5/public_html/sjvn/core/includes/bootstrap.inc(547): Drupal\Core\Lock\DatabaseLockBackend->releaseAll()
+#5 [internal function]: _drupal_shutdown_function()
+#6 {main}
+[12-Feb-2026 08:37:07 UTC] PDOException: SQLSTATE[HY000] [1203] User sjvn already has more than 'max_user_connections' active connections in /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/PhpArrayContainer.php on line 77 #0 /home/u4vhfz3nt3v5/public_html/sjvn/core/modules/mysql/src/Driver/Database/mysql/Connection.php(157): PDO->__construct()
+#1 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Database.php(460): Drupal\mysql\Driver\Database\mysql\Connection::open()
+#2 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Database.php(191): Drupal\Core\Database\Database::openConnection()
+#3 [internal function]: Drupal\Core\Database\Database::getConnection()
+#4 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/PhpArrayContainer.php(77): call_user_func_array()
+#5 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(179): Drupal\Component\DependencyInjection\PhpArrayContainer->createService()
+#6 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/PhpArrayContainer.php(226): Drupal\Component\DependencyInjection\Container->get()
+#7 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/PhpArrayContainer.php(60): Drupal\Component\DependencyInjection\PhpArrayContainer->resolveServicesAndParameters()
+#8 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(179): Drupal\Component\DependencyInjection\PhpArrayContainer->createService()
+#9 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/DrupalKernel.php(576): Drupal\Component\DependencyInjection\Container->get()
+#10 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/DrupalKernel.php(966): Drupal\Core\DrupalKernel->getCachedContainerDefinition()
+#11 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/DrupalKernel.php(515): Drupal\Core\DrupalKernel->initializeContainer()
+#12 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/DrupalKernel.php(739): Drupal\Core\DrupalKernel->boot()
+#13 /home/u4vhfz3nt3v5/public_html/sjvn/index.php(19): Drupal\Core\DrupalKernel->handle()
+#14 {main}
+[12-Feb-2026 14:40:09 Asia/Kolkata] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000]: General error: 2006 MySQL server has gone away in /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/StatementWrapperIterator.php:113
+Stack trace:
+#0 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/StatementWrapperIterator.php(113): PDOStatement->execute()
+#1 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Connection.php(851): Drupal\Core\Database\StatementWrapperIterator->execute()
+#2 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Schema.php(178): Drupal\Core\Database\Connection->query()
+#3 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Config/DatabaseStorage.php(121): Drupal\Core\Database\Schema->tableExists()
+#4 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Config/CachedStorage.php(95): Drupal\Core\Config\DatabaseStorage->readMultiple()
+#5 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Config/ConfigFactory.php(165): Drupal\Core\Config\CachedStorage->readMultiple()
+#6 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Config/ConfigFactory.php(104): Drupal\Core\Config\ConfigFactory->doLoadMultiple()
+#7 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Config/ConfigFactory.php(82): Drupal\Core\Config\ConfigFactory->doGet()
+#8 /home/u4vhfz3nt3v5/public_html/sjvn/modules/contrib/remove_http_headers/src/Config/ConfigManager.php(54): Drupal\Core\Config\ConfigFactory->getEditable()
+#9 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(261): Drupal\remove_http_headers\Config\ConfigManager->__construct()
+#10 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(179): Drupal\Component\DependencyInjection\Container->createService()
+#11 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(438): Drupal\Component\DependencyInjection\Container->get()
+#12 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(239): Drupal\Component\DependencyInjection\Container->resolveServicesAndParameters()
+#13 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(179): Drupal\Component\DependencyInjection\Container->createService()
+#14 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(438): Drupal\Component\DependencyInjection\Container->get()
+#15 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(239): Drupal\Component\DependencyInjection\Container->resolveServicesAndParameters()
+#16 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(179): Drupal\Component\DependencyInjection\Container->createService()
+#17 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/DrupalKernel.php(1515): Drupal\Component\DependencyInjection\Container->get()
+#18 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/DrupalKernel.php(711): Drupal\Core\DrupalKernel->getHttpKernel()
+#19 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/drush/drush/src/Boot/DrupalBoot8.php(314): Drupal\Core\DrupalKernel->terminate()
+#20 [internal function]: Drush\Boot\DrupalBoot8->terminate()
+#21 {main}
+
+Next Drupal\Core\Database\DatabaseExceptionWrapper: SQLSTATE[HY000]: General error: 2006 MySQL server has gone away: SELECT 1 FROM information_schema.tables WHERE ("table_schema" = :db_condition_placeholder_2) AND ("table_name" = :db_condition_placeholder_3); Array
+(
+    [:db_condition_placeholder_2] => sjvn
+    [:db_condition_placeholder_3] => config
+)
+ in /home/u4vhfz3nt3v5/public_html/sjvn/core/modules/mysql/src/Driver/Database/mysql/ExceptionHandler.php:56
+Stack trace:
+#0 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Connection.php(883): Drupal\mysql\Driver\Database\mysql\ExceptionHandler->handleExecutionException()
+#1 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Database/Schema.php(178): Drupal\Core\Database\Connection->query()
+#2 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Config/DatabaseStorage.php(121): Drupal\Core\Database\Schema->tableExists()
+#3 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Config/CachedStorage.php(95): Drupal\Core\Config\DatabaseStorage->readMultiple()
+#4 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Config/ConfigFactory.php(165): Drupal\Core\Config\CachedStorage->readMultiple()
+#5 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Config/ConfigFactory.php(104): Drupal\Core\Config\ConfigFactory->doLoadMultiple()
+#6 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Config/ConfigFactory.php(82): Drupal\Core\Config\ConfigFactory->doGet()
+#7 /home/u4vhfz3nt3v5/public_html/sjvn/modules/contrib/remove_http_headers/src/Config/ConfigManager.php(54): Drupal\Core\Config\ConfigFactory->getEditable()
+#8 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(261): Drupal\remove_http_headers\Config\ConfigManager->__construct()
+#9 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(179): Drupal\Component\DependencyInjection\Container->createService()
+#10 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(438): Drupal\Component\DependencyInjection\Container->get()
+#11 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(239): Drupal\Component\DependencyInjection\Container->resolveServicesAndParameters()
+#12 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(179): Drupal\Component\DependencyInjection\Container->createService()
+#13 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(438): Drupal\Component\DependencyInjection\Container->get()
+#14 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(239): Drupal\Component\DependencyInjection\Container->resolveServicesAndParameters()
+#15 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Component/DependencyInjection/Container.php(179): Drupal\Component\DependencyInjection\Container->createService()
+#16 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/DrupalKernel.php(1515): Drupal\Component\DependencyInjection\Container->get()
+#17 /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/DrupalKernel.php(711): Drupal\Core\DrupalKernel->getHttpKernel()
+#18 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/drush/drush/src/Boot/DrupalBoot8.php(314): Drupal\Core\DrupalKernel->terminate()
+#19 [internal function]: Drush\Boot\DrupalBoot8->terminate()
+#20 {main}
+  thrown in /home/u4vhfz3nt3v5/public_html/sjvn/core/modules/mysql/src/Driver/Database/mysql/ExceptionHandler.php on line 56
+[12-Feb-2026 14:40:09 Asia/Kolkata] PHP Fatal error:  Uncaught RuntimeException: stty: 'standard input': Input/output error in /home/u4vhfz3nt3v5/public_html/sjvn/vendor/laravel/prompts/src/Terminal.php:114
+Stack trace:
+#0 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/laravel/prompts/src/Terminal.php(55): Laravel\Prompts\Terminal->exec()
+#1 /home/u4vhfz3nt3v5/public_html/sjvn/vendor/laravel/prompts/src/Prompt.php(446): Laravel\Prompts\Terminal->restoreTty()
+#2 [internal function]: Laravel\Prompts\Prompt->__destruct()
+#3 {main}
+  thrown in /home/u4vhfz3nt3v5/public_html/sjvn/vendor/laravel/prompts/src/Terminal.php on line 114
+[17-Feb-2026 11:49:30 Asia/Kolkata] Uncaught PHP Exception Twig\Error\SyntaxError: "Unexpected "endfor" tag (expecting closing tag for the "if" tag defined near line 51)." at /home/u4vhfz3nt3v5/public_html/sjvn/themes/sjvn/templates/views/views-view-unformatted--board_of_directors--page-1.html.twig line 106
+[17-Feb-2026 07:31:40 Europe/Berlin] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 12:25:56 Asia/Kolkata] Uncaught PHP Exception Twig\Error\SyntaxError: "Unexpected "endfor" tag (expecting closing tag for the "if" tag defined near line 51)." at /home/u4vhfz3nt3v5/public_html/sjvn/themes/sjvn/templates/views/views-view-unformatted--board_of_directors--page-1.html.twig line 106
+[17-Feb-2026 12:31:12 Asia/Kolkata] Uncaught PHP Exception Twig\Error\SyntaxError: "Unexpected "endfor" tag (expecting closing tag for the "if" tag defined near line 51)." at /home/u4vhfz3nt3v5/public_html/sjvn/themes/sjvn/templates/views/views-view-unformatted--board_of_directors--page-1.html.twig line 106
+[17-Feb-2026 12:31:22 Asia/Kolkata] Uncaught PHP Exception Twig\Error\SyntaxError: "Unexpected "endfor" tag (expecting closing tag for the "if" tag defined near line 51)." at /home/u4vhfz3nt3v5/public_html/sjvn/themes/sjvn/templates/views/views-view-unformatted--board_of_directors--page-1.html.twig line 106
+[17-Feb-2026 12:31:37 Asia/Kolkata] Uncaught PHP Exception Twig\Error\SyntaxError: "Unexpected "endfor" tag (expecting closing tag for the "if" tag defined near line 51)." at /home/u4vhfz3nt3v5/public_html/sjvn/themes/sjvn/templates/views/views-view-unformatted--board_of_directors--page-1.html.twig line 106
+[17-Feb-2026 12:34:05 Asia/Kolkata] Uncaught PHP Exception Twig\Error\SyntaxError: "Unexpected "endfor" tag (expecting closing tag for the "if" tag defined near line 51)." at /home/u4vhfz3nt3v5/public_html/sjvn/themes/sjvn/templates/views/views-view-unformatted--board_of_directors--page-1.html.twig line 106
+[17-Feb-2026 12:34:20 Asia/Kolkata] Uncaught PHP Exception Twig\Error\SyntaxError: "Unexpected "endfor" tag (expecting closing tag for the "if" tag defined near line 51)." at /home/u4vhfz3nt3v5/public_html/sjvn/themes/sjvn/templates/views/views-view-unformatted--board_of_directors--page-1.html.twig line 106
+[17-Feb-2026 12:35:02 Asia/Kolkata] Uncaught PHP Exception Twig\Error\SyntaxError: "Unexpected "endfor" tag (expecting closing tag for the "if" tag defined near line 51)." at /home/u4vhfz3nt3v5/public_html/sjvn/themes/sjvn/templates/views/views-view-unformatted--board_of_directors--page-1.html.twig line 106
+[17-Feb-2026 15:17:10 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:18:09 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:18:10 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:19:29 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:19:29 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:20:30 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:20:31 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:20:33 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:20:34 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:21:18 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:21:19 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 10:51:44 Europe/Berlin] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 10:52:22 Europe/Berlin] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:22:37 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:22:38 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:23:12 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:23:12 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:23:34 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:23:34 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 10:56:38 Europe/Berlin] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:29:14 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:29:47 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:29:47 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:30:25 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:30:25 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:31:02 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:31:02 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:31:38 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:31:38 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:36:33 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:36:53 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:36:53 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:37:26 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:37:26 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:38:00 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:38:01 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:41:06 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:49:11 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:50:56 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:50:56 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:51:47 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:51:48 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:52:06 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:52:06 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:52:21 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:52:22 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:52:37 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:52:37 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:59:44 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 15:59:45 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:00:35 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:00:35 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:01:11 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:01:11 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:01:47 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:01:47 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:02:31 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:02:32 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:02:51 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:02:51 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:03:22 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:03:23 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:03:36 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:03:36 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:03:58 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:03:59 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:04:18 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:04:18 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:04:48 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:04:48 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:05:02 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:05:03 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:05:18 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:05:19 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:05:30 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:05:31 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:05:49 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:05:49 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:06:07 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:06:07 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:07:17 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:07:17 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:14:36 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 16:14:36 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[17-Feb-2026 12:17:56 Europe/Berlin] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
