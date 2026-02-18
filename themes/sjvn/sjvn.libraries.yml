@@ -32,6 +32,16 @@ global-scripts:
     - core/drupalSettings
     - core/once
 
+flipbook-fix:
+  version: 1.x
+  js:
+    js/flipbook-fix.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
 # Page-specific libraries
 home-page:
   version: 1.x
