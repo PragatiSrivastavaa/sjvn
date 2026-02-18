@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f850d41724fd770cd6919e73b1e294f",
+    "content-hash": "d63fd4f23a9e8c764e350f4213889225",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2615,26 +2615,26 @@
         },
         {
             "name": "drupal/flipbook",
-            "version": "10.0.1",
+            "version": "11.0.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/flipbook.git",
-                "reference": "10.0.1"
+                "reference": "11.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/flipbook-10.0.1.zip",
-                "reference": "10.0.1",
-                "shasum": "a7c7f77c0305ab83542962ee0ce559c25ba669a0"
+                "url": "https://ftp.drupal.org/files/projects/flipbook-11.0.1.zip",
+                "reference": "11.0.1",
+                "shasum": "1dccdcd7757135b2bdf9ffad028c06cf84f98a62"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9 || ^10"
+                "drupal/core": "^10 || ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "10.0.1",
-                    "datestamp": "1717227975",
+                    "version": "11.0.1",
+                    "datestamp": "1769342966",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"

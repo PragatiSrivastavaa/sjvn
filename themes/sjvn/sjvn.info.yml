@@ -21,6 +21,24 @@ core_version_requirement: ^10
 libraries:
   - sjvn/global-styling
   - sjvn/global-scripts
+libraries-override:
+  flipbook/flipbook:
+    js:
+      js/custom.js: js/flipbook-fix.js
+    dependencies:
+      - core/jquery
+      - core/drupal
+      - core/drupalSettings
+      - core/once
+  flipbook/flipbook_nopopup:
+    js:
+      js/custom.js: js/flipbook-fix.js
+    dependencies:
+      - core/jquery
+      - core/drupal
+      - core/drupalSettings
+      - core/once
+
 regions:
   header: Header
   logo: Logo

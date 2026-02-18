@@ -2,9 +2,12 @@ uuid: beae54b4-8934-4f42-964c-5579c2405ce2
 langcode: en
 status: true
 dependencies:
+  config:
+    - image.style.thumbnail
   module:
     - file
     - flipbook
+    - image
 id: flipbook.flipbook.default
 targetEntityType: flipbook
 bundle: flipbook
@@ -20,6 +23,14 @@ content:
     description:
       theme: file_upload_help
       description: 'A Gettext Portable Object file.'
+  flipbook_cover:
+    type: image_image
+    weight: 2
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: 0
@@ -28,5 +39,4 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden:
-  flipbook_cover: true
+hidden: {  }

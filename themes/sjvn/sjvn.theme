@@ -19,6 +19,18 @@ use Drupal\Core\Block\BlockPluginInterface;
 
 
 /**
+ * Implements hook_preprocess().
+ */
+function sjvn_preprocess(&$variables, $hook) {
+  // If the hook is related to flipbook, inject the ID.
+  if (strpos($hook, 'flipbook') !== false) {
+    if (function_exists('_sjvn_custom_add_flipbook_id')) {
+      _sjvn_custom_add_flipbook_id($variables);
+    }
+  }
+}
+
+/**
  * Implements hook_preprocess_image_widget().
  */
 function sjvn_preprocess_image_widget(array &$variables) {
@@ -324,3 +336,54 @@ function sjvn_preprocess_menu(&$variables) {
 
 
 
+
+
+/**
+ * Implements hook_preprocess_HOOK() for flipbook templates.
+ */
+function sjvn_preprocess_flipbook(&$variables) {
+  _sjvn_custom_add_flipbook_id($variables);
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for specific field flipbook hooks.
+ */
+function sjvn_preprocess_field__flipbook__flipbook__flipbook(&$variables) {
+  _sjvn_custom_add_flipbook_id($variables);
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for views flipbook hooks.
+ */
+function sjvn_preprocess_views_view_field__field_flipbook(&$variables) {
+  _sjvn_custom_add_flipbook_id($variables);
+}
+
+/**
+ * Helper function to inject a unique ID into flipbook variables.
+ */
+function _sjvn_custom_add_flipbook_id(&$variables) {
+  $id = NULL;
+  
+  // Try to get ID from entity object
+  if (!empty($variables['element']['#object'])) {
+    $id = $variables['element']['#object']->id();
+  }
+  // Try to get ID from views row
+  elseif (!empty($variables['row'])) {
+    if (method_exists($variables['row'], 'id')) {
+        $id = $variables['row']->id();
+    }
+    elseif (isset($variables['row']->_entity)) {
+        $id = $variables['row']->_entity->id();
+    }
+  }
+  
+  if ($id) {
+    $variables['flipbook_id'] = $id;
+  }
+  // Fallback to a random ID if we still don't have one, to prevent broken selectors
+  else {
+    $variables['flipbook_id'] = 'rand-' . mt_rand(1000, 9999);
+  }
+}

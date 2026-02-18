@@ -1,0 +1,26 @@
+{# THEME OVERRIDE #}
+<div class="modal fade" id="flip-book-window-{{ flipbook_id }}" tabindex="-1" role="dialog" aria-labelledby="headerLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            <div class="modal-body">
+                <div class="mount-node">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="books">
+    <div class="thumb">
+        <img id="flipbook-view-{{ flipbook_id }}" 
+             src="{{ bannercover }}" 
+             class="btn flipbook-trigger" 
+             alt="{{ title }}" 
+             data-flipbook-id="{{ flipbook_id }}"
+             data-pdf="{{ url }}"
+             data="{{ url }}" />
+        <div class="caption">
+            {{ title }}
+        </div>
+    </div>
+</div>
