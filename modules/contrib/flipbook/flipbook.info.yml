@@ -17,6 +17,11 @@ configure: flipbook.chooseform
 # datestamp: 1592525698
 
 # Information added by Drupal.org packaging script on 2022-07-15
-version: '9.1.4-alpha2'
+# version: '9.1.4-alpha2'
+# project: 'flipbook'
+# datestamp: 1657893529
+
+# Information added by Drupal.org packaging script on 2024-06-01
+version: '10.0.1'
 project: 'flipbook'
-datestamp: 1657893529
+datestamp: 1717227978

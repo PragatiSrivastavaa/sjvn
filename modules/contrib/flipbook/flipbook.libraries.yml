@@ -7,7 +7,10 @@ flipbook:
        css/style.css: {}
   js:
     js/bootstrap.min.js: {}
+    js/html2canvas.min.js: {}
+    js/three.min.js: {}
     js/pdf.min.js: {}
+    js/3dflipbook.min.js: {}
     js/custom.js: {}
   dependencies:
     - core/jquery
@@ -21,7 +24,10 @@ flipbook_nopopup:
        css/style1.css: {}
   js:
     js/bootstrap.min.js: {}
+    js/html2canvas.min.js: {}
+    js/three.min.js: {}
     js/pdf.min.js: {}
+    js/3dflipbook.min.js: {}
     js/custom.js: {}
   dependencies:
     - core/jquery
