@@ -493,10 +493,14 @@
 
 }
 
-.result-list li:hover .message-item-info * {
+.result-list li:hover .message-item-info h3 {
     color: #006ca8;
 }
 
+.file-meta span {
+    font-size: 12px !important;
+    margin: 0px;
+}
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list {

@@ -283,8 +283,12 @@ article.media.media--type-remote-video.media--view-mode-default {
     background: #009edb3b;
 }
 
-.report-div ul.Vigilance-sec li:hover .message-item-info {
+.report-div ul.Vigilance-sec li:hover .message-item-info h3 {
     color: var(--primary-color) #009EDB;
+}
+
+.report-div ul li .message-item-info h3 {
+    font-size: 14px;
 }
 
 .report-div ul li .message-item-info {
