@@ -2116,6 +2116,51 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_last_date_of_submissions_value:
+          id: field_last_date_of_submissions_value
+          table: node__field_last_date_of_submissions
+          field: field_last_date_of_submissions_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: 'now -1 year'
+            type: date
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
@@ -2127,6 +2172,428 @@ display:
         filter_groups: false
       display_extenders: {  }
       path: tender
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_contract_unit'
+        - 'config:field.storage.node.field_last_date_of_submissions'
+        - 'config:field.storage.node.field_locations'
+        - 'config:field.storage.node.field_nit_date'
+        - 'config:field.storage.node.field_tender_number'
+        - 'config:field.storage.node.field_tender_through_gem'
+        - 'config:field.storage.node.field_upload_file'
+  page_2:
+    id: page_2
+    display_title: 'Tender Archive '
+    display_plugin: page
+    position: 1
+    display_options:
+      pager:
+        type: full
+        options:
+          offset: 0
+          pagination_heading_level: h4
+          items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: true
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              field_tender_number_value:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_contract_unit_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: '- Any -| Select Contract Unit'
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_tender_through_gem_value:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: "- Any -| Select Tender Through Gem\r\nTrue|Yes\r\nFalse|No"
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_locations_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: '- Any -| Select Location'
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              title:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            tender: tender
+          group: 1
+        field_tender_number_value:
+          id: field_tender_number_value
+          table: node__field_tender_number
+          field: field_tender_number_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: allwords
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_tender_number_value_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: field_tender_number_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_tender_number_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+            placeholder: 'Enter Tender No'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_contract_unit_target_id:
+          id: field_contract_unit_target_id
+          table: node__field_contract_unit
+          field: field_contract_unit_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_contract_unit_target_id_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: field_contract_unit_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_contract_unit_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: contract_unit
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_tender_through_gem_value:
+          id: field_tender_through_gem_value
+          table: node__field_tender_through_gem
+          field: field_tender_through_gem_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: All
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: field_tender_through_gem_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_tender_through_gem_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_locations_target_id:
+          id: field_locations_target_id
+          table: node__field_locations
+          field: field_locations_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_locations_target_id_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: field_locations_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_locations_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: location
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+          operator: allwords
+          value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: title_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: title_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+            placeholder: 'Enter Tender Title'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_last_date_of_submissions_value:
+          id: field_last_date_of_submissions_value
+          table: node__field_last_date_of_submissions
+          field: field_last_date_of_submissions_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: 'now -1 year'
+            type: date
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        pager: false
+        exposed_form: false
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders: {  }
+      path: tender-archive
     cache_metadata:
       max-age: -1
       contexts:

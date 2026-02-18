@@ -1,0 +1,42 @@
+/* Bullet list style for Announcements Page 3 */
+.announcements-modern-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.announcements-modern-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.announcements-modern-list li::before {
+    content: "•";
+    /* Standard bullet, can be replaced with icon code */
+    color: #fdb913;
+    /* Primary yellow/gold or #0072bc for blue */
+    font-size: 2em;
+    position: absolute;
+    left: 0;
+    top: -8px;
+    line-height: 1;
+}
+
+.announcements-modern-list a {
+    color: #333 !important;
+    /* Force black/dark text */
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.announcements-modern-list a:hover {
+    color: #0072bc !important;
+    /* Theme blue on hover */
+    padding-left: 5px;
+    /* Subtle movement */
+}
