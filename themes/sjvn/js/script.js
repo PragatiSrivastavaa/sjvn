@@ -363,41 +363,54 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCarousel();
 });
 
-// Our Business Section Hover/Click Logic
+// Our Business Section Interaction Logic
 document.addEventListener("DOMContentLoaded", () => {
     const businessItems = document.querySelectorAll(".business-item");
     const businessDisplay = document.getElementById("business-display");
+    let businessTimeout;
 
     if (!businessItems.length || !businessDisplay) return;
 
     businessItems.forEach(item => {
         const updateImage = () => {
             const imgSrc = item.getAttribute("data-image");
-            if (imgSrc) {
-                // Smooth transition effect
-                businessDisplay.style.opacity = '0.5';
-                setTimeout(() => {
-                    businessDisplay.src = imgSrc;
-                    businessDisplay.style.opacity = '1';
-                }, 150);
-            }
+            if (!imgSrc || item.classList.contains("active")) return;
+
+            // Remove active class from all and add to current
+            businessItems.forEach(i => i.classList.remove("active"));
+            item.classList.add("active");
+
+            // Smooth transition with race condition protection
+            if (businessTimeout) clearTimeout(businessTimeout);
+            
+            businessDisplay.style.opacity = '0.4';
+            businessTimeout = setTimeout(() => {
+                businessDisplay.src = imgSrc;
+                businessDisplay.style.opacity = '1';
+            }, 100);
         };
 
+        // Update on hover and focus
         item.addEventListener("mouseenter", updateImage);
         item.addEventListener("focus", updateImage);
 
-        const activateItem = () => {
+        const handleInteraction = (e) => {
             const link = item.getAttribute("data-link");
-            if (link) {
-                window.location.href = link;
+            
+            // If it's already active, redirect to the link
+            if (item.classList.contains("active")) {
+                if (link) window.location.href = link;
+            } else {
+                // If not active, just switch the image (especially useful for mobile)
+                e.preventDefault();
+                updateImage();
             }
         };
 
-        item.addEventListener("click", activateItem);
+        item.addEventListener("click", handleInteraction);
         item.addEventListener("keydown", (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                activateItem();
+                handleInteraction(e);
             }
         });
     });

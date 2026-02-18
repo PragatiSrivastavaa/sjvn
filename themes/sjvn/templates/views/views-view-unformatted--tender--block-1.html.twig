@@ -1,78 +1,125 @@
 {#
 /**
- * @file
- * Theme override to display a view of unformatted rows.
- *
- * Available variables:
- * - title: The title of this group of rows. May be empty.
- * - rows: A list of the view's row items.
- *   - attributes: The row's HTML attributes.
- *   - content: The row's content.
- * - view: The view object.
- * - default_row_class: A flag indicating whether default classes should be
- *   used on rows.
- *
- * @see template_preprocess_views_view_unformatted()
- */
+* @file
+* Theme override to display a view of unformatted rows.
+*
+* Available variables:
+* - title: The title of this group of rows. May be empty.
+* - rows: A list of the view's row items.
+* - attributes: The row's HTML attributes.
+* - content: The row's content.
+* - view: The view object.
+* - default_row_class: A flag indicating whether default classes should be
+* used on rows.
+*
+* @see template_preprocess_views_view_unformatted()
+*/
 #}
 
 <div class="inner-sec tender-detail-pg">
   {% for row in rows %}
   <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td><strong> Tender Number: </strong></td>
-                                    <td>{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_tender_number }}'] }}</td>
-                                </tr>
+    <tbody>
+      <tr>
+        <td><strong> Tender Number: </strong></td>
+        <td>{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_tender_number }}'] }}</td>
+      </tr>
 
-                                <tr>
-                                    <td><strong> Tender Title: </strong></td>
-                                    <td>
-                                       {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong> Location: </strong></td>
-                                    <td> {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_locations }}'] }} </td>
-                                </tr>
-                                <tr>
-                                    <td><strong> NIT Date: </strong></td>
-                                    <td> {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_nit_date }}'] }} </td>
-                                </tr>
-                                <tr>
-                                    <td><strong> Last Date of Submission: </strong></td>
-                                    <td> {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_last_date_of_submissions }}'] }} </td>
-                                </tr>
-                                <tr>
-                                    <td><strong> {% if current_language == 'hi' %}निविदा विवरण{% else %} Tender Description {% endif %}: </strong></td>
-                                        <td>
-{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ body }}'] }}
-</td>
-                                </tr>
-                            </tbody>
-                    </table>
+      <tr>
+        <td><strong> Tender Title: </strong></td>
+        <td>
+          {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}
+        </td>
+      </tr>
+      <tr>
+        <td><strong> Location: </strong></td>
+        <td> {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_locations }}'] }} </td>
+      </tr>
+      <tr>
+        <td><strong> NIT Date: </strong></td>
+        <td> {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_nit_date }}'] }} </td>
+      </tr>
+      <tr>
+        <td><strong> Last Date of Submission: </strong></td>
+        <td> {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_last_date_of_submissions }}'] }}
+        </td>
+      </tr>
+      <tr>
+        <td><strong> {% if current_language == 'hi' %}निविदा विवरण{% else %} Tender Description {% endif %}: </strong>
+        </td>
+        <td>
+          {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ body }}'] }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-<ul class="result-list">
-  {% set entity = row.content['#row']._entity %}
+  <ul class="result-list tender-box">
+    {% set entity = row.content['#row']._entity %}
 
-  {% if entity.field_upload_file is defined and entity.field_upload_file|length > 0 %}
+    {% if entity.field_upload_file is defined and entity.field_upload_file|length > 0 %}
     {% for item in entity.field_upload_file %}
-      {% set file = item.entity %}
+    {% set file = item.entity %}
 
-      <li>
+    <!-- <li>
         <a href="{{ file_url(file.getFileUri()) }}" target="_blank">
           <span class="icon-pdf"></span>
           <p>{{ item.description ?: file.filename.value }}</p>
         </a>
-      </li>
+      </li> -->
+
+
+
+
+    <li class="document-item">
+
+      <div class="message-item-info">
+
+        <img src="/sjvn/sites/default/files/2025-10/pdffileicon.png" alt="PDF file icon" class="file-icon"
+          role="presentation">
+
+        <h3 class="document-title">
+          {{ item.description ?: file.filename.value }}
+        </h3>
+
+        <div class="file-meta">
+          {% if file.filesize.value %}
+          <span class="file-size">
+            File Size: {{ (file.filesize.value / 1024)|number_format(2) }} KB
+          </span>
+          {% endif %}
+
+          {% if file.langcode.value %}
+          <span class="file-language">
+            | Language: {{ file.langcode.value|upper }}
+          </span>
+          {% endif %}
+        </div>
+
+      </div>
+
+      <div class="view-pdf-btn d-flex justify-content-center">
+        <a href="{{ file_url(file.getFileUri()) }}" target="_blank" rel="noopener noreferrer"
+          class="btn pdf-btn d-flex align-items-center justify-content-center"
+          aria-label="View PDF of {{ item.description ?: file.filename.value }} (opens in new tab)">
+          View PDF
+        </a>
+      </div>
+
+    </li>
+
+
+
+
+
     {% endfor %}
-  {% else %}
+    {% else %}
     <li>No files uploaded</li>
-  {% endif %}
-</ul>
+    {% endif %}
+  </ul>
 
 
 
 
-	{% endfor %}
+  {% endfor %}
 </div>

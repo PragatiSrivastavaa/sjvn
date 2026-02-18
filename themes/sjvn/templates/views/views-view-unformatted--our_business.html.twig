@@ -18,18 +18,21 @@
 
 
   <div class="business-container">
-  <div class="business-grid">
+    <div class="business-grid">
     {% for row in rows %}
       {% set term = row.content['#row']._entity %}
 
       {# Get term translation for current language #}
       {% set lang = app.request.getLocale() %}
       {% set term_translated = term.hasTranslation(lang) ? term.getTranslation(lang) : term %}
+      
+      {# Get image URL with safety check #}
+      {% set img_url = term_translated.field_image.entity ? file_url(term_translated.field_image.entity.fileuri) : '' %}
 
-      <div class="business-item" 
+      <div class="business-item {{ loop.first ? 'active' : '' }}" 
            role="button"
            tabindex="0"
-           data-image="{{ file_url(term_translated.field_image.entity.fileuri) }}" 
+           data-image="{{ img_url }}" 
            data-link="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': term_translated.id()}) }}">
 
         <i class="bi {{ term_translated.field_icon.value }} business-icon"></i>
@@ -42,8 +45,9 @@
     {% if rows|length > 0 %}
       {% set first_term = rows|first.content['#row']._entity %}
       {% set first_translated = first_term.hasTranslation(lang) ? first_term.getTranslation(lang) : first_term %}
+      {% set first_img_url = first_translated.field_image.entity ? file_url(first_translated.field_image.entity.fileuri) : '' %}
       <img id="business-display" 
-           src="{{ file_url(first_translated.field_image.entity.fileuri) }}" 
+           src="{{ first_img_url }}" 
            alt="{{ first_translated.name.value }}">
     {% endif %}
   </div>

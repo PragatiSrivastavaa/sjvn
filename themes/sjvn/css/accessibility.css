@@ -721,9 +721,11 @@ body.a11y-theme-dark .about-intro-section {
 }
 
 body.a11y-theme-dark .business-item:hover,
+body.a11y-theme-dark .business-item.active,
 body.a11y-theme-dark .quick-card:hover {
   background: color-mix(in srgb, var(--a11y-dark-bg-secondary) 70%, #505050) !important;
   box-shadow: 0 4px 12px color-mix(in srgb, var(--primary-color) 30%, transparent) !important;
+  border-color: var(--a11y-dark-accent) !important;
 }
 
 /* News and alerts section */
@@ -1158,6 +1160,7 @@ body.a11y-theme-high-contrast .about-intro-section {
 }
 
 body.a11y-theme-high-contrast .business-item:hover,
+body.a11y-theme-high-contrast .business-item.active,
 body.a11y-theme-high-contrast .quick-card:hover {
   background: #1a1a1a !important;
   border-color: #ffff00 !important;
