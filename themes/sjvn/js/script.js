@@ -382,7 +382,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Smooth transition with race condition protection
             if (businessTimeout) clearTimeout(businessTimeout);
-            
+
             businessDisplay.style.opacity = '0.4';
             businessTimeout = setTimeout(() => {
                 businessDisplay.src = imgSrc;
@@ -396,7 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const handleInteraction = (e) => {
             const link = item.getAttribute("data-link");
-            
+
             // If it's already active, redirect to the link
             if (item.classList.contains("active")) {
                 if (link) window.location.href = link;
