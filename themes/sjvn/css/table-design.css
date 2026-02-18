@@ -1,9 +1,9 @@
 /* Table Design Styles - Add your page node IDs below */
 /* Example: .page-node-170, .page-node-175, etc. */
-.page-node-68, 
-.page-node-170, 
+.page-node-68,
+.page-node-170,
 .page-node-187,
-.page-node-164  {
+.page-node-164 {
     .table {
         width: 100%;
         border-collapse: collapse;
@@ -25,39 +25,41 @@
         font-size: 16px;
         padding: 15px 12px;
         /* text-align: center; */
-       
+
     }
-.scroll-mobile {
-  overflow-x: auto;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px 0px;
-  display: block;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  white-space: nowrap;
-  padding-bottom: 10px;
-}
 
-.scroll-mobile::-webkit-scrollbar {
-  height: 5px;
-}
+    .scroll-mobile {
+        overflow-x: auto;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0px;
+        display: block;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        white-space: nowrap;
+        padding-bottom: 10px;
+    }
 
-.scroll-mobile::-webkit-scrollbar-track {
-  background: #e6f4f9;
-  border-radius: 10px;
-}
+    .scroll-mobile::-webkit-scrollbar {
+        height: 5px;
+    }
 
-.scroll-mobile::-webkit-scrollbar-thumb {
-  background: #006b7a;
-  border-radius: 10px;
-}
+    .scroll-mobile::-webkit-scrollbar-track {
+        background: #e6f4f9;
+        border-radius: 10px;
+    }
 
-.act-table {
-  white-space: nowrap; /* columns stay in one line */
-  scroll-snap-align: start;
-}
+    .scroll-mobile::-webkit-scrollbar-thumb {
+        background: #006b7a;
+        border-radius: 10px;
+    }
+
+    .act-table {
+        white-space: nowrap;
+        /* columns stay in one line */
+        scroll-snap-align: start;
+    }
 
     .table th:last-child {
         border-right: none;
@@ -105,8 +107,8 @@
     .table tr:not(:first-child) td:nth-child(6) {
         border-right: 2px solid #d0d7de;
     } */
-         td:nth-child(2) {
-       
+    td:nth-child(2) {
+
         text-align: left;
     }
 
@@ -182,13 +184,15 @@
 }
 
 /*------------------------------- accordian css ----------------------------  */
-.custom-accrodian .card{
+.custom-accrodian .card {
     margin-bottom: 10px;
 }
+
 /* Accordion header link */
 .custom-accrodian .card-header .btn-link {
     position: relative;
-    padding-right: 40px; /* icon ke liye space */
+    padding-right: 40px;
+    /* icon ke liye space */
     padding: 7px;
     font-size: 17px !important;
     display: block;
@@ -208,7 +212,8 @@
     text-align: center;
     font-weight: bold;
     border: 2px solid #0d6efd;
-    border-radius: 50%;          /* round icon */
+    border-radius: 50%;
+    /* round icon */
     color: #0d6efd;
     transition: all 0.3s ease;
 }
@@ -221,3 +226,58 @@
     border-color: #0d6efd;
 }
 
+/* =============================tendar css ==================================== */
+.tender-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+.tender-box li .message-item-info {
+    padding: 25px 20px 60px;
+}
+
+.tender-box li .message-item-info h3 {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.tender-box li {
+    background: #ffffff;
+    position: relative;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+    padding: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    counter-increment: doc-counter;
+    transition: all .3s ease;
+}
+
+.tender-box li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .tender-box {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+    .tender-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 479px) {
+    .tender-box {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
