@@ -485,11 +485,18 @@
 .clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    position: relative;
+    height: 100%;
     gap: 20px;
     padding: 10px;
     margin: 0 auto;
 
 }
+
+.result-list li:hover .message-item-info * {
+    color: #006ca8;
+}
+
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list {
@@ -1023,7 +1030,36 @@ li.statutory-compliance:hover {
     border-color: var(--primary-color);
 }
 
-/* ==================================== CSR Policy & Schemes ================================ */
+/* ==================================== CSR Policy & Schemes ================================
+ */
+.view-universal-content-file-upload .view-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.view-universal-content-file-upload .view-content .views-row {
+    background: #ffffff;
+    position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    counter-increment: doc-counter;
+    transition: all .3s ease;
+}
+
+.view-universal-content-file-upload .view-content .views-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
 .view-id-universal_content_file_upload.view-display-id-page_1 .view-content {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1057,16 +1093,31 @@ li.statutory-compliance:hover {
     .view-id-universal_content_file_upload.view-display-id-page_1 .view-content {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .view-universal-content-file-upload .view-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
     .view-id-universal_content_file_upload.view-display-id-page_1 .view-content {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .view-universal-content-file-upload .view-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 575px) {
     .view-id-universal_content_file_upload.view-display-id-page_1 .view-content {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .view-universal-content-file-upload .view-content {
+        display: grid;
         grid-template-columns: repeat(1, 1fr);
     }
 }
