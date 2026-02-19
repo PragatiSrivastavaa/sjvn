@@ -1,0 +1,14 @@
+uuid: 1646ddb2-aedf-4054-b893-c5dc103bb4db
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.media
+  module:
+    - user
+id: user_remove_role_action.media
+label: 'Remove the Media role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: media
