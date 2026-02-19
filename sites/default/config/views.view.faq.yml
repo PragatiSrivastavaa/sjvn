@@ -7,9 +7,10 @@ dependencies:
     - node.type.faq
     - taxonomy.vocabulary.accordion_category
   content:
-    - 'taxonomy_term:accordion_category:1767df7f-4947-47c9-8b01-35163cbc4f60'
-    - 'taxonomy_term:accordion_category:20b8bc4b-4006-4bd6-b97b-c620094aa52c'
-    - 'taxonomy_term:accordion_category:8a56d520-40b7-46c1-8b87-de6b33d074a2'
+    - 'taxonomy_term:accordion_category:53e5a412-7437-403e-82fa-25e490f399af'
+    - 'taxonomy_term:accordion_category:8751c5ac-d18e-47cf-8021-babe48875ca8'
+    - 'taxonomy_term:accordion_category:eb9098d1-6486-47d7-ad8d-74488f24a98d'
+    - 'taxonomy_term:category:839b87e0-e40b-4eb7-a594-5dfc017f78ee'
   module:
     - node
     - taxonomy
@@ -415,7 +416,7 @@ display:
           plugin_id: taxonomy_index_tid
           operator: or
           value:
-            378: 378
+            421: 421
           group: 1
           exposed: false
           expose:
@@ -476,6 +477,113 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            faq: faq
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_accordion_category_target_id:
+          id: field_accordion_category_target_id
+          table: node__field_accordion_category
+          field: field_accordion_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            419: 419
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: accordion_category
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        filters: false
+        filter_groups: false
       display_extenders: {  }
       path: faq
     cache_metadata:
@@ -558,7 +666,7 @@ display:
           plugin_id: taxonomy_index_tid
           operator: or
           value:
-            376: 376
+            420: 420
           group: 1
           exposed: false
           expose:
