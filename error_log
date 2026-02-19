@@ -243,3 +243,6 @@ Stack trace:
 [17-Feb-2026 16:14:36 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
 [17-Feb-2026 16:14:36 Asia/Kolkata] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
 [17-Feb-2026 12:17:56 Europe/Berlin] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[19-Feb-2026 07:33:54 Europe/Berlin] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[19-Feb-2026 07:42:10 Europe/Berlin] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[19-Feb-2026 07:43:09 Europe/Berlin] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
