@@ -1,0 +1,14 @@
+uuid: 926238b7-d9cc-40a7-ba76-13610bcd0781
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.vigilance_complaint_and_suggestion
+  module:
+    - user
+id: user_add_role_action.vigilance_complaint_and_suggestion
+label: 'Add the Vigilance Complaint and Suggestion role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: vigilance_complaint_and_suggestion

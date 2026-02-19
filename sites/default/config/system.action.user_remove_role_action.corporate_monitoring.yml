@@ -1,0 +1,14 @@
+uuid: fce3927c-e5eb-4298-93f1-92da66ad15af
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.corporate_monitoring
+  module:
+    - user
+id: user_remove_role_action.corporate_monitoring
+label: 'Remove the Corporate Monitoring role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: corporate_monitoring

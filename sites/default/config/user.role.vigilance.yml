@@ -1,0 +1,9 @@
+uuid: b1189b42-1c5f-42a1-a2be-9621bd120e60
+langcode: en
+status: true
+dependencies: {  }
+id: vigilance
+label: Vigilance
+weight: 0
+is_admin: null
+permissions: {  }

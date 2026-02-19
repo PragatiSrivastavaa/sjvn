@@ -1,0 +1,14 @@
+uuid: a5018f5a-fcaf-4695-b203-81b00f4ddff3
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.policy
+  module:
+    - user
+id: user_remove_role_action.policy
+label: 'Remove the Policy role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: policy

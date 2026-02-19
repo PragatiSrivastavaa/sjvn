@@ -1,0 +1,9 @@
+uuid: 0282ec4d-1870-48c9-ab75-172e5140d211
+langcode: en
+status: true
+dependencies: {  }
+id: corporate_monitoring
+label: 'Corporate Monitoring'
+weight: -2
+is_admin: null
+permissions: {  }

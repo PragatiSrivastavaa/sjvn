@@ -1,0 +1,9 @@
+uuid: a5978be5-b73c-4af4-a4ea-3f4086a8f710
+langcode: en
+status: true
+dependencies: {  }
+id: csr
+label: CSR
+weight: -3
+is_admin: null
+permissions: {  }

@@ -1,0 +1,9 @@
+uuid: f4806ee0-4789-48c7-8ba5-3bc339f1bd3b
+langcode: en
+status: true
+dependencies: {  }
+id: corporate_planning
+label: 'Corporate Planning'
+weight: 4
+is_admin: null
+permissions: {  }

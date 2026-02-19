@@ -1,0 +1,14 @@
+uuid: 79d0a02d-a531-4d82-9667-e45b694c0fc8
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.investor_relations
+  module:
+    - user
+id: user_remove_role_action.investor_relations
+label: 'Remove the Investor Relations role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: investor_relations

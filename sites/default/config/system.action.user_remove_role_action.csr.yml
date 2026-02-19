@@ -1,0 +1,14 @@
+uuid: fd91808a-d709-443f-9311-fcd4d9753437
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.csr
+  module:
+    - user
+id: user_remove_role_action.csr
+label: 'Remove the CSR role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: csr

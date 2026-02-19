@@ -1,0 +1,9 @@
+uuid: c3152253-0bf3-4a60-8b42-514131a858af
+langcode: en
+status: true
+dependencies: {  }
+id: man_power
+label: 'Man Power'
+weight: -4
+is_admin: null
+permissions: {  }

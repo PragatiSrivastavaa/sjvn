@@ -1,0 +1,14 @@
+uuid: 46f2f17a-0690-401c-aea1-76b40b559158
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.tender
+  module:
+    - user
+id: user_remove_role_action.tender
+label: 'Remove the Tender role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: tender

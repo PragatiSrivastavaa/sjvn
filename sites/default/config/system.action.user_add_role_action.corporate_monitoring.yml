@@ -1,0 +1,14 @@
+uuid: 7277b14c-ee41-4840-9b28-481f25a06042
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.corporate_monitoring
+  module:
+    - user
+id: user_add_role_action.corporate_monitoring
+label: 'Add the Corporate Monitoring role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: corporate_monitoring

@@ -1,0 +1,14 @@
+uuid: 09f8d6e1-9b8a-4116-ac9a-c555f96c84e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.power_trading
+  module:
+    - user
+id: user_add_role_action.power_trading
+label: 'Add the Power Trading role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: power_trading

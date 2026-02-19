@@ -1,0 +1,14 @@
+uuid: d3a0f02d-b8e6-4983-9020-bbd4542e2f8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.vigilance
+  module:
+    - user
+id: user_remove_role_action.vigilance
+label: 'Remove the Vigilance role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: vigilance

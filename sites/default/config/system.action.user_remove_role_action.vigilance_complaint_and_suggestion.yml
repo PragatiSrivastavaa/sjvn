@@ -1,0 +1,14 @@
+uuid: 3a0e5f39-c076-44c4-b6be-43d42ead83f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.vigilance_complaint_and_suggestion
+  module:
+    - user
+id: user_remove_role_action.vigilance_complaint_and_suggestion
+label: 'Remove the Vigilance Complaint and Suggestion role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: vigilance_complaint_and_suggestion

@@ -1,0 +1,9 @@
+uuid: cac7d864-e456-49fa-9f5b-4c7d49ea9d95
+langcode: en
+status: true
+dependencies: {  }
+id: tender
+label: Tender
+weight: -5
+is_admin: null
+permissions: {  }

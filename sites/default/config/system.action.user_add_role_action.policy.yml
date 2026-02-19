@@ -1,0 +1,14 @@
+uuid: 44109d56-7bac-47f7-be61-a7b7fa5b3960
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.policy
+  module:
+    - user
+id: user_add_role_action.policy
+label: 'Add the Policy role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: policy

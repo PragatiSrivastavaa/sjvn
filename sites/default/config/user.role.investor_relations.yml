@@ -1,0 +1,9 @@
+uuid: d127a7b1-ce88-45c0-9d48-48c2619270f8
+langcode: en
+status: true
+dependencies: {  }
+id: investor_relations
+label: 'Investor Relations'
+weight: 3
+is_admin: null
+permissions: {  }

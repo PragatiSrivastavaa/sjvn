@@ -1,0 +1,14 @@
+uuid: ef397e24-c22e-4921-abca-53316a71cfa4
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.investor_relations
+  module:
+    - user
+id: user_add_role_action.investor_relations
+label: 'Add the Investor Relations role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: investor_relations

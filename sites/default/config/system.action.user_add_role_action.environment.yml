@@ -1,0 +1,14 @@
+uuid: e8829a5a-7dfe-41d7-b977-afc38bbf5137
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.environment
+  module:
+    - user
+id: user_add_role_action.environment
+label: 'Add the Environment role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: environment

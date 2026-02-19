@@ -1,0 +1,14 @@
+uuid: f6d345fa-a709-4304-a1b4-ceb7e01c494c
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.corporate_planning
+  module:
+    - user
+id: user_add_role_action.corporate_planning
+label: 'Add the Corporate Planning role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: corporate_planning

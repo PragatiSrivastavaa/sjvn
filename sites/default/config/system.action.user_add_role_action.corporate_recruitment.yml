@@ -1,0 +1,14 @@
+uuid: d429e584-6b0a-449e-b819-77d7e6de6fca
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.corporate_recruitment
+  module:
+    - user
+id: user_add_role_action.corporate_recruitment
+label: 'Add the Corporate Recruitment role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: corporate_recruitment

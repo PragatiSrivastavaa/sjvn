@@ -1,0 +1,14 @@
+uuid: 83369663-bc73-4788-85f7-8ca66ae9c748
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.environment
+  module:
+    - user
+id: user_remove_role_action.environment
+label: 'Remove the Environment role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: environment
