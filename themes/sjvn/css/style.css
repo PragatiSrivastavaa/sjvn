@@ -12,7 +12,7 @@ body {
 }
 
 .body-screen {
-  min-height: 60vh;
+  min-height: 45vh;
   background: #fdfdfd;
 }
 
@@ -4948,5 +4948,116 @@ body.dark-mode .empty-state-desc {
 
   .archive-title {
     font-size: 16px;
+  }
+}
+
+.page-node-35.lang-en.path-node.page-node-type-career .field--name-field-upload-files {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 10px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.lang-en.path-node.page-node-type-career {
+
+  /* ===== MAIN GRID ===== */
+  .field--name-field-upload-files.field__items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 10px;
+  }
+
+  /* Tablet */
+  @media (max-width: 992px) {
+    .field--name-field-upload-files.field__items {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 576px) {
+    .field--name-field-upload-files.field__items {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== CARD ===== */
+  .field--name-field-upload-files .field__item {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: 0.3s ease;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    /* min-height: 220px; */
+  }
+
+  .file {
+    padding-left: 0px;
+  }
+
+  .field--name-field-upload-files .field__item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+  }
+
+  /* ===== FILE WRAPPER ===== */
+  .field--name-field-upload-files .file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .file--application-pdf {
+    background-image: url(../../images/icons/application-pd-f.png);
+  }
+
+  .field--name-field-upload-files .file--application-pdf::before {
+    content: "";
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    background-color: #0dcaf0;
+    background: #009edb3b;
+    background-image: url("/sjvn/sites/default/files/2025-10/pdffileicon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 28px;
+    display: block;
+    margin-bottom: 15px;
+    flex-shrink: 0;
+  }
+
+
+  /* ===== FILE NAME ===== */
+  .field--name-field-upload-files .file a {
+    font-size: 15px;
+    font-weight: 600;
+    color: #003366;
+    text-decoration: none;
+    margin-top: 5px;
+    word-break: break-word;
+  }
+
+  .field--name-field-upload-files .file a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+
+  /* ===== FILE SIZE ===== */
+  .field--name-field-upload-files .file-info {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 6px;
   }
 }
