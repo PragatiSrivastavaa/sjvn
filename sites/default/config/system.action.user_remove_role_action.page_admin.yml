@@ -1,0 +1,14 @@
+uuid: b25b995b-360c-4775-9aaa-0a98a3508cd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.page_admin
+  module:
+    - user
+id: user_remove_role_action.page_admin
+label: 'Remove the Page Admin role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: page_admin
