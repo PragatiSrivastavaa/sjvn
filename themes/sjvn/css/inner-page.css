@@ -1527,7 +1527,6 @@ form#user-login-form:hover {
   width: 100%;
   padding: 9px 16px;
   border-radius: 8px;
-  margin-bottom: 10px;
   border: 1px solid #e2e8f0;
   background: #ffffff;
   font-size: 14px;
@@ -1646,7 +1645,7 @@ form#user-login-form:hover {
   display: inline-block !important;
   visibility: visible !important;
   opacity: 1 !important;
-  padding: 8px 25px !important;
+  padding: 6px 25px !important;
   background: var(--primary-color, #009EDB) !important;
   color: #fff !important;
   border: none !important;
