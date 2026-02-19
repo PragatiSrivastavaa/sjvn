@@ -511,3 +511,45 @@ function _sjvn_widget_has_file_value(array $child_item) : bool {
 
   return FALSE;
 }
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for node_form.
+ */
+function sjvn_custom_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Drupal core restricts the 'status' (Published) field and its group to users 
+  // with the 'administer nodes' permission. We explicitly grant access here.
+  if (isset($form['status'])) {
+    $form['status']['#access'] = TRUE;
+    
+    // Core often places 'status' inside an 'options' group which is hidden.
+    if (isset($form['options'])) {
+      $form['options']['#access'] = TRUE;
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_field_access().
+ */
+function sjvn_custom_entity_field_access($operation, \Drupal\Core\Field\FieldDefinitionInterface $field_definition, \Drupal\Core\Session\AccountInterface $account, \Drupal\Core\Field\FieldItemListInterface $items = NULL) {
+  // Broadly grant edit access to the 'status' field for nodes if the user can edit the node.
+  if ($operation === 'edit' && $field_definition->getName() === 'status') {
+    if ($field_definition->getTargetEntityTypeId() === 'node') {
+      return \Drupal\Core\Access\AccessResult::allowed()->cachePerPermissions();
+    }
+  }
+  return \Drupal\Core\Access\AccessResult::neutral();
+}
+
+/**
+ * Implements hook_node_access().
+ */
+function sjvn_custom_node_access(\Drupal\node\NodeInterface $node, $op, \Drupal\Core\Session\AccountInterface $account) {
+  // Allow content editors to view unpublished content.
+  if ($op === 'view' && !$node->isPublished()) {
+    if (in_array('content_editor', $account->getRoles())) {
+      return \Drupal\Core\Access\AccessResult::allowed()->cachePerPermissions()->addCacheableDependency($node);
+    }
+  }
+  return \Drupal\Core\Access\AccessResult::neutral();
+}

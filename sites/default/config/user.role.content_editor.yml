@@ -30,6 +30,7 @@ dependencies:
     - node.type.tariff_petition
     - node.type.tender
     - node.type.tender_award
+    - node.type.universal_content_file_upload
     - node.type.video_gallery
     - taxonomy.vocabulary.business_cat
     - taxonomy.vocabulary.contract_unit
@@ -44,9 +45,11 @@ dependencies:
     - taxonomy.vocabulary.portfolio_cat
     - taxonomy.vocabulary.project_list
     - taxonomy.vocabulary.year
+    - workflows.workflow.editorial
   module:
     - block_content
     - comment
+    - content_moderation
     - content_translation
     - contextual
     - field_ui
@@ -60,6 +63,7 @@ dependencies:
     - system
     - taxonomy
     - toolbar
+    - workflows
 _core:
   default_config_hash: e_wG1u7SrGaJbY2-Szgbgl-c8T3kdirU3uTNq2c_QJQ
 id: content_editor
@@ -75,6 +79,7 @@ permissions:
   - 'administer block_content form display'
   - 'administer taxonomy'
   - 'administer url aliases'
+  - 'administer workflows'
   - 'clone board_of_directors content'
   - 'clone career content'
   - 'clone energy_bill content'
@@ -266,6 +271,7 @@ permissions:
   - 'translate tariff_petition node'
   - 'translate video_gallery node'
   - 'update content translations'
+  - 'use editorial transition create_new_draft'
   - 'use text format full_html'
   - 'view all revisions'
   - 'view news_announcement revisions'
