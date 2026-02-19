@@ -1,0 +1,29 @@
+uuid: a086cf40-4e27-4061-9e6c-e92388aeddd3
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.faq
+  module:
+    - system
+    - views
+  theme:
+    - sjvn
+id: sjvn_views_block__faq_block_2
+theme: sjvn
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:faq-block_2'
+settings:
+  id: 'views_block:faq-block_2'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /posh
