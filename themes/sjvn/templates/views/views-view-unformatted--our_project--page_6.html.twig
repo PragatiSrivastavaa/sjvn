@@ -2,53 +2,110 @@
 
 <div class="accordion" id="accordionOurProjectPage6">
   {% for row in rows %}
-    {% set node = row.content['#row']._entity %}
-    {% set faq_id = 'project-p6-item' ~ loop.index %}
+  {% set node = row.content['#row']._entity %}
+  {% set faq_id = 'project-p6-item' ~ loop.index %}
 
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="heading-project-p6-{{ loop.index }}">
-        <button class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#{{ faq_id }}"
-                aria-expanded="false"
-                aria-controls="{{ faq_id }}">
-          {{ node.label }}
-        </button>
-      </h2>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="heading-project-p6-{{ loop.index }}">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ faq_id }}"
+        aria-expanded="false" aria-controls="{{ faq_id }}">
+        {{ node.label }}
+      </button>
+    </h2>
 
-      <div id="{{ faq_id }}"
-           class="accordion-collapse collapse"
-           aria-labelledby="heading-project-p6-{{ loop.index }}"
-           data-bs-parent="#accordionOurProjectPage6">
-        <div class="accordion-body">
+    <div id="{{ faq_id }}" class="accordion-collapse collapse" aria-labelledby="heading-project-p6-{{ loop.index }}"
+      data-bs-parent="#accordionOurProjectPage6">
 
+
+
+
+      <div class="accordion-body Clearances-Reports">
+        <ul class="result-list Clearances-and-Reports no-even mb-0">
           {# Group Content loop #}
           {% for group_item in node.field_group_content %}
-            {% set group = group_item.entity %}
+          {% set group = group_item.entity %}
 
-            {% if group.field_group_name.entity.label == 'Clearances' %}
+          {% if group.field_group_name.entity.label == 'Clearances' %}
 
-              {# Add Content loop #}
-              {% for add_item in group.field_add_content %}
-                {% set add = add_item.entity %}
+          {# Add Content loop #}
+          {% for add_item in group.field_add_content %}
+          {% set add = add_item.entity %}
 
-                {# PDF files loop #}
-                {% for file_item in add.field_upload_files %}
-                  {% set file = file_item.entity %}
-                  <p>
-                    <a href="{{ file_url(file.fileuri) }}" target="_blank">
-                      {{ add.field_group_title.value ?: file.filename.value }}
-                    </a>
-                  </p>
-                {% endfor %}
+          {# PDF files loop #}
+          {% for file_item in add.field_upload_files %}
+          {% set file = file_item.entity %}
 
-              {% endfor %}
-            {% endif %}
+          <!-- <li>
+            <div class="message-item-info text-center">
+              <img src="/sjvn/sites/default/files/2025-10/pdffileicon.png" alt="PDF file icon" width="128" height="128"
+                loading="lazy">
+              <h3 class="pdf-title">
+                {{ add.field_group_title.value ?: file.filename.value }}
+              </h3>
+            </div>
+            <div class="d-flex view-pdf-btn justify-content-center">
+              <a class="btn pdf-btn d-flex align-items-center justify-content-center"
+                href="{{ file_url(file.fileuri) }}" target="_blank" rel="noopener noreferrer"
+                aria-label="View PDF: {{ add.field_group_title.value ?: file.filename.value }} (opens in new tab)"
+                type="application/pdf" data-once="external-warning">
+                View PDF (PDF, opens in new tab)
+              </a>
+            </div>
+          </li> -->
+          <li>
+            <div class="message-item-info text-center">
+
+              <img src="/sjvn/sites/default/files/2025-10/pdffileicon.png" alt="PDF file" width="128" height="128"
+                loading="lazy">
+
+              <h3>
+                {{ add.field_group_title.value ?: file.filename.value }}
+              </h3>
+
+              <!-- File Meta -->
+              <div class="file-meta">
+
+                {# Show file size only for PDF & Image #}
+                {% if ext != 'link' %}
+                <span class="file-size">
+                  File Size: {{ filesize }}
+                </span>
+                {% endif %}
+
+                <span class="file-language">
+                  {% if ext != 'link' %} | {% endif %}
+                  {{ langcode }}
+                </span>
+
+              </div>
+
+
+
+            </div>
+
+            <div class="d-flex view-pdf-btn justify-content-center">
+              <a class="btn pdf-btn d-flex align-items-center justify-content-center"
+                href="{{ file_url(file.fileuri) }}" target="_blank" rel="noopener noreferrer"
+                aria-label="View PDF: {{ add.field_group_title.value ?: file.filename.value }}" type="application/pdf"
+                data-once="external-warning">
+                View PDF
+              </a>
+            </div>
+          </li>
+
+
+
           {% endfor %}
 
-        </div>
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
+        </ul>
       </div>
+
+
+
     </div>
+  </div>
   {% endfor %}
 </div>

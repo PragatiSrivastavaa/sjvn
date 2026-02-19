@@ -357,7 +357,7 @@
 
 /*----------------------------- SMART Online Dispute Resolution (ODR) css ------------------------------*/
 
-.clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list {
+ul.result-list.Clearances-and-Reports {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     position: relative;
@@ -365,7 +365,6 @@
     gap: 20px;
     padding: 10px;
     margin: 0 auto;
-
 }
 
 .result-list li:hover .message-item-info h3 {
@@ -378,31 +377,27 @@
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-    .clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list {
+    ul.result-list.Clearances-and-Reports {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-    .clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list {
+    ul.result-list.Clearances-and-Reports {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 575px) {
-    .clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list {
+    ul.result-list.Clearances-and-Reports {
         grid-template-columns: repeat(1, 1fr);
     }
 }
 
-.clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list li {
+ul.result-list.Clearances-and-Reports li {
     background: #ffffff;
     position: relative;
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    padding: 15px;
-    padding-bottom: 45px;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     overflow: hidden;
@@ -410,11 +405,15 @@
     transition: all .3s ease;
 }
 
-.clearfix.text-formatted.field.field--name-body .report-div.report-3 ul.result-list li:hover {
+ul.result-list.Clearances-and-Reports li:hover {
     transform: translateY(-2px);
     box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
     border-color: var(--primary-color);
 
+}
+
+.message-item-info h3 {
+    font-size: 14px !important;
 }
 
 .result-list li:hover img {
@@ -663,13 +662,6 @@ ul.result-list.Clearances-and-Reports li a {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-}
-
-ul.result-list.Clearances-and-Reports li {
-    padding: 30px 20px !important;
-    margin-bottom: 0px !important;
-    margin-top: 10px;
-    position: relative;
 }
 
 .accordion-body {
