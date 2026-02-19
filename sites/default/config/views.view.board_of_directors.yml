@@ -1346,7 +1346,9 @@ display:
         row: false
         fields: false
         header: false
+        footer: false
       header: {  }
+      footer: {  }
       display_extenders: {  }
       path: board-of-directors
     cache_metadata:
