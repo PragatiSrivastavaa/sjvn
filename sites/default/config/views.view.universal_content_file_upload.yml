@@ -3646,7 +3646,7 @@ display:
         filter_groups: false
       display_description: ''
       display_extenders: {  }
-      path: esg-report
+      path: annual-csr-sustainability--reports
     cache_metadata:
       max-age: -1
       contexts:
