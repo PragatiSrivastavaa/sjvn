@@ -1,0 +1,14 @@
+uuid: fe209d8e-1418-4dd0-8397-ab53664f8721
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.media
+  module:
+    - user
+id: user_add_role_action.media
+label: 'Add the Media role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: media

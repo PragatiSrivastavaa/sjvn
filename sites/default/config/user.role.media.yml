@@ -1,0 +1,9 @@
+uuid: 08489b13-a382-4d86-ab77-0214def28042
+langcode: en
+status: true
+dependencies: {  }
+id: media
+label: Media
+weight: 9
+is_admin: null
+permissions: {  }
