@@ -9,12 +9,38 @@ dependencies:
     - node.type.universal_content_file_upload
     - taxonomy.vocabulary.category
   content:
-    - 'taxonomy_term:category:36e8ce55-253b-4aa4-a6ac-1664acf03127'
-    - 'taxonomy_term:category:3db3b227-f4ba-4aeb-9448-74fb815955ca'
-    - 'taxonomy_term:category:5c936e3c-7024-4684-8354-b59c3e4a5366'
-    - 'taxonomy_term:category:734a0767-f4df-41e2-acc9-80f5dd13d272'
-    - 'taxonomy_term:category:bd3e510c-ad13-4b9b-87c8-b422a1ba20fa'
-    - 'taxonomy_term:category:db23f61d-ad1c-4691-93e1-0dd5c9e55973'
+    - 'taxonomy_term:category:0b71173b-1f45-42cb-b379-f17543348945'
+    - 'taxonomy_term:category:0fcce150-3f8d-4c35-a7fb-41baaec6b2ef'
+    - 'taxonomy_term:category:1cec4330-9203-413d-8f38-febec99994d4'
+    - 'taxonomy_term:category:1d957ce2-c365-474d-aaae-f715b0d68131'
+    - 'taxonomy_term:category:276d7547-b329-401c-a3c8-2714ed93629f'
+    - 'taxonomy_term:category:29c9d48b-6a37-46ff-863b-555128884400'
+    - 'taxonomy_term:category:4dce111d-5197-4cdc-af59-dc3ef0ada83c'
+    - 'taxonomy_term:category:51d29e96-a25b-4ee6-818b-e1f09956d904'
+    - 'taxonomy_term:category:53116c11-2d9f-400a-afe0-4419eff65cb4'
+    - 'taxonomy_term:category:538b928e-f24a-4ae2-9b6f-68ed9a5e6e70'
+    - 'taxonomy_term:category:5856135b-20fa-4564-92a8-d62528363ac5'
+    - 'taxonomy_term:category:5e90fb9f-82ba-4d39-8a0b-cf239d9761e8'
+    - 'taxonomy_term:category:66c834ba-10bc-4b54-a6e6-545b430a4ae1'
+    - 'taxonomy_term:category:7599de12-7801-452a-a659-9b869c3d8d1c'
+    - 'taxonomy_term:category:75d99057-852f-44c1-930c-d41755e8affc'
+    - 'taxonomy_term:category:839b87e0-e40b-4eb7-a594-5dfc017f78ee'
+    - 'taxonomy_term:category:8d32291e-177e-42e6-8302-673ac9d84a4a'
+    - 'taxonomy_term:category:8ffde8af-4c51-46b9-9c70-88b52746526b'
+    - 'taxonomy_term:category:9e65bf73-449e-4ea5-a1fe-933105b88ce2'
+    - 'taxonomy_term:category:a171d687-39cf-42c0-8c10-a63a1242b6dc'
+    - 'taxonomy_term:category:b245207a-328a-4e22-bd41-e95d2a55dde0'
+    - 'taxonomy_term:category:c1f559a1-bb37-4434-86ec-574d9c9b1a0e'
+    - 'taxonomy_term:category:c4c4ebe5-d3b0-4923-949a-5a97d470ad40'
+    - 'taxonomy_term:category:cf38a1cc-bef0-4f05-89d2-1b04e8ecbec5'
+    - 'taxonomy_term:category:cf85443f-f595-41bd-9a1b-507cefee929a'
+    - 'taxonomy_term:category:d7fb4a3f-8c89-4956-9a14-f2043f949723'
+    - 'taxonomy_term:category:e511c716-5d14-45b1-91f8-8577d3a03e3e'
+    - 'taxonomy_term:category:ed4d7011-358d-45ee-bfff-72c27fce1b15'
+    - 'taxonomy_term:category:f3f808b9-53a0-463a-a938-3a92702fdd71'
+    - 'taxonomy_term:category:f688c650-0e35-43fb-b2f7-3da331ac8f5c'
+    - 'taxonomy_term:category:ff3d4c19-e64d-47ef-991b-4ab9a71fb079'
+    - 'taxonomy_term:hospital_specialties:680f1710-c461-470d-aa27-dd494d76de8c'
   module:
     - file
     - link
@@ -1009,7 +1035,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"report-div\">\r\n  <ul>\r\n\r\n    {% set file_url = '' %}\r\n    {% set ext = '' %}\r\n\r\n    {% if field_file_upload is not empty %}\r\n      {% set file_url = field_file_upload|striptags|trim %}\r\n      {% set ext = file_url|split('.')|last|lower %}\r\n    {% elseif field_link is not empty %}\r\n      {% set file_url = field_link|striptags|trim %}\r\n      {% set ext = 'link' %}\r\n    {% endif %}\r\n\r\n    {% if file_url %}\r\n      <li>\r\n\r\n        <p>\r\n          <a href=\"{{ file_url }}\" target=\"_blank\">\r\n\r\n            {% if ext == 'pdf' %}\r\n              <img src=\"/sjvn/sites/default/files/2025-10/pdffileicon.png\"\r\n                   width=\"128\" height=\"128\" loading=\"lazy\" alt=\"PDF\">\r\n\r\n            {% elseif ext in ['jpg','jpeg','png','gif','webp'] %}\r\n              <img src=\"/sjvn/sites/default/files/2026-02/Black%20and%20white%20image%20file%20icon.png\"\r\n                   width=\"128\" height=\"128\" loading=\"lazy\" alt=\"Image\">\r\n\r\n            {% else %}\r\n              <img src=\"/sjvn/sites/default/files/2026-02/Black%20and%20white%20link%20icon.png\"\r\n                   width=\"128\" height=\"128\" loading=\"lazy\" alt=\"Link\">\r\n            {% endif %}\r\n\r\n            {{ title }}\r\n          </a>\r\n        </p>\r\n\r\n        <div>\r\n          <a href=\"{{ file_url }}\" target=\"_blank\" class=\"btn pdf-btn\">\r\n            {% if ext == 'pdf' %}\r\n              View PDF\r\n            {% elseif ext in ['jpg','jpeg','png','gif','webp'] %}\r\n              View Image\r\n            {% else %}\r\n              View Link\r\n            {% endif %}\r\n          </a>\r\n        </div>\r\n\r\n      </li>\r\n    {% endif %}\r\n\r\n  </ul>\r\n</div>\r\n"
+            text: "<div class=\"report-div report-3\">\r\n  <ul class=\"result-list\">\r\n\r\n    {% set file_url = '' %}\r\n    {% set ext = '' %}\r\n\r\n    {% if field_file_upload is not empty %}\r\n      {% set file_url = field_file_upload|striptags|trim %}\r\n      {% set ext = file_url|split('.')|last|lower %}\r\n    {% elseif field_link is not empty %}\r\n      {% set file_url = field_link|striptags|trim %}\r\n      {% set ext = 'link' %}\r\n    {% endif %}\r\n\r\n    {% if file_url %}\r\n      <li>\r\n\r\n          <div class=\"message-item-info\">\r\n\r\n            {% if ext == 'pdf' %}\r\n              <img src=\"/sjvn/sites/default/files/2025-10/pdffileicon.png\"\r\n                   width=\"128\" height=\"128\" loading=\"lazy\" alt=\"PDF icon\">\r\n\r\n            {% elseif ext in ['jpg','jpeg','png','gif','webp'] %}\r\n              <img src=\"/sjvn/sites/default/files/2026-02/Black%20and%20white%20image%20file%20icon.png\"\r\n                   width=\"128\" height=\"128\" loading=\"lazy\" alt=\"Image img\">\r\n\r\n            {% else %}\r\n              <img src=\"/sjvn/sites/default/files/2026-02/Black%20and%20white%20link%20icon.png\"\r\n                   width=\"128\" height=\"128\" loading=\"lazy\" alt=\"Link img\">\r\n            {% endif %}\r\n\r\n           <h3>{{ title }}</h3> \r\n          </div>\r\n\r\n        <div class=\"d-flex view-pdf-btn justify-content-center\">\r\n          <a href=\"{{ file_url }}\" target=\"_blank\" class=\"btn pdf-btn d-flex align-items-center justify-content-center\">\r\n            {% if ext == 'pdf' %}\r\n              View PDF\r\n            {% elseif ext in ['jpg','jpeg','png','gif','webp'] %}\r\n              View Image\r\n            {% else %}\r\n              View Link\r\n            {% endif %}\r\n          </a>\r\n        </div>\r\n\r\n      </li>\r\n    {% endif %}\r\n\r\n  </ul>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
