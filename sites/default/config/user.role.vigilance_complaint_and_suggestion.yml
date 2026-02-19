@@ -1,0 +1,9 @@
+uuid: 61836a75-7bdf-43e5-850c-1bd05a887795
+langcode: en
+status: true
+dependencies: {  }
+id: vigilance_complaint_and_suggestion
+label: 'Vigilance Complaint and Suggestion'
+weight: -1
+is_admin: null
+permissions: {  }

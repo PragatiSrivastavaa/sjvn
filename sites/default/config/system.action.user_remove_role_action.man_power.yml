@@ -1,0 +1,14 @@
+uuid: b3387cf5-092d-45a3-8630-62446091682f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.man_power
+  module:
+    - user
+id: user_remove_role_action.man_power
+label: 'Remove the Man Power role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: man_power

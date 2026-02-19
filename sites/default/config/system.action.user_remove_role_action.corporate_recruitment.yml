@@ -1,0 +1,14 @@
+uuid: 4af6c7ef-8d9f-4420-8a9e-5c304e02c799
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.corporate_recruitment
+  module:
+    - user
+id: user_remove_role_action.corporate_recruitment
+label: 'Remove the Corporate Recruitment role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: corporate_recruitment

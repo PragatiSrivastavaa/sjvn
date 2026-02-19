@@ -1,0 +1,14 @@
+uuid: f09b2d13-e44f-4268-ab16-d44c0f2e863c
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.corporate_planning
+  module:
+    - user
+id: user_remove_role_action.corporate_planning
+label: 'Remove the Corporate Planning role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: corporate_planning

@@ -1,0 +1,14 @@
+uuid: 228fe327-8248-4b39-a81b-d6673baff94a
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.power_trading
+  module:
+    - user
+id: user_remove_role_action.power_trading
+label: 'Remove the Power Trading role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: power_trading

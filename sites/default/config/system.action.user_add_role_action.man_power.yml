@@ -1,0 +1,14 @@
+uuid: 058f845c-1555-484f-96e4-f8b65020a6d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.man_power
+  module:
+    - user
+id: user_add_role_action.man_power
+label: 'Add the Man Power role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: man_power

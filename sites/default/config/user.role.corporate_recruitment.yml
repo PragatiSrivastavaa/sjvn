@@ -1,0 +1,9 @@
+uuid: 74a61e08-bb21-4a29-bb95-c084722597a3
+langcode: en
+status: true
+dependencies: {  }
+id: corporate_recruitment
+label: 'Corporate Recruitment'
+weight: 6
+is_admin: null
+permissions: {  }

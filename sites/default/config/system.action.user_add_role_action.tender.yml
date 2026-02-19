@@ -1,0 +1,14 @@
+uuid: 37c9229a-cdb1-4269-ac7a-76bf996292b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.tender
+  module:
+    - user
+id: user_add_role_action.tender
+label: 'Add the Tender role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: tender

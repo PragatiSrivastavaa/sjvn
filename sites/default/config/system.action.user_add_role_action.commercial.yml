@@ -1,0 +1,14 @@
+uuid: dc400746-592f-45cd-b56a-e4b539529d8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.commercial
+  module:
+    - user
+id: user_add_role_action.commercial
+label: 'Add the Commercial role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: commercial

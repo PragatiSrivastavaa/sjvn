@@ -1,0 +1,14 @@
+uuid: 3d253b57-c31b-46d1-9b1d-57cfd9a32c13
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.commercial
+  module:
+    - user
+id: user_remove_role_action.commercial
+label: 'Remove the Commercial role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: commercial

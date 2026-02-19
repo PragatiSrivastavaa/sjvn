@@ -1,0 +1,14 @@
+uuid: 628e7a1b-0452-44e6-bb03-6f9c4981de8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.vigilance
+  module:
+    - user
+id: user_add_role_action.vigilance
+label: 'Add the Vigilance role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: vigilance

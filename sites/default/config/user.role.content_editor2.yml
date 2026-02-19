@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: content_editor2
-label: 'Content editor2'
-weight: 4
+label: SGEL
+weight: -6
 is_admin: null
 permissions: {  }
