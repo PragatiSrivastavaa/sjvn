@@ -1,9 +1,37 @@
 uuid: cac7d864-e456-49fa-9f5b-4c7d49ea9d95
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+    - node.type.tender
+    - taxonomy.vocabulary.contract_unit
+  module:
+    - block_content
+    - content_translation
+    - filter
+    - node
+    - quick_node_clone
+    - system
+    - taxonomy
+    - toolbar
 id: tender
 label: Tender
 weight: -5
 is_admin: null
-permissions: {  }
+permissions:
+  - 'access block library'
+  - 'access content overview'
+  - 'access toolbar'
+  - 'clone own tender content'
+  - 'clone tender content'
+  - 'create content translations'
+  - 'create tender content'
+  - 'edit own tender content'
+  - 'edit terms in contract_unit'
+  - 'translate tender node'
+  - 'update content translations'
+  - 'use text format full_html'
+  - 'view own unpublished content'
+  - 'view tender revisions'
+  - 'view the administration theme'
