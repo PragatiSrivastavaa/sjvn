@@ -24,7 +24,10 @@ function sjvn_term_access_node_access(NodeInterface $node, $op, AccountInterface
     if ($node->hasField('field_vender_list') && !$node->get('field_vender_list')->isEmpty()) {
         foreach ($node->get('field_vender_list') as $item) {
             if ($item->target_id == $account->id()) {
-                return AccessResult::allowed()->cachePerUser()->addCacheableDependency($node);
+                // Ensure delete access is NOT granted via this check.
+                if ($op !== 'delete') {
+                    return AccessResult::allowed()->cachePerUser()->addCacheableDependency($node);
+                }
             }
         }
     }
@@ -52,7 +55,10 @@ function sjvn_term_access_node_access(NodeInterface $node, $op, AccountInterface
             }
             
             if (array_intersect($node_cu_ids, $user_cu_ids)) {
-                return AccessResult::allowed()->cachePerUser()->addCacheableDependency($node);
+                // Ensure delete access is NOT granted via this check.
+                if ($op !== 'delete') {
+                    return AccessResult::allowed()->cachePerUser()->addCacheableDependency($node);
+                }
             }
         }
     }
