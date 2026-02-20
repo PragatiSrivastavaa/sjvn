@@ -1,9 +1,30 @@
 uuid: 61836a75-7bdf-43e5-850c-1bd05a887795
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+    - filter.format.restricted_html
+  module:
+    - block_content
+    - content_translation
+    - filter
+    - node
+    - system
+    - taxonomy
+    - toolbar
 id: vigilance_complaint_and_suggestion
 label: 'Vigilance Complaint and Suggestion'
 weight: -1
 is_admin: null
-permissions: {  }
+permissions:
+  - 'access block library'
+  - 'access content overview'
+  - 'access toolbar'
+  - 'administer taxonomy'
+  - 'create content translations'
+  - 'update content translations'
+  - 'use text format full_html'
+  - 'use text format restricted_html'
+  - 'view own unpublished content'
+  - 'view the administration theme'

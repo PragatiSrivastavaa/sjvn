@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.full_html
+    - filter.format.restricted_html
     - node.type.tender
     - taxonomy.vocabulary.contract_unit
   module:
@@ -23,6 +24,7 @@ permissions:
   - 'access block library'
   - 'access content overview'
   - 'access toolbar'
+  - 'administer taxonomy'
   - 'clone own tender content'
   - 'clone tender content'
   - 'create content translations'
@@ -32,6 +34,7 @@ permissions:
   - 'translate tender node'
   - 'update content translations'
   - 'use text format full_html'
+  - 'use text format restricted_html'
   - 'view own unpublished content'
   - 'view tender revisions'
   - 'view the administration theme'

@@ -1,9 +1,30 @@
 uuid: 0282ec4d-1870-48c9-ab75-172e5140d211
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+    - filter.format.restricted_html
+  module:
+    - block_content
+    - content_translation
+    - filter
+    - node
+    - system
+    - taxonomy
+    - toolbar
 id: corporate_monitoring
 label: 'Corporate Monitoring'
 weight: -2
 is_admin: null
-permissions: {  }
+permissions:
+  - 'access block library'
+  - 'access content overview'
+  - 'access toolbar'
+  - 'administer taxonomy'
+  - 'create content translations'
+  - 'update content translations'
+  - 'use text format full_html'
+  - 'use text format restricted_html'
+  - 'view own unpublished content'
+  - 'view the administration theme'

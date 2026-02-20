@@ -74,7 +74,6 @@ dependencies:
     - field_ui
     - file
     - filter
-    - flipbook
     - media
     - menu_link_content
     - node
@@ -102,9 +101,7 @@ permissions:
   - 'access media overview'
   - 'access pbt settings'
   - 'access toolbar'
-  - 'add contact entity'
   - 'administer block_content form display'
-  - 'administer flipbook entity'
   - 'administer media'
   - 'administer media types'
   - 'administer taxonomy'
@@ -272,7 +269,6 @@ permissions:
   - 'edit any video media'
   - 'edit any video_gallery content'
   - 'edit any webform content'
-  - 'edit flipbook entity'
   - 'edit own article content'
   - 'edit own audio media'
   - 'edit own board_of_directors content'
@@ -442,7 +438,6 @@ permissions:
   - 'view empanelled_hospital revisions'
   - 'view energy_bill revisions'
   - 'view faq revisions'
-  - 'view flipbook entity'
   - 'view home_banner revisions'
   - 'view investor_relations revisions'
   - 'view key_executive revisions'
