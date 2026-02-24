@@ -1,16 +1,20 @@
-uuid: c0e141ce-6611-4ccd-9ff9-77db1433e8b6
+uuid: 69fa354c-0814-4492-9e30-473697d68e4e
 langcode: en
 status: true
 dependencies:
   module:
-    - link
+    - file
     - node
 id: node.field_loa
 field_name: field_loa
 entity_type: node
-type: link
-settings: {  }
-module: link
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+module: file
 locked: false
 cardinality: 1
 translatable: true

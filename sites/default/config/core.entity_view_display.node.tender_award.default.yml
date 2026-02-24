@@ -9,12 +9,12 @@ dependencies:
     - field.field.node.tender_award.field_loa
     - field.field.node.tender_award.field_mode_of_tendering
     - field.field.node.tender_award.field_remark
-    - field.field.node.tender_award.field_sr_n
+    - field.field.node.tender_award.field_tender_title
     - field.field.node.tender_award.field_value_rs
     - node.type.tender_award
   module:
     - datetime
-    - link
+    - file
     - text
     - user
 id: node.tender_award.default
@@ -48,16 +48,12 @@ content:
     weight: 102
     region: content
   field_loa:
-    type: link
+    type: file_default
     label: above
     settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
+      use_description_as_link_text: true
     third_party_settings: {  }
-    weight: 105
+    weight: 108
     region: content
   field_mode_of_tendering:
     type: entity_reference_label
@@ -73,14 +69,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 106
-    region: content
-  field_sr_n:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 108
     region: content
   field_value_rs:
     type: string

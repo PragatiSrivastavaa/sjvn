@@ -9,7 +9,6 @@ dependencies:
     - field.storage.node.field_loa
     - field.storage.node.field_mode_of_tendering
     - field.storage.node.field_remark
-    - field.storage.node.field_sr_n
     - field.storage.node.field_tender_number
     - field.storage.node.field_tender_title
     - field.storage.node.field_value_rs
@@ -18,7 +17,7 @@ dependencies:
   module:
     - better_exposed_filters
     - datetime
-    - link
+    - file
     - node
     - taxonomy
     - text
@@ -293,73 +292,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_loa:
-          id: field_loa
-          table: node__field_loa
-          field: field_loa
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: uri
-          type: link
-          settings:
-            trim_length: 80
-            url_only: false
-            url_plain: false
-            rel: '0'
-            target: _blank
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
         field_mode_of_tendering:
           id: field_mode_of_tendering
           table: node__field_mode_of_tendering
@@ -548,69 +480,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_sr_n:
-          id: field_sr_n
-          table: node__field_sr_n
-          field: field_sr_n
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
         field_tender_title:
           id: field_tender_title
           table: node__field_tender_title
@@ -736,6 +605,68 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field_loa:
+          id: field_loa
+          table: node__field_loa
+          field: field_loa
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: file_url_plain
+          settings: {  }
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         nothing:
           id: nothing
           table: views
@@ -748,7 +679,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<tr>\r\n                            <td> {{ field_sr_n }} </td>\r\n                            <td>\r\n                                {{ body }}\r\n                            </td>\r\n                            <td> {{ field_date_of_nit }} </td>\r\n                            <td> {{ field_date_of_award }} </td>\r\n                            <td>{{ title }}</td>\r\n                            <td> {{ field_value_rs }}</td>\r\n                            <td>{{ field_mode_of_tendering }}</td>\r\n                            <td>\r\n                                        {{ field_loa }}\r\n                            </td>\r\n                            <td> {{ field_remark }} </td>\r\n                            <td> {{ field_tender_title }} </td>\r\n                            <td> {{ field_tender_number }} </td>\r\n                        </tr>"
+            text: "<tr>\r\n                            <td>\r\n                                {{ body }}\r\n                            </td>\r\n                            <td> {{ field_date_of_nit }} </td>\r\n                            <td> {{ field_date_of_award }} </td>\r\n                            <td>{{ title }}</td>\r\n                            <td> {{ field_value_rs }}</td>\r\n                            <td>{{ field_mode_of_tendering }}</td>\r\n                            <td>\r\n<a href=\" {{ field_loa }}\">View</a>\r\n\r\n                                       \r\n                            </td>\r\n                            <td> {{ field_remark }} </td>\r\n                            <td> {{ field_tender_title }} </td>\r\n                            <td> {{ field_tender_number }} </td>\r\n                        </tr>"
             make_link: false
             path: ''
             absolute: false
@@ -1207,7 +1138,7 @@ display:
           admin_label: ''
           plugin_id: text_custom
           empty: true
-          content: "<table class=\"table\">\r\n            <thead>\r\n                <tr>\r\n                    <th> Sr No </th>\r\n                    <th> Name of Work </th>\r\n                    <th> Date of NIT </th>\r\n                    <th> Date of Award </th>\r\n                    <th> Name of Agency </th>\r\n                    <th> Value (Rs) </th>\r\n                    <th> Mode Of Tendering </th>\r\n                    <th> LOA </th>\r\n                    <th> Remark </th>\r\n                    <th> Tender </th>\r\n                    <th> Tender No </th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>"
+          content: "<table class=\"table\">\r\n            <thead>\r\n                <tr>\r\n                    <th> Name of Work </th>\r\n                    <th> Date of NIT </th>\r\n                    <th> Date of Award </th>\r\n                    <th> Name of Agency </th>\r\n                    <th> Value (Rs) </th>\r\n                    <th> Mode Of Tendering </th>\r\n                    <th> LOA </th>\r\n                    <th> Remark </th>\r\n                    <th> Tender </th>\r\n                    <th> Tender No </th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>"
           tokenize: false
       footer:
         area_text_custom:
@@ -1238,7 +1169,6 @@ display:
         - 'config:field.storage.node.field_loa'
         - 'config:field.storage.node.field_mode_of_tendering'
         - 'config:field.storage.node.field_remark'
-        - 'config:field.storage.node.field_sr_n'
         - 'config:field.storage.node.field_tender_number'
         - 'config:field.storage.node.field_tender_title'
         - 'config:field.storage.node.field_value_rs'
@@ -1266,7 +1196,6 @@ display:
         - 'config:field.storage.node.field_loa'
         - 'config:field.storage.node.field_mode_of_tendering'
         - 'config:field.storage.node.field_remark'
-        - 'config:field.storage.node.field_sr_n'
         - 'config:field.storage.node.field_tender_number'
         - 'config:field.storage.node.field_tender_title'
         - 'config:field.storage.node.field_value_rs'
