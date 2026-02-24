@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_published_tender
+    - node.type.tender_award
+  module:
+    - options
+id: node.tender_award.field_is_published_tender
+field_name: field_is_published_tender
+entity_type: node
+bundle: tender_award
+label: 'Published Tender?'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: no
+default_value_callback: ''
+settings: {  }
+field_type: list_string

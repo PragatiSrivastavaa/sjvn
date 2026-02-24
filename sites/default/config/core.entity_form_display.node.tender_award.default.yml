@@ -6,16 +6,20 @@ dependencies:
     - field.field.node.tender_award.body
     - field.field.node.tender_award.field_date_of_award
     - field.field.node.tender_award.field_date_of_nit
+    - field.field.node.tender_award.field_is_published_tender
     - field.field.node.tender_award.field_loa
     - field.field.node.tender_award.field_mode_of_tendering
     - field.field.node.tender_award.field_remark
+    - field.field.node.tender_award.field_tender_number
     - field.field.node.tender_award.field_tender_title
+    - field.field.node.tender_award.field_tender_title_manual
     - field.field.node.tender_award.field_value_rs
     - node.type.tender_award
   module:
     - content_moderation
     - datetime
     - file
+    - options
     - path
     - text
 id: node.tender_award.default
@@ -72,11 +76,37 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-  field_tender_title:
-    type: options_select
-    weight: 2
+  field_is_published_tender:
+    type: options_buttons
+    weight: 1
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_tender_title:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_tender_title_manual:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_tender_number:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_value_rs:
     type: string_textfield

@@ -4,6 +4,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\node\Entity\Node;
+use Drupal\Core\Entity\Element\EntityAutocomplete;
 
 /**
  * Implements hook_config_schema_info_alter().
@@ -105,79 +106,144 @@ function sjvn_custom_form_node_tender_award_edit_form_alter(&$form, FormStateInt
 }
 
 /**
- * Helper to add AJAX callback on Tender Title and show Tender Number.
+ * Helper to add AJAX and bidirectonal search on Tender Award fields.
  */
 function _sjvn_custom_tender_award_ajax(&$form, FormStateInterface $form_state) {
-  if (!isset($form['field_tender_title'])) {
+  if (!isset($form['field_tender_title']) || !isset($form['field_is_published_tender'])) {
     return;
   }
 
-  // Add AJAX callback on the Tender Title select field.
-  $form['field_tender_title']['widget']['#ajax'] = [
-    'callback' => '_sjvn_custom_tender_number_ajax_callback',
-    'event' => 'change',
-    'wrapper' => 'tender-number-display-wrapper',
-    'progress' => [
-      'type' => 'throbber',
-      'message' => t('Loading tender number...'),
-    ],
+  // Wrap relevant fields in a container for AJAX replacement.
+  $form['tender_fields_wrapper'] = [
+    '#type' => 'container',
+    '#attributes' => ['id' => 'tender-award-fields-wrapper'],
+    '#weight' => $form['field_is_published_tender']['#weight'] + 1,
   ];
 
-  // Determine the currently selected tender node ID.
-  // For options_select widget, the value is stored differently.
-  $tender_nid = $form_state->getValue(['field_tender_title', 0, 'target_id']);
-  if (empty($tender_nid)) {
-    // options_select stores value as a flat array.
-    $val = $form_state->getValue('field_tender_title');
-    if (is_array($val) && !empty($val[0]['target_id'])) {
-      $tender_nid = $val[0]['target_id'];
-    }
-    elseif (is_numeric($val)) {
-      $tender_nid = $val;
-    }
-  }
+  // Move fields into the wrapper.
+  $form['tender_fields_wrapper']['field_is_published_tender'] = $form['field_is_published_tender'];
+  unset($form['field_is_published_tender']);
 
-  // On initial load (edit form), get from the default value.
-  if (empty($tender_nid) && !empty($form['field_tender_title']['widget']['#default_value'])) {
-    $default = $form['field_tender_title']['widget']['#default_value'];
-    if (is_array($default)) {
-      $tender_nid = reset($default);
-    }
-    else {
-      $tender_nid = $default;
-    }
-  }
+  $form['tender_fields_wrapper']['field_tender_title'] = $form['field_tender_title'];
+  unset($form['field_tender_title']);
 
-  // Ensure we have a valid numeric NID (not '_none').
-  if ($tender_nid === '_none' || !is_numeric($tender_nid)) {
-    $tender_nid = NULL;
-  }
+  $form['tender_fields_wrapper']['field_tender_title_manual'] = $form['field_tender_title_manual'] ?? [];
+  unset($form['field_tender_title_manual']);
 
-  // Fetch the tender number from the referenced tender node.
-  $tender_number = '';
-  if (!empty($tender_nid)) {
-    $tender_node = Node::load($tender_nid);
-    if ($tender_node && $tender_node->hasField('field_tender_number') && !$tender_node->get('field_tender_number')->isEmpty()) {
-      $tender_number = $tender_node->get('field_tender_number')->value;
-    }
-  }
+  $form['tender_fields_wrapper']['field_tender_number'] = $form['field_tender_number'];
+  unset($form['field_tender_number']);
 
-  // Add a read-only markup field to display the Tender Number.
-  $form['tender_number_display'] = [
-    '#type' => 'item',
-    '#title' => t('Tender No'),
-    '#markup' => '<div id="tender-number-value">' . (!empty($tender_number) ? \Drupal\Component\Utility\Html::escape($tender_number) : t('--')) . '</div>',
-    '#prefix' => '<div id="tender-number-display-wrapper">',
-    '#suffix' => '</div>',
-    '#weight' => $form['field_tender_title']['#weight'] + 0.5,
+  // 1. AJAX for Is Published Tender toggling.
+  $form['tender_fields_wrapper']['field_is_published_tender']['widget']['#ajax'] = [
+    'callback' => '_sjvn_custom_tender_award_full_ajax_callback',
+    'wrapper' => 'tender-award-fields-wrapper',
   ];
+
+  $is_published = $form_state->getValue(['field_is_published_tender', 0, 'value']) ?: 
+                  ($form['tender_fields_wrapper']['field_is_published_tender']['widget']['#default_value'][0] ?? 'no');
+
+  // 2. States for visibility.
+  $form['tender_fields_wrapper']['field_tender_title']['#states'] = [
+    'visible' => [':input[name="field_is_published_tender"]' => ['value' => 'yes']],
+  ];
+  $form['tender_fields_wrapper']['field_tender_title_manual']['#states'] = [
+    'visible' => [':input[name="field_is_published_tender"]' => ['value' => 'no']],
+  ];
+
+  // 3. Bidirectional AJAX.
+  // A. Title -> Number
+  if (isset($form['tender_fields_wrapper']['field_tender_title']['widget'][0]['target_id'])) {
+    $form['tender_fields_wrapper']['field_tender_title']['widget'][0]['target_id']['#ajax'] = [
+      'callback' => '_sjvn_custom_tender_award_full_ajax_callback',
+      'wrapper' => 'tender-award-fields-wrapper',
+      'event' => 'change',
+    ];
+  }
+
+  // B. Number -> Title (Only if Published)
+  if ($is_published === 'yes' && isset($form['tender_fields_wrapper']['field_tender_number']['widget'][0]['value'])) {
+    $form['tender_fields_wrapper']['field_tender_number']['widget'][0]['value']['#ajax'] = [
+      'callback' => '_sjvn_custom_tender_award_full_ajax_callback',
+      'wrapper' => 'tender-award-fields-wrapper',
+      'event' => 'change',
+    ];
+  }
+
+  // Determine values based on user input or existing data.
+  $user_input = $form_state->getUserInput();
+  $triggering_element = $form_state->getTriggeringElement();
+  $trig_name = $triggering_element ? end($triggering_element['#parents']) : '';
+  
+  // Logic: If 'Is Published' was changed to 'No', clear the auto-fetched fields.
+  if ($trig_name === 'field_is_published_tender' && $is_published === 'no') {
+    $form['tender_fields_wrapper']['field_tender_number']['widget'][0]['value']['#value'] = '';
+    $form_state->setValue('field_tender_number', []);
+    $form_state->setValue('field_tender_title', []);
+    return;
+  }
+
+  // Try to get the ID from various sources.
+  $title_input = $user_input['field_tender_title'][0]['target_id'] 
+    ?? $form_state->getValue(['field_tender_title', 0, 'target_id']);
+  
+  $tender_nid = NULL;
+  if (is_numeric($title_input)) {
+    $tender_nid = (int) $title_input;
+  }
+  elseif (is_string($title_input) && !empty($title_input)) {
+    $tender_nid = EntityAutocomplete::extractEntityIdFromAutocompleteInput($title_input);
+    if (!$tender_nid) {
+      $clean_title = trim($title_input, " \t\n\r\0\x0B\"'");
+      $title_query = \Drupal::entityQuery('node')
+        ->condition('type', 'tender')
+        ->condition('title', $clean_title)
+        ->accessCheck(FALSE)
+        ->range(0, 1);
+      $title_nids = $title_query->execute();
+      if ($title_nids) {
+        $tender_nid = reset($title_nids);
+      }
+    }
+  }
+
+  // Logic: If Number was changed, try to find matching Title.
+  if ($trig_name === 'value' && in_array('field_tender_number', $triggering_element['#parents'])) {
+    $tender_number = $form_state->getValue(['field_tender_number', 0, 'value']);
+    if (!empty($tender_number)) {
+      $query = \Drupal::entityQuery('node')
+        ->condition('type', 'tender')
+        ->condition('field_tender_number', $tender_number)
+        ->accessCheck(FALSE)
+        ->range(0, 1);
+      if ($nids = $query->execute()) {
+        $found_nid = reset($nids);
+        if ($node = Node::load($found_nid)) {
+          // Clean display: No ID in brackets.
+          $form['tender_fields_wrapper']['field_tender_title']['widget'][0]['target_id']['#value'] = $node->label();
+          $form_state->setValue('field_tender_title', [['target_id' => $found_nid]]);
+        }
+      }
+    }
+  }
+  // Logic: If Title was changed, fetch Number.
+  elseif ($tender_nid) {
+    if ($tender_node = Node::load($tender_nid)) {
+      if ($tender_node->hasField('field_tender_number')) {
+        $fetched_number = $tender_node->get('field_tender_number')->value;
+        $form['tender_fields_wrapper']['field_tender_number']['widget'][0]['value']['#value'] = $fetched_number;
+        $form_state->setValue('field_tender_number', [['value' => $fetched_number]]);
+      }
+      // Attempt to strip the (NID) for cleaner UI during the AJAX callback.
+      $form['tender_fields_wrapper']['field_tender_title']['widget'][0]['target_id']['#value'] = $tender_node->label();
+    }
+  }
 }
 
 /**
- * AJAX callback to return the updated tender number display.
+ * AJAX callback to return the entire tender fields wrapper.
  */
-function _sjvn_custom_tender_number_ajax_callback(array &$form, FormStateInterface $form_state) {
-  return $form['tender_number_display'];
+function _sjvn_custom_tender_award_full_ajax_callback(array &$form, FormStateInterface $form_state) {
+  return $form['tender_fields_wrapper'];
 }
 
 /**
