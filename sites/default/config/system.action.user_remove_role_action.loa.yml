@@ -1,0 +1,14 @@
+uuid: f4053c13-3546-4832-abbb-64dbfc7b8602
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.loa
+  module:
+    - user
+id: user_remove_role_action.loa
+label: 'Remove the LOA role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: loa

@@ -5,3 +5,10 @@ sjvn_custom.orgchart_translate:
     _title: 'Translate Orgchart'
   requirements:
     _permission: 'translate configuration'
+
+sjvn_custom.tender_award_loa:
+  path: '/tender-award/loa/{node}'
+  defaults:
+    _controller: '\Drupal\sjvn_custom\Controller\TenderAwardLoaController::download'
+  requirements:
+    _entity_access: 'node.view'

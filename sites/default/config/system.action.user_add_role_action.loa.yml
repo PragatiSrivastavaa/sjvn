@@ -1,0 +1,14 @@
+uuid: b96b0446-e301-481e-97c4-9c330fda8a27
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.loa
+  module:
+    - user
+id: user_add_role_action.loa
+label: 'Add the LOA role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: loa

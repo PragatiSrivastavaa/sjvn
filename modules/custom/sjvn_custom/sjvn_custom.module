@@ -538,6 +538,49 @@ function sjvn_custom_entity_field_access($operation, \Drupal\Core\Field\FieldDef
       return \Drupal\Core\Access\AccessResult::allowed()->cachePerPermissions();
     }
   }
+
+  // Restrict view access to field_loa (LOA Document) in tender_award content type.
+  if ($operation === 'view' && $field_definition->getName() === 'field_loa') {
+    if ($field_definition->getTargetEntityTypeId() === 'node') {
+      // Staff (admins/editors) should see this.
+      // Also allow users with the specific 'loa' role if they are the "LOA user".
+      if ($account->hasPermission('bypass node access') || 
+          in_array('administrator', $account->getRoles()) || 
+          in_array('content_editor', $account->getRoles())) {
+        return \Drupal\Core\Access\AccessResult::neutral();
+      }
+
+      if ($items) {
+        $node = $items->getEntity();
+        if ($node instanceof \Drupal\node\NodeInterface && $node->getType() === 'tender_award') {
+          // 1. Check if user is in the 'vender_list' of the parent Tender.
+          if ($node->hasField('field_tender_title') && !$node->get('field_tender_title')->isEmpty()) {
+            $tender = $node->get('field_tender_title')->entity;
+            if ($tender && $tender->hasField('field_vender_list')) {
+              foreach ($tender->get('field_vender_list') as $item) {
+                if ($item->target_id == $account->id()) {
+                  return \Drupal\Core\Access\AccessResult::allowed()
+                    ->addCacheableDependency($node)
+                    ->addCacheableDependency($tender)
+                    ->cachePerUser();
+                }
+              }
+            }
+          }
+
+          // 2. Fallback: If user has 'loa' role, maybe they should see it?
+          // (Keeping this secondary if it's meant to be role-based).
+          if (in_array('loa', $account->getRoles())) {
+             return \Drupal\Core\Access\AccessResult::allowed()->cachePerUser();
+          }
+
+          // If not authorized staff or the assigned vendor, forbid field access.
+          return \Drupal\Core\Access\AccessResult::forbidden()->addCacheableDependency($node);
+        }
+      }
+    }
+  }
+
   return \Drupal\Core\Access\AccessResult::neutral();
 }
 

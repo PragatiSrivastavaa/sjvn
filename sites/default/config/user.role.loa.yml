@@ -1,0 +1,9 @@
+uuid: 609b25f3-8ce8-4e2e-8be2-5035df7d884a
+langcode: en
+status: true
+dependencies: {  }
+id: loa
+label: LOA
+weight: 10
+is_admin: null
+permissions: {  }
