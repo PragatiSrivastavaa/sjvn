@@ -1118,3 +1118,8 @@ Stack trace:
 #19 [internal function]: Drush\Boot\DrupalBoot8->terminate()
 #20 {main}
   thrown in /home/u4vhfz3nt3v5/public_html/sjvn/core/modules/mysql/src/Driver/Database/mysql/ExceptionHandler.php on line 56
+[24-Feb-2026 08:47:20 Europe/Berlin] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[24-Feb-2026 08:47:36 Europe/Berlin] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[24-Feb-2026 08:47:36 Europe/Berlin] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[24-Feb-2026 08:47:41 Europe/Berlin] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583
+[24-Feb-2026 08:47:42 Europe/Berlin] Uncaught PHP Exception UnexpectedValueException: "External URLs do not have internal route parameters." at /home/u4vhfz3nt3v5/public_html/sjvn/core/lib/Drupal/Core/Url.php line 583

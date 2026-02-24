@@ -318,7 +318,7 @@ display:
                 advanced:
                   sort_options: false
                   rewrite:
-                    filter_rewrite_values: "- Any - |\r\nOperation |\r\nPre-Construction |\r\nSurvey & Investigation |"
+                    filter_rewrite_values: "- Any - |\r\nPre-Construction |\r\nSurvey & Investigation |"
                     filter_rewrite_values_key: false
                   collapsible: false
                   collapsible_disable_automatic_open: false
