@@ -55,6 +55,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_is_published_tender:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_loa:
     type: file_generic
     weight: 101
@@ -76,11 +82,13 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-  field_is_published_tender:
-    type: options_buttons
-    weight: 1
+  field_tender_number:
+    type: string_textfield
+    weight: 4
     region: content
-    settings: {  }
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_tender_title:
     type: entity_reference_autocomplete
@@ -95,14 +103,6 @@ content:
   field_tender_title_manual:
     type: string_textfield
     weight: 3
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_tender_number:
-    type: string_textfield
-    weight: 4
     region: content
     settings:
       size: 60

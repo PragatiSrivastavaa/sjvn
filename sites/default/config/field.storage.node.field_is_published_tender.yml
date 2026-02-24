@@ -1,3 +1,4 @@
+uuid: d91eb94a-7b30-487b-93c1-8dfe72b7771e
 langcode: en
 status: true
 dependencies:
@@ -11,11 +12,11 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: no
-      label: No
+      value: 'no'
+      label: 'No'
     -
-      value: yes
-      label: Yes
+      value: 'yes'
+      label: 'Yes'
   allowed_values_function: ''
 module: options
 locked: false

@@ -40,7 +40,6 @@ dependencies:
     - 'taxonomy_term:category:f3f808b9-53a0-463a-a938-3a92702fdd71'
     - 'taxonomy_term:category:f688c650-0e35-43fb-b2f7-3da331ac8f5c'
     - 'taxonomy_term:category:ff3d4c19-e64d-47ef-991b-4ab9a71fb079'
-    - 'taxonomy_term:hospital_specialties:680f1710-c461-470d-aa27-dd494d76de8c'
   module:
     - file
     - link
@@ -500,7 +499,7 @@ display:
           empty_zero: false
           hide_alter_empty: false
       pager:
-        type: mini
+        type: full
         options:
           offset: 0
           pagination_heading_level: h4
@@ -508,8 +507,10 @@ display:
           total_pages: null
           id: 0
           tags:
-            next: ››
-            previous: ‹‹
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -518,6 +519,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+          quantity: 9
       exposed_form:
         type: basic
         options:
@@ -700,7 +702,7 @@ display:
           plugin_id: taxonomy_index_tid
           operator: or
           value:
-            - 356
+            - 377
           group: 1
           exposed: false
           expose:
