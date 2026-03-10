@@ -662,3 +662,38 @@ function sjvn_custom_node_access(\Drupal\node\NodeInterface $node, $op, \Drupal\
   }
   return \Drupal\Core\Access\AccessResult::neutral();
 }
+
+/**
+ * Implements hook_csv_importer_pre_import().
+ * 
+ * Maps term names to term IDs for 'field_mode_of_tendering' during CSV upload.
+ */
+function sjvn_custom_csv_importer_pre_import(&$data) {
+  if (empty($data['content'])) {
+    return;
+  }
+
+  $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+
+  foreach ($data['content'] as &$row) {
+    if (!empty($row['field_mode_of_tendering']) && is_string($row['field_mode_of_tendering'])) {
+      $term_name = trim($row['field_mode_of_tendering']);
+      
+      // Attempt to load the term by name in the 'mode_of_tendering' vocabulary.
+      $terms = $term_storage->loadByProperties([
+        'name' => $term_name,
+        'vid' => 'mode_of_tendering',
+      ]);
+
+      if ($terms) {
+        $term = reset($terms);
+        $row['field_mode_of_tendering'] = $term->id();
+      }
+      else {
+        // Optional: If term is not found, we could log a warning or even 
+        // create the term if needed, but for now we leave it as-is (or NULL).
+        \Drupal::logger('sjvn_custom')->warning('Term not found during CSV import for Mode Of Tendering: @name', ['@name' => $term_name]);
+      }
+    }
+  }
+}
