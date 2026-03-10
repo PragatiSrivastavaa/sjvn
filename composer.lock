@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d63fd4f23a9e8c764e350f4213889225",
+    "content-hash": "4947a85789a8fa6f807e48bd60f6dcfb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2078,6 +2078,77 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/csp",
                 "issues": "https://www.drupal.org/project/issues/csp"
+            }
+        },
+        {
+            "name": "drupal/csv_importer",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/csv_importer.git",
+                "reference": "8.x-2.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/csv_importer-8.x-2.2.zip",
+                "reference": "8.x-2.2",
+                "shasum": "8c689e2f5f5f1e2ec02e2ffe61ea4b48cd9cd8c1"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "drupal/coder": "^8.3",
+                "phpro/grumphp": "^2.9",
+                "squizlabs/php_codesniffer": "^3.11",
+                "symfony/yaml": "^7.2"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.2",
+                    "datestamp": "1767616986",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Drupal\\csv_importer\\": "./src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Drupal\\Tests\\csv_importer\\": "./tests/src"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Lasha Badashvili",
+                    "homepage": "https://www.drupal.org/user/3555229",
+                    "email": "lashabp@gmail.com"
+                },
+                {
+                    "name": "lashabp",
+                    "homepage": "https://www.drupal.org/user/3382242"
+                }
+            ],
+            "description": "CSV Importer.",
+            "homepage": "https://www.drupal.org/project/csv_importer",
+            "keywords": [
+                "csv",
+                "drupal",
+                "import"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/csv_importer"
             }
         },
         {

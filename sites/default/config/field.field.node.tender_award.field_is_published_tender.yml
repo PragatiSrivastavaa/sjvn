@@ -13,7 +13,7 @@ entity_type: node
 bundle: tender_award
 label: 'Published Tender?'
 description: ''
-required: true
+required: false
 translatable: true
 default_value:
   -
