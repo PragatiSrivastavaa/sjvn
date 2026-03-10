@@ -844,7 +844,7 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: numeric
+          type: number_integer
           settings:
             thousand_separator: ''
             prefix_suffix: false

@@ -676,6 +676,17 @@ function sjvn_custom_csv_importer_pre_import(&$data) {
   $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
 
   foreach ($data['content'] as &$row) {
+    // Fix for long titles: Drupal node title column has a max length of 255 chars.
+    // Explicitly use UTF-8 to avoid mangling multi-byte (Hindi) characters.
+    if (!empty($row['title'])) {
+      // Decode HTML entities (e.g., &gt; -> >) which sometimes appear in CSV exports.
+      $row['title'] = html_entity_decode($row['title'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+      
+      if (mb_strlen($row['title'], 'UTF-8') > 255) {
+        $row['title'] = mb_substr($row['title'], 0, 252, 'UTF-8') . '...';
+      }
+    }
+
     if (!empty($row['field_mode_of_tendering']) && is_string($row['field_mode_of_tendering'])) {
       $term_name = trim($row['field_mode_of_tendering']);
       
@@ -690,8 +701,7 @@ function sjvn_custom_csv_importer_pre_import(&$data) {
         $row['field_mode_of_tendering'] = $term->id();
       }
       else {
-        // Optional: If term is not found, we could log a warning or even 
-        // create the term if needed, but for now we leave it as-is (or NULL).
+        // Optional: If term is not found, we could log a warning.
         \Drupal::logger('sjvn_custom')->warning('Term not found during CSV import for Mode Of Tendering: @name', ['@name' => $term_name]);
       }
     }
