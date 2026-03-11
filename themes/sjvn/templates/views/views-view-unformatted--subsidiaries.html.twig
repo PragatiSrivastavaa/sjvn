@@ -41,7 +41,12 @@
         <!-- SUBSIDIARIES -->
         {% if subs_rows|length > 0 %}
             <h2 class="section-title">
-                Subsidiaries
+                
+                 {% if current_language == 'hi' %}
+                 अधीनस्‍थ कंपनियां
+                  {% else %}
+                  Subsidiaries
+                  {% endif %}
             </h2>
             <div class="row g-4">
                 {% for row in subs_rows %}
@@ -57,7 +62,13 @@
         <!-- JOINT VENTURES -->
         {% if jv_rows|length > 0 %}
             <h2 class="section-title mt-5">
-                Joint Ventures
+               
+                 {% if current_language == 'hi' %}
+                  संयुक्‍त उपक्रम
+
+                  {% else %}
+                   Joint Ventures
+                  {% endif %}
             </h2>
             <div class="row justify-content-center">
                 {% for row in jv_rows %}
