@@ -68,17 +68,12 @@
     <div class="view-content">
       {{ rows }}
     </div>
-  </div>  
-  </div>
   {% elseif empty %}
     <div class="view-empty">
       {{ empty }}
     </div>
   {% endif %}
 
-  {% if pager %}
-    {{ pager }}
-  {% endif %}
   {% if attachment_after %}
     <div class="attachment attachment-after">
       {{ attachment_after }}
@@ -91,6 +86,11 @@
     <div class="view-footer">
       {{ footer }}
     </div>
+  {% endif %}
+  </div>  
+  </div>
+  {% if pager %}
+    {{ pager }}
   {% endif %}
   {% if feed_icons %}
     <div class="feed-icons">

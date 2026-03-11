@@ -6,11 +6,13 @@ dependencies:
     - field.storage.node.body
     - field.storage.node.field_date_of_award
     - field.storage.node.field_date_of_nit
+    - field.storage.node.field_is_published_tender
     - field.storage.node.field_loa
     - field.storage.node.field_mode_of_tendering
     - field.storage.node.field_remark
     - field.storage.node.field_tender_number
     - field.storage.node.field_tender_title
+    - field.storage.node.field_tender_title_manual
     - field.storage.node.field_value_rs
     - node.type.tender_award
     - taxonomy.vocabulary.mode_of_tendering
@@ -19,6 +21,7 @@ dependencies:
     - datetime
     - file
     - node
+    - options
     - taxonomy
     - text
     - user
@@ -858,6 +861,56 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        counter:
+          id: counter
+          table: views
+          field: counter
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: counter
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          counter_start: 1
         nothing:
           id: nothing
           table: views
@@ -870,7 +923,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<tr>\r\n                            <td>\r\n                                {{ body }}\r\n                            </td>\r\n                            <td> {{ field_date_of_nit }} </td>\r\n                            <td> {{ field_date_of_award }} </td>\r\n                            <td>{{ title }}</td>\r\n                            <td> {{ field_value_rs }}</td>\r\n                            <td>{{ field_mode_of_tendering }}</td>\r\n                            <td>\r\n<a href=\"{{ path('sjvn_custom.tender_award_loa', {'node': nid}) }}\">View</a>\r\n\r\n                                       \r\n                            </td>\r\n                            <td> {{ field_remark }} </td>\r\n                            <td>\r\n                              {% if field_is_published_tender == 'yes' %}\r\n                                {{ field_tender_title }}\r\n                              {% else %}\r\n                                {{ field_tender_title_manual }}\r\n                              {% endif %}\r\n                            </td>\r\n                            <td> {{ field_tender_number }} </td>\r\n                        </tr>"
+            text: "<tr> <td>\r\n                               {{ counter }}\r\n                            </td>\r\n                            <td>\r\n                                {{ body }}\r\n                            </td>\r\n                            <td> {{ field_date_of_nit }} </td>\r\n                            <td> {{ field_date_of_award }} </td>\r\n                            <td>{{ title }}</td>\r\n                            <td> {{ field_value_rs }}</td>\r\n                            <td>{{ field_mode_of_tendering }}</td>\r\n                            <td>\r\n<a href=\"{{ path('sjvn_custom.tender_award_loa', {'node': nid}) }}\">View</a>\r\n\r\n                                       \r\n                            </td>\r\n                            <td> {{ field_remark }} </td>\r\n                            <td>\r\n                              {% if field_is_published_tender == 'yes' %}\r\n                                {{ field_tender_title }}\r\n                              {% else %}\r\n                                {{ field_tender_title_manual }}\r\n                              {% endif %}\r\n                            </td>\r\n                            <td> {{ field_tender_number }} </td>\r\n                        </tr>"
             make_link: false
             path: ''
             absolute: false
@@ -908,16 +961,18 @@ display:
           empty_zero: false
           hide_alter_empty: false
       pager:
-        type: mini
+        type: full
         options:
           offset: 0
           pagination_heading_level: h4
-          items_per_page: 10
+          items_per_page: 100
           total_pages: null
           id: 0
           tags:
             next: ››
             previous: ‹‹
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -926,6 +981,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+          quantity: 9
       exposed_form:
         type: bef
         options:
@@ -1003,19 +1059,6 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        field_sr_n_value:
-          id: field_sr_n_value
-          table: node__field_sr_n
-          field: field_sr_n_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: standard
-          order: ASC
-          expose:
-            label: ''
-            field_identifier: ''
-          exposed: false
         created:
           id: created
           table: node_field_data
@@ -1329,7 +1372,7 @@ display:
           admin_label: ''
           plugin_id: text_custom
           empty: true
-          content: "<table class=\"table\">\r\n            <thead>\r\n                <tr>\r\n                    <th> Name of Work </th>\r\n                    <th> Date of NIT </th>\r\n                    <th> Date of Award </th>\r\n                    <th> Name of Agency </th>\r\n                    <th> Value (Rs) </th>\r\n                    <th> Mode Of Tendering </th>\r\n                    <th> LOA </th>\r\n                    <th> Remark </th>\r\n                    <th> Tender </th>\r\n                    <th> Tender No </th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>"
+          content: "<table class=\"table\">\r\n            <thead>\r\n                <tr>\r\n           <th>Sr No</th>\r\n                    <th> Name of Work </th>\r\n                    <th> Date of NIT </th>\r\n                    <th> Date of Award </th>\r\n                    <th> Name of Agency </th>\r\n                    <th> Value (Rs) </th>\r\n                    <th> Mode Of Tendering </th>\r\n                    <th> LOA </th>\r\n                    <th> Remark </th>\r\n                    <th> Tender </th>\r\n                    <th> Tender No </th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>"
           tokenize: false
       footer:
         area_text_custom:
@@ -1357,11 +1400,13 @@ display:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_date_of_award'
         - 'config:field.storage.node.field_date_of_nit'
+        - 'config:field.storage.node.field_is_published_tender'
         - 'config:field.storage.node.field_loa'
         - 'config:field.storage.node.field_mode_of_tendering'
         - 'config:field.storage.node.field_remark'
         - 'config:field.storage.node.field_tender_number'
         - 'config:field.storage.node.field_tender_title'
+        - 'config:field.storage.node.field_tender_title_manual'
         - 'config:field.storage.node.field_value_rs'
   page_1:
     id: page_1
@@ -1384,9 +1429,11 @@ display:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_date_of_award'
         - 'config:field.storage.node.field_date_of_nit'
+        - 'config:field.storage.node.field_is_published_tender'
         - 'config:field.storage.node.field_loa'
         - 'config:field.storage.node.field_mode_of_tendering'
         - 'config:field.storage.node.field_remark'
         - 'config:field.storage.node.field_tender_number'
         - 'config:field.storage.node.field_tender_title'
+        - 'config:field.storage.node.field_tender_title_manual'
         - 'config:field.storage.node.field_value_rs'
