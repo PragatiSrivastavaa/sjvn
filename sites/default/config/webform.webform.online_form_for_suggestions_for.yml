@@ -1,4 +1,4 @@
-uuid: 5366d3d6-6bfc-45eb-8c8b-b840729efecd
+uuid: 87b19e18-bba6-416c-a8fb-400993bdf3e6
 langcode: en
 status: open
 dependencies: {  }
@@ -8,18 +8,22 @@ close: null
 uid: 1
 template: false
 archive: false
-id: feedback
-title: Feedback
+id: online_form_for_suggestions_for
+title: 'Online Form for Suggestions for System Improvements'
 description: ''
 categories: {  }
 elements: |-
+  are_you_a_sjvn_employee:
+    '#type': checkbox
+    '#title': 'Are you a SJVN Employee?'
+    '#required': true
   name:
     '#type': textfield
     '#title': Name
     '#placeholder': 'Please Enter Name'
-    '#pattern': "^([a-zA-Z' ]+)$"
-    '#pattern_error': 'Please Enter Valid Name only Characters Allowed'
     '#required': true
+    '#pattern': "^([a-zA-Z' ]+)$"
+    '#pattern_error': 'Please enter only characters A-Z & a-z'
   email:
     '#type': email
     '#title': Email
@@ -27,40 +31,16 @@ elements: |-
     '#required': true
     '#pattern': '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     '#pattern_error': 'Please enter a valid email address (example: user@examplecom).'
-  department:
-    '#type': select
-    '#title': Department
-    '#options':
-      Admin: Admin
-      HR: HR
-      Technical: Tecnicasl
-    '#required': true
-  division_category:
-    '#type': select
-    '#title': 'Division Category'
-    '#options':
-      'Power Trading': 'Power Trading'
-      'Thermal Power': 'Thermal Power'
-      'Hydro Power': 'Hydro Power'
-      'Wind Power': 'Wind Power'
-      'Solar Power': 'Solar Power'
-      'Power Transmission': 'Power Transmission'
-      Consulting: Consulting
-    '#required': true
-  general:
-    '#type': select
-    '#title': General
-    '#options':
-      N/A: N/A
-    '#required': true
-  message:
+  suggestion_for_system_improve:
     '#type': textarea
-    '#title': Message
-    '#pattern': "^([a-zA-Z' ]+)$"
-    '#pattern_error': 'Please enter only characters A-Z & a-z'
+    '#title': 'Suggestion for System improve'
+    '#placeholder': 'Suggestion for System improve'
     '#required': true
+    '#pattern': '^[A-Za-z0-9._\- ]+$'
+    '#pattern_error': 'Please enter your inputs using the following characters: A-Z, a-z, 0-9, and the symbols . _ -'
   captcha:
     '#type': captcha
+    '#captcha_type': image_captcha/Image
 css: ''
 javascript: ''
 settings:
