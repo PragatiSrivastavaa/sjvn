@@ -59,16 +59,6 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-  field_financing_details:
-    type: text_textarea_with_summary
-    weight: 14
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
   field_group_content:
     type: paragraphs
     weight: 13
@@ -89,39 +79,9 @@ content:
         convert: '0'
         duplicate: duplicate
     third_party_settings: {  }
-  field_important_events:
-    type: text_textarea_with_summary
-    weight: 15
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
-  field_introduction:
-    type: text_textarea_with_summary
-    weight: 16
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
-  field_location:
-    type: text_textarea_with_summary
-    weight: 17
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
   field_main_category:
     type: options_shs
-    weight: 26
+    weight: 14
     region: content
     settings:
       display_node_count: false
@@ -135,36 +95,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_project_benefits:
-    type: text_textarea_with_summary
-    weight: 18
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
-  field_salient_features:
-    type: text_textarea_with_summary
-    weight: 19
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
-  field_tariff_petition:
-    type: text_textarea_with_summary
-    weight: 20
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
   langcode:
     type: language_select
     weight: 1
@@ -173,10 +103,12 @@ content:
       include_locked: true
     third_party_settings: {  }
   moderation_state:
-    type: moderation_state_default
-    weight: 100
+    type: string_textfield
+    weight: 15
     region: content
-    settings: {  }
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   path:
     type: path
@@ -228,4 +160,11 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_financing_details: true
+  field_important_events: true
+  field_introduction: true
+  field_location: true
+  field_project_benefits: true
+  field_salient_features: true
+  field_tariff_petition: true

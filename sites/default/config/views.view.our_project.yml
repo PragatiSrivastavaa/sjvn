@@ -1868,9 +1868,6 @@ display:
         fields: false
         filters: false
         filter_groups: false
-      rendering_language: '***LANGUAGE_language_content***'
-      field_langcode: '***LANGUAGE_language_content***'
-      field_langcode_add_to_query: true
       relationships:
         field_group_content:
           id: field_group_content
@@ -1881,8 +1878,11 @@ display:
           admin_label: 'field_group_content: Paragraph'
           plugin_id: standard
           required: false
+      rendering_language: '***LANGUAGE_language_content***'
       display_extenders: {  }
       path: clearances-and-reportsnew
+      field_langcode: '***LANGUAGE_language_content***'
+      field_langcode_add_to_query: true
     cache_metadata:
       max-age: -1
       contexts:
