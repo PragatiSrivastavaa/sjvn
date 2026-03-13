@@ -23,7 +23,8 @@
          <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
             <div class="project-card rounded position-relative">
                {% if row.content['#row']._entity.field_business_image is not empty %}
-          {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_business_image }}'] }}
+                  {% set img_url = file_url(row.content['#row']._entity.field_business_image.entity.fileuri) %}
+                  <img src="{{ img_url }}" alt="{{ row.content['#row']._entity.title.value }}" class="img-fluid image-style-medium">
           {% else %}
           <!-- ./themes/sjvn/images/gallery/no-image.png -->
            {% set clean_base = request.basePath|replace({'/en': ''}) %}

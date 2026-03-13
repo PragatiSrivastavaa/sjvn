@@ -18,7 +18,11 @@
               <div class="col-md-4 col-lg-3 bording-director-img">
                 <div class="profile">
                   <div class="profile-img">
-                    {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] }}
+                    {% if node and node.field_image_of_directors is not empty %}
+                      <img src="{{ file_url(node.field_image_of_directors.entity.fileuri) }}" alt="{{ node.title.value }}" class="img-fluid">
+                    {% else %}
+                      {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] }}
+                    {% endif %}
                   </div>
                   <div class="profile-text">
                     <!-- <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['title'] }}</h5> -->
@@ -88,7 +92,11 @@
           <div class="col-sm-4 col-md-4 col-lg-3 ">
             <div class="profile-team-section">
               <div class="derector-teamimg">
-                {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] }}
+                {% if node and node.field_image_of_directors is not empty %}
+                  <img src="{{ file_url(node.field_image_of_directors.entity.fileuri) }}" alt="{{ node.title.value }}" class="img-fluid">
+                {% else %}
+                  {{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] }}
+                {% endif %}
               </div>
               <div class="Profile-details">
                 <h5>{{ row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ title }}'] }}</h5>

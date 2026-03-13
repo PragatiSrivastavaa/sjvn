@@ -28,9 +28,9 @@
               
               {# Director Photo #}
               <div class="profile-img">
-                {% set director_image = row.content['#view'].style_plugin.render_tokens[loop.index0]['{{ field_image_of_directors }}'] %}
-                {% if director_image %}
-                  {{ director_image }}
+                {% set node = row.content['#row']._entity ?? null %}
+                {% if node and node.field_image_of_directors is not empty %}
+                  <img src="{{ file_url(node.field_image_of_directors.entity.fileuri) }}" alt="{{ node.title.value }}" class="img-fluid">
                 {% else %}
                   <img src="{{ base_path ~ directory }}/images/gallery/no-image.png" alt="No image available" />
                 {% endif %}
