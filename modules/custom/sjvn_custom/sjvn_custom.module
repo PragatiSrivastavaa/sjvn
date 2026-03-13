@@ -707,3 +707,70 @@ function sjvn_custom_csv_importer_pre_import(&$data) {
     }
   }
 }
+
+/**
+ * Implements hook_views_post_execute().
+ *
+ * For the 'our_project' view, the SQL query must join through English paragraphs
+ * (paragraph translations often don't exist), so it returns English field values.
+ * After the query executes, we swap the field values with the current language
+ * translation so that tokens like {{ title }} render in Hindi.
+ */
+function sjvn_custom_views_post_execute(\Drupal\views\ViewExecutable $view) {
+  if ($view->id() !== 'our_project') {
+    return;
+  }
+
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+  $entity_storage = \Drupal::entityTypeManager()->getStorage('node');
+  
+  // Keep track of seen NIDs to eliminate duplicates.
+  $seen_nids = [];
+  $unique_results = [];
+
+  foreach ($view->result as $key => $row) {
+    if (empty($row->nid)) {
+      $unique_results[] = $row;
+      continue;
+    }
+
+    // Skip if we've already seen this node.
+    if (in_array($row->nid, $seen_nids)) {
+      continue;
+    }
+    
+    $seen_nids[] = $row->nid;
+    
+    // If we're not using English, attempt translation swap.
+    if ($langcode !== 'en') {
+      $node = $entity_storage->load($row->nid);
+      
+      if ($node && $node->hasTranslation($langcode)) {
+        $translated = $node->getTranslation($langcode);
+
+        // Swap the entity reference so entity-level rendering uses translation.
+        $row->_entity = $translated;
+
+        // Swap SQL result values that are used by field tokens.
+        if (isset($row->node_field_data_title)) {
+          $row->node_field_data_title = $translated->getTitle();
+        }
+
+        if (property_exists($row, 'node_field_data_langcode')) {
+          $row->node_field_data_langcode = $langcode;
+        }
+      }
+    }
+    
+    // Add the unique row to our new results array.
+    $unique_results[] = $row;
+  }
+  
+  // Replace the view's results with the deduplicated array.
+  $view->result = $unique_results;
+  // Also update total rows if it was calculated.
+  $view->total_rows = count($unique_results);
+}
+
+

@@ -1,9 +1,16 @@
-<h2 class="subtitle">Clearances and Reports</h2>
+<h2 class="subtitle">  {% if current_language == 'hi' %}
+                  मंजूरी और रिपोर्टें
+                  {% else %}
+                  Clearances and Reports
+                  {% endif %}</h2>
 
 <div class="accordion" id="accordionOurProjectPage6">
   {% for row in rows %}
   {% set node = row.content['#row']._entity %}
   {% set faq_id = 'project-p6-item' ~ loop.index %}
+
+  {# Get the English version for file fallback #}
+  {% set node_en = node.hasTranslation('en') ? node.getTranslation('en') : node %}
 
   <div class="accordion-item">
     <h2 class="accordion-header" id="heading-project-p6-{{ loop.index }}">
@@ -16,94 +23,103 @@
     <div id="{{ faq_id }}" class="accordion-collapse collapse" aria-labelledby="heading-project-p6-{{ loop.index }}"
       data-bs-parent="#accordionOurProjectPage6">
 
-
-
-
       <div class="accordion-body Clearances-Reports">
         <ul class="result-list Clearances-and-Reports no-even mb-0">
-          {# Group Content loop #}
+          {# Try current language paragraphs first #}
+          {% set found_files = false %}
           {% for group_item in node.field_group_content %}
-          {% set group = group_item.entity %}
-
-          {% if group.field_group_name.entity.label == 'Clearances' %}
-
-          {# Add Content loop #}
-          {% for add_item in group.field_add_content %}
-          {% set add = add_item.entity %}
-
-          {# PDF files loop #}
-          {% for file_item in add.field_upload_files %}
-          {% set file = file_item.entity %}
-
-          <!-- <li>
-            <div class="message-item-info text-center">
-              <img src="/sjvn/sites/default/files/2025-10/pdffileicon.png" alt="PDF file icon" width="128" height="128"
-                loading="lazy">
-              <h3 class="pdf-title">
-                {{ add.field_group_title.value ?: file.filename.value }}
-              </h3>
-            </div>
-            <div class="d-flex view-pdf-btn justify-content-center">
-              <a class="btn pdf-btn d-flex align-items-center justify-content-center"
-                href="{{ file_url(file.fileuri) }}" target="_blank" rel="noopener noreferrer"
-                aria-label="View PDF: {{ add.field_group_title.value ?: file.filename.value }} (opens in new tab)"
-                type="application/pdf" data-once="external-warning">
-                View PDF (PDF, opens in new tab)
-              </a>
-            </div>
-          </li> -->
-          <li>
-            <div class="message-item-info text-center">
-
-              <img src="/sjvn/sites/default/files/2025-10/pdffileicon.png" alt="PDF file" width="128" height="128"
-                loading="lazy">
-
-              <h3>
-                {{ add.field_group_title.value ?: file.filename.value }}
-              </h3>
-
-              <!-- File Meta -->
-              <div class="file-meta">
-
-                {# Show file size only for PDF & Image #}
-                {% if ext != 'link' %}
-                <span class="file-size">
-                  File Size: {{ filesize }}
-                </span>
-                {% endif %}
-
-                <span class="file-language">
-                  {% if ext != 'link' %} | {% endif %}
-                  {{ langcode }}
-                </span>
-
-              </div>
-
-
-
-            </div>
-
-            <div class="d-flex view-pdf-btn justify-content-center">
-              <a class="btn pdf-btn d-flex align-items-center justify-content-center"
-                href="{{ file_url(file.fileuri) }}" target="_blank" rel="noopener noreferrer"
-                aria-label="View PDF: {{ add.field_group_title.value ?: file.filename.value }}" type="application/pdf"
-                data-once="external-warning">
-                View PDF
-              </a>
-            </div>
-          </li>
-
-
-
+            {% set group = group_item.entity %}
+            {# Use term ID 233 instead of string comparison for language safety #}
+            {% if group.field_group_name.target_id == '233' %}
+              {% for add_item in group.field_add_content %}
+                {% set add = add_item.entity %}
+                {% for file_item in add.field_upload_files %}
+                  {% set file = file_item.entity %}
+                  {% set found_files = true %}
+                  <li>
+                    <div class="message-item-info text-center">
+                      <img src="/sjvn/sites/default/files/2025-10/pdffileicon.png" alt="PDF file" width="128" height="128" loading="lazy">
+                      <h3>{{ add.field_group_title.value ?: file.filename.value }}</h3>
+                      <div class="file-meta">
+                        {% if ext != 'link' %}
+                        <span class="file-size">File Size: {{ filesize }}</span>
+                        {% endif %}
+                        <span class="file-language">
+                          {% if ext != 'link' %} | {% endif %}
+                          {{ langcode }}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="d-flex view-pdf-btn justify-content-center">
+                      <a class="btn pdf-btn d-flex align-items-center justify-content-center"
+                        href="{{ file_url(file.fileuri) }}" target="_blank" rel="noopener noreferrer"
+                        aria-label="View PDF: {{ add.field_group_title.value ?: file.filename.value }}" type="application/pdf"
+                        data-once="external-warning">
+                        View PDF
+                      </a>
+                    </div>
+                  </li>
+                {% endfor %}
+              {% endfor %}
+            {% endif %}
           {% endfor %}
 
-          {% endfor %}
+          {# Fallback: If no files found in current language, use English files with Hindi titles #}
+          {% if not found_files and node.langcode.value != 'en' %}
+            {# Build a map of Hindi titles by index #}
+            {% set hindi_titles = [] %}
+            {% for group_item in node.field_group_content %}
+              {% set group = group_item.entity %}
+              {% if group.field_group_name.target_id == '233' %}
+                {% for add_item in group.field_add_content %}
+                  {% set add = add_item.entity %}
+                  {% set hindi_titles = hindi_titles|merge([add.field_group_title.value]) %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+
+            {# Now loop through English content for files #}
+            {% set en_index = 0 %}
+            {% for group_item in node_en.field_group_content %}
+              {% set group = group_item.entity %}
+              {% if group.field_group_name.target_id == '233' %}
+                {% for add_item in group.field_add_content %}
+                  {% set add = add_item.entity %}
+                  {# Use Hindi title if available, else English #}
+                  {% set display_title = hindi_titles[en_index] ?: add.field_group_title.value %}
+                  {% for file_item in add.field_upload_files %}
+                    {% set file = file_item.entity %}
+                    <li>
+                      <div class="message-item-info text-center">
+                        <img src="/sjvn/sites/default/files/2025-10/pdffileicon.png" alt="PDF file" width="128" height="128" loading="lazy">
+                        <h3>{{ display_title ?: file.filename.value }}</h3>
+                        <div class="file-meta">
+                          {% if ext != 'link' %}
+                          <span class="file-size">File Size: {{ filesize }}</span>
+                          {% endif %}
+                          <span class="file-language">
+                            {% if ext != 'link' %} | {% endif %}
+                            {{ langcode }}
+                          </span>
+                        </div>
+                      </div>
+                      <div class="d-flex view-pdf-btn justify-content-center">
+                        <a class="btn pdf-btn d-flex align-items-center justify-content-center"
+                          href="{{ file_url(file.fileuri) }}" target="_blank" rel="noopener noreferrer"
+                          aria-label="View PDF: {{ display_title ?: file.filename.value }}" type="application/pdf"
+                          data-once="external-warning">
+                          View PDF
+                        </a>
+                      </div>
+                    </li>
+                  {% endfor %}
+                  {% set en_index = en_index + 1 %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
           {% endif %}
-          {% endfor %}
         </ul>
       </div>
-
-
 
     </div>
   </div>
