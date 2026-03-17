@@ -95,7 +95,7 @@ class ContentEntityDeleteForm extends ContentEntityConfirmFormBase {
     if (!$entity->isDefaultTranslation()) {
       return $this->t('The @entity-type %label @language translation has been deleted.', [
         '@entity-type' => $entity->getEntityType()->getSingularLabel(),
-        '%label'       => $entity->label() ?? $entity->id(),
+        '%label'       => $entity->label(),
         '@language'    => $entity->language()->getName(),
       ]);
     }
@@ -113,7 +113,7 @@ class ContentEntityDeleteForm extends ContentEntityConfirmFormBase {
     if (!$entity->isDefaultTranslation()) {
       $this->logger($entity->getEntityType()->getProvider())->info('The @entity-type %label @language translation has been deleted.', [
         '@entity-type' => $entity->getEntityType()->getSingularLabel(),
-        '%label'       => $entity->label() ?? $entity->id(),
+        '%label'       => $entity->label(),
         '@language'    => $entity->language()->getName(),
       ]);
     }
@@ -132,8 +132,8 @@ class ContentEntityDeleteForm extends ContentEntityConfirmFormBase {
     if (!$entity->isDefaultTranslation()) {
       return $this->t('Are you sure you want to delete the @language translation of the @entity-type %label?', [
         '@language' => $entity->language()->getName(),
-        '@entity-type' => $entity->getEntityType()->getSingularLabel(),
-        '%label' => $entity->label() ?? $entity->id(),
+        '@entity-type' => $this->getEntity()->getEntityType()->getSingularLabel(),
+        '%label' => $this->getEntity()->label(),
       ]);
     }
 

@@ -11,8 +11,7 @@
  */
 #}
 <!-- <input{{ attributes }} /> -->
-{% set is_button = attributes.type|render in ['submit', 'button', 'reset', 'image'] %}
-{% if is_button %}
+{% if attributes.type in ['submit', 'button', 'reset', 'image'] %}
   <input{{ attributes }} />
 {% else %}
   <input{{ attributes.setAttribute('autocomplete', 'off') }} />
