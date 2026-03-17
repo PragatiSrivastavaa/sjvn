@@ -99,7 +99,8 @@
             <div id="{{ unique_page_id }}">
               {% if 'Organization Chart' in page.page_title|render|striptags %}
               <div class="org-chart-wrapper">
-                <div class="org-chart-tree">
+                <h2 id="org-chart-heading-1" class="visually-hidden">Organization Chart</h2>
+                <div class="org-chart-tree" role="region" aria-labelledby="org-chart-heading-1">
                   <ul>
                     <li>
                       <button type="button" class="btn-unstyled">
@@ -206,7 +207,8 @@
           <div id="{{ unique_page_id }}">
             {% if 'Organization Chart' in page.page_title|render|striptags %}
             <div class="org-chart-wrapper">
-              <div class="org-chart-tree">
+              <h2 id="org-chart-heading-2" class="visually-hidden">Organization Chart</h2>
+              <div class="org-chart-tree" role="region" aria-labelledby="org-chart-heading-2">
                 <ul>
                   <li>
                     <button type="button" class="btn-unstyled">
