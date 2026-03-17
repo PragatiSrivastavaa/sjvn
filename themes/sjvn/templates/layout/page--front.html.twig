@@ -4,9 +4,9 @@
 <main id="main-content">
   <h1 class="visually-hidden">SJVN Limited Home</h1>
   <!-- Hero section -->
-  <section>
+  <div class="banner-region-wrapper">
     {{ page.banner_section }}
-  </section>
+  </div>
 
   <!-- Announcements Bar -->
   <section class="announcement-bar" id="mainSec" aria-label="Announcements">
@@ -26,17 +26,17 @@
     </div>
   </section>
   <!-- About Us Section -->
-  <section class="about-section">
+  <div class="about-section-wrapper">
     {{ page.about_us }}
-  </section>
+  </div>
 
   <section class="power-station-section">
     <h2>{% if language.getId() == 'hi' %} हमारे पावर स्टेशन{% else %} Our Power Stations {% endif %}</h2>
     {{ page.our_power_stations }}
   </section>
-  <section class="chairman-section">
+  <div class="chairman-section-wrapper">
     {{ page.chairmans_corner }}
-  </section>
+  </div>
   <!--news-alert-section-->
   <section class="news-alert-section">
     <div class="news-alert-container">
@@ -69,11 +69,11 @@
       %}</h2>
     {{ page.photo_gallery }}
   </section>
-  <section class="logo-carousel">
+  <div class="logo-carousel-section">
     <div class="carousel-track">
       {{ page.logo_carousel }}
     </div>
-  </section>
+  </div>
 </main>
 
 <!-- Footer Include -->

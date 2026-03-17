@@ -11,5 +11,9 @@
  */
 #}
 <!-- <input{{ attributes }} /> -->
-<input{{ attributes.setAttribute('autocomplete', 'off') }} />
+{% if attributes.type in ['submit', 'button', 'reset', 'image'] %}
+  <input{{ attributes }} />
+{% else %}
+  <input{{ attributes.setAttribute('autocomplete', 'off') }} />
+{% endif %}
 {{ children }}

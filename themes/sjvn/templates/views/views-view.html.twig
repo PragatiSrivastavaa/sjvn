@@ -87,8 +87,14 @@
       {{ footer }}
     </div>
   {% endif %}
-  </div>  
-  </div>
+
+  {% if exposed %}
+    </div>  {# Close innerbox #}
+  {% endif %}
+  
+  {% if header %}
+    </div>  {# Close inner-container #}
+  {% endif %}
   {% if pager %}
     {{ pager }}
   {% endif %}

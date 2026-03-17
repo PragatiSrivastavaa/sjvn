@@ -36,7 +36,7 @@
           %}</a>
 
         <!-- Language Toggle -->
-        <div class="language-toggle" aria-label="Language Switcher">
+        <div class="language-toggle" role="navigation" aria-label="Language Switcher">
           <ul>
             <li class="lang-select">
               {{ page.language }}
@@ -84,7 +84,7 @@
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <div class="mobile-menu-header">
-          <h3>Menu</h3>
+          <h2>Menu</h2>
           <button class="mobile-close-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"
             aria-label="Close menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -93,9 +93,9 @@
             </svg>
           </button>
         </div>
-        <ul id="nav-list" class="menu">
+        <div id="nav-list" class="menu-nav-container">
           {{ page.primary_menu }}
-        </ul>
+        </div>
       </div>
       <div class="nav-scroll-controls">
         <button class="nav-scroll-btn nav-scroll-left" aria-label="Scroll Left">

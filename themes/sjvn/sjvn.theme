@@ -263,11 +263,12 @@ function sjvn_preprocess_links(&$variables) {
         $url = $link['link']['#url'];
         // Get language from the URL or link options.
         if (method_exists($url, 'getOption') && $language = $url->getOption('language')) {
-          // Add hreflang attribute to the list item.
-          if (!isset($link['attributes'])) {
-            $link['attributes'] = new Attribute();
+          // Add hreflang attribute to the link.
+          if (isset($link['link']['#attributes'])) {
+            $link['link']['#attributes']['hreflang'] = $language->getId();
+          } else {
+            $link['link']['#options']['attributes']['hreflang'] = $language->getId();
           }
-          $link['attributes']['hreflang'] = $language->getId();
         }
       }
     }
