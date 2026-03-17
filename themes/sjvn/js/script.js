@@ -878,6 +878,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+
+        // Add tabiindex="0" to all org chart cells
+        const orgChartContainer = document.getElementById('render_orgchart');
+        if (orgChartContainer) {
+            // Add aria-labelledby and role="region" dynamically
+            if (!orgChartContainer.hasAttribute('role')) {
+                orgChartContainer.setAttribute('role', 'region');
+                orgChartContainer.setAttribute('aria-labelledby', 'org-chart-main-heading');
+                
+                // Insert a visibly-hidden heading before it if it doesn't exist
+                if (!document.getElementById('org-chart-main-heading')) {
+                    const heading = document.createElement('h2');
+                    heading.id = 'org-chart-main-heading';
+                    heading.className = 'visually-hidden';
+                    heading.textContent = 'Organization Chart';
+                    orgChartContainer.parentNode.insertBefore(heading, orgChartContainer);
+                }
+            }
+
+            // Apply tabindex and aria attributes to individual cells
+            orgChartContainer.querySelectorAll('.cell').forEach(cell => {
+                if (!cell.hasAttribute('tabindex')) {
+                    cell.setAttribute('tabindex', '0');
+                }
+                if (!cell.hasAttribute('role')) {
+                    cell.setAttribute('role', 'group');
+                }
+                if (!cell.hasAttribute('aria-label')) {
+                    // Grab the visible text inside the cell for the screen reader
+                    const cellText = cell.textContent || cell.innerText;
+                    cell.setAttribute('aria-label', cellText.trim());
+                }
+            });
+        }
     };
 
     // Initial run
