@@ -4,15 +4,16 @@
 <main id="main-content">
   <h1 class="visually-hidden">SJVN Limited Home</h1>
   <!-- Hero section -->
-  <div class="banner-region-wrapper">
+  <section class="banner-region-wrapper" aria-labelledby="hero-heading">
+    <h2 id="hero-heading" class="visually-hidden">{% if language.getId() == 'hi' %} मुख्य बैनर {% else %} Main Banner {% endif %}</h2>
     {{ page.banner_section }}
-  </div>
+  </section>
 
   <!-- Announcements Bar -->
-  <section class="announcement-bar" id="mainSec" aria-label="Announcements">
+  <section class="announcement-bar" aria-labelledby="ann-header">
     <!-- Left Section -->
     <div class="announcement-left">
-      <h2 class="announcement-title">{% if language.getId() == 'hi' %} घोषणाएं {% else %} ANNOUNCEMENTS {% endif
+      <h2 class="announcement-title" id="ann-header">{% if language.getId() == 'hi' %} घोषणाएं {% else %} ANNOUNCEMENTS {% endif
         %}</h2>
       <!-- Controls moved here -->
       <div class="announcement-controls">
@@ -26,17 +27,19 @@
     </div>
   </section>
   <!-- About Us Section -->
-  <div class="about-section-wrapper">
+  <section class="about-section-wrapper" aria-labelledby="about-heading">
+    <h2 id="about-heading" class="visually-hidden">{% if language.getId() == 'hi' %} हमारे बारे में {% else %} About Us {% endif %}</h2>
     {{ page.about_us }}
-  </div>
+  </section>
 
-  <section class="power-station-section">
-    <h2>{% if language.getId() == 'hi' %} हमारे पावर स्टेशन{% else %} Our Power Stations {% endif %}</h2>
+  <section class="power-station-section" aria-labelledby="power-station-heading">
+    <h2 id="power-station-heading">{% if language.getId() == 'hi' %} हमारे पावर स्टेशन{% else %} Our Power Stations {% endif %}</h2>
     {{ page.our_power_stations }}
   </section>
-  <div class="chairman-section-wrapper">
+  <section class="chairman-section-wrapper" aria-labelledby="chairman-heading">
+    <h2 id="chairman-heading" class="visually-hidden">{% if language.getId() == 'hi' %} अध्यक्ष का कोना {% else %} Chairman’s Corner {% endif %}</h2>
     {{ page.chairmans_corner }}
-  </div>
+  </section>
   <!--news-alert-section-->
   <section class="news-alert-section">
     <div class="news-alert-container">
@@ -54,24 +57,24 @@
     </div>
   </section>
   <!--news-alert-section-end-->
-  <section class="our-business-section">
-    <h2 class="section-title">{% if language.getId() == 'hi' %} हमारा व्यापार{% else %} Our Business {% endif %}</h2>
+  <section class="our-business-section" aria-labelledby="business-heading">
+    <h2 id="business-heading" class="section-title">{% if language.getId() == 'hi' %} हमारा व्यापार{% else %} Our Business {% endif %}</h2>
     {{ page.our_business }}
   </section>
-  <section class="quick-links-section">
-    <h2 class="quick-action-section-heading">{% if language.getId() == 'hi' %} त्वरित पहुँच लिंक{% else %} Quick Access
+  <section class="quick-links-section" aria-labelledby="quick-links-heading">
+    <h2 id="quick-links-heading" class="quick-action-section-heading">{% if language.getId() == 'hi' %} त्वरित पहुँच लिंक{% else %} Quick Access
       Link {% endif %}</h2>
 
     {{ page.quick_access_links }}
   </section>
-  <section class="photo-gallery-section">
-    <h2 class="gallery-section-heading">{% if language.getId() == 'hi' %} फोटो गैलरी {% else %} Photo Gallery {% endif
+  <section class="photo-gallery-section" aria-labelledby="gallery-heading">
+    <h2 id="gallery-heading" class="gallery-section-heading">{% if language.getId() == 'hi' %} फोटो गैलरी {% else %} Photo Gallery {% endif
       %}</h2>
     {{ page.photo_gallery }}
   </section>
-  <div class="logo-carousel-section">
+  <section class="logo-carousel-section" aria-labelledby="important-links-heading">
     <div class="logo-carousel-header">
-      <h2>{% if language.getId() == 'hi' %} महत्वपूर्ण लिंक {% else %} Important Links {% endif %}</h2>
+      <h2 id="important-links-heading">{% if language.getId() == 'hi' %} महत्वपूर्ण लिंक {% else %} Important Links {% endif %}</h2>
       <div class="logo-carousel-controls">
         <button type="button" id="logo-play-pause" class="logo-play-pause-btn" aria-label="Pause/Play Carousel">⏸</button>
       </div>
@@ -81,7 +84,7 @@
         {{ page.logo_carousel }}
       </div>
     </div>
-  </div>
+  </section>
 </main>
 
 <!-- Footer Include -->

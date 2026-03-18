@@ -18,6 +18,16 @@
 
 
   <div class="business-container">
+  <div class="business-image">
+    {% if rows|length > 0 %}
+      {% set first_term = rows|first.content['#row']._entity %}
+      {% set first_translated = first_term.hasTranslation(lang) ? first_term.getTranslation(lang) : first_term %}
+      {% set first_img_url = first_translated.field_image.entity ? file_url(first_translated.field_image.entity.fileuri) : '' %}
+      <img id="business-display" 
+           src="{{ first_img_url }}" 
+           alt="{{ first_translated.name.value }}">
+    {% endif %}
+  </div>
     <div class="business-grid">
     {% for row in rows %}
       {% set term = row.content['#row']._entity %}
@@ -39,17 +49,6 @@
         <span>{{ term_translated.name.value }}</span>
       </div>
     {% endfor %}
-  </div>
-
-  <div class="business-image">
-    {% if rows|length > 0 %}
-      {% set first_term = rows|first.content['#row']._entity %}
-      {% set first_translated = first_term.hasTranslation(lang) ? first_term.getTranslation(lang) : first_term %}
-      {% set first_img_url = first_translated.field_image.entity ? file_url(first_translated.field_image.entity.fileuri) : '' %}
-      <img id="business-display" 
-           src="{{ first_img_url }}" 
-           alt="{{ first_translated.name.value }}">
-    {% endif %}
   </div>
 </div>
 
