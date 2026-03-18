@@ -397,19 +397,17 @@ button:focus-visible,
   border-right: none !important;
 }
 
-/* HIDE the active/current language based on body class and hreflang - show only the OTHER language */
-body.lang-en ul.links li[hreflang="en"] {
+/* HIDE the active/current language switcher link using valid data-lang attribute */
+body.lang-en .language-toggle ul.links li[data-lang="en"] {
   display: none !important;
 }
 
-body.lang-hi ul.links li[hreflang="hi"] {
+body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
   display: none !important;
 }
 
-/* Fallback: Hide .is-active class if hreflang is not available */
-.language-toggle .links li.is-active {
-  display: none !important;
-}
+/* Fallback: Hide current active language if data-lang is not being detected correctly */
+/* We rely on the body.lang-X selectors above instead */
 
 /* Simple text link - no button styling */
 .language-toggle .links li a {

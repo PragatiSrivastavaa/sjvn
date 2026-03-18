@@ -247,30 +247,68 @@ function sjvn_preprocess_views_view_unformatted(array &$variables) {
 
 /**
  * Implements hook_preprocess_links().
- * Add hreflang attribute to language switcher list items.
  */
 function sjvn_preprocess_links(&$variables) {
-  // Check if this is a language switcher block.
   if (isset($variables['links']) && is_array($variables['links'])) {
-    foreach ($variables['links'] as $key => &$link) {
-      // Add descriptive labels for screen readers
-      if (isset($link['text'])) {
-          $link['link']['#attributes']['aria-label'] = t('Switch to @language', ['@language' => $link['text']]);
-      }
+    foreach ($variables['links'] as $lang_key => &$link) {
+      // 1. Detect language ID. 
+      // For language switchers, the array key is usually the language code ('en', 'hi', etc.).
+      $lang_id = $lang_key;
       
-      // Check if link has language information.
-      if (isset($link['link']['#url'])) {
-        $url = $link['link']['#url'];
-        // Get language from the URL or link options.
-        if (method_exists($url, 'getOption') && $language = $url->getOption('language')) {
-          // Add hreflang attribute to the link.
-          if (isset($link['link']['#attributes'])) {
-            $link['link']['#attributes']['hreflang'] = $language->getId();
+      // Fallback: Check for hreflang in current attributes.
+      if (isset($link['attributes'])) {
+          if ($link['attributes'] instanceof \Drupal\Core\Template\Attribute) {
+              if ($link['attributes']->offsetExists('hreflang')) {
+                  $lang_id = (string) $link['attributes']->offsetGet('hreflang');
+              }
+          } elseif (isset($link['attributes']['hreflang'])) {
+              $lang_id = $link['attributes']['hreflang'];
+          }
+      }
+
+      // If it looks like a language code (2 characters), apply the fix.
+      if (is_string($lang_id) && strlen($lang_id) === 2) {
+        // 2. Fix W3C Validator: 'hreflang' is NOT allowed on <li>. 
+        // We move it to 'data-lang' (VALID) and keep 'hreflang' on '<a>' (VALID/SEO).
+        if (isset($link['attributes'])) {
+          if ($link['attributes'] instanceof \Drupal\Core\Template\Attribute) {
+            $link['attributes']->setAttribute('data-lang', $lang_id);
+            $link['attributes']->removeAttribute('hreflang');
           } else {
-            $link['link']['#options']['attributes']['hreflang'] = $language->getId();
+            $link['attributes']['data-lang'] = $lang_id;
+            unset($link['attributes']['hreflang']);
           }
         }
+        
+        // 3. Put 'hreflang' on the actual link (A tag). This is valid and good for SEO.
+        if (isset($link['link'])) {
+          $link['link']['#attributes']['hreflang'] = $lang_id;
+        }
       }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_input().
+ */
+function sjvn_preprocess_input(&$variables) {
+  // Fix W3C: 'autocomplete' is NOT allowed on submit buttons.
+  if (isset($variables['element']['#type']) && $variables['element']['#type'] === 'submit') {
+    if (isset($variables['attributes']['autocomplete'])) {
+      unset($variables['attributes']['autocomplete']);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_button().
+ */
+function sjvn_preprocess_button(&$variables) {
+  // Fix W3C: 'autocomplete' is NOT allowed on buttons of type submit.
+  if (isset($variables['element']['#attributes']['type']) && $variables['element']['#attributes']['type'] === 'submit') {
+    if (isset($variables['attributes']['autocomplete'])) {
+        unset($variables['attributes']['autocomplete']);
     }
   }
 }
