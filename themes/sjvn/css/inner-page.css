@@ -1414,8 +1414,8 @@ ul.vmo-card__list {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 2147483647;
-  /* Max Z-Index for visibility */
+  z-index: 1000000;
+  /* High Z-Index for visibility but below mobile sidebar max */
   transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
   visibility: hidden;

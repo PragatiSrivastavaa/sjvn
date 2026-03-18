@@ -4005,8 +4005,8 @@ ul.sf-menu span.nolink {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 2147483647;
-  /* Max Z-Index to ensure it's always on top */
+  z-index: 1000000;
+  /* High Z-Index for floating button but below sidebar (max) */
   transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
   visibility: hidden;
@@ -4879,7 +4879,7 @@ body.dark-mode .empty-state-desc {
   padding: 14px 40px;
   border-radius: 0 0 20px 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  z-index: 2147483647;
+  z-index: 1000001;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   font-weight: 600;
   display: flex;

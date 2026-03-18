@@ -673,6 +673,12 @@ table.views-table.views-view-table.cols-0 {
 /* Mobile menu styles - ONLY below 992px */
 @media (max-width: 991.98px) {
 
+  /* Ensure header container is above footer and main content on mobile */
+  .header {
+    position: relative;
+    z-index: 2000;
+  }
+
   /* Hamburger Toggle Button */
   .navbar-toggler {
     display: block !important;
@@ -704,11 +710,12 @@ table.views-table.views-view-table.cols-0 {
     max-width: 300px !important;
     height: 100vh;
     background: linear-gradient(180deg, #007cb1 0%, #004b88 100%) !important;
-    z-index: 2000;
+    z-index: 2147483647 !important;
+    /* Maximum Z-Index to stay above everything (Back to top button, headers, etc.) */
     overflow-y: auto !important;
     overflow-x: hidden !important;
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.4);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
     display: flex !important;
     flex-direction: column !important;
     padding: 0 !important;
@@ -719,13 +726,14 @@ table.views-table.views-view-table.cols-0 {
   /* Inner Page Version - Unified Dark Sidebar for High Contrast */
   body:not(.path-frontpage) .navbar-collapse {
     background: linear-gradient(180deg, #007cb1 0%, #004b88 100%) !important;
+
   }
 
   .navbar-collapse.show {
     left: 0 !important;
   }
 
-  /* Backdrop Overlay */
+  /* Backdrop Overlay - Ensure it blocks all clicks */
   .navbar-collapse.show::after {
     content: '';
     position: fixed;
@@ -733,9 +741,13 @@ table.views-table.views-view-table.cols-0 {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
+    /* Slightly darker for better focus */
     z-index: -1;
     animation: fadeIn 0.4s ease forwards;
+    pointer-events: all;
+    /* Ensure it catches all clicks */
+    cursor: default;
   }
 
   @keyframes fadeIn {
@@ -753,24 +765,15 @@ table.views-table.views-view-table.cols-0 {
     overflow: hidden !important;
   }
 
-  /* Sidebar Header */
-  .mobile-menu-header {
-    display: flex !important;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background: #004b88 !important;
-    /* Branded Primary Dark Blue */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    width: 100%;
-  }
 
   body:not(.path-frontpage) .mobile-menu-header {
     background: #004b88 !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: #004b88 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 999999;
   }
 
   body:not(.path-frontpage) #superfish-main ul {
@@ -1874,7 +1877,7 @@ table.views-table.views-view-table.cols-0 {
     width: 280px;
     height: 100vh;
     background: #ffffff;
-    z-index: 9999;
+    z-index: 2147483647 !important;
     display: block !important;
     /* Override bootstrap display:none */
     transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1890,6 +1893,20 @@ table.views-table.views-view-table.cols-0 {
   .navbar-collapse.show {
     right: 0 !important;
     /* Slide in */
+  }
+
+  /* Ensure backdrop for this instance too */
+  .navbar-collapse.show::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+    pointer-events: all;
+    cursor: default;
   }
 
   /* Hide carousel play/pause button when mobile menu is open to prevent overlapping */
@@ -2028,6 +2045,9 @@ table.views-table.views-view-table.cols-0 {
     flex-direction: column !important;
     gap: 20px;
     padding: 30px 15px;
+    position: relative;
+    z-index: 1;
+    /* Explicitly low z-index to stay below header/sidebar */
   }
 
   .site-footer>* {

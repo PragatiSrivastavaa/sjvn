@@ -250,7 +250,7 @@ div#accordionSidebar {
   visibility: hidden;
   /* Controlled by JS opacity/visibility */
   opacity: 0;
-  z-index: 2147483647 !important;
+  z-index: 1000000; /* High but below mobile sidebar max z-index */
 }
 
 .back-to-top.show {
