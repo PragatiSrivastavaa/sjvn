@@ -3263,26 +3263,93 @@ body.lang-hi ul.links li[hreflang="hi"] {
 
 
 /* logo section  */
-.logo-carousel {
+.logo-carousel-section {
   overflow: hidden;
   background: #fff;
+  padding: 0;
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.logo-carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 25px;
+  background: #fdfdfd;
+  border-bottom: 1px solid #eef2f5;
+  margin-bottom: 10px;
+}
+
+.logo-carousel-header h2 {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.logo-carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-play-pause-btn {
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.85rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+}
+
+.logo-play-pause-btn:hover {
+  background: var(--secondary-color);
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.logo-play-pause-btn.paused {
+  background: #545454;
+}
+
+.logo-carousel-track-wrapper {
+  overflow: hidden;
+  width: 100%;
   padding: 20px 0;
 }
 
 .carousel-track {
   display: flex;
   width: max-content;
-  animation: scroll 20s linear infinite;
+  animation: scroll 30s linear infinite; /* Slowed down slightly for legibility */
 }
 
-.logo-carousel:hover .carousel-track {
+.logo-carousel-section:hover .carousel-track,
+.carousel-track.paused {
   animation-play-state: paused;
 }
 
 .carousel-track img {
-  height: 100px;
-  margin: 0 20px;
+  height: 80px; /* Reduced height for better fit */
+  margin: 0 35px;
   object-fit: contain;
+  filter: grayscale(0.2) opacity(0.85); /* Premium subtle look */
+  transition: all 0.3s ease;
+}
+
+.carousel-track img:hover {
+  filter: grayscale(0) opacity(1);
+  transform: scale(1.05);
 }
 
 @keyframes scroll {

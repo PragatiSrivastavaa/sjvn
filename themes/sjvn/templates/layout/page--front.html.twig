@@ -70,8 +70,16 @@
     {{ page.photo_gallery }}
   </section>
   <div class="logo-carousel-section">
-    <div class="carousel-track">
-      {{ page.logo_carousel }}
+    <div class="logo-carousel-header">
+      <h2>{% if language.getId() == 'hi' %} महत्वपूर्ण लिंक {% else %} Important Links {% endif %}</h2>
+      <div class="logo-carousel-controls">
+        <button type="button" id="logo-play-pause" class="logo-play-pause-btn" aria-label="Pause/Play Carousel">⏸</button>
+      </div>
+    </div>
+    <div class="logo-carousel-track-wrapper">
+      <div class="carousel-track">
+        {{ page.logo_carousel }}
+      </div>
     </div>
   </div>
 </main>

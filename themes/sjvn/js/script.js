@@ -432,6 +432,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Logo Carousel Play/Pause and Infinite Scroll Fix
+document.addEventListener("DOMContentLoaded", () => {
+    const playPauseBtn = document.getElementById('logo-play-pause');
+    const track = document.querySelector('.carousel-track');
+    
+    if (!playPauseBtn || !track) return;
+    
+    // Duplicate logos for infinite scroll effect
+    const logos = Array.from(track.children);
+    logos.forEach(logo => {
+        const clone = logo.cloneNode(true);
+        track.appendChild(clone);
+    });
+    
+    let isPaused = false;
+    
+    playPauseBtn.addEventListener('click', () => {
+        isPaused = !isPaused;
+        if (isPaused) {
+            track.classList.add('paused');
+            playPauseBtn.classList.add('paused');
+            playPauseBtn.innerHTML = '▶';
+            playPauseBtn.setAttribute("aria-label", "Play Carousel");
+        } else {
+            track.classList.remove('paused');
+            playPauseBtn.classList.remove('paused');
+            playPauseBtn.innerHTML = '⏸';
+            playPauseBtn.setAttribute("aria-label", "Pause Carousel");
+        }
+    });
+});
+
 // Alerts Carousel
 document.addEventListener("DOMContentLoaded", () => {
     const alerts = document.querySelectorAll(".alert-card");
