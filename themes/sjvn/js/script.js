@@ -997,8 +997,18 @@ function initLanguageNotification() {
         const langLink = e.target.closest('.language-toggle a, .language-switcher-language-url a');
 
         if (langLink) {
+            const isHindiLang = document.documentElement.lang === 'hi';
+            const confirmMsg = isHindiLang 
+                ? "क्या आप भाषा बदलना चाहते हैं?" 
+                : "Are you sure you want to change the language?";
+            
+            if (!confirm(confirmMsg)) {
+                e.preventDefault();
+                return;
+            }
+
             const targetLang = langLink.textContent.trim();
-            const loadingMsg = isHindi
+            const loadingMsg = isHindiLang
                 ? `भाषा को ${targetLang} में बदला जा रहा है...`
                 : `Changing language to ${targetLang}...`;
 
