@@ -283,6 +283,10 @@ function sjvn_preprocess_links(&$variables) {
         // 3. Put 'hreflang' on the actual link (A tag). This is valid and good for SEO.
         if (isset($link['link'])) {
           $link['link']['#attributes']['hreflang'] = $lang_id;
+          
+          // GIGW 3.0: Add descriptive aria-label to language links
+          $lang_text = isset($link['text']) ? $link['text'] : $lang_id;
+          $link['link']['#attributes']['aria-label'] = t('Switch to @lang language', ['@lang' => $lang_text]);
         }
       }
     }
@@ -295,8 +299,22 @@ function sjvn_preprocess_links(&$variables) {
 function sjvn_preprocess_input(&$variables) {
   // Fix W3C: 'autocomplete' is NOT allowed on submit buttons.
   if (isset($variables['element']['#type']) && $variables['element']['#type'] === 'submit') {
+    $variables['is_submit'] = TRUE;
+    $variables['button_text'] = $variables['element']['#value'];
     if (isset($variables['attributes']['autocomplete'])) {
       unset($variables['attributes']['autocomplete']);
+    }
+  }
+
+  // GIGW 3.0: Add aria-label to search input and submit button
+  if (isset($variables['attributes']['id'])) {
+    if ($variables['attributes']['id'] == 'edit-keys') {
+       $variables['attributes']['aria-label'] = t('Enter search keywords');
+    }
+    if ($variables['attributes']['id'] == 'edit-submit') {
+      if (isset($variables['element']['#array_parents']) && in_array('search_block_form', $variables['element']['#array_parents'])) {
+         $variables['attributes']['aria-label'] = t('Submit Search');
+      }
     }
   }
 }
@@ -310,6 +328,16 @@ function sjvn_preprocess_button(&$variables) {
     if (isset($variables['attributes']['autocomplete'])) {
         unset($variables['attributes']['autocomplete']);
     }
+  }
+}
+
+/**
+ * Implements hook_preprocess_form().
+ */
+function sjvn_preprocess_form(&$variables) {
+  if (isset($variables['attributes']['id']) && $variables['attributes']['id'] == 'search-block-form') {
+    $variables['attributes']['role'] = 'search';
+    $variables['attributes']['aria-label'] = t('SJVN Site Search Form');
   }
 }
 
