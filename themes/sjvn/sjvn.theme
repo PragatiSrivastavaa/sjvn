@@ -287,15 +287,13 @@ function sjvn_preprocess_links(&$variables) {
           // GIGW 3.0: Add descriptive aria-label to language links
           $lang_text = isset($link['text']) ? $link['text'] : $lang_id;
           $link['link']['#attributes']['aria-label'] = t('Switch to @lang language', ['@lang' => $lang_text]);
+          $link['link']['#attributes']['title'] = t('Switch to @lang language', ['@lang' => $lang_text]);
         }
       }
     }
   }
 }
 
-/**
- * Implements hook_preprocess_input().
- */
 function sjvn_preprocess_input(&$variables) {
   // Fix W3C: 'autocomplete' is NOT allowed on submit buttons.
   if (isset($variables['element']['#type']) && $variables['element']['#type'] === 'submit') {
@@ -308,13 +306,15 @@ function sjvn_preprocess_input(&$variables) {
 
   // GIGW 3.0: Add aria-label to search input and submit button
   if (isset($variables['attributes']['id'])) {
-    if ($variables['attributes']['id'] == 'edit-keys') {
+    $id = $variables['attributes']['id'];
+    // For 'edit-keys' (search input)
+    if (strpos($id, 'edit-keys') !== false) {
        $variables['attributes']['aria-label'] = t('Enter search keywords');
+       $variables['attributes']['title'] = t('Enter search keywords');
     }
-    if ($variables['attributes']['id'] == 'edit-submit') {
-      if (isset($variables['element']['#array_parents']) && in_array('search_block_form', $variables['element']['#array_parents'])) {
-         $variables['attributes']['aria-label'] = t('Submit Search');
-      }
+    // For 'edit-submit' (search button)
+    if (strpos($id, 'edit-submit') !== false) {
+       $variables['attributes']['aria-label'] = t('Submit Search');
     }
   }
 }
@@ -335,9 +335,36 @@ function sjvn_preprocess_button(&$variables) {
  * Implements hook_preprocess_form().
  */
 function sjvn_preprocess_form(&$variables) {
-  if (isset($variables['attributes']['id']) && $variables['attributes']['id'] == 'search-block-form') {
+  if (isset($variables['attributes']['id']) && (strpos($variables['attributes']['id'], 'search-block-form') !== false || strpos($variables['attributes']['id'], 'search-form') !== false)) {
     $variables['attributes']['role'] = 'search';
     $variables['attributes']['aria-label'] = t('SJVN Site Search Form');
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function sjvn_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'search_block_form') {
+    $form['keys']['#attributes']['aria-label'] = t('Enter search keywords');
+    $form['keys']['#attributes']['title'] = t('Enter search keywords');
+    $form['actions']['submit']['#attributes']['aria-label'] = t('Submit Search');
+    $form['#attributes']['role'] = 'search';
+    $form['#attributes']['aria-label'] = t('SJVN Site Search Form');
+  }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function sjvn_preprocess_block(&$variables) {
+  if ($variables['plugin_id'] == 'language_block:language_interface') {
+    $variables['attributes']['role'] = 'navigation';
+    $variables['attributes']['aria-label'] = t('Language Switcher');
+  }
+  if ($variables['plugin_id'] == 'search_form_block') {
+    $variables['attributes']['role'] = 'search';
+    $variables['attributes']['aria-label'] = t('Search Form');
   }
 }
 
