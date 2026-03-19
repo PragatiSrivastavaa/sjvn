@@ -6,13 +6,14 @@
  * Available variables:
  * - attributes: A list of HTML attributes for the input element.
  * - children: Optional additional rendered elements.
+ * - is_submit: Boolean flag indicating if this is a submit button.
+ * - button_text: The label text for the button.
  *
  * @see template_preprocess_input()
  */
 #}
-<!-- <input{{ attributes }} /> -->
-{% if attributes.type in ['submit', 'button', 'reset', 'image'] %}
-  <input{{ attributes }} />
+{% if is_submit %}
+  <button{{ attributes.removeClass('form-submit') }}>{{ button_text }}</button>
 {% else %}
   <input{{ attributes }} />
 {% endif %}

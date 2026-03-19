@@ -21,7 +21,7 @@
         {{ page.header }}
       </div>
       <!-- Center Logos -->
-      <div class="middle-logs">
+      <div class="middle-logs" aria-label="Official Government Logos">
         {{ page.center_logos}}
       </div>
 
@@ -44,18 +44,18 @@
         </div>
 
         <!-- Theme Selectors (Inline) -->
-        <div class="theme-inline">
-          <button type="button" class="theme-color blue" data-theme="blue" title="Default Theme"
-            aria-label="Default Theme"></button>
-          <button type="button" class="theme-color green" data-theme="green" title="Green Theme"
-            aria-label="Green Theme"></button>
+        <div class="theme-inline" aria-label="Theme Selection">
+          <button type="button" class="theme-color blue" data-theme="blue" title="Change to Blue Theme"
+            aria-label="Change to Blue Theme"><span class="visually-hidden">Blue Theme</span></button>
+          <button type="button" class="theme-color green" data-theme="green" title="Change to Green Theme"
+            aria-label="Change to Green Theme"><span class="visually-hidden">Green Theme</span></button>
         </div>
 
         <div class="search_icons_mobile_wrapper">
           <div class="search_icons_mobile">
             <div class="nav-item search-btn">
-              <button type="button" class="btn-unstyled" aria-label="Search"><i class="bi bi-search"
-                  aria-hidden="true"></i></button>
+              <button type="button" class="btn-unstyled" aria-label="Toggle Search Panel"><i class="bi bi-search"
+                  aria-hidden="true"></i><span class="visually-hidden">Toggle Search Panel</span></button>
             </div>
             <div class="searchSection">{{ page.search_section }}</div>
           </div>
@@ -97,17 +97,19 @@
         </div>
       </div>
       <div class="nav-scroll-controls">
-        <button class="nav-scroll-btn nav-scroll-left" aria-label="Scroll Left">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <button class="nav-scroll-btn nav-scroll-left" aria-label="Scroll menu left">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path d="M12 16L6 10L12 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round" />
           </svg>
+          <span class="visually-hidden">Scroll menu left</span>
         </button>
-        <button class="nav-scroll-btn nav-scroll-right" aria-label="Scroll Right">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <button class="nav-scroll-btn nav-scroll-right" aria-label="Scroll menu right">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path d="M8 4L14 10L8 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round" />
           </svg>
+          <span class="visually-hidden">Scroll menu right</span>
         </button>
       </div>
     </nav>

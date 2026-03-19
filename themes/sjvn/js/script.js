@@ -374,20 +374,45 @@ document.addEventListener("DOMContentLoaded", () => {
     businessItems.forEach(item => {
         const updateImage = () => {
             const imgSrc = item.getAttribute("data-image");
-            if (!imgSrc || item.classList.contains("active")) return;
+            if (!imgSrc) return;
+
+            // Check if this item is already active - we only skip if the display src is already correct
+            if (item.classList.contains("active") && businessDisplay.getAttribute('src') === imgSrc) return;
 
             // Remove active class from all and add to current
             businessItems.forEach(i => i.classList.remove("active"));
             item.classList.add("active");
 
-            // Smooth transition with race condition protection
+            // Clear any pending timeouts
             if (businessTimeout) clearTimeout(businessTimeout);
 
-            businessDisplay.style.opacity = '0.4';
-            businessTimeout = setTimeout(() => {
-                businessDisplay.src = imgSrc;
+            // Cross-fading transition (Pseudo cross-fade using opacity)
+            businessDisplay.style.opacity = '0.3'; // Fade out slightly
+            
+            // Preload the image
+            const tempImg = new Image();
+            tempImg.src = imgSrc;
+            
+            tempImg.onload = () => {
+                // Ensure the item is STILL active (the user didn't hover elsewhere)
+                if (item.classList.contains("active")) {
+                  businessDisplay.src = imgSrc;
+                  businessDisplay.style.opacity = '1';
+                }
+            };
+            
+            tempImg.onerror = () => {
+                // Keep the previous image but maybe hint that something failed?
                 businessDisplay.style.opacity = '1';
-            }, 100);
+            };
+            
+            // Safety fallback if loading takes too long
+            businessTimeout = setTimeout(() => {
+                if (item.classList.contains("active") && businessDisplay.style.opacity < 1) {
+                  businessDisplay.src = imgSrc;
+                  businessDisplay.style.opacity = '1';
+                }
+            }, 500);
         };
 
         // Update on hover and focus
@@ -396,12 +421,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const handleInteraction = (e) => {
             const link = item.getAttribute("data-link");
-
-            // If it's already active, redirect to the link
             if (item.classList.contains("active")) {
                 if (link) window.location.href = link;
             } else {
-                // If not active, just switch the image (especially useful for mobile)
                 e.preventDefault();
                 updateImage();
             }
@@ -422,7 +444,13 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener('click', () => {
             const container = document.querySelector('.quick-links-container');
             if (!container) return;
-            const scrollAmount = 250;
+            
+            // Calculate scroll amount based on first card's width + gap
+            const card = container.querySelector('.quick-card');
+            const cardWidth = card ? card.offsetWidth : 260; // fallback
+            const gap = 20; // from CSS gap: 20px
+            const scrollAmount = cardWidth + gap;
+            
             if (button.classList.contains('left')) {
                 container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
             } else {

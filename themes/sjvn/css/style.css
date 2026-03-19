@@ -601,7 +601,8 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
   padding: 0;
   margin: 0;
   align-items: center;
-  justify-content: flex-end; /* Right align for header sec */
+  justify-content: flex-end;
+  /* Right align for header sec */
 }
 
 .breadcrumb__item {
@@ -640,7 +641,8 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
 }
 
 .breadcrumb__text {
-  color: #004b8d; /* Deeper blue for active item */
+  color: #004b8d;
+  /* Deeper blue for active item */
   font-weight: 700;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
 }
@@ -716,13 +718,16 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
     opacity: 1;
   }
 }
+
 button.carousel-next.carousel-button.right {
-    right: 0px;
-    justify-content: space-around;
+  right: 0px;
+  justify-content: space-around;
 }
+
 button.carousel-prev.carousel-button.left {
-    justify-content: center;
+  justify-content: center;
 }
+
 /* Navigation Arrows */
 .carousel-prev,
 .carousel-next {
@@ -3110,6 +3115,7 @@ button.carousel-prev.carousel-button.left {
   /* border-radius: 6px; */
   max-height: 400px;
   object-fit: cover;
+  transition: opacity 0.3s ease-in-out;
 }
 
 /* Responsive */
@@ -3175,13 +3181,14 @@ button.carousel-prev.carousel-button.left {
 
 .quick-links-container {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
   scrollbar-width: none;
   margin: 0px 0px;
   padding-top: 80px;
   padding-bottom: 20px;
+  scroll-snap-type: x mandatory;
   /* Space for shadow */
 }
 
@@ -3232,15 +3239,15 @@ button.carousel-prev.carousel-button.left {
 }
 
 .quick-card {
-  min-width: 200px;
-  max-width: 220px;
+  min-width: 250px;
+  max-width: 280px;
   flex: 0 0 auto;
   background: white;
   border: 1px solid rgba(0, 0, 0, 0.03);
   /* Extremely subtle border */
   border-radius: 20px;
   /* More rounded */
-  padding: 6px;
+  padding: 10px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   /* Premium soft shadow */
@@ -3252,6 +3259,7 @@ button.carousel-prev.carousel-button.left {
   position: relative;
   height: 100%;
   margin-top: 10px;
+  scroll-snap-align: center;
   /* Align with shadow */
 }
 
@@ -4077,7 +4085,7 @@ ul#superfish-footer {
 ul.sf-menu a,
 ul.sf-menu span.nolink {
   display: block;
-  padding: 0.4em 0.1em;
+  padding: 0.1em 0.1em;
   position: relative;
 }
 
@@ -4096,7 +4104,7 @@ ul.sf-menu span.nolink {
 
   ul.sf-menu a,
   ul.sf-menu span.nolink {
-    padding: 0.4em 0.1em;
+    padding: 0.1em 0.1em;
     font-size: 10px;
     text-align: center;
   }
