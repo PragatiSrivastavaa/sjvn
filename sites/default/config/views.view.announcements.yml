@@ -1202,7 +1202,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: "<a href=\"/alerts\" class=\"see-more-btn\">See More</a>\r\n"
+            value: "<a href=\"/sjvn/en/alert-archive\" class=\"see-more-btn\">See More</a>\r\n"
             format: full_html
           tokenize: false
       display_extenders: {  }
