@@ -59,6 +59,7 @@ regions:
   highlighted: Highlighted
   page_title: Page Title
   breadcrumb: Breadcrumb
+  messages: Messages
   right_menu: Right Menu
   social: Social Bar
   content_above: Content Above
