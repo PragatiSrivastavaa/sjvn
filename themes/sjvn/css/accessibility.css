@@ -677,7 +677,9 @@ body.a11y-theme-dark #nav-list>li>a {
 }
 
 body.a11y-theme-dark #superfish-main a:hover,
-body.a11y-theme-dark #nav-list>li>a:hover {
+body.a11y-theme-dark #superfish-main a:focus,
+body.a11y-theme-dark #nav-list>li>a:hover,
+body.a11y-theme-dark #nav-list>li>a:focus {
   background: var(--a11y-dark-border) !important;
   color: var(--a11y-dark-accent) !important;
 }
@@ -691,7 +693,8 @@ body.a11y-theme-dark #superfish-main ul a {
   color: var(--a11y-dark-text) !important;
 }
 
-body.a11y-theme-dark #superfish-main ul a:hover {
+body.a11y-theme-dark #superfish-main ul a:hover,
+body.a11y-theme-dark #superfish-main ul a:focus {
   background: var(--a11y-dark-bg) !important;
   color: var(--a11y-dark-accent) !important;
 }

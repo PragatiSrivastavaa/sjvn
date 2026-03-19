@@ -631,7 +631,13 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
     opacity: 1;
   }
 }
-
+button.carousel-next.carousel-button.right {
+    right: 0px;
+    justify-content: space-around;
+}
+button.carousel-prev.carousel-button.left {
+    justify-content: center;
+}
 /* Navigation Arrows */
 .carousel-prev,
 .carousel-next {
@@ -2081,7 +2087,8 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
   box-sizing: border-box;
 }
 
-#superfish-main a:hover {
+#superfish-main a:hover,
+#superfish-main a:focus {
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -2147,8 +2154,9 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
 
 /* Hover bridge handled by JavaScript delay timing */
 
-/* Only apply hover to main menu level (depth-1), not nested submenus */
-#superfish-main>li.sf-depth-1:hover>ul {
+/* Only apply hover/focus to main menu level (depth-1), not nested submenus */
+#superfish-main>li.sf-depth-1:hover>ul,
+#superfish-main>li.sf-depth-1:focus-within>ul {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -2188,7 +2196,8 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
   pointer-events: auto;
 }
 
-#superfish-main ul a:hover {
+#superfish-main ul a:hover,
+#superfish-main ul a:focus {
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
@@ -2213,7 +2222,8 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
   line-height: 1.1;
 }
 
-#superfish-main ul ul a:hover {
+#superfish-main ul ul a:hover,
+#superfish-main ul ul a:focus {
   background: var(--primary-light) !important;
   color: var(--primary-color) !important;
 }
@@ -2244,17 +2254,21 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
 
 /* Sub-submenus (Level 2) - handled by earlier rule above */
 
-/* Show Level 2 submenus on hover - as overlay */
+/* Show Level 2 submenus on hover/focus - as overlay */
 #superfish-main ul li.menuparent:hover>ul,
-#superfish-main ul li:has(> ul):hover>ul {
+#superfish-main ul li:has(> ul):hover>ul,
+#superfish-main ul li.menuparent:focus-within>ul,
+#superfish-main ul li:has(> ul):focus-within>ul {
   opacity: 1 !important;
   visibility: visible !important;
   transform: translateX(0) !important;
 }
 
-/* Visual feedback for hovered menu items with children */
+/* Visual feedback for hovered/focused menu items with children */
 #superfish-main ul li.menuparent>a:hover,
-#superfish-main ul li:has(> ul)>a:hover {
+#superfish-main ul li:has(> ul)>a:hover,
+#superfish-main ul li.menuparent>a:focus,
+#superfish-main ul li:has(> ul)>a:focus {
   background: rgba(255, 255, 255, 0.15) !important;
 }
 
@@ -2268,7 +2282,8 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
   cursor: pointer !important;
 }
 
-#superfish-main ul li:not(.menuparent)>a:hover {
+#superfish-main ul li:not(.menuparent)>a:hover,
+#superfish-main ul li:not(.menuparent)>a:focus {
   background: var(--primary-light) !important;
   color: var(--primary-color) !important;
 }
@@ -2284,10 +2299,13 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
   margin-left: -6px !important;
 }
 
-/* Show Level 3+ submenus on hover - as overlay */
+/* Show Level 3+ submenus on hover/focus - as overlay */
 #superfish-main ul ul li.menuparent:hover>ul,
 #superfish-main ul ul ul li.menuparent:hover>ul,
-#superfish-main ul ul ul ul li.menuparent:hover>ul {
+#superfish-main ul ul ul ul li.menuparent:hover>ul,
+#superfish-main ul ul li.menuparent:focus-within>ul,
+#superfish-main ul ul ul li.menuparent:focus-within>ul,
+#superfish-main ul ul ul ul li.menuparent:focus-within>ul {
   opacity: 1 !important;
   visibility: visible !important;
   transform: translateX(0) !important;
@@ -2317,8 +2335,9 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
   overflow: visible !important;
 }
 
-/* Show main navigation submenus on hover */
-#superfish-main>li:hover>ul {
+/* Show main navigation submenus on hover/focus */
+#superfish-main>li:hover>ul,
+#superfish-main>li:focus-within>ul {
   opacity: 1 !important;
   visibility: visible !important;
   transform: translateY(0) !important;
@@ -2408,7 +2427,8 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
   font-size: 0.9em;
 }
 
-#superfish-main ul ul a:hover {
+#superfish-main ul ul a:hover,
+#superfish-main ul ul a:focus {
   background: var(--primary-light) !important;
   color: var(--primary-color) !important;
 }
@@ -2430,7 +2450,11 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
 #superfish-main ul li:has(ul)>a:hover,
 #superfish-main ul ul li:has(ul)>a:hover,
 #superfish-main ul ul ul li:has(ul)>a:hover,
-#superfish-main ul li.has-submenu>a:hover {
+#superfish-main ul li.has-submenu>a:hover,
+#superfish-main ul li:has(ul)>a:focus,
+#superfish-main ul ul li:has(ul)>a:focus,
+#superfish-main ul ul ul li:has(ul)>a:focus,
+#superfish-main ul li.has-submenu>a:focus {
   background: rgba(255, 255, 255, 0.15);
 }
 
@@ -2455,7 +2479,9 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
 }
 
 #superfish-main>li.menuparent:hover>a:after,
-#superfish-main>li:has(> ul):hover>a:after {
+#superfish-main>li:has(> ul):hover>a:after,
+#superfish-main>li.menuparent:focus-within>a:after,
+#superfish-main>li:has(> ul):focus-within>a:after {
   transform: rotate(60deg);
 }
 
@@ -2489,17 +2515,22 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
   display: none;
 }
 
-/* Highlight arrow when hovering over items with children (showing submenu) */
+/* Highlight arrow when hovering/focusing over items with children (showing submenu) */
 #superfish-main ul li.menuparent:hover>a:after,
-#superfish-main ul li:has(> ul):hover>a:after {
+#superfish-main ul li:has(> ul):hover>a:after,
+#superfish-main ul li.menuparent:focus-within>a:after,
+#superfish-main ul li:has(> ul):focus-within>a:after {
   color: #fff;
   transform: translateX(3px);
 }
 
-/* Hover effect for nested menu items with submenus */
+/* Hover/Focus effect for nested menu items with submenus */
 #superfish-main ul li.menuparent>a:hover:after,
 #superfish-main ul li:has(> ul)>a:hover:after,
-#superfish-main ul li.has-submenu>a:hover:after {
+#superfish-main ul li.has-submenu>a:hover:after,
+#superfish-main ul li.menuparent>a:focus:after,
+#superfish-main ul li:has(> ul)>a:focus:after,
+#superfish-main ul li.has-submenu>a:focus:after {
   color: #fff;
 }
 
