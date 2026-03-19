@@ -83,6 +83,12 @@
 
 <main id="main-content" class="body-screen">
 
+  {% if page.messages %}
+  <div class="page-messages-wrapper container-fluid pt-2">
+    {{ page.messages }}
+  </div>
+  {% endif %}
+
   <section class="aboutscreen">
     <div class="container-fluid">
       <div class="row">

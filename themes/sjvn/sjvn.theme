@@ -291,15 +291,186 @@ function sjvn_preprocess_links(&$variables) {
 
 /**
  * Implements hook_preprocess_input().
+ * Fixes W3C validation + adds aria attributes for errors.
  */
 function sjvn_preprocess_input(&$variables) {
-  // Fix W3C: 'autocomplete' is NOT allowed on submit buttons.
-  if (isset($variables['element']['#type']) && $variables['element']['#type'] === 'submit') {
-    if (isset($variables['attributes']['autocomplete'])) {
+  $element = $variables['element'];
+  $type = $element['#type'] ?? 'text';
+
+  // Types that can have 'autocomplete'.
+  $allowed_autocomplete_types = [
+    'color', 'date', 'datetime-local', 'email', 'month',
+    'number', 'password', 'range', 'search', 'tel', 'text', 'time', 'url', 'week',
+  ];
+
+  if (isset($variables['attributes']) && $variables['attributes'] instanceof \Drupal\Core\Template\Attribute) {
+    if (in_array($type, $allowed_autocomplete_types)) {
+      if (!$variables['attributes']->offsetExists('autocomplete')) {
+        $variables['attributes']->setAttribute('autocomplete', 'off');
+      }
+    }
+    else {
+      // Remove autocomplete from submit, button, hidden, etc. (W3C fix).
+      $variables['attributes']->removeAttribute('autocomplete');
+    }
+
+    // Add WCAG accessibility attributes when there are errors.
+    if (!empty($element['#errors'])) {
+      $input_name = $element['#name'] ?? 'field';
+      $error_id = 'error-' . str_replace(['[', ']'], ['-', ''], $input_name);
+
+      $described_by = $variables['attributes']->offsetExists('aria-describedby')
+        ? (string) $variables['attributes']->offsetGet('aria-describedby')
+        : '';
+      if (strpos($described_by, $error_id) === FALSE) {
+        $variables['attributes']->setAttribute('aria-describedby', trim($described_by . ' ' . $error_id));
+      }
+      $variables['attributes']->setAttribute('aria-invalid', 'true');
+    }
+  }
+  elseif (isset($variables['attributes']) && is_array($variables['attributes'])) {
+    if (in_array($type, $allowed_autocomplete_types)) {
+      if (!isset($variables['attributes']['autocomplete'])) {
+        $variables['attributes']['autocomplete'] = 'off';
+      }
+    }
+    else {
       unset($variables['attributes']['autocomplete']);
+    }
+
+    if (!empty($element['#errors'])) {
+      $input_name = $element['#name'] ?? 'field';
+      $error_id = 'error-' . str_replace(['[', ']'], ['-', ''], $input_name);
+      $described_by = $variables['attributes']['aria-describedby'] ?? '';
+      if (strpos($described_by, $error_id) === FALSE) {
+        $variables['attributes']['aria-describedby'] = trim($described_by . ' ' . $error_id);
+      }
+      $variables['attributes']['aria-invalid'] = 'true';
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_form_element().
+ * Explicitly passes #errors to the form-element.html.twig template.
+ * Without this, Webform suppresses inline errors and only shows them at top.
+ */
+function sjvn_preprocess_form_element(&$variables) {
+  $element = $variables['element'];
+  // Restore errors to the template variable if they were suppressed.
+  if (isset($element['#errors']) && empty($variables['errors'])) {
+    $variables['errors'] = $element['#errors'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_textarea().
+ * Passes errors to the textarea template and adds WCAG aria attributes.
+ */
+function sjvn_preprocess_textarea(&$variables) {
+  $element = $variables['element'];
+  if (isset($element['#errors'])) {
+    $variables['errors'] = $element['#errors'];
+
+    $input_name = $element['#name'] ?? 'field';
+    $error_id = 'error-' . str_replace(['[', ']'], ['-', ''], $input_name);
+
+    if ($variables['attributes'] instanceof \Drupal\Core\Template\Attribute) {
+      $described_by = $variables['attributes']->offsetExists('aria-describedby')
+        ? (string) $variables['attributes']->offsetGet('aria-describedby')
+        : '';
+      if (strpos($described_by, $error_id) === FALSE) {
+        $variables['attributes']->setAttribute('aria-describedby', trim($described_by . ' ' . $error_id));
+      }
+      $variables['attributes']->setAttribute('aria-invalid', 'true');
+    }
+    elseif (is_array($variables['attributes'])) {
+      $described_by = $variables['attributes']['aria-describedby'] ?? '';
+      if (strpos($described_by, $error_id) === FALSE) {
+        $variables['attributes']['aria-describedby'] = trim($described_by . ' ' . $error_id);
+      }
+      $variables['attributes']['aria-invalid'] = 'true';
+    }
+  }
+  // Remove 'pattern' attribute — invalid on textarea.
+  if (isset($variables['attributes']['pattern'])) {
+    unset($variables['attributes']['pattern']);
+  }
+  if ($variables['attributes'] instanceof \Drupal\Core\Template\Attribute) {
+    $variables['attributes']->removeAttribute('pattern');
+  }
+}
+
+/**
+ * Implements hook_preprocess_select().
+ * Adds WCAG aria attributes for select elements with errors.
+ */
+function sjvn_preprocess_select(&$variables) {
+  $element = $variables['element'];
+  if (!empty($element['#errors'])) {
+    $input_name = $element['#name'] ?? 'field';
+    $error_id = 'error-' . str_replace(['[', ']'], ['-', ''], $input_name);
+
+    if ($variables['attributes'] instanceof \Drupal\Core\Template\Attribute) {
+      $described_by = $variables['attributes']->offsetExists('aria-describedby')
+        ? (string) $variables['attributes']->offsetGet('aria-describedby')
+        : '';
+      if (strpos($described_by, $error_id) === FALSE) {
+        $variables['attributes']->setAttribute('aria-describedby', trim($described_by . ' ' . $error_id));
+      }
+      $variables['attributes']->setAttribute('aria-invalid', 'true');
+    }
+    elseif (is_array($variables['attributes'])) {
+      $described_by = $variables['attributes']['aria-describedby'] ?? '';
+      if (strpos($described_by, $error_id) === FALSE) {
+        $variables['attributes']['aria-describedby'] = trim($described_by . ' ' . $error_id);
+      }
+      $variables['attributes']['aria-invalid'] = 'true';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_text_format_wrapper().
+ * Passes errors to the text-format-wrapper template.
+ */
+function sjvn_preprocess_text_format_wrapper(&$variables) {
+  $element = $variables['element'];
+  if (isset($element['#errors'])) {
+    $variables['errors'] = $element['#errors'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_container().
+ * Prevents duplicate 'edit-actions' ID W3C error.
+ */
+function sjvn_preprocess_container(&$variables) {
+  if (isset($variables['attributes']['id']) && strpos((string) $variables['attributes']['id'], 'edit-actions') === 0) {
+    $variables['attributes']['id'] = Html::getUniqueId('sjvn-form-actions');
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function sjvn_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Add placeholder to search block form.
+  if ($form_id == 'search_block_form' || isset($form['keys'])) {
+    if (isset($form['keys'])) {
+      $form['keys']['#attributes']['placeholder'] = 'Search';
+    }
+  }
+
+  // Disable browser HTML5 native validation on all webforms.
+  // This forces validation through Drupal's server-side system which
+  // displays styled inline error messages with red borders below each field,
+  // instead of the browser's native "Please fill this field" popup tooltip.
+  if (strpos($form_id, 'webform_') === 0) {
+    $form['#attributes']['novalidate'] = 'novalidate';
+  }
+}
+
 
 /**
  * Implements hook_preprocess_button().

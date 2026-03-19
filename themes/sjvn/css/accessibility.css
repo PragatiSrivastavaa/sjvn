@@ -2499,3 +2499,35 @@ body.a11y-reduce-motion * {
     border-width: 3px;
   }
 }
+
+/* ============================================
+   Form Validation Error Messages
+   WCAG 3.3.1 - Error Identification
+   ============================================ */
+
+/* Highlight the entire form item wrapper when there is an error */
+.form-item--error input,
+.form-item--error select,
+.form-item--error textarea {
+  border-color: #d32f2f !important;
+  outline: 2px solid #d32f2f !important;
+}
+
+/* Error message text */
+.form-item--error-message {
+  display: block;
+  margin-top: 4px;
+  padding: 6px 10px;
+  background-color: #fff3f3;
+  border-left: 4px solid #d32f2f;
+  border-radius: 0 4px 4px 0;
+  color: #b71c1c;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.form-item--error-message strong {
+  font-weight: 600;
+  color: #b71c1c;
+}
