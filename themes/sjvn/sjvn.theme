@@ -294,7 +294,6 @@ function sjvn_preprocess_links(&$variables) {
   }
 }
 
-<<<<<<< HEAD
 /**
  * Implements hook_preprocess_input().
  * Fixes W3C validation + adds aria attributes for errors.
@@ -341,14 +340,6 @@ function sjvn_preprocess_input(&$variables) {
       }
     }
     else {
-=======
-function sjvn_preprocess_input(&$variables) {
-  // Fix W3C: 'autocomplete' is NOT allowed on submit buttons.
-  if (isset($variables['element']['#type']) && $variables['element']['#type'] === 'submit') {
-    $variables['is_submit'] = TRUE;
-    $variables['button_text'] = $variables['element']['#value'];
-    if (isset($variables['attributes']['autocomplete'])) {
->>>>>>> 19bb7b0fcd0aa44b50fac5576dbf2d44fef57b82
       unset($variables['attributes']['autocomplete']);
     }
 
@@ -365,7 +356,7 @@ function sjvn_preprocess_input(&$variables) {
 
   // GIGW 3.0: Add aria-label to search input and submit button
   if (isset($variables['attributes']['id'])) {
-    $id = $variables['attributes']['id'];
+    $id = (string) $variables['attributes']['id'];
     // For 'edit-keys' (search input)
     if (strpos($id, 'edit-keys') !== false) {
        $variables['attributes']['aria-label'] = t('Enter search keywords');
@@ -487,7 +478,14 @@ function sjvn_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ($form_id == 'search_block_form' || isset($form['keys'])) {
     if (isset($form['keys'])) {
       $form['keys']['#attributes']['placeholder'] = 'Search';
+      $form['keys']['#attributes']['aria-label'] = t('Enter search keywords');
+      $form['keys']['#attributes']['title'] = t('Enter search keywords');
     }
+    if (isset($form['actions']['submit'])) {
+      $form['actions']['submit']['#attributes']['aria-label'] = t('Submit Search');
+    }
+    $form['#attributes']['role'] = 'search';
+    $form['#attributes']['aria-label'] = t('SJVN Site Search Form');
   }
 
   // Disable browser HTML5 native validation on all webforms.
@@ -496,42 +494,6 @@ function sjvn_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   // instead of the browser's native "Please fill this field" popup tooltip.
   if (strpos($form_id, 'webform_') === 0) {
     $form['#attributes']['novalidate'] = 'novalidate';
-  }
-}
-
-
-/**
- * Implements hook_preprocess_button().
- */
-function sjvn_preprocess_button(&$variables) {
-  // Fix W3C: 'autocomplete' is NOT allowed on buttons of type submit.
-  if (isset($variables['element']['#attributes']['type']) && $variables['element']['#attributes']['type'] === 'submit') {
-    if (isset($variables['attributes']['autocomplete'])) {
-        unset($variables['attributes']['autocomplete']);
-    }
-  }
-}
-
-/**
- * Implements hook_preprocess_form().
- */
-function sjvn_preprocess_form(&$variables) {
-  if (isset($variables['attributes']['id']) && (strpos($variables['attributes']['id'], 'search-block-form') !== false || strpos($variables['attributes']['id'], 'search-form') !== false)) {
-    $variables['attributes']['role'] = 'search';
-    $variables['attributes']['aria-label'] = t('SJVN Site Search Form');
-  }
-}
-
-/**
- * Implements hook_form_alter().
- */
-function sjvn_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-  if ($form_id == 'search_block_form') {
-    $form['keys']['#attributes']['aria-label'] = t('Enter search keywords');
-    $form['keys']['#attributes']['title'] = t('Enter search keywords');
-    $form['actions']['submit']['#attributes']['aria-label'] = t('Submit Search');
-    $form['#attributes']['role'] = 'search';
-    $form['#attributes']['aria-label'] = t('SJVN Site Search Form');
   }
 }
 
