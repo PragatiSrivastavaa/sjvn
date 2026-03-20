@@ -46,10 +46,14 @@
   // Initialize when DOM is ready - Compatible with Drupal
   function initWhenReady() {
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
+      document.addEventListener('DOMContentLoaded', () => {
+        init();
+        handleFormErrors(document);
+      });
     } else {
       // DOM is already loaded
       init();
+      handleFormErrors(document);
     }
   }
 
@@ -58,11 +62,15 @@
     // Use Drupal behaviors for better compatibility
     Drupal.behaviors.sjvnAccessibility = {
       attach: function (context, settings) {
-        // Only initialize once
+        // 1. Initialize the general accessibility widget (once)
         if (context === document && !document.body.classList.contains('a11y-initialized')) {
           document.body.classList.add('a11y-initialized');
           init();
         }
+        
+        // 2. Handle form errors: Redirect focus to first error field
+        // This runs on every AJAX update too
+        handleFormErrors(context);
       }
     };
   } else {
@@ -902,6 +910,65 @@
       localStorage.setItem(CONFIG.storageKey, JSON.stringify(settings));
     } catch (e) {
       console.warn('Failed to save accessibility settings:', e);
+    }
+  }
+
+  /**
+   * Handle form errors: focus first error and ensure accessibility linking
+   * This ensures screen readers read error messages correctly.
+   */
+  function handleFormErrors(context) {
+    const ctx = context || document;
+
+    // Find all error messages in this context
+    const errorMessages = ctx.querySelectorAll('.form-item--error-message');
+
+    if (errorMessages.length === 0) return;
+
+    console.log(`🎯 Accessibility: Checking ${errorMessages.length} form errors`);
+
+    errorMessages.forEach(errorMes => {
+      // Find the wrapper (Drupal's .form-item or similar)
+      const wrapper = errorMes.closest('.form-item, .js-form-item');
+      if (wrapper) {
+        // Find input, select or textarea in this wrapper
+        const field = wrapper.querySelector('input:not([type="hidden"]), select, textarea');
+        if (field) {
+          // 1. Link the field to its error message via aria-describedby for SR support
+          if (errorMes.id) {
+            const currentDescr = field.getAttribute('aria-describedby') || '';
+            if (!currentDescr.includes(errorMes.id)) {
+              field.setAttribute('aria-describedby', (currentDescr + ' ' + errorMes.id).trim());
+            }
+          }
+
+          // 2. Mark as invalid for screen readers
+          field.setAttribute('aria-invalid', 'true');
+        }
+      }
+    });
+
+    // 3. Focus the first field with an error
+    // We only do this once per "event" to avoid grabbing focus unexpectedly during AJAX typing
+    const firstErrorWrapper = ctx.querySelector('.form-item--error, .has-error');
+    if (firstErrorWrapper) {
+      const firstField = firstErrorWrapper.querySelector('input:not([type="hidden"]), select, textarea');
+      
+      // Check if we already handled this field to avoid focus loops in AJAX
+      if (firstField && !firstField.getAttribute('data-a11y-focused')) {
+        firstField.setAttribute('data-a11y-focused', 'true');
+        
+        console.log('🎯 Accessibility: Moving focus to first error field');
+
+        // Delay slightly to allow the screen reader to acknowledge the page state
+        setTimeout(() => {
+          if (firstField) {
+            firstField.focus();
+            // Scroll it into view for sighted users
+            firstField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 500);
+      }
     }
   }
 

@@ -486,12 +486,80 @@
     } catch (e) { }
   }
 
-  // Initialization methods
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => setTimeout(init, 100));
-  } else {
-    setTimeout(init, 100);
+  /**
+   * Handle form errors by focusing the first error field and linking error messages via ARIA.
+   * This helps screen readers communicate errors clearly to users.
+   */
+  function handleFormErrors(context) {
+    const ctx = context || document;
+    const errorMessages = ctx.querySelectorAll('.form-item--error-message, .messages--error');
+
+    if (errorMessages.length === 0) return;
+
+    console.log('🎯 Accessibility: Form errors detected, improving ARIA context...');
+
+    errorMessages.forEach(function (errorMes) {
+      const wrapper = errorMes.closest('.form-item, .js-form-item, [class*="form-type-"]');
+      if (wrapper) {
+        const field = wrapper.querySelector('input:not([type="hidden"]), select, textarea');
+        if (field) {
+          // Link field to its error message
+          if (errorMes.id) {
+            const currentDescr = field.getAttribute('aria-describedby') || '';
+            if (!currentDescr.includes(errorMes.id)) {
+              field.setAttribute('aria-describedby', (currentDescr + ' ' + errorMes.id).trim());
+            }
+          }
+          // Set invalid state
+          field.setAttribute('aria-invalid', 'true');
+        }
+      }
+    });
+
+    // Focus first error field (once per load/attach)
+    const firstErrorItem = ctx.querySelector('.form-item--error, .has-error, .is-invalid');
+    if (firstErrorItem) {
+      const firstField = firstErrorItem.querySelector('input:not([type="hidden"]), select, textarea');
+      if (firstField && !firstField.hasAttribute('data-a11y-handled')) {
+        firstField.setAttribute('data-a11y-handled', 'true');
+        console.log('🎯 Accessibility: Focusing first error field:', firstField.id || firstField.name);
+        
+        setTimeout(function () {
+          if (firstField) {
+            firstField.focus();
+            firstField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 300);
+      }
+    }
   }
-  window.onload = () => setTimeout(init, 500);
+
+  // Initialization methods
+  if (typeof Drupal !== 'undefined' && Drupal.behaviors) {
+    Drupal.behaviors.sjvnAccessibilitySimple = {
+      attach: function (context) {
+        if (context === document) {
+           setTimeout(init, 100);
+        }
+        // Always handle form errors in context (for AJAX support)
+        handleFormErrors(context);
+      }
+    };
+  } else {
+    // Standard initialization if Drupal is not present
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(init, 100);
+        handleFormErrors(document);
+      });
+    } else {
+      setTimeout(init, 100);
+      handleFormErrors(document);
+    }
+    window.onload = function() {
+       setTimeout(init, 500);
+       handleFormErrors(document);
+    };
+  }
 
 })();
