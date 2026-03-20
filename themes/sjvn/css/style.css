@@ -4990,6 +4990,17 @@ body.dark-mode .empty-state-desc {
   font-style: italic;
 }
 
+/* Fix: Remove gray box from placeholder values shown in form validation error messages.
+   Drupal renders the typed value as <em class="placeholder"> inside error text.
+   Override background and use the parent error color so it reads properly. */
+.form-item--error-message .placeholder,
+.messages--error .placeholder {
+  background-color: transparent !important;
+  color: #b71c1c !important;
+  opacity: 1 !important;
+  font-style: italic;
+}
+
 /* ========================================
    LANGUAGE SWITCH NOTIFICATION
    ======================================== */
