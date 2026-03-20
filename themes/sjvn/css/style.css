@@ -5273,10 +5273,6 @@ body.dark-mode .empty-state-desc {
     text-align: center;
   }
 
-  .file--application-pdf {
-    background-image: url(../../images/icons/application-pd-f.png);
-  }
-
   .field--name-field-upload-files .file--application-pdf::before {
     content: "";
     height: 65px;
