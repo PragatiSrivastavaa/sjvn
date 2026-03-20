@@ -68,7 +68,7 @@
   display: none;
 }
 
-.main-nav-inner #nav-list .menu-item {
+.main-nav-inner #nav-list li {
   list-style: none;
   display: flex;
   flex-shrink: 0;
@@ -146,7 +146,7 @@
   height: 16px;
 }
 
-.main-nav-inner #superfish-main .menu-item {
+.main-nav-inner #superfish-main li {
   list-style: none;
   display: flex;
   align-items: center;
@@ -159,7 +159,7 @@
 }
 
 .main-nav-inner #superfish-main a,
-.main-nav-inner #nav-list > .menu-item > a {
+.main-nav-inner #nav-list>li>a {
   color: var(--primary-color);
   text-decoration: none;
   text-wrap: nowrap;
@@ -173,12 +173,12 @@
 }
 
 .main-nav-inner #superfish-main a:hover,
-.main-nav-inner #nav-list > .menu-item > a:hover {
+.main-nav-inner #nav-list>li>a:hover {
   background: rgba(0, 0, 0, 0.1);
 }
 
 .main-nav-inner #superfish-main a img,
-.main-nav-inner #nav-list > .menu-item > a img {
+.main-nav-inner #nav-list>li>a img {
   height: 26px;
   display: block;
 }
@@ -191,7 +191,7 @@
 @media (min-width: 992px) {
 
   /* Superfish Submenu Styles for Inner Pages - DESKTOP ONLY */
-  .main-nav-inner #superfish-main .menu-sub-list {
+  .main-nav-inner #superfish-main ul {
     position: fixed !important;
     top: auto;
     left: auto;
@@ -223,14 +223,14 @@
 @media (min-width: 992px) {
 
   /* Only apply hover to main menu level (depth-1), not nested submenus */
-  .main-nav-inner #superfish-main > .menu-item.sf-depth-1:hover > .menu-sub-list {
+  .main-nav-inner #superfish-main>li.sf-depth-1:hover>ul {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
 }
 
-.main-nav-inner #superfish-main .menu-sub-list .menu-item {
+.main-nav-inner #superfish-main ul li {
   display: block !important;
   position: relative !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -245,11 +245,11 @@
   background: transparent !important;
 }
 
-.main-nav-inner #superfish-main .menu-sub-list .menu-item:last-child {
+.main-nav-inner #superfish-main ul li:last-child {
   border-bottom: none;
 }
 
-.main-nav-inner #superfish-main .menu-sub-list a {
+.main-nav-inner #superfish-main ul a {
   display: block;
   padding: 6px 14px;
   color: var(--primary-color) !important;
@@ -266,7 +266,7 @@
   background: transparent !important;
 }
 
-.main-nav-inner #superfish-main .menu-sub-list a:hover {
+.main-nav-inner #superfish-main ul a:hover {
   background: rgba(0, 0, 0, 0.08) !important;
   color: var(--primary-color) !important;
   font-weight: 600;
@@ -275,7 +275,7 @@
 @media (min-width: 992px) {
 
   /* Sub-submenu positioning - consolidated rules */
-  .main-nav-inner #superfish-main .menu-sub-list .menu-sub-list {
+  .main-nav-inner #superfish-main ul ul {
     position: absolute !important;
     top: 0 !important;
     left: 100% !important;
@@ -306,7 +306,7 @@
 /* Arrow indicator removed as per user preference */
 
 /* Sub-submenu list items - ensure no positioning conflicts */
-.main-nav-inner #superfish-main .menu-sub-list .menu-sub-list .menu-item {
+.main-nav-inner #superfish-main ul ul li {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   position: relative !important;
   display: block !important;
@@ -320,11 +320,11 @@
   background: transparent !important;
 }
 
-.main-nav-inner #superfish-main .menu-sub-list .menu-sub-list .menu-item:last-child {
+.main-nav-inner #superfish-main ul ul li:last-child {
   border-bottom: none;
 }
 
-.main-nav-inner #superfish-main .menu-sub-list .menu-sub-list a {
+.main-nav-inner #superfish-main ul ul a {
   color: var(--primary-color) !important;
   background: transparent !important;
   padding: 6px 14px;
@@ -334,7 +334,7 @@
   overflow-wrap: break-word;
 }
 
-.main-nav-inner #superfish-main .menu-sub-list .menu-sub-list a:hover {
+.main-nav-inner #superfish-main ul ul a:hover {
   background: rgba(0, 0, 0, 0.08) !important;
   color: var(--primary-color) !important;
   font-weight: 600;
@@ -356,7 +356,7 @@
 }
 
 /* Add arrow indicator for sub-submenu items */
-.main-nav-inner #superfish-main .menu-sub-list .menu-item.menuparent > a:after {
+.main-nav-inner #superfish-main ul li.menuparent>a:after {
   content: '▶';
   font-size: 0.7em;
   margin-left: 8px;
@@ -364,7 +364,7 @@
   color: var(--primary-color);
 }
 
-.main-nav-inner #superfish-main .menu-sub-list .menu-item.menuparent:hover > a:after {
+.main-nav-inner #superfish-main ul li.menuparent:hover>a:after {
   transform: translateX(2px);
 }
 
