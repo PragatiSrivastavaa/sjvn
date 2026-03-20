@@ -11,7 +11,7 @@ display:
       footer:
         area:
           content:
-            value: '<p><a class="see-more-btn" href="/alerts">और देखें</a></p>'
+            value: '<p><a class="see-more-btn" href="/sjvn/en/alert-archive">और देखें</a></p>'
             format: full_html
   default:
     display_options:
