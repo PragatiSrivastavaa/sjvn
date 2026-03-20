@@ -438,7 +438,7 @@
     display: none !important;
   }
 
-  #superfish-main > .menu-item {
+  #superfish-main>li {
     list-style: none !important;
     display: flex !important;
     align-items: center !important;
@@ -776,7 +776,7 @@ table.views-table.views-view-table.cols-0 {
     z-index: 999999;
   }
 
-  body:not(.path-frontpage) #superfish-main .menu-sub-list {
+  body:not(.path-frontpage) #superfish-main ul {
     background-color: #004b88 !important;
     border-left: 4px solid #F6AD0A !important;
     max-height: 400px !important;

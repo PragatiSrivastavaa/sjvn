@@ -37,11 +37,11 @@
 
         <span class="separator" aria-hidden="true">|</span>
         <div class="language-toggle" aria-label="Language Switcher">
-          <div class="lang-select-wrapper">
-            <div class="lang-select">
+          <ul>
+            <li class="lang-select">
               {{ page.language }}
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
 
         <!-- Theme Selectors (Inline) -->
@@ -90,9 +90,9 @@
               </svg>
             </button>
           </div>
-          <div id="nav-list">
+          <ul id="nav-list">
             {{ page.primary_menu }}
-          </div>
+          </ul>
         </div>
         <div class="nav-scroll-controls">
           <button class="nav-scroll-btn nav-scroll-left" aria-label="Scroll menu left">

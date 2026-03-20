@@ -60,9 +60,9 @@
   {% if items %}
     {% if menu_level == 0 %}
       <div class="menu-wrapper">
-        <div{{ attributes.addClass('menu') }}>
+        <ul{{ attributes.addClass('menu') }}>
     {% else %}
-      <div class="menu-sub-list">
+      <ul class="menu">
     {% endif %}
 
     {% for item in items %}
@@ -73,15 +73,15 @@
         item.in_active_trail ? 'menu-item--active-trail',
       ] %}
 
-      <div{{ item.attributes.addClass(classes) }}>
+      <li{{ item.attributes.addClass(classes) }}>
         {{ link(item.title, item.url) }}
         {% if item.below %}
           {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
         {% endif %}
-      </div>
+      </li>
     {% endfor %}
 
-    </div>
+    </ul>
 
     {% if menu_level == 0 %}
       <button class="menu-toggle"><span>More</span> ▼</button>
