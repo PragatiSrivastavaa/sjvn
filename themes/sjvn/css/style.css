@@ -561,7 +561,9 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
 }
 
 .main-logo {
-  height: 91px;
+    aspect-ratio: 2 / 3;
+    width: 80px;  
+    height: auto;
 }
 
 .org-text h1 {

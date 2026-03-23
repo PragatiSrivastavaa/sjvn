@@ -274,7 +274,7 @@
   } */
 
   .chairman-card {
-    padding: 35px 70px;
+    padding: 20px 4%;
     gap: 28px;
     min-height: 280px;
   }
@@ -639,11 +639,14 @@ table.views-table.views-view-table.cols-0 {
 } */
 
 .chairman-card {
-  padding: 20px 15px;
+  padding: 20px 6%;
   gap: 15px;
   border-radius: 8px;
 }
-
+.chairman-content p:first-child {
+    font-size: 20px;
+    font-weight: 700;
+}
 .chairman-content blockquote {
   font-size: 0.9rem;
   margin: 8px 0 6px 0;
@@ -651,7 +654,7 @@ table.views-table.views-view-table.cols-0 {
 }
 
 .chairman-name {
-  font-size: 0.75rem;
+  font-size: 17px !important;
   margin: 2px 0 8px;
 }
 
@@ -1113,13 +1116,15 @@ table.views-table.views-view-table.cols-0 {
   #superfish-main li.is-open>ul::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.05);
   }
+
   @media (max-width: 992px) {
-  .top-bar .left-links,
-  .top-bar .middle-logs,
-  .top-bar .right-links {
-    gap: 4px;
+
+    .top-bar .left-links,
+    .top-bar .middle-logs,
+    .top-bar .right-links {
+      gap: 4px;
+    }
   }
-}
 }
 
 
@@ -1502,8 +1507,8 @@ table.views-table.views-view-table.cols-0 {
   }
 
   /* Ensure internal content takes 100% width */
-  .news-column > *,
-  .alert-column > *,
+  .news-column>*,
+  .alert-column>*,
   .news-column .region,
   .news-column .view,
   .alert-column .region,
