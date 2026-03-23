@@ -73,8 +73,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 5px; /* Tighter gap for better vertical stacking */
         transition: all 0.5s ease-in-out;
+        width: 90%;
     }
 
     .curtain-open .interaction-center {
@@ -83,29 +84,47 @@
         pointer-events: none;
     }
 
+    .sjvn-welcome-text {
+        font-family: 'Outfit', sans-serif;
+        font-size: 3rem; /* Increased from 1.8rem */
+        font-weight: 700;
+        color: white;
+        letter-spacing: 6px;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    .sjvn-to-text {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: 3rem; /* Increased from 2rem */
+        color: rgba(255, 255, 255, 0.9);
+        margin: 5px 0;
+    }
+
     .sjvn-stage-text {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 4rem;
+        font-size: 5rem; /* Increased from 4rem */
         font-weight: 800;
         color: white;
         text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        letter-spacing: 12px;
+        letter-spacing: 2px;
         margin: 0;
         background: linear-gradient(to bottom, #fff7e0, #d4af37);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: textFloat 3s ease-in-out infinite alternate;
     }
 
     .sjvn-subtitle {
         font-family: 'Outfit', sans-serif;
-        font-size: 1.3rem;
-        color: rgba(255, 255, 255, 0.95);
+        font-size: 2rem; /* Increased from 1.2rem */
+        color: rgba(255, 255, 255, 1);
         letter-spacing: 6px;
-        font-weight: 600;
-        margin-top: -5px;
+        font-weight: 700;
+        margin: 15px 0;
         text-transform: uppercase;
-        animation: textLightShimmer 4s ease-in-out infinite alternate;
     }
 
     .click-now-btn {
@@ -143,7 +162,6 @@
     }
 
     @keyframes textFloat { from { transform: translateY(0); } to { transform: translateY(-10px); } }
-    @keyframes textLightShimmer { 0% { opacity: 0.7; } 100% { opacity: 1; } }
 
     /* Curtain components */
     .curtain-container-overlay {
@@ -188,7 +206,7 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
 
-    /* Soft Confetti falling to center from corners */
+    /* Confetti falling to center from corners */
     #celebration-cracker-canvas {
         position: absolute;
         inset: 0;
@@ -216,15 +234,16 @@
 
             <!-- Interaction Zone -->
             <div class="interaction-center" id="sjvn-interaction-center">
-                <p style="color: white; letter-spacing: 8px; font-weight: 300; margin-bottom: 5px;">A NAVRATNA CPSE</p>
-                <h2 class="sjvn-stage-text">SJVN</h2>
-                <p class="sjvn-subtitle">WELCOME</p>
+                <h2 class="sjvn-welcome-text">WELCOME</h2>
+                <div class="sjvn-to-text">To</div>
+                <h1 class="sjvn-stage-text">SJVN Limited</h1>
+                <p class="sjvn-subtitle">A NAVRATNA CPSE</p>
                 
                 <button class="click-now-btn" id="sjvn-curtain-trigger">
-                    Click Now
+                    CLICK NOW
                 </button>
                 
-                <p style="color: #f1d592; font-size: 0.9rem; margin-top: 15px; letter-spacing: 2px;">Tap to Unveil the Future</p>
+                <p style="color: #f1d592; font-size: 1.4rem; margin-top: 15px; letter-spacing: 2px; font-weight: 500;">Tap to unveil our new website</p>
             </div>
 
             <!-- Confetti / Animation Canvas -->
@@ -253,13 +272,25 @@
             // Apply body lock to prevent scrolling
             document.body.classList.add('sjvn-modal-active');
 
-            // Start Soft Confetti Bursts
-            startConfetti();
+            // Start Confetti Bursts (Only 1-2 times while closed)
+            setTimeout(() => shootConfetti('left'), 800);
+            setTimeout(() => shootConfetti('right'), 800);
+            setTimeout(() => shootConfetti('left'), 2500);
+            setTimeout(() => shootConfetti('right'), 2500);
 
             // Click listener
             trigger.addEventListener('click', () => {
-                clearInterval(animationInterval);
                 card.classList.add('curtain-open');
+
+                // Burst when curtains open (1st time)
+                shootConfetti('left');
+                shootConfetti('right');
+
+                // Burst again as curtains are opening (2nd time)
+                setTimeout(() => {
+                    shootConfetti('left');
+                    shootConfetti('right');
+                }, 800);
                 
                 setTimeout(() => {
                     overlay.style.opacity = '0';
@@ -269,13 +300,6 @@
                     }, 500);
                 }, 3500);
             });
-
-            function startConfetti() {
-                animationInterval = setInterval(() => {
-                    shootConfetti('left');
-                    shootConfetti('right');
-                }, 1000); // Slower, more elegant interval
-            }
 
             function shootConfetti(side) {
                 const particleCount = 15;
@@ -289,11 +313,9 @@
                     
                     canvas.appendChild(el);
 
-                    // Starting from bottom corners
                     const startX = side === 'left' ? -5 : 105;
                     const startY = 100;
 
-                    // Floating towards center-topish
                     const targetX = 50 + (Math.random() * 40 - 20);
                     const targetY = 30 + (Math.random() * 40 - 20);
                     const rotation = Math.random() * 360;
@@ -304,7 +326,6 @@
 
                     const duration = 2000 + Math.random() * 2000;
 
-                    // Smooth floating transition
                     const animation = el.animate([
                         { left: startX + '%', top: startY + '%', transform: `rotate(0deg) scale(0)`, opacity: 0 },
                         { opacity: 1, offset: 0.2 },
