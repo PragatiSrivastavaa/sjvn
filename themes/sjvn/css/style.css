@@ -552,6 +552,9 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
   color: var(--text-color);
 }
 
+span.field-content a {
+  display: none;
+}
 
 .logo-left {
   display: flex;
@@ -561,9 +564,9 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
 }
 
 .main-logo {
-    aspect-ratio: 2 / 3;
-    width: 80px;  
-    height: auto;
+  aspect-ratio: 2 / 3;
+  width: 80px;
+  height: auto;
 }
 
 .org-text h1 {
@@ -1688,11 +1691,12 @@ button.carousel-prev.carousel-button.left {
 
 .power-station-section .power-item.left2 .count {
   font-size: 18px !important;
-  color: var(--primary-color) !important;
+  color: #00497A !important;
 }
 
 .power-station-section .power-item.left2 .label {
   font-size: 13px !important;
+  color: #00497A !important;
 }
 
 /* Right side items with overlapping effect - Perfectly Balanced */
@@ -1721,11 +1725,12 @@ button.carousel-prev.carousel-button.left {
 
 .power-station-section .power-item.right2 .count {
   font-size: 18px !important;
-  color: var(--primary-color) !important;
+  color: #00497A !important;
 }
 
 .power-station-section .power-item.right2 .label {
   font-size: 13px !important;
+  color: #00497A !important;
 }
 
 /* Hidden items - completely faded and scaled down - Override Bootstrap */

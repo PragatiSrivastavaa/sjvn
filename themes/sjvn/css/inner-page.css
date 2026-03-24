@@ -677,7 +677,7 @@ h2.subtitle {
   gap: 10px;
   padding: 10px 0;
   margin-top: 22px;
-  margin-bottom: 0px;
+  margin-bottom: 15px;
   margin-right: 80px;
   padding-bottom: 15px;
   padding-right: 10px;
@@ -835,13 +835,13 @@ h2.subtitle {
 /*------------------- new updated end --------------*/
 
 
-.sidebar .menu li a {
+.sidebar .menu .menu-item a {
   color: var(--primary-color);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.sidebar .menu li:hover a {
+.sidebar .menu .menu-item:hover a {
   color: var(--primary-color);
 }
 
@@ -859,7 +859,7 @@ h2.subtitle {
   background-color: #ffffff;
 } */
 
-.sidebar .menu li:nth-child(even) {
+.sidebar .menu .menu-item:nth-child(even) {
   background-color: #f2f2f2;
 }
 
@@ -1638,7 +1638,7 @@ form#user-login-form:hover {
 }
 
 .view-filters .form-submit {
-  display: inline-block !important;
+  /* display: inline-block !important; */
   visibility: visible !important;
   opacity: 1 !important;
   padding: 6px 25px !important;
@@ -1653,4 +1653,911 @@ form#user-login-form:hover {
 .view-filters .form-submit:hover {
   background: var(--text-color, #02487B) !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* OVERRIDDEN SUPERFISH CSS FOR DIVS */
+.block-superfish {
+  width: 100%;
+}
+
+.sf-hidden {
+  background: transparent !important;
+  border: 0 none !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  width: 1px !important;
+}
+
+div.sf-menu,
+.sf-menu-item {
+  list-style: none;
+}
+
+div.sf-menu,
+div.sf-menu div.sf-dropdown,
+div.sf-menu ol,
+.sf-menu-item,
+div.sf-menu a,
+div.sf-menu span,
+div.sf-menu div,
+div.sf-menu.menu,
+div.sf-menu div.sf-dropdown,
+.sf-menu-item {
+  margin: 0;
+  padding: 0;
+}
+
+div.sf-menu {
+  line-height: 1.0;
+  z-index: 497;
+}
+
+div.sf-menu:after {
+  clear: both;
+  content: "";
+  height: 0;
+  display: block;
+  visibility: hidden;
+}
+
+div.sf-menu div.sf-dropdown {
+  left: 0;
+  position: absolute;
+  top: -9999px;
+  width: 12em;
+}
+
+.sf-menu-item {
+  width: 100%;
+}
+
+.sf-menu-item {
+  float: left;
+  position: relative;
+  z-index: 498;
+}
+
+div.sf-menu a,
+.sf-menu-itemnk {
+  display: block;
+  padding: 1em 1.5em;
+  position: relative;
+}
+
+.sf-menu-item:hover,
+.sf-menu-item.sfHover,
+.sf-menu-item:hover ul,
+.sf-menu-item.sfHover ul {
+  z-index: 499;
+}
+
+.sf-menu-item:hover>ul,
+.sf-menu-item.sfHover>ul {
+  left: 0;
+  top: 2.5em;
+}
+
+.sf-menu-item li:hover>ul,
+.sf-menu-item li.sfHover>ul {
+  left: 12em;
+  top: 0;
+}
+
+/**
+ * Arrows.
+ */
+div.sf-menu .sf-with-ul {
+  padding-right: 3em;
+}
+
+div.sf-menu .sf-sub-indicator {
+  height: 1em;
+  line-height: 9999px;
+  opacity: 0.75;
+  overflow: hidden;
+  position: absolute;
+  right: 0.75em;
+  speak: none;
+  text-indent: -9999px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 1em;
+}
+
+div.sf-menu .sf-sub-indicator:after {
+  content: "\25BC";
+  left: 0;
+  line-height: 1;
+  position: absolute;
+  text-indent: 0;
+  top: 0;
+}
+
+div.sf-menu div.sf-dropdown .sf-sub-indicator:after {
+  content: "\25BA";
+}
+
+div.sf-menu a:focus>.sf-sub-indicator,
+div.sf-menu a:hover>.sf-sub-indicator,
+div.sf-menu a:active>.sf-sub-indicator,
+.sf-menu-item:hover>a>.sf-sub-indicator,
+.sf-menu-item.sfHover>a>.sf-sub-indicator,
+.sf-menu-itemnk:hover>.sf-sub-indicator,
+.sf-menu-item:hover>span.nolink>.sf-sub-indicator,
+.sf-menu-item.sfHover>span.nolink>.sf-sub-indicator {
+  opacity: 1;
+}
+
+/**
+ * Shadow.
+ */
+div.sf-menu.sf-horizontal.sf-shadow ul,
+div.sf-menu.sf-vertical.sf-shadow ul,
+div.sf-menu.sf-navbar.sf-shadow ul ul {
+  -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+div.sf-menu.sf-shadow ul.sf-shadow-off {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+/**
+ * Multi-column sub-menus.
+ * Supersubs.js can adjust column widths too and this is a fallback.
+ */
+.sf-menu-item.sf-multicolumn-column {
+  display: inline;
+  float: left;
+}
+
+.sf-menu-item.sf-parent-children-1 div.sf-multicolumn {
+  width: 12em;
+}
+
+.sf-menu-item.sf-parent-children-2 div.sf-multicolumn {
+  width: 24em;
+}
+
+.sf-menu-item.sf-parent-children-3 div.sf-multicolumn {
+  width: 36em;
+}
+
+.sf-menu-item.sf-parent-children-4 div.sf-multicolumn {
+  width: 48em;
+}
+
+.sf-menu-item.sf-parent-children-5 div.sf-multicolumn {
+  width: 60em;
+}
+
+.sf-menu-item.sf-parent-children-6 div.sf-multicolumn {
+  width: 72em;
+}
+
+.sf-menu-item.sf-parent-children-7 div.sf-multicolumn {
+  width: 84em;
+}
+
+.sf-menu-item.sf-parent-children-8 div.sf-multicolumn {
+  width: 96em;
+}
+
+.sf-menu-item.sf-parent-children-9 div.sf-multicolumn {
+  width: 108em;
+}
+
+.sf-menu-item.sf-parent-children-10 div.sf-multicolumn {
+  width: 120em;
+}
+
+.sf-menu-item.sf-multicolumn-column:nth-child(1):nth-last-child(2),
+.sf-menu-item.sf-multicolumn-column:nth-child(2):nth-last-child(1) {
+  width: 50%;
+}
+
+.sf-menu-item.sf-multicolumn-column:nth-child(1):nth-last-child(3),
+.sf-menu-item.sf-multicolumn-column:nth-child(2):nth-last-child(2),
+.sf-menu-item.sf-multicolumn-column:nth-child(3):nth-last-child(1) {
+  width: 32.333%;
+}
+
+.sf-menu-item.sf-multicolumn-column:nth-child(1):nth-last-child(4),
+.sf-menu-item.sf-multicolumn-column:nth-child(2):nth-last-child(3),
+.sf-menu-item.sf-multicolumn-column:nth-child(3):nth-last-child(2),
+.sf-menu-item.sf-multicolumn-column:nth-child(4):nth-last-child(1) {
+  width: 25%;
+}
+
+.sf-menu-item.sf-multicolumn-column:nth-child(1):nth-last-child(5),
+.sf-menu-item.sf-multicolumn-column:nth-child(2):nth-last-child(4),
+.sf-menu-item.sf-multicolumn-column:nth-child(3):nth-last-child(3),
+.sf-menu-item.sf-multicolumn-column:nth-child(4):nth-last-child(2),
+.sf-menu-item.sf-multicolumn-column:nth-child(5):nth-last-child(1) {
+  width: 20%;
+}
+
+.sf-menu-item.sf-multicolumn-column:nth-child(1):nth-last-child(6),
+.sf-menu-item.sf-multicolumn-column:nth-child(2):nth-last-child(5),
+.sf-menu-item.sf-multicolumn-column:nth-child(3):nth-last-child(4),
+.sf-menu-item.sf-multicolumn-column:nth-child(4):nth-last-child(3),
+.sf-menu-item.sf-multicolumn-column:nth-child(5):nth-last-child(2),
+.sf-menu-item.sf-multicolumn-column:nth-child(6):nth-last-child(1) {
+  width: 16.665%;
+}
+
+.sf-menu-item.sf-multicolumn-column:nth-child(1):nth-last-child(7),
+.sf-menu-item.sf-multicolumn-column:nth-child(2):nth-last-child(6),
+.sf-menu-item.sf-multicolumn-column:nth-child(3):nth-last-child(5),
+.sf-menu-item.sf-multicolumn-column:nth-child(4):nth-last-child(4),
+.sf-menu-item.sf-multicolumn-column:nth-child(5):nth-last-child(3),
+.sf-menu-item.sf-multicolumn-column:nth-child(6):nth-last-child(2),
+.sf-menu-item.sf-multicolumn-column:nth-child(7):nth-last-child(1),
+.sf-menu-item.sf-multicolumn-column:nth-child(1):nth-last-child(8),
+.sf-menu-item.sf-multicolumn-column:nth-child(2):nth-last-child(7),
+.sf-menu-item.sf-multicolumn-column:nth-child(3):nth-last-child(6),
+.sf-menu-item.sf-multicolumn-column:nth-child(4):nth-last-child(5),
+.sf-menu-item.sf-multicolumn-column:nth-child(5):nth-last-child(4),
+.sf-menu-item.sf-multicolumn-column:nth-child(6):nth-last-child(3),
+.sf-menu-item.sf-multicolumn-column:nth-child(7):nth-last-child(2),
+.sf-menu-item.sf-multicolumn-column:nth-child(8):nth-last-child(1) {
+  width: 14.2855%;
+}
+
+.sf-menu-item.sf-multicolumn-column:nth-child(1):nth-last-child(9),
+.sf-menu-item.sf-multicolumn-column:nth-child(2):nth-last-child(8),
+.sf-menu-item.sf-multicolumn-column:nth-child(3):nth-last-child(7),
+.sf-menu-item.sf-multicolumn-column:nth-child(4):nth-last-child(6),
+.sf-menu-item.sf-multicolumn-column:nth-child(5):nth-last-child(5),
+.sf-menu-item.sf-multicolumn-column:nth-child(6):nth-last-child(4),
+.sf-menu-item.sf-multicolumn-column:nth-child(7):nth-last-child(3),
+.sf-menu-item.sf-multicolumn-column:nth-child(8):nth-last-child(2),
+.sf-menu-item.sf-multicolumn-column:nth-child(9):nth-last-child(1) {
+  width: 11.111%;
+}
+
+.sf-menu-item.sf-multicolumn-column:nth-child(1):nth-last-child(10),
+.sf-menu-item.sf-multicolumn-column:nth-child(2):nth-last-child(9),
+.sf-menu-item.sf-multicolumn-column:nth-child(3):nth-last-child(8),
+.sf-menu-item.sf-multicolumn-column:nth-child(4):nth-last-child(7),
+.sf-menu-item.sf-multicolumn-column:nth-child(5):nth-last-child(6),
+.sf-menu-item.sf-multicolumn-column:nth-child(6):nth-last-child(5),
+.sf-menu-item.sf-multicolumn-column:nth-child(7):nth-last-child(4),
+.sf-menu-item.sf-multicolumn-column:nth-child(8):nth-last-child(3),
+.sf-menu-item.sf-multicolumn-column:nth-child(9):nth-last-child(2),
+.sf-menu-item.sf-multicolumn-column:nth-child(10):nth-last-child(1) {
+  width: 10%;
+}
+
+/**
+ * "Vertical" type.
+ */
+div.sf-menu.sf-vertical {
+  width: 12em;
+}
+
+.sf-menu-item {
+  width: 100%;
+}
+
+.sf-menu-item:hover>ul,
+.sf-menu-item.sfHover>ul {
+  left: 12em;
+  top: 0;
+}
+
+div.sf-menu.sf-vertical .sf-sub-indicator:after {
+  content: "\25BA";
+}
+
+/**
+ * "Navbar" type.
+ */
+div.sf-menu.sf-navbar {
+  position: relative;
+}
+
+.sf-menu-item {
+  position: static;
+}
+
+.sf-menu-item li {
+  position: relative;
+}
+
+.sf-menu-item ul,
+.sf-menu-item li li {
+  width: 100%;
+}
+
+.sf-menu-item li {
+  width: auto;
+  float: left;
+}
+
+.sf-menu-item li:hover>ul,
+.sf-menu-item li.sfHover>ul,
+.sf-menu-item.active-trail>ul {
+  left: 0;
+  top: 2.5em;
+}
+
+.sf-menu-item li li:hover>ul,
+.sf-menu-item li li.sfHover>ul {
+  left: 12em;
+  top: 0;
+}
+
+div.sf-menu.sf-navbar ul .sf-sub-indicator:after {
+  content: "\25BC";
+}
+
+div.sf-menu.sf-navbar ul ul .sf-sub-indicator:after {
+  content: "\25BA";
+}
+
+/**
+ * sfSmallscreen.
+ */
+div.sf-menu.sf-accordion {
+  display: none;
+  position: absolute;
+}
+
+div.sf-menu.sf-accordion,
+div.sf-menu.sf-accordion ul,
+.sf-menu-item {
+  float: left;
+  width: 100%;
+}
+
+div.sf-menu.sf-accordion ul {
+  margin: 0;
+  padding: 0;
+}
+
+div.sf-menu.sf-accordion.sf-expanded,
+.sf-menu-item.sf-expanded>ul {
+  left: auto !important;
+  position: relative;
+  top: auto !important;
+}
+
+div.sf-menu.sf-accordion .sf-sub-indicator:after {
+  content: "\25BC";
+}
+
+div.sf-menu.sf-accordion.sf-accordion-with-buttons .sf-accordion-button:after {
+  content: "\25BC";
+  margin: 0 0 0 1em;
+}
+
+.sf-menu-item.sf-expanded>.sf-accordion-button:after {
+  content: "\25B2";
+}
+
+/**
+ * RTL support.
+ */
+div.sf-menu.rtl,
+.sf-menu-item {
+  float: right;
+}
+
+div.sf-menu.rtl ul,
+.sf-menu-item:hover>ul,
+.sf-menu-item.sfHover>ul {
+  left: auto;
+  right: 0;
+}
+
+div.sf-menu.rtl .sf-sub-indicator {
+  left: 0.75em;
+  right: auto;
+}
+
+div.sf-menu.rtl.sf-horizontal.sf-shadow ul,
+div.sf-menu.rtl.sf-vertical.sf-shadow ul,
+div.sf-menu.rtl.sf-navbar.sf-shadow ul ul {
+  -webkit-box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+div.sf-menu.rtl.sf-horizontal ul .sf-sub-indicator:after,
+div.sf-menu.rtl.sf-navbar ul ul .sf-sub-indicator:after,
+div.sf-menu.rtl.sf-vertical .sf-sub-indicator:after {
+  content: "\25C4";
+}
+
+.sf-menu-item.sf-multicolumn-column,
+.sf-menu-item li {
+  float: right;
+}
+
+.sf-menu-item li:hover>ul,
+.sf-menu-item li.sfHover>ul {
+  left: auto;
+  right: 0;
+}
+
+.sf-menu-item li:hover>ul,
+.sf-menu-item li.sfHover>ul,
+.sf-menu-item:hover>ul,
+.sf-menu-item.sfHover>ul,
+.sf-menu-item li li:hover>ul,
+.sf-menu-item li li.sfHover>ul {
+  left: auto;
+  right: 12em;
+}
+
+div.sf-menu.rtl.sf-accordion.sf-expanded,
+.sf-menu-item.sf-expanded>ul {
+  right: auto !important;
+}
+
+
+/* OVERRIDDEN SUPERFISH CSS FOR DIVS */
+.block-superfish {
+  width: 100%;
+}
+
+.sf-hidden {
+  background: transparent !important;
+  border: 0 none !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  width: 1px !important;
+}
+
+div.sf-menu,
+div.sf-menu div.sf-item {
+  list-style: none;
+}
+
+div.sf-menu,
+div.sf-menu div.sf-dropdown,
+div.sf-menu ol,
+div.sf-menu div.sf-item,
+div.sf-menu a,
+div.sf-menu span,
+div.sf-menu div,
+div.sf-menu.menu,
+div.sf-menu.menu ul,
+div.sf-menu.menu li {
+  margin: 0;
+  padding: 0;
+}
+
+div.sf-menu {
+  line-height: 1.0;
+  z-index: 497;
+}
+
+div.sf-menu:after {
+  clear: both;
+  content: "";
+  height: 0;
+  display: block;
+  visibility: hidden;
+}
+
+div.sf-menu div.sf-dropdown {
+  left: 0;
+  position: absolute;
+  top: -9999px;
+  width: 12em;
+}
+
+div.sf-menu div.sf-dropdown li {
+  width: 100%;
+}
+
+div.sf-menu div.sf-item {
+  float: left;
+  position: relative;
+  z-index: 498;
+}
+
+div.sf-menu a,
+div.sf-menu span.nolink {
+  display: block;
+  padding: 1em 1.5em;
+  position: relative;
+}
+
+div.sf-menu div.sf-item:hover,
+div.sf-menu div.sf-item.sfHover,
+div.sf-menu div.sf-item:hover ul,
+div.sf-menu div.sf-item.sfHover ul {
+  z-index: 499;
+}
+
+div.sf-menu div.sf-item:hover>ul,
+div.sf-menu div.sf-item.sfHover>ul {
+  left: 0;
+  top: 2.5em;
+}
+
+div.sf-menu div.sf-item div.sf-item:hover>ul,
+div.sf-menu div.sf-item div.sf-item.sfHover>ul {
+  left: 12em;
+  top: 0;
+}
+
+/**
+ * Arrows.
+ */
+div.sf-menu .sf-with-ul {
+  padding-right: 3em;
+}
+
+div.sf-menu .sf-sub-indicator {
+  height: 1em;
+  line-height: 9999px;
+  opacity: 0.75;
+  overflow: hidden;
+  position: absolute;
+  right: 0.75em;
+  speak: none;
+  text-indent: -9999px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 1em;
+}
+
+div.sf-menu .sf-sub-indicator:after {
+  content: "\25BC";
+  left: 0;
+  line-height: 1;
+  position: absolute;
+  text-indent: 0;
+  top: 0;
+}
+
+div.sf-menu div.sf-dropdown .sf-sub-indicator:after {
+  content: "\25BA";
+}
+
+div.sf-menu a:focus>.sf-sub-indicator,
+div.sf-menu a:hover>.sf-sub-indicator,
+div.sf-menu a:active>.sf-sub-indicator,
+div.sf-menu div.sf-item:hover>a>.sf-sub-indicator,
+div.sf-menu div.sf-item.sfHover>a>.sf-sub-indicator,
+div.sf-menu span.nolink:hover>.sf-sub-indicator,
+div.sf-menu div.sf-item:hover>span.nolink>.sf-sub-indicator,
+div.sf-menu div.sf-item.sfHover>span.nolink>.sf-sub-indicator {
+  opacity: 1;
+}
+
+/**
+ * Shadow.
+ */
+div.sf-menu.sf-horizontal.sf-shadow ul,
+div.sf-menu.sf-vertical.sf-shadow ul,
+div.sf-menu.sf-navbar.sf-shadow ul ul {
+  -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+div.sf-menu.sf-shadow ul.sf-shadow-off {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+/**
+ * Multi-column sub-menus.
+ * Supersubs.js can adjust column widths too and this is a fallback.
+ */
+div.sf-menu div.sf-item.sf-multicolumn-column {
+  display: inline;
+  float: left;
+}
+
+div.sf-menu div.sf-item.sf-parent-children-1 ul.sf-multicolumn {
+  width: 12em;
+}
+
+div.sf-menu div.sf-item.sf-parent-children-2 ul.sf-multicolumn {
+  width: 24em;
+}
+
+div.sf-menu div.sf-item.sf-parent-children-3 ul.sf-multicolumn {
+  width: 36em;
+}
+
+div.sf-menu div.sf-item.sf-parent-children-4 ul.sf-multicolumn {
+  width: 48em;
+}
+
+div.sf-menu div.sf-item.sf-parent-children-5 ul.sf-multicolumn {
+  width: 60em;
+}
+
+div.sf-menu div.sf-item.sf-parent-children-6 ul.sf-multicolumn {
+  width: 72em;
+}
+
+div.sf-menu div.sf-item.sf-parent-children-7 ul.sf-multicolumn {
+  width: 84em;
+}
+
+div.sf-menu div.sf-item.sf-parent-children-8 ul.sf-multicolumn {
+  width: 96em;
+}
+
+div.sf-menu div.sf-item.sf-parent-children-9 ul.sf-multicolumn {
+  width: 108em;
+}
+
+div.sf-menu div.sf-item.sf-parent-children-10 ul.sf-multicolumn {
+  width: 120em;
+}
+
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(1):nth-last-child(2),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(2):nth-last-child(1) {
+  width: 50%;
+}
+
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(1):nth-last-child(3),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(2):nth-last-child(2),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(3):nth-last-child(1) {
+  width: 32.333%;
+}
+
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(1):nth-last-child(4),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(2):nth-last-child(3),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(3):nth-last-child(2),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(4):nth-last-child(1) {
+  width: 25%;
+}
+
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(1):nth-last-child(5),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(2):nth-last-child(4),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(3):nth-last-child(3),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(4):nth-last-child(2),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(5):nth-last-child(1) {
+  width: 20%;
+}
+
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(1):nth-last-child(6),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(2):nth-last-child(5),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(3):nth-last-child(4),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(4):nth-last-child(3),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(5):nth-last-child(2),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(6):nth-last-child(1) {
+  width: 16.665%;
+}
+
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(1):nth-last-child(7),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(2):nth-last-child(6),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(3):nth-last-child(5),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(4):nth-last-child(4),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(5):nth-last-child(3),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(6):nth-last-child(2),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(7):nth-last-child(1),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(1):nth-last-child(8),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(2):nth-last-child(7),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(3):nth-last-child(6),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(4):nth-last-child(5),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(5):nth-last-child(4),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(6):nth-last-child(3),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(7):nth-last-child(2),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(8):nth-last-child(1) {
+  width: 14.2855%;
+}
+
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(1):nth-last-child(9),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(2):nth-last-child(8),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(3):nth-last-child(7),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(4):nth-last-child(6),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(5):nth-last-child(5),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(6):nth-last-child(4),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(7):nth-last-child(3),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(8):nth-last-child(2),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(9):nth-last-child(1) {
+  width: 11.111%;
+}
+
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(1):nth-last-child(10),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(2):nth-last-child(9),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(3):nth-last-child(8),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(4):nth-last-child(7),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(5):nth-last-child(6),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(6):nth-last-child(5),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(7):nth-last-child(4),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(8):nth-last-child(3),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(9):nth-last-child(2),
+div.sf-menu div.sf-item.sf-multicolumn-column:nth-child(10):nth-last-child(1) {
+  width: 10%;
+}
+
+/**
+ * "Vertical" type.
+ */
+div.sf-menu.sf-vertical {
+  width: 12em;
+}
+
+div.sf-menu.sf-vertical li {
+  width: 100%;
+}
+
+div.sf-menu.sf-vertical li:hover>ul,
+div.sf-menu.sf-vertical div.sf-item.sfHover>ul {
+  left: 12em;
+  top: 0;
+}
+
+div.sf-menu.sf-vertical .sf-sub-indicator:after {
+  content: "\25BA";
+}
+
+/**
+ * "Navbar" type.
+ */
+div.sf-menu.sf-navbar {
+  position: relative;
+}
+
+div.sf-menu.sf-navbar li {
+  position: static;
+}
+
+div.sf-menu.sf-navbar li li {
+  position: relative;
+}
+
+div.sf-menu.sf-navbar li ul,
+div.sf-menu.sf-navbar li li li {
+  width: 100%;
+}
+
+div.sf-menu.sf-navbar li li {
+  width: auto;
+  float: left;
+}
+
+div.sf-menu.sf-navbar li li:hover>ul,
+div.sf-menu.sf-navbar li div.sf-item.sfHover>ul,
+div.sf-menu.sf-navbar>li.active-trail>ul {
+  left: 0;
+  top: 2.5em;
+}
+
+div.sf-menu.sf-navbar li li li:hover>ul,
+div.sf-menu.sf-navbar li li div.sf-item.sfHover>ul {
+  left: 12em;
+  top: 0;
+}
+
+div.sf-menu.sf-navbar ul .sf-sub-indicator:after {
+  content: "\25BC";
+}
+
+div.sf-menu.sf-navbar ul ul .sf-sub-indicator:after {
+  content: "\25BA";
+}
+
+/**
+ * sfSmallscreen.
+ */
+div.sf-menu.sf-accordion {
+  display: none;
+  position: absolute;
+}
+
+div.sf-menu.sf-accordion,
+div.sf-menu.sf-accordion ul,
+div.sf-menu.sf-accordion li {
+  float: left;
+  width: 100%;
+}
+
+div.sf-menu.sf-accordion ul {
+  margin: 0;
+  padding: 0;
+}
+
+div.sf-menu.sf-accordion.sf-expanded,
+div.sf-menu.sf-accordion div.sf-item.sf-expanded>ul {
+  left: auto !important;
+  position: relative;
+  top: auto !important;
+}
+
+div.sf-menu.sf-accordion .sf-sub-indicator:after {
+  content: "\25BC";
+}
+
+div.sf-menu.sf-accordion.sf-accordion-with-buttons .sf-accordion-button:after {
+  content: "\25BC";
+  margin: 0 0 0 1em;
+}
+
+div.sf-menu.sf-accordion.sf-accordion-with-buttons div.sf-item.sf-expanded>.sf-accordion-button:after {
+  content: "\25B2";
+}
+
+/**
+ * RTL support.
+ */
+div.sf-menu.rtl,
+div.sf-menu.rtl li {
+  float: right;
+}
+
+div.sf-menu.rtl ul,
+div.sf-menu.rtl li:hover>ul,
+div.sf-menu.rtl div.sf-item.sfHover>ul {
+  left: auto;
+  right: 0;
+}
+
+div.sf-menu.rtl .sf-sub-indicator {
+  left: 0.75em;
+  right: auto;
+}
+
+div.sf-menu.rtl.sf-horizontal.sf-shadow ul,
+div.sf-menu.rtl.sf-vertical.sf-shadow ul,
+div.sf-menu.rtl.sf-navbar.sf-shadow ul ul {
+  -webkit-box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+div.sf-menu.rtl.sf-horizontal ul .sf-sub-indicator:after,
+div.sf-menu.rtl.sf-navbar ul ul .sf-sub-indicator:after,
+div.sf-menu.rtl.sf-vertical .sf-sub-indicator:after {
+  content: "\25C4";
+}
+
+div.sf-menu.rtl div.sf-item.sf-multicolumn-column,
+div.sf-menu.rtl.sf-navbar li li {
+  float: right;
+}
+
+div.sf-menu.rtl.sf-navbar li li:hover>ul,
+div.sf-menu.rtl.sf-navbar li div.sf-item.sfHover>ul {
+  left: auto;
+  right: 0;
+}
+
+div.sf-menu.rtl li li:hover>ul,
+div.sf-menu.rtl li div.sf-item.sfHover>ul,
+div.sf-menu.rtl.sf-vertical li:hover>ul,
+div.sf-menu.rtl.sf-vertical div.sf-item.sfHover>ul,
+div.sf-menu.rtl.sf-navbar li li li:hover>ul,
+div.sf-menu.rtl.sf-navbar li li div.sf-item.sfHover>ul {
+  left: auto;
+  right: 12em;
+}
+
+div.sf-menu.rtl.sf-accordion.sf-expanded,
+div.sf-menu.rtl.sf-accordion div.sf-item.sf-expanded>ul {
+  right: auto !important;
 }
