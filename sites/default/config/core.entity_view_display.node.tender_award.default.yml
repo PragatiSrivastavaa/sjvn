@@ -84,5 +84,8 @@ content:
     weight: 100
     region: content
 hidden:
+  field_is_published_tender: true
+  field_tender_number: true
   field_tender_title: true
+  field_tender_title_manual: true
   langcode: true

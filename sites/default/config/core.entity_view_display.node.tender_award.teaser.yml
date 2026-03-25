@@ -37,9 +37,12 @@ content:
 hidden:
   field_date_of_award: true
   field_date_of_nit: true
+  field_is_published_tender: true
   field_loa: true
   field_mode_of_tendering: true
   field_remark: true
+  field_tender_number: true
   field_tender_title: true
+  field_tender_title_manual: true
   field_value_rs: true
   langcode: true
