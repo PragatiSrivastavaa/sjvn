@@ -372,6 +372,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!businessItems.length || !businessDisplay) return;
 
     businessItems.forEach(item => {
+        // Accessibility polyfill for non-anchor elements
+        if (item.tagName !== 'A') {
+          item.setAttribute('tabindex', '0');
+          item.setAttribute('role', 'tab');
+        }
+
         const updateImage = () => {
             const imgSrc = item.getAttribute("data-image");
             if (!imgSrc) return;
@@ -379,9 +385,13 @@ document.addEventListener("DOMContentLoaded", () => {
             // Check if this item is already active - we only skip if the display src is already correct
             if (item.classList.contains("active") && businessDisplay.getAttribute('src') === imgSrc) return;
 
-            // Remove active class from all and add to current
-            businessItems.forEach(i => i.classList.remove("active"));
+            // Remove active class and aria-selected from all and add to current
+            businessItems.forEach(i => {
+                i.classList.remove("active");
+                i.setAttribute("aria-selected", "false");
+            });
             item.classList.add("active");
+            item.setAttribute("aria-selected", "true");
 
             // Clear any pending timeouts
             if (businessTimeout) clearTimeout(businessTimeout);
@@ -422,8 +432,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const handleInteraction = (e) => {
             const link = item.getAttribute("data-link");
             if (item.classList.contains("active")) {
-                if (link) window.location.href = link;
+                // If it's already active, allow the link to work naturally
+                // If it's not an <a>, we need to navigate manually
+                if (item.tagName !== 'A' && link) {
+                    window.location.href = link;
+                }
+                return;
             } else {
+                // Prevent navigation if it's the first time it's clicked
                 e.preventDefault();
                 updateImage();
             }
@@ -431,7 +447,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         item.addEventListener("click", handleInteraction);
         item.addEventListener("keydown", (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
+            if (e.key === ' ' || e.key === 'Enter') {
                 handleInteraction(e);
             }
         });
@@ -558,6 +574,7 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleBtn.addEventListener("click", (e) => {
             e.preventDefault();
             expanded = !expanded;
+            toggleBtn.setAttribute('aria-expanded', expanded);
             if (expanded) {
                 menu.style.flexWrap = "wrap";
                 menu.style.overflowX = "visible";

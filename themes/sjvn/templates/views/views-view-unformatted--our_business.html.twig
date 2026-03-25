@@ -18,9 +18,10 @@
 
 
   <div class="business-container">
-  <div class="business-image">
+  <div class="business-image" id="business-tabpanel" role="tabpanel" aria-labelledby="business-tablist" aria-live="polite">
     {% if rows|length > 0 %}
       {% set first_term = rows|first.content['#row']._entity %}
+      {% set lang = app.request.getLocale() %}
       {% set first_translated = first_term.hasTranslation(lang) ? first_term.getTranslation(lang) : first_term %}
       {% set first_img_url = first_translated.field_image.entity ? file_url(first_translated.field_image.entity.fileuri) : '' %}
       <img id="business-display" 
@@ -28,7 +29,7 @@
            alt="{{ first_translated.name.value }}">
     {% endif %}
   </div>
-    <div class="business-grid">
+  <div class="business-grid" id="business-tablist" role="tablist" aria-label="Our Business Categories" style="position: relative; z-index: 5;">
     {% for row in rows %}
       {% set term = row.content['#row']._entity %}
 
@@ -39,15 +40,19 @@
       {# Get image URL with safety check #}
       {% set img_url = term_translated.field_image.entity ? file_url(term_translated.field_image.entity.fileuri) : '' %}
 
-      <div class="business-item {{ loop.first ? 'active' : '' }}" 
-           role="button"
-           tabindex="0"
-           data-image="{{ img_url }}" 
-           data-link="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': term_translated.id()}) }}">
+      <a class="business-item {{ loop.first ? 'active' : '' }}" 
+         id="business-item-{{ term_translated.id() }}"
+         href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': term_translated.id()}) }}"
+         role="tab"
+         aria-selected="{{ loop.first ? 'true' : 'false' }}"
+         aria-label="{{ term_translated.name.value }}"
+         aria-controls="business-tabpanel"
+         tabindex="0"
+         data-image="{{ img_url }}">
 
-        <i class="bi {{ term_translated.field_icon.value }} business-icon"></i>
+        <i class="bi {{ term_translated.field_icon.value }} business-icon" aria-hidden="true"></i>
         <span>{{ term_translated.name.value }}</span>
-      </div>
+      </a>
     {% endfor %}
   </div>
 </div>
