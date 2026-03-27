@@ -931,14 +931,29 @@ h2.subtitle {
   position: relative;
 }
 
-/* Hide the radio input visually but keep it accessible */
+/* Hide the radio input visually but keep it accessible for keyboard navigation */
+/* Using width: 0 and height: 0 causes some browsers to skip these elements in tab order */
 .tab-menu-item .form-radios input[type="radio"] {
   position: absolute;
   opacity: 0;
-  width: 0;
-  height: 0;
-  margin: 0;
-  pointer-events: none;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Clear visual focus indicator for labels when focused via TAB key */
+/* (Associated JS adds tabindex="0" to these labels to make them individually reachable) */
+.tab-menu-item .form-radios label:focus-visible {
+  outline: 3px solid #fdb913 !important; /* Secondary yellow for accessibility */
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 5px rgba(253, 185, 19, 0.4) !important;
+  border-radius: 30px !important;
+  position: relative;
+  z-index: 10;
 }
 
 /* Tab label styling */

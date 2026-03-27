@@ -24,6 +24,7 @@ global-scripts:
     js/tabs.js: {}
     js/menu-redirect.js: {}
     js/filter-labels.js: {}
+    js/tab-accessibility.js: {} # Added for enhanced keyboard access
     js/overview-redirect.js: {}
     js/external-link.js: {}
   dependencies:
