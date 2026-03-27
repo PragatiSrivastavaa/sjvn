@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const setPause = (paused) => {
         isPaused = paused;
-        pauseBtn.textContent = isPaused ? "▶" : "⏸";
+        pauseBtn.innerHTML = isPaused ? '<i class="bi bi-play-fill" aria-hidden="true"></i>' : '<i class="bi bi-pause-fill" aria-hidden="true"></i>';
     };
 
     pauseBtn.addEventListener("click", () => {
@@ -497,12 +497,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isPaused) {
             track.classList.add('paused');
             playPauseBtn.classList.add('paused');
-            playPauseBtn.innerHTML = '▶';
+            playPauseBtn.innerHTML = '<i class="bi bi-play-fill" aria-hidden="true"></i>';
             playPauseBtn.setAttribute("aria-label", "Play Carousel");
         } else {
             track.classList.remove('paused');
             playPauseBtn.classList.remove('paused');
-            playPauseBtn.innerHTML = '⏸';
+            playPauseBtn.innerHTML = '<i class="bi bi-pause-fill" aria-hidden="true"></i>';
             playPauseBtn.setAttribute("aria-label", "Pause Carousel");
         }
     });
@@ -773,7 +773,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function togglePlayPause() {
         isPlaying = !isPlaying;
-        playPauseBtn.textContent = isPlaying ? "⏸" : "▶";
+        playPauseBtn.innerHTML = isPlaying ? '<i class="bi bi-pause-fill" aria-hidden="true"></i>' : '<i class="bi bi-play-fill" aria-hidden="true"></i>';
         playPauseBtn.setAttribute("aria-label", isPlaying ? "Pause" : "Play");
     }
 
