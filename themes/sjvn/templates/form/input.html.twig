@@ -13,8 +13,9 @@
  */
 #}
 {% if is_submit %}
-  <button{{ attributes.removeClass('form-submit') }}>{{ button_text }}</button>
+  <button{{ attributes.removeClass('form-submit') }} aria-label="{{ button_text }}">{{ button_text }}</button>
 {% else %}
+
   <input{{ attributes }} />
 {% endif %}
 {{ children }}

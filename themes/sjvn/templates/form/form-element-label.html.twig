@@ -21,5 +21,11 @@
   ]
 %}
 {% if title is not empty or required -%}
-  <label{{ attributes.addClass(classes) }}>{{ title }}</label>
+  <label{{ attributes.addClass(classes) }}>
+    {{ title }}
+    {% if required %}
+      <span class="visually-hidden"> {{ '(Required)'|t }}</span>
+    {% endif %}
+  </label>
 {%- endif %}
+

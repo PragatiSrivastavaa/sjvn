@@ -362,11 +362,18 @@ function sjvn_preprocess_input(&$variables) {
        $variables['attributes']['aria-label'] = t('Enter search keywords');
        $variables['attributes']['title'] = t('Enter search keywords');
     }
-    // For 'edit-submit' (search button)
+    // For 'edit-submit' (submit button)
     if (strpos($id, 'edit-submit') !== false) {
-       $variables['attributes']['aria-label'] = t('Submit Search');
+       // Only label as "Submit Search" if it's actually a search button.
+       // Otherwise, use the button text or a generic label.
+       if (strpos($id, 'search') !== false) {
+         $variables['attributes']['aria-label'] = t('Submit Search');
+       } else {
+         $variables['attributes']['aria-label'] = t('Submit Feedback Form');
+       }
     }
   }
+
 }
 
 /**

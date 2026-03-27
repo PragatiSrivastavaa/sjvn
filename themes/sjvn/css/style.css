@@ -573,10 +573,10 @@ body.lang-hi .language-toggle ul.links li[data-lang="hi"] {
   background-size: cover;
   color: var(--text-color);
 }
-
+/* 
 span.field-content a {
   display: none;
-}
+} */
 
 .logo-left {
   display: flex;

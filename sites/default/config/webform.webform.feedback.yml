@@ -18,7 +18,7 @@ elements: |-
     '#title': Name
     '#placeholder': 'Please Enter Name'
     '#pattern': "^([a-zA-Z' ]+)$"
-    '#pattern_error': 'Please Enter Valid Name only Characters Allowed'
+    '#pattern_error': 'Please Enter Valid Name. Only characters are allowed.'
     '#required': true
   email:
     '#type': email
@@ -26,14 +26,15 @@ elements: |-
     '#placeholder': 'Please Enter Email'
     '#required': true
     '#pattern': '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-    '#pattern_error': 'Please enter a valid email address (example: user@examplecom).'
+    '#pattern_error': 'Please enter a valid email address (example: user@example.com).'
   department:
     '#type': select
     '#title': Department
     '#options':
       Admin: Admin
       HR: HR
-      Technical: Tecnicasl
+      Technical: Technical
+    '#empty_option': 'Select Department'
     '#required': true
   division_category:
     '#type': select
@@ -46,18 +47,20 @@ elements: |-
       'Solar Power': 'Solar Power'
       'Power Transmission': 'Power Transmission'
       Consulting: Consulting
+    '#empty_option': 'Select Division Category'
     '#required': true
   general:
     '#type': select
     '#title': General
     '#options':
-      N/A: N/A
+      N/A: 'Not Applicable'
+    '#empty_option': 'Select Option'
     '#required': true
   message:
     '#type': textarea
     '#title': Message
     '#pattern': "^([a-zA-Z' ]+)$"
-    '#pattern_error': 'Please enter only characters A-Z & a-z'
+    '#pattern_error': 'Please enter only characters (A-Z, a-z).'
     '#required': true
   captcha:
     '#type': captcha
@@ -74,8 +77,10 @@ settings:
   page_confirm_path: ''
   page_theme_name: ''
   form_title: both
+  form_submit_label: 'Submit Feedback Form'
   form_submit_once: false
-  form_open_message: ''
+  form_open_message: '<h3>Feedback Form Instructions</h3><p>Please fill out the form below to provide your valuable feedback. All fields marked with an asterisk (*) are required.</p>'
+
   form_close_message: ''
   form_exception_message: ''
   form_previous_submissions: true

@@ -21,7 +21,7 @@
       </div>
 
       <!-- Center Logos -->
-      <div class="middle-logs" aria-label="Official Government Logos">
+      <div class="middle-logs" role="region" aria-label="Official Government Logos">
         {{ page.center_logos}}
       </div>
 
@@ -36,7 +36,7 @@
           endif %}</a>
 
         <span class="separator" aria-hidden="true">|</span>
-        <div class="language-toggle" aria-label="Language Switcher">
+        <div class="language-toggle" role="navigation" aria-label="Language Switcher">
           <ul>
             <li class="lang-select">
               {{ page.language }}
@@ -45,7 +45,8 @@
         </div>
 
         <!-- Theme Selectors (Inline) -->
-        <div class="theme-inline" aria-label="Theme Selection">
+        <div class="theme-inline" role="group" aria-label="Theme Selection">
+
           <button type="button" class="theme-color blue" data-theme="blue" title="Change to Blue Theme"
             aria-label="Change to Blue Theme"><span class="visually-hidden">Blue Theme</span></button>
           <button type="button" class="theme-color green" data-theme="green" title="Change to Green Theme"
