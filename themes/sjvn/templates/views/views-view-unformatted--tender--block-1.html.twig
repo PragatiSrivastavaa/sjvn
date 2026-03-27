@@ -75,7 +75,7 @@
 
       <div class="message-item-info">
 
-        <img src="/sjvn/sites/default/files/2025-10/pdffileicon.png" alt="PDF file icon" class="file-icon"
+        <img src="/sites/default/files/2025-10/pdffileicon.png" alt="PDF file icon" class="file-icon"
           role="presentation">
 
         <h3 class="document-title">
@@ -85,15 +85,13 @@
         <div class="file-meta">
           {% if file.filesize.value %}
           <span class="file-size">
-            File Size: {{ (file.filesize.value / 1024)|number_format(2) }} KB
+            {% if current_language == 'hi' %}फ़ाइल का आकार{% else %}File Size{% endif %}: {{ (file.filesize.value / 1024)|number_format(2) }} KB
           </span>
           {% endif %}
 
-          {% if file.langcode.value %}
           <span class="file-language">
-            | Language: {{ file.langcode.value|upper }}
+            | {% if current_language == 'hi' %}भाषा: हिंदी{% else %}Language: English{% endif %}
           </span>
-          {% endif %}
         </div>
 
       </div>
