@@ -213,42 +213,11 @@
        color: #333;
      }
 
-     /* Arrow Icon */
-     .arrow-icon i {
-       cursor: pointer;
-       font-size: 20px;
-       color: #009edb;
-       position: absolute;
-       bottom: 15px;
-       right: 20px;
-     }
+      /* Card content padding adjustment to prevent overlap with absolute icon */
+      .custom-card {
+        padding-bottom: 50px;
+      }
 
-     .custom-card:hover .arrow-icon i {
-       color: #003366;
-       transition: 0.3s;
-     }
-
-     /* External link icon for Subsidiaries - Using SVG for guaranteed visibility */
-     .Subsidiaries .views-field-name a::after {
-       content: "";
-       display: inline-block;
-       width: 14px;
-       height: 14px;
-       margin-left: 10px;
-       background-color: #009edb;
-       mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>') no-repeat center;
-       -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>') no-repeat center;
-       mask-size: contain;
-       -webkit-mask-size: contain;
-       vertical-align: middle;
-       transition: transform 0.3s ease, background-color 0.3s ease;
-     }
-
-     .Subsidiaries .views-field-name a:hover::after {
-       background-color: #003366;
-       color: white;
-       transform: translateX(5px);
-     }
 
      .Subsidiaries .views-field-name a {
        text-decoration: none !important;

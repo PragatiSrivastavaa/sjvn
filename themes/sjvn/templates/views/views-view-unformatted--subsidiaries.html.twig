@@ -4,8 +4,8 @@
  * Theme override for Subsidiaries view unformatted rows.
  */
 #}
-{% set subs_rows = [] %}
-{% set jv_rows = [] %}
+{% set subs_items = [] %}
+{% set jv_items = [] %}
 
 {% for row in rows %}
   {# Get the parent ID directly from the entity for maximum reliability #}
@@ -22,16 +22,16 @@
   
   {# 379 is Subsidiaries, 380 is JVs #}
   {% if parent_id == '413' %}
-    {% set jv_rows = jv_rows|merge([row]) %}
+    {% set jv_items = jv_items|merge([{row: row, term: term}]) %}
   {% elseif parent_id == '412' %}
-    {% set subs_rows = subs_rows|merge([row]) %}
+    {% set subs_items = subs_items|merge([{row: row, term: term}]) %}
   {% else %}
     {# Final fallback: check by name if it's CPTC #}
     {% set term_name = view.style_plugin.getField(loop.index0, 'name')|striptags|trim %}
     {% if term_name == 'CPTC' %}
-       {% set jv_rows = jv_rows|merge([row]) %}
+       {% set jv_items = jv_items|merge([{row: row, term: term}]) %}
     {% else %}
-       {% set subs_rows = subs_rows|merge([row]) %}
+       {% set subs_items = subs_items|merge([{row: row, term: term}]) %}
     {% endif %}
   {% endif %}
 {% endfor %}
@@ -39,7 +39,7 @@
 <section class="Subsidiaries">
     <div class="container">
         <!-- SUBSIDIARIES -->
-        {% if subs_rows|length > 0 %}
+        {% if subs_items|length > 0 %}
             <h2 class="section-title">
                 
                  {% if current_language == 'hi' %}
@@ -49,10 +49,15 @@
                   {% endif %}
             </h2>
             <div class="row g-4">
-                {% for row in subs_rows %}
+                {% for item in subs_items %}
                     <div class="col-lg-3 col-md-6">
                         <div class="custom-card">
-                            {{ row.content }}
+                            {{ item.row.content }}
+                            {% if item.term %}
+                              <a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': item.term.id}) }}" aria-label="View details of {{ item.term.label }}">
+                                <span class="icon-btn"> <i class="fa-solid fa-angle-right" aria-hidden="true"></i> </span>
+                              </a>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}
@@ -60,7 +65,7 @@
         {% endif %}
 
         <!-- JOINT VENTURES -->
-        {% if jv_rows|length > 0 %}
+        {% if jv_items|length > 0 %}
             <h2 class="section-title mt-5">
                
                  {% if current_language == 'hi' %}
@@ -70,11 +75,16 @@
                    Joint Ventures
                   {% endif %}
             </h2>
-            <div class="row justify-content-center">
-                {% for row in jv_rows %}
+            <div class="row justify-content-center g-4">
+                {% for item in jv_items %}
                     <div class="col-lg-6 col-md-10">
                         <div class="custom-card">
-                            {{ row.content }}
+                            {{ item.row.content }}
+                            {% if item.term %}
+                              <a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': item.term.id}) }}" aria-label="View details of {{ item.term.label }}">
+                                <span class="icon-btn"> <i class="fa-solid fa-angle-right" aria-hidden="true"></i> </span>
+                              </a>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}
