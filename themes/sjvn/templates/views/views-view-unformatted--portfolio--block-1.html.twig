@@ -27,7 +27,7 @@
                   {{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_business_image }}'] }}
                  {% else %}
                   {% set clean_base = request.basePath|replace({'/en': ''}) %}
-                  <img src="{{ request.schemeAndHttpHost ~ clean_base ~ '/sjvn/themes/sjvn/images/gallery/no-img-found.png' }}" alt="No Image Available" class="img-fluid project-img">
+                  <img src="{{ request.schemeAndHttpHost ~ clean_base ~ '/themes/sjvn/images/gallery/no-img-found.png' }}" alt="No Image Available" class="img-fluid project-img">
                  {% endif %}
                 </a>
 
