@@ -92,6 +92,10 @@
             <li class="nav-item" role="presentation">
               <a class="nav-link {% if first_top_tab %}active{% endif %}" 
                  data-bs-toggle="tab"
+                 role="tab"
+                 aria-selected="{% if first_top_tab %}true{% else %}false{% endif %}"
+                 aria-controls="top-tab-{{ loop.parent.loop.index }}-{{ loop.index }}"
+                 id="top-tab-link-{{ loop.parent.loop.index }}-{{ loop.index }}"
                  href="#top-tab-{{ loop.parent.loop.index }}-{{ loop.index }}">
                 {{ add_paragraph.field_group_title.value ?: '' }}
               </a>
