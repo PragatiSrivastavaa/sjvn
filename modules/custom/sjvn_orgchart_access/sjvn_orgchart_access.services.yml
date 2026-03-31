@@ -1,0 +1,6 @@
+services:
+  sjvn_orgchart_access.org_chart_access_subscriber:
+    class: Drupal\sjvn_orgchart_access\EventSubscriber\OrgChartAccessSubscriber
+    arguments: ['@current_user', '@current_route_match']
+    tags:
+      - { name: event_subscriber }

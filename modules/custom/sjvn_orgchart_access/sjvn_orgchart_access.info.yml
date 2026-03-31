@@ -1,0 +1,6 @@
+name: 'SJVN Org Chart Access Control'
+type: module
+description: 'Restricts editing rights for the Organization Chart to the corporate PR email exclusivity rule, alongside providing a dedicated administrative link.'
+core_version_requirement: ^9 || ^10
+package: Custom
+version: '1.0'
