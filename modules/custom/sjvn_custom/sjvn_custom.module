@@ -773,4 +773,19 @@ function sjvn_custom_views_post_execute(\Drupal\views\ViewExecutable $view) {
   $view->total_rows = count($unique_results);
 }
 
+/**
+ * Implements hook_preprocess_field().
+ */
+function sjvn_custom_preprocess_field(&$variables) {
+  $element = $variables['element'];
+  // For 'career' content type, reverse the order of 'field_upload_files' items 
+  // so that the most recent uploads (highest deltas) are displayed first.
+  if (isset($element['#field_name']) && $element['#field_name'] == 'field_upload_files' && 
+      isset($element['#bundle']) && $element['#bundle'] == 'career') {
+    if (!empty($variables['items'])) {
+      $variables['items'] = array_reverse($variables['items']);
+    }
+  }
+}
+
 
