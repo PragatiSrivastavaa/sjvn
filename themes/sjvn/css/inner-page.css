@@ -477,7 +477,7 @@
   transition: all 0.4s ease;
 }
 
-/* "Showmotion" Accordion-style Reveal */
+/* "Showmotion" Accordion-style Reveal (Commented Out as requested)
 .page-title-block::after {
   content: attr(data-title);
   position: absolute;
@@ -517,9 +517,9 @@
 .page-title-block:hover::after {
   opacity: 1;
   max-height: 1000px;
-  /* Allow very long titles */
   pointer-events: auto;
 }
+*/
 
 .text-right-inner p {
   margin: 0;

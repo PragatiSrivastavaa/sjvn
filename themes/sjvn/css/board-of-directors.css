@@ -135,7 +135,7 @@ section.inner-sec.board_of_directors {
 .board_of_directors .director {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto !important;
   border-radius: 10px;
   max-width: 100%;
 }
