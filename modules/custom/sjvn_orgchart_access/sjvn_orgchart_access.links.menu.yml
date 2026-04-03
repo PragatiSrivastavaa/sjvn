@@ -1,0 +1,6 @@
+sjvn_orgchart_access.org_chart_toolbar_link:
+  title: 'Edit Org Chart'
+  url: 'internal:/admin/config/orgchart'
+  parent: 'system.admin'
+  description: 'Quick link for authorized personnel to edit the Org Chart.'
+  weight: 99
