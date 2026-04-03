@@ -1066,5 +1066,14 @@ function initLanguageNotification() {
 }
 
 // Initialize on DOM load
-document.addEventListener('DOMContentLoaded', initLanguageNotification);
+document.addEventListener('DOMContentLoaded', () => {
+    initLanguageNotification();
+    
+    // Initialize data-title for the "Showmotion" reveal
+    const titleBlock = document.querySelector('.page-title-block');
+    const h1Text = titleBlock ? titleBlock.querySelector('h1')?.innerText.trim() : null;
+    if (titleBlock && h1Text) {
+        titleBlock.setAttribute('data-title', h1Text);
+    }
+});
 

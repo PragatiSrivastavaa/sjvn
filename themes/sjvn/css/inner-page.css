@@ -390,6 +390,7 @@
   padding: 20px 25px;
   position: relative;
   z-index: 5;
+  gap: 20px;
   width: 100%;
 }
 
@@ -398,6 +399,7 @@
   align-items: center;
   padding: 15px;
   z-index: 2;
+  min-width: 400px;
   background: rgb(0 0 0 / 17%);
   border-radius: 6px;
 }
@@ -432,19 +434,91 @@
   justify-content: flex-end;
   align-items: center;
   z-index: 2;
+  min-width: 0;
+  /* Prevents overflow into left-side area */
 }
 
 .text-right-inner {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 6px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  /* Crucial for truncation */
+  position: relative;
+  overflow: visible;
+}
+
+.page-title-block {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   text-align: right;
-  padding-right: 20px;
+  position: relative;
+  overflow: visible;
 }
 
 .text-right-inner h1 {
-  margin: 0 0 10px 0;
+  margin: 0 !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  text-align: right;
   font-size: 2rem;
   font-weight: 700;
   color: var(--bg-light);
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s ease;
+}
+
+/* "Showmotion" Accordion-style Reveal */
+.page-title-block::after {
+  content: attr(data-title);
+  position: absolute;
+  top: -18px;
+  right: 0;
+  padding: 5px;
+  background: #0000002b;
+  border-radius: 6px;
+  color: #ffffff !important;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  width: 100%;
+  max-width: 100%;
+  white-space: normal;
+  text-align: right;
+  z-index: 10001;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+}
+
+@media (max-width: 767px) {
+  .page-title-block::after {
+    font-size: 19.2px;
+  }
+}
+
+.page-title-block:hover h1 {
+  opacity: 0;
+}
+
+.page-title-block:hover::after {
+  opacity: 1;
+  max-height: 1000px;
+  /* Allow very long titles */
+  pointer-events: auto;
 }
 
 .text-right-inner p {
@@ -520,47 +594,64 @@ i.bi.bi-house {
   /* Logo bar responsive */
   .logo-bar-inner {
     padding: 0;
-    min-height: 150px;
+    min-height: auto;
   }
 
   .inner-header-container {
     flex-direction: column;
-    padding: 30px 15px;
+    padding: 20px 15px;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
   }
 
   .logo-left-inner {
-    padding: 15px;
-    margin-bottom: 15px;
+    padding: 10px;
+    margin-bottom: 12px;
+    min-width: 0;
+    width: 100%;
+    max-width: 450px;
+    justify-content: center;
   }
 
   .main-logo-inner {
-    height: 75px;
+    height: 65px;
+    margin-right: 8px;
   }
 
   .org-text-inner h1 {
-    font-size: 1.1rem;
-    line-height: 22px;
+    font-size: 1rem;
+    line-height: 20px;
   }
 
   .org-text-inner span {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .org-text-inner p {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   .log-right-inner {
+    width: 100%;
+    min-width: 0;
     justify-content: center;
   }
 
   .text-right-inner {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     text-align: center;
     padding-right: 0;
+    align-items: center;
   }
 
   .text-right-inner h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   /* Mobile navigation adjustments for inner nav - managed in responsive.css */
@@ -948,7 +1039,8 @@ h2.subtitle {
 /* Clear visual focus indicator for labels when focused via TAB key */
 /* (Associated JS adds tabindex="0" to these labels to make them individually reachable) */
 .tab-menu-item .form-radios label:focus-visible {
-  outline: 3px solid #fdb913 !important; /* Secondary yellow for accessibility */
+  outline: 3px solid #fdb913 !important;
+  /* Secondary yellow for accessibility */
   outline-offset: 3px !important;
   box-shadow: 0 0 0 5px rgba(253, 185, 19, 0.4) !important;
   border-radius: 30px !important;

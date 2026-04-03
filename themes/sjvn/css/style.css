@@ -5291,7 +5291,7 @@ body.dark-mode .empty-state-desc {
   }
 }
 
-.page-node-35.lang-en.path-node.page-node-type-career .field--name-field-upload-files {
+.path-node.page-node-type-career .field--name-field-upload-files {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -5300,7 +5300,7 @@ body.dark-mode .empty-state-desc {
   margin-bottom: 10px;
 }
 
-.lang-en.path-node.page-node-type-career {
+.path-node.page-node-type-career {
 
   /* ===== MAIN GRID ===== */
   .field--name-field-upload-files.field__items {
@@ -5381,8 +5381,8 @@ body.dark-mode .empty-state-desc {
 
   /* ===== FILE NAME ===== */
   .field--name-field-upload-files .file a {
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 14px !important;
+    font-weight: 500;
     color: #003366;
     text-decoration: none;
     margin-top: 5px;
