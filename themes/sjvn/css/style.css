@@ -5491,9 +5491,9 @@ body.sjvn-modal-active {
 .sjvn-to-text {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
+  line-height: 1 !important;
   font-size: 3rem;
   color: rgba(255, 255, 255, 0.9);
-  margin: 5px 0;
 }
 
 .sjvn-stage-text {
@@ -5503,7 +5503,8 @@ body.sjvn-modal-active {
   color: white;
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   letter-spacing: 2px;
-  margin: 0;
+  margin: 5px;
+  line-height: 1 !important;
   background: linear-gradient(to bottom, #fff7e0, #d4af37);
   -webkit-background-clip: text;
   background-clip: text;
@@ -5517,13 +5518,12 @@ body.sjvn-modal-active {
   color: rgba(255, 255, 255, 1);
   letter-spacing: 6px;
   font-weight: 700;
-  margin: 15px 0;
   text-transform: uppercase;
 }
 
 .click-now-btn {
-  width: 160px;
-  height: 160px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #ffd700, #996515);
   border: 4px solid white;
@@ -5708,4 +5708,100 @@ article.node.node--type-career.node--promoted.node--view-mode-full .clearfix.tex
   border-radius: 6px;
   margin: 10px 0;
   box-shadow: 0 1px 9px rgb(0 0 0 / 5%);
+}
+
+/*========================= hospital list CSS =============================*/
+
+/* layout */
+.view-display-id-page_2 .view-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  padding: 25px;
+  counter-reset: hospital;
+}
+
+/* card */
+.hospital-card {
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: .3s;
+  counter-increment: hospital;
+}
+
+.hospital-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+}
+
+/* heading section */
+.hospital-title {
+  background: #006da0;
+  color: #fff;
+  font-size: 20px !important;
+  font-weight: 600;
+  padding: 14px 18px 14px 55px;
+  margin: 0;
+  position: relative;
+  line-height: 1.4;
+}
+
+/* count badge */
+.hospital-title::before {
+  content: counter(hospital);
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #2bb6f0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* body content */
+.hospital-card p,
+.hospital-card .hospital-map {
+  padding: 0 18px;
+}
+
+.hospital-card p {
+  margin: 10px 0;
+  color: #444;
+}
+
+.hospital-card strong {
+  color: #006da0;
+}
+
+/* google map link */
+.hospital-map a {
+  color: #0a8ac4;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.hospital-map a:hover {
+  text-decoration: underline;
+}
+
+/* spacing bottom */
+.hospital-card .hospital-email {
+  padding-bottom: 18px;
+}
+
+/* responsive */
+@media (max-width:992px) {
+  .view-content {
+    grid-template-columns: 1fr;
+  }
 }
