@@ -5707,7 +5707,7 @@ article.node.node--type-career.node--promoted.node--view-mode-full .clearfix.tex
 /*========================= hospital list CSS =============================*/
 
 /* layout */
-.view-display-id-page_2 .view-content {
+.view-empanelled-hospital .view-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 26px;
@@ -5959,4 +5959,22 @@ ul.sf-menu>li>a.is-active {
   color: #002244 !important;
   font-weight: 700 !important;
   border-radius: 6px;
+}
+
+/* Make only the 3rd level submenu (like Transit Camps 1) of the last menu item open to the left */
+#superfish-main>li:last-child ul ul,
+ul.sf-menu>li:last-child ul ul {
+  left: auto !important;
+  right: 100% !important;
+}
+
+/* Allow dropdown containers to expand according to text length */
+#superfish-main ul {
+  width: max-content !important;
+  min-width: 100% !important;
+}
+
+#superfish-main ul li {
+  white-space: nowrap !important;
+  width: 100% !important;
 }
