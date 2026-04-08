@@ -3860,12 +3860,6 @@ button.carousel-prev.carousel-button.left {
   opacity: 1;
 }
 
-.view-footer {
-  /* margin-bottom: 20px;
-  margin-top: 10px; */
-  text-align-last: right;
-}
-
 
 /*------------------------ Job Info Table Styling -------------------------------------*/
 
@@ -5491,9 +5485,9 @@ body.sjvn-modal-active {
 .sjvn-to-text {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
+  line-height: 1 !important;
   font-size: 3rem;
   color: rgba(255, 255, 255, 0.9);
-  margin: 5px 0;
 }
 
 .sjvn-stage-text {
@@ -5503,7 +5497,8 @@ body.sjvn-modal-active {
   color: white;
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   letter-spacing: 2px;
-  margin: 0;
+  margin: 5px;
+  line-height: 1 !important;
   background: linear-gradient(to bottom, #fff7e0, #d4af37);
   -webkit-background-clip: text;
   background-clip: text;
@@ -5517,13 +5512,12 @@ body.sjvn-modal-active {
   color: rgba(255, 255, 255, 1);
   letter-spacing: 6px;
   font-weight: 700;
-  margin: 15px 0;
   text-transform: uppercase;
 }
 
 .click-now-btn {
-  width: 160px;
-  height: 160px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #ffd700, #996515);
   border: 4px solid white;
@@ -5708,4 +5702,261 @@ article.node.node--type-career.node--promoted.node--view-mode-full .clearfix.tex
   border-radius: 6px;
   margin: 10px 0;
   box-shadow: 0 1px 9px rgb(0 0 0 / 5%);
+}
+
+/*========================= hospital list CSS =============================*/
+
+/* layout */
+.view-display-id-page_2 .view-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  padding: 25px;
+  counter-reset: hospital;
+}
+
+/* card */
+.hospital-card {
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: .3s;
+  counter-increment: hospital;
+}
+
+.hospital-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px #009edb30;
+
+}
+
+/* heading section */
+.hospital-title {
+  background: #006da0;
+  color: #fff;
+  font-size: 17px !important;
+  font-weight: 500;
+  padding: 14px;
+  margin: 0;
+  position: relative;
+  line-height: 1.4 !important;
+}
+
+
+/* body content */
+.hospital-card p,
+.hospital-card .hospital-map {
+  padding: 0 18px;
+}
+
+.hospital-card p {
+  margin: 10px 0;
+  color: #444;
+}
+
+.hospital-card strong {
+  color: #006da0;
+}
+
+/* google map link */
+.hospital-map a {
+  color: #0a8ac4;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.hospital-map a:hover {
+  text-decoration: underline;
+}
+
+/* spacing bottom */
+.hospital-card .hospital-email {
+  padding-bottom: 18px;
+}
+
+/* responsive */
+@media (max-width:992px) {
+  .view-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==================== IEPF Details Footer css ====================================*/
+
+.view-footer {
+  margin: auto;
+  padding-top: 30px;
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+/* All paragraphs */
+.view-footer p {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Main Title */
+.view-footer p:first-child {
+  font-size: 22px !important;
+  font-weight: 600;
+  color: #ffffff;
+  border-bottom: 2px solid #0a4a8a;
+  padding-bottom: 8px;
+  margin-bottom: 18px;
+}
+
+/* Website link */
+.view-footer a {
+  display: inline-block;
+  background: #0a4a8a;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.view-footer a:hover {
+  background: #06366a;
+}
+
+/* Nodal Officer Heading */
+.view-footer p:nth-of-type(4),
+.view-footer p:nth-of-type(14) {
+  font-size: 18px !important;
+  font-weight: 600;
+  color: #0a4a8a;
+  margin-top: 25px;
+}
+
+/* Cards effect */
+.view-footer p:nth-of-type(n+5):nth-of-type(-n+11),
+.view-footer p:nth-of-type(n+15) {
+  background: #f7f9fc;
+  padding: 8px 12px;
+  border-left: 3px solid #0a4a8a;
+  margin-bottom: 5px;
+}
+
+/* AND text center */
+.view-footer p:contains("And") {
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Active Menu Trail Highlighting (some dark) */
+ul.sf-menu>li.active-trail>a,
+ul.sf-menu>li.active-trail>span.nolink,
+ul.sf-menu>li>a.is-active {
+  background-color: rgba(0, 51, 102, 0.12) !important;
+  color: #002244 !important;
+  font-weight: 700 !important;
+  border-radius: 6px;
+}
+
+
+/* Section */
+.iepf-wrapper {
+  padding: 40px 20px;
+  background: #f6fafc;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page Header */
+.iepf-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 6px;
+  margin-bottom: 18px;
+  background: linear-gradient(135deg, #004e73, #006da0);
+}
+
+/* Description */
+.iepf-desc {
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+/* Link */
+.iepf-link {
+  color: #006da0;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.iepf-link:hover {
+  color: #0dcaf0;
+}
+
+/* Grid */
+.iepf-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 30px;
+}
+
+/* Card */
+.iepf-card {
+  background: #fff;
+  border: 1px solid #e6eef4;
+  border-radius: 8px;
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+/* Hover (no movement) */
+.iepf-card:hover {
+  border-color: #006da0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Card Header */
+.iepf-card h3 {
+  background: #006da0;
+  color: #fff;
+  margin: 0;
+  padding: 10px 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Text */
+.iepf-card p {
+  margin: 6px 14px;
+  color: #333;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+/* Contact highlight */
+.iepf-card p:nth-last-child(-n+3) {
+  border-left: 2px solid #0dcaf0;
+  padding-left: 8px;
+}
+
+/* Mobile */
+@media (max-width:768px) {
+
+  .iepf-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+}
+
+ul.sf-menu>li.active-trail>a,
+ul.sf-menu>li.active-trail>span.nolink,
+ul.sf-menu>li>a.is-active {
+  background-color: rgba(0, 51, 102, 0.12) !important;
+  color: #002244 !important;
+  font-weight: 700 !important;
+  border-radius: 6px;
 }
