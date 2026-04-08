@@ -299,6 +299,12 @@ function _sjvn_custom_tender_handle_cu(&$form, FormStateInterface $form_state) {
  * After build callback to lock Contract Unit to exactly 1 option.
  */
 function _sjvn_custom_tender_cu_after_build($element, FormStateInterface $form_state) {
+  $account = \Drupal::currentUser();
+  // Administrators get full access — do not restrict Contract Unit options.
+  if ($account->hasPermission('bypass node access') || in_array('administrator', $account->getRoles())) {
+    return $element;
+  }
+
   $form_object = $form_state->getFormObject();
   if (!method_exists($form_object, 'getEntity')) {
     return $element;
@@ -613,7 +619,7 @@ function sjvn_custom_entity_field_access($operation, \Drupal\Core\Field\FieldDef
       if ($account->hasPermission('bypass node access') || 
           in_array('administrator', $account->getRoles()) || 
           in_array('content_editor', $account->getRoles())) {
-        return \Drupal\Core\Access\AccessResult::neutral();
+        return \Drupal\Core\Access\AccessResult::allowed()->cachePerPermissions();
       }
 
       if ($items) {
@@ -653,15 +659,15 @@ function sjvn_custom_entity_field_access($operation, \Drupal\Core\Field\FieldDef
 /**
  * Implements hook_node_access().
  */
-function sjvn_custom_node_access(\Drupal\node\NodeInterface $node, $op, \Drupal\Core\Session\AccountInterface $account) {
+//function sjvn_custom_node_access(\Drupal\node\NodeInterface $node, $op, \Drupal\Core\Session\AccountInterface $account) {
   // Allow content editors to view unpublished content.
-  if ($op === 'view' && !$node->isPublished()) {
-    if (in_array('content_editor', $account->getRoles())) {
-      return \Drupal\Core\Access\AccessResult::allowed()->cachePerPermissions()->addCacheableDependency($node);
-    }
-  }
-  return \Drupal\Core\Access\AccessResult::neutral();
-}
+  //if ($op === 'view' && !$node->isPublished()) {
+   // if (in_array('content_editor', $account->getRoles())) {
+    //  return \Drupal\Core\Access\AccessResult::allowed()->cachePerPermissions()->addCacheableDependency($node);
+   // }
+  //}
+  //return \Drupal\Core\Access\AccessResult::neutral();
+//}-->
 
 /**
  * Implements hook_csv_importer_pre_import().
@@ -789,3 +795,75 @@ function sjvn_custom_preprocess_field(&$variables) {
 }
 
 
+/**
+ * Implements hook_node_access().
+ * 
+ * Ensures the frontend remains public on logout even when 
+ * category-wise editorial permissions are used.
+ */
+function sjvn_custom_node_access(\Drupal\node\NodeInterface $node, $op, \Drupal\Core\Session\AccountInterface $account) {
+  // Administrators bypass all restrictions and are explicitly allowed.
+  if ($account->hasPermission('bypass node access') || in_array('administrator', $account->getRoles())) {
+    return \Drupal\Core\Access\AccessResult::allowed()->cachePerPermissions();
+  }
+
+  // Allow all users (including logged-in) to view published content on the frontend,
+  // bypassing category-wise (PbT) view restrictions.
+  if ($op === 'view' && $node->isPublished()) {
+    return \Drupal\Core\Access\AccessResult::allowed()->addCacheableDependency($node);
+  }
+
+  // Allow content editors and environment role to view unpublished content.
+  if ($op === 'view' && !$node->isPublished()) {
+    $roles = $account->getRoles();
+    if (in_array('content_editor', $roles) || in_array('environment', $roles)) {
+      return \Drupal\Core\Access\AccessResult::allowed()->cachePerPermissions()->addCacheableDependency($node);
+    }
+  }
+  return \Drupal\Core\Access\AccessResult::neutral();
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function sjvn_custom_views_query_alter(\Drupal\views\ViewExecutable $view, \Drupal\views\Plugin\views\query\Sql $query) {
+  // Bypasses node access SQL rewrite for all users so that public
+  // content (which may be restricted by category-wise permissions for editors)
+  // remains visible in all site-wide listings (Views).
+  $query->options['disable_sql_rewrite'] = TRUE;
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for taxonomy_term_form.
+ */
+function sjvn_custom_form_taxonomy_term_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Lock the 'administrator' role checkbox in Permissions by Term settings.
+  if (isset($form['access']['role'])) {
+    $form['#after_build'][] = '_sjvn_custom_term_form_after_build';
+    // Add validation handler to ensure the administrator role stays enabled
+    // because disabled checkboxes are not submitted in POST.
+    array_unshift($form['#validate'], '_sjvn_custom_term_form_validate');
+  }
+}
+
+/**
+ * Custom #after_build callback for taxonomy term forms to lock Administrator role.
+ */
+function _sjvn_custom_term_form_after_build($form, FormStateInterface $form_state) {
+  if (isset($form['access']['role']['administrator'])) {
+    $form['access']['role']['administrator']['#attributes']['checked'] = 'checked';
+    $form['access']['role']['administrator']['#attributes']['disabled'] = 'disabled';
+  }
+  return $form;
+}
+
+/**
+ * Custom validation handler to make sure 'administrator' role is saved even if disabled.
+ */
+function _sjvn_custom_term_form_validate(&$form, FormStateInterface $form_state) {
+  $access = $form_state->getValue('access');
+  if (isset($access['role']) && is_array($access['role'])) {
+    $access['role']['administrator'] = 'administrator';
+    $form_state->setValue('access', $access);
+  }
+}

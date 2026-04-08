@@ -104,9 +104,9 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<h5><a href="/sjvn/en/subsidiary/{{ tid }}">{{ name }}</a></h5>'
-            make_link: false
-            path: ''
+            text: '<h5>{{ name }}</h5>'
+            make_link: true
+            path: 'subsidiary/{{ tid }}'
             absolute: false
             external: false
             replace_spaces: false
@@ -155,6 +155,7 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          convert_spaces: false
         description__value:
           id: description__value
           table: taxonomy_term_field_data

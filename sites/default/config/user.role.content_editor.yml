@@ -80,7 +80,6 @@ dependencies:
     - organigrams
     - paragraphs
     - path
-    - permissions_by_term
     - quick_node_clone
     - system
     - taxonomy
@@ -99,7 +98,6 @@ permissions:
   - 'access content overview'
   - 'access contextual links'
   - 'access media overview'
-  - 'access pbt settings'
   - 'access toolbar'
   - 'administer block_content form display'
   - 'administer media'
@@ -360,9 +358,6 @@ permissions:
   - 'revert universal_content_file_upload revisions'
   - 'revert video_gallery revisions'
   - 'revert webform revisions'
-  - 'show term permission form on term page'
-  - 'show term permissions on node edit page'
-  - 'show term permissions on user edit page'
   - 'translate accordion_category taxonomy_term'
   - 'translate block_content'
   - 'translate board_of_directors node'

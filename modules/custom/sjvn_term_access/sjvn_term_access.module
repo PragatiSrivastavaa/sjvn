@@ -16,7 +16,9 @@ function sjvn_term_access_node_access(NodeInterface $node, $op, AccountInterface
     }
 
     // Admins and users with bypass permission are not restricted.
-    if ($account->hasPermission('bypass node access') || in_array('administrator', $account->getRoles())) {
+    if ($account->hasPermission('bypass node access') || 
+        $account->hasPermission('bypass sjvn category access') || 
+        in_array('administrator', $account->getRoles())) {
         return AccessResult::neutral();
     }
 
@@ -95,43 +97,43 @@ function sjvn_term_access_node_access(NodeInterface $node, $op, AccountInterface
     $access_denied = false;
     $denial_message = "";
 
-    $fields = $node->getFieldDefinitions();
-    foreach ($fields as $field_name => $definition) {
-        if ($definition->getType() !== 'entity_reference') {
-            continue;
-        }
+    $all_node_tids = _sjvn_term_access_get_entity_tids_recursive($node);
+    
+    $restricted_vocab_found = false;
+    $access_denied = false;
+    $denial_message = "";
 
-        $settings = $definition->getSettings();
-        if ($settings['target_type'] !== 'taxonomy_term') {
-            continue;
-        }
+    // Load vocabularies once.
+    $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
 
-        $handler_settings = $settings['handler_settings'] ?? [];
-        $vids = (array) ($handler_settings['target_bundles'] ?? []);
+    foreach ($target_vids as $vid) {
+        $vocab_tids = $term_storage->getQuery()
+            ->condition('vid', $vid)
+            ->accessCheck(FALSE)
+            ->execute();
+        
+        if (empty($vocab_tids)) continue;
 
-        $relevant_vids = array_intersect($vids, $target_vids);
+        $user_vid_tids = array_intersect((array)$user_tids, (array)$vocab_tids);
 
-        if (!empty($relevant_vids)) {
-            $vocab_tids = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->getQuery()
-                ->condition('vid', $relevant_vids, 'IN')
-                ->accessCheck(FALSE)
-                ->execute();
-
-            $user_vid_tids = array_intersect((array)$user_tids, (array)$vocab_tids);
-
-            if (!empty($user_vid_tids)) {
-                $restricted_vocab_found = true;
-                
-                $node_field_tids = [];
-                foreach ($node->get($field_name) as $item) {
-                    $node_field_tids[] = $item->target_id;
-                }
-
-                if (!array_intersect((array)$node_field_tids, (array)$user_vid_tids)) {
+        // If the user has assigned terms in this vocabulary, they are restricted.
+        if (!empty($user_vid_tids)) {
+            $restricted_vocab_found = true;
+            
+            // Check if ANY of the node's TIDs (including paragraphs) are in this vocabulary.
+            $node_vid_tids = array_intersect((array)$all_node_tids, (array)$vocab_tids);
+            
+            if (!empty($node_vid_tids)) {
+                // Node has terms in this vocab. User MUST match at least one.
+                if (!array_intersect((array)$node_vid_tids, (array)$user_vid_tids)) {
                     $access_denied = true;
-                    $denial_message = "You are not allowed to $op this content (Restriction: " . implode(', ', $relevant_vids) . ")";
+                    $denial_message = "You are not allowed to $op this content (Restriction: $vid)";
                     break;
                 }
+            }
+            else {
+                // Node HAS the potential for this vocab (it's a target vocab), 
+                // but no terms are assigned. This is handled by the fallback below.
             }
         }
     }
@@ -143,19 +145,21 @@ function sjvn_term_access_node_access(NodeInterface $node, $op, AccountInterface
     }
 
     if (!$restricted_vocab_found) {
-        $has_target_fields = false;
-        foreach ($fields as $field_name => $definition) {
-            $f_settings = $definition->getSettings();
-            if ($definition->getType() === 'entity_reference' && isset($f_settings['handler_settings']['target_bundles'])) {
-                $f_vids = (array)$f_settings['handler_settings']['target_bundles'];
-                if (array_intersect($f_vids, $target_vids)) {
-                    $has_target_fields = true;
-                    break;
-                }
+        // Fallback: If the user is restricted by ANY target vocabulary, but the node 
+        // doesn't have any of those terms assigned yet, we still check if the node's 
+        // fields (including Paragraphs) could support such terms.
+        $has_potential_restriction = false;
+        
+        // We can check if any of the collected TIDs belong to ANY target VIDs.
+        foreach ($all_node_tids as $tid) {
+            $term = $term_storage->load($tid);
+            if ($term && in_array($term->bundle(), $target_vids)) {
+                $has_potential_restriction = true;
+                break;
             }
         }
 
-        if ($has_target_fields) {
+        if ($has_potential_restriction) {
             return AccessResult::forbidden('You do not have permission to edit this category of content.')
                 ->cachePerUser();
         }
@@ -169,7 +173,9 @@ function sjvn_term_access_node_access(NodeInterface $node, $op, AccountInterface
  */
 function sjvn_term_access_node_create_access(AccountInterface $account, array $context, $entity_bundle) {
     // Admins bypass.
-    if ($account->hasPermission('bypass node access') || in_array('administrator', $account->getRoles())) {
+    if ($account->hasPermission('bypass node access') || 
+        $account->hasPermission('bypass sjvn category access') || 
+        in_array('administrator', $account->getRoles())) {
         return AccessResult::neutral();
     }
 
@@ -198,18 +204,8 @@ function sjvn_term_access_node_create_access(AccountInterface $account, array $c
         return AccessResult::neutral();
     }
 
-    $fields = \Drupal::service('entity_field.manager')->getFieldDefinitions('node', $entity_bundle);
-    $relevant_vids_for_bundle = [];
-    foreach ($fields as $definition) {
-        $f_settings = $definition->getSettings();
-        if ($definition->getType() === 'entity_reference' && isset($f_settings['handler_settings']['target_bundles'])) {
-            $f_vids = (array)$f_settings['handler_settings']['target_bundles'];
-            $intersect = array_intersect($f_vids, $target_vids);
-            if (!empty($intersect)) {
-                $relevant_vids_for_bundle = array_unique(array_merge($relevant_vids_for_bundle, $intersect));
-            }
-        }
-    }
+    // Check fields on the node bundle.
+    $relevant_vids_for_bundle = _sjvn_term_access_get_relevant_vids_recursive('node', $entity_bundle, $target_vids);
 
     if (empty($relevant_vids_for_bundle)) {
         return AccessResult::neutral();
@@ -249,7 +245,9 @@ function sjvn_term_access_entity_operation_alter(array &$operations, EntityInter
 function sjvn_term_access_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
     $account = \Drupal::currentUser();
     // Admins see everything.
-    if ($account->hasPermission('bypass node access') || in_array('administrator', $account->getRoles())) {
+    if ($account->hasPermission('bypass node access') || 
+        $account->hasPermission('bypass sjvn category access') || 
+        in_array('administrator', $account->getRoles())) {
         return;
     }
 
@@ -265,39 +263,132 @@ function sjvn_term_access_form_node_form_alter(&$form, FormStateInterface $form_
     }
     $target_vids = (array) $target_vids;
 
-    /** @var \Drupal\node\NodeInterface $node */
     $node = $form_state->getFormObject()->getEntity();
-    $fields = $node->getFieldDefinitions();
+    
+    // Recursive filtering for all fields (including Paragraphs).
+    _sjvn_term_access_filter_form_recursive($form, $user_tids, $target_vids);
+}
 
-    foreach ($fields as $field_name => $definition) {
-        // Skip filtering for 'On behalf of' field as it should show the full list.
-        if ($field_name === 'field_on_behalf_of') {
+/**
+ * Recursive function to filter taxonomy terms in forms.
+ */
+function _sjvn_term_access_filter_form_recursive(&$elements, array $user_tids, array $target_vids) {
+    foreach (\Drupal\Core\Render\Element::children($elements) as $key) {
+        if ($key === 'field_on_behalf_of') {
             continue;
         }
 
-        if ($definition->getType() !== 'entity_reference' || !isset($form[$field_name])) {
-            continue;
+        if (is_array($elements[$key])) {
+            // Check for standard options.
+            if (isset($elements[$key]['#options']) && is_array($elements[$key]['#options'])) {
+                // Determine if this field is one of the target vocabularies.
+                $is_target_field = false;
+                
+                // If we are at the widget level, check field definition.
+                if (isset($elements['#field_name'])) {
+                    // This is a bit complex to find the VID from just the form element,
+                    // so we check if any of the option keys (TIDs) belong to target VIDs.
+                    // To be efficient, we only check the first few non-special options.
+                    foreach ($elements[$key]['#options'] as $tid => $label) {
+                        if ($tid === '_none' || $tid === '' || !is_numeric($tid)) continue;
+                        
+                        $term = \Drupal\taxonomy\Entity\Term::load($tid);
+                        if ($term && in_array($term->bundle(), $target_vids)) {
+                            $is_target_field = true;
+                            break;
+                        }
+                    }
+                }
+
+                if ($is_target_field) {
+                    foreach ($elements[$key]['#options'] as $tid => $label) {
+                        if ($tid === '_none' || $tid === '' || !is_numeric($tid)) continue;
+                        if (!in_array($tid, $user_tids)) {
+                            unset($elements[$key]['#options'][$tid]);
+                        }
+                    }
+                }
+            }
+
+            // Special handling for SHS (Simple Hierarchical Select).
+            if (isset($elements[$key]['#type']) && $elements[$key]['#type'] === 'shs_term_select') {
+                // SHS often needs custom handling or it uses the #options of its widget.
+                // If it doesn't have options yet, it might be using AJAX.
+            }
+
+            // Recurse.
+            _sjvn_term_access_filter_form_recursive($elements[$key], $user_tids, $target_vids);
         }
+    }
+}
 
-        $settings = $definition->getSettings();
-        if ($settings['target_type'] !== 'taxonomy_term') {
-            continue;
-        }
+/**
+ * Gets all taxonomy term IDs from an entity, including nested Paragraphs.
+ */
+function _sjvn_term_access_get_entity_tids_recursive($entity) {
+    if (!$entity || !method_exists($entity, 'getFieldDefinitions')) {
+        return [];
+    }
 
-        $handler_settings = $settings['handler_settings'] ?? [];
-        $vids = (array) ($handler_settings['target_bundles'] ?? []);
-        $relevant_vids = array_intersect($vids, $target_vids);
-
-        if (!empty($relevant_vids)) {
-            // Filter standard option-based widgets (Select, Checkboxes, SHS).
-            if (isset($form[$field_name]['widget']['#options'])) {
-                foreach ($form[$field_name]['widget']['#options'] as $tid => $label) {
-                    if ($tid === '_none' || $tid === '') continue;
-                    if (!in_array($tid, $user_tids)) {
-                        unset($form[$field_name]['widget']['#options'][$tid]);
+    $tids = [];
+    foreach ($entity->getFieldDefinitions() as $field_name => $definition) {
+        $type = $definition->getType();
+        if ($type === 'entity_reference') {
+            if ($definition->getSetting('target_type') === 'taxonomy_term') {
+                foreach ($entity->get($field_name) as $item) {
+                    if ($item->target_id) {
+                        $tids[] = $item->target_id;
                     }
                 }
             }
         }
+        elseif ($type === 'entity_reference_revisions') {
+            foreach ($entity->get($field_name) as $item) {
+                if ($item->entity) {
+                    $tids = array_merge($tids, _sjvn_term_access_get_entity_tids_recursive($item->entity));
+                }
+            }
+        }
     }
+    return array_unique($tids);
+}
+
+/**
+ * Recursively find relevant vocabularies for an entity type and bundle.
+ */
+function _sjvn_term_access_get_relevant_vids_recursive($entity_type, $bundle, array $target_vids, array &$seen_bundles = []) {
+    $cache_key = "$entity_type:$bundle";
+    if (isset($seen_bundles[$cache_key])) {
+        return [];
+    }
+    $seen_bundles[$cache_key] = true;
+
+    $relevant_vids = [];
+    $fields = \Drupal::service('entity_field.manager')->getFieldDefinitions($entity_type, $bundle);
+    
+    foreach ($fields as $definition) {
+        $type = $definition->getType();
+        $settings = $definition->getSettings();
+
+        if ($type === 'entity_reference') {
+            if ($settings['target_type'] === 'taxonomy_term' && isset($settings['handler_settings']['target_bundles'])) {
+                $f_vids = (array)$settings['handler_settings']['target_bundles'];
+                $intersect = array_intersect($f_vids, $target_vids);
+                if (!empty($intersect)) {
+                    $relevant_vids = array_merge($relevant_vids, $intersect);
+                }
+            }
+        }
+        elseif ($type === 'entity_reference_revisions') {
+            if ($settings['target_type'] === 'paragraph') {
+                // Check all possible paragraph bundles for this field.
+                $p_bundles = (array)($settings['handler_settings']['target_bundles'] ?? []);
+                foreach ($p_bundles as $p_bundle) {
+                    $relevant_vids = array_merge($relevant_vids, _sjvn_term_access_get_relevant_vids_recursive('paragraph', $p_bundle, $target_vids, $seen_bundles));
+                }
+            }
+        }
+    }
+    
+    return array_unique($relevant_vids);
 }
