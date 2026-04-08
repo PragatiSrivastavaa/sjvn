@@ -5,13 +5,8 @@ require_all_terms_granted: false
 disable_node_access_records: false
 only_parents: false
 target_bundles:
-  - accordion_category
   - business_cat
   - category
   - group_name
-  - image_gallery_cat
-  - investor_relations
-  - main_category
-  - portfolio_cat
 show_terms_in_user_form: true
 hide_terms_permissions_info_in_node_form: false

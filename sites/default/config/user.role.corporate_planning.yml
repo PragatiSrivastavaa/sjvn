@@ -3,13 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
+    - block_content.type.our_business
     - filter.format.full_html
     - filter.format.restricted_html
+    - node.type.our_business
+    - node.type.page
   module:
     - block_content
     - content_translation
     - filter
     - node
+    - quick_node_clone
     - system
     - taxonomy
     - toolbar
@@ -22,7 +27,18 @@ permissions:
   - 'access content overview'
   - 'access toolbar'
   - 'administer taxonomy'
+  - 'clone page content'
+  - 'create basic block content'
   - 'create content translations'
+  - 'create our_business block content'
+  - 'create our_business content'
+  - 'create page content'
+  - 'edit any basic block content'
+  - 'edit any our_business block content'
+  - 'edit any our_business content'
+  - 'edit any page content'
+  - 'translate our_business node'
+  - 'translate page node'
   - 'update content translations'
   - 'use text format full_html'
   - 'use text format restricted_html'

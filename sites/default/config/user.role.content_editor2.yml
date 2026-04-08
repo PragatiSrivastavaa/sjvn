@@ -2,8 +2,17 @@ uuid: 15f72bed-0ed7-437c-9a5e-fb2aaf98f9f3
 langcode: en
 status: true
 dependencies:
+  config:
+    - block_content.type.basic
+    - node.type.operational_performance
+    - node.type.our_business
+    - node.type.page
+    - node.type.under_operation_maintenance
   module:
+    - block_content
+    - content_translation
     - node
+    - quick_node_clone
     - system
     - taxonomy
     - toolbar
@@ -15,4 +24,28 @@ permissions:
   - 'access content overview'
   - 'access toolbar'
   - 'administer taxonomy'
+  - 'clone our_business content'
+  - 'clone own our_business content'
+  - 'clone own page content'
+  - 'clone page content'
+  - 'create basic block content'
+  - 'create content translations'
+  - 'create operational_performance content'
+  - 'create our_business content'
+  - 'create page content'
+  - 'create under_operation_maintenance content'
+  - 'delete own our_business content'
+  - 'edit any basic block content'
+  - 'edit any operational_performance content'
+  - 'edit any our_business content'
+  - 'edit any page content'
+  - 'edit any under_operation_maintenance content'
+  - 'edit own operational_performance content'
+  - 'edit own page content'
+  - 'revert page revisions'
+  - 'translate operational_performance node'
+  - 'translate page node'
+  - 'translate under_operation_maintenance node'
+  - 'update content translations'
+  - 'view page revisions'
   - 'view the administration theme'

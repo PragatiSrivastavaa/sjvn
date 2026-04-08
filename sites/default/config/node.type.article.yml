@@ -1,10 +1,17 @@
 uuid: 7b995cb1-c30f-4181-a221-3bb32e4bb53c
 langcode: hi
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
 _core:
   default_config_hash: Fe3N1uqaAyyKJbVkqT-btXy3t98puW8GCRD822xjl10
-name: लेख
+name: Article
 type: article
 description: 'समाचार, प्रेस विज्ञप्ति या ब्लॉग पोस्ट जैसी समय-संवेदनशील सामग्री के लिए <em> लेख </em> का उपयोग करें।'
 help: null

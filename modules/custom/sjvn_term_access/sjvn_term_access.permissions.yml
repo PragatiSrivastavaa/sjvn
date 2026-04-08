@@ -1,0 +1,4 @@
+bypass sjvn category access:
+  title: 'Bypass SJVN Category Access'
+  description: 'Allows users to bypass category-wise access restrictions for content editing.'
+  restrict access: true

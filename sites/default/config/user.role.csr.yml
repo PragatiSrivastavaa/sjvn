@@ -3,13 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
     - filter.format.full_html
     - filter.format.restricted_html
+    - node.type.page
+    - node.type.universal_content_file_upload
   module:
     - block_content
     - content_translation
+    - field_ui
     - filter
     - node
+    - quick_node_clone
     - system
     - taxonomy
     - toolbar
@@ -21,10 +26,26 @@ permissions:
   - 'access block library'
   - 'access content overview'
   - 'access toolbar'
+  - 'administer block_content form display'
   - 'administer taxonomy'
+  - 'clone own universal_content_file_upload content'
+  - 'clone page content'
+  - 'clone universal_content_file_upload content'
+  - 'create basic block content'
   - 'create content translations'
+  - 'create page content'
+  - 'create universal_content_file_upload content'
+  - 'delete own universal_content_file_upload content'
+  - 'delete universal_content_file_upload revisions'
+  - 'edit any basic block content'
+  - 'edit any page content'
+  - 'edit any universal_content_file_upload content'
+  - 'edit own universal_content_file_upload content'
+  - 'translate page node'
+  - 'translate universal_content_file_upload node'
   - 'update content translations'
   - 'use text format full_html'
   - 'use text format restricted_html'
   - 'view own unpublished content'
   - 'view the administration theme'
+  - 'view universal_content_file_upload revisions'

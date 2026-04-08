@@ -11,5 +11,5 @@ display:
       footer:
         area:
           content:
-            value: '<div class="see-more-wrapper"><a class="see-more-btn" href="/sjvn/photo_gallery">और देखें</a></div>'
+            value: '<div class="see-more-wrapper"><a class="see-more-btn" href="/hi/photo_gallery">और देखें</a></div>'
             format: full_html

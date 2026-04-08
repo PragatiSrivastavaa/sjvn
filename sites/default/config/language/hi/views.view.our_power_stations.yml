@@ -4,5 +4,5 @@ display:
       footer:
         area:
           content:
-            value: '<div class="about-see-more"><a class="see-more-btn" href="/sjvn/hi/kanpanai-kaa-paraicaya">और देखें</a></div>'
+            value: '<div class="about-see-more"><a class="see-more-btn" href="/hi/kanpanai-kaa-paraicaya">और देखें</a></div>'
             format: full_html

@@ -3,12 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
     - filter.format.full_html
     - filter.format.restricted_html
+    - node.type.faq
+    - node.type.page
+    - node.type.universal_content_file_upload
   module:
+    - block_content
     - content_translation
     - filter
     - node
+    - quick_node_clone
     - system
     - taxonomy
     - toolbar
@@ -20,9 +26,30 @@ permissions:
   - 'access content overview'
   - 'access toolbar'
   - 'administer taxonomy'
+  - 'clone faq content'
+  - 'clone own faq content'
+  - 'clone own universal_content_file_upload content'
+  - 'clone page content'
+  - 'clone universal_content_file_upload content'
+  - 'create basic block content'
   - 'create content translations'
+  - 'create faq content'
+  - 'create page content'
+  - 'create universal_content_file_upload content'
+  - 'delete own faq content'
+  - 'delete own universal_content_file_upload content'
+  - 'edit any basic block content'
+  - 'edit any faq content'
+  - 'edit any page content'
+  - 'edit any universal_content_file_upload content'
+  - 'edit own faq content'
+  - 'edit own universal_content_file_upload content'
+  - 'translate faq node'
+  - 'translate page node'
+  - 'translate universal_content_file_upload node'
   - 'update content translations'
   - 'use text format full_html'
   - 'use text format restricted_html'
+  - 'view faq revisions'
   - 'view own unpublished content'
   - 'view the administration theme'

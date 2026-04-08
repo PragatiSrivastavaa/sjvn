@@ -3,13 +3,24 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
+    - block_content.type.board_of_directors
+    - block_content.type.investor_relations
+    - block_content.type.key_executive
     - filter.format.full_html
     - filter.format.restricted_html
+    - node.type.board_of_directors
+    - node.type.investor_relations
+    - node.type.page
+    - node.type.quick_access_link
+    - node.type.universal_content_file_upload
+    - taxonomy.vocabulary.investor_relations
   module:
     - block_content
     - content_translation
     - filter
     - node
+    - quick_node_clone
     - system
     - taxonomy
     - toolbar
@@ -22,9 +33,44 @@ permissions:
   - 'access content overview'
   - 'access toolbar'
   - 'administer taxonomy'
+  - 'clone board_of_directors content'
+  - 'clone investor_relations content'
+  - 'clone own board_of_directors content'
+  - 'clone own investor_relations content'
+  - 'clone own page content'
+  - 'clone own quick_access_link content'
+  - 'clone own universal_content_file_upload content'
+  - 'clone page content'
+  - 'clone quick_access_link content'
+  - 'create basic block content'
+  - 'create board_of_directors block content'
+  - 'create board_of_directors content'
   - 'create content translations'
+  - 'create investor_relations block content'
+  - 'create investor_relations content'
+  - 'create page content'
+  - 'create quick_access_link content'
+  - 'create universal_content_file_upload content'
+  - 'edit any basic block content'
+  - 'edit any board_of_directors content'
+  - 'edit any investor_relations block content'
+  - 'edit any investor_relations content'
+  - 'edit any page content'
+  - 'edit any quick_access_link content'
+  - 'edit any universal_content_file_upload content'
+  - 'edit own board_of_directors content'
+  - 'edit own investor_relations content'
+  - 'edit own page content'
+  - 'edit own quick_access_link content'
+  - 'revert any key_executive block content revisions'
+  - 'translate board_of_directors node'
+  - 'translate investor_relations node'
+  - 'translate investor_relations taxonomy_term'
+  - 'translate page node'
+  - 'translate quick_access_link node'
   - 'update content translations'
   - 'use text format full_html'
   - 'use text format restricted_html'
+  - 'view any investor_relations block content history'
   - 'view own unpublished content'
   - 'view the administration theme'

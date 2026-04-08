@@ -332,7 +332,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: "<div class=\"about-see-more\">\r\n        <a href=\"/sjvn/en/company-profile\" class=\"see-more-btn\">See More</a>\r\n    </div>"
+            value: "<div class=\"about-see-more\">\r\n        <a href=\"/en/company-profile\" class=\"see-more-btn\">See More</a>\r\n    </div>"
             format: full_html
           tokenize: false
       display_extenders: {  }

@@ -8,7 +8,7 @@ dependencies:
     - node.type.photo_gallery
     - taxonomy.vocabulary.image_gallery_cat
   content:
-    - 'taxonomy_term:image_gallery_cat:049ec155-aa80-45d4-a231-50921d30c8f4'
+    - 'taxonomy_term:image_gallery_cat:c9c13a3a-21f5-4b81-99fe-a94d89617005'
   module:
     - image
     - node
@@ -500,18 +500,18 @@ display:
           plugin_id: taxonomy_index_tid
           operator: not
           value:
-            360: 360
+            363: 363
           group: 1
           exposed: false
           expose:
-            operator_id: ''
-            label: ''
-            description: ''
+            operator_id: field_image_gallery_cat_target_id_op
+            label: 'Image Gallery Cat (field_image_gallery_cat)'
+            description: null
             use_operator: false
-            operator: ''
+            operator: field_image_gallery_cat_target_id_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: ''
+            identifier: field_image_gallery_cat_target_id
             required: false
             remember: false
             multiple: false
@@ -555,7 +555,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: " <div class=\"see-more-wrapper\">\r\n        <a href=\"/sjvn/photo_gallery\" class=\"see-more-btn\">See More</a>\r\n      </div>"
+            value: " <div class=\"see-more-wrapper\">\r\n        <a href=\"/en/photo_gallery\" class=\"see-more-btn\">See More</a>\r\n      </div>"
             format: full_html
           tokenize: false
       display_extenders: {  }
@@ -944,7 +944,7 @@ display:
           plugin_id: taxonomy_index_tid
           operator: or
           value:
-            360: 360
+            363: 363
           group: 1
           exposed: false
           expose:
