@@ -5785,7 +5785,7 @@ article.node.node--type-career.node--promoted.node--view-mode-full .clearfix.tex
 
 /* ==================== IEPF Details Footer css ====================================*/
 
-.view-footer {
+.view-investor-relations .view-footer {
   margin: auto;
   padding-top: 30px;
   background: #ffffff;
@@ -5793,13 +5793,13 @@ article.node.node--type-career.node--promoted.node--view-mode-full .clearfix.tex
 }
 
 /* All paragraphs */
-.view-footer p {
+.view-investor-relations .view-footer p {
   margin-bottom: 10px;
   color: #333;
 }
 
 /* Main Title */
-.view-footer p:first-child {
+.view-investor-relations .view-footer p:first-child {
   font-size: 22px !important;
   font-weight: 600;
   color: #ffffff;
@@ -5809,7 +5809,7 @@ article.node.node--type-career.node--promoted.node--view-mode-full .clearfix.tex
 }
 
 /* Website link */
-.view-footer a {
+.view-investor-relations .view-footer a {
   display: inline-block;
   background: #0a4a8a;
   color: #fff;
@@ -5819,12 +5819,12 @@ article.node.node--type-career.node--promoted.node--view-mode-full .clearfix.tex
   font-size: 14px;
 }
 
-.view-footer a:hover {
+.view-investor-relations .view-footer a:hover {
   background: #06366a;
 }
 
 /* Nodal Officer Heading */
-.view-footer p:nth-of-type(4),
+.view-investor-relations .view-footer p:nth-of-type(4),
 .view-footer p:nth-of-type(14) {
   font-size: 18px !important;
   font-weight: 600;
@@ -5833,7 +5833,7 @@ article.node.node--type-career.node--promoted.node--view-mode-full .clearfix.tex
 }
 
 /* Cards effect */
-.view-footer p:nth-of-type(n+5):nth-of-type(-n+11),
+.view-investor-relations .view-footer p:nth-of-type(n+5):nth-of-type(-n+11),
 .view-footer p:nth-of-type(n+15) {
   background: #f7f9fc;
   padding: 8px 12px;
@@ -5842,9 +5842,13 @@ article.node.node--type-career.node--promoted.node--view-mode-full .clearfix.tex
 }
 
 /* AND text center */
-.view-footer p:contains("And") {
+.view-investor-relations .view-footer p:contains("And") {
   text-align: center;
   font-weight: 600;
+}
+
+.view-announcements .view-footer {
+  text-align: right;
 }
 
 /* Active Menu Trail Highlighting (some dark) */
