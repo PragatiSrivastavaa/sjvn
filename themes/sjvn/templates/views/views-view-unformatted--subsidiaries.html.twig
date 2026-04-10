@@ -54,7 +54,7 @@
                         <div class="custom-card">
                             {{ item.row.content }}
                             {% if item.term %}
-                              <a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': item.term.id}) }}" aria-label="View details of {{ item.term.label }}">
+                              <a href="{{ path('view.subsidiary_projects.page_1', {'arg_0': item.term.id}) }}" aria-label="View details of {{ item.term.label }}">
                                 <span class="icon-btn"> <i class="fa-solid fa-angle-right" aria-hidden="true"></i> </span>
                               </a>
                             {% endif %}
@@ -81,7 +81,7 @@
                         <div class="custom-card">
                             {{ item.row.content }}
                             {% if item.term %}
-                              <a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': item.term.id}) }}" aria-label="View details of {{ item.term.label }}">
+                              <a href="{{ path('view.subsidiary_projects.page_1', {'arg_0': item.term.id}) }}" aria-label="View details of {{ item.term.label }}">
                                 <span class="icon-btn"> <i class="fa-solid fa-angle-right" aria-hidden="true"></i> </span>
                               </a>
                             {% endif %}
