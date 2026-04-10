@@ -307,8 +307,17 @@ function _sjvn_term_access_filter_form_recursive(&$elements, array $user_tids, a
                 }
 
                 if ($is_target_field) {
+                    // Get current value(s) to preserve them even if unauthorized.
+                    $current_values = (array) ($elements[$key]['#default_value'] ?? []);
+                    
                     foreach ($elements[$key]['#options'] as $tid => $label) {
                         if ($tid === '_none' || $tid === '' || !is_numeric($tid)) continue;
+                        
+                        // If this TID is currently selected, keep it to avoid defaulting to "None".
+                        if (in_array($tid, $current_values)) {
+                            continue;
+                        }
+
                         if (!in_array($tid, $user_tids)) {
                             unset($elements[$key]['#options'][$tid]);
                         }
