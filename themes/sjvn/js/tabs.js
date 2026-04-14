@@ -12,6 +12,13 @@
 
     tabs.forEach(tab => {
       tab.addEventListener("click", function(e) {
+        const href = this.getAttribute("href");
+        
+        // If it's a real link, do nothing and let the browser navigate
+        if (href && !href.startsWith("#")) {
+          return;
+        }
+
         e.preventDefault();
 
         // Remove active class from all tabs
@@ -22,7 +29,7 @@
 
         // Add active class to clicked tab + target pane
         this.parentElement.classList.add("active");
-        const target = document.querySelector(this.getAttribute("href"));
+        const target = document.querySelector(href);
         if (target) target.classList.add("active");
       });
     });

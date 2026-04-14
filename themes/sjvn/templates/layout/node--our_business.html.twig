@@ -1,22 +1,23 @@
 {{ attach_library('sjvn/our-business-tabs') }}
 
 
+{% set grouped = {} %}
+{% for group_item in node.field_group_content %}
+  {% set group_paragraph = group_item.entity %}
+  {% if not group_paragraph.field_group_link_order.value %}
+    {% set group_name = group_paragraph.field_group_name.entity.label %}
+    {% if grouped[group_name] is not defined %}
+      {% set grouped = grouped|merge({ (group_name): [] }) %}
+    {% endif %}
+    {% set grouped = grouped|merge({ (group_name): grouped[group_name]|merge([group_paragraph]) }) %}
+  {% endif %}
+{% endfor %}
+
 <div class="row mt-4 mb-5">
 
+  {% if grouped|length > 0 %}
   <div class="col-md-3 col-lg-3 col-xxl-2">
     <div id="accordionSidebar">
-
-      {% set grouped = {} %}
-      {% for group_item in node.field_group_content %}
-        {% set group_paragraph = group_item.entity %}
-        {% if not group_paragraph.field_group_link_order.value %}
-          {% set group_name = group_paragraph.field_group_name.entity.label %}
-          {% if grouped[group_name] is not defined %}
-            {% set grouped = grouped|merge({ (group_name): [] }) %}
-          {% endif %}
-          {% set grouped = grouped|merge({ (group_name): grouped[group_name]|merge([group_paragraph]) }) %}
-        {% endif %}
-      {% endfor %}
 
       {% set group_index = 0 %}
       {% for group_name, items in grouped %}
@@ -79,8 +80,9 @@
 
     </div> 
   </div>
+  {% endif %}
 
-  <div class="col-md-9 cl-lg-9 col-xxl-10" >
+  <div class="{% if grouped|length > 0 %}col-md-9 col-lg-9 col-xxl-10{% else %}col-12{% endif %}" >
     <div class="top-taps-contents" >
     <ul class="nav nav-tabs" role="tablist">
       {% set first_top_tab = true %}
@@ -89,18 +91,25 @@
         {% if group_paragraph.field_group_link_order.value %}
           {% for add_item in group_paragraph.field_add_content %}
             {% set add_paragraph = add_item.entity %}
+            {% set has_top_link = add_paragraph.field_link.uri %}
             <li class="nav-item" role="presentation">
-              <a class="nav-link {% if first_top_tab %}active{% endif %}" 
-                 data-bs-toggle="tab"
-                 role="tab"
-                 aria-selected="{% if first_top_tab %}true{% else %}false{% endif %}"
-                 aria-controls="top-tab-{{ loop.parent.loop.index }}-{{ loop.index }}"
-                 id="top-tab-link-{{ loop.parent.loop.index }}-{{ loop.index }}"
-                 href="#top-tab-{{ loop.parent.loop.index }}-{{ loop.index }}">
-                {{ add_paragraph.field_group_title.value ?: '' }}
-              </a>
+              {% if has_top_link %}
+                <a class="nav-link" href="{{ add_paragraph.field_link[0].url }}">
+                  {{ add_paragraph.field_group_title.value ?: '' }}
+                </a>
+              {% else %}
+                <a class="nav-link {% if first_top_tab %}active{% endif %}" 
+                   data-bs-toggle="tab"
+                   role="tab"
+                   aria-selected="{% if first_top_tab %}true{% else %}false{% endif %}"
+                   aria-controls="top-tab-{{ loop.parent.loop.index }}-{{ loop.index }}"
+                   id="top-tab-link-{{ loop.parent.loop.index }}-{{ loop.index }}"
+                   href="#top-tab-{{ loop.parent.loop.index }}-{{ loop.index }}">
+                  {{ add_paragraph.field_group_title.value ?: '' }}
+                </a>
+                {% set first_top_tab = false %}
+              {% endif %}
             </li>
-            {% set first_top_tab = false %}
           {% endfor %}
         {% endif %}
       {% endfor %}
