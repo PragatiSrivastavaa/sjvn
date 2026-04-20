@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.news_announcement.body
     - field.field.node.news_announcement.field_category
     - field.field.node.news_announcement.field_end_date
+    - field.field.node.news_announcement.field_in_announcement
     - field.field.node.news_announcement.field_link
     - field.field.node.news_announcement.field_start_date
     - field.field.node.news_announcement.field_upload_file
@@ -35,6 +36,7 @@ content:
 hidden:
   field_category: true
   field_end_date: true
+  field_in_announcement: true
   field_link: true
   field_start_date: true
   field_upload_file: true

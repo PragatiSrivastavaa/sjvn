@@ -262,7 +262,7 @@ display:
           validate_options:
             bundles:
               main_category: main_category
-            access: true
+            access: false
             operation: view
             multiple: 0
           break_phrase: false

@@ -824,6 +824,19 @@ function sjvn_custom_node_access(\Drupal\node\NodeInterface $node, $op, \Drupal\
 }
 
 /**
+ * Implements hook_taxonomy_term_access().
+ *
+ * Ensures that taxonomy terms remain publicly viewable so that Views 
+ * using term contextual filters (like subsidiary/%) do not return 404.
+ */
+function sjvn_custom_taxonomy_term_access(\Drupal\taxonomy\TermInterface $term, $op, \Drupal\Core\Session\AccountInterface $account) {
+  if ($op === 'view') {
+    return \Drupal\Core\Access\AccessResult::allowed();
+  }
+  return \Drupal\Core\Access\AccessResult::neutral();
+}
+
+/**
  * Implements hook_views_query_alter().
  */
 function sjvn_custom_views_query_alter(\Drupal\views\ViewExecutable $view, \Drupal\views\Plugin\views\query\Sql $query) {

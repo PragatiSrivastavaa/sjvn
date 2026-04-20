@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.news_announcement.body
     - field.field.node.news_announcement.field_category
     - field.field.node.news_announcement.field_end_date
+    - field.field.node.news_announcement.field_in_announcement
     - field.field.node.news_announcement.field_link
     - field.field.node.news_announcement.field_start_date
     - field.field.node.news_announcement.field_upload_file
@@ -48,6 +49,13 @@ content:
     weight: 125
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_in_announcement:
+    type: boolean_checkbox
+    weight: 128
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_link:
     type: link_default
@@ -111,6 +119,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete

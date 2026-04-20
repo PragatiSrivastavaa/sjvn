@@ -21,7 +21,10 @@
       <!-- Center (Scrolling Track) -->
         <div class="announcement-track">
 		{% for row in rows %}
-          <span class="announcement-item">{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}</span>
+          {% set field_link = row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_link }}']|trim|striptags %}
+          {% set node_url = row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ view_node }}']|trim|striptags %}
+          {% set link = field_link ? field_link : node_url %}
+          <a href="{{ link }}"><span class="announcement-item">{{row.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] }}</span></a>
         {% endfor %}
         </div>
 

@@ -1,0 +1,21 @@
+uuid: 87d54623-118e-4b1d-96be-bec4a1bba459
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_in_announcement
+    - node.type.news_announcement
+id: node.news_announcement.field_in_announcement
+field_name: field_in_announcement
+entity_type: node
+bundle: news_announcement
+label: 'In announcement'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -8,5 +8,6 @@ target_bundles:
   - business_cat
   - category
   - group_name
+  - main_category
 show_terms_in_user_form: true
 hide_terms_permissions_info_in_node_form: false

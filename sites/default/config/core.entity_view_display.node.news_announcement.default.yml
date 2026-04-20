@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.news_announcement.body
     - field.field.node.news_announcement.field_category
     - field.field.node.news_announcement.field_end_date
+    - field.field.node.news_announcement.field_in_announcement
     - field.field.node.news_announcement.field_link
     - field.field.node.news_announcement.field_start_date
     - field.field.node.news_announcement.field_upload_file
@@ -25,6 +26,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_in_announcement:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 3
     region: content
   field_start_date:
     type: datetime_custom
