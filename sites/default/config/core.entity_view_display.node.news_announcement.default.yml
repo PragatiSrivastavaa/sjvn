@@ -27,16 +27,6 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
-  field_in_announcement:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 3
-    region: content
   field_start_date:
     type: datetime_custom
     label: hidden
@@ -54,6 +44,7 @@ content:
 hidden:
   field_category: true
   field_end_date: true
+  field_in_announcement: true
   field_link: true
   field_upload_file: true
   langcode: true
