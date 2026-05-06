@@ -1,0 +1,4 @@
+edit org chart:
+  title: 'Edit Organization Chart'
+  description: 'Allows users to access and edit the Organization Chart configuration.'
+  restrict access: true

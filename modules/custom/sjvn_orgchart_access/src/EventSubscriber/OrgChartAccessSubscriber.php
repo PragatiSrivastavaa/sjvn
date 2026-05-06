@@ -62,18 +62,13 @@ class OrgChartAccessSubscriber implements EventSubscriberInterface {
     
     if (strpos($path, '/admin/config/orgchart') !== false) {
       
-      // Allow administrators to edit.
-      if (in_array('administrator', $this->currentUser->getRoles())) {
+      // Allow administrators or users with the custom 'edit org chart' permission.
+      if (in_array('administrator', $this->currentUser->getRoles()) || $this->currentUser->hasPermission('edit org chart')) {
         return;
       }
 
-      $email = $this->currentUser->getEmail() ?? '';
-      $username = $this->currentUser->getAccountName() ?? '';
-
-      // Restrict access strictly to the corporate.pr identity (either Email field or Username itself).
-      if (strtolower($email) !== 'corporate.pr@sjvn.nic.in' && strtolower($username) !== 'corporate.pr@sjvn.nic.in') {
-        throw new AccessDeniedHttpException('Access Restricted: Only authorized personnel (Corporate PR) can edit the Organization Chart.');
-      }
+      // If neither, access is denied.
+      throw new AccessDeniedHttpException('Access Restricted: You do not have permission to edit the Organization Chart.');
     }
   }
 
