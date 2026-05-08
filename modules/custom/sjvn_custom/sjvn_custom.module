@@ -591,7 +591,18 @@ function sjvn_custom_form_node_form_alter(&$form, FormStateInterface $form_state
   // Drupal core restricts the 'status' (Published) field and its group to users 
   // with the 'administer nodes' permission. We explicitly grant access here.
   if (isset($form['status'])) {
-    $form['status']['#access'] = TRUE;
+    $node = $form_state->getFormObject()->getEntity();
+    $account = \Drupal::currentUser();
+    $is_admin = $account->hasPermission('administer nodes') || in_array('administrator', $account->getRoles());
+
+    // Restriction: "Published -> Unpublished" transition is only for Admin.
+    // If the node is already published, non-admins cannot change its status.
+    if ($node instanceof \Drupal\node\NodeInterface && $node->isPublished() && !$is_admin) {
+      $form['status']['#access'] = FALSE;
+    }
+    else {
+      $form['status']['#access'] = TRUE;
+    }
     
     // Core often places 'status' inside an 'options' group which is hidden.
     if (isset($form['options'])) {
@@ -604,9 +615,24 @@ function sjvn_custom_form_node_form_alter(&$form, FormStateInterface $form_state
  * Implements hook_entity_field_access().
  */
 function sjvn_custom_entity_field_access($operation, \Drupal\Core\Field\FieldDefinitionInterface $field_definition, \Drupal\Core\Session\AccountInterface $account, \Drupal\Core\Field\FieldItemListInterface $items = NULL) {
-  // Broadly grant edit access to the 'status' field for nodes if the user can edit the node.
+  // Grant edit access to 'status' (Published) field with restrictions.
   if ($operation === 'edit' && $field_definition->getName() === 'status') {
     if ($field_definition->getTargetEntityTypeId() === 'node') {
+      // Allow admins to always edit the status.
+      if ($account->hasPermission('administer nodes') || in_array('administrator', $account->getRoles())) {
+        return \Drupal\Core\Access\AccessResult::allowed()->cachePerPermissions();
+      }
+
+      // Transition restriction: "Published -> Unpublished" only for Admin.
+      // If node is already published, forbid non-admins from editing status.
+      if ($items) {
+        $node = $items->getEntity();
+        if ($node instanceof \Drupal\node\NodeInterface && $node->isPublished()) {
+          return \Drupal\Core\Access\AccessResult::forbidden()->addCacheableDependency($node);
+        }
+      }
+
+      // Normal editors can still change status if the node is NOT yet published.
       return \Drupal\Core\Access\AccessResult::allowed()->cachePerPermissions();
     }
   }
