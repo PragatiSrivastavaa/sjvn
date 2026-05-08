@@ -1,0 +1,11 @@
+uuid: 5af97a0a-8023-4b13-a4fd-1bfc28f6c2e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dop
+id: node.dop
+target_entity_type_id: node
+target_bundle: dop
+default_langcode: site_default
+language_alterable: false

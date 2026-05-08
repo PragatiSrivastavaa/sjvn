@@ -1,0 +1,29 @@
+uuid: 3c7c5bdf-3ca6-4078-9a60-e9455490dbc4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.dop.body
+    - node.type.dop
+  module:
+    - text
+    - user
+id: node.dop.default
+targetEntityType: node
+bundle: dop
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

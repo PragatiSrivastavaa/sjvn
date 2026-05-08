@@ -4,3 +4,8 @@ services:
     arguments: ['@current_user', '@current_route_match']
     tags:
       - { name: event_subscriber }
+
+  sjvn_orgchart_access.route_subscriber:
+    class: Drupal\sjvn_orgchart_access\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

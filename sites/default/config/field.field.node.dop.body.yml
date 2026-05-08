@@ -1,0 +1,24 @@
+uuid: 81b6a34a-418f-491a-b4f3-d27e6dc60936
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.dop
+  module:
+    - text
+id: node.dop.body
+field_name: body
+entity_type: node
+bundle: dop
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary
