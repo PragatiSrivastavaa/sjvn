@@ -1,4 +1,4 @@
-﻿/* Global Scroll Behavior */
+/* Global Scroll Behavior */
 html,
 body {
   scroll-behavior: smooth !important;
@@ -2979,12 +2979,14 @@ button.carousel-prev.carousel-button.left {
   display: grid;
   place-items: center;
   text-align: center;
+  pointer-events: none; /* Inactive cards should not capture clicks */
 }
 
 .alert-card.active {
   opacity: 1;
   transform: translateX(0);
   position: relative;
+  pointer-events: auto; /* Only active card is clickable */
 }
 
 .alert-date {
