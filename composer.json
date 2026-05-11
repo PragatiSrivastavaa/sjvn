@@ -30,6 +30,7 @@
         "drupal/csp": "^2.2",
         "drupal/csv_importer": "^2.2",
         "drupal/easy_breadcrumb": "^2.0",
+        "drupal/editor_advanced_link": "^2.3",
         "drupal/editor_file": "^2.1",
         "drupal/entity_browser": "^2.15",
         "drupal/file_encrypt": "^1.0@alpha",

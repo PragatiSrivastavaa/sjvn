@@ -5,6 +5,28 @@ use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\node\Entity\Node;
 use Drupal\Core\Entity\Element\EntityAutocomplete;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Invalidate DOP view cache when a DOP node is created, updated, or deleted.
+ */
+function sjvn_custom_entity_insert(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'dop') {
+    \Drupal::service('cache_tags.invalidator')->invalidateTags(['view.dop']);
+  }
+}
+
+function sjvn_custom_entity_update(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'dop') {
+    \Drupal::service('cache_tags.invalidator')->invalidateTags(['view.dop']);
+  }
+}
+
+function sjvn_custom_entity_delete(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'dop') {
+    \Drupal::service('cache_tags.invalidator')->invalidateTags(['view.dop']);
+  }
+}
 
 /**
  * Implements hook_config_schema_info_alter().
@@ -588,10 +610,16 @@ function _sjvn_widget_has_file_value(array $child_item) : bool {
  * Implements hook_form_BASE_FORM_ID_alter() for node_form.
  */
 function sjvn_custom_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $node = $form_state->getFormObject()->getEntity();
+
+  // Attach custom validation for DOP edit form.
+  if ($node->bundle() === 'dop') {
+    $form['#validate'][] = 'sjvn_custom_dop_edit_validate';
+  }
+
   // Drupal core restricts the 'status' (Published) field and its group to users 
   // with the 'administer nodes' permission. We explicitly grant access here.
   if (isset($form['status'])) {
-    $node = $form_state->getFormObject()->getEntity();
     $account = \Drupal::currentUser();
     $is_admin = $account->hasPermission('administer nodes') || in_array('administrator', $account->getRoles());
 
@@ -607,6 +635,89 @@ function sjvn_custom_form_node_form_alter(&$form, FormStateInterface $form_state
     // Core often places 'status' inside an 'options' group which is hidden.
     if (isset($form['options'])) {
       $form['options']['#access'] = TRUE;
+    }
+  }
+}
+
+/**
+ * Custom validation handler for DOP edit form.
+ * Ensures that if the body is modified, a PDF must be uploaded.
+ */
+function sjvn_custom_dop_edit_validate(array &$form, FormStateInterface $form_state) {
+  $node = $form_state->getFormObject()->getEntity();
+  
+  // Only apply this logic to existing nodes (edits)
+  if ($node->isNew()) {
+    return;
+  }
+  
+  // Get original node to compare body using entityTypeManager.
+  $original = \Drupal::entityTypeManager()->getStorage('node')->loadUnchanged($node->id());
+  if ($original) {
+    $old_body = trim($original->get('body')->value ?? '');
+    
+    // Get the newly submitted body value from form_state
+    $body_value = $form_state->getValue('body');
+    $new_body = trim($body_value[0]['value'] ?? '');
+
+    if ($old_body !== $new_body) {
+      // 1. Check if the PDF was uploaded directly into the body field (CKEditor)
+      // If the new body has more '.pdf' occurrences or media tags than the old body.
+      $pdf_uploaded = FALSE;
+      if (substr_count(strtolower($new_body), '.pdf') > substr_count(strtolower($old_body), '.pdf')) {
+        $pdf_uploaded = TRUE;
+      }
+      elseif (substr_count($new_body, 'data-entity-type="media"') > substr_count($old_body, 'data-entity-type="media"')) {
+        $pdf_uploaded = TRUE;
+      }
+      elseif (substr_count($new_body, 'href=') > substr_count($old_body, 'href=')) {
+        // Fallback: if they added ANY new link, let's assume it might be the uploaded file.
+        $pdf_uploaded = TRUE;
+      }
+
+      // 2. Check if a dedicated file/media field was updated.
+      if (!$pdf_uploaded) {
+        foreach ($node->getFieldDefinitions() as $field_name => $field_definition) {
+          $type = $field_definition->getType();
+          
+          // Check file, image, or media reference fields.
+          $target_type = $field_definition->getSetting('target_type');
+          $is_file = in_array($type, ['file', 'image']);
+          $is_media = ($type === 'entity_reference' && in_array($target_type, ['media', 'file']));
+          
+          if ($is_file || $is_media) {
+            $old_items = $original->get($field_name)->getValue();
+            $old_ids = array_column($old_items, 'target_id');
+            
+            // During validation, newly uploaded files are often stored in 'fids' in form state.
+            $new_fids = [];
+            $form_values = $form_state->getValue($field_name);
+            if (is_array($form_values)) {
+              foreach ($form_values as $item) {
+                if (!empty($item['fids']) && is_array($item['fids'])) {
+                  foreach ($item['fids'] as $fid) {
+                    $new_fids[] = $fid;
+                  }
+                }
+                elseif (!empty($item['target_id'])) {
+                  $new_fids[] = $item['target_id'];
+                }
+              }
+            }
+            
+            // Check if there is any new ID that wasn't there before
+            $added_ids = array_diff($new_fids, $old_ids);
+            if (!empty($added_ids)) {
+              $pdf_uploaded = TRUE;
+              break;
+            }
+          }
+        }
+      }
+
+      if (!$pdf_uploaded) {
+        $form_state->setErrorByName('body', t('Alert: You have modified the DOP content. You must upload a new PDF document before saving the changes.'));
+      }
     }
   }
 }
