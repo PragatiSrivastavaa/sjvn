@@ -94,6 +94,10 @@ settings:
       multiBlock: true
     ckeditor5_sourceEditing:
       allowed_tags: {  }
+    editor_advanced_link_link:
+      enabled_attributes:
+        - aria-label
+        - target
     editor_file_file:
       status: true
       scheme: public
