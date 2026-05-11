@@ -12,3 +12,11 @@ sjvn_custom.tender_award_loa:
     _controller: '\Drupal\sjvn_custom\Controller\TenderAwardLoaController::download'
   requirements:
     _entity_access: 'node.view'
+
+sjvn_custom.dop_typos:
+  path: '/admin/content/dop-typos'
+  defaults:
+    _controller: '\Drupal\sjvn_custom\Controller\DopTyposController::listTypos'
+    _title: 'DOP Typo Corrections Tracking'
+  requirements:
+    _permission: 'access content overview'

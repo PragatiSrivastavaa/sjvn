@@ -615,6 +615,23 @@ function sjvn_custom_form_node_form_alter(&$form, FormStateInterface $form_state
   // Attach custom validation for DOP edit form.
   if ($node->bundle() === 'dop') {
     $form['#validate'][] = 'sjvn_custom_dop_edit_validate';
+
+    if (!$node->isNew()) {
+      $form['dop_update_type'] = [
+        '#type' => 'radios',
+        '#title' => t('Reason for Edit'),
+        '#options' => [
+          'amendment' => t('Amendment (Requires new PDF Upload)'),
+          'typo' => t('Minor Typo Correction (No PDF Required)'),
+        ],
+        '#default_value' => 'amendment',
+        '#weight' => -99,
+        '#description' => t('Select "Minor Typo Correction" to fix spelling mistakes without requiring a new document upload. All changes are tracked in the Revisions tab.'),
+      ];
+
+      // Add entity builder to automatically create a revision with a log message
+      $form['#entity_builders'][] = 'sjvn_custom_dop_entity_builder';
+    }
   }
 
   // Drupal core restricts the 'status' (Published) field and its group to users 
@@ -635,6 +652,24 @@ function sjvn_custom_form_node_form_alter(&$form, FormStateInterface $form_state
     // Core often places 'status' inside an 'options' group which is hidden.
     if (isset($form['options'])) {
       $form['options']['#access'] = TRUE;
+    }
+  }
+}
+
+/**
+ * Entity builder to set revision log message based on selected update type.
+ */
+function sjvn_custom_dop_entity_builder($entity_type, \Drupal\Core\Entity\EntityInterface $entity, array &$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $update_type = $form_state->getValue('dop_update_type');
+  if ($update_type) {
+    $entity->setNewRevision(TRUE);
+    $entity->setRevisionCreationTime(\Drupal::time()->getRequestTime());
+    $entity->setRevisionUserId(\Drupal::currentUser()->id());
+    
+    if ($update_type === 'typo') {
+      $entity->setRevisionLogMessage('Minor Typo Correction');
+    } else {
+      $entity->setRevisionLogMessage('Amendment with PDF Upload');
     }
   }
 }
@@ -661,6 +696,13 @@ function sjvn_custom_dop_edit_validate(array &$form, FormStateInterface $form_st
     $new_body = trim($body_value[0]['value'] ?? '');
 
     if ($old_body !== $new_body) {
+      $update_type = $form_state->getValue('dop_update_type');
+      
+      // If the user selected "typo", bypass the PDF upload requirement
+      if ($update_type === 'typo') {
+        return; // Validation passes successfully
+      }
+
       // 1. Check if the PDF was uploaded directly into the body field (CKEditor)
       // If the new body has more '.pdf' occurrences or media tags than the old body.
       $pdf_uploaded = FALSE;
