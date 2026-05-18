@@ -1,5 +1,11 @@
+<h2 class="subtitle mt-2"> {% if current_language == 'hi' %}
+                  अक्सर पूछे जाने वाले प्रश्नों
+                  {% else %}
+                  Delegation of Powers
+                  {% endif %}</h2>
 
 <div class="accordion" id="accordionFaqPage2">
+
   {% for row in rows %}
     
     {% set faq_id = 'faq-p2-' ~ loop.index %}
