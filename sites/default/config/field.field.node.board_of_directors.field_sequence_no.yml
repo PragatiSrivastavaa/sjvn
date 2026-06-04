@@ -1,0 +1,23 @@
+uuid: d7c53dfa-8ff6-4e1b-bd59-18a74a429d7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sequence_no
+    - node.type.board_of_directors
+id: node.board_of_directors.field_sequence_no
+field_name: field_sequence_no
+entity_type: node
+bundle: board_of_directors
+label: 'Sequence No'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

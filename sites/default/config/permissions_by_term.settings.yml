@@ -5,6 +5,7 @@ require_all_terms_granted: false
 disable_node_access_records: false
 only_parents: false
 target_bundles:
+  - accordion_category
   - business_cat
   - category
   - group_name

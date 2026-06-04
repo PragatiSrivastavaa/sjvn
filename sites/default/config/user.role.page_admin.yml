@@ -36,6 +36,7 @@ permissions:
   - 'create faq content'
   - 'create page content'
   - 'create universal_content_file_upload content'
+  - 'delete any universal_content_file_upload content'
   - 'delete own faq content'
   - 'delete own universal_content_file_upload content'
   - 'edit any basic block content'

@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.board_of_directors.field_degination
     - field.field.node.board_of_directors.field_directors_category
     - field.field.node.board_of_directors.field_image_of_directors
+    - field.field.node.board_of_directors.field_sequence_no
     - image.style.thumbnail
     - node.type.board_of_directors
   module:
@@ -55,6 +56,13 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_sequence_no:
+    type: number
+    weight: 126
+    region: content
+    settings:
+      placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select

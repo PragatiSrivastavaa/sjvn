@@ -35,7 +35,7 @@ config:
     width: '500'
 build:
   desktop:
-    height: '2400'
+    height: '1585'
     values:
       cells:
         -
@@ -193,20 +193,6 @@ build:
           level: '1'
           subtitle: ''
         -
-          id: 12
-          title: 'BDE Department Corporate HQ'
-          link: ''
-          left: 115px
-          top: 370px
-          width: 90px
-          height: 50px
-          size: pequena
-          color: ''
-          bgcolor: ''
-          fontweight: normal
-          level: '1'
-          subtitle: ' Shimla'
-        -
           id: 13
           title: 'Coporate Planning Corporate HQ'
           link: ''
@@ -264,7 +250,7 @@ build:
           subtitle: ''
         -
           id: 17
-          title: 'orp. F&A Corporate HQ '
+          title: 'Corp. F&A Corporate HQ '
           link: ''
           left: 795px
           top: 200px
@@ -306,7 +292,7 @@ build:
           subtitle: Shimla
         -
           id: 20
-          title: 'elhi Finance Corporate HQ '
+          title: ' Delhi Finance Corporate HQ '
           link: ''
           left: 795px
           top: 285px
@@ -362,7 +348,7 @@ build:
           subtitle: Shimla
         -
           id: 24
-          title: 'vil Contracts Corporate HQ '
+          title: 'Civil Contracts Corporate HQ '
           link: ''
           left: 675px
           top: 285px
@@ -505,7 +491,7 @@ build:
           title: 'Cross Border Power Transmission Company (CPTC) Joint Venture'
           link: ''
           left: 545px
-          top: 695px
+          top: 615px
           width: 115px
           height: 75px
           size: pequena
@@ -518,8 +504,8 @@ build:
           id: 35
           title: 'Assam Renewable Energy Limited (SAREL)'
           link: ''
-          left: 545px
-          top: 610px
+          left: 680px
+          top: 1205px
           width: 110px
           height: 70px
           size: pequena
@@ -543,25 +529,11 @@ build:
           level: '1'
           subtitle: ''
         -
-          id: 37
-          title: 'Electrical Contracts Corporate HQ'
-          link: ''
-          left: 0px
-          top: 465px
-          width: 95px
-          height: 50px
-          size: pequena
-          color: ''
-          bgcolor: ''
-          fontweight: normal
-          level: '1'
-          subtitle: ' Shimla'
-        -
           id: 38
           title: 'Electrical Design Corporate HQ '
           link: ''
           left: 115px
-          top: 465px
+          top: 370px
           width: 95px
           height: 50px
           size: pequena
@@ -572,7 +544,7 @@ build:
           subtitle: Shimla
         -
           id: 39
-          title: 'athpa Jhakri HPS 1500 MW Himachal Pradesh'
+          title: 'Nathpa Jhakri HPS 1500 MW Himachal Pradesh'
           link: ''
           left: 220px
           top: 430px
@@ -617,7 +589,7 @@ build:
           title: 'HM Design Corporate HQ '
           link: ''
           left: 0px
-          top: 660px
+          top: 470px
           width: 95px
           height: 50px
           size: pequena
@@ -641,25 +613,11 @@ build:
           level: '1'
           subtitle: ' Shimla'
         -
-          id: 44
-          title: 'Business Development Expansion Corporate HQ '
-          link: ''
-          left: 125px
-          top: 750px
-          width: 95px
-          height: 65px
-          size: pequena
-          color: ''
-          bgcolor: ''
-          fontweight: normal
-          level: '1'
-          subtitle: Shimla
-        -
           id: 45
           title: 'Roof Top Solar Corporate HQ '
           link: ''
-          left: 130px
-          top: 860px
+          left: 5px
+          top: 760px
           width: 95px
           height: 50px
           size: pequena
@@ -673,7 +631,7 @@ build:
           title: 'Architecture Corporate HQ '
           link: ''
           left: 120px
-          top: 660px
+          top: 565px
           width: 95px
           height: 45px
           size: pequena
@@ -686,9 +644,9 @@ build:
           id: 47
           title: 'Corporate Facility Management Deptt. Corporate HQ '
           link: ''
-          left: 125px
-          top: 560px
-          width: 95px
+          left: 110px
+          top: 465px
+          width: 105px
           height: 50px
           size: pequena
           color: ''
@@ -700,8 +658,8 @@ build:
           id: 48
           title: 'REIA Corporate HQ '
           link: ''
-          left: 0px
-          top: 955px
+          left: 115px
+          top: 760px
           width: 95px
           height: 50px
           size: pequena
@@ -714,8 +672,8 @@ build:
           id: 49
           title: 'Power Trading & BDE Corporate HQ'
           link: ''
-          left: 15px
-          top: 860px
+          left: 115px
+          top: 660px
           width: 95px
           height: 50px
           size: pequena
@@ -728,9 +686,9 @@ build:
           id: 50
           title: 'Quality Assurance & Inspection Corporate HQ '
           link: ''
-          left: 5px
-          top: 760px
-          width: 95px
+          left: 0px
+          top: 660px
+          width: 105px
           height: 50px
           size: pequena
           color: ''
@@ -850,6 +808,62 @@ build:
           fontweight: normal
           level: '1'
           subtitle: Pre-Construction
+        -
+          id: 59
+          title: 'Alternate Dispute Resolution'
+          link: ''
+          left: 680px
+          top: 1100px
+          width: 95px
+          height: 60px
+          size: normal
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '2'
+          subtitle: Shimla
+        -
+          id: 60
+          title: 'Geology Corporate HQ '
+          link: ''
+          left: 0px
+          top: 860px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 61
+          title: 'Environment Corporate HQ '
+          link: ''
+          left: 130px
+          top: 860px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
+        -
+          id: 62
+          title: 'Cost Engineering Corporate HQ '
+          link: ''
+          left: 5px
+          top: 960px
+          width: 95px
+          height: 50px
+          size: pequena
+          color: ''
+          bgcolor: ''
+          fontweight: normal
+          level: '1'
+          subtitle: Shimla
       lines:
         -
           id: 2
@@ -1019,10 +1033,10 @@ build:
         -
           id: 17
           orientation: vertical
-          left: 170px
-          top: 925px
+          left: 180px
+          top: 840px
           width: 2px
-          height: 35px
+          height: 20px
           linecolor: ''
           linetype: normal
           left_top_arrow: ''
@@ -1237,17 +1251,6 @@ build:
           left_top_arrow: ''
           right_bottom_arrow: ''
         -
-          id: 37
-          orientation: horizontal
-          left: 50px
-          top: 935px
-          width: 120px
-          height: 2px
-          linecolor: ''
-          linetype: normal
-          left_top_arrow: ''
-          right_bottom_arrow: ''
-        -
           id: 38
           orientation: vertical
           left: 45px
@@ -1297,7 +1300,7 @@ build:
           left: 170px
           top: 715px
           width: 2px
-          height: 35px
+          height: 45px
           linecolor: ''
           linetype: normal
           left_top_arrow: ''
@@ -1340,28 +1343,6 @@ build:
           orientation: vertical
           left: 50px
           top: 725px
-          width: 2px
-          height: 35px
-          linecolor: ''
-          linetype: normal
-          left_top_arrow: ''
-          right_bottom_arrow: '1'
-        -
-          id: 47
-          orientation: vertical
-          left: 180px
-          top: 825px
-          width: 2px
-          height: 35px
-          linecolor: ''
-          linetype: normal
-          left_top_arrow: ''
-          right_bottom_arrow: '1'
-        -
-          id: 48
-          orientation: vertical
-          left: 50px
-          top: 920px
           width: 2px
           height: 35px
           linecolor: ''
@@ -1504,7 +1485,7 @@ build:
           id: 62
           orientation: vertical
           left: 600px
-          top: 670px
+          top: 590px
           width: 2px
           height: 25px
           linecolor: ''
@@ -1525,8 +1506,8 @@ build:
         -
           id: 64
           orientation: vertical
-          left: 595px
-          top: 585px
+          left: 730px
+          top: 1180px
           width: 2px
           height: 25px
           linecolor: ''
@@ -1639,6 +1620,28 @@ build:
           top: 610px
           width: 2px
           height: 25px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 75
+          orientation: vertical
+          left: 730px
+          top: 1070px
+          width: 2px
+          height: 30px
+          linecolor: ''
+          linetype: normal
+          left_top_arrow: ''
+          right_bottom_arrow: '1'
+        -
+          id: 76
+          orientation: vertical
+          left: 60px
+          top: 925px
+          width: 2px
+          height: 35px
           linecolor: ''
           linetype: normal
           left_top_arrow: ''

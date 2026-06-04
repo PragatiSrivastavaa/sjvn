@@ -1,0 +1,22 @@
+uuid: 538e7a45-13b4-4e5a-920d-76608d46d451
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.key_executive
+id: node.key_executive.status
+field_name: status
+entity_type: node
+bundle: key_executive
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

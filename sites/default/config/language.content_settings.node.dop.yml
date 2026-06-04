@@ -1,11 +1,18 @@
-uuid: 5af97a0a-8023-4b13-a4fd-1bfc28f6c2e6
+uuid: 98b54777-1ca3-4fa8-bac6-f75882425e5e
 langcode: en
 status: true
 dependencies:
   config:
     - node.type.dop
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
 id: node.dop
 target_entity_type_id: node
 target_bundle: dop
 default_langcode: site_default
-language_alterable: false
+language_alterable: true

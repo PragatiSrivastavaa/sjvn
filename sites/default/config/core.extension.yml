@@ -81,6 +81,7 @@ module:
   shs: 0
   sitemap: 0
   sjvn_custom: 0
+  sjvn_orgchart_access: 0
   sjvn_term_access: 0
   statistics: 0
   superfish: 0

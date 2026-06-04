@@ -50,6 +50,7 @@ permissions:
   - 'create video_gallery content'
   - 'delete any page content'
   - 'delete own page content'
+  - 'delete own universal_content_file_upload content'
   - 'delete page revisions'
   - 'edit any basic block content'
   - 'edit any home_banner content'

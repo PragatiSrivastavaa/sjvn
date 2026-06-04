@@ -13,7 +13,7 @@ bundle: universal_content_file_upload
 label: 'Category of Page'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

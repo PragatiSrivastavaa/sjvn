@@ -1,0 +1,22 @@
+uuid: 992ebbe5-0369-4efb-9d2d-67785021707b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.quick_access_link
+id: node.quick_access_link.status
+field_name: status
+entity_type: node
+bundle: quick_access_link
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

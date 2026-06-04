@@ -8,7 +8,9 @@ dependencies:
     - field.field.node.empanelled_hospital.field_credit_facility
     - field.field.node.empanelled_hospital.field_discount_details
     - field.field.node.empanelled_hospital.field_district
+    - field.field.node.empanelled_hospital.field_empanelment_terms_conditio
     - field.field.node.empanelled_hospital.field_google_map
+    - field.field.node.empanelled_hospital.field_location_e_mail
     - field.field.node.empanelled_hospital.field_locations
     - field.field.node.empanelled_hospital.field_related_documents
     - field.field.node.empanelled_hospital.field_specialties
@@ -38,7 +40,9 @@ hidden:
   field_credit_facility: true
   field_discount_details: true
   field_district: true
+  field_empanelment_terms_conditio: true
   field_google_map: true
+  field_location_e_mail: true
   field_locations: true
   field_related_documents: true
   field_specialties: true

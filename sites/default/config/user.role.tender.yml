@@ -6,6 +6,7 @@ dependencies:
     - filter.format.full_html
     - filter.format.restricted_html
     - node.type.page
+    - node.type.quick_access_link
     - node.type.tender
     - node.type.tender_award
     - taxonomy.vocabulary.contract_unit
@@ -34,9 +35,11 @@ permissions:
   - 'clone tender_award content'
   - 'create content translations'
   - 'create page content'
+  - 'create quick_access_link content'
   - 'create tender content'
   - 'create tender_award content'
   - 'edit any page content'
+  - 'edit any quick_access_link content'
   - 'edit any tender_award content'
   - 'edit own tender content'
   - 'edit own tender_award content'

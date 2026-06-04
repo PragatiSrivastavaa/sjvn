@@ -1,0 +1,22 @@
+uuid: bd241e29-7d94-4f45-a737-3a9c60487e96
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.under_operation_maintenance
+id: node.under_operation_maintenance.status
+field_name: status
+entity_type: node
+bundle: under_operation_maintenance
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

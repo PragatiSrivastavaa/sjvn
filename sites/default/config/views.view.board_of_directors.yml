@@ -1328,6 +1328,49 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
+      sorts:
+        field_directors_category_target_id:
+          id: field_directors_category_target_id
+          table: node__field_directors_category
+          field: field_directors_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        field_sequence_no_value:
+          id: field_sequence_no_value
+          table: node__field_sequence_no
+          field: field_sequence_no_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: second
       style:
         type: default
         options:
@@ -1345,6 +1388,7 @@ display:
         style: false
         row: false
         fields: false
+        sorts: false
         header: false
         footer: false
       header: {  }

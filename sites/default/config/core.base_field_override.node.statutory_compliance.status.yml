@@ -1,0 +1,22 @@
+uuid: a85a0636-3b96-4eb9-b120-61d8fff30273
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.statutory_compliance
+id: node.statutory_compliance.status
+field_name: status
+entity_type: node
+bundle: statutory_compliance
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

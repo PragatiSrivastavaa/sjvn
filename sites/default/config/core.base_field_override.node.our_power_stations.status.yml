@@ -1,0 +1,22 @@
+uuid: 09ee6a6b-c8b9-46bf-9f9d-d1b0732ceb72
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.our_power_stations
+id: node.our_power_stations.status
+field_name: status
+entity_type: node
+bundle: our_power_stations
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

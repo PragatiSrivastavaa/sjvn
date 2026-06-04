@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_discount_details
+    - filter.format.basic_html
     - filter.format.full_html
+    - filter.format.plain_text
     - node.type.empanelled_hospital
   module:
     - text
@@ -21,4 +23,6 @@ default_value_callback: ''
 settings:
   allowed_formats:
     - full_html
+    - basic_html
+    - plain_text
 field_type: text

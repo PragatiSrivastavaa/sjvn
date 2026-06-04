@@ -1,0 +1,22 @@
+uuid: ff94f901-2028-4fa9-8620-79b5f84182ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.board_of_directors
+id: node.board_of_directors.status
+field_name: status
+entity_type: node
+bundle: board_of_directors
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

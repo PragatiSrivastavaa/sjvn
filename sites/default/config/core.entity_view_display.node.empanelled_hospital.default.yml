@@ -7,7 +7,9 @@ dependencies:
     - field.field.node.empanelled_hospital.field_credit_facility
     - field.field.node.empanelled_hospital.field_discount_details
     - field.field.node.empanelled_hospital.field_district
+    - field.field.node.empanelled_hospital.field_empanelment_terms_conditio
     - field.field.node.empanelled_hospital.field_google_map
+    - field.field.node.empanelled_hospital.field_location_e_mail
     - field.field.node.empanelled_hospital.field_locations
     - field.field.node.empanelled_hospital.field_related_documents
     - field.field.node.empanelled_hospital.field_specialties
@@ -54,6 +56,13 @@ content:
     third_party_settings: {  }
     weight: 104
     region: content
+  field_empanelment_terms_conditio:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 111
+    region: content
   field_google_map:
     type: link
     label: above
@@ -65,6 +74,14 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 108
+    region: content
+  field_location_e_mail:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 110
     region: content
   field_locations:
     type: entity_reference_label

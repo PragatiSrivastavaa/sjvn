@@ -9,12 +9,17 @@ dependencies:
     - filter.format.restricted_html
     - node.type.key_executive
     - node.type.page
+    - taxonomy.vocabulary.organization_chart
   module:
     - block_content
+    - config_translation
     - content_translation
     - filter
     - node
+    - orgchart
     - quick_node_clone
+    - sjvn_orgchart_access
+    - sjvn_term_access
     - system
     - taxonomy
     - toolbar
@@ -25,8 +30,11 @@ is_admin: null
 permissions:
   - 'access block library'
   - 'access content overview'
+  - 'access orgchart'
   - 'access toolbar'
+  - 'administer orgchart'
   - 'administer taxonomy'
+  - 'bypass sjvn category access'
   - 'clone key_executive content'
   - 'clone own key_executive content'
   - 'clone page content'
@@ -35,16 +43,22 @@ permissions:
   - 'create key_executive block content'
   - 'create key_executive content'
   - 'create page content'
+  - 'create terms in organization_chart'
   - 'delete own key_executive content'
   - 'edit any basic block content'
   - 'edit any key_executive block content'
   - 'edit any key_executive content'
   - 'edit any page content'
+  - 'edit org chart'
   - 'edit own key_executive content'
+  - 'edit terms in organization_chart'
+  - 'translate configuration'
   - 'translate key_executive node'
+  - 'translate organization_chart taxonomy_term'
   - 'translate page node'
   - 'update content translations'
   - 'use text format full_html'
   - 'use text format restricted_html'
   - 'view own unpublished content'
+  - 'view term revisions in organization_chart'
   - 'view the administration theme'

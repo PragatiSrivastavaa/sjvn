@@ -97,7 +97,11 @@ settings:
     editor_advanced_link_link:
       enabled_attributes:
         - aria-label
+        - class
+        - id
+        - rel
         - target
+        - title
     editor_file_file:
       status: true
       scheme: public

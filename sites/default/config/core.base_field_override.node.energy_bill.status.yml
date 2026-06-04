@@ -1,0 +1,22 @@
+uuid: 74ed283b-e79a-4ffc-9e4a-2b560b95f477
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.energy_bill
+id: node.energy_bill.status
+field_name: status
+entity_type: node
+bundle: energy_bill
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

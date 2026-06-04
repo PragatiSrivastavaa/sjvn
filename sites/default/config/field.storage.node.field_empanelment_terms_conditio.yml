@@ -1,0 +1,19 @@
+uuid: b644919e-4f4c-461f-997f-4220abbd5cc2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_empanelment_terms_conditio
+field_name: field_empanelment_terms_conditio
+entity_type: node
+type: text_with_summary
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

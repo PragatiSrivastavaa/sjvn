@@ -1,0 +1,22 @@
+uuid: bdf81583-8222-40c9-86ba-841b624e47ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.contract_unit
+  module:
+    - text
+id: taxonomy_term.contract_unit.default
+targetEntityType: taxonomy_term
+bundle: contract_unit
+mode: default
+content:
+  description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

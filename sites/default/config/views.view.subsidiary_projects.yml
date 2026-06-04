@@ -217,7 +217,7 @@ display:
           entity_type: node
           entity_field: created
           plugin_id: date
-          order: ASC
+          order: DESC
           expose:
             label: ''
             field_identifier: ''
@@ -268,6 +268,7 @@ display:
           break_phrase: false
           add_table: false
           require_value: false
+          not: 0
       filters:
         status:
           id: status
