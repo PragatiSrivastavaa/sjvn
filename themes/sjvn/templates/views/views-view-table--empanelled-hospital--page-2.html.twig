@@ -1,0 +1,511 @@
+{#
+/**
+ * @file
+ * Theme override for displaying the Empanelled Hospital view display as cards.
+ */
+#}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  /* Reset the parent view-content grid to block so cards grid takes full width */
+  .view-empanelled-hospital .view-content {
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  /* Base grid styling */
+  .hospital-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 20px 0;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Card Container */
+  .hospital-modern-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #eef2f6;
+    box-shadow: 0 10px 30px rgba(0, 109, 160, 0.03), 0 1px 3px rgba(0, 0, 0, 0.01);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    animation: fadeInUp 0.4s ease-out both;
+  }
+
+  /* Fade-in Animation for Cards */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Stagger animation delays for initial cards */
+  .hospital-modern-card:nth-child(1) { animation-delay: 0.05s; }
+  .hospital-modern-card:nth-child(2) { animation-delay: 0.1s; }
+  .hospital-modern-card:nth-child(3) { animation-delay: 0.15s; }
+  .hospital-modern-card:nth-child(4) { animation-delay: 0.2s; }
+  .hospital-modern-card:nth-child(5) { animation-delay: 0.25s; }
+  .hospital-modern-card:nth-child(6) { animation-delay: 0.3s; }
+
+  .hospital-modern-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 109, 160, 0.1), 0 5px 15px rgba(0, 109, 160, 0.03);
+    border-color: rgba(0, 109, 160, 0.25);
+  }
+
+  /* Solid Blue Gradient Header */
+  .hospital-card-category-header {
+    background: linear-gradient(135deg, #005a84 0%, #006da0 100%);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 18px 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    border-bottom: 4px solid #004e73;
+    line-height: 1.4;
+  }
+
+  /* Sleek floating serial number */
+  .hospital-sno-badge {
+    position: absolute;
+    left: 15px;
+    background: #ffffff;
+    color: #006da0;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 3px 9px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Body Content */
+  .hospital-card-body-sec {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1;
+    background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+  }
+
+  /* Location Pill Badges */
+  .hospital-location-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .location-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+  }
+
+  .state-badge {
+    background-color: rgba(0, 109, 160, 0.07);
+    color: #006da0;
+    border: 1px solid rgba(0, 109, 160, 0.12);
+  }
+
+  .district-badge {
+    background-color: rgba(75, 91, 109, 0.07);
+    color: #4b5b6d;
+    border: 1px solid rgba(75, 91, 109, 0.12);
+  }
+
+  .location-badge i {
+    font-size: 0.85rem;
+  }
+
+  /* Contact section details */
+  .hospital-contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact-detail-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .contact-icon {
+    font-size: 0.95rem;
+    color: #006da0;
+    background: rgba(0, 109, 160, 0.06);
+    border: 1px solid rgba(0, 109, 160, 0.04);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+  }
+
+  .hospital-modern-card:hover .contact-icon {
+    background: rgba(0, 109, 160, 0.12);
+    transform: scale(1.08);
+  }
+
+  .contact-value {
+    font-size: 0.88rem;
+    color: #4b5b6d;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-value strong {
+    color: #8a9ba8;
+    font-weight: 700;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 2px;
+  }
+  
+  .contact-value a {
+    color: #006da0 !important;
+    text-decoration: none !important;
+    font-weight: 500;
+  }
+  
+  .contact-value a:hover {
+    text-decoration: underline !important;
+  }
+
+  /* Premium Empanelment terms/discount block */
+  .empanelment-terms-block {
+    background: linear-gradient(180deg, #f7faff 0%, #f0f6fc 100%);
+    border: 1px solid #e1eaf5;
+    border-left: 4px solid #006da0; /* cohesive blue accent */
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.01);
+  }
+
+  .terms-section-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #006da0; /* cohesive blue accent */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+
+  .terms-section-body {
+    font-size: 0.84rem;
+    color: #4b5b6d;
+    line-height: 1.5;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: #006da0 #f1f6fa;
+  }
+
+  /* Custom styled scrollbar for terms body */
+  .terms-section-body::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .terms-section-body::-webkit-scrollbar-track {
+    background: #f1f6fa;
+    border-radius: 10px;
+  }
+  .terms-section-body::-webkit-scrollbar-thumb {
+    background: #006da0;
+    border-radius: 10px;
+  }
+  .terms-section-body::-webkit-scrollbar-thumb:hover {
+    background: #004e73;
+  }
+
+  .terms-section-body ul {
+    margin: 4px 0 0 16px;
+    padding: 0;
+  }
+
+  .terms-section-body li {
+    margin-bottom: 4px;
+  }
+
+  /* Table styling inside terms body to prevent layout breakage */
+  .terms-section-body table {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .terms-section-body table th,
+  .terms-section-body table td {
+    padding: 6px 10px;
+    border: 1px solid #e1eaf5;
+    text-align: left;
+    min-width: 80px;
+  }
+
+  .terms-section-body table th {
+    background-color: #006da0;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .terms-section-body table tr:nth-child(even) {
+    background-color: #f7faff;
+  }
+
+  /* Footer action button */
+  .hospital-card-footer-sec {
+    padding: 14px 24px 24px 24px;
+    border-top: 1px solid #f0f4f8;
+    background-color: #fafbfc;
+    display: flex;
+    justify-content: stretch;
+  }
+
+  .hospital-card-footer-sec a,
+  .hospital-card-footer-sec .field-content,
+  .hospital-card-footer-sec .field-content a {
+    display: flex;
+    width: 100%;
+  }
+
+  .hospital-card-footer-sec a,
+  .hospital-card-footer-sec .field-content a {
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #006da0 0%, #004e73 100%);
+    color: #ffffff !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 30px;
+    text-decoration: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 10px rgba(0, 109, 160, 0.15);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border: none;
+  }
+
+  .hospital-card-footer-sec a:hover,
+  .hospital-card-footer-sec .field-content a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 109, 160, 0.3);
+    background: linear-gradient(135deg, #007cb1 0%, #006da0 100%);
+  }
+  
+  .hospital-card-footer-sec a:active,
+  .hospital-card-footer-sec .field-content a:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 109, 160, 0.2);
+  }
+
+  /* Responsive styling */
+  @media (max-width: 1200px) {
+    .hospital-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 15px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hospital-cards-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 10px;
+    }
+  }
+</style>
+
+<div class="hospital-cards-grid">
+  {% for row in rows %}
+    {% set title %}
+      {% for content in row.columns.title.content %}{{ content.field_output }}{% endfor %}
+    {% endset %}
+    
+    {% set telephone %}
+      {% for content in row.columns.body.content %}{{ content.field_output }}{% endfor %}
+    {% endset %}
+    
+    {% set state %}
+      {% for content in row.columns.field_locations.content %}{{ content.field_output }}{% endfor %}
+    {% endset %}
+    
+    {% set district %}
+      {% for content in row.columns.field_district.content %}{{ content.field_output }}{% endfor %}
+    {% endset %}
+    
+    {% set terms_cond %}
+      {% for content in row.columns.field_empanelment_terms_conditio.content %}{{ content.field_output }}{% endfor %}
+    {% endset %}
+    
+    {% set discount %}
+      {% for content in row.columns.field_discount_details.content %}{{ content.field_output }}{% endfor %}
+    {% endset %}
+    
+    {% set email %}
+      {% for content in row.columns.field_location_e_mail.content %}{{ content.field_output }}{% endfor %}
+    {% endset %}
+    
+    {% set gmap %}
+      {% for content in row.columns.field_google_map.content %}{{ content.field_output }}{% endfor %}
+    {% endset %}
+    
+    {% set counter %}
+      {% for content in row.columns.counter.content %}{{ content.field_output }}{% endfor %}
+    {% endset %}
+
+    <div class="hospital-modern-card">
+      <!-- Solid Blue Category Header (Hospital Name) -->
+      <div class="hospital-card-category-header">
+        {{ title|striptags|trim|upper }}
+      </div>
+      
+      <!-- Body section -->
+      <div class="hospital-card-body-sec">
+        <!-- Location Pill Badges (State & District) -->
+        {% if (state|striptags|trim) or (district|striptags|trim) %}
+          <div class="hospital-location-badges">
+            {% if state|striptags|trim %}
+              <span class="location-badge state-badge" title="{{ header.field_locations.content|striptags|trim }}">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span class="badge-text">{{ state|striptags|trim }}</span>
+              </span>
+            {% endif %}
+            {% if district|striptags|trim %}
+              <span class="location-badge district-badge" title="{{ header.field_district.content|striptags|trim }}">
+                <i class="fa-solid fa-map-pin"></i>
+                <span class="badge-text">{{ district|striptags|trim }}</span>
+              </span>
+            {% endif %}
+          </div>
+        {% endif %}
+        
+        <!-- Contact details -->
+        <div class="hospital-contact-details">
+          {% if telephone|striptags|trim %}
+            <div class="contact-detail-row">
+              <span class="contact-icon"><i class="fa-solid fa-phone"></i></span>
+              <div class="contact-value">
+                <strong>{{ header.body.content|striptags|trim }}</strong>
+                {{ telephone|raw }}
+              </div>
+            </div>
+          {% endif %}
+          
+          {% if email|striptags|trim %}
+            <div class="contact-detail-row">
+              <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
+              <div class="contact-value">
+                <strong>{{ header.field_location_e_mail.content|striptags|trim }}</strong>
+                {{ email|raw }}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- Terms and conditions / Discounts -->
+        {% if (terms_cond|striptags|trim) or (discount|striptags|trim) %}
+          <div class="empanelment-terms-block">
+            <h4 class="terms-section-title">
+              <i class="fa-solid fa-shield-halved"></i> 
+              {% if header.field_empanelment_terms_conditio.content|striptags|trim %}
+                {{ header.field_empanelment_terms_conditio.content|striptags|trim }}
+              {% else %}
+                Empanelment Terms & Conditions
+              {% endif %}
+            </h4>
+            <div class="terms-section-body">
+              {% if terms_cond|striptags|trim %}
+                <div class="terms-text">{{ terms_cond|raw }}</div>
+              {% endif %}
+              {% if discount|striptags|trim %}
+                <div class="discount-text">{{ discount|raw }}</div>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      
+      <!-- Footer section -->
+      {% if gmap|striptags|trim %}
+        <div class="hospital-card-footer-sec">
+          {{ gmap|raw }}
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+  if (typeof jQuery !== 'undefined' && typeof Drupal !== 'undefined') {
+    (function ($, Drupal) {
+      Drupal.behaviors.empanelledHospitalMapLinks = {
+        attach: function (context, settings) {
+          $(context).find('.hospital-card-footer-sec a').each(function() {
+            $(this).attr('target', '_blank');
+            $(this).attr('rel', 'noopener noreferrer');
+          });
+        }
+      };
+    })(jQuery, Drupal);
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      var mapLinks = document.querySelectorAll('.hospital-card-footer-sec a');
+      mapLinks.forEach(function(link) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      });
+    });
+  }
+</script>
