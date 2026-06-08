@@ -16,7 +16,7 @@
   /* Base grid styling */
   .hospital-cards-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     padding: 20px 0;
     font-family: 'Outfit', 'Inter', sans-serif;
@@ -28,8 +28,8 @@
   /* Card Container */
   .hospital-modern-card {
     background: #ffffff;
-    border-radius: 16px;
-    border: 1px solid #eef2f6;
+    border-radius: 12px;
+       border: 1px solid #e0e0e0;
     box-shadow: 0 10px 30px rgba(0, 109, 160, 0.03), 0 1px 3px rgba(0, 0, 0, 0.01);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: flex;
@@ -70,9 +70,9 @@
   .hospital-card-category-header {
     background: linear-gradient(135deg, #005a84 0%, #006da0 100%);
     color: #ffffff;
-    font-size: 0.95rem;
-    font-weight: 700;
-    padding: 18px 20px;
+        font-weight: 600;
+    font-size: 14px !important;
+    padding: 13px 20px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     text-align: left;
@@ -84,7 +84,12 @@
     border-bottom: 4px solid #004e73;
     line-height: 1.4;
   }
-
+  .terms-text p{
+  margin-bottom: 0px !important;
+}
+.terms-text h3{
+  font-size: 16px !important;
+}
   /* Sleek floating serial number */
   .hospital-sno-badge {
     position: absolute;
@@ -103,18 +108,22 @@
 
   /* Body Content */
   .hospital-card-body-sec {
-    padding: 24px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 2px;
     flex-grow: 1;
     background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
   }
-
+.contact-value p{
+  margin-bottom: 4px;
+}
   /* Location Pill Badges */
   .hospital-location-badges {
     display: flex;
     flex-wrap: wrap;
+    border-bottom: 1px solid #009edb;
+    padding-bottom: 5px;
     gap: 8px;
     margin-bottom: 4px;
   }
@@ -214,7 +223,9 @@
     border-left: 4px solid #006da0; /* cohesive blue accent */
     border-radius: 12px;
     padding: 14px 16px;
+    height: 100%;
     display: flex;
+    margin-top: 9px !important;
     flex-direction: column;
     gap: 8px;
     margin-top: auto;
@@ -401,8 +412,16 @@
       {% for content in row.columns.field_google_map.content %}{{ content.field_output }}{% endfor %}
     {% endset %}
     
+    {% set address %}
+      {% for content in row.columns.field_address_of_hospital.content %}{{ content.field_output }}{% endfor %}
+    {% endset %}
+    
     {% set counter %}
       {% for content in row.columns.counter.content %}{{ content.field_output }}{% endfor %}
+    {% endset %}
+    
+    {% set related_documents %}
+      {% for content in row.columns.field_related_documents.content %}{{ content.field_output }}{% endfor %}
     {% endset %}
 
     <div class="hospital-modern-card">
@@ -433,6 +452,16 @@
         
         <!-- Contact details -->
         <div class="hospital-contact-details">
+          {% if address|striptags|trim %}
+            <div class="contact-detail-row">
+              <span class="contact-icon"><i class="fa-solid fa-map-location-dot"></i></span>
+              <div class="contact-value">
+                <strong>ADDRESS</strong>
+                {{ address|raw }}
+              </div>
+            </div>
+          {% endif %}
+
           {% if telephone|striptags|trim %}
             <div class="contact-detail-row">
               <span class="contact-icon"><i class="fa-solid fa-phone"></i></span>
@@ -447,8 +476,18 @@
             <div class="contact-detail-row">
               <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
               <div class="contact-value">
-                <strong>{{ header.field_location_e_mail.content|striptags|trim }}</strong>
+                <strong>E-MAIL</strong>
                 {{ email|raw }}
+              </div>
+            </div>
+          {% endif %}
+          
+          {% if related_documents|striptags|trim %}
+            <div class="contact-detail-row">
+              <span class="contact-icon"><i class="fa-solid fa-paperclip"></i></span>
+              <div class="contact-value related-documents-field">
+                <strong>RELATED DOCUMENTS</strong>
+                {{ related_documents|raw|replace({'<a ': '<a target="_blank" rel="noopener noreferrer" '})|raw }}
               </div>
             </div>
           {% endif %}
@@ -492,7 +531,7 @@
     (function ($, Drupal) {
       Drupal.behaviors.empanelledHospitalMapLinks = {
         attach: function (context, settings) {
-          $(context).find('.hospital-card-footer-sec a').each(function() {
+          $(context).find('.hospital-card-footer-sec a, .related-documents-field a').each(function() {
             $(this).attr('target', '_blank');
             $(this).attr('rel', 'noopener noreferrer');
           });
@@ -501,7 +540,7 @@
     })(jQuery, Drupal);
   } else {
     document.addEventListener('DOMContentLoaded', function() {
-      var mapLinks = document.querySelectorAll('.hospital-card-footer-sec a');
+      var mapLinks = document.querySelectorAll('.hospital-card-footer-sec a, .related-documents-field a');
       mapLinks.forEach(function(link) {
         link.setAttribute('target', '_blank');
         link.setAttribute('rel', 'noopener noreferrer');
