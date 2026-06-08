@@ -27,6 +27,7 @@ global-scripts:
     js/tab-accessibility.js: {} # Added for enhanced keyboard access
     js/overview-redirect.js: {}
     js/external-link.js: {}
+    js/dop-highlight.js: {}
   dependencies:
     - core/jquery
     - core/drupal
