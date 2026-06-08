@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.empanelled_hospital.body
+    - field.field.node.empanelled_hospital.field_address_of_hospital
     - field.field.node.empanelled_hospital.field_credit_facility
     - field.field.node.empanelled_hospital.field_discount_details
     - field.field.node.empanelled_hospital.field_district
@@ -39,6 +40,14 @@ content:
     weight: 3
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_address_of_hospital:
+    type: text_textarea
+    weight: 28
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   field_credit_facility:
     type: boolean_checkbox

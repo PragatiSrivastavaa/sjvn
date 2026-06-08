@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.empanelled_hospital.body
+    - field.field.node.empanelled_hospital.field_address_of_hospital
     - field.field.node.empanelled_hospital.field_credit_facility
     - field.field.node.empanelled_hospital.field_discount_details
     - field.field.node.empanelled_hospital.field_district
@@ -30,6 +31,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_address_of_hospital:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 112
     region: content
   field_credit_facility:
     type: boolean

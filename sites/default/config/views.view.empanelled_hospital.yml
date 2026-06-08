@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.body
     - field.storage.node.field_address
+    - field.storage.node.field_address_of_hospital
     - field.storage.node.field_credit_facility
     - field.storage.node.field_discount_details
     - field.storage.node.field_district
@@ -1491,6 +1492,131 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field_address_of_hospital:
+          id: field_address_of_hospital
+          table: node__field_address_of_hospital
+          field: field_address_of_hospital
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Address of hospital'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_related_documents:
+          id: field_related_documents
+          table: node__field_related_documents
+          field: field_related_documents
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Related Documents'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: file_default
+          settings:
+            use_description_as_link_text: true
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       sorts:
         nid:
           id: nid
@@ -1756,9 +1882,11 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_address_of_hospital'
         - 'config:field.storage.node.field_discount_details'
         - 'config:field.storage.node.field_district'
         - 'config:field.storage.node.field_empanelment_terms_conditio'
         - 'config:field.storage.node.field_google_map'
         - 'config:field.storage.node.field_location_e_mail'
         - 'config:field.storage.node.field_locations'
+        - 'config:field.storage.node.field_related_documents'

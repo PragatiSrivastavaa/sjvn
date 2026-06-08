@@ -1,0 +1,19 @@
+uuid: 79ab8859-2901-4494-b7ee-680264cb442a
+langcode: hi
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_address_of_hospital
+field_name: field_address_of_hospital
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

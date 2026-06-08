@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.empanelled_hospital.body
+    - field.field.node.empanelled_hospital.field_address_of_hospital
     - field.field.node.empanelled_hospital.field_credit_facility
     - field.field.node.empanelled_hospital.field_discount_details
     - field.field.node.empanelled_hospital.field_district
@@ -37,6 +38,7 @@ content:
     weight: 100
     region: content
 hidden:
+  field_address_of_hospital: true
   field_credit_facility: true
   field_discount_details: true
   field_district: true

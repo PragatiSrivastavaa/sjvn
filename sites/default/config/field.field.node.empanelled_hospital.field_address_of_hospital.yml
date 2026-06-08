@@ -1,0 +1,26 @@
+uuid: 3120022c-401b-4cc5-9ef1-6d2ef7c49198
+langcode: hi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address_of_hospital
+    - filter.format.basic_html
+    - filter.format.full_html
+    - node.type.empanelled_hospital
+  module:
+    - text
+id: node.empanelled_hospital.field_address_of_hospital
+field_name: field_address_of_hospital
+entity_type: node
+bundle: empanelled_hospital
+label: 'Address of hospital'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+    - basic_html
+field_type: text_long
