@@ -293,6 +293,17 @@ function sjvn_custom_form_node_tender_edit_form_alter(&$form, FormStateInterface
 }
 
 /**
+ * Node add/edit form alters for Career.
+ */
+function sjvn_custom_form_node_career_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  _sjvn_custom_tender_states($form);
+}
+
+function sjvn_custom_form_node_career_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  _sjvn_custom_tender_states($form);
+}
+
+/**
  * Handle Contract Unit fields: Pre-populate, Filter, and Re-populate options.
  */
 function _sjvn_custom_tender_handle_cu(&$form, FormStateInterface $form_state) {
