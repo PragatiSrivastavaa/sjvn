@@ -27,7 +27,7 @@
 
       <!-- Right Section -->
       <nav class="right-links" aria-label="Utility Links">
-        <a href="{{ base_path }}sitemap">{% if language.getId() == 'hi' %}साइट मैप{% else %}Sitemap{% endif %}</a>
+        <a href="{{ path('sitemap.page') }}">{% if language.getId() == 'hi' %}साइट मैप{% else %}Sitemap{% endif %}</a>
         <span class="separator" aria-hidden="true">|</span>
         <a href="{{ base_path }}screen-reader-access">{% if language.getId() == 'hi' %}स्क्रीन रीडर{% else %}Screen
           Reader{% endif %}</a>
