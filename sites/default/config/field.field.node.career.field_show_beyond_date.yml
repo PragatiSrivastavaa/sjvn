@@ -1,0 +1,23 @@
+uuid: 25403390-d3ae-4933-beda-b4f50b245b3b
+langcode: hi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_beyond_date
+    - node.type.career
+id: node.career.field_show_beyond_date
+field_name: field_show_beyond_date
+entity_type: node
+bundle: career
+label: 'Show on website beyond last date of submission'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

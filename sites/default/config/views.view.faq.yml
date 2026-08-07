@@ -10,7 +10,6 @@ dependencies:
     - 'taxonomy_term:accordion_category:53e5a412-7437-403e-82fa-25e490f399af'
     - 'taxonomy_term:accordion_category:8751c5ac-d18e-47cf-8021-babe48875ca8'
     - 'taxonomy_term:accordion_category:eb9098d1-6486-47d7-ad8d-74488f24a98d'
-    - 'taxonomy_term:category:839b87e0-e40b-4eb7-a594-5dfc017f78ee'
   module:
     - node
     - taxonomy
@@ -280,8 +279,7 @@ display:
           admin_label: ''
           plugin_id: taxonomy_index_tid
           operator: or
-          value:
-            377: 377
+          value: {  }
           group: 1
           exposed: false
           expose:

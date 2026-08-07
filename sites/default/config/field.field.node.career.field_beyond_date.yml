@@ -1,0 +1,21 @@
+uuid: 644f98a8-65bf-49ea-816e-52c2f67f7159
+langcode: hi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_beyond_date
+    - node.type.career
+  module:
+    - datetime
+id: node.career.field_beyond_date
+field_name: field_beyond_date
+entity_type: node
+bundle: career
+label: 'Beyond last date of submission'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

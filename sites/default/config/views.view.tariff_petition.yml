@@ -7,8 +7,6 @@ dependencies:
     - field.storage.node.field_upload_file
     - node.type.tariff_petition
     - taxonomy.vocabulary.project_list
-  content:
-    - 'taxonomy_term:project_list:b86c1d4c-007c-4496-afa7-88be55b93754'
   module:
     - better_exposed_filters
     - file
@@ -440,8 +438,7 @@ display:
           entity_type: node
           plugin_id: taxonomy_index_tid_depth
           operator: or
-          value:
-            146: 146
+          value: {  }
           group: 1
           exposed: true
           expose:
@@ -481,7 +478,7 @@ display:
           hierarchy: false
           limit: true
           error_message: true
-          depth: 0
+          depth: 1
       style:
         type: default
       row:

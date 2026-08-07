@@ -7,9 +7,11 @@ dependencies:
     - field.field.node.career.body
     - field.field.node.career.field_advertisement_no
     - field.field.node.career.field_apply_online_link
+    - field.field.node.career.field_beyond_date
     - field.field.node.career.field_last_date_of_submission
     - field.field.node.career.field_month
     - field.field.node.career.field_publish_date
+    - field.field.node.career.field_show_beyond_date
     - field.field.node.career.field_upload_files
     - node.type.career
   module:
@@ -36,8 +38,10 @@ content:
 hidden:
   field_advertisement_no: true
   field_apply_online_link: true
+  field_beyond_date: true
   field_last_date_of_submission: true
   field_month: true
   field_publish_date: true
+  field_show_beyond_date: true
   field_upload_files: true
   langcode: true

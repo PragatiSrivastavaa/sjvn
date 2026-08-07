@@ -64,7 +64,6 @@ class AuditTrailController extends ControllerBase {
 
     // Build Results Table
     $header = [
-      'id' => $this->t('ID'),
       'timestamp' => $this->t('Date & Time'),
       'user_name' => $this->t('User'),
       'user_ip' => $this->t('IP Address'),
@@ -94,15 +93,44 @@ class AuditTrailController extends ControllerBase {
       $status_color = ($row->status === 'Success') ? '#2e7d32' : (($row->status === 'Warning') ? '#ed6c02' : '#c62828');
       $status_badge = '<span style="color: ' . $status_color . '; font-weight: bold;">' . htmlspecialchars($row->status) . '</span>';
 
+      // Expandable Description for long content
+      $desc = $row->description ?? '';
+      $clean_desc = htmlspecialchars($desc);
+      
+      if (mb_strlen($desc) > 70) {
+        $short_desc = htmlspecialchars(mb_substr($desc, 0, 70));
+        $view_more_txt = $this->t('View More');
+        $view_less_txt = $this->t('View Less');
+        
+        $desc_markup = '
+          <details style="margin: 0; padding: 0;" ontoggle="let lbl=this.querySelector(\'.audit-toggle-lbl\'); if(lbl){ lbl.innerText = this.open ? \'' . addslashes($view_less_txt) . '\' : \'' . addslashes($view_more_txt) . '\'; }">
+            <summary style="cursor: pointer; color: #0066cc; outline: none;">
+              <span style="color: #222;">' . $short_desc . '...</span> 
+              <span class="audit-toggle-lbl" style="font-size: 11px; font-weight: bold; text-decoration: underline; margin-left: 4px; color: #0066cc;">' . $view_more_txt . '</span>
+            </summary>
+            <div style="margin-top: 6px; padding: 8px; background: #f4f6f8; border-left: 3px solid #0066cc; white-space: pre-wrap; word-break: break-all; font-size: 11px; color: #111;">' . $clean_desc . '</div>
+          </details>';
+          
+        $desc_cell = [
+          'data' => [
+            '#type' => 'inline_template',
+            '#template' => '{{ content|raw }}',
+            '#context' => ['content' => $desc_markup],
+          ],
+        ];
+      }
+      else {
+        $desc_cell = $clean_desc;
+      }
+
       $rows[] = [
-        'id' => $row->id,
         'timestamp' => date('d/m/Y H:i:s', $row->timestamp),
         'user_name' => htmlspecialchars($row->user_name),
         'user_ip' => htmlspecialchars($row->user_ip),
         'module' => htmlspecialchars($row->module),
         'action_type' => ['data' => ['#markup' => $action_badge]],
         'status' => ['data' => ['#markup' => $status_badge]],
-        'description' => htmlspecialchars($row->description),
+        'description' => $desc_cell,
       ];
     }
 

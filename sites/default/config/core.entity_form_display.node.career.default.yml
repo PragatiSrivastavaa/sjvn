@@ -6,9 +6,11 @@ dependencies:
     - field.field.node.career.body
     - field.field.node.career.field_advertisement_no
     - field.field.node.career.field_apply_online_link
+    - field.field.node.career.field_beyond_date
     - field.field.node.career.field_last_date_of_submission
     - field.field.node.career.field_month
     - field.field.node.career.field_publish_date
+    - field.field.node.career.field_show_beyond_date
     - field.field.node.career.field_upload_files
     - node.type.career
   module:
@@ -54,6 +56,12 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_beyond_date:
+    type: datetime_default
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_last_date_of_submission:
     type: datetime_default
     weight: 124
@@ -69,6 +77,12 @@ content:
   field_publish_date:
     type: datetime_default
     weight: 123
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_show_beyond_date:
+    type: options_buttons
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }

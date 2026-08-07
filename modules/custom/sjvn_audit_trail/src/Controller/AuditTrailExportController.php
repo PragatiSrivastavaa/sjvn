@@ -54,11 +54,10 @@ class AuditTrailExportController extends ControllerBase {
     fputs($handle, "\xEF\xBB\xBF");
 
     // CSV Header
-    fputcsv($handle, ['Log ID', 'Date & Time', 'User', 'IP Address', 'Module / Area', 'Action Type', 'Status', 'Description']);
+    fputcsv($handle, ['Date & Time', 'User', 'IP Address', 'Module / Area', 'Action Type', 'Status', 'Description']);
 
     foreach ($results as $row) {
       fputcsv($handle, [
-        $row->id,
         date('d/m/Y H:i:s', $row->timestamp),
         $row->user_name,
         $row->user_ip,
@@ -105,7 +104,7 @@ class AuditTrailExportController extends ControllerBase {
     .filters-summary { background: #f5f5f5; padding: 10px; border-radius: 5px; margin-bottom: 20px; font-size: 11px; }
     table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
     th { background: #003366; color: #fff; text-align: left; padding: 8px; font-size: 11px; }
-    td { border-bottom: 1px solid #ddd; padding: 8px; font-size: 11px; }
+    td { border-bottom: 1px solid #ddd; padding: 8px; font-size: 11px; word-break: break-word; }
     tr:nth-child(even) { background-color: #f9f9f9; }
     .footer { text-align: center; font-size: 10px; color: #777; margin-top: 30px; border-top: 1px solid #ccc; padding-top: 10px; }
     @media print {
@@ -134,7 +133,6 @@ class AuditTrailExportController extends ControllerBase {
   <table>
     <thead>
       <tr>
-        <th>ID</th>
         <th>Date & Time</th>
         <th>User</th>
         <th>IP Address</th>
@@ -147,12 +145,11 @@ class AuditTrailExportController extends ControllerBase {
     <tbody>';
 
     if (empty($results)) {
-      $html .= '<tr><td colspan="8" style="text-align:center;">No audit records found matching the active filter criteria.</td></tr>';
+      $html .= '<tr><td colspan="7" style="text-align:center;">No audit records found matching the active filter criteria.</td></tr>';
     }
     else {
       foreach ($results as $row) {
         $html .= '<tr>
-          <td>' . $row->id . '</td>
           <td>' . date('d/m/Y H:i:s', $row->timestamp) . '</td>
           <td>' . htmlspecialchars($row->user_name) . '</td>
           <td>' . htmlspecialchars($row->user_ip) . '</td>
