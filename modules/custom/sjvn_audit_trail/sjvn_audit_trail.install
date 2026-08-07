@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the SJVN Audit Trail module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function sjvn_audit_trail_schema() {
+  $schema['sjvn_audit_trail'] = [
+    'description' => 'Stores comprehensive audit trail logs for system compliance and record-keeping.',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary Key: Log ID.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'timestamp' => [
+        'description' => 'Unix timestamp of the event.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'uid' => [
+        'description' => 'User ID who performed the action.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'user_name' => [
+        'description' => 'Username or Email of the user.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+      'user_ip' => [
+        'description' => 'Client IP address.',
+        'type' => 'varchar',
+        'length' => 45,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+      'module' => [
+        'description' => 'Module / System Area (Content, User, Webform, Taxonomy, System).',
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'action_type' => [
+        'description' => 'Action type (Create, Update, Delete, Archive, Unarchive, Login, Logout).',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'status' => [
+        'description' => 'Action status (Success, Warning, Failure).',
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+        'default' => 'Success',
+      ],
+      'entity_type' => [
+        'description' => 'Target Entity type (node, user, taxonomy_term, webform_submission).',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+      'entity_id' => [
+        'description' => 'Target Entity ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => 0,
+      ],
+      'description' => [
+        'description' => 'Detailed description of the audit event.',
+        'type' => 'text',
+        'not null' => FALSE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'idx_filter' => ['timestamp', 'uid', 'module', 'action_type', 'status'],
+    ],
+  ];
+
+  return $schema;
+}

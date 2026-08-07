@@ -1,0 +1,128 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks and API functions for SJVN Audit Trail Reports module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Session\AccountInterface;
+
+/**
+ * Log an audit trail entry.
+ *
+ * @param string $module
+ *   System area/module (Content, User, Webform, Taxonomy, System).
+ * @param string $action_type
+ *   Action performed (Create, Update, Delete, Archive, Unarchive, Login, Logout).
+ * @param string $status
+ *   Action status (Success, Warning, Failure).
+ * @param string $description
+ *   Detailed event description.
+ * @param string|null $entity_type
+ *   Target entity type (node, user, etc.).
+ * @param int|null $entity_id
+ *   Target entity ID.
+ */
+function sjvn_audit_trail_log($module, $action_type, $status, $description, $entity_type = NULL, $entity_id = NULL) {
+  try {
+    $currentUser = \Drupal::currentUser();
+    $request = \Drupal::request();
+    
+    $uid = $currentUser->id();
+    $user_name = $currentUser->getAccountName() ?: ($currentUser->getEmail() ?: 'Anonymous');
+    $user_ip = $request->getClientIp() ?: '127.0.0.1';
+
+    \Drupal::database()->insert('sjvn_audit_trail')
+      ->fields([
+        'timestamp' => time(),
+        'uid' => $uid,
+        'user_name' => $user_name,
+        'user_ip' => $user_ip,
+        'module' => $module,
+        'action_type' => $action_type,
+        'status' => $status,
+        'entity_type' => $entity_type,
+        'entity_id' => $entity_id ?: 0,
+        'description' => $description,
+      ])
+      ->execute();
+  }
+  catch (\Exception $e) {
+    // Fail silently to prevent interrupting user transactions.
+    \Drupal::logger('sjvn_audit_trail')->error('Failed to record audit trail log: @message', ['@message' => $e->getMessage()]);
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function sjvn_audit_trail_entity_insert(EntityInterface $entity) {
+  $type = $entity->getEntityTypeId();
+  if (in_array($type, ['node', 'taxonomy_term', 'user', 'webform_submission'])) {
+    $label = $entity->label() ?: $entity->id();
+    $module = ($type === 'node') ? 'Content' : ucfirst($type);
+    sjvn_audit_trail_log($module, 'Create', 'Success', "Created $type \"$label\" (ID: {$entity->id()})", $type, $entity->id());
+  }
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function sjvn_audit_trail_entity_update(EntityInterface $entity) {
+  $type = $entity->getEntityTypeId();
+  if (in_array($type, ['node', 'taxonomy_term', 'user', 'webform_submission'])) {
+    $label = $entity->label() ?: $entity->id();
+    $module = ($type === 'node') ? 'Content' : ucfirst($type);
+    
+    $action = 'Update';
+    if ($type === 'node' && function_exists('sjvn_custom_is_node_archived') && sjvn_custom_is_node_archived($entity->id())) {
+      $action = 'Archive';
+    }
+
+    sjvn_audit_trail_log($module, $action, 'Success', "Updated $type \"$label\" (ID: {$entity->id()})", $type, $entity->id());
+  }
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function sjvn_audit_trail_entity_delete(EntityInterface $entity) {
+  $type = $entity->getEntityTypeId();
+  if (in_array($type, ['node', 'taxonomy_term', 'user', 'webform_submission'])) {
+    $label = $entity->label() ?: $entity->id();
+    $module = ($type === 'node') ? 'Content' : ucfirst($type);
+    sjvn_audit_trail_log($module, 'Delete', 'Warning', "Deleted $type \"$label\" (ID: {$entity->id()})", $type, $entity->id());
+  }
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function sjvn_audit_trail_user_login(AccountInterface $account) {
+  sjvn_audit_trail_log('User & Security', 'Login', 'Success', "User \"{$account->getAccountName()}\" logged in successfully.", 'user', $account->id());
+}
+
+/**
+ * Implements hook_user_logout().
+ */
+function sjvn_audit_trail_user_logout(AccountInterface $account) {
+  sjvn_audit_trail_log('User & Security', 'Logout', 'Success', "User \"{$account->getAccountName()}\" logged out.", 'user', $account->id());
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for user_login_form.
+ */
+function sjvn_audit_trail_form_user_login_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $form['#validate'][] = '_sjvn_audit_trail_user_login_validate';
+}
+
+/**
+ * Validation callback to log failed login attempts.
+ */
+function _sjvn_audit_trail_user_login_validate(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  if ($form_state->hasAnyErrors()) {
+    $name = $form_state->getValue('name') ?: 'Unknown User';
+    sjvn_audit_trail_log('User & Security', 'Login', 'Failure', "Failed login attempt for user \"$name\".", 'user', 0);
+  }
+}

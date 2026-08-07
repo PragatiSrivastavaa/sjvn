@@ -1,0 +1,8 @@
+name: 'SJVN Audit Trail Reports'
+type: module
+description: 'Provides a centralized Audit Trail system with configurable filters (date range, user, module, action type, status) and Excel & PDF report exports.'
+package: Custom
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:node
+  - drupal:user

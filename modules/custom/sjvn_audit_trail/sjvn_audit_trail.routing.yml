@@ -1,0 +1,21 @@
+sjvn_audit_trail.dashboard:
+  path: '/admin/reports/audit-trail'
+  defaults:
+    _controller: '\Drupal\sjvn_audit_trail\Controller\AuditTrailController::dashboard'
+    _title: 'Audit Trail Reports'
+  requirements:
+    _permission: 'access site reports'
+
+sjvn_audit_trail.export_excel:
+  path: '/admin/reports/audit-trail/export/excel'
+  defaults:
+    _controller: '\Drupal\sjvn_audit_trail\Controller\AuditTrailExportController::exportExcel'
+  requirements:
+    _permission: 'access site reports'
+
+sjvn_audit_trail.export_pdf:
+  path: '/admin/reports/audit-trail/export/pdf'
+  defaults:
+    _controller: '\Drupal\sjvn_audit_trail\Controller\AuditTrailExportController::exportPdf'
+  requirements:
+    _permission: 'access site reports'

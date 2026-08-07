@@ -1,0 +1,5 @@
+services:
+  sjvn_audit_trail.logger:
+    class: Drupal\sjvn_audit_trail\Logger\AuditLogger
+    tags:
+      - { name: logger }
