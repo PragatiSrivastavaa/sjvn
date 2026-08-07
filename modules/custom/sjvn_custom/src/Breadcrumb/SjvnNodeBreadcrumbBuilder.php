@@ -82,51 +82,25 @@ class SjvnNodeBreadcrumbBuilder implements BreadcrumbBuilderInterface {
     // Start with Home link
     $links[] = Link::fromTextAndUrl($this->t('Home'), Url::fromRoute('<front>'));
 
-    // Check if node is directly in main menu
-    $menu_links = $this->menuLinkManager->loadLinksByRoute('entity.node.canonical', ['node' => $node->id()], 'main');
+    $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
     $parent_trail_links = [];
 
-    if (!empty($menu_links)) {
-      $menu_link = reset($menu_links);
-      $parent_id = $menu_link->getParent();
-      while ($parent_id) {
-        $parent_link = $this->menuLinkManager->createInstance($parent_id);
-        array_unshift($parent_trail_links, Link::fromTextAndUrl($parent_link->getTitle(), $parent_link->getUrlObject()));
-        $parent_id = $parent_link->getParent();
-      }
+    // Find parent URL dynamically (via bundle mapping, path hierarchy, category, etc.)
+    $parent_url = $this->getParentUrlForNode($node);
+    if ($parent_url) {
+      $parent_trail_links = $this->buildParentTrailForUrl($parent_url, $langcode);
     }
-    else {
-      // Find parent URL dynamically (via path hierarchy, menu parent, pattern, or bundle mapping)
-      $parent_url = $this->getParentUrlForNode($node);
-      if ($parent_url) {
-        try {
-          $langcode = $node->language()->getId();
-          $internal_path = $this->pathAliasManager->getPathByAlias($parent_url, $langcode);
-          $url_obj = Url::fromUserInput($internal_path);
-          if ($url_obj->isRouted()) {
-            $r_name = $url_obj->getRouteName();
-            $r_params = $url_obj->getRouteParameters();
-            $p_menu_links = $this->menuLinkManager->loadLinksByRoute($r_name, $r_params, 'main');
-            if (!empty($p_menu_links)) {
-              $p_link = reset($p_menu_links);
-              $curr = $p_link;
-              while ($curr) {
-                array_unshift($parent_trail_links, Link::fromTextAndUrl($curr->getTitle(), $curr->getUrlObject()));
-                $p_id = $curr->getParent();
-                $curr = $p_id ? $this->menuLinkManager->createInstance($p_id) : NULL;
-              }
-            }
-            else {
-              // If parent route is valid node/page, get its title & url
-              $parent_title = $this->getTitleForUrlObject($url_obj);
-              if ($parent_title) {
-                $parent_trail_links[] = Link::fromTextAndUrl($parent_title, $url_obj);
-              }
-            }
-          }
-        }
-        catch (\Exception $e) {
-          // Ignore invalid URL lookup
+
+    if (empty($parent_trail_links)) {
+      // Check if node is directly in main menu
+      $menu_links = $this->menuLinkManager->loadLinksByRoute('entity.node.canonical', ['node' => $node->id()], 'main');
+      if (!empty($menu_links)) {
+        $menu_link = reset($menu_links);
+        $parent_id = $menu_link->getParent();
+        while ($parent_id) {
+          $parent_link = $this->menuLinkManager->createInstance($parent_id);
+          array_unshift($parent_trail_links, Link::fromTextAndUrl($parent_link->getTitle(), $parent_link->getUrlObject()));
+          $parent_id = $parent_link->getParent();
         }
       }
     }
@@ -143,38 +117,104 @@ class SjvnNodeBreadcrumbBuilder implements BreadcrumbBuilderInterface {
   }
 
   /**
+   * Helper to build full parent trail links for a given parent URL.
+   */
+  protected function buildParentTrailForUrl($parent_url, $langcode) {
+    $parent_trail_links = [];
+
+    // 1. Try finding menu_link_content entities in 'main' menu matching $parent_url or internal path
+    $internal_path = $this->pathAliasManager->getPathByAlias($parent_url, $langcode);
+
+    $mids = $this->entityTypeManager->getStorage('menu_link_content')->getQuery()
+      ->condition('menu_name', 'main')
+      ->condition('enabled', 1)
+      ->condition('link__uri', ['internal:' . $parent_url, 'internal:' . $internal_path, 'entity:' . ltrim($internal_path, '/')], 'IN')
+      ->accessCheck(FALSE)
+      ->execute();
+
+    if (empty($mids)) {
+      $mids = $this->entityTypeManager->getStorage('menu_link_content')->getQuery()
+        ->condition('menu_name', 'main')
+        ->condition('enabled', 1)
+        ->condition('link__uri', '%' . $parent_url, 'LIKE')
+        ->accessCheck(FALSE)
+        ->execute();
+    }
+
+    $selected_item = NULL;
+    if (!empty($mids)) {
+      $items = $this->entityTypeManager->getStorage('menu_link_content')->loadMultiple($mids);
+      // Prefer the menu item that has a parent (part of menu hierarchy)
+      foreach ($items as $item) {
+        if ($item->getParentId()) {
+          $selected_item = $item;
+          break;
+        }
+      }
+      if (!$selected_item && !empty($items)) {
+        $selected_item = reset($items);
+      }
+    }
+
+    if ($selected_item) {
+      $plugin_id = 'menu_link_content:' . $selected_item->uuid();
+      if ($this->menuLinkManager->hasDefinition($plugin_id)) {
+        $curr = $this->menuLinkManager->createInstance($plugin_id);
+        while ($curr) {
+          $title = $curr->getTitle();
+          $plugin_def = $curr->getPluginDefinition();
+          if (!empty($plugin_def['metadata']['entity_id'])) {
+            $mlc = $this->entityTypeManager->getStorage('menu_link_content')->load($plugin_def['metadata']['entity_id']);
+            if ($mlc && $mlc->hasTranslation($langcode)) {
+              $title = $mlc->getTranslation($langcode)->label();
+            }
+          }
+          array_unshift($parent_trail_links, Link::fromTextAndUrl($title, $curr->getUrlObject()));
+          $p_id = $curr->getParent();
+          $curr = $p_id ? $this->menuLinkManager->createInstance($p_id) : NULL;
+        }
+        return $parent_trail_links;
+      }
+    }
+
+    // 2. Fallback: try menuLinkManager->loadLinksByRoute() for YAML menu links
+    try {
+      $url_obj = Url::fromUserInput($internal_path);
+      if ($url_obj->isRouted()) {
+        $r_name = $url_obj->getRouteName();
+        $r_params = $url_obj->getRouteParameters();
+        $p_menu_links = $this->menuLinkManager->loadLinksByRoute($r_name, $r_params, 'main');
+        if (!empty($p_menu_links)) {
+          $p_link = reset($p_menu_links);
+          $curr = $p_link;
+          while ($curr) {
+            array_unshift($parent_trail_links, Link::fromTextAndUrl($curr->getTitle(), $curr->getUrlObject()));
+            $p_id = $curr->getParent();
+            $curr = $p_id ? $this->menuLinkManager->createInstance($p_id) : NULL;
+          }
+          return $parent_trail_links;
+        }
+
+        // 3. If parent route is valid node/page, get its title & url
+        $parent_title = $this->getTitleForUrlObject($url_obj);
+        if ($parent_title) {
+          $parent_trail_links[] = Link::fromTextAndUrl($parent_title, $url_obj);
+        }
+      }
+    }
+    catch (\Exception $e) {
+    }
+
+    return $parent_trail_links;
+  }
+
+  /**
    * Helper to determine parent section URL for a node dynamically.
    */
   protected function getParentUrlForNode(NodeInterface $node) {
-    $nid = $node->id();
-    $langcode = $node->language()->getId();
-    $alias = $this->pathAliasManager->getAliasByPath('/node/' . $nid, $langcode);
+    $bundle = $node->bundle();
 
-    // 1. Try nested path alias segments (e.g. /rr-plan-projects/monitoring-rr-activities-rhps)
-    if ($alias && $alias !== '/node/' . $nid) {
-      $parts = array_values(array_filter(explode('/', $alias)));
-      if (count($parts) > 1) {
-        $parent_path = '/' . implode('/', array_slice($parts, 0, count($parts) - 1));
-        try {
-          $url_obj = Url::fromUserInput($parent_path);
-          if ($url_obj->isRouted()) {
-            return $parent_path;
-          }
-        }
-        catch (\Exception $e) {
-        }
-      }
-    }
-
-    // 2. Keyword & Alias pattern matching for dynamic child pages (like R&R, CSR, etc.)
-    if ($alias && $alias !== '/node/' . $nid) {
-      $clean_alias = strtolower($alias);
-      if (strpos($clean_alias, 'rr-') !== FALSE || strpos($clean_alias, 'r-and-r') !== FALSE || strpos($clean_alias, 'rhps') !== FALSE || strpos($clean_alias, 'hep') !== FALSE) {
-        return '/rr-plan-projects';
-      }
-    }
-
-    // 3. Dynamic Category lookup for Our Business nodes
+    // 1. Dynamic Category lookup for Our Business nodes
     if ($node->hasField('field_business_cat') && !$node->get('field_business_cat')->isEmpty()) {
       $term = $node->get('field_business_cat')->entity;
       if ($term) {
@@ -194,7 +234,7 @@ class SjvnNodeBreadcrumbBuilder implements BreadcrumbBuilderInterface {
       }
     }
 
-    // 4. Bundle mapping fallback for structured content types
+    // 2. Explicit bundle mapping for structured content types (e.g. career -> /current-job)
     $bundle_map = [
       'career' => '/current-job',
       'board_of_directors' => '/board-of-directors',
@@ -212,8 +252,39 @@ class SjvnNodeBreadcrumbBuilder implements BreadcrumbBuilderInterface {
       'empanelled_hospital' => '/list-empaneled-hospitals',
     ];
 
-    $bundle = $node->bundle();
-    return isset($bundle_map[$bundle]) ? $bundle_map[$bundle] : NULL;
+    if (isset($bundle_map[$bundle])) {
+      return $bundle_map[$bundle];
+    }
+
+    $nid = $node->id();
+    $langcode = $node->language()->getId();
+    $alias = $this->pathAliasManager->getAliasByPath('/node/' . $nid, $langcode);
+
+    // 3. Try nested path alias segments (e.g. /rr-plan-projects/monitoring-rr-activities-rhps)
+    if ($alias && $alias !== '/node/' . $nid) {
+      $parts = array_values(array_filter(explode('/', $alias)));
+      if (count($parts) > 1) {
+        $parent_path = '/' . implode('/', array_slice($parts, 0, count($parts) - 1));
+        try {
+          $url_obj = Url::fromUserInput($parent_path);
+          if ($url_obj->isRouted()) {
+            return $parent_path;
+          }
+        }
+        catch (\Exception $e) {
+        }
+      }
+    }
+
+    // 4. Keyword & Alias pattern matching for dynamic child pages (like R&R, CSR, etc.)
+    if ($alias && $alias !== '/node/' . $nid) {
+      $clean_alias = strtolower($alias);
+      if (strpos($clean_alias, 'rr-') !== FALSE || strpos($clean_alias, 'r-and-r') !== FALSE || strpos($clean_alias, 'rhps') !== FALSE || strpos($clean_alias, 'hep') !== FALSE) {
+        return '/rr-plan-projects';
+      }
+    }
+
+    return NULL;
   }
 
   /**
