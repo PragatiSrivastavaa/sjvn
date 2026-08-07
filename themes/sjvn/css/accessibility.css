@@ -2253,6 +2253,16 @@ body.a11y-theme-high-contrast .accessibility-overlay.active {
   background: #1a1a1a;
 }
 
+/* PDF/Print Button */
+.social-media-fixed .social-pdf {
+  background: #E52521;
+  color: #ffffff;
+}
+
+.social-media-fixed .social-pdf:hover {
+  background: #B81B18;
+}
+
 /* Responsive - Stack below accessibility on smaller screens */
 @media (max-width: 768px) {
   .social-media-fixed {
@@ -2530,4 +2540,36 @@ body.a11y-reduce-motion * {
 .form-item--error-message strong {
   font-weight: 600;
   color: #b71c1c;
+}
+
+@media print {
+  .back-to-top,
+  #back-to-top,
+  .back-to-top.show,
+  .accessibility-trigger,
+  #accessibility-trigger,
+  .accessibility-drawer,
+  #accessibility-drawer,
+  .accessibility-overlay,
+  #accessibility-overlay,
+  .social-media-fixed,
+  .social-pdf,
+  .accessibility-icons,
+  .social-icons,
+  .nav-scroll-controls,
+  .language-notification,
+  #inauguration-modal-overlay,
+  .skip-link,
+  .elw-modal-overlay,
+  .no-print {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
 }

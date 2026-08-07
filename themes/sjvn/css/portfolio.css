@@ -445,3 +445,14 @@
      }
 
      /*---------------------- social media icon --------------------------- */
+
+@media print {
+  .accessibility-icons,
+  .social-icons,
+  .back-to-top,
+  #back-to-top {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+}

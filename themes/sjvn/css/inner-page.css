@@ -2668,3 +2668,34 @@ div.sf-menu.rtl.sf-accordion.sf-expanded,
 div.sf-menu.rtl.sf-accordion div.sf-item.sf-expanded>ul {
   right: auto !important;
 }
+
+@media print {
+  .back-to-top,
+  #back-to-top,
+  .back-to-top.show,
+  .accessibility-trigger,
+  #accessibility-trigger,
+  .accessibility-drawer,
+  #accessibility-drawer,
+  .accessibility-overlay,
+  #accessibility-overlay,
+  .social-media-fixed,
+  .accessibility-icons,
+  .social-icons,
+  .nav-scroll-controls,
+  .language-notification,
+  #inauguration-modal-overlay,
+  .skip-link,
+  .elw-modal-overlay,
+  .no-print {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
