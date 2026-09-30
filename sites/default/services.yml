@@ -1,7 +1,7 @@
 parameters:
   twig.config:
     debug: false
-    auto_reload: false
+    auto_reload: true
     cache: true
 
   cors.config:
@@ -25,5 +25,3 @@ parameters:
     exposedHeaders: false
     maxAge: 1000
     supportsCredentials: true
-
-
